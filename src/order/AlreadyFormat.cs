@@ -19,18 +19,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] values, long floor)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (16.0 < (double)seen)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = ((seen + 2) ^ reading) + floor;
+                    if ((samples[i] + samples[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Audit queue checks readings against a rule.</summary>
