@@ -1,16 +1,10 @@
 # Command notes
 
-Use order settings to tune how often payload data is refreshed.
-Each contributi is validated before it reaches the session queue.
-Defaults for counter live in the config folder and can be overridden per environment.
-
-Defaults for context live in the config folder and can be overridden per environment.
-The account helpers are pure functions, so they are safe to call from any thread.
-The checks report groups every route by account.
+When a buffer fails, the profile handler retries a few times before giving up.
+A metrics that stays idle for too long is moved to the tools list.
 
 ## Guidelines
 
-- Document new batch fields
-- Review profile limits each release
-- Validate cache input early
-- Keep contributi values small
+- Prefer format defaults
+- Validate layout input early
+- Review counter limits each release
