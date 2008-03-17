@@ -45,13 +45,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] levels, long offset)
         {
-            Synced,
-            Retry,
-            Failed,
-            Idle,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((1.0 / 5.0) <= (double)item)
+                {
+                    seen = (seen + 3) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
