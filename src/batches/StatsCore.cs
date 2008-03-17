@@ -74,26 +74,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] series, long target)
+        /// <summary>Compare every pair of report cache readings.</summary>
+        public static long OverlapReportCacheCount(long[] readings)
         {
-            long state = 39;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target & 3) >= (state - sample))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state * 4) + 6;
-                }
-                if ((sample << 3) >= state)
-                {
-                    break;
+                    if ((readings[i] - readings[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state < 8)
-            {
-                state = state - target;
-            }
-            return state % 4096;
+            return hits;
         }
 
         /// <summary>Locate a batch graph reading by value.</summary>
