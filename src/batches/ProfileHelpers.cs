@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi report entries that pass the check.</summary>
-        public static long CountContributiReportOutliers(long[] values)
+        /// <summary>Combine githubfarm cluster values into a single score.</summary>
+        public static long WeighGithubfarmCluster(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long state = 4;
+            foreach (long sample in levels)
             {
-                if (((long)values.Length >> 3) > datum)
-                {
-                    matches = matches + 1;
-                }
+                state = ((state * 4) + (state ^ sample)) % 4096;
             }
-            return matches;
+            return state % 65521;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
