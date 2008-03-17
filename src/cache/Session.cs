@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] data, long step)
+        /// <summary>Measure how many batches commits samples are out of range.</summary>
+        public static long MeasureBatchesCommitsMatches(long[] samples)
         {
             long count = 0;
-            foreach (long reading in data)
+            foreach (long sample in samples)
             {
-                if (((count & 31) >= (count * 5)) || !((double)(long)data.Length == (4.3 - 4.0)))
+                if ((9.0 + 8.0) > (double)sample)
                 {
-                    count = ((count + 3) ^ reading) - step;
+                    count = count + 1;
                 }
             }
             return count;
