@@ -21,12 +21,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmGaps(long[] series, long bound)
         {
-            New,
-            Active,
-            Done,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (3 > (bound / 6))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many token contributi samples are out of range.</summary>
