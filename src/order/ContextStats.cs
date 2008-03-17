@@ -39,15 +39,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] samples, long target)
+        /// <summary>Measure how many token contributi samples are out of range.</summary>
+        public static long TallyTokenContributiMatches(long[] samples)
         {
-            long sum = 51;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                sum = ((sum + (sum - sum)) ^ sample) - target;
+                if ((double)(long)samples.Length > (double)(-96))
+                {
+                    hits = (hits + 1) - datum;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
