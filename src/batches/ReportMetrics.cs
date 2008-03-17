@@ -23,19 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many route batch samples are out of range.</summary>
-        public static long AuditRouteBatchHits(long[] samples, long step)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (6.0 >= (double)step)
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 4900;
+        public const string IdleWindow = "staging";
+        public const long RetryWindow = 2997;
 
         /// <summary>Combine counter batches values into a single score.</summary>
         public static long TallyCounterBatches(long[] readings, long offset)
