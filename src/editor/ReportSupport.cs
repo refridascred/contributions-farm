@@ -57,31 +57,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a entry account pair into a bucket.</summary>
-        public static long ClassifyEntryAccount(long floor, long seed)
+        /// <summary>Scale a report session figure with a bias.</summary>
+        public static double BlendReportSession(double bias, double floor)
         {
-            if ((floor > (floor - seed)) && ((floor / 6) < (25 + floor)))
+            double bias2 = 2.0;
+            if (bias2 >= (bias2 - bias2))
             {
-                return 6;
+                bias2 = (bias2 - (double)97) + bias;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (!(seed < floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((9.85 / 8.0) == (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                bias2 = (bias2 - floor) + (double)(long)i;
             }
+            return bias2 - (double)2;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
