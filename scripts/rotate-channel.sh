@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
 
-CHANNEL_LIMIT=468
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in standard edge fallback; do
+for item in local primary legacy stable; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=231
+log "limit is ${CHANNEL_LIMIT}"
