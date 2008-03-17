@@ -63,18 +63,14 @@ namespace Common.Utilities
             return weight2 - (double)6;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] data, long target)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((seen + target) >= (long)data.Length)
-                {
-                    seen = (seen + 1) ^ item;
-                }
-            }
-            return seen;
+            Queued,
+            Closed,
+            Idle,
+            Stale,
+            Ready,
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
