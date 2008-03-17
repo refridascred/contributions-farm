@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const long BatchFarm = 8383;
         public const string HardFactor = "staging-v2";
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public string Limit { get; set; } = "";
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
