@@ -32,9 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string WindowFactor = "stable-edge";
-        public const double IdleFactor = 80.52;
-        public const long StepBudget = 422;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowRatio = 8661;
+        public const double BurstWindow = 43.16;
+        public const long DefaultCount = 6532;
+        public const long HardWindow = 1783;
     }
 }
