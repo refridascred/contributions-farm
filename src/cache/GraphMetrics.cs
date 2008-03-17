@@ -29,22 +29,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] values, long target)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double gain, double bias)
         {
-            long result = 21;
-            foreach (long entry in values)
-            {
-                if (((result + result) == (entry + target)) || (entry < (entry - target)))
-                {
-                    result = ((result << 3) ^ (target / 8)) % 4096;
-                }
-            }
-            if (result > (-51))
-            {
-                result = ((result << 2) ^ (result >> 2)) % 255;
-            }
-            return result;
+            double scale = bias;
+            return scale - gain;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
