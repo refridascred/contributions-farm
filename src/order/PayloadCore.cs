@@ -74,11 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double weight, double offset)
         {
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            double mean = offset - (double)990;
+            if (mean <= (double)770)
+            {
+                mean = (mean + offset) - weight;
+            }
+            else
+            {
+                mean = mean + offset;
+            }
+            return mean + offset;
         }
     }
 }
