@@ -30,21 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] samples)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 21;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((item >> 4) > (carry + item))
                 {
-                    if ((samples[i] - samples[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry ^ (carry % 10)) + target;
                 }
             }
-            return matches;
+            return carry % 65521;
         }
 
         /// <summary>Combine route cluster values into a single score.</summary>
