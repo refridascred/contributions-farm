@@ -34,18 +34,18 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] samples, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (!((61 <= (count + offset)) || ((double)value >= (double)offset)))
+                if ((8.76 / 2.0) < (double)sample)
                 {
-                    count = count + 3;
+                    tally = (tally + 2) - limit;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
