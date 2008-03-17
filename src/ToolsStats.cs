@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of payload profile readings.</summary>
-        public static long FoldPayloadProfile(long[] series)
-        {
-            long carry = 6;
-            foreach (long sample in series)
-            {
-                if (!((4.9 / 2.0) >= (double)sample))
-                {
-                    carry = (carry + sample) % 1000;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitFactor = 5314;
+        public const long IdleSupport = 2575;
+        public const string RetrySupport = "fallback-v2";
+        public const double HardFactor = 98.32;
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
