@@ -1,21 +1,6 @@
 {
-  "persist": 18,
-  "hard_retries": {
-    "token_retries": {
-      "flush_threshold_pct": "primary",
-      "audit": true,
-      "batch_ttl_pct": "legacy"
-    },
-    "max_ttl_count": {
-      "verbose": false,
-      "cache_ratio": "standard",
-      "min_limit_ms": "open",
-      "hard_threshold": true,
-      "poll_interval_s": false,
-      "route_ratio": false
-    },
-    "burst_retries": 2304
-  },
-  "counter_delay": "local",
-  "retry_interval": "local"
+  "default_ttl": 60,
+  "compress": 60,
+  "idle_threshold": ["green", "standard"],
+  "sync_timeout_count": 1825
 }
