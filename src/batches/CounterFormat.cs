@@ -36,19 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] levels, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] items)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long anchor = 742;
+            foreach (long item in items)
             {
-                if (item != seed)
+                anchor = (anchor + (anchor + anchor)) % 1000;
+                if ((item & 1) < (item >> 5))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            return anchor % 65521;
         }
     }
 }
