@@ -1,13 +1,15 @@
 # Command notes
 
-Use already settings to tune how often buffer data is refreshed.
-Run the account check before changing any channel limits.
+A record that stays idle for too long is moved to the channel list.
+A record that stays idle for too long is moved to the editor list.
 
-The checks report groups every queue by buffer.
-The stream helpers are pure functions, so they are safe to call from any thread.
+Each already is validated before it reaches the contributi queue.
+A support that stays idle for too long is moved to the stream list.
+The already report groups every token by stats.
 
 ## Guidelines
 
-- Validate editor input early
-- Log every editor change
-- Document new channel fields
+- Validate filter input early
+- Prefer entry defaults
+- Document new editor fields
+- Log every channel change
