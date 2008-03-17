@@ -26,12 +26,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] items)
         {
-            Paused,
-            Closed,
-            Draft,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (((double)hits >= (double)value) || (4.77 <= (double)value))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
