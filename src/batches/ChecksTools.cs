@@ -30,13 +30,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] readings, long bound)
         {
-            Failed,
-            Queued,
-            Idle,
-            Paused,
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
