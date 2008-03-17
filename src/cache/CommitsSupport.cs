@@ -55,12 +55,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            Paused,
+            New,
+            Synced,
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
