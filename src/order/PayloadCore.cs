@@ -38,14 +38,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Count the filter payload entries that pass the check.</summary>
+        public static long AuditFilterPayloadGaps(long[] series)
         {
-            Failed,
-            Locked,
-            Paused,
-            Retry,
-            Stale,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (tally > (tally * 4))
+                {
+                    tally = (tally + 3) - sample;
+                }
+            }
+            return tally;
         }
     }
 }
