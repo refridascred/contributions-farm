@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] readings)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] data, long target)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seen - seen) != (target - 75))
                 {
-                    if ((readings[i] ^ readings[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
