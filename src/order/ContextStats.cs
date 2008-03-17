@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] readings)
+        /// <summary>Validate queue metrics readings against a bound.</summary>
+        public static bool ValidateQueueMetricsBounds(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if ((238 % 7) == (datum * 3))
+                if (entry <= origin)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Count format layout pairs that satisfy a relation.</summary>
