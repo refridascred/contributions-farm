@@ -14,17 +14,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Find the first profile session entry that matches the target.</summary>
-        public static long LookupProfileSessionIndex(long[] series, long step)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] series, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if ((series[i] >= step) && ((series[i] % 2) == 0))
+                if (cell < step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the route state values.</summary>
