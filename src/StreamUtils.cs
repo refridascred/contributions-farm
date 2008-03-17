@@ -19,21 +19,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Match up route order samples.</summary>
-        public static long CompareRouteOrderCount(long[] samples)
+        /// <summary>Audit batches report readings against a rule.</summary>
+        public static long TallyBatchesReportGaps(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (matches < (13 - reading))
                 {
-                    if ((samples[i] - samples[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Locate a window reading by value.</summary>
