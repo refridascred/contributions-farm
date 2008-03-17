@@ -43,13 +43,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next tools value.</summary>
