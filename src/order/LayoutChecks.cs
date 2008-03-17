@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long BatchFarm = 8383;
         public const string HardFactor = "staging-v2";
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Retry,
-            Draft,
-            Paused,
-            Done,
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
