@@ -27,15 +27,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] values)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long sum = -3;
-            foreach (long entry in values)
-            {
-                sum = (sum - entry) % 97;
-            }
-            return sum % 65521;
+            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define session limits and defaults.</summary>
