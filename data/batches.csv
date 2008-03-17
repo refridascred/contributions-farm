@@ -1,6 +1,9 @@
-id,token,weight,count,state
-1,467,87.52,73.1,509
-2,staging,staging,639,712
-3,44.06,latest,27.91,edge
-4,661,57.83,723,52
-5,edge,441,55.66,green
+id,active,ratio,label
+1,local,23.81,871
+2,88.16,strict,cached
+3,79.9,13.11,34.14
+4,548,218,strict
+5,127,459,4
+6,74.79,563,319
+7,148,legacy,431
+8,76.17,open,48.62
