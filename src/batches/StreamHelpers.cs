@@ -10,21 +10,11 @@ namespace Common.Utilities
         public const string SoftInterval = "legacy-v2";
         public const long MinFarm = 4320;
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] levels)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Total { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
