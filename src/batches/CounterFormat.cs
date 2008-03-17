@@ -19,11 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] readings)
         {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
