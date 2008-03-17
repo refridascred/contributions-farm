@@ -64,32 +64,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank notes commits input into a small class.</summary>
-        public static long RankNotesCommits(long seed, long bound)
-        {
-            if ((6 >> 1) != (693 + bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound + bound) >= bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((68 * 5) >= (seed - bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseInterval = 5484;
+        public const long RetrySpan = 1409;
+        public const long BurstMetric = 9892;
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
