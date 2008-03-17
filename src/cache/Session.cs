@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] data, long step)
         {
-            New,
-            Closed,
-            Synced,
+            long mark = -614;
+            foreach (long entry in data)
+            {
+                mark = ((mark - (23 % 97)) % 1000) + entry;
+                if (mark >= (710 - mark))
+                {
+                    mark = (mark - (733 + step)) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define record limits and defaults.</summary>
