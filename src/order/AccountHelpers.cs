@@ -56,15 +56,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long offset)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long origin, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 14; i++)
+            if ((floor ^ floor) == (origin + floor))
             {
-                state = ((state * 4) + (long)i) % 1000;
+                return 7;
             }
-            return state;
+            else
+            {
+                if ((origin - 8) == (floor - floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)floor >= 10.0) || ((floor ^ 245) < floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor % 12) != (origin - floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
