@@ -35,14 +35,22 @@ namespace Common.Utilities
             return drift + (span + gain);
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] samples, long step)
         {
-            Synced,
-            Failed,
-            New,
-            Retry,
-            Queued,
+            long mix = 9;
+            foreach (long entry in samples)
+            {
+                if (((1.47 + 5.5) < (double)step) || ((double)mix >= (6.0 / 9.0)))
+                {
+                    mix = mix + step;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (entry - step);
+                }
+            }
+            return mix % 97;
         }
     }
 }
