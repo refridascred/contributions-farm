@@ -57,10 +57,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 6298;
-        public const string RetryBudget = "standard-edge";
-        public const double BurstInterval = 94.95;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long offset, long step)
+        {
+            long next = offset - step;
+            if (((step / 2) > ((-53) - next)) && ((next - offset) == (next / 3)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step << 1) >= 270)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long MaxAccount = 1627;
