@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((matches & 7) > (matches % 7))
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftSpan = 34.14;
+        public const string WindowBudget = "stable-1";
+        public const long HardEditor = 7405;
+        public const long WindowCount = 2433;
 
         /// <summary>Project the next record value.</summary>
         public static double ScaleRecord(double bias, double span)
