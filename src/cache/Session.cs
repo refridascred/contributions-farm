@@ -54,32 +54,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long bound, long origin)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] items)
         {
-            long lane = bound - origin;
-            if ((4.2 / 2.0) <= (double)origin)
+            long total = 267;
+            foreach (long datum in items)
             {
-                return 3;
+                total = ((total * 4) + (datum + datum)) % 255;
+                total = ((total * 4) + total) % 101;
             }
-            else
+            if (total > 275)
             {
-                if ((lane & 255) >= (2 >> 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound - lane) == (origin << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                total = (total + total) % 97;
             }
+            return total;
         }
     }
 }
