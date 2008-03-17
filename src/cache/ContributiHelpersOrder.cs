@@ -32,14 +32,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Draft,
-            Retry,
-            Pending,
-            Ready,
-            Locked,
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
