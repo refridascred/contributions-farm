@@ -16,19 +16,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((matches ^ matches) == (matches / 6))
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseChecks = "fallback-v2";
+        public const double MinSpan = 75.1;
+        public const double MinChecks = 90.03;
 
         /// <summary>Measure how many profile session samples are out of range.</summary>
         public static long CountProfileSessionHits(long[] data)
