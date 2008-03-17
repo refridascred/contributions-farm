@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long floor, long offset)
-        {
-            if (floor >= (floor + 39))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset >= (7.46 + 14.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor - offset) >= offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseLevel = 8196;
+        public const double MinWindow = 14.89;
+        public const double StepWindow = 75.68;
+        public const long BatchSpan = 7226;
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
