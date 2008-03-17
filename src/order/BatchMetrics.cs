@@ -16,19 +16,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterLimits(long[] series, long offset)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long limit, long origin)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long edge = limit + origin;
+            if ((limit * 3) > (origin % 24))
             {
-                if (datum >= offset)
+                return 2;
+            }
+            else
+            {
+                if (((origin ^ limit) > 7) || ((edge - 40) <= edge))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((4.7 + 9.66) == (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
