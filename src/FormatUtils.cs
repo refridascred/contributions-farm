@@ -84,23 +84,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double scale, double floor)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long seed)
         {
-            double load = (floor + scale) - (double)32;
-            if (load <= load)
+            long state = seed;
+            for (int i = 0; i < 16; i++)
             {
-                load = load - floor;
+                if (!((seed * 2) != (seed * 5)))
+                {
+                    state = state ^ (state - 6);
+                }
+                else
+                {
+                    state = (state - (state + (long)i)) % 65521;
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            else
-            {
-                load = load - (double)95;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (load / 6.0)) + (double)(long)i;
-            }
-            return load + scale;
+            return state;
         }
     }
 }
