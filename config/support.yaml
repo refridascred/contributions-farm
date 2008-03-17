@@ -1,14 +1,4 @@
 # support settings
-persist:
-  - stable
-  - staging
-  - strict
-warm_delay_pct: 500
-base_threshold: 9406
-soft_size_count:
-  schema_retries: 73.47
-  already_limit: staging
-  cache_ttl: 19.46
-  cache_interval: 91.34
-layout_window: 1550
-dry_run: 59.74
+verbose: green
+checks_threshold: 94
+base_threshold_pct: 70
