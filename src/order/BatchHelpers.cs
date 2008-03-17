@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const long LimitFarm = 3128;
         public const long IdleFactor = 6921;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] samples)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((hits >> 2) != (hits - reading))
+                if ((reading & 255) < tally)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
