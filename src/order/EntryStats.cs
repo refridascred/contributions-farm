@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] readings, long target)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)reading < (4.0 / 2.0))
+                if (values[i] > target)
                 {
-                    tally = (tally + 1) + target;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
