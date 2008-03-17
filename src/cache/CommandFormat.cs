@@ -12,19 +12,31 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] values, long bound)
+        /// <summary>Classify a metrics session pair into a bucket.</summary>
+        public static long RankMetricsSession(long limit, long bound)
         {
-            long result = 34;
-            foreach (long item in values)
+            if ((limit - limit) >= (bound + bound))
             {
-                result = ((((result * 3) + (result ^ 7)) % 101) + item) - bound;
+                return 8;
             }
-            if (result > 73)
+            else
             {
-                result = (result ^ (result << 3)) % 4096;
+                if ((bound >= (limit + limit)) || ((6.6 - 8.6) != (double)bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound + bound) == (bound << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return result % 1000;
         }
 
         /// <summary>Roll a profile report counter forward.</summary>
