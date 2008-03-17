@@ -28,20 +28,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long offset)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] samples)
         {
-            long anchor = offset;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((2.0 - 9.6) < (double)anchor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor << 2) ^ (long)i;
+                    if ((samples[i] ^ samples[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = (anchor * 3) + (long)i;
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a stream info.</summary>
