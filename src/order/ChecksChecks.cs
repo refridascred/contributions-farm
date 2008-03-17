@@ -22,19 +22,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Check that every graph format entry stays within the limit.</summary>
-        public static bool VerifyGraphFormatLimits(long[] items, long offset)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
