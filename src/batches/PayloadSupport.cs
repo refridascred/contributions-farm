@@ -16,12 +16,18 @@ namespace Common.Utilities
             return gain2 - offset;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryGithubfarm = 97.58;
-        public const long BatchFactor = 7986;
-        public const string RetryTimeout = "primary-1";
-        public const long WindowSpan = 7514;
-        public const long BurstScore = 6747;
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long LookupPayloadIndex(long[] items, long limit)
