@@ -62,19 +62,24 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every filter payload entry stays within the limit.</summary>
-        public static bool VerifyFilterPayloadLimits(long[] samples, long floor)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long seed, long floor)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            if (!(seed <= (seed + seed)))
             {
-                if (cell < floor)
+                return 4;
+            }
+            else
+            {
+                if ((floor + 81) <= (seed % 100))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return valid;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
