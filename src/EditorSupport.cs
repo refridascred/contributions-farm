@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long target, long seed)
         {
-            Idle,
-            Locked,
-            Failed,
+            long delta = target + seed;
+            if ((2.28 * 16.0) == (double)seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed + target) == (delta / 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
