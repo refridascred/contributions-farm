@@ -10,13 +10,16 @@ namespace Common.Utilities
         public const long RetrySpan = 1295;
         public const double HardBudget = 32.84;
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long origin)
         {
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
-            public double Offset { get; set; }
-            public long Mode { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = (acc << 3) ^ ((long)i % 7);
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
