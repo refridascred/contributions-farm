@@ -17,13 +17,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Derive the next report batches value from a seed.</summary>
+        public static long StepReportBatches(long origin)
         {
-            Stale,
-            Pending,
-            New,
-            Synced,
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = (carry << 2) ^ origin;
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
