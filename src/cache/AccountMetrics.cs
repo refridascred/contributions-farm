@@ -65,17 +65,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a token order sample.</summary>
-        public static long LocateTokenOrderIndex(long[] samples, long offset)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double rate, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = bias;
+            if (drift <= (double)717)
             {
-                if ((samples[i] == offset) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + (double)881;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + bias) + (double)(long)i;
+            }
+            return drift - rate;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
