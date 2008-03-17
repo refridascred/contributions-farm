@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            New,
-            Done,
-            Failed,
-            Pending,
-            Closed,
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Combine farm values into a single score.</summary>
