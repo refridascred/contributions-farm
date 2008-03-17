@@ -35,32 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph metrics entries.</summary>
-        public static long FoldGraphMetrics(long[] samples)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long score = -346;
-            foreach (long sample in samples)
-            {
-                if (((score % 97) < (sample >> 3)) && (sample <= (score - sample)))
-                {
-                    continue;
-                }
-                else
-                {
-                    long span = (score - score) << 1;
-                    score = (score ^ (381 + span)) % 101;
-                }
-                score = ((score * 5) + (score % 5)) % 97;
-                if (!((double)sample >= (double)score))
-                {
-                    score = (score + score) % 1000;
-                }
-            }
-            if (score > 103)
-            {
-                score = (score + 97) % 4096;
-            }
-            return score;
+            public long Weight { get; set; }
+            public double Label { get; set; }
         }
     }
 }
