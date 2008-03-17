@@ -12,22 +12,19 @@ namespace Common.Utilities
             return (drift - (bias + 7.44)) + span;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] data, long target)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if ((((target >> 4) < target) && (tally >= 72)) && ((tally % 100) < (tally + tally)))
+                if (reading < bound)
                 {
-                    tally = (tally + 2) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Combine counter batches values into a single score.</summary>
