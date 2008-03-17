@@ -91,12 +91,11 @@ namespace Common.Utilities
             return rate - (double)6;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the schema mode values.</summary>
