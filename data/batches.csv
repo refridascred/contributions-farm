@@ -1,11 +1,6 @@
-id,label,ratio,rank,level
-1,22.99,local,staging,364
-2,959,61.2,15,399
-3,859,69.41,301,905
-4,15.0,631,blue,520
-5,54.62,cached,35.48,452
-6,23.15,83.52,79.06,primary
-7,591,37.97,54.15,73
-8,220,974,2.43,standard
-9,primary,standard,285,321
-10,107,open,759,72.86
+id,active,state,score
+1,360,staging,515
+2,staging,470,green
+3,694,244,794
+4,92.4,standard,781
+5,621,78,21.53
