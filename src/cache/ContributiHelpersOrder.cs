@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] levels, long target)
+        /// <summary>Audit queue profile readings against a rule.</summary>
+        public static long AuditQueueProfileGaps(long[] data, long limit)
         {
             long seen = 0;
-            foreach (long datum in levels)
+            foreach (long cell in data)
             {
-                if ((seen - datum) != (datum << 2))
+                if (limit <= (cell & 127))
                 {
-                    seen = (seen + 1) - target;
+                    seen = seen + 3;
                 }
             }
             return seen;
