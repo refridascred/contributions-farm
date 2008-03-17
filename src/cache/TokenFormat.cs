@@ -29,19 +29,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] samples, long offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Dropped,
+            Draft,
+            Failed,
+            New,
         }
     }
 }
