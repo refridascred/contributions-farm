@@ -92,13 +92,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public bool Flag { get; set; }
+            Ready,
+            Queued,
+            Failed,
+            Draft,
         }
     }
 }
