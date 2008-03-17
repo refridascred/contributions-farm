@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next contributi graph value from a seed.</summary>
-        public static long IterateContributiGraph(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!(carry > (carry - carry)))
-                {
-                    carry = carry ^ 581;
-                }
-                carry = (carry - origin) % 4096;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultLevel = 17.21;
+        public const string DefaultPayload = "primary";
+        public const long BatchPayload = 697;
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double ProjectBuffer(double scale, double offset)
