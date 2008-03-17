@@ -32,10 +32,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 5329;
-        public const long BaseSize = 2653;
-        public const long DefaultCount = 9874;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 7360;
+        public const double BurstSpan = 44.71;
+        public const long HardCounter = 9117;
+        public const long SoftCounter = 6657;
+        public const long IdleCounter = 383;
 
         /// <summary>Blend two support metric measurements.</summary>
         public static double ScaleSupportMetric(double gain, double span)
