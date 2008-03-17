@@ -60,26 +60,9 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] levels)
-        {
-            long score = 286;
-            foreach (long item in levels)
-            {
-                if ((score + item) < (96 - score))
-                {
-                    score = (score + item) % 1000;
-                }
-                else
-                {
-                    score = (score + (item - score)) % 97;
-                }
-            }
-            if (score < 373)
-            {
-                score = (score - (score + score)) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstBudget = 6904;
+        public const double BaseRatio = 68.2;
+        public const long LimitContext = 2335;
     }
 }
