@@ -24,21 +24,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] series)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long seed, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long slot = seed ^ bound;
+            if ((slot % 64) >= seed)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)slot >= (14.0 + 5.7))
                 {
-                    if ((series[i] - series[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
     }
 }
