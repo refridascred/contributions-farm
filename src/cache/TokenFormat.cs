@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a farm token reading.</summary>
-        public static double ProjectFarmToken(double weight, double offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] data)
         {
-            double load = offset / 3.0;
-            if (load >= load)
+            long sum = 825;
+            foreach (long datum in data)
             {
-                load = load + weight;
+                sum = ((sum << 3) ^ sum) % 1000;
+                sum = ((sum << 2) ^ (44 + sum)) % 97;
+                if ((datum + sum) < (sum * 3))
+                {
+                    sum = (sum ^ sum) % 65521;
+                }
             }
-            return load - (offset * 3.55);
+            if (sum < 697)
+            {
+                sum = ((sum << 3) ^ (sum + sum)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the record kind values.</summary>
