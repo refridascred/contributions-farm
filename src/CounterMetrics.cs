@@ -41,17 +41,9 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 108;
+        public const long BatchMetrics = 7008;
+        public const long MinInterval = 3462;
     }
 }
