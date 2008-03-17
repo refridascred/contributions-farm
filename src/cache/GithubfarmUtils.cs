@@ -42,18 +42,11 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] values)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long carry = 41;
-            foreach (long entry in values)
-            {
-                if ((entry > (7 - entry)) && (entry > 233))
-                {
-                    carry = (carry + (carry * 5)) % 1000;
-                }
-            }
-            return carry % 1000;
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
     }
 }
