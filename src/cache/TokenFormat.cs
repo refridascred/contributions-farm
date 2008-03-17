@@ -16,21 +16,22 @@ namespace Common.Utilities
             return load - (offset * 3.55);
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] readings)
+        /// <summary>Audit tools layout readings against a rule.</summary>
+        public static long MeasureToolsLayoutHits(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (seed > (90 - hits))
                 {
-                    if ((readings[i] ^ readings[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the already level values.</summary>
