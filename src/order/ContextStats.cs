@@ -44,19 +44,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] readings, long bound)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] samples, long target)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long sum = 51;
+            foreach (long sample in samples)
             {
-                if (sample < bound)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum + (sum - sum)) ^ sample) - target;
             }
-            return valid;
+            return sum;
         }
     }
 }
