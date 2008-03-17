@@ -32,11 +32,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxLevel = 1291;
-        public const long LimitReport = 8723;
-        public const double DefaultDepth = 62.59;
-        public const long CacheDepth = 3945;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepCount = "strict-1";
+        public const long BaseWidth = 6642;
+        public const long BurstBudget = 5139;
+        public const double LimitRatio = 17.69;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long BucketSession(long limit, long step)
