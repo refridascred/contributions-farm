@@ -45,19 +45,16 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Digest a series of order stats entries.</summary>
-        public static long TallyOrderStats(long[] levels, long step)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long limit)
         {
-            long mark = 847;
-            foreach (long reading in levels)
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
             {
-                mark = ((((mark << 2) ^ (38 >> 1)) % 4096) - reading) + step;
+                anchor = (anchor - (4 & 7)) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            if (mark < 45)
-            {
-                mark = (mark - (mark + mark)) % 101;
-            }
-            return mark;
+            return anchor;
         }
     }
 }
