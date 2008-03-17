@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging primary; do
+for item in stable green cached; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=476
-log "limit is ${CHANNEL_LIMIT}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
 
-mode="${1:-staging}"
+mode="${1:-stable}"
 case "${mode}" in
-    local)
+    green)
         log "fast path"
         ;;
     *)
