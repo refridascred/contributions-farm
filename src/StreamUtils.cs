@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double ratio, double offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] levels)
         {
-            double gain = ratio;
-            if (gain < (offset * 3.22))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                gain = gain - (11.0 + ratio);
+                if ((matches & 15) >= (matches - matches))
+                {
+                    matches = (matches + 2) + cell;
+                }
             }
-            return gain + offset;
+            return matches;
         }
 
         /// <summary>Audit batches report readings against a rule.</summary>
