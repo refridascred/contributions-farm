@@ -1,8 +1,6 @@
 # githubfarm settings
-warm_retries_pct: 821
-readonly: 829
-account_ttl:
-  - open
-  - primary
-  - eu-west
-base_ratio_count: 30
+profile_depth: 500
+default_interval: 39.49
+batch_timeout_count: 86
+profile_size: true
+channel_depth: false
