@@ -1,4 +1,5 @@
 # support settings
-verbose: green
-checks_threshold: 94
-base_threshold_pct: 70
+burst_timeout: true
+default_limit_s: 50
+cache_depth: stable
+default_delay_pct: true
