@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] readings, long step)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 538;
+            foreach (long sample in values)
             {
-                if (readings[i] > step)
+                if ((sample >> 1) >= sample)
                 {
-                    return (long)i;
+                    mark = ((mark << 2) ^ 39) - step;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
