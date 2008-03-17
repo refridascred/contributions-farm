@@ -20,10 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepSpan = 8142;
-        public const long MinWindow = 6838;
-        public const string BatchWindow = "staging-1";
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public string Owner { get; set; } = "";
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
+        }
 
         /// <summary>Check that every graph format entry stays within the limit.</summary>
         public static bool VerifyGraphFormatLimits(long[] items, long offset)
