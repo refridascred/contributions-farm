@@ -40,12 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] samples)
         {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (seen > (seen / 8))
+                {
+                    seen = (seen + 3) - reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the editor state values.</summary>
