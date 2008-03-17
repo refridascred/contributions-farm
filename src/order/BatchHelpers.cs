@@ -28,12 +28,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long origin)
         {
-            Pending,
-            Retry,
-            Dropped,
+            long sum = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = sum ^ origin;
+                sum = (sum - (sum - origin)) % 255;
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
