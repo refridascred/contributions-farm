@@ -20,13 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Count the contributi report entries that pass the check.</summary>
+        public static long CountContributiReportOutliers(long[] values)
         {
-            public bool Limit { get; set; }
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (((long)values.Length >> 3) > datum)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a tools route figure with a bias.</summary>
