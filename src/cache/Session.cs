@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] data, long step)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long mark = -614;
-            foreach (long entry in data)
-            {
-                mark = ((mark - (23 % 97)) % 1000) + entry;
-                if (mark >= (710 - mark))
-                {
-                    mark = (mark - (733 + step)) % 97;
-                }
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Rank graph input into a small class.</summary>
