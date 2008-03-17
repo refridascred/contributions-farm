@@ -60,18 +60,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches window entries that pass the check.</summary>
-        public static long AuditBatchesWindowGaps(long[] series, long bound)
+        /// <summary>Derive the next order contributi value from a seed.</summary>
+        public static long RollOrderContributi(long step)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long sum = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((sample * 5) >= (bound & 31))
+                if (!((step % 2) <= 40))
                 {
-                    hits = hits + 2;
+                    sum = (sum << 3) ^ (step >> 4);
                 }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    sum = ((sum + (sum * 3)) % 4096) ^ (long)i2;
+                    sum = ((sum * 5) + 73) % 4096;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
     }
 }
