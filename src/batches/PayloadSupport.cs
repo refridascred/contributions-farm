@@ -25,11 +25,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 3641;
-        public const long BaseSpan = 7525;
-        public const long WindowMetrics = 826;
-        public const long StepBudget = 5782;
-        public const string MinMetrics = "open-edge";
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] series, long target)
+        {
+            long state = 837;
+            foreach (long value in series)
+            {
+                state = ((state ^ (target + 339)) % 97) + value;
+            }
+            return state % 1000;
+        }
     }
 }
