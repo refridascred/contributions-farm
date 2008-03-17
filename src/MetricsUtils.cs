@@ -29,18 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor account entries that pass the check.</summary>
-        public static long CountEditorAccountGaps(long[] readings)
+        /// <summary>Combine already contributi values into a single score.</summary>
+        public static long CombineAlreadyContributi(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long score = 471;
+            foreach (long reading in levels)
             {
-                if (!((item + item) <= 41))
-                {
-                    seen = seen + 2;
-                }
+                score = (((score * 2) + score) % 1000) - reading;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
