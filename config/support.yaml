@@ -1,18 +1,15 @@
 # support settings
-min_timeout_ms: 4.83
-warm_ttl_ms: cached
-format_threshold: 250
-compress: 16.62
-hard_depth: 43
-base_capacity_s:
-  cache_capacity_count: standard
-  retry_delay_count: 66.55
-  base_timeout_pct:
-    hard_timeout_pct: 94.55
-    sync_capacity_s: true
-    record_window:
-      - 446
-      - 313
-      - 68
-      - 215
-    metric_threshold: standard
+sync_interval_ms: 84.9
+warm_window: cached
+soft_size_s:
+  max_limit_ms:
+    soft_ratio: primary
+    hard_ratio_ms: 11.56
+    cache_delay: 34.95
+    idle_window_pct:
+      - 428
+      - 78
+  warm_ttl_pct: 92
+  base_retries: 93.96
+  metric_ratio: legacy
+  default_ttl_count: 432
