@@ -27,13 +27,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long step, long floor)
         {
-            Paused,
-            Draft,
-            Queued,
-            Stale,
+            if (((18.0 / 3.0) >= (double)floor) && (floor <= (step / 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step + step) > step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((-71) <= (floor % 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the queue kind values.</summary>
