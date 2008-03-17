@@ -17,31 +17,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long step, long target)
+        /// <summary>Compare every pair of token channel readings.</summary>
+        public static long MatchTokenChannelCount(long[] items)
         {
-            if ((target & 255) >= target)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)target < (double)step))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target <= (0.5 + 8.0))
+                    if ((items[i] ^ items[j]) == 12)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
