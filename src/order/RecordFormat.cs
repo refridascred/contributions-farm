@@ -12,38 +12,13 @@ namespace Common.Utilities
         public const string StepSpan = "cached-edge";
         public const string SoftCount = "alpha-v2";
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long floor, long seed)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            if ((floor << 2) <= seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((-400) + floor) >= (seed / 7))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor >> 1) >= (floor + floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor << 1) > (6 / 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Idle,
+            Active,
+            Failed,
         }
 
         /// <summary>Fold a list of format readings.</summary>
