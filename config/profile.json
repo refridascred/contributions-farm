@@ -1,11 +1,5 @@
 {
-  "idle_capacity_s": {
-    "readonly": true,
-    "metrics_size": 34.05,
-    "hard_ttl_ms": "strict",
-    "dry_run": 67,
-    "verbose": "fallback"
-  },
-  "window_capacity": 58,
-  "payload_depth": "legacy"
+  "hard_window_pct": "eu-west",
+  "readonly": 22.55,
+  "warm_capacity_ms": 30
 }
