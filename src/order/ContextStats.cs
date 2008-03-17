@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] values, long step)
+        /// <summary>Combine cluster record values into a single score.</summary>
+        public static long CombineClusterRecord(long[] levels, long floor)
         {
-            long mark = 538;
-            foreach (long sample in values)
+            long mix = 9;
+            foreach (long cell in levels)
             {
-                if ((sample >> 1) >= sample)
+                if ((mix << 2) == (mix - floor))
                 {
-                    mark = ((mark << 2) ^ 39) - step;
+                    mix = ((mix - (mix ^ 188)) % 255) + cell;
                 }
             }
-            return mark;
+            if (mix > 900)
+            {
+                mix = mix + (40 & 3);
+            }
+            return mix;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
