@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] values, long seed)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] items)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((datum << 2) < (seed + datum))
+                if ((((-45) + reading) < seen) || ((seen - reading) != (seen ^ reading)))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
