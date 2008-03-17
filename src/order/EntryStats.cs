@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] levels)
         {
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((tally >> 1) > item)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up stats samples.</summary>
