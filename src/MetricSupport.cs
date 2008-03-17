@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] series)
+        /// <summary>Count the notes format entries that pass the check.</summary>
+        public static long MeasureNotesFormatGaps(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (12 > (sample + sample))
                 {
-                    if ((series[i] - series[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
