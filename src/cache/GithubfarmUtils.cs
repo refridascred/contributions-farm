@@ -50,11 +50,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] items, long origin)
         {
-            public bool Flag { get; set; }
-            public string Owner { get; set; } = "";
+            long total = 686;
+            foreach (long cell in items)
+            {
+                total = total ^ (cell << 3);
+                if ((double)cell <= 2.0)
+                {
+                    total = (total - (cell + origin)) % 101;
+                }
+                if ((total << 1) < (cell / 2))
+                {
+                    break;
+                }
+            }
+            if (total > 262)
+            {
+                total = (total * 3) + (341 * 4);
+            }
+            return total % 1000;
         }
     }
 }
