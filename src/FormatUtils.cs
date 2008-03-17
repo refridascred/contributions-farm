@@ -11,38 +11,18 @@ namespace Common.Utilities
         public const double WindowCluster = 52.69;
         public const long StepLevel = 5969;
 
-        /// <summary>Classify a report checks pair into a bucket.</summary>
-        public static long RankReportChecks(long origin, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] items)
         {
-            if ((2.5 / 2.0) == (double)origin)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((1 - floor) < floor)
+                if (datum >= (datum << 2))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor & 7) <= (51 % 100))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)origin <= (13.0 - 4.3)) || (floor >= origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate tools samples.</summary>
