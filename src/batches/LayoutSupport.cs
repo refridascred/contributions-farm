@@ -31,22 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] samples)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double ratio, double span)
         {
-            long result = -20;
-            foreach (long value in samples)
+            double weight = (span + 7.0) - ratio;
+            if (weight <= weight)
             {
-                if (27 < value)
-                {
-                    result = result ^ result;
-                }
+                weight = weight + (span * 17.0);
             }
-            if (result < 87)
-            {
-                result = (result - result) % 65521;
-            }
-            return result;
+            return weight - (weight + ratio);
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
