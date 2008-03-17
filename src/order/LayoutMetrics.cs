@@ -18,15 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double bias, double span)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] values)
         {
-            double gain = 5.28;
-            for (int i = 0; i < 9; i++)
+            long mix = 783;
+            foreach (long reading in values)
             {
-                gain = (((gain + (gain * 18.0)) + (double)(long)i) + bias) - span;
+                if ((1.02 <= (double)mix) || ((1.96 * 9.0) < (6.93 * 3.37)))
+                {
+                    mix = (mix - (reading & 15)) % 1000;
+                }
+                else
+                {
+                    mix = (mix + (reading << 3)) % 97;
+                }
             }
-            return gain - (double)600;
+            if (mix < 57)
+            {
+                mix = ((mix * 2) + mix) % 97;
+            }
+            return mix % 97;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
