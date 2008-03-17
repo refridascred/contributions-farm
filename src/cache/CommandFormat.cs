@@ -48,17 +48,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first batches queue entry that matches the target.</summary>
-        public static long LocateBatchesQueueIndex(long[] samples, long bound)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= bound) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
