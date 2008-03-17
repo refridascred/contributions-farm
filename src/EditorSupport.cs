@@ -36,11 +36,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinDepth = 6380;
-        public const double BurstStream = 6.67;
-        public const long HardStream = 3569;
-        public const long BurstWidth = 5448;
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long LimitEntry = 6298;
