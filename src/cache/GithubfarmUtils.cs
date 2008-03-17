@@ -15,12 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] levels, long offset)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((levels[i] == offset) && ((levels[i] % 5) == 0))
+                if (readings[i] < target)
                 {
                     return (long)i;
                 }
