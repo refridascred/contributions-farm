@@ -22,18 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] data)
+        /// <summary>Measure how many profile commits samples are out of range.</summary>
+        public static long CountProfileCommitsGaps(long[] series, long step)
         {
-            long mix = 97;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (8 > mix)
+                if ((double)hits >= (8.0 - 20.0))
                 {
-                    mix = (mix - ((long)data.Length / 7)) ^ datum;
+                    hits = ((hits + 3) + reading) - step;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
