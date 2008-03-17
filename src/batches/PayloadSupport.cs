@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Fold a list of session stream readings.</summary>
+        public static long FoldSessionStream(long[] samples, long origin)
         {
-            Active,
-            Synced,
-            Pending,
+            long mix = 78;
+            foreach (long reading in samples)
+            {
+                if (((origin & 31) == (long)samples.Length) || ((origin & 255) < (reading + 0)))
+                {
+                    mix = mix - (mix + 3);
+                }
+                else
+                {
+                    mix = mix ^ (701 << 1);
+                }
+            }
+            if (mix < 55)
+            {
+                mix = (mix - (873 + 42)) % 101;
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a counter entry.</summary>
