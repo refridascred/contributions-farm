@@ -13,22 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] samples)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((hits % 97) <= hits)
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            New,
+            Stale,
+            Draft,
         }
 
         /// <summary>Hold a metric header.</summary>
