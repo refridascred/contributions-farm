@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the notes format entries that pass the check.</summary>
-        public static long MeasureNotesFormatGaps(long[] values)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long state = 55;
+            foreach (long item in values)
             {
-                if (12 > (sample + sample))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = ((((state << 3) ^ state) % 1000) - item) - offset;
             }
-            return matches;
+            return state % 4096;
         }
 
         /// <summary>Project the next buffer value.</summary>
