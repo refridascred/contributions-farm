@@ -45,22 +45,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the record channel entries that pass the check.</summary>
-        public static long MeasureRecordChannelOutliers(long[] samples, long limit)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (((double)item > (19.0 * 3.21)) && ((double)seen == (9.32 + 2.0)))
-                {
-                    seen = (seen + 3) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
