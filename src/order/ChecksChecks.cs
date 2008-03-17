@@ -38,19 +38,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxDepth = 3393;
+        public const double SoftScore = 28.2;
+        public const long MinRatio = 7629;
     }
 }
