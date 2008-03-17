@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] series)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] levels, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 4;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (((mix + (4 / 9)) % 65521) ^ entry) - seed;
             }
-            return hits;
+            return mix % 97;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
