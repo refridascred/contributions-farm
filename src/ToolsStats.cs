@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] items, long step)
+        /// <summary>Fold a list of payload profile readings.</summary>
+        public static long FoldPayloadProfile(long[] series)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long carry = 6;
+            foreach (long sample in series)
             {
-                if (2.3 > (double)seen)
+                if (!((4.9 / 2.0) >= (double)sample))
                 {
-                    seen = ((seen + 2) + item) + step;
+                    carry = (carry + sample) % 1000;
                 }
             }
-            return seen;
+            return carry % 97;
         }
 
         /// <summary>Describe the layout status values.</summary>
