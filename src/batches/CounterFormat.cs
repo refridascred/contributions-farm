@@ -37,18 +37,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] series, long origin)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long bound, long seed)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            if ((bound >= seed) || ((double)seed > 9.45))
             {
-                if ((sample & 3) > (tally + origin))
+                return 1;
+            }
+            else
+            {
+                if ((seed % 2) != (bound + 628))
                 {
-                    tally = tally + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
     }
 }
