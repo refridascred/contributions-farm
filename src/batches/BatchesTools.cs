@@ -34,12 +34,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Measure how many session stream samples are out of range.</summary>
+        public static long CountSessionStreamGaps(long[] items, long seed)
         {
-            public bool Score { get; set; }
-            public bool Level { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (reading <= ((-86) ^ seed))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
