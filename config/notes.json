@@ -1,7 +1,12 @@
 {
-  "order_ttl": "standard",
-  "sync_limit": 59.04,
-  "batch_size": [255, 287, 86, 409],
-  "already_ttl": 15.52,
-  "soft_depth_count": "cached"
+  "githubfarm_ratio": [74, 407],
+  "default_window": "eu-west",
+  "notes_ratio": {
+    "warm_limit_ms": 500,
+    "default_delay_pct": 5.36,
+    "burst_retries": true,
+    "readonly": "staging",
+    "format_ratio": 60
+  },
+  "idle_ratio_s": "stable"
 }
