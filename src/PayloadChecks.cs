@@ -34,23 +34,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] values, long origin)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] data)
         {
-            long carry = 4;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 2) + (long)values.Length) % 4096;
-                if (carry < cell)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry * 4) + (cell / 8)) % 4096;
+                    if ((data[i] + data[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (carry < 97)
-            {
-                carry = (carry << 2) ^ (carry + origin);
-            }
-            return carry % 4096;
+            return matches;
         }
 
         /// <summary>Hold a already record.</summary>
