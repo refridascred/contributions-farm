@@ -1,33 +1,46 @@
 # support settings
-readonly: 59.54
-persist:
-  verbose: eu-west
-  default_size_ms:
-    report_timeout: latest
-    metrics_limit: 100
-    verbose: 250
-    idle_depth_s: true
-    order_capacity: 12.91
-  min_limit_count: blue
-  idle_size:
-    - 279
-    - 153
-    - 366
-  retry_retries: primary
-audit:
-  - primary
+soft_ttl_s: green
+poll_capacity_ms: 36.93
+min_size_s:
+  min_delay:
+    warm_delay: 30
+    base_interval: 1854
+    stream_size: 89.96
+    base_timeout_pct: local
+    default_retries_pct: true
+    base_capacity_ms: standard
+  soft_timeout_ms:
+    - edge
+    - primary
+    - standard
+    - stable
+  retry_window_ms: 30
+default_retries_s:
+  - stable
   - standard
-  - open
-hard_delay:
-  contributi_capacity: open
-  poll_interval_count:
-    window_size: staging
-    retry_depth_pct: 4093
-    cache_ttl_s: blue
-  contributi_timeout:
-    - 157
-    - 87
-    - 78
-  cache_capacity_ms: 8723
-  flush_depth: 51
-  tools_ttl: 38.41
+  - latest
+  - green
+base_delay:
+  session_delay:
+    token_interval: 46.0
+    notes_ttl: 95
+    strict: 93.87
+    flush_interval_ms: 1849
+  soft_limit_count:
+    queue_interval:
+      - 103
+      - 232
+      - 168
+      - 228
+    max_retries_ms: 92.17
+    warm_threshold_count:
+      - open
+      - local
+      - blue
+      - eu-west
+    queue_delay:
+      - legacy
+      - eu-west
+      - open
+      - stable
+  soft_threshold: false
