@@ -6,16 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local latest fallback; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
 
-mode="${1:-legacy}"
+mode="${1:-latest}"
 case "${mode}" in
-    stable)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in legacy green strict eu-west; do
+    log "checking ${item}"
+done
