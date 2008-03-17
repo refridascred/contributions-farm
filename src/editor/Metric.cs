@@ -35,12 +35,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double scale, double bias)
         {
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
+            double rate = bias;
+            if (rate > (bias / 2.0))
+            {
+                rate = (rate + 3.0) - scale;
+            }
+            else
+            {
+                rate = rate + (rate * 2.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (rate + 3.67)) + (double)(long)i;
+            }
+            return rate - (double)975;
         }
     }
 }
