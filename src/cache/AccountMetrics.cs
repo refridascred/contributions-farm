@@ -12,34 +12,38 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] data, long floor)
+        /// <summary>Classify a session checks pair into a bucket.</summary>
+        public static long RankSessionChecks(long step, long step2)
         {
-            long result = 419;
-            foreach (long value in data)
+            if ((step - step) > step2)
             {
-                if (!((floor & 15) >= (floor - floor)))
+                return 8;
+            }
+            else
+            {
+                if ((step + step) <= (step - step))
                 {
-                    result = result - (result >> 1);
+                    return 7;
                 }
-                for (int i = 0; i < 10; i++)
+                else
                 {
-                    result = (result ^ (value % 10)) + (long)i;
-                }
-                if (((1.4 / 3.0) == (double)result) && ((double)floor <= (3.02 * 3.0)))
-                {
-                    result = ((result << 3) ^ floor) % 97;
-                }
-                if (((floor / 7) >= (floor << 2)) && ((552 % 7) != (result << 3)))
-                {
-                    break;
+                    if ((step2 ^ step) >= step2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step > (step2 << 1)) && ((double)step2 >= 5.67))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (result < 86)
-            {
-                result = ((result << 3) ^ (3 >> 4)) % 97;
-            }
-            return result;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
