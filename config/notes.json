@@ -1,5 +1,6 @@
 {
-  "strict": "standard",
-  "checks_delay": ["blue", "latest"],
-  "batch_ttl_ms": "local"
+  "burst_interval_ms": "green",
+  "githubfarm_ratio": [360, 135, 129],
+  "cache_interval_ms": false,
+  "min_delay_count": "open"
 }
