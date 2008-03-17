@@ -70,11 +70,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryDepth = "fallback";
-        public const long BatchWindow = 4705;
-        public const long LimitLevel = 2217;
-        public const long SoftSize = 9380;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Done,
+            Active,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool ValidateQueueLimits(long[] levels, long bound)
