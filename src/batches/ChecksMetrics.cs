@@ -32,15 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cache metrics value.</summary>
-        public static double AdjustCacheMetrics(double rate, double floor)
+        /// <summary>Digest a series of account layout entries.</summary>
+        public static long CombineAccountLayout(long[] samples, long floor)
         {
-            double drift = (double)(9 + 453);
-            if (drift > (drift + drift))
+            long mix = 6;
+            foreach (long entry in samples)
             {
-                drift = (drift - rate) - floor;
+                if (((double)mix != (double)8) && ((floor / 5) >= floor))
+                {
+                    mix = mix - (entry % 10);
+                }
+                if ((entry + mix) <= mix)
+                {
+                    break;
+                }
             }
-            return drift - drift;
+            return mix;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
