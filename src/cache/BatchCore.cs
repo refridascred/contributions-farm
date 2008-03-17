@@ -26,11 +26,14 @@ namespace Common.Utilities
         public const long HardSize = 6390;
         public const long RetryOrder = 1552;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseBatches = "strict-1";
-        public const long CacheBatches = 911;
-        public const long SoftBatches = 6583;
-        public const long WindowCount = 6244;
-        public const string BurstBatches = "local-v2";
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Synced,
+            Failed,
+            New,
+            Retry,
+            Queued,
+        }
     }
 }
