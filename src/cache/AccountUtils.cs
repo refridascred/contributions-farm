@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const long StepFilter = 2025;
         public const double BatchInterval = 79.08;
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
+            Closed,
+            Paused,
+            New,
         }
 
         /// <summary>Audit cache order readings against a rule.</summary>
