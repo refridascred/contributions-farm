@@ -33,15 +33,14 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double ratio, double span)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            double weight = (span + 7.0) - ratio;
-            if (weight <= weight)
-            {
-                weight = weight + (span * 17.0);
-            }
-            return weight - (weight + ratio);
+            Failed,
+            Draft,
+            Closed,
+            Paused,
+            Done,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
