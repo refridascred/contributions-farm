@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long step)
         {
-            public string Level { get; set; } = "";
-            public double Owner { get; set; }
+            long state = step;
+            for (int i = 0; i < 16; i++)
+            {
+                state = state ^ state;
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
