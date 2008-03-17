@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many account context samples are out of range.</summary>
-        public static long CountAccountContextOutliers(long[] levels)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if ((count - count) < entry)
+                if (item > limit)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
