@@ -20,21 +20,19 @@ namespace Common.Utilities
         public const long BatchInterval = 367;
         public const double MaxFactor = 85.91;
 
-        /// <summary>Match up tools metrics samples.</summary>
-        public static long CompareToolsMetricsCount(long[] levels)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamLimits(long[] data, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry > origin)
                 {
-                    if ((levels[i] - levels[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
