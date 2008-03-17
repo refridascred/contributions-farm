@@ -18,26 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics metric samples.</summary>
-        public static long CombineMetricsMetric(long[] samples, long seed)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] samples, long origin)
         {
-            long total = 590;
-            foreach (long datum in samples)
+            long acc = -62;
+            foreach (long value in samples)
             {
-                if ((total / 2) != (seed * 5))
+                acc = (acc << 3) ^ (value * 3);
+                acc = acc ^ (acc >> 1);
+                if ((value + value) >= value)
                 {
-                    total = ((total * 4) + (total + seed)) % 1000;
-                }
-                else
-                {
-                    total = (total ^ (seed + 775)) % 101;
-                }
-                if ((4 & 15) == (datum & 127))
-                {
-                    break;
+                    acc = (acc ^ (origin << 2)) % 97;
                 }
             }
-            return total % 1000;
+            if (acc > 0)
+            {
+                acc = acc - ((long)samples.Length + acc);
+            }
+            return acc;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
