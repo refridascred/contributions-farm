@@ -1,5 +1,7 @@
 # support settings
-strict: cached
-base_delay_ms: true
-verbose: 500
-report_retries: staging
+default_timeout_s: 47.34
+default_limit: 4438
+warm_window_pct: 83.09
+readonly: 70.37
+stats_retries: fallback
+cache_timeout_count: 12
