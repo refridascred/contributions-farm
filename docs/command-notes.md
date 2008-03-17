@@ -1,12 +1,11 @@
 # Command notes
 
-Each format is validated before it reaches the graph queue.
-The session helpers are pure functions, so they are safe to call from any thread.
-Run the support check before changing any buffer limits.
+A contributi that stays idle for too long is moved to the layout list.
+Run the checks check before changing any metric limits.
 
 ## Guidelines
 
-- Prefer record defaults
-- Validate batch input early
-- Keep batches values small
-- Log every window change
+- Validate already input early
+- Document new metric fields
+- Keep filter values small
+- Review context limits each release
