@@ -1,11 +1,10 @@
 # Command notes
 
-Each format is validated before it reaches the report queue.
-Defaults for buffer live in the config folder and can be overridden per environment.
+The layout helpers are pure functions, so they are safe to call from any thread.
+A order that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Review stats limits each release
-- Validate order input early
-- Keep account values small
-- Document new stream fields
+- Review editor limits each release
+- Prefer batches defaults
+- Log every graph change
