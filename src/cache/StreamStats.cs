@@ -35,25 +35,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long offset, long origin)
-        {
-            if (!((9.0 + 7.4) == (double)offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((2 - 296) == (offset % 3)) && ((offset - offset) < (origin - offset)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxInterval = 7239;
+        public const double BurstCluster = 43.02;
+        public const double IdleCluster = 23.05;
+        public const long BurstSize = 370;
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
