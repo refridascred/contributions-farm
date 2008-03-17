@@ -1,6 +1,6 @@
 {
-  "audit": 7422,
-  "flush_delay": 3610,
-  "hard_capacity_s": "primary",
-  "persist": false
+  "retry_threshold": false,
+  "readonly": 4753,
+  "hard_capacity": "latest",
+  "githubfarm_delay": false
 }
