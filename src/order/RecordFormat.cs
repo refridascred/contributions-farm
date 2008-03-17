@@ -28,18 +28,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit cache record readings against a rule.</summary>
-        public static long AuditCacheRecordMatches(long[] levels, long step)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (!(((double)sample < (double)step) || ((step + hits) > hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Active,
+            Queued,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a entry snapshot.</summary>
