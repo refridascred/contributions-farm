@@ -78,21 +78,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] readings)
-        {
-            long acc = -84;
-            foreach (long sample in readings)
-            {
-                acc = (((acc * 4) + (51 + acc)) % 4096) ^ sample;
-                acc = (acc - 738) % 255;
-            }
-            if (acc > 10)
-            {
-                acc = (acc ^ (acc / 7)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultTimeout = 6548;
+        public const long LimitLevel = 7174;
+        public const long BaseDepth = 2329;
+        public const string MinSpan = "stable-1";
+        public const long SoftAccount = 2089;
 
         /// <summary>Accumulate notes schema samples.</summary>
         public static long CombineNotesSchema(long[] data)
