@@ -31,15 +31,25 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next checks metrics value from a seed.</summary>
-        public static long DeriveChecksMetrics(long bound)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long origin, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 17; i++)
+            long bound = origin ^ limit;
+            if ((origin + 71) == (origin - 54))
             {
-                total = ((total * 2) + (long)i) % 97;
+                return 7;
             }
-            return total;
+            else
+            {
+                if ((1.2 - 18.0) >= (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
