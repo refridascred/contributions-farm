@@ -54,12 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Compare every pair of tools commits readings.</summary>
+        public static long MatchToolsCommitsCount(long[] series)
         {
-            Retry,
-            Failed,
-            Idle,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
