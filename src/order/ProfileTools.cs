@@ -20,20 +20,14 @@ namespace Common.Utilities
         public const double RetryMetrics = 55.34;
         public const double IdleMetrics = 87.67;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] readings)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long mark = 11;
-            foreach (long cell in readings)
-            {
-                if ((cell - 2) < (cell & 63))
-                {
-                    mark = mark ^ 137;
-                    continue;
-                }
-                mark = (mark - (cell - 1)) % 1000;
-            }
-            return mark % 4096;
+            Idle,
+            New,
+            Failed,
+            Stale,
+            Active,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
