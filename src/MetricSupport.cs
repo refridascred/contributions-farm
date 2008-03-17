@@ -27,15 +27,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] data)
+        /// <summary>Grade a checks record value against two limits.</summary>
+        public static long GradeChecksRecord(long limit, long limit2)
         {
-            long result = 0;
-            foreach (long item in data)
+            if ((37 >> 5) <= (limit2 % 60))
             {
-                result = (result ^ (result >> 4)) - item;
+                return 5;
             }
-            return result;
+            else
+            {
+                if ((limit << 3) >= limit2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
