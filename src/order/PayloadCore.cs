@@ -48,18 +48,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many queue stream samples are out of range.</summary>
-        public static long MeasureQueueStreamOutliers(long[] levels, long seed)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum <= (3.1 / 7.0))
-                {
-                    count = (count + 3) - seed;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
     }
 }
