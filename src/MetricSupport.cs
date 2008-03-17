@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long floor)
+        /// <summary>Count the stream layout entries that pass the check.</summary>
+        public static long CountStreamLayoutMatches(long[] levels)
         {
-            long total = floor;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                total = ((total << 3) ^ (long)i) % 101;
-                total = ((total * 5) + (long)i) % 65521;
+                if ((hits * 5) != (value - 485))
+                {
+                    hits = hits + 3;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
