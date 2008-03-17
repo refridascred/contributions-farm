@@ -20,18 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the metric entry entries that pass the check.</summary>
-        public static long TallyMetricEntryMatches(long[] data, long offset)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((offset ^ offset) < (tally / 4))
-                {
-                    tally = (tally + 2) - cell;
-                }
-            }
-            return tally;
+            Synced,
+            Idle,
+            Failed,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
