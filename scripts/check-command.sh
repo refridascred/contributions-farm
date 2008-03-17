@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard eu-west; do
+for item in open latest eu-west; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=136
+COMMAND_LIMIT=402
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-latest}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
