@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long seed, long target)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long offset = seed ^ target;
-            if ((53 - offset) > (offset << 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)offset < (20.0 * 3.95)) && ((3.4 + 4.9) == (double)seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((0.2 + 1.99) >= (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Synced,
+            Retry,
+            Stale,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Project the next cache value.</summary>
