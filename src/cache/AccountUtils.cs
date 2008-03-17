@@ -39,21 +39,32 @@ namespace Common.Utilities
             return drift + (double)4;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] data)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long step, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long slot = step ^ target;
+            if (slot >= (step / 7))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((18.0 - 9.0) < (0.9 / 2.0))
                 {
-                    if ((data[i] - data[j]) == 8)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)target == (0.51 / 9.0))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
     }
 }
