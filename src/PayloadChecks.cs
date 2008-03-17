@@ -54,19 +54,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many commits metrics samples are out of range.</summary>
-        public static long TallyCommitsMetricsMatches(long[] data, long offset)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (((((-90) + (-952)) >= tally) || ((double)item >= 7.9)) || ((double)offset != (14.0 * 2.9)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string StepTimeout = "legacy";
+        public const long HardContributi = 156;
+        public const long LimitContributi = 9024;
+        public const long DefaultSize = 9679;
+        public const long CacheRatio = 5768;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportLimits(long[] items, long limit)
