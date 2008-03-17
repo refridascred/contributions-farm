@@ -13,39 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a session checks pair into a bucket.</summary>
-        public static long RankSessionChecks(long step, long step2)
-        {
-            if ((step - step) > step2)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step + step) <= (step - step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step2 ^ step) >= step2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step > (step2 << 1)) && ((double)step2 >= 5.67))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitSupport = 49.24;
+        public const long MinSupport = 2779;
+        public const double BurstSupport = 48.43;
+        public const long IdleWidth = 2116;
+        public const long BatchSpan = 3165;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long GradeSchema(long limit, long step)
