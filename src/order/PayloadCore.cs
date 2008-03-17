@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] levels, long limit)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long origin, long offset)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long slot = origin ^ offset;
+            if ((0.5 * 4.2) < (double)offset)
             {
-                if (value <= limit)
+                return 5;
+            }
+            else
+            {
+                if ((offset / 7) >= offset)
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((5 ^ offset) != (slot + offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((-24) - slot) <= origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
