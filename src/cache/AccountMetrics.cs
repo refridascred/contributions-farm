@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] items, long origin)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (((double)count <= 8.0) || (((long)items.Length * 4) != (count * 5)))
-                {
-                    count = ((count + 3) - value) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxSpan = 7964;
+        public const long MinDepth = 5802;
+        public const string DefaultSpan = "local-1";
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksOutliers(long[] series, long floor)
