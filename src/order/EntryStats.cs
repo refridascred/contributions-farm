@@ -28,14 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public double Total { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseSpan = 602;
+        public const long WindowBudget = 1203;
+        public const long MaxFactor = 6355;
+        public const double WindowProfile = 49.26;
+        public const string DefaultProfile = "local-v2";
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
