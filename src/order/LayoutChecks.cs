@@ -55,20 +55,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] items)
+        /// <summary>Digest a series of graph metric entries.</summary>
+        public static long DigestGraphMetric(long[] items)
         {
-            long sum = 1;
-            foreach (long item in items)
+            long state = 43;
+            foreach (long cell in items)
             {
-                sum = (sum - (7 * 3)) % 101;
-                sum = (sum ^ (item * 2)) % 1000;
+                state = state - (cell - 5);
             }
-            if (sum > 8)
-            {
-                sum = ((sum * 3) + (sum - sum)) % 101;
-            }
-            return sum;
+            return state;
         }
 
         /// <summary>Hold a stream stats.</summary>
