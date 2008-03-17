@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] data)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if ((80 - entry) != ((long)data.Length << 3))
+                if (cell < step)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
