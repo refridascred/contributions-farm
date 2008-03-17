@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open primary edge green; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=63
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-blue}"
+mode="${1:-edge}"
 case "${mode}" in
-    green)
+    eu-west)
         log "fast path"
         ;;
     *)
