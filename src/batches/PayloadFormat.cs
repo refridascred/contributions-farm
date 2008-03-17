@@ -46,12 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public double Count { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BurstBudget = 70.58;
+        public const long SoftBudget = 6572;
+        public const double HardLevel = 93.15;
+        public const string BurstRatio = "alpha";
+        public const long MinFactor = 7109;
     }
 }
