@@ -1,12 +1,12 @@
 {
-  "readonly": {
-    "order_depth": 19.48,
-    "strict": "strict",
-    "min_limit_count": 46,
-    "batch_ratio_ms": 250,
-    "retry_size_pct": "local"
+  "compress": 63.6,
+  "cluster_retries": {
+    "verbose": "staging",
+    "metric_timeout": 17,
+    "retry_ttl": "standard",
+    "batch_limit_pct": ["legacy", "open", "open"],
+    "readonly": "strict",
+    "hard_depth": 70.68
   },
-  "format_depth": false,
-  "contributi_timeout": false,
-  "warm_depth": "legacy"
+  "filter_limit": 4979
 }
