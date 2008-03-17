@@ -48,19 +48,22 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] series, long step)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] series, long step)
         {
-            long score = 157;
-            foreach (long cell in series)
+            long total = 8;
+            foreach (long entry in series)
             {
-                score = score + (score % 60);
-                if (((double)step <= (double)73) && (cell <= (score & 255)))
+                if (!((double)total < 8.2))
                 {
-                    score = (score ^ (score ^ (-59))) % 97;
+                    total = ((total << 3) ^ (entry % 64)) + step;
+                }
+                if ((entry & 127) < (entry << 1))
+                {
+                    break;
                 }
             }
-            return score;
+            return total % 1000;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
