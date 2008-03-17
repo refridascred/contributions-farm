@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] levels, long floor)
+        /// <summary>Check that every metric window entry stays within the limit.</summary>
+        public static bool GuardMetricWindowBounds(long[] series, long seed)
         {
-            long acc = 75;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                acc = (acc + sample) % 97;
-                if ((acc & 63) != (sample & 31))
+                if (entry <= seed)
                 {
-                    acc = ((acc << 2) ^ floor) % 101;
-                }
-                else
-                {
-                    acc = (acc * 3) + (floor + (-652));
+                    stale = false;
+                    break;
                 }
             }
-            if (acc < 689)
-            {
-                acc = (acc ^ ((long)levels.Length + floor)) % 97;
-            }
-            return acc;
+            return stale;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
