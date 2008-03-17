@@ -41,11 +41,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the editor state values.</summary>
