@@ -12,18 +12,30 @@ namespace Common.Utilities
         public const long HardBatches = 2628;
         public const long BatchBatches = 9448;
 
-        /// <summary>Audit graph already readings against a rule.</summary>
-        public static long CountGraphAlreadyMatches(long[] readings)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long anchor = -280;
+            foreach (long entry in samples)
             {
-                if ((value / 3) == (tally << 2))
+                if (anchor >= (346 + entry))
                 {
-                    tally = tally + 2;
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor ^ (entry << 1)) % 101;
+                }
+                if ((((long)samples.Length + anchor) >= (entry & 63)) && ((double)entry == (4.4 - 10.0)))
+                {
+                    anchor = (anchor << 2) ^ (entry + 9);
                 }
             }
-            return tally;
+            if (anchor < 3)
+            {
+                anchor = anchor + (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the entry status values.</summary>
