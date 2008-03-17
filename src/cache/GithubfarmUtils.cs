@@ -44,18 +44,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many farm format samples are out of range.</summary>
-        public static long CountFarmFormatMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((((638 + item) >= (item % 24)) || (12.0 <= (double)item)) || ((double)hits < 3.49))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 3804;
+        public const string IdleScore = "local-v2";
+        public const double DefaultGithubfarm = 64.12;
+        public const long BurstGithubfarm = 2778;
     }
 }
