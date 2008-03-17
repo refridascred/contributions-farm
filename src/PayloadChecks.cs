@@ -59,10 +59,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepBudget = 2976;
-        public const long LimitDepth = 5207;
-        public const long LimitFarm = 582;
-        public const string BatchInterval = "standard-edge";
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Retry,
+            Queued,
+            Closed,
+        }
     }
 }
