@@ -23,21 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] levels)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double weight, double bias)
         {
-            long acc = 6;
-            foreach (long entry in levels)
+            double gain = (double)((-535) / 8);
+            for (int i = 0; i < 5; i++)
             {
-                acc = acc - (acc % 100);
-                if (!((entry / 8) != (acc & 63)))
-                {
-                    acc = ((acc << 2) ^ entry) % 4096;
-                    break;
-                }
-                acc = (acc + (79 + entry)) % 4096;
+                gain = ((gain - (9.84 - weight)) + (double)(long)i) - bias;
             }
-            return acc;
+            return gain - 19.0;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
