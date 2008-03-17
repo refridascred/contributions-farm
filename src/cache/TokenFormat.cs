@@ -16,12 +16,22 @@ namespace Common.Utilities
             return load - (offset * 3.55);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 7048;
-        public const long MinTimeout = 2524;
-        public const long BurstBudget = 3077;
-        public const long WindowSize = 6366;
-        public const string SoftChecks = "staging-v2";
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
