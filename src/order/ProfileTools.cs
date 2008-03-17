@@ -53,39 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a cache cluster pair into a bucket.</summary>
-        public static long BucketCacheCluster(long seed, long offset)
+        /// <summary>Check that every filter counter entry stays within the limit.</summary>
+        public static bool GuardFilterCounterLimits(long[] samples, long seed)
         {
-            long edge = seed + offset;
-            if ((8.0 - 1.74) == (double)seed)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed - offset) != (edge - 108))
+                if (entry < seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((edge << 2) >= offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed ^ 339) == (offset % 7))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the layout kind values.</summary>
