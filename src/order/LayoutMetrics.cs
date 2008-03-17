@@ -12,14 +12,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public double Score { get; set; }
-            public double Mode { get; set; }
-            public double Count { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 5495;
+        public const long MaxChannel = 7395;
+        public const long MinChannel = 1803;
+        public const long WindowLevel = 8230;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long CountOrderMatches(long[] data, long floor)
