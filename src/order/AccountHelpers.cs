@@ -90,12 +90,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double weight, double floor)
         {
-            New,
-            Stale,
-            Locked,
+            double ratio = (double)1 / 2.0;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (((ratio - ratio) + (double)(long)i) + weight) + floor;
+            }
+            return ratio - (double)23;
         }
     }
 }
