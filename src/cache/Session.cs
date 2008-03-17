@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] data, long step)
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (((count & 31) >= (count * 5)) || !((double)(long)data.Length == (4.3 - 4.0)))
+                {
+                    count = ((count + 3) ^ reading) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
