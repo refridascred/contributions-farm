@@ -37,15 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] values, long offset)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] series)
         {
-            long result = 0;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result + (offset - result)) % 255) - reading;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
