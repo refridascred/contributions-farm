@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] levels, long step)
-        {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSpan = 7208;
+        public const long CacheSchema = 1876;
+        public const long SoftCount = 3953;
+        public const long BaseRatio = 2219;
+        public const long RetryBudget = 55;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long SeekSupportIndex(long[] data, long offset)
