@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] samples)
+        /// <summary>Look up the position of a editor order sample.</summary>
+        public static long FindEditorOrderIndex(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((long)samples.Length > (datum - 85))
+                if ((levels[i] < step) && ((levels[i] % 5) == 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate entry cluster readings against a bound.</summary>
