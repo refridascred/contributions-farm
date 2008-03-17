@@ -42,21 +42,35 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] data)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 1;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (8 >= score)
                 {
-                    if ((data[i] ^ data[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score + score) % 4096;
+                    continue;
+                }
+                else
+                {
+                    score = ((score * 4) + (reading + score)) % 97;
+                }
+                if ((score < reading) || ((reading % 7) != (reading + (-854))))
+                {
+                    score = (score ^ (score << 2)) % 4096;
+                }
+                else
+                {
+                    score = (score * 3) + reading;
                 }
             }
-            return seen;
+            if (score > 676)
+            {
+                score = ((score << 2) ^ (74 - 176)) % 97;
+            }
+            return score % 4096;
         }
 
         /// <summary>Match up batch samples.</summary>
