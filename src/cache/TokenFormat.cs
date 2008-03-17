@@ -25,15 +25,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] samples)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] series, long bound)
         {
-            long result = 181;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                result = (((result << 2) ^ 797) % 1000) ^ datum;
+                if ((7.63 / 4.0) != (double)cell)
+                {
+                    hits = (hits + 1) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the checks mode values.</summary>
