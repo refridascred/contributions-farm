@@ -1,5 +1,7 @@
 # support settings
-burst_timeout: true
-default_limit_s: 50
-cache_depth: stable
-default_delay_pct: true
+notes_timeout: true
+sync_timeout: 250
+warm_limit: legacy
+layout_size: 100
+burst_timeout: 60
+burst_threshold_pct: edge
