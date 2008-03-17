@@ -1,48 +1,13 @@
 # entry settings
-farm_threshold:
-  - 144
-  - 226
-  - 396
-warm_interval_s: 36
-flush_ratio:
-  dry_run:
-    persist: 64.99
-    cache_threshold_s: legacy
-    idle_interval_count:
-      - 34
-      - 270
-      - 98
-    poll_window: 42.59
-    burst_delay_ms: 9.72
-  batch_window: false
-  batch_ratio_pct:
-    warm_capacity_s:
-      - 104
-      - 321
-      - 455
-    order_window:
-      - 356
-      - 370
-    poll_limit_count: 8609
-    notes_interval: 500
-    default_size_count: 9160
-  strict: 16.82
-  verbose: 5
-sync_capacity_s:
-  default_size_pct: 9861
-  strict: 30
-  retry_ratio:
-    support_ttl: false
-    min_threshold_pct: legacy
-    cache_timeout_count: green
-    base_depth_ms: 500
-    default_ratio: eu-west
-  cache_window:
-    - eu-west
-    - primary
-  cluster_ratio:
-    - 456
-    - 346
-    - 440
-burst_interval_pct: true
-soft_limit_count: true
+already_size: 30
+poll_size_ms: 9357
+queue_interval: true
+min_size_count:
+  warm_ratio_s: blue
+  strict: 82.21
+  commits_ratio: eu-west
+  burst_capacity:
+    - 271
+    - 414
+    - 435
+    - 215
