@@ -12,12 +12,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string StepContributi = "latest-1";
-        public const string IdleContributi = "open";
-        public const long MinContributi = 4838;
-        public const long BaseTimeout = 5912;
-        public const long IdleInterval = 9449;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Locked,
+            Idle,
+            New,
+        }
 
         /// <summary>Match up tools farm samples.</summary>
         public static long CompareToolsFarmCount(long[] series)
