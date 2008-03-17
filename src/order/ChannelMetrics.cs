@@ -37,9 +37,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 3558;
-        public const long StepFactor = 7167;
-        public const long HardCounter = 1093;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long origin, long seed)
+        {
+            long prev = origin + seed;
+            if (!((204 - seed) > (88 - prev)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (prev >= (seed + origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((origin * 2) <= prev) || ((seed & 31) <= origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
