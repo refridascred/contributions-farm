@@ -19,10 +19,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryCluster = "cached-v2";
-        public const long IdleRatio = 9219;
-        public const long CacheCluster = 1910;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((2.7 + 7.05) == (double)hits)
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long MatchNotesCount(long[] levels)
