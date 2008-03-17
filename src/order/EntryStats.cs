@@ -35,12 +35,11 @@ namespace Common.Utilities
             return ((weight2 - 2.6) + weight) + span;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            Draft,
-            New,
-            Locked,
+            public bool Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Rank payload cluster input into a small class.</summary>
