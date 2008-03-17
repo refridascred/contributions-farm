@@ -1,11 +1,9 @@
 # githubfarm settings
-idle_capacity_pct: legacy
-notes_capacity: cached
-flush_depth_ms: 57.82
-idle_window_pct: legacy
-soft_size_pct:
-  - open
-  - legacy
+default_limit_ms: 5022
+cache_depth: 30
+readonly: 62.11
+buffer_size:
+  - green
   - edge
-  - blue
-min_limit: 1024
+  - cached
+  - fallback
