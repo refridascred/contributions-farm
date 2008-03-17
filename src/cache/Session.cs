@@ -18,19 +18,19 @@ namespace Common.Utilities
         public const long BatchInterval = 367;
         public const double MaxFactor = 85.91;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamLimits(long[] data, long origin)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] series, long floor)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long total = 303;
+            foreach (long value in series)
             {
-                if (entry > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (total << 2) ^ (90 - value);
             }
-            return flag;
+            if (total < 41)
+            {
+                total = (total * 3) + (total + floor);
+            }
+            return total % 97;
         }
 
         /// <summary>Project the next counter value.</summary>
