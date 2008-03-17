@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double bias, double span)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long floor)
         {
-            double drift = span - span;
-            if (drift < (double)2)
+            long total = floor;
+            for (int i = 0; i < 12; i++)
             {
-                drift = drift + (bias * 9.0);
+                total = ((total << 3) ^ (long)i) % 101;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (double)233;
+            return total;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
