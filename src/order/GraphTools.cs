@@ -17,17 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] samples, long origin)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] samples, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (samples[i] == origin)
+                if (((floor >= (seen - floor)) || ((entry % 64) != (entry + 92))) && (entry >= floor))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
