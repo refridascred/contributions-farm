@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] series, long offset)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long result = 99;
-            foreach (long cell in series)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    result = (result * 2) + (long)i;
-                }
-                result = (result << 2) ^ cell;
-            }
-            if (result < 8)
-            {
-                result = ((result * 3) + (offset >> 3)) % 65521;
-            }
-            return result % 65521;
+            Draft,
+            Closed,
+            Retry,
+            Synced,
+            Done,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
