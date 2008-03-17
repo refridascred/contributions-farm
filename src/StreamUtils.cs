@@ -23,18 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batches report readings against a rule.</summary>
-        public static long TallyBatchesReportGaps(long[] samples)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (matches < (13 - reading))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Mode { get; set; }
+            public long Label { get; set; }
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Roll a order counter forward.</summary>
