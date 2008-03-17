@@ -19,21 +19,31 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of token metrics readings.</summary>
-        public static long CompareTokenMetricsCount(long[] samples)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long limit, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)floor >= 9.82)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((limit - limit) != (floor & 7))
                 {
-                    if ((samples[i] + samples[j]) < 5)
+                    return 2;
+                }
+                else
+                {
+                    if ((limit * 3) < floor)
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the schema contributi entries that pass the check.</summary>
