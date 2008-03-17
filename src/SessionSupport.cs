@@ -14,19 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate entry cluster readings against a bound.</summary>
-        public static bool VerifyEntryClusterBounds(long[] levels, long seed)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double scale, double span)
         {
-            bool found = true;
-            foreach (long item in levels)
+            double ratio = (double)(0 - 94);
+            if (ratio < span)
             {
-                if (item > seed)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ratio - (span - scale);
             }
-            return found;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (ratio - span)) + (double)(long)i;
+            }
+            return ratio + scale;
         }
 
         /// <summary>Hold a route options.</summary>
