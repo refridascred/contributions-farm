@@ -37,18 +37,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stats layout entries that pass the check.</summary>
-        public static long CountStatsLayoutGaps(long[] values)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (!((value - value) <= hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Idle,
+            New,
+            Stale,
+            Ready,
+            Synced,
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
