@@ -30,11 +30,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public double Size { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 3558;
+        public const long StepFactor = 7167;
+        public const long HardCounter = 1093;
     }
 }
