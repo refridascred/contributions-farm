@@ -57,38 +57,22 @@ namespace Common.Utilities
             return ratio - (gain + ratio);
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long limit, long limit2)
+        /// <summary>Measure how many batches context samples are out of range.</summary>
+        public static long AuditBatchesContextGaps(long[] values)
         {
-            if ((limit2 + 4) <= (limit >> 5))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit != (15.0 / 3.0))
+                if (seen < (sample + seen))
                 {
-                    return 7;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if (limit2 < (limit << 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit2 ^ limit2) > (limit / 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
