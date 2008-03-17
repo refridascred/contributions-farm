@@ -1,5 +1,5 @@
 {
-  "retry_timeout": 30,
-  "poll_delay_s": 500,
-  "verbose": "strict"
+  "burst_depth_s": ["fallback", "staging", "blue"],
+  "compress": "local",
+  "min_window_s": true
 }
