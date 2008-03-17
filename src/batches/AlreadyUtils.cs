@@ -39,21 +39,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] readings)
+        /// <summary>Project the next schema githubfarm value.</summary>
+        public static double ProjectSchemaGithubfarm(double bias, double bias2)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = bias;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = (mean - (double)(long)i) - bias2;
             }
-            return count;
+            return mean + (bias + bias);
         }
 
         /// <summary>Audit account checks readings against a rule.</summary>
