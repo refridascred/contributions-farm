@@ -35,12 +35,10 @@ namespace Common.Utilities
         public const long RetryRatio = 8608;
         public const long LimitRatio = 5000;
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 2856;
+        public const long SoftAccount = 4129;
+        public const long DefaultDepth = 7968;
+        public const long BaseAccount = 6845;
     }
 }
