@@ -23,11 +23,16 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitSize = 5316;
-        public const long WindowWidth = 8694;
-        public const long MaxSize = 8501;
-        public const long RetryTimeout = 3151;
+        /// <summary>Project the next stats payload value.</summary>
+        public static double BlendStatsPayload(double scale, double bias)
+        {
+            double weight = (double)((-67) % 7);
+            if (weight < bias)
+            {
+                weight = weight + (weight + 7.0);
+            }
+            return weight + (scale - scale);
+        }
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double SmoothStats(double ratio, double span)
