@@ -1,8 +1,6 @@
 {
-  "max_retries_ms": [463, 254],
-  "enabled": ["local", "eu-west", "staging", "fallback"],
-  "max_depth_count": "cached",
-  "notes_window": "latest",
-  "support_ratio": "cached",
-  "batches_interval": 37
+  "audit": 57,
+  "poll_capacity_count": "legacy",
+  "burst_timeout_pct": "cached",
+  "strict": false
 }
