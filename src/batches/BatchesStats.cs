@@ -44,17 +44,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 8811;
+        public const string RetryBuffer = "strict-v2";
+        public const string RetryWidth = "staging-v2";
+        public const long LimitWidth = 3117;
     }
 }
