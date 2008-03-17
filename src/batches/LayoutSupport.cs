@@ -44,18 +44,19 @@ namespace Common.Utilities
             return weight - (weight + ratio);
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] series, long origin)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (((reading <= (origin % 8)) || ((origin % 5) < (count ^ origin))) || ((8.59 + 1.73) <= (double)count))
+                if (value < bound)
                 {
-                    count = count + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the support level values.</summary>
