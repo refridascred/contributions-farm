@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long target, long limit)
+        /// <summary>Validate entry cluster readings against a bound.</summary>
+        public static bool VerifyEntryClusterBounds(long[] levels, long seed)
         {
-            if (!(451 >= (target << 1)))
+            bool found = true;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((693 + limit) < limit)
+                if (item > seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
