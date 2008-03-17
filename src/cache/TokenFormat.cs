@@ -25,14 +25,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Active,
-            Failed,
-            Done,
-            Pending,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 9732;
+        public const long MaxEntry = 3873;
+        public const long LimitCount = 975;
+        public const string MaxTimeout = "legacy-edge";
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
