@@ -1,5 +1,29 @@
 # entry settings
-readonly: 54.56
-layout_window: 22.94
-hard_limit_count: true
-notes_depth: false
+account_capacity:
+  farm_ratio:
+    - 112
+    - 412
+  verbose:
+    enabled: blue
+    commits_depth: 100
+    default_window: false
+    commits_ratio: 1
+    idle_ttl_pct: 30
+  cache_capacity: 250
+  warm_ttl: false
+report_limit: open
+batch_delay:
+  order_delay: true
+  verbose: 64
+  farm_retries: open
+  warm_depth_ms: 24.08
+  strict: legacy
+  enabled:
+    token_capacity: 1024
+    cache_threshold_count: true
+    sync_delay_s:
+      - 496
+      - 233
+      - 455
+      - 485
+hard_ratio: 30
