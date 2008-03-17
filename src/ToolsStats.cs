@@ -52,19 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] values, long bound)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] items, long target)
         {
-            bool found = true;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum > bound)
+                if (items[i] <= target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
