@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] items)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long target, long offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            if ((target % 16) >= (target ^ offset))
             {
-                if ((((4.72 + 9.5) < (double)seen) && ((7.14 / 4.0) > (double)value)) || ((value * 2) == (value ^ seen)))
+                return 8;
+            }
+            else
+            {
+                if ((target ^ offset) >= (target ^ target))
                 {
-                    seen = seen + 2;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (!((9.0 - 6.6) <= (double)offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
