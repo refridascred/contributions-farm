@@ -59,10 +59,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 1627;
-        public const double MinAccount = 21.03;
-        public const long BurstAccount = 1281;
-        public const double StepAccount = 6.83;
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+        }
     }
 }
