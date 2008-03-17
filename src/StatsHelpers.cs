@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] series)
         {
-            Pending,
-            Dropped,
-            Ready,
-            Failed,
+            long state = 38;
+            foreach (long cell in series)
+            {
+                if ((cell & 7) >= (cell ^ state))
+                {
+                    state = (state - (24 ^ state)) % 101;
+                }
+            }
+            if (state < 995)
+            {
+                state = (state + state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Describe the record kind values.</summary>
