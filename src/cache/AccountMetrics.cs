@@ -67,14 +67,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public double Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryDepth = "fallback";
+        public const long BatchWindow = 4705;
+        public const long LimitLevel = 2217;
+        public const long SoftSize = 9380;
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
         public static bool ValidateQueueLimits(long[] levels, long bound)
