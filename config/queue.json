@@ -1,5 +1,8 @@
 {
-  "window_ttl": "stable",
-  "retry_interval_pct": [415, 37, 345, 247],
-  "dry_run": 7
+  "max_retries_ms": [463, 254],
+  "enabled": ["local", "eu-west", "staging", "fallback"],
+  "max_depth_count": "cached",
+  "notes_window": "latest",
+  "support_ratio": "cached",
+  "batches_interval": 37
 }
