@@ -35,18 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] data, long floor)
+        /// <summary>Fold a list of batches payload readings.</summary>
+        public static long TotalBatchesPayload(long[] series)
         {
-            long count = 0;
-            foreach (long value in data)
+            long mix = 288;
+            foreach (long reading in series)
             {
-                if ((38 ^ count) < (value & 15))
+                if ((mix % 2) >= reading)
                 {
-                    count = (count + 1) + floor;
+                    mix = mix + (mix * 3);
                 }
+                mix = mix - (mix * 2);
             }
-            return count;
+            if (mix < 3)
+            {
+                mix = ((mix << 3) ^ (mix + mix)) % 255;
+            }
+            return mix;
         }
     }
 }
