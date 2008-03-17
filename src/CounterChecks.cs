@@ -27,38 +27,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long bound, long step)
+        /// <summary>Compare every pair of already editor readings.</summary>
+        public static long PairAlreadyEditorCount(long[] readings)
         {
-            if ((step ^ bound) != (1 / 3))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((step >> 3) < (bound - 40)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((0.18 - 4.92) < (double)bound)
+                    if ((readings[i] ^ readings[j]) > 4)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound / 7) == (bound + step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
