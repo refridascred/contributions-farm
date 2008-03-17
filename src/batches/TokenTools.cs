@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] series, long bound)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long seed, long offset)
         {
-            long state = 56;
-            foreach (long entry in series)
+            if ((7.2 * 9.7) <= (double)seed)
             {
-                state = ((state * 3) + (75 - state)) % 97;
-                if (!((entry & 63) >= (bound >> 5)))
+                return 7;
+            }
+            else
+            {
+                if ((-37) <= (799 + seed))
                 {
-                    state = (state - (state % 7)) % 1000;
+                    return 1;
+                }
+                else
+                {
+                    if (((seed << 1) > seed) || ((seed & 127) >= (seed / 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
