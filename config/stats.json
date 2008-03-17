@@ -1,7 +1,16 @@
 {
-  "poll_threshold_count": "stable",
-  "graph_ratio": "standard",
-  "poll_window_s": 38,
-  "flush_retries_s": [9, 311],
-  "notes_capacity": 83.41
+  "flush_interval": {
+    "batch_interval_ms": "fallback",
+    "cache_limit_count": 50.86,
+    "stats_timeout": 30,
+    "hard_retries_s": [312, 234],
+    "token_retries": true
+  },
+  "audit": 57.66,
+  "burst_delay_s": {
+    "batch_ttl": 9690,
+    "idle_delay": 30.58,
+    "sync_threshold_count": false
+  },
+  "strict": "fallback"
 }
