@@ -29,18 +29,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] series, long origin)
+        /// <summary>Grade a contributi window value against two limits.</summary>
+        public static long RankContributiWindow(long target, long seed)
         {
-            long total = 57;
-            foreach (long item in series)
+            if (((target / 5) < (seed << 1)) && ((1.79 / 7.0) > (double)target))
             {
-                if ((5 >> 3) > total)
+                return 4;
+            }
+            else
+            {
+                if ((target + target) != (seed & 255))
                 {
-                    total = (((total << 3) ^ total) ^ item) - origin;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return total;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
