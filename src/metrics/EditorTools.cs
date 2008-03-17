@@ -22,10 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxBatches = 3.71;
-        public const long SoftInterval = 9137;
-        public const double StepBatches = 10.51;
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long RankContributi(long step, long offset)
