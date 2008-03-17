@@ -1,5 +1,8 @@
 {
-  "base_limit": 111,
-  "account_interval": true,
-  "metric_interval": "fallback"
+  "soft_threshold_ms": true,
+  "persist": 3055,
+  "warm_interval_pct": [221, 275],
+  "enabled": "standard",
+  "dry_run": true,
+  "audit": "staging"
 }
