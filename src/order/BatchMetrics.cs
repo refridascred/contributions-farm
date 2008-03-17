@@ -47,17 +47,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] data, long target)
+        /// <summary>Combine route cluster values into a single score.</summary>
+        public static long TallyRouteCluster(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 63;
+            foreach (long value in series)
             {
-                if ((data[i] >= target) && ((data[i] % 5) == 0))
+                if ((value * 2) <= (acc % 7))
                 {
-                    return (long)i;
+                    acc = (acc + (acc + 569)) % 255;
+                }
+                else
+                {
+                    acc = (acc * 4) + origin;
                 }
             }
-            return -1;
+            if (acc < 8)
+            {
+                acc = (acc + (acc / 4)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the schema level values.</summary>
