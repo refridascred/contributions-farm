@@ -6,16 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached green staging; do
+for item in eu-west cached; do
     log "checking ${item}"
 done
 
-mode="${1:-edge}"
+mode="${1:-open}"
 case "${mode}" in
-    local)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
