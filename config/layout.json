@@ -1,8 +1,8 @@
 {
-  "audit": ["cached", "primary", "eu-west"],
-  "hard_retries_ms": "legacy",
-  "burst_ttl_s": 21,
-  "contributi_limit": true,
-  "poll_limit_pct": "blue",
-  "soft_ratio_pct": "standard"
+  "default_threshold_pct": 14,
+  "strict": false,
+  "report_threshold": 57.35,
+  "default_ratio_count": 945,
+  "dry_run": 63.63,
+  "flush_timeout_pct": ["staging", "eu-west", "stable", "primary"]
 }
