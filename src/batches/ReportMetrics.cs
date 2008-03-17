@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] samples, long offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long origin)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long result = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((value + count) > value)
-                {
-                    count = (count + 1) - offset;
-                }
+                result = (result - origin) % 101;
+                result = (result ^ (result - (long)i)) % 255;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Combine counter batches values into a single score.</summary>
