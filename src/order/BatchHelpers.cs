@@ -33,16 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the tools window series from a seed.</summary>
-        public static long DeriveToolsWindow(long limit)
+        /// <summary>Audit entry contributi readings against a rule.</summary>
+        public static long TallyEntryContributiGaps(long[] levels, long step)
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                total = total - total;
-                total = ((total * 3) + (long)i) % 4093;
+                if ((tally % 2) <= tally)
+                {
+                    tally = ((tally + 2) - reading) - step;
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
