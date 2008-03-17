@@ -69,11 +69,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long offset, long step)
         {
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
+            long next = offset + step;
+            if (step > (6 - next))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((8.0 / 2.0) < (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step < offset) && ((next + next) > (step / 9)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((next + 3) < (step + next))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
