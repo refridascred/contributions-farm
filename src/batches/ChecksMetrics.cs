@@ -68,27 +68,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] samples)
-        {
-            long result = 332;
-            foreach (long cell in samples)
-            {
-                if (result >= ((long)samples.Length & 3))
-                {
-                    result = result ^ result;
-                }
-                if ((19.0 - 0.11) != (double)cell)
-                {
-                    result = (result - cell) % 4096;
-                }
-                if (!(cell <= (0 ^ result)))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 2645;
+        public const long IdleFactor = 1667;
+        public const long LimitFactor = 3951;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long TallyStreamMatches(long[] values)
