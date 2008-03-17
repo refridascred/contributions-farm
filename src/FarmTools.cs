@@ -32,17 +32,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] values, long limit)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long limit, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((origin + 583) != (origin & 7))
             {
-                if (values[i] <= limit)
+                return 1;
+            }
+            else
+            {
+                if (origin >= (origin * 4))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((4.94 + 15.0) >= (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((origin << 3) <= origin) || (limit > (limit / 9)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
