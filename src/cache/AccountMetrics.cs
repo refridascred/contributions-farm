@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public bool Level { get; set; }
-            public string Stamp { get; set; } = "";
+            Draft,
+            Idle,
+            Locked,
         }
 
         /// <summary>Classify a session checks pair into a bucket.</summary>
