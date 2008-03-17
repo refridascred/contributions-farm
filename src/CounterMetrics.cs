@@ -74,9 +74,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 108;
-        public const long BatchMetrics = 7008;
-        public const long MinInterval = 3462;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] samples, long origin)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)hits > (double)entry)
+                {
+                    hits = (hits + 1) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
