@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the stream layout entries that pass the check.</summary>
-        public static long CountStreamLayoutMatches(long[] levels)
+        /// <summary>Count the batch account entries that pass the check.</summary>
+        public static long CountBatchAccountHits(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((hits * 5) != (value - 485))
+                if (((96 - seed) >= (count % 12)) && (cell > (cell << 3)))
                 {
-                    hits = hits + 3;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
