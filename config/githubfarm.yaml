@@ -1,17 +1,22 @@
 # githubfarm settings
-poll_timeout_s:
-  editor_size: 4285
-  base_retries_pct: 100
-  persist: 4488
-  burst_depth_pct: 83.64
-  warm_capacity_pct: 113
-  channel_capacity: false
-base_capacity_s:
-  - fallback
-  - fallback
-poll_timeout:
-  dry_run: false
-  base_limit_count: open
-  burst_depth_pct: 59
-  burst_delay_pct: eu-west
-persist: standard
+soft_timeout_pct: true
+session_timeout:
+  flush_ratio_ms: 30
+  verbose: 500
+  format_threshold: 42
+  account_ttl: strict
+  audit:
+    base_capacity: latest
+    min_ttl_count: latest
+    cache_threshold_s: fallback
+support_threshold:
+  compress: 71.4
+  poll_interval_count: legacy
+  route_window: 59
+  sync_retries_ms:
+    - 11
+    - 116
+    - 344
+    - 262
+  contributi_ttl: blue
+  poll_threshold_count: 31.88
