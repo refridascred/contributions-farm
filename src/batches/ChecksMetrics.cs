@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BatchSize = "stable-edge";
-        public const double LimitAccount = 8.23;
-        public const long BaseAccount = 8452;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Synced,
+            Queued,
+            New,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
