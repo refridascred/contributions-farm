@@ -1,11 +1,11 @@
 # Command notes
 
-Run the metrics check before changing any commits limits.
-A route that stays idle for too long is moved to the command list.
-Run the queue check before changing any token limits.
+Use stream settings to tune how often order data is refreshed.
+A command that stays idle for too long is moved to the payload list.
+Use cache settings to tune how often filter data is refreshed.
 
 ## Guidelines
 
-- Validate tools input early
-- Keep format values small
-- Log every queue change
+- Keep farm values small
+- Log every report change
+- Document new queue fields
