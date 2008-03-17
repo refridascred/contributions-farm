@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] levels, long step)
         {
-            public long Count { get; set; }
-            public double Size { get; set; }
+            long mark = -19;
+            foreach (long reading in levels)
+            {
+                mark = ((mark + step) % 97) ^ reading;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Describe the command class values.</summary>
