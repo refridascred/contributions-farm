@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const double MaxBudget = 7.78;
         public const double DefaultSupport = 19.51;
 
-        /// <summary>Accumulate graph filter samples.</summary>
-        public static long TotalGraphFilter(long[] readings, long limit)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] series)
         {
-            long mix = 72;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item / 4) <= limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix - limit) % 1000;
+                    if ((series[i] - series[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
