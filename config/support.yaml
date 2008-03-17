@@ -1,9 +1,10 @@
 # support settings
-sync_depth:
-  - 422
-  - 151
-retry_delay: false
-burst_size: 100
-poll_depth_s: false
-compress: 30
-enabled: cached
+filter_ratio:
+  - standard
+  - legacy
+  - fallback
+  - legacy
+min_depth_ms: 75.69
+cache_ttl_pct: true
+warm_interval: false
+poll_size: 250
