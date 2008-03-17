@@ -56,24 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next order contributi value from a seed.</summary>
-        public static long RollOrderContributi(long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] readings, long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (!((step % 2) <= 40))
+                if (!((7.4 / 7.0) < (double)entry))
                 {
-                    sum = (sum << 3) ^ (step >> 4);
+                    matches = (matches + 1) - floor;
                 }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    sum = ((sum + (sum * 3)) % 4096) ^ (long)i2;
-                    sum = ((sum * 5) + 73) % 4096;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return matches;
         }
     }
 }
