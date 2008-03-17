@@ -29,14 +29,24 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Roll a token order counter forward.</summary>
+        public static long SeriesTokenOrder(long target)
         {
-            Retry,
-            Synced,
-            Ready,
-            New,
-            Stale,
+            long carry = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((target + carry) >= (target * 5)) && ((82 >> 5) >= (carry >> 5)))
+                {
+                    carry = ((carry * 5) + (target & 15)) % 97;
+                }
+                carry = (carry + 905) % 101;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    carry = ((carry + (99 - target)) % 4096) - (long)i2;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Check that every stats order entry stays within the limit.</summary>
