@@ -14,20 +14,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] series, long step)
-        {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 4189;
+        public const string StepRatio = "latest-v2";
+        public const long BurstSize = 6234;
+        public const double BurstSpan = 3.1;
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
