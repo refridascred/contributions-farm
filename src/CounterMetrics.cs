@@ -34,18 +34,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first githubfarm editor entry that matches the target.</summary>
-        public static long LocateGithubfarmEditorIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > limit) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 6337;
+        public const long MinLayout = 8839;
+        public const double LimitLayout = 14.87;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double BatchPayload = 96.51;
