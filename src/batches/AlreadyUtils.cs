@@ -67,18 +67,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((long)series.Length <= (reading + reading))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 5717;
+        public const double MaxSpan = 15.55;
+        public const string HardProfile = "primary-edge";
     }
 }
