@@ -1,11 +1,12 @@
 # Command notes
 
-A githubfarm that stays idle for too long is moved to the tools list.
-When a metric fails, the channel handler retries a few times before giving up.
+Each format is validated before it reaches the graph queue.
+The session helpers are pure functions, so they are safe to call from any thread.
+Run the support check before changing any buffer limits.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Document new metric fields
-- Keep cache values small
-- Log every checks change
+- Prefer record defaults
+- Validate batch input early
+- Keep batches values small
+- Log every window change
