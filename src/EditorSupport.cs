@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long target, long seed)
-        {
-            long delta = target + seed;
-            if ((2.28 * 16.0) == (double)seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed + target) == (delta / 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitToken = 21.81;
+        public const string CacheToken = "fallback";
+        public const double BatchFactor = 97.58;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long LimitFilter = 3909;
