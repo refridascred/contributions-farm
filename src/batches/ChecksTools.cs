@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseLevel = 8196;
-        public const double MinWindow = 14.89;
-        public const double StepWindow = 75.68;
-        public const long BatchSpan = 7226;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] data, long target)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((8.07 * 1.35) <= (double)target)
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
