@@ -33,15 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] series, long offset)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] levels)
         {
             long hits = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7.0 > (double)hits) || (85 > (hits * 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = ((hits + 1) + cell) + offset;
+                    if ((levels[i] + levels[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
