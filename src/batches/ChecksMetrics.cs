@@ -15,11 +15,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] series, long floor)
         {
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
