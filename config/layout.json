@@ -1,11 +1,7 @@
 {
-  "base_capacity": "cached",
-  "poll_interval": {
-    "order_window": ["strict", "cached", "open"],
-    "schema_timeout": true,
-    "compress": "edge",
-    "poll_delay": "strict"
-  },
-  "flush_ttl_count": [234, 462, 32],
-  "base_window": 54
+  "base_ttl": "standard",
+  "strict": "green",
+  "batch_limit_pct": 100,
+  "retry_limit_ms": 67.82,
+  "default_delay_s": [226, 151, 250, 49]
 }
