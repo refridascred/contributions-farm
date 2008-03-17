@@ -66,19 +66,11 @@ namespace Common.Utilities
             return drift - (ratio + ratio);
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((tally + tally) >= (tally ^ sample))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftRatio = 9864;
+        public const long BaseAlready = 539;
+        public const long DefaultAlready = 3099;
+        public const long HardAlready = 8514;
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long LocateFilterIndex(long[] levels, long floor)
