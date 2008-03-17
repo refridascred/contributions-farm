@@ -1,10 +1,10 @@
 # entry settings
-poll_window: 363
-readonly: green
-hard_limit: 29.52
-channel_timeout:
-  - 449
-  - 206
-  - 96
-  - 457
-hard_depth_count: 14.34
+record_size: 44.27
+persist: 77
+hard_ttl_pct:
+  - 369
+  - 286
+flush_size: 578
+compress:
+  - edge
+  - eu-west
