@@ -53,12 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] data)
         {
-            Failed,
-            Active,
-            Stale,
+            long result = 0;
+            foreach (long item in data)
+            {
+                result = (result ^ (result >> 4)) - item;
+            }
+            return result;
         }
     }
 }
