@@ -15,19 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] readings, long seed)
+        /// <summary>Validate buffer context readings against a bound.</summary>
+        public static bool GuardBufferContextLimits(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (cell <= seed)
+                if (entry != limit)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Audit cache githubfarm readings against a rule.</summary>
