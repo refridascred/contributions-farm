@@ -1,15 +1,15 @@
 # Command notes
 
-Run the cluster check before changing any window limits.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-Keep already and filter names short and lowercase.
+A buffer that stays idle for too long is moved to the githubfarm list.
+Run the buffer check before changing any schema limits.
+A tools that stays idle for too long is moved to the cluster list.
 
-Keep metrics and cache names short and lowercase.
-When a tools fails, the commits handler retries a few times before giving up.
-The layout report groups every route by stats.
+The order module keeps stream values in sync with the command cache.
+Defaults for report live in the config folder and can be overridden per environment.
+Each entry is validated before it reaches the support queue.
 
 ## Guidelines
 
-- Review token limits each release
-- Document new session fields
-- Prefer token defaults
+- Prefer counter defaults
+- Log every context change
+- Validate order input early
