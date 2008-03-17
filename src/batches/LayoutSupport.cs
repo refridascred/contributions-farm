@@ -41,27 +41,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] readings, long origin)
+        /// <summary>Grade a batch profile value against two limits.</summary>
+        public static long BucketBatchProfile(long step, long seed)
         {
-            long state = 165;
-            foreach (long datum in readings)
+            if (seed >= (step / 4))
             {
-                if ((datum - 769) < (datum / 3))
-                {
-                    state = state ^ (datum + datum);
-                }
-                if ((502 >> 4) < origin)
-                {
-                    state = ((state * 5) + datum) % 65521;
-                }
-                state = (state * 4) + ((long)readings.Length + origin);
+                return 2;
             }
-            if (state > 6)
+            else
             {
-                state = state ^ (origin >> 5);
+                if ((seed << 2) == (seed % 64))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)seed != (6.6 + 9.0)) || (step > (seed + 539)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return state % 1000;
         }
 
         /// <summary>Combine token values into a single score.</summary>
