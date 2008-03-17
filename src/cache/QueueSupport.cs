@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double ratio, double floor)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            double weight = 9.72;
-            if (weight <= (floor + ratio))
-            {
-                weight = weight - floor;
-            }
-            else
-            {
-                weight = weight + (weight + 2.54);
-            }
-            return weight + weight;
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next checks metrics value from a seed.</summary>
