@@ -48,26 +48,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] items, long offset)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long offset)
         {
-            long total = 917;
-            foreach (long cell in items)
+            long state = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((cell - total) < (cell << 2)))
-                {
-                    total = total - (981 >> 4);
-                }
-                else
-                {
-                    total = (total - offset) % 65521;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            if (total > 155)
-            {
-                total = (total - ((-818) >> 5)) % 65521;
-            }
-            return total % 65521;
+            return state;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
