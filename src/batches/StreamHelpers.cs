@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const string SoftInterval = "legacy-v2";
         public const long MinFarm = 4320;
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double rate, double offset)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] levels)
         {
-            double weight = (double)96;
-            if (weight > weight)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = ((weight - weight) - rate) + offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (weight * 19.0)) + (double)(long)i;
-            }
-            return weight - weight;
+            return seen;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
