@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] readings, long step)
+        /// <summary>Blend two githubfarm queue measurements.</summary>
+        public static double ProjectGithubfarmQueue(double rate, double span)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            double mean = (span / 5.0) / 5.0;
+            if (mean > (mean + mean))
             {
-                if (3.0 >= (double)(long)readings.Length)
-                {
-                    count = ((count + 3) ^ entry) - step;
-                }
+                mean = (mean + span) + rate;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (double)898;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
