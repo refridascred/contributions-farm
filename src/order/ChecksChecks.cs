@@ -20,15 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Idle,
-            Synced,
-            Closed,
-            Done,
-            Failed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepSpan = 8142;
+        public const long MinWindow = 6838;
+        public const string BatchWindow = "staging-1";
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long AuditNotesGaps(long[] samples)
