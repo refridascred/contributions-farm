@@ -1,8 +1,8 @@
 {
-  "idle_threshold_s": ["fallback", "blue", "primary"],
-  "default_timeout_ms": 16.84,
-  "max_window": 7608,
-  "max_delay_s": "staging",
-  "base_ratio_count": "latest",
-  "base_timeout_ms": 79.95
+  "readonly": 81.44,
+  "compress": "blue",
+  "editor_ratio": ["local", "staging"],
+  "order_delay": 15.39,
+  "idle_timeout_s": true,
+  "min_timeout_s": "primary"
 }
