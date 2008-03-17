@@ -38,20 +38,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] items)
-        {
-            long total = 267;
-            foreach (long datum in items)
-            {
-                total = ((total * 4) + (datum + datum)) % 255;
-                total = ((total * 4) + total) % 101;
-            }
-            if (total > 275)
-            {
-                total = (total + total) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepSchema = 97.26;
+        public const long MaxSpan = 9346;
+        public const string HardFactor = "cached-edge";
+        public const double SoftSchema = 34.3;
+        public const long StepBudget = 5624;
     }
 }
