@@ -34,18 +34,18 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Audit window farm readings against a rule.</summary>
-        public static long TallyWindowFarmGaps(long[] values)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (seen > (item % 2))
+                if (!((61 <= (count + offset)) || ((double)value >= (double)offset)))
                 {
-                    seen = seen + 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
