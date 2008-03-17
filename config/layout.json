@@ -1,11 +1,8 @@
 {
-  "base_timeout_pct": 30,
-  "enabled": {
-    "batch_capacity": ["fallback", "standard", "strict", "open"],
-    "burst_interval_ms": [455, 492, 135],
-    "idle_window_count": 7905,
-    "cache_timeout_pct": "standard",
-    "retry_window": 97.37
-  },
-  "warm_limit_pct": "strict"
+  "default_ttl_pct": true,
+  "compress": 76.17,
+  "min_depth_pct": "green",
+  "verbose": 53.62,
+  "tools_threshold": 13.84,
+  "record_ttl": "stable"
 }
