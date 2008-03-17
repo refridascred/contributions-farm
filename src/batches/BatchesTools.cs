@@ -34,22 +34,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many session stream samples are out of range.</summary>
-        public static long CountSessionStreamGaps(long[] items, long seed)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading <= ((-86) ^ seed))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] - readings[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
