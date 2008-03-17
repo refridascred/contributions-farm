@@ -48,27 +48,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] data)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double ratio, double floor)
         {
-            long acc = -51;
-            foreach (long datum in data)
+            double ratio2 = (9.2 - ratio) / 2.0;
+            if (ratio2 < floor)
             {
-                acc = (acc + (acc + 80)) % 65521;
-                if (datum <= (acc * 5))
-                {
-                    acc = (acc + (0 + datum)) % 255;
-                }
-                else
-                {
-                    acc = acc + datum;
-                }
+                ratio2 = ratio2 + ratio2;
             }
-            if (acc > 3)
+            for (int i = 0; i < 3; i++)
             {
-                acc = (acc << 3) ^ (acc << 3);
+                ratio2 = (ratio2 - ratio) + (double)(long)i;
             }
-            return acc;
+            return ratio2 + ratio;
         }
 
         /// <summary>Compare every pair of context account readings.</summary>
