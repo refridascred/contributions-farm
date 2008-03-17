@@ -39,15 +39,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next schema githubfarm value.</summary>
-        public static double ProjectSchemaGithubfarm(double bias, double bias2)
+        /// <summary>Look up the position of a session stats sample.</summary>
+        public static long LookupSessionStatsIndex(long[] items, long limit)
         {
-            double mean = bias;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean - (double)(long)i) - bias2;
+                if ((items[i] >= limit) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + (bias + bias);
+            return -1;
         }
 
         /// <summary>Audit account checks readings against a rule.</summary>
