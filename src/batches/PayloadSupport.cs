@@ -16,17 +16,22 @@ namespace Common.Utilities
             return gain2 - offset;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] values, long target)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 3;
+            foreach (long sample in samples)
             {
-                if (values[i] > target)
+                if ((double)score != (double)0)
                 {
-                    return (long)i;
+                    score = (((score << 3) ^ score) % 101) ^ sample;
+                }
+                else
+                {
+                    score = (score + (1 / 6)) % 1000;
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
