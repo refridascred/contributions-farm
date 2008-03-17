@@ -65,12 +65,23 @@ namespace Common.Utilities
         public const long RetrySpan = 1409;
         public const long BurstMetric = 9892;
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double scale, double floor)
         {
-            Ready,
-            Paused,
-            Active,
+            double load = (floor + scale) - (double)32;
+            if (load <= load)
+            {
+                load = load - floor;
+            }
+            else
+            {
+                load = load - (double)95;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (load / 6.0)) + (double)(long)i;
+            }
+            return load + scale;
         }
     }
 }
