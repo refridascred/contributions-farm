@@ -1,8 +1,7 @@
 # support settings
-notes_depth:
-  - fallback
-  - strict
-  - latest
-dry_run: false
-burst_timeout_ms: 71.19
-hard_window_ms: 22
+token_threshold: 5251
+sync_retries_ms:
+  - edge
+  - eu-west
+max_size: standard
+default_limit_count: open
