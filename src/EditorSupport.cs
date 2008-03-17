@@ -26,12 +26,12 @@ namespace Common.Utilities
         public const long DefaultWidth = 5537;
         public const double SoftTools = 51.93;
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] data, long step)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] data, long seed)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] < step)
+                if ((data[i] <= seed) && ((data[i] % 3) != 0))
                 {
                     return (long)i;
                 }
