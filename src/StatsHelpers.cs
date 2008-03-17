@@ -41,12 +41,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] readings)
         {
-            public double Score { get; set; }
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((long)readings.Length + matches) > (matches % 2))
+                {
+                    matches = (matches + 3) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
