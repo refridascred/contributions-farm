@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Look up the position of a tools contributi sample.</summary>
+        public static long SeekToolsContributiIndex(long[] samples, long limit)
         {
-            public double Owner { get; set; }
-            public double Token { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a editor entry.</summary>
