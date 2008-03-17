@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long seed, long floor)
+        /// <summary>Roll a channel metric counter forward.</summary>
+        public static long SeriesChannelMetric(long seed)
         {
-            long step = seed - floor;
-            if (!((step * 4) <= (6 ^ seed)))
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
             {
-                return 7;
+                sum = (sum + (seed + sum)) % 65521;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((seed >> 2) >= floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((-33) / 5) <= (step / 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
