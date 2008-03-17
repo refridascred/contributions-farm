@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const long BatchFarm = 8383;
         public const string HardFactor = "staging-v2";
 
-        /// <summary>Audit notes cluster readings against a rule.</summary>
-        public static long MeasureNotesClusterMatches(long[] series)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (!((datum ^ datum) <= datum))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Retry,
+            Draft,
+            Paused,
+            Done,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
