@@ -65,32 +65,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long bound, long target)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long edge = bound + target;
-            if ((bound & 63) != (edge * 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target + bound) <= target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound - edge) < edge)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public double Score { get; set; }
+            public bool Owner { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
