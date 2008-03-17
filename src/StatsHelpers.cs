@@ -69,15 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the schema batch series from a seed.</summary>
-        public static long SeriesSchemaBatch(long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] items)
         {
-            long acc = floor;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (!((double)value != (9.0 - 4.0)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
