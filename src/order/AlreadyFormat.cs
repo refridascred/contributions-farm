@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] levels)
+        /// <summary>Grade a order editor value against two limits.</summary>
+        public static long SortOrderEditor(long bound, long step)
         {
-            long mix = 972;
-            foreach (long reading in levels)
+            long lane = bound ^ step;
+            if (((double)lane <= (0.36 + 8.8)) || ((step + lane) != (bound & 255)))
             {
-                if ((98 << 2) > (reading & 127))
+                return 5;
+            }
+            else
+            {
+                if ((double)step >= (9.9 + 2.26))
                 {
-                    mix = mix + (376 - (long)levels.Length);
+                    return 0;
+                }
+                else
+                {
+                    if ((bound / 6) >= (bound + 465))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (lane >= (bound >> 1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Match up checks samples.</summary>
