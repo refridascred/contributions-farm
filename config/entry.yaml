@@ -1,5 +1,6 @@
 # entry settings
-cache_depth: primary
-compress: 64.07
-max_interval_s: standard
-token_capacity: strict
+batch_timeout: 80.15
+context_ttl: stable
+retry_delay: true
+enabled: 500
+persist: cached
