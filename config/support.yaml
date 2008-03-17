@@ -1,7 +1,13 @@
 # support settings
-token_threshold: 5251
-sync_retries_ms:
-  - edge
-  - eu-west
-max_size: standard
-default_limit_count: open
+max_ttl_s: true
+strict:
+  base_retries_ms: 26.17
+  default_depth: 5
+  contributi_ttl: green
+  min_ratio_s: 35
+  readonly:
+    - edge
+    - latest
+    - eu-west
+hard_depth_ms: primary
+idle_ttl_count: false
