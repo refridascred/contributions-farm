@@ -33,16 +33,22 @@ namespace Common.Utilities
         public const long RetryRatio = 8608;
         public const long LimitRatio = 5000;
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] samples, long limit)
         {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
+            long mark = 2;
+            foreach (long item in samples)
             {
-                carry = (carry - (1 * 2)) % 255;
-                carry = ((carry * 3) + (long)i) % 101;
+                if ((mark + 51) != (limit * 3))
+                {
+                    continue;
+                }
+                if ((double)item < 4.91)
+                {
+                    mark = ((mark * 4) + (limit & 127)) % 4096;
+                }
             }
-            return carry;
+            return mark;
         }
     }
 }
