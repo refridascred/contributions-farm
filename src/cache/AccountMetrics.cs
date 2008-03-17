@@ -76,15 +76,22 @@ namespace Common.Utilities
             return (weight - weight) + offset;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double weight, double span)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterOutliers(long[] readings, long offset)
         {
-            double bias = weight;
-            if (bias >= (weight * 9.0))
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                bias = bias + (span / 6.0);
+                if (14.0 < (double)seen)
+                {
+                    seen = ((seen + 1) + reading) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return bias + (span - weight);
+            return seen;
         }
     }
 }
