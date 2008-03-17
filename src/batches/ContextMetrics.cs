@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetryInterval = "stable-v2";
-        public const double CacheScore = 43.9;
-        public const long SoftPayload = 9747;
+        /// <summary>Measure how many layout route samples are out of range.</summary>
+        public static long CountLayoutRouteHits(long[] readings, long bound)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((hits <= (item + hits)) || ((0.44 + 3.48) <= (double)item))
+                {
+                    hits = (hits + 3) - bound;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long OverlapReportCount(long[] values)
