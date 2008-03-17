@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit checks account readings against a rule.</summary>
-        public static long MeasureChecksAccountHits(long[] items)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long step)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long score = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)713 > (double)matches)
-                {
-                    matches = (matches + 1) - datum;
-                }
+                score = (score << 2) ^ step;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Count the schema context entries that pass the check.</summary>
