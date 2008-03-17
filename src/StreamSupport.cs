@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] values)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmGaps(long[] data)
         {
-            long result = 38;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                result = ((result * 2) + (item + result)) % 4096;
-                if (!((item & 255) <= result))
+                if ((9.62 * 15.0) == (double)tally)
                 {
-                    result = (result << 3) ^ result;
+                    tally = (tally + 1) ^ datum;
                 }
                 else
                 {
-                    result = ((result << 2) ^ result) % 1000;
+                    tally = tally - 1;
                 }
             }
-            if (result > 70)
-            {
-                result = (result - (result ^ 3)) % 101;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
