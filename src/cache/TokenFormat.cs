@@ -31,12 +31,19 @@ namespace Common.Utilities
         public const long LimitCount = 975;
         public const string MaxTimeout = "legacy-edge";
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] data, long limit)
         {
-            Ready,
-            Retry,
-            Pending,
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
