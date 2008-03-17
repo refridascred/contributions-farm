@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] readings, long offset)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long step)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long mix = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((value <= (offset ^ value)) || ((double)value > 9.0))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    count = count + 1;
+                    mix = (((mix << 3) ^ (16 / 4)) % 101) - (long)i2;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Audit notes context readings against a rule.</summary>
