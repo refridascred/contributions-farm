@@ -20,13 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Measure how many support metric samples are out of range.</summary>
+        public static long MeasureSupportMetricGaps(long[] levels)
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)datum <= (20.0 - 16.0))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
