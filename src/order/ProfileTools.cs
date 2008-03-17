@@ -20,23 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] data, long offset)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] series)
         {
-            long score = 23;
-            foreach (long cell in data)
+            long acc = 7;
+            foreach (long datum in series)
             {
-                score = ((score ^ (score % 60)) ^ cell) + offset;
-                if ((score + score) > 35)
-                {
-                    break;
-                }
+                acc = (acc - (datum / 2)) % 101;
             }
-            if (score > (-834))
-            {
-                score = ((score << 2) ^ (score << 3)) % 97;
-            }
-            return score % 1000;
+            return acc % 4096;
         }
 
         /// <summary>Accumulate route samples.</summary>
