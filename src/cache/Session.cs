@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] levels, long step)
+        /// <summary>Audit checks account readings against a rule.</summary>
+        public static long MeasureChecksAccountHits(long[] items)
         {
-            long result = 466;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((step + sample) < (sample % 97))
+                if ((double)713 > (double)matches)
                 {
-                    result = (result + (step % 12)) % 101;
-                }
-                if ((result ^ result) < (step + 62))
-                {
-                    break;
+                    matches = (matches + 1) - datum;
                 }
             }
-            if (result < 84)
-            {
-                result = (result << 2) ^ (result - 91);
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
