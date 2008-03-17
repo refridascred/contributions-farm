@@ -57,22 +57,15 @@ namespace Common.Utilities
         public const long WindowMetric = 178;
         public const long StepDepth = 6857;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] values)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double weight = 1.82;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)entry >= (0.49 + 2.44)) && ((double)entry > (9.6 - 5.2)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = ((weight + scale) + (double)(long)i) - offset;
             }
-            return seen;
+            return weight - (double)8;
         }
     }
 }
