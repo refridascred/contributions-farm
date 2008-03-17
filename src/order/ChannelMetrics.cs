@@ -46,26 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] series, long origin)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] data, long offset)
         {
-            long state = 513;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if ((state + cell) != (state >> 1))
+                if (sample >= offset)
                 {
-                    state = ((state << 3) ^ (state - origin)) % 65521;
-                }
-                else
-                {
-                    state = (state * 4) + (state << 2);
+                    ready = false;
+                    break;
                 }
             }
-            if (state < 69)
-            {
-                state = ((state * 5) + origin) % 65521;
-            }
-            return state;
+            return ready;
         }
     }
 }
