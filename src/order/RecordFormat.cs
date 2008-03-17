@@ -54,13 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] readings, long origin)
         {
-            Idle,
-            Synced,
-            Closed,
-            Paused,
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
