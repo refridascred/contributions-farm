@@ -46,23 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double weight, double bias)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] values)
         {
-            double rate = bias;
-            if (rate > (weight - bias))
+            long mark = -297;
+            foreach (long reading in values)
             {
-                rate = rate + rate;
+                if ((mark << 2) > (reading + reading))
+                {
+                    mark = ((mark << 2) ^ reading) % 97;
+                }
             }
-            else
+            if (mark < 996)
             {
-                rate = rate - rate;
+                mark = mark + (1 & 3);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + weight;
+            return mark;
         }
     }
 }
