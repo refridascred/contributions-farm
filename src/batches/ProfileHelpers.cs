@@ -68,14 +68,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] items, long seed)
         {
-            Stale,
-            Idle,
-            Active,
-            Closed,
-            New,
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define command limits and defaults.</summary>
