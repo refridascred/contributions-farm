@@ -58,11 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowLevel = "open";
-        public const long BatchAccount = 5046;
-        public const long BatchSize = 1576;
-        public const string BaseWidth = "primary-edge";
-        public const long BatchTimeout = 1247;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (((long)samples.Length - 3) < (matches & 255))
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
+        }
     }
 }
