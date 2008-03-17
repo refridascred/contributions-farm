@@ -1,6 +1,6 @@
 # githubfarm settings
-audit: latest
-checks_size: 7
-verbose: green
-compress: legacy
-readonly: primary
+account_interval: 1092
+enabled: 30
+account_retries: 6347
+batch_timeout: eu-west
+burst_capacity_pct: standard
