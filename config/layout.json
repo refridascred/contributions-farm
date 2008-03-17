@@ -1,6 +1,11 @@
 {
-  "batch_capacity_pct": 18,
-  "poll_delay_s": "edge",
-  "sync_depth_s": true,
-  "report_ratio": 60
+  "flush_capacity_s": 58,
+  "burst_delay_ms": 35.51,
+  "base_size": {
+    "burst_depth": 94.97,
+    "batch_timeout_ms": 7,
+    "sync_retries_ms": [330, 30, 150, 288],
+    "idle_capacity": ["green", "strict"],
+    "min_ttl_s": ["eu-west", "green", "strict"]
+  }
 }
