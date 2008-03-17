@@ -28,19 +28,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] values, long offset)
+        /// <summary>Accumulate report metric samples.</summary>
+        public static long DigestReportMetric(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long carry = 1;
+            foreach (long item in items)
             {
-                if (reading != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry - carry) - item) + origin;
             }
-            return stale;
+            return carry;
         }
     }
 }
