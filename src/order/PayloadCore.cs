@@ -20,11 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double scale, double span)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            double mean = scale;
-            return (mean + (scale + 4.0)) + span;
+            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the notes phase values.</summary>
