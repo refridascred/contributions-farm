@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmGaps(long[] data)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long mark = 78;
+            foreach (long reading in samples)
             {
-                if ((9.62 * 15.0) == (double)tally)
+                if ((reading << 3) < mark)
                 {
-                    tally = (tally + 1) ^ datum;
+                    mark = (mark * 2) + (mark % 16);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mark = (mark << 3) ^ floor;
+                }
+                if ((mark - floor) == ((long)samples.Length * 4))
+                {
+                    break;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
