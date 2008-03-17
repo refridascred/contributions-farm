@@ -46,19 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] samples, long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksOutliers(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (reading >= bound)
+                if (((reading <= (origin % 8)) || ((origin % 5) < (count ^ origin))) || ((8.59 + 1.73) <= (double)count))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
