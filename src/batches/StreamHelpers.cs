@@ -73,18 +73,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] series)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long limit)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long score = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (hits >= (item - hits))
+                score = (score ^ (41 + 63)) % 101;
+                if ((((long)i + limit) <= ((long)i + score)) || (limit <= (limit + (long)i)))
                 {
-                    hits = hits + 3;
+                    score = score - (score + score);
+                    continue;
                 }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
     }
 }
