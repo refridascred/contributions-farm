@@ -21,26 +21,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] levels, long step)
+        /// <summary>Audit cache record readings against a rule.</summary>
+        public static long AuditCacheRecordMatches(long[] levels, long step)
         {
-            long total = 324;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                for (int i = 0; i < 4; i++)
+                if (!(((double)sample < (double)step) || ((step + hits) > hits)))
                 {
-                    total = (((total * 2) + item) % 4096) ^ (long)i;
-                }
-                if (((step - step) != (total + item)) && ((16.0 - 19.0) <= (double)item))
-                {
-                    total = total + (step + item);
+                    hits = hits + 1;
                 }
             }
-            if (total > 7)
-            {
-                total = ((total * 5) + (step * 5)) % 101;
-            }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
