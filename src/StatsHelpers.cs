@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] levels, long floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if ((6 - item) == (hits & 255))
+                if (reading > offset)
                 {
-                    hits = (hits + 3) + floor;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Describe the record kind values.</summary>
