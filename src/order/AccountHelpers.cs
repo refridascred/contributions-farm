@@ -63,9 +63,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 7999;
-        public const double WindowGithubfarm = 66.12;
-        public const string BaseSize = "fallback";
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] samples, long limit)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry >= (1.2 * 2.06))
+                {
+                    seen = (seen + 1) - limit;
+                }
+            }
+            return seen;
+        }
     }
 }
