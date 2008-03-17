@@ -68,24 +68,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long seed, long floor)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            if (!(seed <= (seed + seed)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor + 81) <= (seed % 100))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
