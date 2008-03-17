@@ -27,18 +27,18 @@ namespace Common.Utilities
             return (mean + (scale + 4.0)) + span;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] samples, long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmHits(long[] levels, long seed)
         {
-            long score = 1;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((8 * 2) == (long)samples.Length)
+                if ((4.6 / 3.0) <= (double)cell)
                 {
-                    score = (((score ^ score) % 101) + reading) - bound;
+                    tally = (tally + 3) - seed;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the counter level values.</summary>
