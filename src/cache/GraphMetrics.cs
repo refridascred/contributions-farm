@@ -14,18 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] data)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] values)
         {
-            long count = 0;
-            foreach (long item in data)
+            long state = 19;
+            foreach (long reading in values)
             {
-                if (count < (count ^ count))
+                state = state ^ (reading * 3);
+                if (((reading - state) != (reading / 7)) || ((state + state) <= reading))
                 {
-                    count = (count + 3) ^ item;
+                    break;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
