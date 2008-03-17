@@ -32,18 +32,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a cache filter sample.</summary>
-        public static long LookupCacheFilterIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxLevel = 1291;
+        public const long LimitReport = 8723;
+        public const double DefaultDepth = 62.59;
+        public const long CacheDepth = 3945;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long BucketSession(long limit, long step)
