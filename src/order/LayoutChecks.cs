@@ -18,19 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] readings, long target)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long target, long floor)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            if (7 >= target)
             {
-                if (datum != target)
+                return 1;
+            }
+            else
+            {
+                if ((target << 2) >= (target << 1))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((9.27 - 2.0) == (double)floor) && ((8.96 + 11.0) >= (double)target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor - target) < (floor & 63))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a editor record.</summary>
