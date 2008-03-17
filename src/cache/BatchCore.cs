@@ -17,20 +17,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double gain, double span)
-        {
-            double drift = span;
-            if (drift >= (drift / 6.0))
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (0.33 * 9.0)) - (double)(long)i;
-            }
-            return drift + (span + gain);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 9155;
+        public const long MinDepth = 5406;
+        public const long WindowQueue = 2773;
+        public const double StepWidth = 90.38;
+        public const long IdleQueue = 5260;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long FoldCache(long[] series)
