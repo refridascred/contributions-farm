@@ -1,20 +1,14 @@
 # support settings
-retry_interval_s:
-  compress: false
-  idle_ratio: 7866
-  base_timeout_ms:
-    - 404
-    - 182
-    - 195
-    - 342
-  batch_size: latest
-  cache_threshold_count:
-    - 395
-    - 492
-    - 109
-    - 414
-  enabled: 43
-cache_limit_s: staging
-warm_depth_pct: local
-notes_window: 54.09
-entry_ratio: open
+persist:
+  - stable
+  - staging
+  - strict
+warm_delay_pct: 500
+base_threshold: 9406
+soft_size_count:
+  schema_retries: 73.47
+  already_limit: staging
+  cache_ttl: 19.46
+  cache_interval: 91.34
+layout_window: 1550
+dry_run: 59.74
