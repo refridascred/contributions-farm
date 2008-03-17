@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const double BurstLevel = 64.58;
         public const string DefaultSpan = "primary-v2";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseBudget = 6090;
-        public const long BurstMetric = 3490;
-        public const double StepLevel = 22.88;
-        public const long HardFactor = 7774;
-        public const long StepDepth = 7402;
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double ratio, double bias)
+        {
+            double ratio2 = 8.4;
+            if (ratio2 < (double)972)
+            {
+                ratio2 = (ratio2 - (bias / 7.0)) - ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = ratio2 + (double)(long)i;
+            }
+            return ratio2 - 11.0;
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long DigestSchema(long[] values, long seed)
