@@ -14,39 +14,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long offset, long target)
-        {
-            if ((double)target >= (double)4)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((24 % 12) <= (offset * 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset + target) < target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (offset <= (offset << 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 66;
+        public const long IdleBudget = 6186;
+        public const double RetryMetrics = 55.34;
+        public const double IdleMetrics = 87.67;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long FoldChecks(long[] readings)
