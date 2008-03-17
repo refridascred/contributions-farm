@@ -1,14 +1,5 @@
 # entry settings
-cluster_timeout: standard
-burst_timeout_pct:
-  - 196
-  - 5
-  - 235
-warm_size_count:
-  soft_interval: 1024
-  enabled: 30
-  burst_retries_ms:
-    - 74
-    - 135
-    - 478
-    - 152
+readonly: 54.56
+layout_window: 22.94
+hard_limit_count: true
+notes_depth: false
