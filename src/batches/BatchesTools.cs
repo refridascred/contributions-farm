@@ -38,18 +38,17 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] levels)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((510 / 2) == (count - 26))
+                if (values[i] == seed)
                 {
-                    count = (count + 2) + entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
