@@ -32,17 +32,12 @@ namespace Common.Utilities
             return (gain - (span - span)) + bias;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] series, long floor)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < floor) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Queued,
+            Synced,
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
