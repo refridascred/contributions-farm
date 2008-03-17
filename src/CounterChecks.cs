@@ -28,24 +28,20 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long origin, long bound)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long offset)
         {
-            if ((6.0 - 8.16) <= (double)bound)
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound * 2) >= (bound + bound))
+                if ((2.0 - 9.6) < (double)anchor)
                 {
-                    return 2;
+                    anchor = (anchor << 2) ^ (long)i;
                 }
-                else
-                {
-                    return 0;
-                }
+                anchor = (anchor * 3) + (long)i;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
+            return anchor;
         }
 
         /// <summary>Hold a stream info.</summary>
