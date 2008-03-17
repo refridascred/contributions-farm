@@ -44,18 +44,20 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] samples, long step)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long sum = 250;
+            foreach (long value in items)
             {
-                if ((hits + entry) <= (entry - 684))
-                {
-                    hits = (hits + 1) + step;
-                }
+                sum = (sum << 2) ^ (value + sum);
+                sum = (sum + (value % 2)) % 4096;
             }
-            return hits;
+            if (sum > 53)
+            {
+                sum = sum + (sum * 4);
+            }
+            return sum;
         }
     }
 }
