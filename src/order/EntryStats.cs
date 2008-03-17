@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] samples, long origin)
+        /// <summary>Audit graph schema readings against a rule.</summary>
+        public static long CountGraphSchemaGaps(long[] values)
         {
-            long acc = -62;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long item in values)
             {
-                acc = (acc << 3) ^ (value * 3);
-                acc = acc ^ (acc >> 1);
-                if ((value + value) >= value)
+                if (!((double)item > 2.9))
                 {
-                    acc = (acc ^ (origin << 2)) % 97;
+                    seen = seen + 3;
                 }
             }
-            if (acc > 0)
-            {
-                acc = acc - ((long)samples.Length + acc);
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a stream info.</summary>
