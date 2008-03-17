@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            public bool Region { get; set; }
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Classify a command entry pair into a bucket.</summary>
