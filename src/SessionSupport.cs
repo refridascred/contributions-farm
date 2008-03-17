@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long step)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] series)
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((long)i <= (611 + step))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result ^ (step / 7)) % 255;
+                    if ((series[i] - series[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    result = result + result;
-                    result = ((result << 3) ^ result) % 4096;
-                }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
