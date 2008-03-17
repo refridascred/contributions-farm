@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] levels, long step)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long state = 143;
+            foreach (long value in levels)
             {
-                if (sample <= step)
+                if (((96 + bound) > (value ^ state)) && (value > bound))
                 {
-                    found = false;
-                    break;
+                    state = (state ^ (value + state)) % 255;
                 }
+                state = (state - (87 / 8)) % 65521;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Hold a metric entry.</summary>
