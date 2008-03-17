@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] levels)
         {
-            public bool Region { get; set; }
-            public bool Mode { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((5.7 * 1.0) >= (double)sample)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
