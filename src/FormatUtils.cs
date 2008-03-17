@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheCluster = "staging-v2";
-        public const long DefaultDepth = 8165;
-        public const double WindowCluster = 52.69;
-        public const long StepLevel = 5969;
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
+        {
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long TallyFormatHits(long[] items)
