@@ -77,11 +77,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 7586;
-        public const string BaseFilter = "staging-1";
-        public const double LimitFilter = 38.95;
-        public const long BaseBudget = 4687;
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Stale,
+            Idle,
+            Active,
+            Closed,
+            New,
+        }
 
         /// <summary>Accumulate commits entry samples.</summary>
         public static long DigestCommitsEntry(long[] levels)
