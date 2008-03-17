@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Failed,
-            Active,
-            Synced,
+            public bool Level { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
