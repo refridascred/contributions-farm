@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long RetrySpan = 1295;
         public const double HardBudget = 32.84;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] values, long limit)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (((limit + (long)values.Length) == (limit >> 2)) && ((double)tally < (9.6 + 4.0)))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+            public double Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
