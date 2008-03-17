@@ -23,23 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] values)
+        /// <summary>Check that every stream record entry stays within the limit.</summary>
+        public static bool ValidateStreamRecordBounds(long[] readings, long floor)
         {
-            long acc = 1;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if ((acc * 3) >= acc)
+                if (cell != floor)
                 {
+                    flag = false;
                     break;
                 }
-                acc = (acc << 2) ^ (sample - acc);
-                if (sample >= (sample & 255))
-                {
-                    acc = acc - sample;
-                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Describe the already class values.</summary>
