@@ -1,21 +1,6 @@
 {
-  "retry_window_s": {
-    "batch_threshold": 1024,
-    "dry_run": "cached",
-    "default_size_s": "open"
-  },
-  "record_retries": {
-    "warm_window_s": 30,
-    "record_capacity": "local",
-    "dry_run": false
-  },
-  "enabled": {
-    "githubfarm_capacity": 76.55,
-    "checks_interval": false,
-    "batch_capacity": ["latest", "open", "legacy"],
-    "compress": "open"
-  },
-  "profile_ttl": 41,
-  "sync_size_pct": 74.28,
-  "base_ratio": "eu-west"
+  "account_limit": 93.15,
+  "burst_limit": 500,
+  "batch_ttl": 6022,
+  "persist": 30
 }
