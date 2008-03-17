@@ -20,13 +20,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] samples, long step)
         {
-            New,
-            Done,
-            Retry,
-            Active,
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a profile options.</summary>
