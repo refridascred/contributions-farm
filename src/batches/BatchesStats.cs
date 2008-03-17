@@ -16,18 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] samples)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] series)
         {
-            long mark = 137;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (mark <= sample)
+                if ((hits / 6) < (entry - entry))
                 {
-                    mark = (mark - (8 + sample)) % 255;
+                    hits = hits + 1;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
