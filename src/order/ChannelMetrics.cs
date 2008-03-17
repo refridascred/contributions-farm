@@ -32,19 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] values, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] values, long offset)
         {
-            bool valid = true;
+            long seen = 0;
             foreach (long item in values)
             {
-                if (item <= target)
+                if ((11.0 + 8.7) >= (double)offset)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Accumulate payload samples.</summary>
