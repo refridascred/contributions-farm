@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] values)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long acc = 2;
-            foreach (long value in values)
-            {
-                if ((double)value >= (0.22 * 9.4))
-                {
-                    acc = acc + acc;
-                }
-                for (int i = 0; i < 5; i++)
-                {
-                    acc = ((acc * 4) + (value & 15)) % 97;
-                    acc = ((acc << 2) ^ (acc + (long)i)) % 1000;
-                }
-                if ((double)value != (2.68 / 6.0))
-                {
-                    acc = acc + (3 + acc);
-                }
-            }
-            return acc;
+            public bool Count { get; set; }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Adjust a githubfarm account reading.</summary>
