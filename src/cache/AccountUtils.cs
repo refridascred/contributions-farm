@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] items, long seed)
         {
-            Closed,
-            Paused,
-            New,
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
