@@ -19,20 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsBounds(long[] readings, long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if (!(((long)i / 7) < (carry >> 2)))
+                if (cell <= seed)
                 {
-                    carry = ((carry << 3) ^ (floor - floor)) % 1000;
-                    carry = carry ^ ((long)i / 9);
+                    ok = false;
+                    break;
                 }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
