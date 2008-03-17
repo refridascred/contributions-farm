@@ -16,22 +16,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Digest a series of account layout entries.</summary>
-        public static long CombineAccountLayout(long[] samples, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] values, long seed)
         {
-            long mix = 6;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (((double)mix != (double)8) && ((floor / 5) >= floor))
+                if ((hits + entry) <= (seed % 7))
                 {
-                    mix = mix - (entry % 10);
-                }
-                if ((entry + mix) <= mix)
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
