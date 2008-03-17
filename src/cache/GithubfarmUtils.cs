@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] values, long target)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((143 - target) <= (value / 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
