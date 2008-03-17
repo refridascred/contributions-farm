@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double rate, double span)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            double drift = span / 7.0;
-            if (drift <= (drift / 7.0))
-            {
-                drift = (drift - span) + rate;
-            }
-            else
-            {
-                drift = drift + (drift * 2.81);
-            }
-            return drift + span;
+            Retry,
+            Done,
+            Locked,
+            Pending,
+            Active,
         }
 
         /// <summary>Adjust a filter reading.</summary>
