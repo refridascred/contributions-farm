@@ -45,22 +45,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] samples, long target)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((double)seen < (6.0 * 2.89))
-                {
-                    seen = ((seen + 3) + value) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
