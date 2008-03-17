@@ -40,13 +40,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Grade a token editor value against two limits.</summary>
+        public static long RankTokenEditor(long seed, long floor)
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-            public double Limit { get; set; }
+            if (((floor & 3) > (seed >> 3)) && (5.97 > (double)seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor > (seed - seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(718 > (seed / 7)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(floor < (floor + floor)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
