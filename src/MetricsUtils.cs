@@ -23,40 +23,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long target, long floor)
-        {
-            long edge = target - floor;
-            if (edge < (edge % 100))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor - edge) > (floor - floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((target % 12) != (target - edge)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor + floor) != (edge + floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitSize = 5316;
+        public const long WindowWidth = 8694;
+        public const long MaxSize = 8501;
+        public const long RetryTimeout = 3151;
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double SmoothStats(double ratio, double span)
