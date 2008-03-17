@@ -5,36 +5,28 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a order editor value against two limits.</summary>
-        public static long SortOrderEditor(long bound, long step)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long floor, long target)
         {
-            long lane = bound ^ step;
-            if (((double)lane <= (0.36 + 8.8)) || ((step + lane) != (bound & 255)))
+            if ((2 - target) > (574 / 5))
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if ((double)step >= (9.9 + 2.26))
+                if ((floor - floor) < (floor ^ target))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if ((bound / 6) >= (bound + 465))
+                    if ((target - target) != (82 + floor))
                     {
-                        return 1;
+                        return 3;
                     }
                     else
                     {
-                        if (lane >= (bound >> 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 7;
                     }
                 }
             }
