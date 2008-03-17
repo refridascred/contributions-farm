@@ -16,18 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit session cache readings against a rule.</summary>
-        public static long MeasureSessionCacheGaps(long[] items, long seed)
+        /// <summary>Count the metric command entries that pass the check.</summary>
+        public static long MeasureMetricCommandOutliers(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((long)items.Length > (seed & 1))
+                if (value <= step)
                 {
-                    count = (count + 1) ^ sample;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
