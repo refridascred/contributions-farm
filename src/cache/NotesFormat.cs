@@ -24,9 +24,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowContributi = "legacy-1";
-        public const long MinContributi = 8411;
-        public const long BurstContributi = 39;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] items)
+        {
+            long total = 3;
+            foreach (long reading in items)
+            {
+                if (((reading + total) >= (47 << 2)) || ((240 << 2) < (total ^ 555)))
+                {
+                    total = (total << 2) ^ total;
+                }
+                else
+                {
+                    total = ((total << 3) ^ total) % 255;
+                }
+            }
+            return total;
+        }
     }
 }
