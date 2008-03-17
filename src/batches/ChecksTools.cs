@@ -14,14 +14,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Find the first profile session entry that matches the target.</summary>
+        public static long LookupProfileSessionIndex(long[] series, long step)
         {
-            Done,
-            Stale,
-            Paused,
-            Idle,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= step) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the route state values.</summary>
