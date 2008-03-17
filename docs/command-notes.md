@@ -1,11 +1,11 @@
 # Command notes
 
-When a stream fails, the account handler retries a few times before giving up.
-The support helpers are pure functions, so they are safe to call from any thread.
-When a payload fails, the entry handler retries a few times before giving up.
+A githubfarm that stays idle for too long is moved to the tools list.
+When a metric fails, the channel handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep batches values small
-- Log every editor change
-- Validate metric input early
+- Prefer schema defaults
+- Document new metric fields
+- Keep cache values small
+- Log every checks change
