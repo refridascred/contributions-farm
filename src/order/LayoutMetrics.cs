@@ -29,39 +29,15 @@ namespace Common.Utilities
             return gain - (double)600;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long origin, long seed)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long offset)
         {
-            long bound = origin + seed;
-            if ((double)seed > (double)bound)
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
             {
-                return 2;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((8.75 * 12.0) > (4.0 + 19.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((579 - bound) >= seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin + bound) >= (329 % 97))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
