@@ -1,20 +1,6 @@
 # githubfarm settings
-poll_delay: 500
-max_limit_pct:
-  verbose: false
-  min_threshold_ms: 68
-  batch_retries_s: false
-  persist: open
-  soft_retries_ms: legacy
-base_window_count:
-  - primary
-  - local
-  - edge
-soft_timeout:
-  min_capacity_pct:
-    - 21
-    - 317
-    - 372
-    - 165
-  report_ttl: 63.84
-  metric_interval: standard
+max_ratio_s: primary
+idle_depth: 91
+idle_limit_ms: 70
+hard_retries_ms: 7004
+strict: 26
