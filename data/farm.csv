@@ -1,7 +1,10 @@
-id,level,region,weight
-1,stable,open,1.99
-2,56.09,26.76,30.24
-3,526,446,eu-west
-4,779,16.39,167
-5,10.37,738,577
-6,828,153,64.16
+id,region,score
+1,15.28,735
+2,37.84,edge
+3,863,32.98
+4,634,local
+5,strict,256
+6,primary,latest
+7,900,629
+8,latest,33.92
+9,564,675
