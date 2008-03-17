@@ -45,18 +45,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] readings)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (item >= (hits % 2))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Synced,
+            Retry,
+            Failed,
+            Idle,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
