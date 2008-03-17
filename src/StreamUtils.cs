@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] levels)
+        /// <summary>Measure how many window filter samples are out of range.</summary>
+        public static long MeasureWindowFilterMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((matches & 15) >= (matches - matches))
+                if ((double)value < (3.3 * 9.99))
                 {
-                    matches = (matches + 2) + cell;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Audit batches report readings against a rule.</summary>
