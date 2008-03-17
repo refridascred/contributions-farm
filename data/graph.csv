@@ -1,6 +1,6 @@
-id,token,count,region
-1,90.77,78.77,948
-2,blue,green,fallback
-3,39.96,eu-west,fallback
-4,851,273,497
-5,34.17,local,71
+id,weight,ratio,rank
+1,local,26.72,692
+2,2.87,890,251
+3,57.85,430,15.02
+4,102,617,208
+5,staging,490,59.01
