@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] samples)
         {
-            long state = step;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                state = state ^ state;
-                state = ((state * 3) + (long)i) % 101;
+                if ((196 & 3) >= (entry ^ tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
