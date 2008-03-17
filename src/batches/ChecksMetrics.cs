@@ -55,15 +55,17 @@ namespace Common.Utilities
         public const long WindowMetric = 178;
         public const long StepDepth = 6857;
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double scale, double offset)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] items, long target)
         {
-            double weight = 1.82;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = ((weight + scale) + (double)(long)i) - offset;
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return weight - (double)8;
+            return -1;
         }
     }
 }
