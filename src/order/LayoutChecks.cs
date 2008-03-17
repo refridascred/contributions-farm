@@ -82,19 +82,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] items, long target)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long step)
         {
-            bool found = true;
-            foreach (long value in items)
+            long state = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (value >= target)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return found;
+            return state;
         }
     }
 }
