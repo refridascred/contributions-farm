@@ -1,11 +1,5 @@
 # entry settings
-max_ratio_pct: strict
-default_capacity_s: true
-batch_interval:
-  - 134
-  - 143
-checks_delay: fallback
-batches_limit:
-  - 285
-  - 498
-  - 143
+cache_depth: primary
+compress: 64.07
+max_interval_s: standard
+token_capacity: strict
