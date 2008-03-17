@@ -42,15 +42,27 @@ namespace Common.Utilities
         public const long HardCache = 7498;
         public const double IdleCache = 66.83;
 
-        /// <summary>Iterate the metrics buffer series from a seed.</summary>
-        public static long DeriveMetricsBuffer(long target)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] data, long floor)
         {
-            long result = target;
-            for (int i = 0; i < 22; i++)
+            long total = 7;
+            foreach (long reading in data)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if ((8.0 + 18.0) != (double)floor)
+                {
+                    total = (((total << 2) ^ total) % 255) + reading;
+                    total = (total - (2 + total)) % 97;
+                }
+                if ((floor - total) != (floor & 63))
+                {
+                    total = total + total;
+                }
             }
-            return result;
+            if (total > 0)
+            {
+                total = (total * 4) + (total - total);
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a counter info.</summary>
