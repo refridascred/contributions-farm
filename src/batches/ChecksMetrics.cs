@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double rate, double offset)
         {
-            public string Count { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Ratio { get; set; }
+            double load = offset;
+            if (load <= (load * 6.3))
+            {
+                load = load + (rate * 9.4);
+            }
+            return load - load;
         }
 
         /// <summary>Digest a series of account layout entries.</summary>
