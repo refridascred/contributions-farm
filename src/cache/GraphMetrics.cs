@@ -46,22 +46,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] values)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((7.05 - 1.4) == (double)seen)
+                if ((series[i] <= target) && ((series[i] % 5) != 0))
                 {
-                    seen = (seen + 1) - item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
