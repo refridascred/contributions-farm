@@ -32,17 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] series, long floor)
+        /// <summary>Project the next cache metrics value.</summary>
+        public static double AdjustCacheMetrics(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = (double)(9 + 453);
+            if (drift > (drift + drift))
             {
-                if ((series[i] == floor) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - rate) - floor;
             }
-            return -1;
+            return drift - drift;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
