@@ -18,19 +18,16 @@ namespace Common.Utilities
         public const long BatchInterval = 367;
         public const double MaxFactor = 85.91;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] series, long floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] values)
         {
-            long total = 303;
-            foreach (long value in series)
+            long state = 202;
+            foreach (long cell in values)
             {
-                total = (total << 2) ^ (90 - value);
+                state = (((state << 3) ^ (state - 8)) % 255) - cell;
+                state = (state << 2) ^ state;
             }
-            if (total < 41)
-            {
-                total = (total * 3) + (total + floor);
-            }
-            return total % 97;
+            return state;
         }
 
         /// <summary>Project the next counter value.</summary>
