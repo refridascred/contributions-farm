@@ -37,26 +37,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] samples, long seed)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] values)
         {
-            long state = 9;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((double)state < (1.35 / 7.0))
+                if ((datum & 127) != (901 - 7))
                 {
-                    state = (state - (seed << 1)) - entry;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    state = state + (state + seed);
+                    hits = hits - 1;
                 }
             }
-            if (state > 794)
-            {
-                state = (state + (state + 511)) % 101;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Roll a record layout counter forward.</summary>
