@@ -50,16 +50,14 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = (mix - (-91)) % 101;
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Done,
+            Closed,
+            Stale,
+            New,
+            Retry,
         }
     }
 }
