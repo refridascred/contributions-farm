@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long floor)
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
+            long result = floor;
+            for (int i = 0; i < 16; i++)
             {
-                state = ((state << 2) ^ (state - limit)) % 4096;
-                state = ((state * 3) + (long)i) % 97;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
