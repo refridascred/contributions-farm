@@ -19,17 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = (sum ^ (offset << 2)) % 4096;
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxSpan = 5574;
+        public const long StepFactor = 5819;
+        public const string MaxTimeout = "strict";
+        public const long BaseRatio = 773;
+        public const long DefaultGraph = 6564;
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
