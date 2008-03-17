@@ -39,18 +39,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((matches + 600) == (matches + matches))
-                {
-                    matches = (matches + 3) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchScore = 7196;
+        public const long LimitCommits = 1243;
+        public const double DefaultCommits = 20.25;
+        public const long BaseCommits = 36;
     }
 }
