@@ -91,17 +91,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a batch graph reading by value.</summary>
-        public static long FindBatchGraphIndex(long[] data, long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((data[i] > target) && ((data[i] % 5) == 0))
+                if (!!((long)values.Length >= (seen - seen)))
                 {
-                    return (long)i;
+                    seen = ((seen + 3) - entry) - bound;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
