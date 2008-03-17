@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] items)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double gain, double offset)
         {
-            long sum = 25;
-            foreach (long entry in items)
+            double gain2 = (3.0 - offset) / 4.0;
+            if (gain2 >= (gain2 + gain2))
             {
-                sum = ((sum ^ 9) % 101) + entry;
-                sum = (sum + (sum + sum)) % 101;
+                gain2 = (gain2 - (double)8) - gain;
             }
-            return sum;
+            return gain2 - offset;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
