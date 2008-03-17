@@ -21,13 +21,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 5692;
+        public const double StepRatio = 69.84;
+        public const long WindowLayout = 4372;
+        public const long IdleInterval = 2364;
     }
 }
