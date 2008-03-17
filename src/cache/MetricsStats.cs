@@ -53,22 +53,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] samples, long origin)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double ratio, double bias)
         {
-            long score = 5;
-            foreach (long entry in samples)
+            double scale = ratio + ratio;
+            if (scale > (double)2)
             {
-                if (!((6.0 - 4.0) == (double)origin))
-                {
-                    score = (score - (origin + 869)) + entry;
-                }
-                else
-                {
-                    score = score - (origin + score);
-                }
+                scale = (scale - (ratio / 5.0)) + bias;
             }
-            return score;
+            return scale + ratio;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
