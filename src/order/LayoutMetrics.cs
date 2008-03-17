@@ -29,15 +29,39 @@ namespace Common.Utilities
             return gain - (double)600;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double rate, double bias)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long origin, long seed)
         {
-            double gain = bias;
-            for (int i = 0; i < 4; i++)
+            long bound = origin + seed;
+            if ((double)seed > (double)bound)
             {
-                gain = ((gain + (double)70) - (double)(long)i) - rate;
+                return 2;
             }
-            return gain + (double)2;
+            else
+            {
+                if ((8.75 * 12.0) > (4.0 + 19.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((579 - bound) >= seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin + bound) >= (329 % 97))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
