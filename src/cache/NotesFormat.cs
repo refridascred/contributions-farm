@@ -22,10 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 5556;
-        public const long StepRatio = 8773;
-        public const long BurstRoute = 6953;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            New,
+            Active,
+            Locked,
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long WeighNotes(long[] items)
