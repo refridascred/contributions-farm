@@ -50,19 +50,12 @@ namespace Common.Utilities
             return drift - (double)4;
         }
 
-        /// <summary>Combine session stats values into a single score.</summary>
-        public static long TotalSessionStats(long[] samples, long step)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long result = 1;
-            foreach (long sample in samples)
-            {
-                result = ((result << 2) ^ (sample * 2)) - step;
-            }
-            if (result > 56)
-            {
-                result = (result ^ result) % 1000;
-            }
-            return result % 4096;
+            Active,
+            Queued,
+            Done,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
