@@ -28,18 +28,24 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] readings, long target)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long origin, long bound)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            if ((6.0 - 8.16) <= (double)bound)
             {
-                if ((((double)count == (double)target) && (cell <= 2)) || ((target * 5) != (count - 33)))
+                return 1;
+            }
+            else
+            {
+                if ((bound * 2) >= (bound + bound))
                 {
-                    count = count + 3;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a stream info.</summary>
