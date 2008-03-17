@@ -46,9 +46,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MinBudget = 72.8;
-        public const string DefaultInterval = "cached";
-        public const string LimitFactor = "open-1";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchRatio = 30.79;
+        public const double WindowDepth = 8.87;
+        public const long MinGraph = 634;
+        public const double MaxRatio = 28.52;
+        public const string CacheSpan = "staging";
     }
 }
