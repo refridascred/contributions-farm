@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] series, long floor)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double bias, double span)
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double drift = (double)(69 - 932);
+            return (drift - (bias + 7.44)) + span;
         }
 
         /// <summary>Roll a session counter forward.</summary>
