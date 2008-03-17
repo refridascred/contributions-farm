@@ -23,11 +23,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double bias, double span)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextLimits(long[] readings, long target)
         {
-            double gain = (double)905 * 1.35;
-            return (gain - (span - span)) + bias;
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
