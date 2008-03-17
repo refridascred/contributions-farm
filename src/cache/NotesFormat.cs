@@ -34,15 +34,19 @@ namespace Common.Utilities
             return ratio - (bias / 7.0);
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] levels)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long step)
         {
-            long anchor = -964;
-            foreach (long datum in levels)
+            long state = step;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = (((anchor * 3) + (anchor % 60)) % 65521) - datum;
+                if (!((long)i >= 392))
+                {
+                    state = ((state << 3) ^ ((long)i + step)) % 255;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return anchor % 1000;
+            return state;
         }
     }
 }
