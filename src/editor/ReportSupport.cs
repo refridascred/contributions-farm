@@ -72,19 +72,22 @@ namespace Common.Utilities
             return bias2 - (double)2;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] samples, long bound)
+        /// <summary>Count the route cache entries that pass the check.</summary>
+        public static long TallyRouteCacheMatches(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (value != bound)
+                if ((double)origin <= (double)matches)
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
