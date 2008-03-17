@@ -39,10 +39,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchSpan = 3684;
-        public const long MinFarm = 8713;
-        public const long LimitWidth = 2639;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowInterval = 90.68;
+        public const long MaxBudget = 471;
+        public const double BaseDepth = 40.41;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
