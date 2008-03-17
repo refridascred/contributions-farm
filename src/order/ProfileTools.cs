@@ -44,13 +44,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long origin)
         {
-            public bool Offset { get; set; }
-            public double Score { get; set; }
-            public bool Owner { get; set; }
-            public double Stamp { get; set; }
+            long state = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                state = (state << 3) ^ (state * 4);
+                if ((double)origin <= (2.08 + 11.0))
+                {
+                    break;
+                }
+                state = (state + (origin + origin)) % 97;
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
