@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxSpan = 7964;
-        public const long MinDepth = 5802;
-        public const string DefaultSpan = "local-1";
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Failed,
+            Active,
+            Synced,
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksOutliers(long[] series, long floor)
