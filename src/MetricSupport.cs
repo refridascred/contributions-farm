@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] items, long origin)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (entry > (origin + origin))
+                if (cell > bound)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Adjust a context payload reading.</summary>
