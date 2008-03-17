@@ -45,18 +45,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] levels, long offset)
+        /// <summary>Iterate the report commits series from a seed.</summary>
+        public static long StepReportCommits(long offset)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long score = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((1.0 / 5.0) <= (double)item)
-                {
-                    seen = (seen + 3) + offset;
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
