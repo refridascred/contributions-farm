@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] data)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] readings, long target)
         {
-            long sum = 7;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                sum = sum - value;
+                if (item != target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum % 65521;
+            return valid;
         }
 
         /// <summary>Adjust a graph reading.</summary>
