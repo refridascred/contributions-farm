@@ -39,18 +39,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] samples, long seed)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] series)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count - seed) >= (seed / 9))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) ^ item;
+                    if ((series[i] + series[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
