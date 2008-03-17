@@ -22,15 +22,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] values, long offset)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long mix = 9;
-            foreach (long cell in values)
-            {
-                mix = (((mix ^ (mix ^ (long)values.Length)) % 4096) ^ cell) - offset;
-            }
-            return mix;
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a tools reading by value.</summary>
