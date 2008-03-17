@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 3841;
-        public const long LimitSchema = 3842;
-        public const string CacheSchema = "staging-v2";
-        public const long BaseScore = 8102;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((238 % 7) == (datum * 3))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count format layout pairs that satisfy a relation.</summary>
         public static long MatchFormatLayoutCount(long[] samples)
