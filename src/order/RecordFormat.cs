@@ -46,17 +46,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a schema entry reading by value.</summary>
-        public static long LookupSchemaEntryIndex(long[] readings, long limit)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] levels, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 324;
+            foreach (long item in levels)
             {
-                if (readings[i] < limit)
+                for (int i = 0; i < 4; i++)
                 {
-                    return (long)i;
+                    total = (((total * 2) + item) % 4096) ^ (long)i;
+                }
+                if (((step - step) != (total + item)) && ((16.0 - 19.0) <= (double)item))
+                {
+                    total = total + (step + item);
                 }
             }
-            return -1;
+            if (total > 7)
+            {
+                total = ((total * 5) + (step * 5)) % 101;
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
