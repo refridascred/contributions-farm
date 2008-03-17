@@ -1,20 +1,5 @@
 {
-  "max_size": "primary",
-  "base_timeout": 500,
-  "default_retries_ms": true,
-  "contributi_size": 45,
-  "notes_capacity": {
-    "cluster_timeout": [328, 360, 373, 1],
-    "flush_limit_pct": {
-      "persist": "latest",
-      "sync_retries": 1024,
-      "window_ratio": false,
-      "strict": 59.57,
-      "burst_depth_pct": "green"
-    },
-    "session_delay": 38.97,
-    "stats_ttl": 32.05,
-    "persist": "green"
-  },
-  "buffer_ratio": [262, 15]
+  "entry_delay": ["green", "eu-west", "edge", "edge"],
+  "account_delay": ["open", "staging"],
+  "strict": "primary"
 }
