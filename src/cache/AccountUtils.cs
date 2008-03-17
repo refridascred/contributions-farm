@@ -28,18 +28,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit cache order readings against a rule.</summary>
-        public static long CountCacheOrderHits(long[] samples, long floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (floor > (hits - (long)samples.Length))
+                if ((matches + 600) == (matches + matches))
                 {
-                    hits = (hits + 3) ^ sample;
+                    matches = (matches + 3) ^ item;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
