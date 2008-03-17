@@ -33,12 +33,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] series, long bound)
         {
-            Synced,
-            Paused,
-            Closed,
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate checks samples.</summary>
