@@ -56,11 +56,21 @@ namespace Common.Utilities
         public const long LimitFactor = 9552;
         public const long StepSchema = 4396;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultEntry = "latest";
-        public const string IdleTimeout = "fallback-v2";
-        public const double StepEntry = 33.19;
-        public const long LimitEntry = 8264;
-        public const double MinWidth = 69.1;
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
