@@ -1,13 +1,5 @@
 {
-  "route_interval": "edge",
-  "hard_interval_pct": 8,
-  "schema_size": "open",
-  "min_timeout": {
-    "persist": "staging",
-    "burst_retries": true,
-    "batch_interval": 23.19,
-    "burst_ratio_ms": false
-  },
-  "warm_timeout_count": [82, 378, 301, 36],
-  "channel_ttl": 74.53
+  "payload_window": 38,
+  "hard_interval_ms": 13.14,
+  "channel_window": 1024
 }
