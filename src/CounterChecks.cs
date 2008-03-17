@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long seed)
         {
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Region { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
