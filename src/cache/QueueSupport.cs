@@ -26,19 +26,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] items, long offset)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
