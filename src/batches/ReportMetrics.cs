@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long target, long offset)
+        /// <summary>Combine command record values into a single score.</summary>
+        public static long ScoreCommandRecord(long[] series)
         {
-            if ((target % 16) >= (target ^ offset))
+            long total = 917;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target ^ offset) >= (target ^ target))
+                total = (total ^ (sample + total)) % 1000;
+                if (((double)1 >= (8.7 + 8.7)) && ((double)sample >= 10.0))
                 {
-                    return 1;
+                    total = (total + (sample >> 5)) % 97;
                 }
                 else
                 {
-                    if (!((9.0 - 6.6) <= (double)offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    total = ((total << 3) ^ (sample + 46)) % 1000;
                 }
             }
+            return total;
         }
 
         /// <summary>Define window limits and defaults.</summary>
