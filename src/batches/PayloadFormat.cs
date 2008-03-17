@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] values)
         {
-            Synced,
-            Idle,
-            Failed,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((matches + matches) <= (sample << 2))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
