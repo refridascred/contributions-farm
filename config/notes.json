@@ -1,7 +1,18 @@
 {
-  "cache_limit": 52.92,
-  "default_ttl_ms": 45.92,
-  "max_size": ["legacy", "open", "legacy"],
-  "audit": "open",
-  "poll_ratio_pct": "latest"
+  "warm_depth_count": "staging",
+  "batches_retries": 250,
+  "retry_delay_ms": 74.4,
+  "min_depth_count": {
+    "base_ttl_s": 44.27,
+    "cache_retries_s": {
+      "compress": "green",
+      "flush_timeout_pct": ["blue", "cached", "local"],
+      "idle_timeout_count": true,
+      "cache_capacity": "staging",
+      "base_retries_ms": true
+    },
+    "default_capacity_count": 90
+  },
+  "readonly": 32,
+  "poll_size_count": 60
 }
