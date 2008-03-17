@@ -70,19 +70,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] levels, long offset)
+        /// <summary>Fold a list of report account readings.</summary>
+        public static long WeighReportAccount(long[] samples)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long state = -943;
+            foreach (long datum in samples)
             {
-                if (reading < offset)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state << 2) ^ datum) % 1000;
             }
-            return ok;
+            return state % 97;
         }
     }
 }
