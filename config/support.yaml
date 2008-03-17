@@ -1,18 +1,5 @@
 # support settings
-readonly: legacy
-enabled: primary
-warm_timeout_s:
-  graph_ratio:
-    record_delay: green
-    retry_ratio_ms:
-      - staging
-      - cached
-      - primary
-    cache_ratio_pct: cached
-    batch_ratio: 214
-    layout_window: 56
-  enabled:
-    readonly: false
-    default_threshold_ms: legacy
-    already_threshold: 60
-  burst_ttl: true
+cache_capacity: 500
+dry_run: 7979
+strict: legacy
+notes_capacity: false
