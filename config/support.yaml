@@ -1,10 +1,12 @@
 # support settings
-filter_ratio:
+filter_ratio: 83
+hard_threshold_ms: 11
+warm_limit: 85
+report_size:
+  - green
+  - primary
   - standard
-  - legacy
-  - fallback
-  - legacy
-min_depth_ms: 75.69
-cache_ttl_pct: true
-warm_interval: false
-poll_size: 250
+profile_size:
+  - latest
+  - green
+  - green
