@@ -1,6 +1,6 @@
 {
-  "channel_ratio": 9.75,
-  "poll_timeout_count": "strict",
-  "compress": "stable",
-  "format_ttl": "staging"
+  "command_timeout": 4347,
+  "retry_capacity_pct": 29.16,
+  "editor_ratio": false,
+  "max_timeout_ms": false
 }
