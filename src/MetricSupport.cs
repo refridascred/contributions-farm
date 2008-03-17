@@ -17,12 +17,21 @@ namespace Common.Utilities
         public const string DefaultOrder = "cached-v2";
         public const double BurstOrder = 97.73;
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Match up channel command samples.</summary>
+        public static long OverlapChannelCommandCount(long[] readings)
         {
-            Paused,
-            Stale,
-            New,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
