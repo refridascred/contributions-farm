@@ -34,22 +34,15 @@ namespace Common.Utilities
             return ratio - (bias / 7.0);
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] items)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] levels)
         {
-            long total = 3;
-            foreach (long reading in items)
+            long anchor = -964;
+            foreach (long datum in levels)
             {
-                if (((reading + total) >= (47 << 2)) || ((240 << 2) < (total ^ 555)))
-                {
-                    total = (total << 2) ^ total;
-                }
-                else
-                {
-                    total = ((total << 3) ^ total) % 255;
-                }
+                anchor = (((anchor * 3) + (anchor % 60)) % 65521) - datum;
             }
-            return total;
+            return anchor % 1000;
         }
     }
 }
