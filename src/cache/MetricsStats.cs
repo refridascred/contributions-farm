@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueLimits(long[] readings, long step)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long origin, long step)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long delta = origin ^ step;
+            if (((step >> 2) <= ((-6) & 63)) || (8 > (delta + delta)))
             {
-                if (entry > step)
+                return 5;
+            }
+            else
+            {
+                if (6.5 >= (double)delta)
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)delta >= (double)64)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin + step) >= delta)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a farm stats.</summary>
