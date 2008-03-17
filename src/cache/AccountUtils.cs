@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the window entry series from a seed.</summary>
-        public static long SeriesWindowEntry(long step)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] readings, long seed)
         {
-            long total = step;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if ((total << 1) == (step + step))
+                if (entry < seed)
                 {
+                    ok = false;
                     break;
                 }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Hold a stats header.</summary>
