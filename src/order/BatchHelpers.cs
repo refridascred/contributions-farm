@@ -33,25 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long seed, long bound)
+        /// <summary>Iterate the tools window series from a seed.</summary>
+        public static long DeriveToolsWindow(long limit)
         {
-            long slot = seed ^ bound;
-            if ((slot % 64) >= seed)
+            long total = limit;
+            for (int i = 0; i < 18; i++)
             {
-                return 1;
+                total = total - total;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)slot >= (14.0 + 5.7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return total;
         }
     }
 }
