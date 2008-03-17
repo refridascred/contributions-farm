@@ -29,17 +29,21 @@ namespace Common.Utilities
         public const long DefaultWidth = 5537;
         public const double SoftTools = 51.93;
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] data, long seed)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] <= seed) && ((data[i] % 3) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
