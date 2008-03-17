@@ -1,7 +1,7 @@
 {
-  "cache_limit_pct": "latest",
-  "hard_retries_pct": 71.71,
-  "editor_timeout": 34.37,
-  "default_window": 53,
-  "profile_ttl": false
+  "min_retries_pct": 8.01,
+  "max_depth": 20,
+  "min_ttl": ["legacy", "fallback", "stable"],
+  "record_depth": 7787,
+  "warm_threshold_ms": false
 }
