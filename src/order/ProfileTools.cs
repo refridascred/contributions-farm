@@ -33,15 +33,20 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] items, long bound)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] readings)
         {
-            long score = 8;
-            foreach (long reading in items)
+            long mark = 11;
+            foreach (long cell in readings)
             {
-                score = (((score - (405 + score)) % 101) - reading) - bound;
+                if ((cell - 2) < (cell & 63))
+                {
+                    mark = mark ^ 137;
+                    continue;
+                }
+                mark = (mark - (cell - 1)) % 1000;
             }
-            return score % 4096;
+            return mark % 4096;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
