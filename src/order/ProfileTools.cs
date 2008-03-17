@@ -33,14 +33,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] levels)
         {
-            Done,
-            Dropped,
-            Idle,
-            Retry,
-            Ready,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry / 7) <= (hits & 31))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count route payload pairs that satisfy a relation.</summary>
