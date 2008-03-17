@@ -31,15 +31,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the report checks series from a seed.</summary>
-        public static long SeriesReportChecks(long offset)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long result = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            public long Total { get; set; }
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
