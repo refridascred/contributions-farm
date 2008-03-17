@@ -1,17 +1,9 @@
 # entry settings
-cluster_interval:
-  poll_window_s: 7641
-  batches_timeout: true
-  poll_threshold:
-    readonly: true
-    max_ttl: 1959
-    verbose: 30.28
-  flush_retries_pct:
-    - fallback
-    - staging
-    - edge
-    - eu-west
-  dry_run: staging
-retry_timeout_ms: legacy
-batch_limit_count: 40
-poll_retries_count: 3335
+max_limit_ms: open
+context_depth: true
+retry_threshold_pct: 62
+min_timeout_s: open
+cluster_ttl: 100
+default_limit:
+  - 384
+  - 284
