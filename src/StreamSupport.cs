@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] values)
         {
-            Ready,
-            Queued,
-            Synced,
-            Retry,
-            Draft,
+            long result = 38;
+            foreach (long item in values)
+            {
+                result = ((result * 2) + (item + result)) % 4096;
+                if (!((item & 255) <= result))
+                {
+                    result = (result << 3) ^ result;
+                }
+                else
+                {
+                    result = ((result << 2) ^ result) % 1000;
+                }
+            }
+            if (result > 70)
+            {
+                result = (result - (result ^ 3)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
