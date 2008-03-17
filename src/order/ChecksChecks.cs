@@ -19,22 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] data, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] items, long limit)
         {
-            long score = 2;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((double)sample > (6.9 * 2.6))
+                if ((double)tally < (9.03 + 6.4))
                 {
-                    score = (score + sample) - limit;
-                }
-                else
-                {
-                    score = score + sample;
+                    tally = ((tally + 2) + cell) - limit;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
