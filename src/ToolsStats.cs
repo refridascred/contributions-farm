@@ -52,12 +52,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 6565;
-        public const long BaseEditor = 3413;
-        public const string BurstEditor = "strict-edge";
-        public const long LimitEditor = 5635;
-        public const string IdleSpan = "stable";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheChecks = "standard-1";
+        public const long RetryBudget = 2407;
+        public const long BurstSize = 9157;
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
