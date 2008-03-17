@@ -69,13 +69,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Synced,
-            Dropped,
-            Stale,
-            Ready,
+            public double Size { get; set; }
+            public bool Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
