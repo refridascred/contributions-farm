@@ -66,19 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] series, long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] series)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (entry <= seed)
+                if (hits >= (item - hits))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
