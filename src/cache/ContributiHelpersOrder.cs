@@ -13,21 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] readings)
+        /// <summary>Audit buffer notes readings against a rule.</summary>
+        public static long MeasureBufferNotesMatches(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((310 / 4) >= (hits << 2))
                 {
-                    if ((readings[i] ^ readings[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) + sample;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the already kind values.</summary>
