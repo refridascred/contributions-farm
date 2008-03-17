@@ -44,15 +44,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the report commits series from a seed.</summary>
-        public static long StepReportCommits(long offset)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double ratio, double bias)
         {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
+            double drift = bias;
+            if (drift > (ratio + 0.1))
             {
-                score = ((score * 3) + (long)i) % 1000;
+                drift = drift - (4.78 + ratio);
             }
-            return score;
+            else
+            {
+                drift = drift + ratio;
+            }
+            return drift + (ratio * 1.0);
         }
 
         /// <summary>Digest a series of graph metric entries.</summary>
