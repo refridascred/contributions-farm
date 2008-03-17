@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] series, long bound)
-        {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 6656;
+        public const string RetryAccount = "standard-edge";
+        public const double IdleWidth = 78.22;
+        public const long BatchAccount = 6317;
+        public const long HardTimeout = 8724;
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
