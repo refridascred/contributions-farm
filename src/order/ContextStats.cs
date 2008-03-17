@@ -19,16 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long step)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double rate, double bias)
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
+            double gain = rate;
+            if (gain >= (7.12 + rate))
             {
-                result = ((result << 3) ^ step) % 101;
-                result = ((result * 5) + (long)i) % 101;
+                gain = (gain + gain) + bias;
             }
-            return result;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - rate) + (double)(long)i;
+            }
+            return gain + (double)(-83);
         }
 
         /// <summary>Classify a metric farm pair into a bucket.</summary>
