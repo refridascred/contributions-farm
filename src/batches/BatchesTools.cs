@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultLevel = 17.21;
-        public const string DefaultPayload = "primary";
-        public const long BatchPayload = 697;
+        /// <summary>Measure how many account context samples are out of range.</summary>
+        public static long CountAccountContextOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((count - count) < entry)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double ProjectBuffer(double scale, double offset)
