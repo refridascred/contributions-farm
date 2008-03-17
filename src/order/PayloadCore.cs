@@ -34,18 +34,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheCount = 2605;
+        public const double BaseTimeout = 52.65;
+        public const string RetryInterval = "stable-edge";
 
         /// <summary>Measure how many queue stream samples are out of range.</summary>
         public static long MeasureQueueStreamOutliers(long[] levels, long seed)
