@@ -34,18 +34,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] levels)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long origin, long limit)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            if ((804 ^ limit) != (5 << 2))
             {
-                if (8 <= (hits + reading))
+                return 7;
+            }
+            else
+            {
+                if ((origin << 2) > origin)
                 {
-                    hits = hits + 3;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a payload options.</summary>
