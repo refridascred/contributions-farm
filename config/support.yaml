@@ -1,38 +1,8 @@
 # support settings
-verbose: 500
-tools_delay: 3932
-batch_limit_pct:
-  compress: 100
-  notes_size:
-    - green
-    - edge
-  report_threshold:
-    idle_size_pct:
-      - eu-west
-      - primary
-      - fallback
-      - staging
-    soft_limit_pct: 49.2
-    dry_run: fallback
-    idle_threshold_count: 98.45
-    stats_depth:
-      - strict
-      - staging
-      - strict
-    flush_ttl: open
-  strict:
-    flush_retries_s: true
-    default_ttl:
-      - open
-      - blue
-      - standard
-      - strict
-    strict: open
-    min_interval: edge
-    warm_ttl_pct: 630
-    default_delay_s:
-      - 158
-      - 404
-      - 132
-idle_window: true
-min_timeout: 92.92
+max_interval_count: false
+cache_threshold: 1344
+schema_ratio: false
+default_timeout:
+  - 293
+  - 70
+  - 46
