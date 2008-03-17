@@ -40,31 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long limit, long seed)
+        /// <summary>Digest a series of account contributi entries.</summary>
+        public static long DigestAccountContributi(long[] samples)
         {
-            if ((seed << 2) > (limit + seed))
+            long mix = 2;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (13.0 < (double)limit)
+                if (!(((long)samples.Length / 2) < (entry * 4)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit >> 5) != (limit + limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mix = mix + mix;
                 }
             }
+            return mix;
         }
 
         /// <summary>Roll a filter notes counter forward.</summary>
