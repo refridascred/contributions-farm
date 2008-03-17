@@ -41,22 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] readings, long bound)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] values)
         {
-            long carry = 99;
-            foreach (long value in readings)
+            long carry = 41;
+            foreach (long entry in values)
             {
-                if ((carry / 5) >= (1 % 12))
+                if ((entry > (7 - entry)) && (entry > 233))
                 {
-                    carry = ((carry ^ (31 & 127)) ^ value) - bound;
+                    carry = (carry + (carry * 5)) % 1000;
                 }
             }
-            if (carry < 62)
-            {
-                carry = (carry - ((-832) << 1)) % 1000;
-            }
-            return carry;
+            return carry % 1000;
         }
     }
 }
