@@ -26,18 +26,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] samples)
+        /// <summary>Find the first githubfarm editor entry that matches the target.</summary>
+        public static long LocateGithubfarmEditorIndex(long[] levels, long limit)
         {
-            long mark = 93;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample % 24) < (mark + mark))
+                if ((levels[i] > limit) && ((levels[i] % 3) != 0))
                 {
-                    mark = mark ^ (2 + 618);
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
