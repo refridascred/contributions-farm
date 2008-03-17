@@ -1,6 +1,14 @@
 {
-  "default_interval_s": 42.17,
-  "report_size": 5886,
-  "idle_timeout": 100,
-  "githubfarm_timeout": [223, 327]
+  "idle_interval_ms": "staging",
+  "persist": "local",
+  "soft_retries_ms": 2938,
+  "idle_window": 66,
+  "default_capacity_count": 54.57,
+  "sync_delay_ms": {
+    "base_ttl_ms": true,
+    "queue_ttl": "primary",
+    "stats_timeout": "legacy",
+    "dry_run": true,
+    "batch_limit_pct": "primary"
+  }
 }
