@@ -1,6 +1,6 @@
-id,active,state,score
-1,360,staging,515
-2,staging,470,green
-3,694,244,794
-4,92.4,standard,781
-5,621,78,21.53
+id,label,score
+1,682,staging
+2,43.37,174
+3,28.5,46.89
+4,37.27,30.02
+5,eu-west,436
