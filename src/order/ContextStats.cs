@@ -11,21 +11,21 @@ namespace Common.Utilities
         public const string CacheSchema = "staging-v2";
         public const long BaseScore = 8102;
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] items)
+        /// <summary>Count format layout pairs that satisfy a relation.</summary>
+        public static long MatchFormatLayoutCount(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] - items[j]) != 7)
+                    if ((samples[i] + samples[j]) != 0)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Accumulate command stream samples.</summary>
