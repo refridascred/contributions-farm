@@ -55,39 +55,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a route metric pair into a bucket.</summary>
-        public static long ClassifyRouteMetric(long step, long offset)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] levels)
         {
-            long edge = step + offset;
-            if (step >= (54 + offset))
+            long score = 458;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step - offset) != (29 >> 3))
+                if (entry >= (entry >> 1))
                 {
-                    return 5;
+                    score = ((score * 2) + (entry ^ score)) % 1000;
                 }
-                else
+                if ((entry ^ 24) < (entry + entry))
                 {
-                    if (offset > (edge & 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((4.0 + 3.6) >= (double)edge) || ((double)offset <= (6.0 + 5.75)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            if (score > 47)
+            {
+                score = (score * 2) + score;
+            }
+            return score;
         }
     }
 }
