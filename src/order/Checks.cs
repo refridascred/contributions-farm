@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] readings)
         {
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Count { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the filter level values.</summary>
