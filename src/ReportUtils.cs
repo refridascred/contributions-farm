@@ -26,24 +26,17 @@ namespace Common.Utilities
         public const string MinTools = "alpha";
         public const long HardTools = 1000;
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long step)
+        /// <summary>Locate a cache tools reading by value.</summary>
+        public static long LocateCacheToolsIndex(long[] items, long floor)
         {
-            long mix = step;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (mix >= (step ^ step))
+                if ((items[i] == floor) && ((items[i] % 5) == 0))
                 {
-                    mix = (mix ^ (long)i) % 65521;
-                    continue;
+                    return (long)i;
                 }
-                if (((double)(long)i < (1.97 - 20.0)) || ((mix - step) < step))
-                {
-                    mix = (mix - (mix >> 5)) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
