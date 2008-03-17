@@ -49,12 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            public double Owner { get; set; }
-            public bool Count { get; set; }
-            public bool Token { get; set; }
+            New,
+            Ready,
+            Active,
+            Pending,
         }
 
         /// <summary>Locate a notes reading by value.</summary>
