@@ -103,38 +103,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a already buffer value against two limits.</summary>
-        public static long GradeAlreadyBuffer(long seed, long step)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double weight, double span)
         {
-            if (step > (step + seed))
+            double bias = weight;
+            if (bias >= (weight * 9.0))
             {
-                return 4;
+                bias = bias + (span / 6.0);
             }
-            else
-            {
-                if ((double)seed > (double)82)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed % 12) > (seed % 60))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step + seed) >= seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return bias + (span - weight);
         }
     }
 }
