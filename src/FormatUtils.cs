@@ -50,19 +50,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine cluster route values into a single score.</summary>
-        public static long DigestClusterRoute(long[] series)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long mark = 3;
-            foreach (long entry in series)
-            {
-                mark = ((mark << 2) ^ (entry << 1)) % 97;
-            }
-            if (mark < 7)
-            {
-                mark = (mark + 324) % 101;
-            }
-            return mark % 97;
+            public double Offset { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many token route samples are out of range.</summary>
