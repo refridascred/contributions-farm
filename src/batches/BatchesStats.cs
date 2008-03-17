@@ -44,16 +44,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long step)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] samples, long offset)
         {
-            long total = step;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total * 5) + (total & 255)) % 97;
-                total = ((total * 4) + (long)i) % 4093;
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
