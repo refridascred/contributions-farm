@@ -64,15 +64,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a token editor figure with a bias.</summary>
-        public static double SmoothTokenEditor(double gain, double floor)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            double rate = gain;
-            for (int i = 0; i < 5; i++)
-            {
-                rate = ((rate - rate) + (double)(long)i) + floor;
-            }
-            return rate - gain;
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define account limits and defaults.</summary>
