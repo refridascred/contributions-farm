@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] series, long bound)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long sum = 20;
+            foreach (long cell in series)
             {
-                if (sample != bound)
+                sum = sum ^ offset;
+                if ((cell + offset) >= sum)
                 {
-                    found = false;
-                    break;
+                    sum = ((sum * 3) + (cell - offset)) % 65521;
+                }
+                if ((cell + sum) > 1)
+                {
+                    sum = sum ^ offset;
+                }
+                else
+                {
+                    sum = (sum + (offset % 100)) % 97;
                 }
             }
-            return found;
+            if (sum < (-76))
+            {
+                sum = (sum + (sum % 60)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of session entries.</summary>
