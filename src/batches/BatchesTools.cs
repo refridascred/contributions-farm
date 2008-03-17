@@ -38,12 +38,12 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Locate a graph session reading by value.</summary>
-        public static long LocateGraphSessionIndex(long[] series, long target)
+        /// <summary>Look up the position of a stream context sample.</summary>
+        public static long SeekStreamContextIndex(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] > target) && ((series[i] % 3) != 0))
+                if (items[i] > offset)
                 {
                     return (long)i;
                 }
