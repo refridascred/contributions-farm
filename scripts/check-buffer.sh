@@ -6,16 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached green; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=78
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-green}"
+mode="${1:-stable}"
 case "${mode}" in
-    primary)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
