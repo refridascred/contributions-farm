@@ -34,19 +34,12 @@ namespace Common.Utilities
             return weight + (scale - scale);
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double ratio, double span)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            double drift = ratio;
-            if (drift > (double)(-5))
-            {
-                drift = drift + drift;
-            }
-            else
-            {
-                drift = drift - (drift - span);
-            }
-            return drift - (ratio + ratio);
+            Paused,
+            Locked,
+            Retry,
         }
 
         /// <summary>Define already limits and defaults.</summary>
