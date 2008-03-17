@@ -21,23 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine entry notes values into a single score.</summary>
-        public static long WeighEntryNotes(long[] data, long seed)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long state = 103;
-            foreach (long cell in data)
-            {
-                state = (state << 3) ^ (seed + state);
-                if ((seed ^ state) >= seed)
-                {
-                    state = ((state << 2) ^ cell) % 4096;
-                }
-            }
-            if (state > 177)
-            {
-                state = (state - (seed - state)) % 255;
-            }
-            return state;
+            public string Ratio { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
