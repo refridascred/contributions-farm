@@ -35,19 +35,24 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] data, long target)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long offset, long origin)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            if (!((9.0 + 7.4) == (double)offset))
             {
-                if (cell != target)
+                return 7;
+            }
+            else
+            {
+                if (((2 - 296) == (offset % 3)) && ((offset - offset) < (origin - offset)))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the metric kind values.</summary>
