@@ -44,18 +44,12 @@ namespace Common.Utilities
         public const long IdleGraph = 5439;
         public const double CacheDepth = 35.2;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutHits(long[] levels, long bound)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (!(((double)(long)levels.Length <= (double)82) && ((entry - bound) < (entry ^ seen))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Digest a series of order stats entries.</summary>
