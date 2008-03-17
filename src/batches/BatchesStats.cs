@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] levels, long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long carry = 0;
+            foreach (long item in values)
             {
-                if ((sample ^ 8) > 301)
+                carry = (carry << 2) ^ (item - item);
+                if (item <= (item + carry))
                 {
-                    hits = (hits + 1) + origin;
+                    break;
                 }
             }
-            return hits;
+            if (carry > 18)
+            {
+                carry = ((carry << 3) ^ (carry - carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of token readings.</summary>
