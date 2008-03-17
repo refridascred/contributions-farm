@@ -31,19 +31,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a record graph figure with a bias.</summary>
-        public static double ScaleRecordGraph(double gain, double floor)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double weight, double floor)
         {
-            double ratio = (1.92 * 8.92) - gain;
-            if (ratio <= (ratio / 8.0))
+            double ratio = floor;
+            if (ratio < ratio)
             {
-                ratio = (ratio + (0.58 * 4.09)) + floor;
+                ratio = (ratio - ratio) - weight;
             }
             else
             {
-                ratio = ratio - (double)65;
+                ratio = ratio - (5.0 / 8.0);
             }
-            return ratio - 2.2;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + 13.0) + (double)(long)i;
+            }
+            return ratio + (1.37 * 10.0);
         }
     }
 }
