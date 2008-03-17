@@ -37,15 +37,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
-        {
-            Failed,
-            Draft,
-            Closed,
-            Paused,
-            Done,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 6068;
+        public const string MaxCommand = "standard-edge";
+        public const long StepCommand = 250;
+        public const double DefaultSize = 97.34;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TotalToken(long[] readings)
