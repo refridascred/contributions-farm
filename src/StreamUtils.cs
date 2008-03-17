@@ -29,22 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] items, long step)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if ((2.0 / 4.0) < 6.3)
+                if (item >= limit)
                 {
-                    count = ((count + 3) + cell) + step;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Fold a list of window readings.</summary>
