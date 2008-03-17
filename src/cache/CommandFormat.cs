@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] data, long target)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Stamp { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Match up tools samples.</summary>
