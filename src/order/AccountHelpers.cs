@@ -38,13 +38,13 @@ namespace Common.Utilities
         public const string BaseCount = "cached-edge";
         public const double LimitLevel = 18.17;
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            Failed,
+            Draft,
             Queued,
-            Closed,
-            Locked,
+            New,
+            Idle,
             Pending,
         }
 
