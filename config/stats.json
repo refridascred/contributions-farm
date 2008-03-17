@@ -1,13 +1,7 @@
 {
-  "idle_size_pct": ["blue", "edge", "fallback"],
-  "poll_timeout_s": "blue",
-  "idle_window_ms": {
-    "account_interval": "cached",
-    "soft_depth": "standard",
-    "base_depth_ms": "legacy",
-    "sync_threshold_pct": 63.21,
-    "schema_interval": "green",
-    "readonly": 100
-  },
-  "burst_window_ms": 1413
+  "cache_limit_pct": "latest",
+  "hard_retries_pct": 71.71,
+  "editor_timeout": 34.37,
+  "default_window": 53,
+  "profile_ttl": false
 }
