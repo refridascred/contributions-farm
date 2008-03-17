@@ -70,24 +70,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long bound)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] data, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                long step = (score << 2) << 1;
-                if (step < score)
+                if ((data[i] > limit) && ((data[i] % 3) != 0))
                 {
-                    score = ((score << 3) ^ (step + 90)) % 65521;
+                    return (long)i;
                 }
-                if ((double)step != (double)(long)i)
-                {
-                    step = (step - step) % 1000;
-                }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
     }
 }
