@@ -73,21 +73,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] items)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] readings, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum >= origin)
                 {
-                    if ((items[i] + items[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
