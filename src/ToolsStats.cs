@@ -16,19 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] series, long origin)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] ^ values[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
