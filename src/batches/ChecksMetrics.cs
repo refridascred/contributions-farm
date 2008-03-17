@@ -41,13 +41,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Idle,
-            Locked,
-            Dropped,
-            Active,
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
