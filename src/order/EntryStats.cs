@@ -37,31 +37,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long step, long seed)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            if (!((step + seed) <= (seed + seed)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed > (5.29 * 6.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((seed << 3) > (624 + seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Active,
+            Stale,
+            Synced,
+            Failed,
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
