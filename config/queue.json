@@ -1,6 +1,6 @@
 {
-  "sync_threshold_pct": ["eu-west", "fallback", "edge", "legacy"],
-  "min_capacity_count": 15,
-  "hard_ratio": [446, 468, 178, 202],
-  "max_ratio_ms": 9
+  "entry_timeout": "latest",
+  "burst_interval_count": "local",
+  "stream_threshold": true,
+  "hard_ttl": 79.61
 }
