@@ -1,14 +1,5 @@
 {
-  "default_ttl_ms": false,
-  "token_capacity": "latest",
-  "contributi_capacity": 2952,
-  "idle_size_ms": {
-    "readonly": {
-      "flush_interval_count": 17.03,
-      "burst_limit_s": 7445,
-      "command_threshold": [70, 353]
-    },
-    "default_capacity": ["local", "edge", "green", "open"],
-    "poll_delay_count": "eu-west"
-  }
+  "default_interval_s": "stable",
+  "commits_timeout": 4453,
+  "flush_depth_ms": 500
 }
