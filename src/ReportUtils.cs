@@ -19,12 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftSize = "open-edge";
-        public const long StepTools = 6111;
-        public const long CacheBudget = 9601;
-        public const string MinTools = "alpha";
-        public const long HardTools = 1000;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] samples)
+        {
+            long result = 9;
+            foreach (long reading in samples)
+            {
+                result = (((result * 3) + result) % 101) ^ reading;
+            }
+            return result;
+        }
 
         /// <summary>Locate a cache tools reading by value.</summary>
         public static long LocateCacheToolsIndex(long[] items, long floor)
