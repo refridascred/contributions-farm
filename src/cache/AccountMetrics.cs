@@ -110,17 +110,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] items, long floor)
+        /// <summary>Check that every editor schema entry stays within the limit.</summary>
+        public static bool ValidateEditorSchemaRange(long[] items, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (items[i] < floor)
+                if (datum <= step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
