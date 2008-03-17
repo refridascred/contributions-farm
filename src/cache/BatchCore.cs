@@ -40,13 +40,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] data)
         {
-            Synced,
-            Paused,
-            Dropped,
-            New,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((reading << 1) <= (55 - reading))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
