@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Classify a entry support pair into a bucket.</summary>
+        public static long ClassifyEntrySupport(long offset, long limit)
         {
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            if ((offset / 3) >= (offset * 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((5.0 - 1.0) >= (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset - offset) < (limit + offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
