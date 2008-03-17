@@ -39,22 +39,12 @@ namespace Common.Utilities
         public const long BaseRatio = 8826;
         public const string MaxMetrics = "staging-1";
 
-        /// <summary>Audit queue checks readings against a rule.</summary>
-        public static long AuditQueueChecksMatches(long[] data, long limit)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (!((seen << 1) <= seen))
-                {
-                    seen = ((seen + 1) + reading) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public string Region { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the commits state values.</summary>
