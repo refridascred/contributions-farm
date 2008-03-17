@@ -41,18 +41,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many format session samples are out of range.</summary>
-        public static long CountFormatSessionOutliers(long[] samples, long limit)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (count < (datum / 4))
-                {
-                    count = (count + 3) - limit;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
