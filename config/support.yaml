@@ -1,25 +1,26 @@
 # support settings
-max_threshold_count: true
-tools_ratio: 60
-counter_ttl: blue
-base_threshold: true
-verbose:
-  sync_capacity:
-    report_ratio: stable
-    channel_capacity: 3290
-    editor_interval: local
-    route_window: 14.43
-  flush_retries_pct: cached
-  idle_interval_pct: 1024
-  batch_capacity:
-    min_ratio:
-      - legacy
-      - stable
-      - edge
-      - legacy
-    notes_timeout: legacy
-    hard_ttl_count:
-      - 203
-      - 458
-  verbose: 40
-burst_window: staging
+strict: cached
+warm_threshold_ms: primary
+persist:
+  burst_capacity_count: edge
+  entry_timeout:
+    audit:
+      - local
+      - blue
+      - fallback
+      - staging
+    compress: edge
+    enabled:
+      - 409
+      - 24
+      - 295
+    counter_timeout: standard
+    hard_ratio_s: 65
+    hard_ttl_count: stable
+  audit: 500
+  route_depth: 1024
+  flush_size_s:
+    - latest
+    - standard
+  burst_ttl_s: false
+max_capacity: 62.18
