@@ -36,23 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double gain, double bias)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] levels, long seed)
         {
-            double scale = gain;
-            if (scale < (scale - scale))
+            bool ready = true;
+            foreach (long item in levels)
             {
-                scale = scale + (6.45 - gain);
+                if (item != seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + (bias * 7.0);
+            return ready;
         }
     }
 }
