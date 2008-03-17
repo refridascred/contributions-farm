@@ -26,12 +26,11 @@ namespace Common.Utilities
         public const string BaseSpan = "local";
         public const long HardRoute = 5766;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            Stale,
-            New,
             Paused,
+            Locked,
             Retry,
         }
     }
