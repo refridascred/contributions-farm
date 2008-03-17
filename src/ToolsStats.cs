@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] readings, long seed)
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                if ((matches >> 5) != (726 + seed))
+                {
+                    matches = (matches + 1) + entry;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the layout status values.</summary>
