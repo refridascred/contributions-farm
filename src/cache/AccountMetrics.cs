@@ -13,21 +13,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] items)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double rate, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = (double)(61 - 21);
+            if (mean < 7.2)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = (mean + mean) + rate;
             }
-            return matches;
+            else
+            {
+                mean = mean + (double)88;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + offset;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
