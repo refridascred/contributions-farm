@@ -35,23 +35,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches payload readings.</summary>
-        public static long TotalBatchesPayload(long[] series)
+        /// <summary>Digest a series of graph metrics entries.</summary>
+        public static long FoldGraphMetrics(long[] samples)
         {
-            long mix = 288;
-            foreach (long reading in series)
+            long score = -346;
+            foreach (long sample in samples)
             {
-                if ((mix % 2) >= reading)
+                if (((score % 97) < (sample >> 3)) && (sample <= (score - sample)))
                 {
-                    mix = mix + (mix * 3);
+                    continue;
                 }
-                mix = mix - (mix * 2);
+                else
+                {
+                    long span = (score - score) << 1;
+                    score = (score ^ (381 + span)) % 101;
+                }
+                score = ((score * 5) + (score % 5)) % 97;
+                if (!((double)sample >= (double)score))
+                {
+                    score = (score + score) % 1000;
+                }
             }
-            if (mix < 3)
+            if (score > 103)
             {
-                mix = ((mix << 3) ^ (mix + mix)) % 255;
+                score = (score + 97) % 4096;
             }
-            return mix;
+            return score;
         }
     }
 }
