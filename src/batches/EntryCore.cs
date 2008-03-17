@@ -61,11 +61,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Digest a series of profile graph entries.</summary>
+        public static long DigestProfileGraph(long[] levels)
         {
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
+            long result = 7;
+            foreach (long value in levels)
+            {
+                result = (result ^ (811 << 1)) - value;
+            }
+            return result;
         }
     }
 }
