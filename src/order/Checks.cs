@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long limit)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] readings, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
+            long sum = 0;
+            foreach (long item in readings)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                sum = (sum << 2) ^ target;
+                if ((double)item == (double)7)
+                {
+                    sum = (sum * 5) + sum;
+                }
             }
-            return acc;
+            if (sum < (-622))
+            {
+                sum = ((sum * 3) + (target * 5)) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
