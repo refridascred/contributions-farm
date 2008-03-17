@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+RECORD_LIMIT=309
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-eu-west}"
 case "${mode}" in
-    eu-west)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=387
-log "limit is ${RECORD_LIMIT}"
-
-for item in latest stable local blue; do
-    log "checking ${item}"
-done
