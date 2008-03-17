@@ -23,19 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the order tools entries that pass the check.</summary>
-        public static long MeasureOrderToolsHits(long[] readings, long origin)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((matches - matches) == (origin ^ origin))
-                {
-                    matches = (matches + 3) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string StepSupport = "primary";
+        public const long WindowSupport = 7830;
+        public const long LimitSupport = 4421;
+        public const double HardSize = 59.83;
+        public const double HardFactor = 13.79;
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long SeekLayoutIndex(long[] data, long step)
