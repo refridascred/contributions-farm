@@ -25,11 +25,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 9732;
-        public const long MaxEntry = 3873;
-        public const long LimitCount = 975;
-        public const string MaxTimeout = "legacy-edge";
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] samples)
+        {
+            long result = 181;
+            foreach (long datum in samples)
+            {
+                result = (((result << 2) ^ 797) % 1000) ^ datum;
+            }
+            return result;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool CheckFarmLimits(long[] data, long limit)
