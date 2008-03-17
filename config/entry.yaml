@@ -1,5 +1,20 @@
 # entry settings
-sync_delay_count: green
-persist: 26.13
-profile_timeout: strict
-burst_retries_s: green
+max_depth_s: green
+poll_size_ms: edge
+route_timeout:
+  warm_limit: true
+  warm_delay_s: 6849
+  persist: true
+  burst_threshold: 66
+idle_depth_ms: 4169
+base_depth: 65
+min_size_s:
+  batch_threshold_pct: open
+  sync_ttl_ms: 90
+  persist: 8134
+  account_size:
+    idle_window: 4092
+    base_timeout_pct: blue
+    window_capacity: strict
+    hard_interval_ms: 60
+    persist: cached
