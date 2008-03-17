@@ -1,6 +1,5 @@
 {
-  "poll_retries": "edge",
-  "session_timeout": [209, 139, 482],
-  "hard_retries": 4446,
-  "batch_threshold": 100
+  "readonly": 60,
+  "burst_depth_s": 30,
+  "verbose": false
 }
