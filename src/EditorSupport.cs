@@ -15,23 +15,10 @@ namespace Common.Utilities
         public const double SoftFilter = 7.23;
         public const double HardLevel = 72.73;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] readings, long limit)
-        {
-            long carry = 8;
-            foreach (long item in readings)
-            {
-                if ((limit * 3) >= (carry + 88))
-                {
-                    carry = (carry ^ (item - item)) % 97;
-                }
-            }
-            if (carry > 27)
-            {
-                carry = ((carry * 5) + (73 >> 1)) % 255;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryCluster = "cached-v2";
+        public const long IdleRatio = 9219;
+        public const long CacheCluster = 1910;
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long MatchNotesCount(long[] levels)
