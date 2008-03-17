@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many schema filter samples are out of range.</summary>
-        public static long AuditSchemaFilterGaps(long[] data, long limit)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if (tally >= (limit - sample))
+                if (sample != offset)
                 {
-                    tally = tally + 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Locate a format reading by value.</summary>
