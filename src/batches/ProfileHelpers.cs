@@ -50,13 +50,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Locate a token schema reading by value.</summary>
+        public static long LocateTokenSchemaIndex(long[] values, long target)
         {
-            public double Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
