@@ -1,8 +1,6 @@
 # support settings
-metrics_depth:
-  - 451
-  - 173
-verbose: 86.52
-enabled: false
-payload_interval: 49.9
-burst_capacity_s: 53.74
+record_ttl: 82
+base_delay: staging
+contributi_size: 60
+idle_retries_s: 3
+cluster_size: 9
