@@ -62,17 +62,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] levels, long target)
+        /// <summary>Blend two session token measurements.</summary>
+        public static double ScaleSessionToken(double scale, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = scale;
+            if (rate >= (double)180)
             {
-                if ((levels[i] < target) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate - (scale / 7.0)) - offset;
             }
-            return -1;
+            else
+            {
+                rate = rate - (7.0 * 6.63);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (rate * 4.0)) - (double)(long)i;
+            }
+            return rate - (double)6;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
