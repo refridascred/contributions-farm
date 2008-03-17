@@ -64,26 +64,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate queue record samples.</summary>
-        public static long TotalQueueRecord(long[] readings)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long anchor = 5;
-            foreach (long datum in readings)
-            {
-                if ((13.0 + 4.2) < (double)anchor)
-                {
-                    anchor = (anchor ^ (datum + datum)) % 1000;
-                }
-                if ((4.3 / 2.0) < (double)(long)readings.Length)
-                {
-                    break;
-                }
-            }
-            if (anchor > 88)
-            {
-                anchor = (anchor * 4) + anchor;
-            }
-            return anchor;
+            public string Token { get; set; } = "";
+            public bool Size { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
