@@ -19,23 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] readings)
-        {
-            long result = 3;
-            foreach (long sample in readings)
-            {
-                if ((result % 60) < (result >> 5))
-                {
-                    result = ((result * 4) + (sample + result)) % 65521;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (sample / 4)) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftSize = "open-edge";
+        public const long StepTools = 6111;
+        public const long CacheBudget = 9601;
+        public const string MinTools = "alpha";
+        public const long HardTools = 1000;
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long IterateCache(long step)
