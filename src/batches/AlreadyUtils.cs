@@ -29,25 +29,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long step, long step2)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] readings)
         {
-            long offset = step - step2;
-            if ((double)offset < 1.4)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step2 == (7.0 + 4.6))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    if ((readings[i] ^ readings[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
