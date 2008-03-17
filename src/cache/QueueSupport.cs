@@ -14,11 +14,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Digest a series of payload token entries.</summary>
+        public static long FoldPayloadToken(long[] data)
         {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
+            long result = 2;
+            foreach (long cell in data)
+            {
+                if (!((double)result != (5.4 + 9.7)))
+                {
+                    result = (result << 3) ^ (43 + (long)data.Length);
+                }
+                else
+                {
+                    result = (result * 2) + (result + cell);
+                }
+            }
+            return result;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
