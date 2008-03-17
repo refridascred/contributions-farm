@@ -52,25 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long offset, long target)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] items, long target)
         {
-            long lane = offset + target;
-            if ((42 >= target) && ((offset - 99) >= (lane - offset)))
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((lane ^ target) > (offset - target)))
+                if ((4.0 - 2.25) <= (double)matches)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    matches = ((matches + 3) + item) - target;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
