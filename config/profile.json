@@ -1,7 +1,16 @@
 {
-  "strict": "strict",
-  "route_ttl": 250,
-  "poll_timeout": true,
-  "filter_ttl": true,
-  "batches_delay": ["eu-west", "stable", "fallback"]
+  "poll_window_s": 68.65,
+  "default_window_pct": {
+    "enabled": "latest",
+    "format_timeout": 12.8,
+    "max_retries": true,
+    "audit": 63.9,
+    "default_retries": false
+  },
+  "counter_timeout": {
+    "editor_ratio": false,
+    "flush_threshold_s": 89,
+    "default_ratio_count": "edge",
+    "notes_depth": "primary"
+  }
 }
