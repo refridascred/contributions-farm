@@ -68,9 +68,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 5717;
-        public const double MaxSpan = 15.55;
-        public const string HardProfile = "primary-edge";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 5187;
+        public const long MinCluster = 7679;
+        public const long BatchCluster = 4898;
+        public const string StepCount = "legacy-edge";
     }
 }
