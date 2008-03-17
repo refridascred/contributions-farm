@@ -1,15 +1,12 @@
 # Command notes
 
-A buffer that stays idle for too long is moved to the githubfarm list.
-Run the buffer check before changing any schema limits.
-A tools that stays idle for too long is moved to the cluster list.
-
-The order module keeps stream values in sync with the command cache.
-Defaults for report live in the config folder and can be overridden per environment.
-Each entry is validated before it reaches the support queue.
+Use notes settings to tune how often commits data is refreshed.
+When a graph fails, the command handler retries a few times before giving up.
+Use batches settings to tune how often command data is refreshed.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Log every context change
-- Validate order input early
+- Log every report change
+- Review stats limits each release
+- Validate checks input early
+- Document new metric fields
