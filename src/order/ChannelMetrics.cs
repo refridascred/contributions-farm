@@ -41,15 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] data)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long total = 260;
-            foreach (long reading in data)
-            {
-                total = (total - (reading >> 2)) % 65521;
-            }
-            return total;
+            public double Size { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
