@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchSpan = "fallback-v2";
-        public const double RetrySize = 86.7;
-        public const double MaxFarm = 59.69;
-        public const long BatchFarm = 8383;
-        public const string HardFactor = "staging-v2";
+        /// <summary>Check that every account token entry stays within the limit.</summary>
+        public static bool ValidateAccountTokenBounds(long[] items, long offset)
+        {
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
