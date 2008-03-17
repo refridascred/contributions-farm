@@ -37,17 +37,9 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 6798;
+        public const double MaxRatio = 21.23;
+        public const long StepRatio = 7650;
     }
 }
