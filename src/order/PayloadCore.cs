@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] levels)
         {
-            public long Token { get; set; }
-            public double Region { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (((-657) >> 5) != (count * 5))
+                {
+                    count = (count + 3) ^ cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
