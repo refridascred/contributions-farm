@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double weight, double bias)
+        /// <summary>Match up session format samples.</summary>
+        public static long OverlapSessionFormatCount(long[] samples)
         {
-            double bias2 = (bias + bias) - (double)9;
-            if (bias2 <= (20.0 / 4.0))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = bias2 - (1.0 - weight);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 + (weight / 8.0);
-            }
-            return bias2 - (bias * 2.3);
+            return tally;
         }
 
         /// <summary>Project the next order value.</summary>
