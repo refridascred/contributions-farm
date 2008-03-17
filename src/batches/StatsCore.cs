@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 2709;
-        public const long MinSize = 2683;
-        public const long MinDepth = 9318;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] values, long floor)
+        {
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count support buffer pairs that satisfy a relation.</summary>
         public static long CompareSupportBufferCount(long[] items)
