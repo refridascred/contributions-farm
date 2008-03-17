@@ -79,15 +79,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long limit)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public double Level { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
