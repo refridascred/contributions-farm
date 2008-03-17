@@ -22,17 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] series, long step)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = -585;
+            foreach (long item in values)
             {
-                if (series[i] >= step)
+                acc = (acc ^ acc) % 97;
+                if ((bound ^ item) <= bound)
                 {
-                    return (long)i;
+                    acc = (acc ^ (bound & 127)) % 97;
                 }
             }
-            return -1;
+            if (acc > (-128))
+            {
+                acc = (acc + (42 ^ bound)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
