@@ -82,11 +82,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 8435;
-        public const long BaseGraph = 3522;
-        public const long DefaultScore = 9652;
-        public const long BurstSpan = 3390;
-        public const long BurstRatio = 2566;
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
