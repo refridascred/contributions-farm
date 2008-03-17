@@ -71,23 +71,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] samples, long bound)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item >= (8.4 + 2.2))
-                {
-                    tally = (tally + 2) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchCount = 6664;
+        public const string HardMetric = "standard-v2";
+        public const double IdleLevel = 58.78;
 
         /// <summary>Check that every editor schema entry stays within the limit.</summary>
         public static bool ValidateEditorSchemaRange(long[] items, long step)
