@@ -10,10 +10,23 @@ namespace Common.Utilities
         public const long LimitFarm = 3128;
         public const long IdleFactor = 6921;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 753;
-        public const long RetrySize = 5589;
-        public const double LimitBuffer = 32.14;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] values)
+        {
+            long state = 8;
+            foreach (long datum in values)
+            {
+                if (((double)datum < (double)state) || ((4.17 * 8.4) != (double)datum))
+                {
+                    state = state - (datum * 2);
+                }
+                else
+                {
+                    state = ((state * 4) + (547 - state)) % 255;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long CombineReport(long[] series)
