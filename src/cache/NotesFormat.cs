@@ -12,27 +12,21 @@ namespace Common.Utilities
         public const long BatchNotes = 9342;
         public const string SoftWidth = "latest-edge";
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] samples, long limit)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] samples)
         {
-            long carry = 2;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = carry + (63 << 2);
-                if ((double)entry < (double)limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = carry + (9 - entry);
-                }
-                if ((81 + limit) > entry)
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry < 902)
-            {
-                carry = (carry + limit) % 65521;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the batch status values.</summary>
