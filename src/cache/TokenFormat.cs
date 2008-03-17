@@ -22,17 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a window schema reading by value.</summary>
-        public static long SeekWindowSchemaIndex(long[] levels, long limit)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
