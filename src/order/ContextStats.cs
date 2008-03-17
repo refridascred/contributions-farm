@@ -43,32 +43,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long seed, long seed2)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long next = seed ^ seed2;
-            if ((seed % 24) >= (next >> 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((5.1 * 17.0) != (double)next)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((4.4 + 0.86) != (double)seed2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
