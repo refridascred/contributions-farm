@@ -1,4 +1,14 @@
 # entry settings
-batch_capacity: fallback
-soft_ttl_count: 53.82
-retry_depth_ms: 60
+token_window: primary
+batch_depth: 7114
+githubfarm_depth: 6244
+sync_timeout_s: edge
+hard_depth:
+  - 273
+  - 54
+  - 404
+batch_delay_ms:
+  - strict
+  - standard
+  - cached
+  - standard
