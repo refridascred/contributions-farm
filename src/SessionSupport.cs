@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a editor order sample.</summary>
-        public static long FindEditorOrderIndex(long[] levels, long step)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < step) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Locked,
+            Active,
+            Pending,
         }
 
         /// <summary>Validate entry cluster readings against a bound.</summary>
