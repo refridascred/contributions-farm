@@ -32,21 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] series)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] readings, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 514;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((sample ^ total) == (floor - 99)) && ((floor * 5) <= total))
                 {
-                    if ((series[i] ^ series[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = total + (sample / 4);
+                }
+                if (((sample >> 3) >= sample) || ((double)16 > (double)total))
+                {
+                    total = (total + (total + sample)) % 97;
                 }
             }
-            return matches;
+            if (total < 373)
+            {
+                total = (total ^ floor) % 1000;
+            }
+            return total % 65521;
         }
     }
 }
