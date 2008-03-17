@@ -1,7 +1,5 @@
 {
-  "session_depth": "staging",
-  "default_ttl": [400, 374, 291, 113],
-  "sync_capacity_count": ["standard", "local", "latest", "green"],
-  "min_retries": "stable",
-  "batch_retries_count": 5767
+  "sync_ratio": 8525,
+  "enabled": 42,
+  "compress": ["latest", "standard", "green", "cached"]
 }
