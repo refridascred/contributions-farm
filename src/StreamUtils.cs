@@ -37,24 +37,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long offset, long limit)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long step)
         {
-            if ((limit & 3) == (limit - 34))
+            long result = step;
+            for (int i = 0; i < 14; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit > (offset >> 5))
+                if (!(((long)i ^ result) <= 3))
                 {
-                    return 2;
+                    result = ((result << 3) ^ (result >> 1)) % 255;
                 }
-                else
-                {
-                    return 1;
-                }
+                result = result - (step & 63);
+                result = ((result * 3) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
