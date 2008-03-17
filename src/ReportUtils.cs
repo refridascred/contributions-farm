@@ -52,10 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string LimitCounter = "open";
-        public const long RetryCount = 316;
-        public const double MinCounter = 13.98;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + reading) >= (reading ^ seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BatchAccount = 2856;
