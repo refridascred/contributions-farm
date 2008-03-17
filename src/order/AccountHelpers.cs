@@ -39,17 +39,16 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] series, long origin)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
+                sum = ((sum << 2) ^ 98) % 4096;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
