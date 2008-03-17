@@ -19,17 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] values, long offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 3;
+            foreach (long sample in readings)
             {
-                if (values[i] < offset)
+                if ((result % 60) < (result >> 5))
                 {
-                    return (long)i;
+                    result = ((result * 4) + (sample + result)) % 65521;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (sample / 4)) % 97;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
