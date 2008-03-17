@@ -19,38 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a editor commits value against two limits.</summary>
-        public static long GradeEditorCommits(long seed, long seed2)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] series, long floor)
         {
-            if ((313 ^ seed) == (seed % 64))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (53 < (seed2 & 15))
+                if ((((seen - datum) > datum) || ((floor + datum) != (datum - 6))) && ((double)datum >= (3.6 / 3.0)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed / 3) >= (seed + seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((seed + seed) < (419 % 16)) || ((double)seed2 != (6.58 - 3.61)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
