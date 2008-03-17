@@ -20,22 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] values, long seed)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long score = 206;
-            foreach (long entry in values)
-            {
-                if ((entry * 4) == (entry % 5))
-                {
-                    score = ((score << 2) ^ (seed << 2)) % 65521;
-                }
-                else
-                {
-                    score = (score + (entry >> 5)) % 97;
-                }
-            }
-            return score % 4096;
+            Retry,
+            Closed,
+            Ready,
         }
 
         /// <summary>Locate a graph session reading by value.</summary>
