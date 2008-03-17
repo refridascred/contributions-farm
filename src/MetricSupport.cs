@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Adjust a context payload reading.</summary>
+        public static double ProjectContextPayload(double scale, double bias)
         {
-            public long Size { get; set; }
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public bool Score { get; set; }
+            double drift = (double)(8 - 0);
+            if (drift < scale)
+            {
+                drift = (drift + (double)376) + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (double)33) - (double)(long)i;
+            }
+            return drift - 3.7;
         }
 
         /// <summary>Accumulate report metric samples.</summary>
