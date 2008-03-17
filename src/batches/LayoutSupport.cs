@@ -27,19 +27,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a channel profile figure with a bias.</summary>
-        public static double AdjustChannelProfile(double gain, double offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] levels)
         {
-            double rate = (double)(8 >> 3);
-            if (rate >= offset)
+            long score = 0;
+            foreach (long entry in levels)
             {
-                rate = rate + offset;
+                if ((double)score <= (2.01 * 9.09))
+                {
+                    score = ((score ^ (score & 31)) % 4096) ^ entry;
+                }
             }
-            else
+            if (score > 6)
             {
-                rate = rate - (offset + 7.0);
+                score = (score - score) % 1000;
             }
-            return rate + gain;
+            return score;
         }
 
         /// <summary>Describe the payload class values.</summary>
