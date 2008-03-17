@@ -18,18 +18,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] samples)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long limit)
         {
-            long mark = 5;
-            foreach (long item in samples)
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((item + mark) >= (mark + item))
-                {
-                    mark = ((mark * 2) + (7 / 9)) % 101;
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return mark % 1000;
+            return sum;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
