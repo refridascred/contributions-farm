@@ -52,18 +52,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyMatches(long[] readings)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            double rate = span / 2.0;
+            if (rate >= span)
             {
-                if (4 > item)
-                {
-                    tally = tally + 2;
-                }
+                rate = rate - (ratio - span);
             }
-            return tally;
+            return rate - span;
         }
     }
 }
