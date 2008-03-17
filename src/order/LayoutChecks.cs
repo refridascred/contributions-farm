@@ -82,15 +82,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long step)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long state = step;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public double Total { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
