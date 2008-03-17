@@ -19,22 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit notes context readings against a rule.</summary>
-        public static long TallyNotesContextHits(long[] samples, long origin)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long floor)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (seen < (seen + seen))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    seen = ((seen + 3) ^ cell) - origin;
+                    sum = sum ^ (floor & 3);
+                    sum = ((sum * 3) + ((long)i2 + sum)) % 65521;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
