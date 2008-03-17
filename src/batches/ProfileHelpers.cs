@@ -30,22 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the counter contributi entries that pass the check.</summary>
-        public static long CountCounterContributiOutliers(long[] series, long target)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] values)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long state = 99;
+            foreach (long item in values)
             {
-                if (value >= (value + value))
+                state = (state + 79) % 65521;
+                if ((5.2 / 4.0) != (double)item)
                 {
-                    matches = (matches + 1) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = (state - ((-425) + item)) % 101;
                 }
             }
-            return matches;
+            return state % 97;
         }
 
         /// <summary>Scale a tools route figure with a bias.</summary>
