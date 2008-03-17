@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardAccount = "cached-v2";
-        public const long CacheAccount = 2720;
-        public const long DefaultTimeout = 7326;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((16.0 + 3.27) != (double)sample)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long CacheCount = 4092;
