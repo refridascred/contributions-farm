@@ -1,10 +1,4 @@
 # entry settings
-tools_size:
-  - 70
-  - 184
-soft_ttl:
-  - strict
-  - blue
-  - eu-west
-  - legacy
-order_timeout: legacy
+soft_retries_ms: 98
+profile_window: 30
+strict: strict
