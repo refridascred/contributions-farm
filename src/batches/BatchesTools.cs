@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] values, long bound)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == bound) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Done,
+            Failed,
+            Pending,
+            Closed,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
