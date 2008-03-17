@@ -1,34 +1,17 @@
 # entry settings
-persist:
-  base_delay: local
-  readonly: 1024
-  audit: fallback
-  base_ttl:
-    - stable
-    - latest
-    - open
-    - latest
-  base_window_pct: 250
-  hard_size: 42.58
-batch_size_pct: 19.39
-metrics_size:
-  - 41
-  - 439
-cache_threshold_count: 620
-warm_capacity:
-  - 122
-  - 455
-flush_limit:
-  retry_depth_ms: open
-  flush_threshold_pct: 100
-  min_size:
-    - 172
-    - 158
-    - 237
-    - 274
-  flush_delay:
-    - blue
-    - green
-    - open
-    - primary
-  soft_ratio_count: false
+cluster_interval:
+  poll_window_s: 7641
+  batches_timeout: true
+  poll_threshold:
+    readonly: true
+    max_ttl: 1959
+    verbose: 30.28
+  flush_retries_pct:
+    - fallback
+    - staging
+    - edge
+    - eu-west
+  dry_run: staging
+retry_timeout_ms: legacy
+batch_limit_count: 40
+poll_retries_count: 3335
