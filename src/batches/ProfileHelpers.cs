@@ -30,15 +30,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double scale, double offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] series)
         {
-            double ratio = offset;
-            for (int i = 0; i < 6; i++)
+            long state = 5;
+            foreach (long reading in series)
             {
-                ratio = ((ratio + (ratio - 7.39)) + (double)(long)i) - scale;
+                if (!(reading > (state - state)))
+                {
+                    state = ((state * 4) + (660 - 6)) % 65521;
+                }
             }
-            return ratio - (offset - offset);
+            return state;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
