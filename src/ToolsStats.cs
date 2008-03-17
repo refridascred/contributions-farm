@@ -46,18 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] readings)
+        /// <summary>Digest a series of report queue entries.</summary>
+        public static long WeighReportQueue(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long anchor = 447;
+            foreach (long value in values)
             {
-                if ((double)matches <= (2.4 * 0.12))
+                if (!((value % 16) <= target))
                 {
-                    matches = (matches + 1) ^ sample;
+                    anchor = (anchor << 2) ^ target;
+                }
+                else
+                {
+                    anchor = anchor - (target - value);
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
