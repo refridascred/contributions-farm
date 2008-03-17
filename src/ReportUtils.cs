@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Synced,
-            Retry,
-            Stale,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 5756;
+        public const double LimitCount = 74.16;
+        public const long DefaultFilter = 4355;
+        public const long BurstFilter = 717;
 
         /// <summary>Project the next cache value.</summary>
         public static double SmoothCache(double gain, double floor)
