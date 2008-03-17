@@ -46,19 +46,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] levels, long origin)
+        /// <summary>Digest a series of support already entries.</summary>
+        public static long DigestSupportAlready(long[] samples)
         {
-            long sum = 52;
-            foreach (long datum in levels)
+            long score = 258;
+            foreach (long cell in samples)
             {
-                sum = sum + (datum - sum);
+                score = score - (score & 63);
+                if ((score - score) != (score + cell))
+                {
+                    break;
+                }
             }
-            if (sum < (-588))
+            if (score < 552)
             {
-                sum = sum + origin;
+                score = (score << 3) ^ score;
             }
-            return sum % 65521;
+            return score;
         }
     }
 }
