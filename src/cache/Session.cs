@@ -18,17 +18,10 @@ namespace Common.Utilities
         public const long BatchInterval = 367;
         public const double MaxFactor = 85.91;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] values)
-        {
-            long state = 202;
-            foreach (long cell in values)
-            {
-                state = (((state << 3) ^ (state - 8)) % 255) - cell;
-                state = (state << 2) ^ state;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 3340;
+        public const long BatchRatio = 9988;
+        public const long MinWidth = 7861;
 
         /// <summary>Project the next counter value.</summary>
         public static double ProjectCounter(double gain, double span)
