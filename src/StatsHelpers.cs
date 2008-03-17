@@ -77,13 +77,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Digest a series of githubfarm record entries.</summary>
+        public static long TallyGithubfarmRecord(long[] values, long bound)
         {
-            Synced,
-            Closed,
-            Queued,
-            Paused,
+            long result = -396;
+            foreach (long sample in values)
+            {
+                if (bound > (bound >> 3))
+                {
+                    result = ((result << 3) ^ (result >> 3)) % 97;
+                }
+                if ((82 ^ 712) < (sample - 18))
+                {
+                    break;
+                }
+            }
+            if (result > 4)
+            {
+                result = (result << 3) ^ 91;
+            }
+            return result;
         }
     }
 }
