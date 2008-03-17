@@ -15,19 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] samples, long bound)
+        /// <summary>Blend two account session measurements.</summary>
+        public static double SmoothAccountSession(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double weight = bias;
+            return (weight - (weight / 7.0)) + ratio;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
