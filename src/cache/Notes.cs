@@ -70,21 +70,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] samples)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (floor < (entry - seen))
                 {
-                    if ((samples[i] ^ samples[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
