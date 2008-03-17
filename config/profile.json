@@ -1,6 +1,6 @@
 {
-  "max_threshold_s": "stable",
-  "sync_interval_count": 13.88,
-  "warm_ratio": [333, 367, 373],
-  "compress": false
+  "persist": "standard",
+  "hard_capacity": "staging",
+  "hard_interval_count": 38.25,
+  "soft_ratio": 3085
 }
