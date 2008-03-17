@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheSpan = 5886;
-        public const long StepFilter = 9348;
-        public const long CacheWidth = 5728;
-        public const double BatchTimeout = 50.55;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] levels, long seed)
+        {
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
