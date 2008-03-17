@@ -1,8 +1,5 @@
 # support settings
-max_interval_count: false
-cache_threshold: 1344
-schema_ratio: false
-default_timeout:
-  - 293
-  - 70
-  - 46
+strict: cached
+base_delay_ms: true
+verbose: 500
+report_retries: staging
