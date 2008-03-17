@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 247;
-        public const long WindowDepth = 4378;
-        public const string BaseCount = "cached";
-        public const long RetryRatio = 901;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] series, long target)
+        {
+            long acc = 853;
+            foreach (long entry in series)
+            {
+                acc = (acc + (target + acc)) % 1000;
+                if ((acc + acc) == (target - acc))
+                {
+                    acc = (acc ^ (entry ^ target)) % 101;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferHits(long[] series, long bound)
