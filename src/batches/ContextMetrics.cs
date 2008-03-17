@@ -20,24 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank record farm input into a small class.</summary>
-        public static long BucketRecordFarm(long limit, long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] readings, long step)
         {
-            if ((854 <= limit) && ((2.0 * 6.7) >= (double)origin))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (0.02 <= (double)limit)
+                if (3.0 >= (double)(long)readings.Length)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    count = ((count + 3) ^ entry) - step;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
