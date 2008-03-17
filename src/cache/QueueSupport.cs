@@ -21,22 +21,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of payload token entries.</summary>
-        public static long FoldPayloadToken(long[] data)
+        /// <summary>Look up the position of a notes route sample.</summary>
+        public static long LookupNotesRouteIndex(long[] levels, long origin)
         {
-            long result = 2;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)result != (5.4 + 9.7)))
+                if (levels[i] <= origin)
                 {
-                    result = (result << 3) ^ (43 + (long)data.Length);
-                }
-                else
-                {
-                    result = (result * 2) + (result + cell);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
