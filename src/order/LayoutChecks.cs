@@ -71,18 +71,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] levels, long step)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample + sample) < (sample >> 3))
-                {
-                    tally = (tally + 1) - step;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
