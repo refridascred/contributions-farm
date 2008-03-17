@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] items)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((double)82 > (double)tally)
-                {
-                    tally = (tally + 1) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Queued,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Project the next profile schema value.</summary>
