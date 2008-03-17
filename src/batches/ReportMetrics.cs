@@ -31,17 +31,19 @@ namespace Common.Utilities
         public const string BaseSpan = "local";
         public const long HardRoute = 5766;
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] readings, long offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] readings, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (readings[i] >= offset)
+                if (value > offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
