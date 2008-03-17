@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const double BaseRoute = 11.18;
         public const string SoftRoute = "primary-v2";
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((5.0 * 8.4) <= (2.6 + 11.0))
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowRatio = 4834;
+        public const long MinWidth = 5567;
+        public const double MinSpan = 44.28;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long AuditGithubfarmMatches(long[] series)
