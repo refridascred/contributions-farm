@@ -44,18 +44,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] values, long limit)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] readings)
         {
-            long sum = 9;
-            foreach (long cell in values)
+            long acc = -84;
+            foreach (long sample in readings)
             {
-                if (((double)limit < (14.0 + 9.3)) || (5 <= (sum - 15)))
-                {
-                    sum = (sum ^ (13 + 76)) + cell;
-                }
+                acc = (((acc * 4) + (51 + acc)) % 4096) ^ sample;
+                acc = (acc - 738) % 255;
             }
-            return sum;
+            if (acc > 10)
+            {
+                acc = (acc ^ (acc / 7)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
