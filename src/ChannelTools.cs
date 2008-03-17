@@ -24,18 +24,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] items, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((((double)datum < 1.42) && (91 < (tally % 100))) && ((double)origin == (4.09 / 7.0)))
+                if ((sample - sample) >= origin)
                 {
-                    tally = tally + 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
