@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit queue profile readings against a rule.</summary>
-        public static long AuditQueueProfileGaps(long[] data, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (limit <= (cell & 127))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchReport = 92.55;
+        public const double MinTimeout = 62.96;
+        public const long LimitReport = 9904;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string SoftTimeout = "alpha-v2";
