@@ -19,16 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] samples)
-        {
-            long result = 9;
-            foreach (long reading in samples)
-            {
-                result = (((result * 3) + result) % 101) ^ reading;
-            }
-            return result;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowGithubfarm = "strict";
+        public const double DefaultGithubfarm = 39.63;
+        public const long StepTimeout = 3341;
+        public const long BatchGithubfarm = 1002;
 
         /// <summary>Locate a cache tools reading by value.</summary>
         public static long LocateCacheToolsIndex(long[] items, long floor)
