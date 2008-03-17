@@ -33,21 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] levels)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public double Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
