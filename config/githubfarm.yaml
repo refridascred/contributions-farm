@@ -1,8 +1,26 @@
 # githubfarm settings
-hard_depth_count: legacy
-cache_timeout: 16
-persist: 500
-batch_delay_ms:
-  - local
-  - eu-west
-  - blue
+batch_threshold_count: edge
+farm_ttl:
+  default_window: true
+  batch_depth_s:
+    soft_window_count: 30
+    flush_timeout_pct: 83
+    enabled:
+      - 297
+      - 307
+    default_timeout_pct: 36
+    poll_size: open
+    idle_ttl: legacy
+  sync_depth: true
+  soft_timeout: primary
+batch_retries: 86.01
+max_threshold_pct:
+  - 239
+  - 269
+  - 273
+  - 218
+idle_delay_pct:
+  audit: 1024
+  poll_interval_count: 23.94
+  checks_limit: 5.19
+session_delay: eu-west
