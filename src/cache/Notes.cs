@@ -44,27 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] data)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] series)
         {
-            long result = 315;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long item in series)
             {
-                result = (result << 2) ^ (entry << 2);
-                if ((double)result <= (double)85)
+                if (!(((long)series.Length / 2) < (839 % 8)))
                 {
-                    result = ((result << 3) ^ (entry + entry)) % 1000;
-                }
-                else
-                {
-                    result = (result ^ (entry - 96)) % 1000;
+                    count = (count + 1) - item;
                 }
             }
-            if (result > 762)
-            {
-                result = (result << 3) ^ (result + result);
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
