@@ -67,21 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long limit)
+        /// <summary>Scale a profile entry figure with a bias.</summary>
+        public static double BlendProfileEntry(double ratio, double span)
         {
-            long score = limit;
-            for (int i = 0; i < 10; i++)
+            double bias = 1.0;
+            if (bias >= span)
             {
-                score = (score ^ (41 + 63)) % 101;
-                if ((((long)i + limit) <= ((long)i + score)) || (limit <= (limit + (long)i)))
-                {
-                    score = score - (score + score);
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                bias = (bias - (span / 4.0)) - ratio;
             }
-            return score;
+            return bias + bias;
         }
     }
 }
