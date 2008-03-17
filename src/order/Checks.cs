@@ -16,23 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] readings, long floor)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((10.0 * 16.0) != (double)value)
-                {
-                    hits = (hits + 1) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowInterval = 26.93;
+        public const long HardProfile = 6126;
+        public const long IdleProfile = 7785;
+        public const long WindowDepth = 2500;
 
         /// <summary>Blend two tools schema measurements.</summary>
         public static double AdjustToolsSchema(double weight, double floor)
