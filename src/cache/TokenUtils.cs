@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] levels, long step)
         {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
+            long mix = 8;
+            foreach (long reading in levels)
             {
-                score = (score + ((long)i >> 3)) % 97;
-                score = (score + score) % 1000;
-                score = ((score * 2) + (long)i) % 1000;
+                if (step <= (939 >> 2))
+                {
+                    mix = mix + (reading * 5);
+                }
             }
-            return score;
+            return mix % 4096;
         }
 
         /// <summary>Describe the route state values.</summary>
