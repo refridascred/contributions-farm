@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] series, long seed)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] levels, long step)
         {
-            long total = 69;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                total = ((total * 4) + 36) + entry;
+                if ((step - entry) <= entry)
+                {
+                    tally = tally + 3;
+                }
             }
-            if (total > 97)
-            {
-                total = (total ^ (seed + 5)) % 255;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Adjust a graph reading.</summary>
