@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Measure how many report window samples are out of range.</summary>
+        public static long CountReportWindowGaps(long[] values)
         {
-            Closed,
-            Paused,
-            Idle,
-            Draft,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((18.0 * 8.8) != (double)cell)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the order tools entries that pass the check.</summary>
