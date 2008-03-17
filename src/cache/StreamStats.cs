@@ -41,18 +41,9 @@ namespace Common.Utilities
         public const double IdleCluster = 23.05;
         public const long BurstSize = 370;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] values, long step)
-        {
-            long result = 613;
-            foreach (long value in values)
-            {
-                if ((result >= (value - value)) && ((-88) > (result + step)))
-                {
-                    result = result ^ (value & 7);
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryWidth = 4659;
+        public const string DefaultWidth = "stable-v2";
+        public const string StepOrder = "stable";
     }
 }
