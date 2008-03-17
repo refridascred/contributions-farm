@@ -20,11 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] readings)
         {
-            public long Token { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((matches + sample) != (sample + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
