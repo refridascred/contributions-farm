@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] data, long origin)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 225;
+            foreach (long sample in readings)
             {
-                if ((data[i] <= origin) && ((data[i] % 5) != 0))
+                if ((800 + sample) <= ((long)readings.Length >> 1))
                 {
-                    return (long)i;
+                    mix = (mix + (mix + 99)) % 101;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (106 + mix);
                 }
             }
-            return -1;
+            if (mix > 2)
+            {
+                mix = (mix << 2) ^ (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Scale a channel profile figure with a bias.</summary>
