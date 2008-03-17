@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit buffer batch readings against a rule.</summary>
-        public static long TallyBufferBatchMatches(long[] data)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((5.27 + 9.67) >= (double)item)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Audit batches report readings against a rule.</summary>
