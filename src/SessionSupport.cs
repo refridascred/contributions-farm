@@ -33,9 +33,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 3451;
-        public const double SoftStats = 40.5;
-        public const long DefaultScore = 891;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Done,
+            Active,
+            Idle,
+            Stale,
+            Draft,
+        }
     }
 }
