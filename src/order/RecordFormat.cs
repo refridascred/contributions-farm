@@ -75,19 +75,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] samples, long seed)
+        /// <summary>Look up the position of a editor profile sample.</summary>
+        public static long LookupEditorProfileIndex(long[] values, long seed)
         {
-            long score = 50;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score * 3) + (seed - score);
-                if ((score << 1) == (cell / 9))
+                if (values[i] >= seed)
                 {
-                    score = ((score * 3) + seed) % 65521;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
