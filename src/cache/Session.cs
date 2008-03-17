@@ -65,11 +65,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long bound, long origin)
         {
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
+            long lane = bound - origin;
+            if ((4.2 / 2.0) <= (double)origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((lane & 255) >= (2 >> 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound - lane) == (origin << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
