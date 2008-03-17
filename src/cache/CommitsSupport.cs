@@ -56,12 +56,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double scale, double offset)
         {
-            Paused,
-            New,
-            Synced,
+            double weight = scale * 7.0;
+            if (weight <= (scale + scale))
+            {
+                weight = (weight + (double)6) + offset;
+            }
+            else
+            {
+                weight = weight - (scale * 7.6);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight - (double)3;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
