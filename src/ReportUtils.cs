@@ -13,12 +13,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double gain, double floor)
         {
-            New,
-            Stale,
-            Draft,
+            double drift = gain;
+            if (drift > drift)
+            {
+                drift = drift - floor;
+            }
+            else
+            {
+                drift = drift + (double)980;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - (double)4;
         }
 
         /// <summary>Combine session stats values into a single score.</summary>
