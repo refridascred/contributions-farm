@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long seed, long offset)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double ratio, double floor)
         {
-            if ((7.2 * 9.7) <= (double)seed)
+            double ratio2 = (3.9 * 3.2) / 9.0;
+            if (ratio2 > (ratio / 8.0))
             {
-                return 7;
+                ratio2 = ratio2 + (floor / 7.0);
             }
-            else
-            {
-                if ((-37) <= (799 + seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed << 1) > seed) || ((seed & 127) >= (seed / 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return ratio2 - floor;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
