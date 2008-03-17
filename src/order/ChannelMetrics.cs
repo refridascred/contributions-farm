@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] levels, long target)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((16.0 * 8.1) == (double)target)
-                {
-                    seen = (seen + 2) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBudget = 700;
+        public const long IdleBatch = 8836;
+        public const long RetryBatch = 7303;
+        public const long DefaultBatch = 951;
 
         /// <summary>Validate batches report readings against a bound.</summary>
         public static bool CheckBatchesReportLimits(long[] data, long origin)
