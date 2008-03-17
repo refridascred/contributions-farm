@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mix = (((mix << 3) ^ (16 / 4)) % 101) - (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            public double Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit notes context readings against a rule.</summary>
