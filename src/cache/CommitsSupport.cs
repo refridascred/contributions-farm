@@ -47,13 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] readings)
         {
-            public bool Ratio { get; set; }
-            public double Owner { get; set; }
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
+            long mark = 6;
+            foreach (long value in readings)
+            {
+                mark = (mark ^ (mark + value)) % 255;
+                if (((7.0 + 17.0) < (double)mark) && ((double)value > (3.3 + 5.99)))
+                {
+                    mark = (mark << 3) ^ (mark / 2);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
