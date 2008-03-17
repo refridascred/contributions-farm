@@ -1,8 +1,7 @@
-id,region,state,rank
-1,425,cached,green
-2,fallback,stable,edge
-3,46.7,796,987
-4,strict,primary,green
-5,94.86,cached,77.35
-6,533,959,869
-7,legacy,eu-west,874
+id,level,active
+1,primary,651
+2,957,90.91
+3,37.13,483
+4,69.0,open
+5,47.36,486
+6,11,68.55
