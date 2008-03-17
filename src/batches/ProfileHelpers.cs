@@ -31,12 +31,13 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 9485;
         public const string CacheGithubfarm = "legacy-v2";
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            Locked,
-            Closed,
-            Idle,
+            Failed,
+            Draft,
+            Ready,
+            Queued,
         }
 
         /// <summary>Locate a token schema reading by value.</summary>
