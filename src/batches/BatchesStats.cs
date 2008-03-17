@@ -16,18 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] series)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((hits / 6) < (entry - entry))
+                if ((matches ^ matches) == (matches / 6))
                 {
-                    hits = hits + 1;
+                    matches = (matches + 1) + cell;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many profile session samples are out of range.</summary>
