@@ -1,16 +1,11 @@
 {
-  "poll_window_s": 68.65,
-  "default_window_pct": {
-    "enabled": "latest",
-    "format_timeout": 12.8,
-    "max_retries": true,
-    "audit": 63.9,
-    "default_retries": false
+  "dry_run": {
+    "max_threshold": true,
+    "retry_limit_count": 91,
+    "payload_threshold": 1775,
+    "hard_ttl_count": true
   },
-  "counter_timeout": {
-    "editor_ratio": false,
-    "flush_threshold_s": 89,
-    "default_ratio_count": "edge",
-    "notes_depth": "primary"
-  }
+  "soft_depth_ms": [469, 426, 142],
+  "compress": 30,
+  "account_ratio": "standard"
 }
