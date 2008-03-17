@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] series, long offset)
         {
-            New,
-            Pending,
-            Closed,
+            long result = 99;
+            foreach (long cell in series)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    result = (result * 2) + (long)i;
+                }
+                result = (result << 2) ^ cell;
+            }
+            if (result < 8)
+            {
+                result = ((result * 3) + (offset >> 3)) % 65521;
+            }
+            return result % 65521;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
