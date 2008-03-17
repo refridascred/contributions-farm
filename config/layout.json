@@ -1,7 +1,12 @@
 {
-  "base_ttl": "standard",
-  "strict": "green",
-  "batch_limit_pct": 100,
-  "retry_limit_ms": 67.82,
-  "default_delay_s": [226, 151, 250, 49]
+  "persist": ["eu-west", "blue", "blue", "strict"],
+  "burst_capacity_pct": {
+    "idle_capacity": "cached",
+    "counter_threshold": 6.03,
+    "hard_capacity_ms": 7899
+  },
+  "enabled": 6548,
+  "idle_delay_count": 2.48,
+  "metric_size": 15.86,
+  "max_ttl": ["primary", "staging", "staging", "stable"]
 }
