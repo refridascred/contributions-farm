@@ -25,17 +25,11 @@ namespace Common.Utilities
             return scale - 9.6;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleTimeout = 8666;
+        public const long BaseTimeout = 201;
+        public const string HardWindow = "strict-edge";
+        public const long LimitScore = 4882;
+        public const long LimitSpan = 8114;
     }
 }
