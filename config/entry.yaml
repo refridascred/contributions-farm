@@ -1,7 +1,12 @@
 # entry settings
-sync_window_s: 4978
-cache_interval_count: green
-poll_interval_ms: 100
-commits_size: 500
-flush_retries_s: 64.58
-account_delay: 3.13
+tools_limit: 6353
+strict: edge
+queue_capacity: edge
+batches_interval:
+  verbose: false
+  payload_timeout:
+    verbose: 972
+    batch_limit_s: standard
+    checks_interval: standard
+  warm_retries_s: 95.64
+retry_depth_pct: eu-west
