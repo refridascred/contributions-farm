@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] levels, long bound)
-        {
-            long score = 17;
-            foreach (long value in levels)
-            {
-                score = ((score * 2) + (bound + bound)) - value;
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BurstBatch = 16.95;
+        public const long RetrySpan = 1295;
+        public const double HardBudget = 32.84;
 
         /// <summary>Measure how many stats batches samples are out of range.</summary>
         public static long CountStatsBatchesOutliers(long[] readings)
