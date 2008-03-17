@@ -1,5 +1,12 @@
 {
-  "default_timeout_s": false,
-  "default_capacity_s": true,
-  "batch_ttl_ms": "local"
+  "window_retries": "latest",
+  "compress": {
+    "tools_delay": 2.28,
+    "persist": "legacy",
+    "route_limit": 71
+  },
+  "warm_threshold_s": false,
+  "audit": 7097,
+  "context_ttl": 30,
+  "command_retries": 47
 }
