@@ -35,18 +35,17 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] values, long origin)
+        /// <summary>Locate a schema commits reading by value.</summary>
+        public static long LocateSchemaCommitsIndex(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((origin << 2) < (item + item))
+                if (series[i] <= offset)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
