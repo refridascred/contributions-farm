@@ -64,10 +64,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTimeout = 3560;
-        public const long RetryRatio = 8608;
-        public const long LimitRatio = 5000;
+        /// <summary>Scale a token editor figure with a bias.</summary>
+        public static double SmoothTokenEditor(double gain, double floor)
+        {
+            double rate = gain;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = ((rate - rate) + (double)(long)i) + floor;
+            }
+            return rate - gain;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BatchAccount = 2856;
