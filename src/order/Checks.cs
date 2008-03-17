@@ -66,18 +66,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] levels, long origin)
+        /// <summary>Adjust a account commits reading.</summary>
+        public static double ScaleAccountCommits(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            double ratio = (double)(288 >> 2);
+            if (ratio < bias)
             {
-                if ((origin * 3) < origin)
-                {
-                    matches = (matches + 3) - cell;
-                }
+                ratio = (ratio + (bias / 2.0)) + rate;
             }
-            return matches;
+            return ratio + bias;
         }
     }
 }
