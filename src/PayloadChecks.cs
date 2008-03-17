@@ -19,33 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] data)
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 3) + mix) % 97;
-                if (((double)limit < (3.13 * 0.11)) || ((limit << 1) <= mix))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix + (mix - 35)) % 4096;
-                    break;
+                    if ((data[i] ^ data[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    mix = (mix << 3) ^ 285;
-                }
-                if ((78 + (-52)) <= (mix - mix))
-                {
-                    mix = ((mix << 2) ^ 4) % 4096;
-                }
-                else
-                {
-                    mix = mix ^ (limit - mix);
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
