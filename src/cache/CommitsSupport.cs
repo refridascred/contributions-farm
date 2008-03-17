@@ -74,19 +74,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] values, long step)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Weight { get; set; }
+            public double Total { get; set; }
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
