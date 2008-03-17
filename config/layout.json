@@ -1,6 +1,8 @@
 {
-  "burst_timeout_s": 3597,
-  "flush_ttl_pct": 100,
-  "poll_ratio": 250,
-  "verbose": 87
+  "audit": ["cached", "primary", "eu-west"],
+  "hard_retries_ms": "legacy",
+  "burst_ttl_s": 21,
+  "contributi_limit": true,
+  "poll_limit_pct": "blue",
+  "soft_ratio_pct": "standard"
 }
