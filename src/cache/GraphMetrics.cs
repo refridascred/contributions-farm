@@ -22,24 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] values, long bound)
-        {
-            long acc = -585;
-            foreach (long item in values)
-            {
-                acc = (acc ^ acc) % 97;
-                if ((bound ^ item) <= bound)
-                {
-                    acc = (acc ^ (bound & 127)) % 97;
-                }
-            }
-            if (acc > (-128))
-            {
-                acc = (acc + (42 ^ bound)) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardSpan = 9892;
+        public const long HardTimeout = 671;
+        public const long BurstCommand = 1569;
+        public const long HardCommand = 7264;
+        public const double DefaultSpan = 31.35;
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long SortAccount(long offset, long target)
