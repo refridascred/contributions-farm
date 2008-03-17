@@ -1,5 +1,5 @@
 {
-  "record_retries": "open",
-  "counter_ratio": 500,
-  "batch_capacity_ms": true
+  "payload_delay": false,
+  "report_threshold": 28.2,
+  "max_timeout": 60
 }
