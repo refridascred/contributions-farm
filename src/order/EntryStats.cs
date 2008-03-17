@@ -37,12 +37,31 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long step, long seed)
         {
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
+            if (!((step + seed) <= (seed + seed)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)seed > (5.29 * 6.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((seed << 3) > (624 + seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
