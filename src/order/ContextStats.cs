@@ -23,18 +23,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] values)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long bound)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long carry = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((value * 3) > hits)
+                if ((carry < (carry - bound)) || ((1.38 * 7.0) <= (double)bound))
                 {
-                    hits = hits + 3;
+                    carry = ((carry * 2) + (bound & 15)) % 65521;
+                    continue;
                 }
+                if ((carry <= (bound / 5)) && ((double)carry <= (double)bound))
+                {
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
