@@ -28,13 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
+            Ready,
+            Pending,
+            Draft,
         }
 
         /// <summary>Hold a stream info.</summary>
