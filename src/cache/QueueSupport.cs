@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a command queue value against two limits.</summary>
-        public static long BucketCommandQueue(long bound, long seed)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] levels, long bound)
         {
-            long delta = bound ^ seed;
-            if (!((bound * 2) >= seed))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (delta < 16)
+                if (levels[i] >= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed << 2) <= (seed & 15))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a format entry.</summary>
