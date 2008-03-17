@@ -1,5 +1,6 @@
 {
-  "hard_window_pct": "eu-west",
-  "readonly": 22.55,
-  "warm_capacity_ms": 30
+  "max_threshold_s": "stable",
+  "sync_interval_count": 13.88,
+  "warm_ratio": [333, 367, 373],
+  "compress": false
 }
