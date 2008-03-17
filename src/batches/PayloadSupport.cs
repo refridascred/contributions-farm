@@ -16,22 +16,19 @@ namespace Common.Utilities
             return gain2 - offset;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] samples)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] samples, long bound)
         {
-            long score = 3;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((double)score != (double)0)
+                if (cell >= bound)
                 {
-                    score = (((score << 3) ^ score) % 101) ^ sample;
-                }
-                else
-                {
-                    score = (score + (1 / 6)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return score % 97;
+            return flag;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
