@@ -1,8 +1,13 @@
 {
-  "cluster_window": 6603,
-  "enabled": "stable",
-  "default_delay_s": "eu-west",
-  "cache_timeout_pct": [364, 55],
-  "report_depth": 43.83,
-  "batch_ratio": 250
+  "max_capacity_pct": 48.53,
+  "layout_threshold": false,
+  "strict": {
+    "context_ttl": 64.49,
+    "default_retries_count": true,
+    "max_window": ["staging", "strict", "cached"],
+    "compress": 59,
+    "batch_ratio_ms": "green",
+    "queue_threshold": 500
+  },
+  "enabled": true
 }
