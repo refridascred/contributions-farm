@@ -54,38 +54,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long floor, long target)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            if (((target + target) > 515) && ((floor * 3) > floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if (5.5 <= (double)floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor * 3) < (floor - target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((3 < (floor & 127)) || ((target + floor) >= (floor + floor)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
