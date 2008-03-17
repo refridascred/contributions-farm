@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= floor) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 4212;
+        public const long MinInterval = 3777;
+        public const string BurstEntry = "primary-1";
+        public const string MinEntry = "alpha-v2";
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long RankAccount(long target, long floor)
