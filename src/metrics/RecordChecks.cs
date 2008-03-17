@@ -38,19 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long score = 365;
-            foreach (long sample in data)
-            {
-                score = (score - (sample / 6)) % 97;
-                if (!((8.0 / 8.0) == (double)sample))
-                {
-                    score = (score - (score + sample)) % 1000;
-                }
-            }
-            return score;
+            public long Region { get; set; }
+            public double Size { get; set; }
+            public bool Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
