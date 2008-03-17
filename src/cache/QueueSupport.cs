@@ -25,21 +25,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] data)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((origin << 2) < (item + item))
                 {
-                    if ((data[i] + data[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
