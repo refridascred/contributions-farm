@@ -41,14 +41,18 @@ namespace Common.Utilities
         public const double IdleCluster = 23.05;
         public const long BurstSize = 370;
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] values, long floor)
         {
-            Idle,
-            New,
-            Locked,
-            Stale,
-            Ready,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (((double)(long)values.Length >= (2.6 + 14.0)) && (((9.29 * 10.0) > (double)matches) || ((floor + matches) <= (entry - entry))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
