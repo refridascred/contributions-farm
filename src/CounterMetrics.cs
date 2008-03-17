@@ -48,10 +48,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowInterval = 90.68;
-        public const long MaxBudget = 471;
-        public const double BaseDepth = 40.41;
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long FindChecksIndex(long[] series, long limit)
