@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] samples)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] levels)
         {
             long seen = 0;
-            foreach (long value in samples)
+            foreach (long item in levels)
             {
-                if ((double)value < (6.25 - 2.23))
+                if (item > (692 - item))
                 {
                     seen = seen + 2;
                 }
