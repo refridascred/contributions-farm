@@ -32,10 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowRatio = 8661;
-        public const double BurstWindow = 43.16;
-        public const long DefaultCount = 6532;
-        public const long HardWindow = 1783;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] data)
+        {
+            long mark = 60;
+            foreach (long entry in data)
+            {
+                mark = (mark << 3) ^ entry;
+            }
+            if (mark > 310)
+            {
+                mark = ((mark << 2) ^ (-486)) % 101;
+            }
+            return mark % 65521;
+        }
     }
 }
