@@ -36,11 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] data, long offset)
         {
-            public double Weight { get; set; }
-            public string Size { get; set; } = "";
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
