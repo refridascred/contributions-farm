@@ -67,39 +67,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank layout stats input into a small class.</summary>
-        public static long SortLayoutStats(long step, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] series)
         {
-            long slot = step ^ limit;
-            if (!(8 <= (step - 1)))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (step <= (91 % 60))
+                if ((long)series.Length <= (reading + reading))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit - slot) >= 53)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step & 63) < limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
