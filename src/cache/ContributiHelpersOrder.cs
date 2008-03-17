@@ -13,18 +13,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] items, long limit)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long offset, long origin)
         {
-            long sum = 9;
-            foreach (long cell in items)
+            long span = offset ^ origin;
+            if ((origin >> 1) >= (offset + span))
             {
-                if ((double)cell > (8.65 * 5.0))
+                return 5;
+            }
+            else
+            {
+                if (offset >= origin)
                 {
-                    sum = ((sum * 2) + (limit - limit)) % 65521;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin + 692) >= (span << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Accumulate order samples.</summary>
