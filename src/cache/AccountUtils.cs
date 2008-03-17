@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const long StepFilter = 2025;
         public const double BatchInterval = 79.08;
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            Synced,
-            Pending,
-            Dropped,
-            Locked,
+            public string Flag { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Audit cache order readings against a rule.</summary>
