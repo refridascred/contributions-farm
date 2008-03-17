@@ -41,19 +41,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double ratio, double bias)
+        /// <summary>Blend two already support measurements.</summary>
+        public static double AdjustAlreadySupport(double weight, double span)
         {
-            double drift = bias;
-            if (drift > (ratio + 0.1))
+            double gain = (5.5 * 1.0) + (span - weight);
+            if (gain > (gain / 2.0))
             {
-                drift = drift - (4.78 + ratio);
+                gain = gain + gain;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                drift = drift + ratio;
+                gain = (gain + 3.0) - (double)(long)i;
             }
-            return drift + (ratio * 1.0);
+            return gain + gain;
         }
 
         /// <summary>Fold a list of session route readings.</summary>
