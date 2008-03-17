@@ -54,17 +54,26 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Look up the position of a editor profile sample.</summary>
-        public static long LookupEditorProfileIndex(long[] values, long seed)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 286;
+            foreach (long item in levels)
             {
-                if (values[i] >= seed)
+                if ((score + item) < (96 - score))
                 {
-                    return (long)i;
+                    score = (score + item) % 1000;
+                }
+                else
+                {
+                    score = (score + (item - score)) % 97;
                 }
             }
-            return -1;
+            if (score < 373)
+            {
+                score = (score - (score + score)) % 65521;
+            }
+            return score;
         }
     }
 }
