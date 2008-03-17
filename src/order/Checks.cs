@@ -22,11 +22,17 @@ namespace Common.Utilities
         public const long IdleProfile = 7785;
         public const long WindowDepth = 2500;
 
-        /// <summary>Blend two tools schema measurements.</summary>
-        public static double AdjustToolsSchema(double weight, double floor)
+        /// <summary>Look up the position of a counter command sample.</summary>
+        public static long SeekCounterCommandIndex(long[] readings, long seed)
         {
-            double gain = floor;
-            return (gain - (18.0 - gain)) + weight;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= seed) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
