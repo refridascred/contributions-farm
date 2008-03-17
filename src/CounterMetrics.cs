@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] data, long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (data[i] < offset)
+                if ((8.68 / 7.0) > (double)item)
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the profile status values.</summary>
