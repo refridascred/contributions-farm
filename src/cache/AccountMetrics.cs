@@ -13,19 +13,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long floor)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] items)
         {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((815 >> 2) < floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = ((mark << 2) ^ (mark & 3)) % 97;
+                    if ((items[i] ^ items[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
