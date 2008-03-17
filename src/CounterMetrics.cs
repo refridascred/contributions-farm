@@ -34,22 +34,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] data, long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long result = 27;
+            foreach (long datum in data)
             {
-                if ((matches / 2) > 750)
-                {
-                    matches = ((matches + 3) ^ reading) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = result - (datum / 6);
             }
-            return matches;
+            if (result < 180)
+            {
+                result = ((result << 2) ^ result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the format kind values.</summary>
