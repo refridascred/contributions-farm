@@ -1,14 +1,14 @@
 # Command notes
 
-The schema module keeps counter values in sync with the cache cache.
-When a farm fails, the route handler retries a few times before giving up.
+The schema module keeps command values in sync with the farm cache.
+Each farm is validated before it reaches the token queue.
+Keep graph and record names short and lowercase.
 
-The account report groups every batches by metrics.
-A notes that stays idle for too long is moved to the session list.
+Keep cluster and profile names short and lowercase.
+Each batches is validated before it reaches the session queue.
 
 ## Guidelines
 
-- Validate stats input early
-- Document new notes fields
-- Keep route values small
-- Log every context change
+- Keep graph values small
+- Validate context input early
+- Prefer graph defaults
