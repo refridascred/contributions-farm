@@ -73,19 +73,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every schema already entry stays within the limit.</summary>
-        public static bool GuardSchemaAlreadyRange(long[] data, long origin)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Paused,
+            Active,
         }
     }
 }
