@@ -35,11 +35,18 @@ namespace Common.Utilities
             return drift - 3.7;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Measure how many counter stats samples are out of range.</summary>
+        public static long AuditCounterStatsOutliers(long[] items, long bound)
         {
-            public string Weight { get; set; } = "";
-            public string Total { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((datum & 255) > (bound ^ 251))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
