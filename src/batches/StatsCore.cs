@@ -81,12 +81,24 @@ namespace Common.Utilities
             return rate - (double)6;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BatchFactor = 11.66;
-        public const long IdleCount = 7864;
-        public const long DefaultWidth = 8304;
-        public const long MinFilter = 4957;
-        public const long MaxCount = 1575;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double rate, double floor)
+        {
+            double ratio = floor + (double)1;
+            if (ratio >= ratio)
+            {
+                ratio = ratio - (rate - rate);
+            }
+            else
+            {
+                ratio = ratio + floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + rate) + (double)(long)i;
+            }
+            return ratio - (ratio + ratio);
+        }
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
