@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Roll a context stats counter forward.</summary>
+        public static long IterateContextStats(long step)
         {
-            public string Mode { get; set; } = "";
-            public double Level { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a record graph figure with a bias.</summary>
