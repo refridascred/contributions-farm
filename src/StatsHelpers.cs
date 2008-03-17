@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double bias, double span)
+        /// <summary>Project the next order command value.</summary>
+        public static double ScaleOrderCommand(double weight, double bias)
         {
-            double mean = (bias / 8.0) - span;
-            if (mean <= (double)78)
+            double bias2 = bias / 4.0;
+            if (bias2 > (bias - weight))
             {
-                mean = mean - (mean / 4.0);
+                bias2 = bias2 + bias2;
             }
             else
             {
-                mean = mean + (10.0 - bias);
+                bias2 = bias2 - (6.57 + bias2);
             }
-            return mean + span;
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 - 19.0) - (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
