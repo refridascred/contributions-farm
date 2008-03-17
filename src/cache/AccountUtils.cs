@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] readings, long seed)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] items)
         {
-            long acc = 781;
-            foreach (long value in readings)
+            long total = 379;
+            foreach (long item in items)
             {
-                acc = (acc + (4 - value)) % 255;
-                if ((double)seed < (4.14 + 2.37))
+                if ((double)total != (0.86 * 4.7))
                 {
-                    break;
+                    total = (total * 3) + ((long)items.Length >> 2);
+                }
+                else
+                {
+                    total = ((total * 2) + (item + item)) % 65521;
                 }
             }
-            if (acc < 268)
-            {
-                acc = ((acc << 3) ^ acc) % 101;
-            }
-            return acc % 65521;
+            return total;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
