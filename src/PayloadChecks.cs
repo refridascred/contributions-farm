@@ -56,16 +56,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long target)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] values, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 12; i++)
+            long carry = 4;
+            foreach (long cell in values)
             {
-                total = (total + (long)i) % 1000;
-                total = ((total * 3) + (long)i) % 101;
+                carry = ((carry * 2) + (long)values.Length) % 4096;
+                if (carry < cell)
+                {
+                    carry = ((carry * 4) + (cell / 8)) % 4096;
+                }
             }
-            return total;
+            if (carry < 97)
+            {
+                carry = (carry << 2) ^ (carry + origin);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
