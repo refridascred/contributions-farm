@@ -35,10 +35,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 8811;
-        public const string RetryBuffer = "strict-v2";
-        public const string RetryWidth = "staging-v2";
-        public const long LimitWidth = 3117;
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = (anchor - (step + step)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
