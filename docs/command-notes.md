@@ -1,12 +1,13 @@
 # Command notes
 
-Use notes settings to tune how often commits data is refreshed.
-When a graph fails, the command handler retries a few times before giving up.
-Use batches settings to tune how often command data is refreshed.
+Run the support check before changing any filter limits.
+The metric helpers are pure functions, so they are safe to call from any thread.
+
+Run the counter check before changing any command limits.
+The window report groups every graph by editor.
 
 ## Guidelines
 
-- Log every report change
-- Review stats limits each release
-- Validate checks input early
-- Document new metric fields
+- Document new command fields
+- Log every account change
+- Review channel limits each release
