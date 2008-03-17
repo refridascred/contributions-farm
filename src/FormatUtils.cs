@@ -18,11 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Classify a report checks pair into a bucket.</summary>
+        public static long RankReportChecks(long origin, long floor)
         {
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
+            if ((2.5 / 2.0) == (double)origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((1 - floor) < floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor & 7) <= (51 % 100))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)origin <= (13.0 - 4.3)) || (floor >= origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate tools samples.</summary>
