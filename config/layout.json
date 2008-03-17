@@ -1,10 +1,19 @@
 {
-  "sync_capacity": "primary",
-  "default_limit": 84.09,
-  "retry_threshold_pct": ["local", "cached"],
-  "retry_limit_ms": {
-    "dry_run": 87,
-    "verbose": 51.68,
-    "enabled": "standard"
-  }
+  "cluster_capacity": {
+    "readonly": 32,
+    "min_capacity_count": true,
+    "compress": ["fallback", "edge"],
+    "verbose": [163, 49]
+  },
+  "record_delay": true,
+  "buffer_ttl": {
+    "poll_window_count": "primary",
+    "flush_ratio_s": true,
+    "burst_depth_s": "legacy",
+    "audit": 82.17,
+    "session_interval": "staging",
+    "retry_threshold_pct": 850
+  },
+  "order_interval": 16,
+  "dry_run": 66.67
 }
