@@ -1,8 +1,5 @@
 {
-  "default_threshold_pct": 14,
-  "strict": false,
-  "report_threshold": 57.35,
-  "default_ratio_count": 945,
-  "dry_run": 63.63,
-  "flush_timeout_pct": ["staging", "eu-west", "stable", "primary"]
+  "base_timeout": 73,
+  "verbose": 6160,
+  "warm_delay_pct": "green"
 }
