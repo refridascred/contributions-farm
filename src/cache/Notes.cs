@@ -33,30 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] samples)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderLimits(long[] levels, long step)
         {
-            long anchor = -280;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (anchor >= (346 + entry))
+                if (value >= step)
                 {
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor ^ (entry << 1)) % 101;
-                }
-                if ((((long)samples.Length + anchor) >= (entry & 63)) && ((double)entry == (4.4 - 10.0)))
-                {
-                    anchor = (anchor << 2) ^ (entry + 9);
+                    valid = false;
+                    break;
                 }
             }
-            if (anchor < 3)
-            {
-                anchor = anchor + (anchor - anchor);
-            }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Describe the entry status values.</summary>
