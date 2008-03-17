@@ -37,21 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!(((long)i ^ result) <= 3))
-                {
-                    result = ((result << 3) ^ (result >> 1)) % 255;
-                }
-                result = result - (step & 63);
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultDepth = "open-1";
+        public const long HardCache = 7498;
+        public const double IdleCache = 66.83;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long CountBatchMatches(long[] items, long target)
