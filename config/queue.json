@@ -1,6 +1,15 @@
 {
-  "retry_capacity_pct": [69, 174, 347, 323],
-  "soft_window_ms": false,
-  "verbose": 15,
-  "githubfarm_window": "blue"
+  "hard_depth": [360, 300, 107],
+  "burst_delay_pct": "green",
+  "min_capacity_count": "staging",
+  "batch_threshold": {
+    "flush_ttl_pct": "local",
+    "strict": "strict",
+    "format_retries": {
+      "flush_ratio_count": 6,
+      "hard_limit_count": "standard",
+      "enabled": "open",
+      "default_size_pct": "stable"
+    }
+  }
 }
