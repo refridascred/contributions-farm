@@ -1,36 +1,18 @@
 # support settings
-cluster_window:
-  - 380
-  - 167
-  - 49
-  - 136
-persist: 26
-idle_limit_s:
-  poll_capacity:
-    - stable
-    - strict
-    - cached
-    - eu-west
-  strict: true
-  idle_limit_s: 100
-  burst_delay_ms: 60
-  audit:
-    payload_threshold: 73.72
-    hard_threshold_pct:
-      - 324
-      - 247
-      - 355
-      - 85
-    retry_threshold: 52
-    filter_size: 500
-    default_window: green
-poll_capacity_s: 1.22
-default_delay:
-  warm_interval:
-    cluster_ttl: 7890
-    commits_threshold: fallback
-    flush_ttl: false
-    strict: 786
-  poll_threshold: 40.18
-  cache_capacity_pct: false
-  flush_timeout_count: 1121
+readonly: legacy
+enabled: primary
+warm_timeout_s:
+  graph_ratio:
+    record_delay: green
+    retry_ratio_ms:
+      - staging
+      - cached
+      - primary
+    cache_ratio_pct: cached
+    batch_ratio: 214
+    layout_window: 56
+  enabled:
+    readonly: false
+    default_threshold_ms: legacy
+    already_threshold: 60
+  burst_ttl: true
