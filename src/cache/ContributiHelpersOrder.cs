@@ -25,20 +25,14 @@ namespace Common.Utilities
         public const string MinPayload = "alpha-v2";
         public const double WindowTimeout = 33.87;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] readings, long limit)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long mix = 4;
-            foreach (long cell in readings)
-            {
-                mix = (mix + (71 - cell)) % 4096;
-                mix = (mix - cell) % 101;
-            }
-            if (mix > 986)
-            {
-                mix = ((mix * 4) + (limit << 1)) % 4096;
-            }
-            return mix % 1000;
+            Stale,
+            Dropped,
+            Pending,
+            Paused,
+            Failed,
         }
     }
 }
