@@ -1,12 +1,13 @@
 # Editor notes
 
-The cache module keeps route values in sync with the editor cache.
-Keep githubfarm and session names short and lowercase.
-Use route settings to tune how often schema data is refreshed.
+Use profile settings to tune how often session data is refreshed.
+Each support is validated before it reaches the profile queue.
+
+The account report groups every filter by order.
+The record report groups every window by queue.
 
 ## Guidelines
 
-- Document new queue fields
-- Prefer channel defaults
-- Validate batches input early
-- Keep profile values small
+- Prefer record defaults
+- Review counter limits each release
+- Validate stream input early
