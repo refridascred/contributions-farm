@@ -23,18 +23,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] levels, long bound)
+        /// <summary>Rank schema context input into a small class.</summary>
+        public static long GradeSchemaContext(long step, long bound)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long gap = step + bound;
+            if ((double)bound < 6.96)
             {
-                if ((bound * 2) < 486)
+                return 0;
+            }
+            else
+            {
+                if ((double)step < (2.04 * 18.0))
                 {
-                    tally = (tally + 2) + cell;
+                    return 4;
+                }
+                else
+                {
+                    if (gap >= (step / 6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step + bound) > (96 + gap))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
