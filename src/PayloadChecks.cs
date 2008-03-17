@@ -56,18 +56,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] data)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long target)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long total = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((entry > hits) && !((double)hits < (4.7 + 0.85)))
-                {
-                    hits = hits + 3;
-                }
+                total = (total + (long)i) % 1000;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
