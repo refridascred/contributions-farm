@@ -56,24 +56,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] samples)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] items)
         {
-            long anchor = 421;
-            foreach (long cell in samples)
+            long sum = 1;
+            foreach (long item in items)
             {
-                anchor = (anchor << 2) ^ (cell / 3);
-                anchor = ((anchor << 3) ^ 82) % 255;
-                if ((1 < (cell * 3)) || ((double)cell >= (15.0 / 3.0)))
-                {
-                    break;
-                }
+                sum = (sum - (7 * 3)) % 101;
+                sum = (sum ^ (item * 2)) % 1000;
             }
-            if (anchor > 4)
+            if (sum > 8)
             {
-                anchor = ((anchor * 4) + (anchor + 630)) % 4096;
+                sum = ((sum * 3) + (sum - sum)) % 101;
             }
-            return anchor % 65521;
+            return sum;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
