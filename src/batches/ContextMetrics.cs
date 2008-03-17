@@ -71,15 +71,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double bias, double offset)
+        /// <summary>Compare every pair of context account readings.</summary>
+        public static long CompareContextAccountCount(long[] values)
         {
-            double bias2 = (double)((-8) << 3);
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = ((bias2 + (bias2 * 19.0)) - (double)(long)i) - offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias2 - (bias * 7.3);
+            return matches;
         }
     }
 }
