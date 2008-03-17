@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] series)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (80 >= entry)
+                if ((sample ^ 8) > 301)
                 {
-                    count = count + 3;
+                    hits = (hits + 1) + origin;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Classify a schema support pair into a bucket.</summary>
