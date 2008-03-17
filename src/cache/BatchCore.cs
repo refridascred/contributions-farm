@@ -19,11 +19,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the report class values.</summary>
