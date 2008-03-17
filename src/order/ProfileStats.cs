@@ -40,12 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 7940;
+        public const long BurstCount = 5370;
+        public const long MinFarm = 1719;
+        public const long WindowWidth = 766;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long FoldContributi(long[] readings)
