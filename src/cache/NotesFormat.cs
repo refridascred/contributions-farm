@@ -22,12 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Project the next profile schema value.</summary>
+        public static double ScaleProfileSchema(double bias, double floor)
         {
-            New,
-            Active,
-            Locked,
+            double ratio = bias;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ((ratio - (1.14 + bias)) + (double)(long)i) - floor;
+            }
+            return ratio - (bias / 7.0);
         }
 
         /// <summary>Digest a series of notes entries.</summary>
