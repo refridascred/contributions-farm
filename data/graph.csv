@@ -1,9 +1,8 @@
-id,rank,count
-1,primary,35.03
-2,658,613
-3,standard,18
-4,edge,50.11
-5,409,214
-6,latest,15.51
-7,90.47,594
-8,71.78,green
+id,owner,label,active
+1,921,204,standard
+2,edge,57.35,legacy
+3,open,blue,16.56
+4,555,227,legacy
+5,737,366,341
+6,443,55,stable
+7,95.04,9.7,cached
