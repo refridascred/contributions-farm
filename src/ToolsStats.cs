@@ -60,10 +60,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string CacheChecks = "standard-1";
-        public const long RetryBudget = 2407;
-        public const long BurstSize = 9157;
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
