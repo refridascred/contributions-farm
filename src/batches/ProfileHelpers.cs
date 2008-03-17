@@ -20,21 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] series)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = offset;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ((ratio + (ratio - 7.39)) + (double)(long)i) - scale;
             }
-            return hits;
+            return ratio - (offset - offset);
         }
 
         /// <summary>Accumulate tools samples.</summary>
