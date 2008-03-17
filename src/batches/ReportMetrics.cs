@@ -31,20 +31,17 @@ namespace Common.Utilities
         public const string BaseSpan = "local";
         public const long HardRoute = 5766;
 
-        /// <summary>Iterate the account editor series from a seed.</summary>
-        public static long SeriesAccountEditor(long floor)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] levels, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((levels[i] == step) && ((levels[i] % 3) == 0))
                 {
-                    total = ((total ^ floor) % 65521) + (long)i2;
-                    total = (total << 2) ^ (total + floor);
+                    return (long)i;
                 }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
     }
 }
