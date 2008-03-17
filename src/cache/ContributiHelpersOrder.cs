@@ -17,32 +17,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long offset, long origin)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long span = offset ^ origin;
-            if ((origin >> 1) >= (offset + span))
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset >= origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin + 692) >= (span << 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Queued,
+            Ready,
+            Paused,
+            Closed,
         }
 
         /// <summary>Describe the batch kind values.</summary>
