@@ -28,18 +28,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] values, long bound)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if ((item << 3) <= (bound - hits))
+                if (reading != offset)
                 {
-                    hits = hits + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
