@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] readings)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if ((double)seen <= (double)item)
+                if (item > step)
                 {
-                    seen = seen + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Count the metric entry entries that pass the check.</summary>
