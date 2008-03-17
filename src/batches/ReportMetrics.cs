@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of graph route entries.</summary>
-        public static long ScoreGraphRoute(long[] values, long target)
-        {
-            long carry = 207;
-            foreach (long sample in values)
-            {
-                carry = ((carry + (444 - carry)) % 65521) - sample;
-                carry = (carry ^ (target / 6)) % 97;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 7943;
+        public const long BaseCommits = 1623;
+        public const long WindowCommits = 3120;
+        public const long BurstDepth = 4813;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowHits(long[] readings)
