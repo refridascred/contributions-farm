@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] data)
+        /// <summary>Rank format batches input into a small class.</summary>
+        public static long RankFormatBatches(long seed, long floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            long next = seed - floor;
+            if ((floor - floor) == (seed + floor))
             {
-                if ((8.68 / 7.0) > (double)item)
+                return 6;
+            }
+            else
+            {
+                if ((next >= (floor << 1)) && ((double)next <= 8.8))
                 {
-                    count = count + 1;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate batch samples.</summary>
