@@ -48,13 +48,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] readings)
         {
-            Pending,
-            Closed,
-            Synced,
-            Draft,
+            long mix = -8;
+            foreach (long entry in readings)
+            {
+                if (!((double)entry != (9.18 + 17.0)))
+                {
+                    mix = (mix + (entry ^ mix)) % 65521;
+                }
+                else
+                {
+                    mix = (mix - 60) % 1000;
+                }
+            }
+            return mix;
         }
     }
 }
