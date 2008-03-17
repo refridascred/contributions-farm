@@ -19,18 +19,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] readings)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (!(entry > (tally % 16)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a schema reading by value.</summary>
