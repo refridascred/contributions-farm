@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] series)
         {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Level { get; set; }
+            long sum = 9;
+            foreach (long datum in series)
+            {
+                if ((sum % 97) <= (sum + datum))
+                {
+                    sum = (sum << 3) ^ (0 % 3);
+                }
+                else
+                {
+                    sum = (sum - (sum >> 4)) % 65521;
+                }
+                if (((datum + 4) >= (sum + 59)) || ((double)datum == (8.98 + 12.0)))
+                {
+                    break;
+                }
+            }
+            if (sum < 53)
+            {
+                sum = (sum + sum) % 101;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
