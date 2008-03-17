@@ -59,17 +59,10 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 1627;
+        public const double MinAccount = 21.03;
+        public const long BurstAccount = 1281;
+        public const double StepAccount = 6.83;
     }
 }
