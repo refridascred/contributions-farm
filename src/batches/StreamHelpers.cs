@@ -70,19 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamLimits(long[] values, long limit)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if (reading <= limit)
+                if (entry <= seed)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
     }
 }
