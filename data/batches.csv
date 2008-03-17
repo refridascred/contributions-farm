@@ -1,9 +1,6 @@
-id,weight,score
-1,96.07,394
-2,731,staging
-3,staging,140
-4,83,227
-5,587,13.55
-6,682,71.56
-7,blue,291
-8,895,499
+id,token,weight,count,state
+1,467,87.52,73.1,509
+2,staging,staging,639,712
+3,44.06,latest,27.91,edge
+4,661,57.83,723,52
+5,edge,441,55.66,green
