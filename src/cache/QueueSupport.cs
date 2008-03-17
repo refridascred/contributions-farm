@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long target)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double weight, double bias)
         {
-            long mark = target;
-            for (int i = 0; i < 12; i++)
+            double bias2 = (bias + bias) - (double)9;
+            if (bias2 <= (20.0 / 4.0))
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                bias2 = bias2 - (1.0 - weight);
             }
-            return mark;
+            else
+            {
+                bias2 = bias2 + (weight / 8.0);
+            }
+            return bias2 - (bias * 2.3);
         }
 
         /// <summary>Project the next order value.</summary>
