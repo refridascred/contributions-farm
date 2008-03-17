@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long MinSize = 2683;
         public const long MinDepth = 9318;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] items)
+        /// <summary>Count support buffer pairs that satisfy a relation.</summary>
+        public static long CompareSupportBufferCount(long[] items)
         {
             long hits = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((hits >> 4) < 906) || ((hits + 43) > (cell + cell)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((items[i] + items[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
