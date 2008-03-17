@@ -37,19 +37,15 @@ namespace Common.Utilities
             return ratio - (double)84;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] series, long floor)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long target)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long mix = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (entry >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
