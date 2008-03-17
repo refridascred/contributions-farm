@@ -1,16 +1,5 @@
 {
-  "enabled": 46,
-  "warm_delay_s": {
-    "buffer_threshold": "strict",
-    "dry_run": 9510,
-    "compress": [335, 272, 346, 254],
-    "report_depth": {
-      "warm_depth": "eu-west",
-      "default_limit_count": 41.63,
-      "report_interval": [272, 231]
-    },
-    "notes_interval": "stable"
-  },
-  "dry_run": 97,
-  "idle_size_ms": 1685
+  "graph_interval": 57.5,
+  "default_depth_ms": true,
+  "burst_size": 17
 }
