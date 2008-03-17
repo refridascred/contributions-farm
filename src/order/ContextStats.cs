@@ -19,19 +19,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double rate, double bias)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] values)
         {
-            double gain = rate;
-            if (gain >= (7.12 + rate))
+            long hits = 0;
+            foreach (long value in values)
             {
-                gain = (gain + gain) + bias;
+                if ((value * 3) > hits)
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - rate) + (double)(long)i;
-            }
-            return gain + (double)(-83);
+            return hits;
         }
 
         /// <summary>Classify a metric farm pair into a bucket.</summary>
