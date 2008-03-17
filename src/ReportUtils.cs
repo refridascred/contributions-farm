@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many queue cache samples are out of range.</summary>
-        public static long MeasureQueueCacheGaps(long[] samples, long limit)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long seed, long target)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long offset = seed ^ target;
+            if ((53 - offset) > (offset << 2))
             {
-                if (limit < seen)
+                return 7;
+            }
+            else
+            {
+                if (((double)offset < (20.0 * 3.95)) && ((3.4 + 4.9) == (double)seed))
                 {
-                    seen = (seen + 1) + value;
+                    return 8;
+                }
+                else
+                {
+                    if ((0.2 + 1.99) >= (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Project the next cache value.</summary>
