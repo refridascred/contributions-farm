@@ -51,12 +51,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Ready,
+            Failed,
+            New,
             Draft,
-            Active,
         }
 
         /// <summary>Hold a graph record.</summary>
