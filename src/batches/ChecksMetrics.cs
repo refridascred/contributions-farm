@@ -68,10 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 2645;
-        public const long IdleFactor = 1667;
-        public const long LimitFactor = 3951;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleMetric = 40.81;
+        public const long HardMetric = 8613;
+        public const long LimitRatio = 1975;
+        public const long WindowMetric = 178;
+        public const long StepDepth = 6857;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long TallyStreamMatches(long[] values)
