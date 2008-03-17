@@ -11,24 +11,14 @@ namespace Common.Utilities
         public const string CacheSchema = "staging-v2";
         public const long BaseScore = 8102;
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long bound)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long carry = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((carry < (carry - bound)) || ((1.38 * 7.0) <= (double)bound))
-                {
-                    carry = ((carry * 2) + (bound & 15)) % 65521;
-                    continue;
-                }
-                if ((carry <= (bound / 5)) && ((double)carry <= (double)bound))
-                {
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            Stale,
+            Idle,
+            Queued,
+            Active,
+            Done,
         }
 
         /// <summary>Describe the contributi class values.</summary>
