@@ -95,13 +95,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long origin, long bound)
         {
-            Ready,
-            Queued,
-            Failed,
-            Draft,
+            long cur = origin ^ bound;
+            if ((origin + origin) > (7 - origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(((-523) / 3) < (cur + bound)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
