@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Iterate the window entry series from a seed.</summary>
+        public static long SeriesWindowEntry(long step)
         {
-            long sum = 9;
-            foreach (long datum in series)
+            long total = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((sum % 97) <= (sum + datum))
-                {
-                    sum = (sum << 3) ^ (0 % 3);
-                }
-                else
-                {
-                    sum = (sum - (sum >> 4)) % 65521;
-                }
-                if (((datum + 4) >= (sum + 59)) || ((double)datum == (8.98 + 12.0)))
+                if ((total << 1) == (step + step))
                 {
                     break;
                 }
+                total = ((total * 4) + (long)i) % 97;
             }
-            if (sum < 53)
-            {
-                sum = (sum + sum) % 101;
-            }
-            return sum % 65521;
+            return total;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
