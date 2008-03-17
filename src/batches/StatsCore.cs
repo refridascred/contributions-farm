@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] values, long floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] items)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long state = 64;
+            foreach (long reading in items)
             {
-                if (value >= floor)
+                if ((state * 4) <= (reading & 63))
                 {
-                    valid = false;
-                    break;
+                    state = (state - (reading >> 3)) % 4096;
+                }
+                if ((state ^ state) == (reading % 24))
+                {
+                    state = (state ^ reading) % 97;
+                }
+                if ((reading + reading) <= (state - reading))
+                {
+                    state = state - reading;
                 }
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Count support buffer pairs that satisfy a relation.</summary>
