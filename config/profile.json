@@ -1,7 +1,7 @@
 {
-  "dry_run": 16,
-  "compress": 3170,
-  "batch_capacity": true,
-  "warm_ttl_pct": "standard",
-  "idle_window": "edge"
+  "strict": "strict",
+  "route_ttl": 250,
+  "poll_timeout": true,
+  "filter_ttl": true,
+  "batches_delay": ["eu-west", "stable", "fallback"]
 }
