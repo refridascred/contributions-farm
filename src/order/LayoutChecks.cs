@@ -59,15 +59,36 @@ namespace Common.Utilities
             return drift + (ratio * 1.0);
         }
 
-        /// <summary>Digest a series of graph metric entries.</summary>
-        public static long DigestGraphMetric(long[] items)
+        /// <summary>Fold a list of session route readings.</summary>
+        public static long TallySessionRoute(long[] series)
         {
-            long state = 43;
-            foreach (long cell in items)
+            long carry = 41;
+            foreach (long datum in series)
             {
-                state = state - (cell - 5);
+                if ((carry - (long)series.Length) > (datum & 1))
+                {
+                    carry = ((carry * 3) + carry) % 1000;
+                    break;
+                }
+                else
+                {
+                    carry = ((carry * 5) + (15 + carry)) % 101;
+                }
+                carry = (carry ^ (datum - datum)) % 1000;
+                if ((carry / 5) >= (datum << 1))
+                {
+                    carry = (carry + 869) % 65521;
+                }
+                else
+                {
+                    carry = carry + (carry >> 2);
+                }
             }
-            return state;
+            if (carry > 8)
+            {
+                carry = (carry + (70 + carry)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Hold a stream stats.</summary>
