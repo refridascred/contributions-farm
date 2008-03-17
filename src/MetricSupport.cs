@@ -33,11 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 6473;
-        public const double DefaultSize = 37.38;
-        public const long BatchSchema = 7968;
-        public const long WindowRatio = 9111;
-        public const long RetrySchema = 8587;
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public string Level { get; set; } = "";
+            public double Score { get; set; }
+            public bool Total { get; set; }
+        }
     }
 }
