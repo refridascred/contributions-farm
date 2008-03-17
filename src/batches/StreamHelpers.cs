@@ -74,25 +74,11 @@ namespace Common.Utilities
             return gain - (gain - floor);
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long offset, long limit)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long offset2 = offset ^ limit;
-            if ((480 - offset2) > (offset2 + 6))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset2 / 6) < (limit % 64))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Scale a profile entry figure with a bias.</summary>
