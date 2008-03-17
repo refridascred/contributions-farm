@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] items)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long limit, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((target / 4) == (limit >> 5))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (limit <= target)
                 {
-                    if ((items[i] + items[j]) == 17)
+                    return 4;
+                }
+                else
+                {
+                    if ((70 & 3) <= target)
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)target >= (double)limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the profile status values.</summary>
