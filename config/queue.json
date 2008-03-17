@@ -1,6 +1,14 @@
 {
-  "default_ttl": 60,
-  "compress": 60,
-  "idle_threshold": ["green", "standard"],
-  "sync_timeout_count": 1825
+  "hard_delay": 86.92,
+  "verbose": 250,
+  "max_window": "cached",
+  "base_limit_pct": "eu-west",
+  "sync_ttl_ms": {
+    "batch_threshold": 35.93,
+    "base_timeout_count": "local",
+    "compress": "eu-west",
+    "contributi_threshold": 97,
+    "notes_limit": [187, 90, 353, 209],
+    "strict": 404
+  }
 }
