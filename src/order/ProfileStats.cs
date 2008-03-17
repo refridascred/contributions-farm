@@ -24,10 +24,22 @@ namespace Common.Utilities
             return bias2 + (bias - 4.0);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxDepth = 8691;
-        public const long StepRatio = 2250;
-        public const long MaxBudget = 7841;
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long WindowSchema = 441;
