@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] series, long target)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Size { get; set; }
+            public bool Limit { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Combine entry notes values into a single score.</summary>
