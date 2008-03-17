@@ -1,20 +1,5 @@
 # support settings
-max_ttl_s: 3.2
-schema_window:
-  min_depth: 11.83
-  batch_limit:
-    base_ratio_s: edge
-    entry_retries: false
-    retry_delay_s:
-      - primary
-      - stable
-      - primary
-    channel_window: 75
-    format_window: 69.73
-    default_size_count: strict
-  soft_retries_s: 63.88
-  buffer_timeout: open
-idle_delay: 80.82
-min_ratio_ms: fallback
-retry_size: standard
-hard_ratio_ms: false
+order_limit: staging
+audit: false
+flush_size_ms: blue
+soft_window_s: 25.71
