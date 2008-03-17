@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of metrics record readings.</summary>
-        public static long PairMetricsRecordCount(long[] values)
+        /// <summary>Check that every support githubfarm entry stays within the limit.</summary>
+        public static bool VerifySupportGithubfarmRange(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item > origin)
                 {
-                    if ((values[i] - values[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
