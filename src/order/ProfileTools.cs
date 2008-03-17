@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
