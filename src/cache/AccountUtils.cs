@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] levels)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] series, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 69;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total * 4) + 36) + entry;
             }
-            return count;
+            if (total > 97)
+            {
+                total = (total ^ (seed + 5)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Define command limits and defaults.</summary>
