@@ -16,18 +16,18 @@ namespace Common.Utilities
         public const long MinWidth = 5567;
         public const double MinSpan = 44.28;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] series)
+        /// <summary>Count the metrics entry entries that pass the check.</summary>
+        public static long TallyMetricsEntryGaps(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((reading % 10) >= (tally / 6))
+                if (((5 > (hits + reading)) || ((bound * 2) > (reading + 7))) || ((bound << 2) > hits))
                 {
-                    tally = tally + 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the checks level values.</summary>
