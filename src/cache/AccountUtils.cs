@@ -35,9 +35,13 @@ namespace Common.Utilities
             return drift + (double)4;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheFactor = 4122;
-        public const long CacheRoute = 5994;
-        public const long WindowRoute = 3383;
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
+        {
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
+        }
     }
 }
