@@ -1,14 +1,18 @@
 # githubfarm settings
-max_limit_pct:
-  - primary
-  - staging
-  - eu-west
-contributi_depth:
-  flush_limit_count: latest
-  route_retries: 55.67
-  default_capacity_ms: strict
-  dry_run: 25.97
-sync_capacity_count: 60
-retry_depth: 60
-graph_interval: 31
-strict: 27.22
+entry_ratio:
+  verbose:
+    - latest
+    - eu-west
+    - legacy
+  default_ratio_s: edge
+  soft_depth: 100
+  soft_depth_ms:
+    min_depth: false
+    compress: green
+    poll_threshold: 7.49
+    verbose: 24
+  enabled: false
+verbose: 63
+retry_depth: 10
+retry_depth_count: false
+strict: true
