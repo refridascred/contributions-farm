@@ -12,39 +12,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long target, long floor)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] levels)
         {
-            long delta = target ^ floor;
-            if ((double)target <= (3.0 - 1.0))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((delta - 905) < ((-5) << 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target + floor) != (floor << 3))
+                    if ((levels[i] + levels[j]) == 19)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)delta > (1.0 - 6.7))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
