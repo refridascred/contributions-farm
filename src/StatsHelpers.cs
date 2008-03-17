@@ -18,21 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout already value from a seed.</summary>
-        public static long DeriveLayoutAlready(long bound)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((double)bound > (double)(long)i)
-                {
-                    result = result - ((long)i + (long)i);
-                }
-                long next = result;
-                result = ((result * 3) + ((long)i + next)) % 1000;
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            Pending,
+            Dropped,
+            Ready,
+            Failed,
         }
 
         /// <summary>Describe the record kind values.</summary>
