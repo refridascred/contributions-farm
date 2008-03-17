@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] data)
         {
-            public double Label { get; set; }
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-            public double Total { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((tally + item) > (item * 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
