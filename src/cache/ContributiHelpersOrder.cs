@@ -25,14 +25,19 @@ namespace Common.Utilities
         public const string MinPayload = "alpha-v2";
         public const double WindowTimeout = 33.87;
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] samples, long seed)
         {
-            Stale,
-            Dropped,
-            Pending,
-            Paused,
-            Failed,
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
