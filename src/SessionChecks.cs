@@ -24,13 +24,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] series)
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public double Score { get; set; }
+            long result = 20;
+            foreach (long cell in series)
+            {
+                if ((double)result <= (4.31 * 9.5))
+                {
+                    result = result - (cell - cell);
+                }
+            }
+            if (result > 5)
+            {
+                result = (result - (result >> 1)) % 1000;
+            }
+            return result % 1000;
         }
 
         /// <summary>Adjust a counter farm reading.</summary>
