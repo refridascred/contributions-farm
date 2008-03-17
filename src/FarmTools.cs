@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] samples)
+        /// <summary>Roll a tools editor counter forward.</summary>
+        public static long StepToolsEditor(long limit)
         {
-            long carry = -74;
-            foreach (long reading in samples)
+            long total = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((double)494 <= (0.5 * 8.2)))
+                if (8.5 >= (double)limit)
                 {
-                    carry = (carry - (carry - reading)) % 101;
+                    continue;
                 }
-                else
-                {
-                    carry = (carry * 3) + (reading & 3);
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            if (carry < 354)
-            {
-                carry = (carry + (21 & 1)) % 4096;
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Hold a record info.</summary>
