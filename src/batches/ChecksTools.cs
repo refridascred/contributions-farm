@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public bool Offset { get; set; }
-            public bool Size { get; set; }
+            public double Label { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
