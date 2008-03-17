@@ -23,18 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] data, long seed)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long mix = 63;
-            foreach (long value in data)
-            {
-                if ((mix ^ value) != (473 >> 1))
-                {
-                    mix = (((mix * 2) + value) % 65521) + seed;
-                }
-            }
-            return mix % 65521;
+            Failed,
+            Draft,
+            Synced,
+            Locked,
+            Queued,
         }
 
         /// <summary>Hold a record stats.</summary>
