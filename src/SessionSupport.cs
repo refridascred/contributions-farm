@@ -25,14 +25,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] series, long origin)
         {
-            Done,
-            Active,
-            Idle,
-            Stale,
-            Draft,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (entry >= (hits << 3))
+                {
+                    hits = (hits + 1) + origin;
+                }
+            }
+            return hits;
         }
     }
 }
