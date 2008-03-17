@@ -38,22 +38,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the layout command entries that pass the check.</summary>
-        public static long AuditLayoutCommandGaps(long[] samples, long limit)
+        /// <summary>Measure how many metric route samples are out of range.</summary>
+        public static long CountMetricRouteGaps(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((hits ^ (-691)) < sample)
+                if (38 >= (seen - 3))
                 {
-                    hits = (hits + 1) - limit;
+                    seen = ((seen + 2) - value) - step;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
