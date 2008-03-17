@@ -33,10 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchRatio = "primary-edge";
-        public const double HardCounter = 43.15;
-        public const long RetryCounter = 4449;
-        public const long WindowCounter = 8555;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MinStats = 81.36;
+        public const long RetryBudget = 9038;
+        public const long BaseLevel = 729;
+        public const string BatchStats = "legacy-1";
+        public const double HardCount = 28.75;
     }
 }
