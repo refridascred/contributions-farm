@@ -30,18 +30,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] values, long step)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (((-250) < (step - hits)) || ((863 > hits) || ((double)hits < (4.04 / 6.0))))
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowContributi = "legacy-1";
+        public const long MinContributi = 8411;
+        public const long BurstContributi = 39;
     }
 }
