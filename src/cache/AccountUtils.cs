@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] levels, long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long sum = 7;
+            foreach (long value in data)
             {
-                if ((step - entry) <= entry)
-                {
-                    tally = tally + 3;
-                }
+                sum = sum - value;
             }
-            return tally;
+            return sum % 65521;
         }
 
         /// <summary>Adjust a graph reading.</summary>
