@@ -30,17 +30,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] series, long target)
+        /// <summary>Classify a report booking pair into a bucket.</summary>
+        public static long BucketReportBooking(long bound, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long next = bound - origin;
+            if (((bound << 1) >= (bound << 3)) && ((bound * 2) >= (272 + next)))
             {
-                if ((series[i] < target) && ((series[i] % 2) == 0))
+                return 5;
+            }
+            else
+            {
+                if (((bound ^ next) <= (origin / 9)) && ((29 + 46) <= (next * 2)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin >> 1) == (bound / 8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
