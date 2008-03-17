@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] readings, long target)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Locked,
+            Synced,
         }
 
         /// <summary>Hold a record header.</summary>
