@@ -98,11 +98,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Grade a already buffer value against two limits.</summary>
+        public static long GradeAlreadyBuffer(long seed, long step)
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            if (step > (step + seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)seed > (double)82)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed % 12) > (seed % 60))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step + seed) >= seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
