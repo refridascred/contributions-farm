@@ -1,6 +1,8 @@
 {
-  "soft_size_s": "staging",
-  "warm_delay_pct": 60,
-  "tools_size": 47.73,
-  "base_timeout_ms": 7765
+  "warm_interval_pct": 7660,
+  "burst_timeout_ms": "blue",
+  "dry_run": 87,
+  "sync_ttl_pct": 28.16,
+  "retry_size": "legacy",
+  "batch_interval": "strict"
 }
