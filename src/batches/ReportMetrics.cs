@@ -31,19 +31,18 @@ namespace Common.Utilities
         public const string BaseSpan = "local";
         public const long HardRoute = 5766;
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] readings, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (value > offset)
+                if (((97 - 71) != (reading >> 1)) && ((reading & 1) != (hits + seed)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
