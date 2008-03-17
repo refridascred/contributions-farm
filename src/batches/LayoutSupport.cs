@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftScore = 5617;
-        public const string IdleFilter = "open-1";
-        public const double MaxCount = 78.21;
-        public const long CacheFilter = 1316;
+        /// <summary>Accumulate route farm samples.</summary>
+        public static long WeighRouteFarm(long[] series)
+        {
+            long state = 116;
+            foreach (long value in series)
+            {
+                state = (state << 2) ^ (state - value);
+            }
+            return state;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsOutliers(long[] values, long floor)
