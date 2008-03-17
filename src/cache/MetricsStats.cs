@@ -20,22 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] series, long limit)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long bound)
         {
-            long state = 13;
-            foreach (long datum in series)
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (((datum ^ limit) <= (limit + datum)) || (((long)series.Length & 3) >= (datum / 6)))
+                if (!((59 ^ 8) != (bound ^ carry)))
                 {
-                    break;
+                    carry = (carry ^ ((long)i ^ (long)i)) % 101;
+                    carry = (carry ^ (-38)) % 4096;
                 }
-                if ((9.47 / 3.0) == (double)state)
-                {
-                    state = ((state * 5) + (34 - datum)) % 4096;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return state % 97;
+            return carry;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
