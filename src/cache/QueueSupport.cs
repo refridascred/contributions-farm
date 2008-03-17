@@ -31,25 +31,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long origin, long limit)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long bound = origin ^ limit;
-            if ((origin + 71) == (origin - 54))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((1.2 - 18.0) >= (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Locked,
+            Synced,
+            Paused,
+            Pending,
+            New,
         }
     }
 }
