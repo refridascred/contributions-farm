@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
+            Queued,
+            Draft,
             Retry,
-            Synced,
-            Ready,
+            Stale,
+            Locked,
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
