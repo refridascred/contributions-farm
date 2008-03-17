@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] items, long limit)
         {
-            Draft,
-            Stale,
-            Queued,
-            Retry,
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the layout status values.</summary>
