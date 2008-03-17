@@ -48,11 +48,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] items, long offset)
         {
-            public long Mode { get; set; }
-            public double Offset { get; set; }
+            long total = 917;
+            foreach (long cell in items)
+            {
+                if (!((cell - total) < (cell << 2)))
+                {
+                    total = total - (981 >> 4);
+                }
+                else
+                {
+                    total = (total - offset) % 65521;
+                }
+            }
+            if (total > 155)
+            {
+                total = (total - ((-818) >> 5)) % 65521;
+            }
+            return total % 65521;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
