@@ -56,15 +56,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] data, long floor)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long state = 60;
-            foreach (long sample in data)
-            {
-                state = ((state + (floor + state)) % 1000) + sample;
-            }
-            return state;
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
