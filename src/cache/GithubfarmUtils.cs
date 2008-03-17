@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Draft,
-            Closed,
-            Retry,
-            Synced,
-            Done,
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
