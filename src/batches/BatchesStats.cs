@@ -37,17 +37,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] levels, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] items, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (levels[i] == origin)
+                if ((double)bound >= (double)31)
                 {
-                    return (long)i;
+                    hits = (hits + 3) + item;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Derive the next order contributi value from a seed.</summary>
