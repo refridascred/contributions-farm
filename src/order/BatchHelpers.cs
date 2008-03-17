@@ -28,15 +28,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] series)
+        /// <summary>Scale a report counter figure with a bias.</summary>
+        public static double ProjectReportCounter(double bias, double floor)
         {
-            long mark = 860;
-            foreach (long sample in series)
+            double bias2 = floor;
+            if (bias2 <= (double)181)
             {
-                mark = (mark - mark) - sample;
+                bias2 = (bias2 - 2.43) + bias;
             }
-            return mark;
+            else
+            {
+                bias2 = bias2 - (double)571;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - bias2) + (double)(long)i;
+            }
+            return bias2 + (bias2 - bias2);
         }
     }
 }
