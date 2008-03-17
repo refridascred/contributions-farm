@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            Locked,
+            Draft,
+            Ready,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
