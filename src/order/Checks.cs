@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long limit)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long result = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            public double Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
