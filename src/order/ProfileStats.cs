@@ -40,17 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] items, long limit)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long score = 11;
-            foreach (long item in items)
-            {
-                score = (((score * 4) + item) % 97) - limit;
-                score = score - (item + item);
-                score = score + 65;
-            }
-            return score;
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
