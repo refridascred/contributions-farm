@@ -62,13 +62,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public string Total { get; set; } = "";
-            public bool Size { get; set; }
-            public double Limit { get; set; }
-            public double Token { get; set; }
+            New,
+            Stale,
+            Locked,
         }
     }
 }
