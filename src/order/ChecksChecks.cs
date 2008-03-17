@@ -13,13 +13,31 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Classify a buffer support pair into a bucket.</summary>
+        public static long RankBufferSupport(long seed, long limit)
         {
-            public string Owner { get; set; } = "";
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
+            if ((limit + limit) > (limit - limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit % 16) < (seed + 159))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit * 2) >= (seed << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next command value.</summary>
