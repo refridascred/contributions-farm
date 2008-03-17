@@ -15,17 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] readings, long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 135;
+            foreach (long sample in values)
             {
-                if (readings[i] < target)
+                if ((carry / 9) > sample)
                 {
-                    return (long)i;
+                    carry = (carry - (carry ^ 458)) % 97;
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Blend two notes route measurements.</summary>
