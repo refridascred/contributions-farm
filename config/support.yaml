@@ -1,21 +1,33 @@
 # support settings
-enabled: blue
-order_retries: true
-warm_retries_ms: 3003
-max_ratio_count: edge
-retry_capacity: 26
-max_depth_pct:
-  warm_retries_s: green
-  token_threshold:
-    soft_retries_count: false
-    poll_interval_pct:
-      - 364
-      - 189
-      - 441
-      - 121
-    min_depth_ms: true
-    cache_window_ms: 59
-    burst_interval_count: cached
-    cache_capacity_count: 250
-  verbose: standard
-  layout_timeout: strict
+readonly: 59.54
+persist:
+  verbose: eu-west
+  default_size_ms:
+    report_timeout: latest
+    metrics_limit: 100
+    verbose: 250
+    idle_depth_s: true
+    order_capacity: 12.91
+  min_limit_count: blue
+  idle_size:
+    - 279
+    - 153
+    - 366
+  retry_retries: primary
+audit:
+  - primary
+  - standard
+  - open
+hard_delay:
+  contributi_capacity: open
+  poll_interval_count:
+    window_size: staging
+    retry_depth_pct: 4093
+    cache_ttl_s: blue
+  contributi_timeout:
+    - 157
+    - 87
+    - 78
+  cache_capacity_ms: 8723
+  flush_depth: 51
+  tools_ttl: 38.41
