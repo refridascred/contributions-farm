@@ -79,19 +79,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueLimits(long[] levels, long bound)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long limit)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long result = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum >= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return stale;
+            return result;
         }
     }
 }
