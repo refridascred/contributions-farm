@@ -39,21 +39,10 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetryRatio = "legacy-1";
+        public const long MaxSize = 4389;
+        public const double SoftToken = 93.5;
+        public const double MaxToken = 20.37;
     }
 }
