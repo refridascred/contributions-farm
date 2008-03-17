@@ -19,21 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    sum = sum ^ (floor & 3);
-                    sum = ((sum * 3) + ((long)i2 + sum)) % 65521;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftRatio = 8003;
+        public const long RetryBudget = 4127;
+        public const long LimitFactor = 7606;
+        public const long BaseFormat = 9036;
+        public const string StepSize = "fallback-1";
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long RankQueue(long origin, long seed)
