@@ -38,19 +38,39 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] items)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long origin, long target)
         {
-            long mark = 441;
-            foreach (long datum in items)
+            long cur = origin ^ target;
+            if ((5.63 / 5.0) < (double)origin)
             {
-                if ((datum & 15) > (549 * 5))
-                {
-                    break;
-                }
-                mark = (mark ^ mark) % 1000;
+                return 6;
             }
-            return mark % 65521;
+            else
+            {
+                if ((double)origin != (9.5 - 8.1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)target < (20.0 - 15.0)) || ((target - origin) > (target << 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((cur + cur) < cur) && ((735 & 7) < (target + target)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
