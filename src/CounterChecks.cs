@@ -70,22 +70,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] samples, long offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] samples)
         {
-            long total = 26;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((total - total) >= (offset + total))
+                if (3.1 > (double)value)
                 {
-                    total = (total + (554 / 2)) % 65521;
+                    seen = seen + 1;
                 }
-                if (datum <= total)
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return total;
+            return seen;
         }
     }
 }
