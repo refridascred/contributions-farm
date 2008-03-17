@@ -47,12 +47,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            Failed,
             Dropped,
-            Locked,
+            Stale,
+            Draft,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
