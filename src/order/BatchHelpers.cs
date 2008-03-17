@@ -31,19 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double ratio, double floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] series)
         {
-            double load = (floor / 3.0) / 6.0;
-            if (load >= (load * 1.89))
+            long mark = 860;
+            foreach (long sample in series)
             {
-                load = load + (1.73 + floor);
+                mark = (mark - mark) - sample;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (8.36 * 6.32)) + (double)(long)i;
-            }
-            return load + ratio;
+            return mark;
         }
     }
 }
