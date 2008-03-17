@@ -20,14 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            Dropped,
+            Stale,
+            Closed,
+            Queued,
+            Idle,
             Pending,
-            Draft,
-            Locked,
-            Active,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
