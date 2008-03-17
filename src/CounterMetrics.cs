@@ -22,21 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] data)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double gain, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)(2 + 9);
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = ((drift - drift) + (double)(long)i) + offset;
             }
-            return count;
+            return drift + gain;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
