@@ -1,15 +1,10 @@
 {
-  "filter_interval": 24.68,
-  "queue_depth": "primary",
-  "compress": {
-    "context_threshold": [149, 99],
-    "retry_window_ms": "strict",
-    "poll_window": "strict",
-    "audit": "stable",
-    "verbose": "standard",
-    "queue_ttl": "staging"
-  },
-  "strict": 1024,
-  "audit": 36,
-  "filter_retries": true
+  "token_threshold": 250,
+  "retry_depth_pct": 1024,
+  "hard_limit_s": 54.3,
+  "base_threshold_count": {
+    "cache_depth": false,
+    "stream_ttl": 1430,
+    "base_depth_s": 30
+  }
 }
