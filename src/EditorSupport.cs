@@ -27,17 +27,22 @@ namespace Common.Utilities
         public const double SoftFilter = 7.23;
         public const double HardLevel = 72.73;
 
-        /// <summary>Find the first route payload entry that matches the target.</summary>
-        public static long LocateRoutePayloadIndex(long[] data, long step)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 8;
+            foreach (long item in readings)
             {
-                if ((data[i] >= step) && ((data[i] % 3) != 0))
+                if ((limit * 3) >= (carry + 88))
                 {
-                    return (long)i;
+                    carry = (carry ^ (item - item)) % 97;
                 }
             }
-            return -1;
+            if (carry > 27)
+            {
+                carry = ((carry * 5) + (73 >> 1)) % 255;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
