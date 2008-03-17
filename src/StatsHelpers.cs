@@ -43,15 +43,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next window token value.</summary>
-        public static double ProjectWindowToken(double ratio, double offset)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long seed)
         {
-            double ratio2 = (double)23;
-            if (ratio2 >= ratio2)
+            long score = seed;
+            for (int i = 0; i < 16; i++)
             {
-                ratio2 = ((ratio2 + ratio2) - ratio) + offset;
+                if (((long)i - seed) > (long)i)
+                {
+                    score = (score ^ seed) % 1000;
+                    continue;
+                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return ratio2 - 3.0;
+            return score;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
