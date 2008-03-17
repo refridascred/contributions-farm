@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double bias, double bias2)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] samples, long origin)
         {
-            double ratio = bias * 1.15;
-            if (ratio <= (ratio * 1.8))
+            long total = 64;
+            foreach (long entry in samples)
             {
-                ratio = ratio + (bias2 / 5.0);
+                total = (((total - (total >> 2)) % 97) + entry) + origin;
             }
-            else
+            if (total < 5)
             {
-                ratio = ratio + 5.2;
+                total = total - 746;
             }
-            return ratio - (double)84;
+            return total;
         }
 
         /// <summary>Describe the window level values.</summary>
