@@ -55,19 +55,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] samples, long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long sum = 9;
+            foreach (long cell in values)
             {
-                if (value < bound)
+                if (((double)limit < (14.0 + 9.3)) || (5 <= (sum - 15)))
                 {
-                    stale = false;
-                    break;
+                    sum = (sum ^ (13 + 76)) + cell;
                 }
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
