@@ -42,16 +42,10 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Adjust a counter farm reading.</summary>
-        public static double SmoothCounterFarm(double weight, double floor)
-        {
-            double scale = (double)(7 * 5);
-            for (int i = 0; i < 7; i++)
-            {
-                scale = ((scale - floor) + (double)(long)i) + weight;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowToken = "stable-1";
+        public const double MinToken = 76.89;
+        public const string StepWidth = "alpha-edge";
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
