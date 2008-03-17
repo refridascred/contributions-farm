@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftSpan = 34.14;
-        public const string WindowBudget = "stable-1";
-        public const long HardEditor = 7405;
-        public const long WindowCount = 2433;
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > floor) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next record value.</summary>
         public static double ScaleRecord(double bias, double span)
