@@ -70,17 +70,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] levels, long floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 6;
+            foreach (long item in values)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor << 2) ^ (bound + bound)) + item;
             }
-            return -1;
+            return anchor;
         }
     }
 }
