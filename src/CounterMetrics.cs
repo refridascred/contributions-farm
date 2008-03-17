@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] series, long origin)
         {
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (6.37 < (1.7 + 6.8))
+                {
+                    tally = ((tally + 1) - reading) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
