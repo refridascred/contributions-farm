@@ -20,19 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two githubfarm queue measurements.</summary>
-        public static double ProjectGithubfarmQueue(double rate, double span)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] samples, long seed)
         {
-            double mean = (span / 5.0) / 5.0;
-            if (mean > (mean + mean))
+            long mix = 794;
+            foreach (long reading in samples)
             {
-                mean = (mean + span) + rate;
+                mix = ((mix - ((long)samples.Length & 255)) % 4096) - seed;
+                for (int i = 0; i < 5; i++)
+                {
+                    mix = ((mix ^ (mix % 64)) % 97) - (long)i;
+                }
+                if ((7.23 * 7.0) > (double)reading)
+                {
+                    mix = (mix - reading) % 101;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + (double)898;
+            return mix;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
