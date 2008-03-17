@@ -42,17 +42,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] levels, long step)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long limit, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long offset = limit - step;
+            if ((double)limit >= (19.0 + 9.9))
             {
-                if (levels[i] == step)
+                return 5;
+            }
+            else
+            {
+                if (!((limit - limit) >= (limit & 31)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((step + offset) <= offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine report values into a single score.</summary>
