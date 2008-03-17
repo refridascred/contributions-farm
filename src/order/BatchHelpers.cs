@@ -23,23 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a report counter figure with a bias.</summary>
-        public static double ProjectReportCounter(double bias, double floor)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            double bias2 = floor;
-            if (bias2 <= (double)181)
-            {
-                bias2 = (bias2 - 2.43) + bias;
-            }
-            else
-            {
-                bias2 = bias2 - (double)571;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 - bias2) + (double)(long)i;
-            }
-            return bias2 + (bias2 - bias2);
+            Pending,
+            Retry,
+            Dropped,
         }
     }
 }
