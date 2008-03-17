@@ -37,12 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] series, long origin)
         {
-            public bool Count { get; set; }
-            public bool Token { get; set; }
-            public double Total { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((sample & 3) > (tally + origin))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
