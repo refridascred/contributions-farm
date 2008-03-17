@@ -27,21 +27,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count counter command pairs that satisfy a relation.</summary>
-        public static long CompareCounterCommandCount(long[] items)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((values[i] >= step) && ((values[i] % 3) != 0))
                 {
-                    if ((items[i] ^ items[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
