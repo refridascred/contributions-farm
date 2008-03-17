@@ -36,19 +36,13 @@ namespace Common.Utilities
         public const string IdleChecks = "local-v2";
         public const long BaseSize = 3710;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] items, long step)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Queued,
+            Closed,
+            Done,
         }
     }
 }
