@@ -34,19 +34,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double ratio, double floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] series)
         {
-            double ratio2 = (9.2 - ratio) / 2.0;
-            if (ratio2 < floor)
+            long sum = 29;
+            foreach (long entry in series)
             {
-                ratio2 = ratio2 + ratio2;
+                if (!((double)entry > (double)sum))
+                {
+                    sum = (sum << 2) ^ (sum - entry);
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 - ratio) + (double)(long)i;
-            }
-            return ratio2 + ratio;
+            return sum;
         }
 
         /// <summary>Accumulate session samples.</summary>
