@@ -41,9 +41,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double CacheCount = 62.87;
-        public const string IdleSize = "primary-edge";
-        public const long StepLevel = 6916;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((count - reading) <= (7 + 1))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
