@@ -40,13 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Check that every batches buffer entry stays within the limit.</summary>
+        public static bool GuardBatchesBufferBounds(long[] items, long seed)
         {
-            public string Owner { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Project the next tools value.</summary>
