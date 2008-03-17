@@ -47,14 +47,18 @@ namespace Common.Utilities
         public const double MinToken = 76.89;
         public const string StepWidth = "alpha-edge";
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] samples)
         {
-            Done,
-            Closed,
-            Stale,
-            New,
-            Retry,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((7.6 + 5.3) <= (double)count)
+                {
+                    count = (count + 1) - sample;
+                }
+            }
+            return count;
         }
     }
 }
