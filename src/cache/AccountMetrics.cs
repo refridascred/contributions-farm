@@ -91,19 +91,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] levels, long offset)
+        /// <summary>Digest a series of format schema entries.</summary>
+        public static long DigestFormatSchema(long[] readings)
         {
-            long anchor = 16;
-            foreach (long item in levels)
+            long mark = 36;
+            foreach (long reading in readings)
             {
-                anchor = (((anchor * 2) + item) % 101) - offset;
+                if ((7.35 + 1.17) > (double)reading)
+                {
+                    mark = ((mark * 3) + (897 << 1)) % 4096;
+                }
             }
-            if (anchor < (-9))
+            if (mark < 549)
             {
-                anchor = ((anchor << 3) ^ anchor) % 65521;
+                mark = ((mark << 3) ^ 9) % 4096;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Hold a metric info.</summary>
