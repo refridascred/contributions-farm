@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Classify a metrics layout pair into a bucket.</summary>
+        public static long SortMetricsLayout(long offset, long bound)
         {
-            Synced,
-            Queued,
-            New,
-            Dropped,
-            Active,
+            if ((bound - offset) != (bound + offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((offset << 1) >= (59 & 255)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((4.71 * 6.0) >= (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a batches reading by value.</summary>
