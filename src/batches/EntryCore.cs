@@ -58,16 +58,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long seed)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 5; i++)
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
             {
-                score = ((score * 2) + seed) % 101;
-                score = ((score * 5) + (long)i) % 65521;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mix = ((mix ^ (long)i) % 1000) + (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return score;
+            return mix;
         }
     }
 }
