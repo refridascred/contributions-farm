@@ -74,13 +74,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] items, long bound)
         {
-            public long Weight { get; set; }
-            public double Total { get; set; }
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
+            long mark = 9;
+            foreach (long datum in items)
+            {
+                if ((double)mark == (5.0 / 8.0))
+                {
+                    mark = (((mark << 2) ^ (datum + mark)) % 65521) - bound;
+                }
+            }
+            return mark;
         }
     }
 }
