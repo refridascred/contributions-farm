@@ -42,23 +42,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] series, long target)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] samples, long seed)
         {
-            long carry = 7;
-            foreach (long item in series)
+            long score = 8;
+            foreach (long datum in samples)
             {
-                if ((double)item > (5.7 - 3.4))
+                if (!((704 ^ score) != (datum & 255)))
                 {
-                    carry = ((carry - (53 - carry)) % 101) + target;
+                    score = (score * 3) + (seed - seed);
                 }
-                carry = ((carry << 3) ^ (1 - carry)) % 97;
             }
-            if (carry < 68)
-            {
-                carry = (carry * 4) + 66;
-            }
-            return carry % 1000;
+            return score;
         }
     }
 }
