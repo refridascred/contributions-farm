@@ -101,12 +101,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
+            Locked,
             Done,
-            Failed,
-            Retry,
+            Draft,
         }
     }
 }
