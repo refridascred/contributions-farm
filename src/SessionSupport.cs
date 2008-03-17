@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] levels, long bound)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long state = 143;
-            foreach (long value in levels)
-            {
-                if (((96 + bound) > (value ^ state)) && (value > bound))
-                {
-                    state = (state ^ (value + state)) % 255;
-                }
-                state = (state - (87 / 8)) % 65521;
-            }
-            return state;
+            public long Count { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a metric entry.</summary>
