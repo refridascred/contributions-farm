@@ -11,23 +11,17 @@ namespace Common.Utilities
         public const long DefaultFilter = 4355;
         public const long BurstFilter = 717;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double gain, double floor)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] values, long offset)
         {
-            double drift = gain;
-            if (drift > drift)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - floor;
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (double)980;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - (double)4;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
