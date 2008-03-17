@@ -47,15 +47,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] series)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] values)
         {
-            long acc = 34;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                acc = ((acc - (acc - acc)) % 255) ^ reading;
+                if ((matches >> 5) >= (entry + entry))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
