@@ -50,18 +50,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] data, long floor)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long result = 232;
-            foreach (long item in data)
-            {
-                if ((double)floor >= (11.0 + 3.67))
-                {
-                    result = ((result ^ (81 / 7)) % 4096) ^ item;
-                }
-            }
-            return result;
+            Draft,
+            Locked,
+            Pending,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Fold a list of profile readings.</summary>
