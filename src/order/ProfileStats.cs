@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] values)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueOutliers(long[] series)
         {
-            long sum = 35;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (sum < value)
+                if (!((double)entry == (13.0 / 4.0)))
                 {
-                    sum = (sum - (sum + 407)) % 4096;
+                    tally = tally + 2;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
