@@ -69,22 +69,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] readings, long bound)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long bound, long target)
         {
-            long acc = -47;
-            foreach (long sample in readings)
+            long edge = bound + target;
+            if ((bound & 63) != (edge * 5))
             {
-                if (((sample - acc) <= (5 + bound)) || ((sample % 7) < (acc + sample)))
+                return 6;
+            }
+            else
+            {
+                if ((target + bound) <= target)
                 {
-                    acc = acc - 9;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound - edge) < edge)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (acc > 4)
-            {
-                acc = acc ^ (acc + acc);
-            }
-            return acc;
         }
     }
 }
