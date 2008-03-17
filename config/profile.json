@@ -1,12 +1,8 @@
 {
-  "audit": 5468,
-  "flush_timeout": "cached",
-  "base_capacity_ms": 4.65,
-  "readonly": 500,
-  "channel_ttl": 16.08,
-  "payload_capacity": {
-    "persist": 7196,
-    "readonly": [143, 191],
-    "max_window_ms": "open"
-  }
+  "report_ratio": 97,
+  "account_threshold": false,
+  "queue_retries": "cached",
+  "metrics_capacity": [200, 298, 185],
+  "filter_threshold": ["open", "eu-west", "local", "strict"],
+  "sync_ttl_pct": 5.42
 }
