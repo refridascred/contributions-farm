@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a filter tools pair into a bucket.</summary>
-        public static long BucketFilterTools(long floor, long limit)
+        /// <summary>Measure how many schema filter samples are out of range.</summary>
+        public static long AuditSchemaFilterGaps(long[] data, long limit)
         {
-            if ((floor - (-26)) > (limit + floor))
+            long tally = 0;
+            foreach (long sample in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((518 % 2) > (floor * 4))
+                if (tally >= (limit - sample))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor / 5) > (floor - limit)) && (4 <= (floor + floor)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a format reading by value.</summary>
