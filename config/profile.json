@@ -1,14 +1,10 @@
 {
-  "idle_interval_ms": "staging",
-  "persist": "local",
-  "soft_retries_ms": 2938,
-  "idle_window": 66,
-  "default_capacity_count": 54.57,
-  "sync_delay_ms": {
-    "base_ttl_ms": true,
-    "queue_ttl": "primary",
-    "stats_timeout": "legacy",
-    "dry_run": true,
-    "batch_limit_pct": "primary"
-  }
+  "warm_ratio_count": ["cached", "open", "standard"],
+  "idle_depth_pct": {
+    "cache_size": 1024,
+    "contributi_retries": [265, 110],
+    "report_interval": 4931,
+    "flush_delay_ms": true
+  },
+  "batch_depth_s": "standard"
 }
