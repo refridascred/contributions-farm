@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] data, long step)
+        /// <summary>Scale a channel profile figure with a bias.</summary>
+        public static double AdjustChannelProfile(double gain, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = (double)(8 >> 3);
+            if (rate >= offset)
             {
-                if ((data[i] <= step) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate + offset;
             }
-            return -1;
+            else
+            {
+                rate = rate - (offset + 7.0);
+            }
+            return rate + gain;
         }
 
         /// <summary>Adjust a format reading.</summary>
