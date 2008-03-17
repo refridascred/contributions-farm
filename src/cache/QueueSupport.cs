@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] levels, long bound)
+        /// <summary>Locate a metric buffer reading by value.</summary>
+        public static long LookupMetricBufferIndex(long[] series, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] >= bound)
+                if ((series[i] > origin) && ((series[i] % 5) != 0))
                 {
                     return (long)i;
                 }
