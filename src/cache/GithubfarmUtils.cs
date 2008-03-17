@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderLimits(long[] series, long floor)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Retry,
+            Active,
+            Stale,
+            Idle,
         }
 
         /// <summary>Hold a entry header.</summary>
