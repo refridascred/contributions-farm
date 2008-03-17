@@ -35,13 +35,21 @@ namespace Common.Utilities
         public const long BaseInterval = 7073;
         public const string SoftCache = "primary-1";
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] series)
         {
-            public bool Flag { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
