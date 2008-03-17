@@ -34,21 +34,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Compare every pair of tools commits readings.</summary>
-        public static long MatchToolsCommitsCount(long[] series)
+        /// <summary>Audit batches graph readings against a rule.</summary>
+        public static long CountBatchesGraphGaps(long[] items, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally + tally) == (tally >> 4))
                 {
-                    if ((series[i] ^ series[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = ((tally + 2) ^ entry) - target;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
