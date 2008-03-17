@@ -29,17 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] values, long step)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double scale, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = scale;
+            for (int i = 0; i < 5; i++)
             {
-                if ((values[i] >= step) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                drift = ((drift + (double)576) - (double)(long)i) - offset;
             }
-            return -1;
+            return drift + (double)2;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
