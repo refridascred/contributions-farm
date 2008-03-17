@@ -39,20 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long bound)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] levels, long seed)
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((59 ^ 8) != (bound ^ carry)))
+                if (levels[i] > seed)
                 {
-                    carry = (carry ^ ((long)i ^ (long)i)) % 101;
-                    carry = (carry ^ (-38)) % 4096;
+                    return (long)i;
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
