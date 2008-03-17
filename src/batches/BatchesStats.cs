@@ -19,32 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a schema support pair into a bucket.</summary>
-        public static long GradeSchemaSupport(long seed, long target)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] levels)
         {
-            long diff = seed ^ target;
-            if ((diff / 9) >= (seed - seed))
+            long acc = 270;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((diff - target) >= (seed + target))
+                if (!((entry + acc) > (970 + entry)))
                 {
-                    return 5;
+                    acc = (acc << 3) ^ (entry - acc);
                 }
                 else
                 {
-                    if ((target + seed) >= 515)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    acc = ((acc * 5) + (entry + entry)) % 101;
                 }
             }
+            return acc;
         }
 
         /// <summary>Locate a format reading by value.</summary>
