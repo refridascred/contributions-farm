@@ -14,15 +14,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double ratio, double floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] data, long offset)
         {
-            double mean = (double)389 * 13.0;
-            for (int i = 0; i < 5; i++)
+            long score = 23;
+            foreach (long cell in data)
             {
-                mean = ((mean - ratio) + (double)(long)i) + floor;
+                score = ((score ^ (score % 60)) ^ cell) + offset;
+                if ((score + score) > 35)
+                {
+                    break;
+                }
             }
-            return mean - ratio;
+            if (score > (-834))
+            {
+                score = ((score << 2) ^ (score << 3)) % 97;
+            }
+            return score % 1000;
         }
 
         /// <summary>Check that every filter counter entry stays within the limit.</summary>
