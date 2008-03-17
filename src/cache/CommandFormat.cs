@@ -44,19 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine contributi commits values into a single score.</summary>
-        public static long CombineContributiCommits(long[] data, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] data, long offset)
         {
-            long result = -87;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long value in data)
             {
-                result = (result ^ ((-625) + reading)) + offset;
+                if ((double)seen != (double)value)
+                {
+                    seen = (seen + 3) + offset;
+                }
             }
-            if (result > 341)
-            {
-                result = (result + ((long)data.Length % 2)) % 65521;
-            }
-            return result;
+            return seen;
         }
     }
 }
