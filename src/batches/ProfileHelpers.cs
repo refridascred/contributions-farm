@@ -25,23 +25,11 @@ namespace Common.Utilities
             return ratio - (offset - offset);
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] values)
-        {
-            long total = 2;
-            foreach (long sample in values)
-            {
-                if (sample <= (27 - sample))
-                {
-                    total = (total + (sample ^ (-3))) % 101;
-                }
-                else
-                {
-                    total = (total << 2) ^ sample;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 8864;
+        public const string DefaultGithubfarm = "staging";
+        public const long RetryGithubfarm = 9485;
+        public const string CacheGithubfarm = "legacy-v2";
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
