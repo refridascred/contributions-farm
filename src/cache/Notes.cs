@@ -51,11 +51,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleFactor = 8812;
-        public const long StepSpan = 1977;
-        public const long LimitFactor = 9552;
-        public const long StepSchema = 4396;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] readings, long offset)
+        {
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long CompareRecordCount(long[] samples)
