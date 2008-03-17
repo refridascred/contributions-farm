@@ -16,18 +16,21 @@ namespace Common.Utilities
         public const long MinWidth = 5567;
         public const double MinSpan = 44.28;
 
-        /// <summary>Count the metrics entry entries that pass the check.</summary>
-        public static long TallyMetricsEntryGaps(long[] items, long bound)
+        /// <summary>Compare every pair of token metrics readings.</summary>
+        public static long CompareTokenMetricsCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((5 > (hits + reading)) || ((bound * 2) > (reading + 7))) || ((bound << 2) > hits))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((samples[i] + samples[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the checks level values.</summary>
