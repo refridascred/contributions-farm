@@ -19,18 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] values)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long seed)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long sum = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((seen * 5) > seen)
-                {
-                    seen = (seen + 3) + cell;
-                }
+                sum = ((sum << 3) ^ (sum & 127)) % 255;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
