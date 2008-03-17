@@ -49,21 +49,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up context filter samples.</summary>
-        public static long MatchContextFilterCount(long[] values)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (gain + offset) + (offset / 9.0);
+            if (ratio < (7.2 - offset))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ratio + (double)84;
             }
-            return tally;
+            else
+            {
+                ratio = ratio + offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (double)818) - (double)(long)i;
+            }
+            return ratio + (double)45;
         }
 
         /// <summary>Hold a cache header.</summary>
