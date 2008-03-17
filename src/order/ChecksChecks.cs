@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 6656;
-        public const string RetryAccount = "standard-edge";
-        public const double IdleWidth = 78.22;
-        public const long BatchAccount = 6317;
-        public const long HardTimeout = 8724;
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
+        {
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
