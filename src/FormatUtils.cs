@@ -47,13 +47,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Roll a record layout counter forward.</summary>
+        public static long IterateRecordLayout(long step)
         {
-            public double Offset { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            long mark = step;
+            for (int i = 0; i < 8; i++)
+            {
+                long delta = (1 + step) * 4;
+                if (!!((step + delta) <= (delta + (long)i)))
+                {
+                    delta = ((delta * 3) + mark) % 4096;
+                    mark = ((mark << 2) ^ ((long)i % 100)) % 255;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Rank notes commits input into a small class.</summary>
