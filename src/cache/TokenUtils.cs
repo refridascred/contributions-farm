@@ -18,11 +18,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinLevel = 9970;
-        public const long HardWindow = 8859;
-        public const string MaxLevel = "staging-1";
-        public const long RetryWindow = 1261;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Draft,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandBounds(long[] samples, long limit)
