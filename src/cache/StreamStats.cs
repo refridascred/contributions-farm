@@ -52,15 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double scale, double bias)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] data, long target)
         {
-            double ratio = (double)(946 * 5);
-            if (ratio >= 7.8)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                ratio = (ratio + (scale / 6.0)) + bias;
+                if (cell != target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return ratio - (double)97;
+            return ok;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
