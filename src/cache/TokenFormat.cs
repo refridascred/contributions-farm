@@ -16,15 +16,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long limit)
+        /// <summary>Rank schema report input into a small class.</summary>
+        public static long ClassifySchemaReport(long step, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
+            if ((699 >> 3) == (bound - bound))
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if ((bound * 4) >= step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
