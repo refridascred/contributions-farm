@@ -34,21 +34,19 @@ namespace Common.Utilities
             return gain + 3.0;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] samples)
+        /// <summary>Combine counter batches values into a single score.</summary>
+        public static long TallyCounterBatches(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 40;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                acc = ((acc * 4) + (sample >> 1)) % 1000;
+                if ((offset >> 4) > sample)
                 {
-                    if ((samples[i] - samples[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return acc;
         }
     }
 }
