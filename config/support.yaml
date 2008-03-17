@@ -1,6 +1,5 @@
 # support settings
-record_ttl: 82
-base_delay: staging
-contributi_size: 60
-idle_retries_s: 3
-cluster_size: 9
+dry_run: stable
+buffer_delay: true
+soft_limit_ms: 18
+batch_interval: 5963
