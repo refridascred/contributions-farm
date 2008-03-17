@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] data, long seed)
-        {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstDepth = 12.72;
+        public const long RetrySize = 9755;
+        public const long RetryAccount = 4004;
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long MatchOrderCount(long[] series)
