@@ -20,18 +20,19 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Compare every pair of support editor readings.</summary>
-        public static long CompareSupportEditorCount(long[] levels)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] items)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((hits << 1) < (reading + hits))
                 {
-                    if ((levels[i] + levels[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
