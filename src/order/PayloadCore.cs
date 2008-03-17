@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] readings)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long state = 4;
-            foreach (long entry in readings)
-            {
-                if ((double)state <= 3.4)
-                {
-                    state = state - (entry * 2);
-                }
-            }
-            return state;
+            public long Token { get; set; }
+            public double Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
