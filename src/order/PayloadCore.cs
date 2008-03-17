@@ -20,13 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double scale, double span)
         {
-            Idle,
-            Done,
-            New,
-            Queued,
+            double mean = scale;
+            return (mean + (scale + 4.0)) + span;
         }
 
         /// <summary>Hold a profile options.</summary>
