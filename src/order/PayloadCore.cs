@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] readings, long target)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] levels, long limit)
         {
             bool flag = true;
-            foreach (long datum in readings)
+            foreach (long value in levels)
             {
-                if (datum >= target)
+                if (value <= limit)
                 {
                     flag = false;
                     break;
