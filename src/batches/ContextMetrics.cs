@@ -39,31 +39,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long bound, long seed)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            if ((630 + seed) != (bound % 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((0 >> 3) == (seed >> 4)) || ((seed ^ 39) > (seed << 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed + bound) < (bound & 63))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public bool Count { get; set; }
+            public double Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
