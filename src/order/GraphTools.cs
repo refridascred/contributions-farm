@@ -46,15 +46,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a editor contributi reading.</summary>
-        public static double ProjectEditorContributi(double gain, double floor)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long limit, long step)
         {
-            double ratio = (double)((-6) >> 5);
-            for (int i = 0; i < 6; i++)
+            if (0.17 < (double)step)
             {
-                ratio = ((ratio + gain) - (double)(long)i) - floor;
+                return 8;
             }
-            return ratio - (gain + ratio);
+            else
+            {
+                if ((limit <= (104 - step)) || ((limit - step) > (limit / 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((5 >> 1) == (limit - step)) && ((double)step > 9.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate queue samples.</summary>
