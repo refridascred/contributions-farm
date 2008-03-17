@@ -13,10 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 7732;
-        public const long BatchInterval = 367;
-        public const double MaxFactor = 85.91;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Dropped,
+            Active,
+            Queued,
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long MinPayload = 3340;
