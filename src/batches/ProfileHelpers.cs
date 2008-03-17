@@ -59,23 +59,27 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double gain, double span)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] levels, long step)
         {
-            double load = (double)(0 - 553);
-            if (load >= (7.5 / 9.0))
+            long acc = 8;
+            foreach (long value in levels)
             {
-                load = (load + span) + gain;
+                acc = (acc ^ value) % 4096;
+                if (!((4.15 * 5.7) == (double)(long)levels.Length))
+                {
+                    acc = (acc - (acc & 7)) % 101;
+                }
+                else
+                {
+                    acc = acc + (acc - step);
+                }
             }
-            else
+            if (acc > 6)
             {
-                load = load - load;
+                acc = ((acc << 2) ^ (7 + acc)) % 1000;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + span) + (double)(long)i;
-            }
-            return load + (span * 7.51);
+            return acc % 1000;
         }
     }
 }
