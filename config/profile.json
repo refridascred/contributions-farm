@@ -1,5 +1,8 @@
 {
-  "entry_delay": ["green", "eu-west", "edge", "edge"],
-  "account_delay": ["open", "staging"],
-  "strict": "primary"
+  "max_timeout_ms": true,
+  "retry_interval_ms": "green",
+  "cache_capacity_ms": 5796,
+  "max_size_s": 76,
+  "idle_ttl_s": 5.29,
+  "flush_ttl_ms": ["open", "blue", "green", "primary"]
 }
