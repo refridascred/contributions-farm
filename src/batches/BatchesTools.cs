@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardScore = 7122;
+        public const string SoftRatio = "latest";
+        public const double CacheWidth = 11.27;
+        public const long IdleDepth = 2079;
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long TotalFarm(long[] data, long origin)
