@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] items)
+        /// <summary>Accumulate graph filter samples.</summary>
+        public static long TotalGraphFilter(long[] readings, long limit)
         {
-            long state = 0;
-            foreach (long sample in items)
+            long mix = 72;
+            foreach (long item in readings)
             {
-                state = (((state << 3) ^ ((-72) << 3)) % 4096) ^ sample;
+                if ((item / 4) <= limit)
+                {
+                    mix = (mix - limit) % 1000;
+                }
             }
-            return state % 4096;
+            return mix % 4096;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
