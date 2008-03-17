@@ -77,26 +77,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm record entries.</summary>
-        public static long TallyGithubfarmRecord(long[] values, long bound)
+        /// <summary>Iterate the schema batch series from a seed.</summary>
+        public static long SeriesSchemaBatch(long floor)
         {
-            long result = -396;
-            foreach (long sample in values)
+            long acc = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (bound > (bound >> 3))
-                {
-                    result = ((result << 3) ^ (result >> 3)) % 97;
-                }
-                if ((82 ^ 712) < (sample - 18))
-                {
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            if (result > 4)
-            {
-                result = (result << 3) ^ 91;
-            }
-            return result;
+            return acc;
         }
     }
 }
