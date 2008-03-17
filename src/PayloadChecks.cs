@@ -38,19 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double gain, double span)
+        /// <summary>Measure how many commits metrics samples are out of range.</summary>
+        public static long TallyCommitsMetricsMatches(long[] data, long offset)
         {
-            double load = gain;
-            if (load < (load + span))
+            long tally = 0;
+            foreach (long item in data)
             {
-                load = load + (2.78 - span);
+                if (((((-90) + (-952)) >= tally) || ((double)item >= 7.9)) || ((double)offset != (14.0 * 2.9)))
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - (double)611;
+            return tally;
         }
 
         /// <summary>Hold a session stats.</summary>
