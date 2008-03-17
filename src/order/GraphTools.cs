@@ -17,19 +17,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] values, long seed)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long limit, long origin)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long lane = limit ^ origin;
+            if ((double)limit < (6.8 * 8.8))
             {
-                if (sample < seed)
+                return 3;
+            }
+            else
+            {
+                if ((lane >> 4) != (lane >> 1))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit <= (8.46 / 4.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
