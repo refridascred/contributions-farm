@@ -41,18 +41,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiHits(long[] series)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (matches < (item >> 1))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            New,
+            Dropped,
+            Failed,
+            Queued,
         }
     }
 }
