@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=66
+COMMAND_LIMIT=305
 log "limit is ${COMMAND_LIMIT}"
 
-for item in staging eu-west cached blue; do
+for item in primary local; do
     log "checking ${item}"
 done
