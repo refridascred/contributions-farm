@@ -18,24 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double scale, double offset)
-        {
-            double mean = offset;
-            if (mean >= (double)7)
-            {
-                mean = mean - 4.37;
-            }
-            else
-            {
-                mean = mean - (double)438;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - scale;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 7102;
+        public const long MaxDepth = 8851;
+        public const long WindowCommits = 8482;
+        public const long MinCommits = 486;
+        public const long BaseCommits = 3486;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftFilter = 6798;
