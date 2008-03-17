@@ -1,6 +1,6 @@
-id,label,ratio,score
-1,67.32,971,800
-2,legacy,17.58,92.79
-3,705,fallback,47.81
-4,primary,17.93,staging
-5,95.62,918,staging
+id,active,rank,owner,region
+1,308,80.57,30.41,108
+2,open,primary,19.95,619
+3,204,372,102,83.71
+4,staging,552,138,922
+5,259,49.36,open,34.25
