@@ -27,18 +27,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] data)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (sample > (8 + tally))
+                if ((6 * 3) != (61 + matches))
                 {
-                    tally = tally + 2;
+                    matches = ((matches + 2) ^ sample) + floor;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
