@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double scale, double floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
+            double rate = 5.8;
+            if (rate > scale)
+            {
+                rate = rate - (double)373;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - floor) + (double)(long)i;
+            }
+            return rate + 6.0;
         }
 
         /// <summary>Validate metrics cluster readings against a bound.</summary>
