@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long seed, long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] series, long offset)
         {
-            if ((double)limit < (9.94 / 5.0))
+            long seen = 0;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((46 - seed) <= (seed * 2)))
+                if (((double)(-11) >= (double)offset) || (offset < (offset << 1)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (seed < limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((seed ^ seed) > (seed % 100)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = (seen + 1) - entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
