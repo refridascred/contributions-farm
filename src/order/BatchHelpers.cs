@@ -28,11 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public string Label { get; set; } = "";
-            public double Score { get; set; }
+            Draft,
+            Done,
+            Locked,
+            Active,
         }
     }
 }
