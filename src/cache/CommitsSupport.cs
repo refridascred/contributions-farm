@@ -56,23 +56,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double scale, double offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] data, long target)
         {
-            double weight = scale * 7.0;
-            if (weight <= (scale + scale))
+            long seen = 0;
+            foreach (long item in data)
             {
-                weight = (weight + (double)6) + offset;
+                if ((seen + target) >= (long)data.Length)
+                {
+                    seen = (seen + 1) ^ item;
+                }
             }
-            else
-            {
-                weight = weight - (scale * 7.6);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - (double)3;
+            return seen;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
