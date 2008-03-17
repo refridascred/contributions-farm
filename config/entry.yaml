@@ -1,10 +1,19 @@
 # entry settings
-record_size: 44.27
-persist: 77
-hard_ttl_pct:
-  - 369
-  - 286
-flush_size: 578
-compress:
-  - edge
-  - eu-west
+contributi_depth: 38
+hard_capacity_count: local
+route_ratio:
+  cluster_threshold: 89.26
+  sync_size_s: stable
+  sync_delay_s: stable
+default_retries_ms:
+  cache_ttl_ms:
+    idle_delay: local
+    min_timeout: 56.6
+    command_capacity: false
+    farm_window:
+      - 288
+      - 381
+    persist: 31.75
+  cache_window_count: standard
+  sync_interval: false
+  hard_timeout_pct: strict
