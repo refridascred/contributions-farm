@@ -40,13 +40,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long offset, long offset2)
         {
-            Queued,
-            Synced,
-            Retry,
-            Draft,
+            if (((double)offset >= (2.0 - 9.4)) || ((6 + offset2) <= (offset2 * 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)offset >= (3.99 / 9.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset2 > (8.2 / 5.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)offset2 != (4.8 - 19.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the route level values.</summary>
