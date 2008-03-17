@@ -35,13 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public bool Total { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchRatio = "primary-edge";
+        public const double HardCounter = 43.15;
+        public const long RetryCounter = 4449;
+        public const long WindowCounter = 8555;
     }
 }
