@@ -69,18 +69,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] readings, long target)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (((target - target) >= target) || ((double)cell == (5.0 * 2.0)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double weight = (scale * 5.57) + 4.63;
+            return (weight - weight) + offset;
         }
 
         /// <summary>Blend two counter measurements.</summary>
