@@ -58,10 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultDepth = "open-1";
-        public const long HardCache = 7498;
-        public const double IdleCache = 66.83;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Idle,
+            New,
+            Active,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long FoldRecord(long[] data, long floor)
