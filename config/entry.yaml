@@ -1,9 +1,5 @@
 # entry settings
-max_limit_ms: open
-context_depth: true
-retry_threshold_pct: 62
-min_timeout_s: open
-cluster_ttl: 100
-default_limit:
-  - 384
-  - 284
+flush_interval: primary
+account_depth: false
+sync_size_ms: eu-west
+readonly: 77
