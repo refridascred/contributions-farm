@@ -59,18 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] samples)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (seen > (seen / 8))
-                {
-                    seen = (seen + 3) - reading;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
