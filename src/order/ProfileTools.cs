@@ -55,12 +55,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 9604;
-        public const string HardInterval = "stable-edge";
-        public const double BurstScore = 95.9;
-        public const long CacheCount = 8428;
-        public const long SoftMetric = 7086;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell > (7.1 + 0.87))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long CombineEditor(long[] readings, long bound)
