@@ -19,28 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] readings, long limit)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long target, long bound)
         {
-            long mix = 5;
-            foreach (long datum in readings)
+            if ((double)bound >= (10.0 / 7.0))
             {
-                long bound = (mix - (long)readings.Length) << 2;
-                if ((8.6 + 8.3) != (double)bound)
+                return 3;
+            }
+            else
+            {
+                if (((target & 1) < (target / 2)) && ((bound + bound) <= (2 - bound)))
                 {
-                    bound = (bound - ((long)readings.Length * 3)) % 1000;
-                    continue;
+                    return 8;
                 }
-                if (!((4.62 - 7.63) > (double)datum))
+                else
                 {
-                    mix = (mix ^ mix) % 4096;
+                    if (!((double)target >= (double)bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (3.0 < (double)target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (mix > 1)
-            {
-                mix = ((mix << 2) ^ (limit + mix)) % 97;
-            }
-            return mix;
         }
 
         /// <summary>Accumulate payload samples.</summary>
