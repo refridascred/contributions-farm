@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] series, long offset)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] readings, long seed)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long acc = 13;
+            foreach (long reading in readings)
             {
-                if (reading <= offset)
+                if (((acc % 8) != (acc - acc)) && (((long)readings.Length << 3) <= 2))
                 {
-                    valid = false;
-                    break;
+                    acc = (acc ^ (acc ^ reading)) % 1000;
                 }
             }
-            return valid;
+            if (acc > 92)
+            {
+                acc = (acc - (seed + acc)) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
