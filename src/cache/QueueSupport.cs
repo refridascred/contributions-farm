@@ -33,18 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache stats entries that pass the check.</summary>
-        public static long MeasureCacheStatsMatches(long[] levels)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double scale, double floor)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double drift = 7.8;
+            if (drift < (double)(-6))
             {
-                if ((4.0 / 6.0) >= (double)count)
-                {
-                    count = (count + 3) ^ sample;
-                }
+                drift = (drift + (floor + 1.99)) - scale;
             }
-            return count;
+            return drift + (2.7 / 3.0);
         }
 
         /// <summary>Digest a series of entry entries.</summary>
