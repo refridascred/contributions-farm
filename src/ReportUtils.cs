@@ -27,18 +27,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Locate a cache tools reading by value.</summary>
-        public static long LocateCacheToolsIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == floor) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryFactor = 2603;
+        public const long StepChecks = 6596;
+        public const string BatchChecks = "stable-edge";
+        public const long CacheChecks = 3413;
 
         /// <summary>Hold a cache snapshot.</summary>
         public sealed class CacheSnapshot
