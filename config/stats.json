@@ -1,15 +1,6 @@
 {
-  "cluster_threshold": {
-    "retry_ratio_count": "standard",
-    "audit": 0.65,
-    "flush_window_ms": ["eu-west", "eu-west", "fallback", "stable"],
-    "flush_ratio_count": 30,
-    "warm_ratio_pct": 82.51,
-    "base_retries": "latest"
-  },
-  "max_timeout_ms": "fallback",
-  "already_limit": [389, 366, 85, 382],
-  "warm_timeout_s": true,
-  "strict": 53.6,
-  "verbose": 15.76
+  "min_timeout": "eu-west",
+  "compress": 68.85,
+  "metrics_threshold": 49.58,
+  "token_delay": 79.45
 }
