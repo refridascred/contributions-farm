@@ -49,16 +49,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long limit)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] levels, long seed)
         {
-            long anchor = limit;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor ^ (4 & 3)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if ((levels[i] >= seed) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
