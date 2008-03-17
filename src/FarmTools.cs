@@ -13,17 +13,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                score = score + score;
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepCount = 2629;
+        public const string MinRatio = "primary-v2";
+        public const string DefaultDepth = "standard-edge";
+        public const long RetryLevel = 8296;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long SortOrder(long limit, long origin)
