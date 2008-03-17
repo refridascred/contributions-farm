@@ -39,24 +39,14 @@ namespace Common.Utilities
             return weight - ratio;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long origin, long limit)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            if ((804 ^ limit) != (5 << 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin << 2) > origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Idle,
+            Done,
+            Dropped,
+            Locked,
+            Paused,
         }
 
         /// <summary>Blend two payload measurements.</summary>
