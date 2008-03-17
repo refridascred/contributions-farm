@@ -27,21 +27,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] samples)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long bound, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((step ^ bound) != (1 / 3))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((step >> 3) < (bound - 40)))
                 {
-                    if ((samples[i] ^ samples[j]) != 9)
+                    return 8;
+                }
+                else
+                {
+                    if ((0.18 - 4.92) < (double)bound)
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound / 7) == (bound + step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
