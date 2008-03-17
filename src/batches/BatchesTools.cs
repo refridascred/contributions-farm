@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double weight, double floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] series, long floor)
         {
-            double rate = 3.67;
-            if (rate >= rate)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                rate = ((rate + (double)2) - weight) + floor;
+                if (floor < (datum & 7))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                rate = rate - (rate * 9.3);
-            }
-            return rate + 4.66;
+            return seen;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
