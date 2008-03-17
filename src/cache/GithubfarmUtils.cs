@@ -15,11 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] levels, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == offset) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two notes route measurements.</summary>
