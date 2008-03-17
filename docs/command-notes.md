@@ -1,15 +1,11 @@
 # Command notes
 
-Keep route and channel names short and lowercase.
-Run the profile check before changing any session limits.
-Keep window and cache names short and lowercase.
-
-Keep route and record names short and lowercase.
-Keep session and order names short and lowercase.
+Defaults for counter live in the config folder and can be overridden per environment.
+Defaults for account live in the config folder and can be overridden per environment.
+Use payload settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Review counter limits each release
-- Validate record input early
-- Keep window values small
-- Document new layout fields
+- Review layout limits each release
+- Validate report input early
+- Document new batches fields
