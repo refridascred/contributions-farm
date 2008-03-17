@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Paused,
-            Queued,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 4900;
+        public const long IdleNotes = 5755;
+        public const long WindowTimeout = 5426;
+        public const long BatchNotes = 9342;
+        public const string SoftWidth = "latest-edge";
 
         /// <summary>Accumulate account samples.</summary>
         public static long WeighAccount(long[] samples, long limit)
