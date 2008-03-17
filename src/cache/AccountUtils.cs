@@ -20,18 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] samples, long offset)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (offset >= 844)
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
+            public double Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
