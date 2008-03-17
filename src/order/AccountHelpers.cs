@@ -23,18 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of filter metric entries.</summary>
-        public static long FoldFilterMetric(long[] readings, long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] levels, long target)
         {
-            long sum = 754;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (((-93) ^ sum) <= (entry - 503))
+                if ((double)seen == (7.2 - 17.0))
                 {
-                    sum = ((sum << 2) ^ ((long)readings.Length ^ 44)) - target;
+                    seen = ((seen + 1) ^ sample) + target;
                 }
             }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Hold a record stats.</summary>
