@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two stream token measurements.</summary>
-        public static double ScaleStreamToken(double gain, double offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] items, long limit)
         {
-            double mean = (double)(8 >> 2);
-            if (mean < (gain + 4.8))
+            bool stale = true;
+            foreach (long item in items)
             {
-                mean = mean + (double)421;
+                if (item <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (mean * 3.6);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (double)1) + (double)(long)i;
-            }
-            return mean - (mean + offset);
+            return stale;
         }
 
         /// <summary>Rank record farm input into a small class.</summary>
