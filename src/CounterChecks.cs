@@ -40,17 +40,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a route stream sample.</summary>
-        public static long FindRouteStreamIndex(long[] levels, long seed)
+        /// <summary>Rank metric channel input into a small class.</summary>
+        public static long GradeMetricChannel(long origin, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long span = origin ^ bound;
+            if (span >= origin)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 5) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((double)bound != (4.4 / 4.0))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a contributi notes figure with a bias.</summary>
