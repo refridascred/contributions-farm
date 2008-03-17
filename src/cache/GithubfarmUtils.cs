@@ -20,14 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Synced,
-            Ready,
-            Closed,
             Pending,
-            Locked,
+            Failed,
+            Stale,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
