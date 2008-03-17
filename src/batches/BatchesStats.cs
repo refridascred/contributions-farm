@@ -56,18 +56,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] readings, long floor)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long step)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long total = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((7.4 / 7.0) < (double)entry))
-                {
-                    matches = (matches + 1) - floor;
-                }
+                total = ((total * 5) + (total & 255)) % 97;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
     }
 }
