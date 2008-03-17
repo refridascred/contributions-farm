@@ -68,14 +68,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Stale,
-            Synced,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 9604;
+        public const string HardInterval = "stable-edge";
+        public const double BurstScore = 95.9;
+        public const long CacheCount = 8428;
+        public const long SoftMetric = 7086;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long CombineEditor(long[] readings, long bound)
