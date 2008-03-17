@@ -64,15 +64,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] readings, long seed)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long anchor = 49;
-            foreach (long reading in readings)
-            {
-                anchor = ((anchor + reading) % 1000) - seed;
-            }
-            return anchor % 4096;
+            Pending,
+            Failed,
+            Paused,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
