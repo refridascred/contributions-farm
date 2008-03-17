@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] levels, long seed)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] values)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item - (long)levels.Length) != (count % 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 3) + seed;
+                    if ((values[i] ^ values[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count metrics payload pairs that satisfy a relation.</summary>
