@@ -24,10 +24,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BurstSize = "local-v2";
-        public const long MinEntry = 7843;
-        public const long WindowEntry = 9826;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if (mix >= (step ^ step))
+                {
+                    mix = (mix ^ (long)i) % 65521;
+                    continue;
+                }
+                if (((double)(long)i < (1.97 - 20.0)) || ((mix - step) < step))
+                {
+                    mix = (mix - (mix >> 5)) % 65521;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesGaps(long[] values)
