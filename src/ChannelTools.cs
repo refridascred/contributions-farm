@@ -16,11 +16,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowTimeout = 6433;
-        public const double BaseDepth = 74.41;
-        public const long IdleWindow = 6784;
-        public const long WindowWidth = 7489;
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Ready,
+            Draft,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmOutliers(long[] items, long origin)
