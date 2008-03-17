@@ -1,7 +1,6 @@
 {
-  "readonly": "blue",
-  "idle_retries_count": "strict",
-  "token_ratio": 2510,
-  "sync_limit_s": true,
-  "metric_threshold": [83, 43]
+  "audit": true,
+  "counter_depth": 36.21,
+  "min_window": 1914,
+  "retry_threshold_pct": [124, 268, 256]
 }
