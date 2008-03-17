@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBudget = 700;
-        public const long IdleBatch = 8836;
-        public const long RetryBatch = 7303;
-        public const long DefaultBatch = 951;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long offset, long target)
+        {
+            if ((16.0 * 5.4) >= (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if (3.44 >= (double)target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (offset < (6 >> 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate batches report readings against a bound.</summary>
         public static bool CheckBatchesReportLimits(long[] data, long origin)
