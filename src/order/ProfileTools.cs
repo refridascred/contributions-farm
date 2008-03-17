@@ -53,28 +53,36 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long target, long seed)
+        /// <summary>Classify a cache cluster pair into a bucket.</summary>
+        public static long BucketCacheCluster(long seed, long offset)
         {
-            if ((1.49 * 20.0) >= (double)seed)
+            long edge = seed + offset;
+            if ((8.0 - 1.74) == (double)seed)
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if (!(seed < (seed ^ 689)))
+                if ((seed - offset) != (edge - 108))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    if ((8.0 * 1.02) != (double)seed)
+                    if ((edge << 2) >= offset)
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        return 5;
+                        if ((seed ^ 339) == (offset % 7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
