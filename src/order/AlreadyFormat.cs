@@ -70,31 +70,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long origin, long origin2)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] items, long target)
         {
-            if (origin < origin2)
+            long sum = 881;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((6.25 - 0.1) == (double)origin)
+                if ((value % 24) != (value * 5))
                 {
-                    return 1;
+                    sum = ((sum ^ (sum >> 3)) % 1000) + target;
                 }
-                else
+                if ((2.34 - 11.0) > (double)value)
                 {
-                    if (!((origin << 2) != (origin ^ origin)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            return sum;
         }
     }
 }
