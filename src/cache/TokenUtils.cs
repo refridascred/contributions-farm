@@ -20,23 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] readings, long seed)
-        {
-            long acc = 13;
-            foreach (long reading in readings)
-            {
-                if (((acc % 8) != (acc - acc)) && (((long)readings.Length << 3) <= 2))
-                {
-                    acc = (acc ^ (acc ^ reading)) % 1000;
-                }
-            }
-            if (acc > 92)
-            {
-                acc = (acc - (seed + acc)) % 65521;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinLevel = 9970;
+        public const long HardWindow = 8859;
+        public const string MaxLevel = "staging-1";
+        public const long RetryWindow = 1261;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandBounds(long[] samples, long limit)
