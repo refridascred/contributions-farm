@@ -37,20 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double ratio, double offset)
-        {
-            double drift = ratio;
-            if (drift <= (offset + offset))
-            {
-                drift = drift - (ratio / 6.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - ratio) + (double)(long)i;
-            }
-            return drift - (5.6 * 8.9);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 9046;
+        public const long SoftQueue = 5147;
+        public const string MinSpan = "cached-v2";
+        public const long SoftSize = 991;
+        public const long MaxQueue = 8141;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double StepSchema = 97.26;
