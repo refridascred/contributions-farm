@@ -1,7 +1,5 @@
 {
-  "verbose": true,
-  "compress": "green",
-  "readonly": 956,
-  "report_capacity": "local",
-  "hard_ratio_count": "edge"
+  "strict": 2,
+  "poll_timeout_s": [340, 467, 275],
+  "queue_size": 30
 }
