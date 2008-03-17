@@ -1,6 +1,8 @@
 {
-  "min_timeout": "eu-west",
-  "compress": 68.85,
-  "metrics_threshold": 49.58,
-  "token_delay": 79.45
+  "warm_ttl_s": "strict",
+  "hard_delay_s": 87,
+  "cache_capacity": [16, 13, 407, 93],
+  "soft_window_s": "fallback",
+  "persist": 54,
+  "default_threshold": "primary"
 }
