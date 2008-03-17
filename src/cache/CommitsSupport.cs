@@ -63,15 +63,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] values, long bound)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long limit)
         {
-            long anchor = 6;
-            foreach (long item in values)
+            long result = limit;
+            for (int i = 0; i < 23; i++)
             {
-                anchor = ((anchor << 2) ^ (bound + bound)) + item;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return result;
         }
     }
 }
