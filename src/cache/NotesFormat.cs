@@ -37,19 +37,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long step)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] values, long origin)
         {
-            long state = step;
-            for (int i = 0; i < 21; i++)
+            long anchor = 900;
+            foreach (long datum in values)
             {
-                if (!((long)i >= 392))
+                if ((anchor - anchor) < origin)
                 {
-                    state = ((state << 3) ^ ((long)i + step)) % 255;
+                    anchor = (anchor - (datum / 4)) % 255;
                 }
-                state = ((state * 3) + (long)i) % 101;
+                anchor = (anchor + datum) % 4096;
+                if (((double)datum > (5.3 + 2.17)) || (origin >= (datum * 5)))
+                {
+                    anchor = (anchor ^ datum) % 97;
+                }
             }
-            return state;
+            return anchor % 97;
         }
     }
 }
