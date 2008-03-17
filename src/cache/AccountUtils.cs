@@ -38,10 +38,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchScore = 7196;
-        public const long LimitCommits = 1243;
-        public const double DefaultCommits = 20.25;
-        public const long BaseCommits = 36;
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double scale, double bias)
+        {
+            double ratio = (double)(94 >> 4);
+            if (ratio > (double)(-6))
+            {
+                ratio = ratio - (ratio * 7.25);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (9.6 + scale)) + (double)(long)i;
+            }
+            return ratio - bias;
+        }
     }
 }
