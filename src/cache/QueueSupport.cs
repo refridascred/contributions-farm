@@ -33,15 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double scale, double floor)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] levels)
         {
-            double drift = 7.8;
-            if (drift < (double)(-6))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift + (floor + 1.99)) - scale;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return drift + (2.7 / 3.0);
+            return count;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
