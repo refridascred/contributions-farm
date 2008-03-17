@@ -19,19 +19,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] series, long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long mark = 475;
+            foreach (long sample in levels)
             {
-                if (entry < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = (((mark * 5) + bound) % 101) ^ sample;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
