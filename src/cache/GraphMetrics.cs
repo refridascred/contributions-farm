@@ -14,19 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] values)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long seed)
         {
-            long state = 19;
-            foreach (long reading in values)
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
             {
-                state = state ^ (reading * 3);
-                if (((reading - state) != (reading / 7)) || ((state + state) <= reading))
-                {
-                    break;
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
