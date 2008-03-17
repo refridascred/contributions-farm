@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheWidth = 842;
-        public const long BurstSpan = 1856;
-        public const long BaseFactor = 2250;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((long)samples.Length > (datum - 85))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate entry cluster readings against a bound.</summary>
         public static bool VerifyEntryClusterBounds(long[] levels, long seed)
