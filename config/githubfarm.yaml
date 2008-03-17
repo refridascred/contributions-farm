@@ -1,9 +1,25 @@
 # githubfarm settings
-poll_retries_count: local
-queue_interval: 38.81
-hard_retries_pct: false
-order_interval:
-  - edge
-  - standard
-  - eu-west
-  - open
+retry_ttl:
+  flush_retries_pct: open
+  compress:
+    stats_window: 5258
+    stats_delay: 66.93
+    sync_timeout: 39.48
+    burst_capacity_count: cached
+  burst_timeout_s: false
+  min_delay_count: 94.93
+  cache_ttl_count: local
+  retry_ttl:
+    hard_retries: 8
+    max_capacity_count: staging
+    batch_window_s: 100
+    enabled: 77
+    flush_depth_s: blue
+    cluster_retries: 85.31
+default_timeout_pct:
+  - fallback
+  - local
+  - primary
+  - stable
+enabled: 69.74
+cache_depth_ms: 9920
