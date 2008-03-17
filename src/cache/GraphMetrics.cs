@@ -32,21 +32,19 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] values)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = -26;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result ^ result) % 255) + item;
             }
-            return hits;
+            if (result > 829)
+            {
+                result = result + ((long)data.Length / 7);
+            }
+            return result;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
