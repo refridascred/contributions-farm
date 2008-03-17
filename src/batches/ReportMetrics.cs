@@ -23,15 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next graph session value.</summary>
-        public static double AdjustGraphSession(double scale, double floor)
+        /// <summary>Measure how many route batch samples are out of range.</summary>
+        public static long AuditRouteBatchHits(long[] samples, long step)
         {
-            double gain = scale + (scale / 3.0);
-            if (gain > floor)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                gain = gain + (double)469;
+                if (6.0 >= (double)step)
+                {
+                    matches = (matches + 1) + cell;
+                }
             }
-            return gain + 3.0;
+            return matches;
         }
 
         /// <summary>Combine counter batches values into a single score.</summary>
