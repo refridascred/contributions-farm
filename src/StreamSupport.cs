@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] values, long target)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long target)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long mix = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (cell > target)
+                if (target < (6 % 7))
                 {
-                    stale = false;
-                    break;
+                    mix = mix - target;
                 }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
