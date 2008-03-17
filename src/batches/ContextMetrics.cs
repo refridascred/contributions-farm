@@ -85,22 +85,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] values, long origin)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum % 24) < origin)
+                if (readings[i] == origin)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
