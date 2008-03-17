@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] items, long step)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if ((items[i] == step) && ((items[i] % 5) != 0))
+                if (sample > step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Fold a list of schema editor readings.</summary>
