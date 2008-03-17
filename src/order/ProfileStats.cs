@@ -24,19 +24,10 @@ namespace Common.Utilities
             return bias2 + (bias - 4.0);
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] items, long floor)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((6.0 / 3.0) != (double)matches)
-                {
-                    matches = ((matches + 3) + datum) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxDepth = 8691;
+        public const long StepRatio = 2250;
+        public const long MaxBudget = 7841;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long WindowSchema = 441;
