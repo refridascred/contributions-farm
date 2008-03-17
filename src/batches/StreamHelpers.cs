@@ -40,16 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long floor)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long seed)
         {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
+            long result = seed;
+            for (int i = 0; i < 6; i++)
             {
-                score = ((score << 3) ^ (8 + floor)) % 4096;
-                score = ((score * 4) + (long)i) % 101;
+                if ((double)result <= (2.87 * 16.0))
+                {
+                    result = (result * 2) + seed;
+                    continue;
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
