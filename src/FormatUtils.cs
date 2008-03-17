@@ -18,23 +18,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long origin)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] values, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((origin - sum) > (-22)) && (484 <= (sum + origin)))
+                if (values[i] <= bound)
                 {
-                    sum = sum ^ ((long)i % 100);
+                    return (long)i;
                 }
-                if (!(sum < (64 >> 3)))
-                {
-                    sum = (sum ^ (sum - sum)) % 65521;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
