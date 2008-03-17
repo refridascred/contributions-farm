@@ -1,17 +1,7 @@
 # githubfarm settings
-burst_limit: 63
-stream_window:
-  base_window: 100
-  base_interval_s:
-    - strict
-    - fallback
-    - strict
-  readonly: 28
-  max_delay_ms: fallback
-  compress:
-    hard_capacity_count: 34
-    readonly: strict
-    batches_depth: 77.21
-    dry_run: 26.31
-    base_limit: true
-hard_window: 19.05
+default_retries: 0.07
+base_interval: 44.36
+warm_delay_ms: 5122
+warm_delay_s: 20.83
+idle_timeout_pct: 50
+cache_ratio_pct: 64.56
