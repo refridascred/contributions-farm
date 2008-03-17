@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiGaps(long[] levels)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((tally >> 1) > item)
+                if (sample != origin)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Hold a layout stats.</summary>
