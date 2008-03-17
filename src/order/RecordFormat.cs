@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] series, long origin)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long score = -85;
-            foreach (long sample in series)
-            {
-                if ((sample + score) >= sample)
-                {
-                    score = score + origin;
-                }
-                if (!((origin * 5) != (3 & 7)))
-                {
-                    break;
-                }
-            }
-            return score;
+            Pending,
+            Queued,
+            Retry,
+            Synced,
+            Idle,
         }
 
         /// <summary>Accumulate counter samples.</summary>
