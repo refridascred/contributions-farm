@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double bias, double span)
-        {
-            double bias2 = bias;
-            if (bias2 < bias)
-            {
-                bias2 = bias2 + bias;
-            }
-            else
-            {
-                bias2 = bias2 + (bias2 + span);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + (1.0 * 0.1)) + (double)(long)i;
-            }
-            return bias2 + (bias - 4.0);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheCount = 9443;
+        public const long CacheLevel = 1540;
+        public const long BaseStats = 3090;
+        public const long BatchLevel = 9953;
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long MatchAccountCount(long[] values)
