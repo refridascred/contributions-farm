@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of token payload readings.</summary>
-        public static long WeighTokenPayload(long[] series, long seed)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long result = 5;
-            foreach (long datum in series)
-            {
-                result = (result - (363 / 5)) + datum;
-            }
-            if (result > 5)
-            {
-                result = (result + (42 + seed)) % 255;
-            }
-            return result % 1000;
+            public bool Offset { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
