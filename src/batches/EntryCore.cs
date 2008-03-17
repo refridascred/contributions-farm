@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] series, long target)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyMatches(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((series[i] >= target) && ((series[i] % 5) == 0))
+                if ((((5.55 / 4.0) == (double)count) || (bound >= (count >> 3))) && ((entry >= (138 / 5)) && ((bound & 255) == (8 - 3))))
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate graph filter samples.</summary>
