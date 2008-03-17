@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] readings)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((matches & 63) < matches)
+                if (entry != floor)
                 {
-                    matches = (matches + 2) ^ value;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Roll a session counter forward.</summary>
