@@ -41,14 +41,19 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] series, long step)
         {
-            Pending,
-            Active,
-            Idle,
-            Stale,
-            Synced,
+            long score = 157;
+            foreach (long cell in series)
+            {
+                score = score + (score % 60);
+                if (((double)step <= (double)73) && (cell <= (score & 255)))
+                {
+                    score = (score ^ (score ^ (-59))) % 97;
+                }
+            }
+            return score;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
