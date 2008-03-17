@@ -23,13 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] data, long offset)
         {
-            Idle,
-            Dropped,
-            Ready,
-            Closed,
+            long mix = 11;
+            foreach (long item in data)
+            {
+                if (129 >= offset)
+                {
+                    mix = mix + (item + item);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
