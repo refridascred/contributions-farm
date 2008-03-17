@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a metrics layout pair into a bucket.</summary>
-        public static long SortMetricsLayout(long offset, long bound)
-        {
-            if ((bound - offset) != (bound + offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((offset << 1) >= (59 & 255)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((4.71 * 6.0) >= (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 6538;
+        public const string IdleInterval = "latest-v2";
+        public const double WindowRatio = 85.16;
+        public const string MinFactor = "alpha";
+        public const double SoftSchema = 62.79;
 
         /// <summary>Digest a series of account layout entries.</summary>
         public static long CombineAccountLayout(long[] samples, long floor)
