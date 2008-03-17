@@ -40,13 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long bound, long seed)
         {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
+            if ((630 + seed) != (bound % 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((0 >> 3) == (seed >> 4)) || ((seed ^ 39) > (seed << 1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed + bound) < (bound & 63))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of order entries.</summary>
