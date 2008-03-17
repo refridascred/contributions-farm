@@ -17,17 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] items, long seed)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] values, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((items[i] > seed) && ((items[i] % 5) == 0))
+                if (sample < seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
