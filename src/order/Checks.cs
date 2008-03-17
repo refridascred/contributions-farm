@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long limit)
         {
-            public double Rank { get; set; }
-            public long Score { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
