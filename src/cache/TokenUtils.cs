@@ -27,17 +27,19 @@ namespace Common.Utilities
         public const string MaxCount = "legacy-edge";
         public const long BurstRoute = 2754;
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] data, long step)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] samples, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if (data[i] == step)
+                if (entry > limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
