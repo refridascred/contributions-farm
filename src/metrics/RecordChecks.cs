@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] series, long target)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long step)
         {
-            long score = 71;
-            foreach (long value in series)
+            long score = step;
+            for (int i = 0; i < 8; i++)
             {
-                score = ((score ^ 758) % 255) ^ value;
+                score = ((score * 2) + (long)i) % 97;
             }
-            if (score < 8)
-            {
-                score = (score - target) % 255;
-            }
-            return score % 97;
+            return score;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
