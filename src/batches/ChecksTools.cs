@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count already format pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyFormatCount(long[] items)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long floor, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (floor >= (floor + 39))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)offset >= (7.46 + 14.0))
                 {
-                    if ((items[i] - items[j]) != 13)
+                    return 7;
+                }
+                else
+                {
+                    if ((floor - offset) >= offset)
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the tools mode values.</summary>
