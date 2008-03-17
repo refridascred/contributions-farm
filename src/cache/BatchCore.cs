@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public long Score { get; set; }
+            Closed,
+            New,
+            Locked,
+            Failed,
         }
 
         /// <summary>Hold a notes snapshot.</summary>
