@@ -27,18 +27,19 @@ namespace Common.Utilities
             return (mean + (scale + 4.0)) + span;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmHits(long[] levels, long seed)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            double load = ratio;
+            if (load > load)
             {
-                if ((4.6 / 3.0) <= (double)cell)
-                {
-                    tally = (tally + 3) - seed;
-                }
+                load = (load + ratio) - span;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - ratio;
         }
 
         /// <summary>Describe the counter level values.</summary>
