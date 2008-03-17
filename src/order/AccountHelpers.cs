@@ -48,10 +48,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 6756;
-        public const string MinDepth = "local-v2";
-        public const long SoftAlready = 2091;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public long Mode { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long MeasureReportMatches(long[] samples, long limit)
