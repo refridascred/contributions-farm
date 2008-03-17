@@ -1,7 +1,10 @@
-id,label,rank
-1,65.39,48.81
-2,75.09,62.36
-3,406,eu-west
-4,standard,cached
-5,primary,19.44
-6,5.01,blue
+id,state,weight
+1,green,primary
+2,cached,green
+3,staging,latest
+4,726,74.7
+5,93.16,edge
+6,47.21,44.86
+7,111,71.08
+8,14.48,868
+9,68.98,17.34
