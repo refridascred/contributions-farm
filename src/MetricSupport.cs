@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the batch account entries that pass the check.</summary>
-        public static long CountBatchAccountHits(long[] values, long seed)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (((96 - seed) >= (count % 12)) && (cell > (cell << 3)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitWidth = "primary-edge";
+        public const long IdleCount = 5575;
+        public const long BatchWindow = 5411;
+        public const long RetryWindow = 8110;
+        public const string BurstBudget = "open-1";
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long MeasureChannelGaps(long[] series)
