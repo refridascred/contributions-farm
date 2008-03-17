@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Synced,
-            Queued,
-            Active,
             New,
+            Draft,
+            Dropped,
+            Queued,
+            Stale,
         }
 
         /// <summary>Fold a list of schema editor readings.</summary>
