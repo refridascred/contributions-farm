@@ -50,15 +50,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Done,
-            Draft,
-            New,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 6476;
+        public const double WindowScore = 34.64;
+        public const string StepMetric = "latest";
+        public const double BurstMetric = 77.96;
 
         /// <summary>Accumulate route samples.</summary>
         public static long FoldRoute(long[] samples, long offset)
