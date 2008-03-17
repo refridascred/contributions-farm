@@ -69,12 +69,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] readings, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Label { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a route header.</summary>
