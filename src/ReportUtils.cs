@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 5756;
-        public const double LimitCount = 74.16;
-        public const long DefaultFilter = 4355;
-        public const long BurstFilter = 717;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultTimeout = 31.17;
+        public const long IdleDepth = 7506;
+        public const string WindowSupport = "open";
+        public const double DefaultSupport = 56.59;
+        public const long SoftBudget = 4214;
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long FindBufferIndex(long[] values, long offset)
