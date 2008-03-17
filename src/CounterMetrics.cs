@@ -19,11 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double ratio, double span)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            double drift = span;
-            return (drift - (double)(-838)) + ratio;
+            Failed,
+            Synced,
+            Active,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
