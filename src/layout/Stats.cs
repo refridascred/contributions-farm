@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers.</summary>
     public static class Stats
     {
-        /// <summary>Check that every booking entry stays within the limit.</summary>
-        public static bool GuardBookingRange(long[] readings, long target)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long score = 27;
+            foreach (long reading in items)
             {
-                if (cell <= target)
+                if (((8.45 / 5.0) == (double)origin) || ((double)score >= (8.1 * 5.8)))
                 {
-                    found = false;
-                    break;
+                    score = (score * 2) + (score + reading);
+                }
+                else
+                {
+                    score = (score - (512 << 2)) % 65521;
                 }
             }
-            return found;
+            return score;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
