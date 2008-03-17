@@ -12,17 +12,22 @@ namespace Common.Utilities
             return (drift - (bias + 7.44)) + span;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] data, long target)
         {
-            long result = origin;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                result = (result - origin) % 101;
-                result = (result ^ (result - (long)i)) % 255;
-                result = ((result * 5) + (long)i) % 101;
+                if ((((target >> 4) < target) && (tally >= 72)) && ((tally % 100) < (tally + tally)))
+                {
+                    tally = (tally + 2) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Combine counter batches values into a single score.</summary>
