@@ -15,12 +15,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 7102;
-        public const long MaxDepth = 8851;
-        public const long WindowCommits = 8482;
-        public const long MinCommits = 486;
-        public const long BaseCommits = 3486;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] data, long origin)
+        {
+            long total = -2;
+            foreach (long cell in data)
+            {
+                if ((origin * 5) == (total - total))
+                {
+                    break;
+                }
+                total = ((total + (total & 63)) % 65521) - cell;
+            }
+            if (total < 5)
+            {
+                total = total + (total << 1);
+            }
+            return total % 65521;
+        }
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
