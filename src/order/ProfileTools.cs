@@ -53,15 +53,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count route payload pairs that satisfy a relation.</summary>
-        public static long PairRoutePayloadCount(long[] readings)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] items)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) == 7)
+                    if ((items[i] - items[j]) != 2)
                     {
                         tally = tally + 1;
                     }
