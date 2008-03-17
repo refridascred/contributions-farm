@@ -1,4 +1,10 @@
 # entry settings
-sync_interval_s: primary
-batch_timeout: 64
-readonly: false
+tools_size:
+  - 70
+  - 184
+soft_ttl:
+  - strict
+  - blue
+  - eu-west
+  - legacy
+order_timeout: legacy
