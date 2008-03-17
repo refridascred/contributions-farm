@@ -24,10 +24,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 4900;
-        public const string IdleWindow = "staging";
-        public const long RetryWindow = 2997;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((value + count) > value)
+                {
+                    count = (count + 1) - offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine counter batches values into a single score.</summary>
         public static long TallyCounterBatches(long[] readings, long offset)
