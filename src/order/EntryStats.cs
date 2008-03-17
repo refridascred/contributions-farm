@@ -38,14 +38,18 @@ namespace Common.Utilities
             return load + 4.98;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] series)
         {
-            Idle,
-            Locked,
-            Active,
-            Pending,
-            Paused,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (((hits + reading) <= (hits - 771)) || ((reading / 3) != (33 + 0)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a editor stats.</summary>
