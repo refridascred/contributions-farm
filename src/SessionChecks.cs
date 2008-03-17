@@ -42,35 +42,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] items)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long score = 1;
-            foreach (long reading in items)
-            {
-                if (8 >= score)
-                {
-                    score = (score + score) % 4096;
-                    continue;
-                }
-                else
-                {
-                    score = ((score * 4) + (reading + score)) % 97;
-                }
-                if ((score < reading) || ((reading % 7) != (reading + (-854))))
-                {
-                    score = (score ^ (score << 2)) % 4096;
-                }
-                else
-                {
-                    score = (score * 3) + reading;
-                }
-            }
-            if (score > 676)
-            {
-                score = ((score << 2) ^ (74 - 176)) % 97;
-            }
-            return score % 4096;
+            Synced,
+            Ready,
+            New,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
