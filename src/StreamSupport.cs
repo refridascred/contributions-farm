@@ -16,26 +16,38 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] levels, long step)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long limit, long offset)
         {
-            long sum = 65;
-            foreach (long cell in levels)
+            if ((offset / 7) < offset)
             {
-                if ((sum % 24) >= (-45))
+                return 8;
+            }
+            else
+            {
+                if ((offset << 3) != (offset + offset))
                 {
-                    sum = ((sum * 3) + (cell * 2)) % 101;
+                    return 3;
                 }
-                if ((cell >= step) || ((623 << 2) < (step / 7)))
+                else
                 {
-                    sum = ((sum << 2) ^ sum) % 255;
-                }
-                if (((long)levels.Length ^ sum) != (step << 1))
-                {
-                    break;
+                    if ((limit + offset) < (offset >> 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset % 60) >= offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
