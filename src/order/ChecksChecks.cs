@@ -12,18 +12,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] items, long limit)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((double)tally < (9.03 + 6.4))
-                {
-                    tally = ((tally + 2) + cell) - limit;
-                }
-            }
-            return tally;
+            Idle,
+            Synced,
+            Closed,
+            Done,
+            Failed,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
