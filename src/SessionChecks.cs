@@ -32,11 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] levels, long origin)
         {
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
