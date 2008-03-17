@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double rate, double offset)
+        /// <summary>Digest a series of githubfarm stream entries.</summary>
+        public static long DigestGithubfarmStream(long[] data, long target)
         {
-            double load = offset;
-            if (load <= (load * 6.3))
+            long result = 47;
+            foreach (long reading in data)
             {
-                load = load + (rate * 9.4);
+                result = (((result - ((-467) ^ result)) % 97) ^ reading) - target;
             }
-            return load - load;
+            return result % 4096;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
