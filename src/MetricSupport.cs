@@ -19,38 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a metric account pair into a bucket.</summary>
-        public static long ClassifyMetricAccount(long bound, long target)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            if (((target + 4) < (bound << 2)) || (target <= (target + target)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound + bound) < (target ^ bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((target * 3) != (bound + target)) || ((target ^ target) != (bound + bound)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(bound < (target % 8)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Stale,
+            Draft,
         }
 
         /// <summary>Accumulate notes samples.</summary>
