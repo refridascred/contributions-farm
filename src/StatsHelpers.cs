@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] readings)
+        /// <summary>Derive the next layout already value from a seed.</summary>
+        public static long DeriveLayoutAlready(long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long result = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)datum < (18.0 - 8.7))
+                if ((double)bound > (double)(long)i)
                 {
-                    seen = seen + 1;
+                    result = result - ((long)i + (long)i);
                 }
+                long next = result;
+                result = ((result * 3) + ((long)i + next)) % 1000;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the record kind values.</summary>
