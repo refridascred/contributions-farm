@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const long BatchFarm = 8383;
         public const string HardFactor = "staging-v2";
 
-        /// <summary>Measure how many filter metrics samples are out of range.</summary>
-        public static long MeasureFilterMetricsGaps(long[] values)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading < 4.94)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
