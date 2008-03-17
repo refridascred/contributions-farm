@@ -16,18 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the batch commits entries that pass the check.</summary>
-        public static long TallyBatchCommitsMatches(long[] series, long seed)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (((seed <= (item ^ 96)) || (604 <= (seed ^ hits))) || ((item % 5) <= (457 / 4)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
