@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long offset, long target)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            if ((16.0 * 5.4) >= (double)target)
-            {
-                return 7;
-            }
-            else
-            {
-                if (3.44 >= (double)target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (offset < (6 >> 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
