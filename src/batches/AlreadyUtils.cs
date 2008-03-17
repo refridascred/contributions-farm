@@ -39,17 +39,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a session stats sample.</summary>
-        public static long LookupSessionStatsIndex(long[] items, long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 81;
+            foreach (long sample in data)
             {
-                if ((items[i] >= limit) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 5) + floor) - sample;
             }
-            return -1;
+            if (total > (-16))
+            {
+                total = total ^ (27 << 2);
+            }
+            return total;
         }
 
         /// <summary>Audit account checks readings against a rule.</summary>
