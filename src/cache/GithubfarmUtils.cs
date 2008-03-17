@@ -27,22 +27,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] samples, long seed)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((25 > (hits ^ value)) || (166 > (value * 2)))
-                {
-                    hits = (hits + 3) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Draft,
+            Active,
         }
 
         /// <summary>Hold a graph record.</summary>
