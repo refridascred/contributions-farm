@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric stats readings.</summary>
-        public static long ScoreMetricStats(long[] data, long bound)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long total = 773;
-            foreach (long sample in data)
-            {
-                total = ((total << 2) ^ (total & 127)) - bound;
-                if ((double)sample <= 20.0)
-                {
-                    break;
-                }
-            }
-            return total;
+            Idle,
+            Ready,
+            Active,
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
