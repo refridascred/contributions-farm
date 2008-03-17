@@ -28,39 +28,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank support format input into a small class.</summary>
-        public static long BucketSupportFormat(long floor, long target)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] samples, long offset)
         {
-            long slot = floor - target;
-            if ((target % 3) == (441 + slot))
+            long mark = 5;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((89 + slot) < floor)
+                if ((593 - offset) != (mark + sample))
                 {
-                    return 3;
+                    mark = mark + (sample << 3);
                 }
                 else
                 {
-                    if ((floor + slot) >= (503 % 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((7.98 - 9.9) > (double)slot)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mark = mark ^ (offset + mark);
                 }
+                mark = ((mark << 2) ^ (offset & 31)) % 101;
             }
+            return mark;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
