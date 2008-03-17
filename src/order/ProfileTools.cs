@@ -42,15 +42,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] levels)
+        /// <summary>Count route payload pairs that satisfy a relation.</summary>
+        public static long PairRoutePayloadCount(long[] readings)
         {
             long tally = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)cell > (7.1 + 0.87))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((readings[i] - readings[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
