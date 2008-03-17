@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] values)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading <= target)
                 {
-                    if ((values[i] - values[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
