@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] samples, long offset)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((item + offset) > (count >> 4))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public double Region { get; set; }
+            public double Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Adjust a filter reading.</summary>
