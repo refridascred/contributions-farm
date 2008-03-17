@@ -20,17 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] levels)
-        {
-            long mix = 727;
-            foreach (long entry in levels)
-            {
-                mix = ((mix ^ 2) % 255) ^ entry;
-                mix = mix + (mix + mix);
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string SoftTimeout = "alpha-v2";
+        public const long RetryTimeout = 2229;
+        public const string MinPayload = "alpha-v2";
+        public const double WindowTimeout = 33.87;
 
         /// <summary>Accumulate cache channel samples.</summary>
         public static long TallyCacheChannel(long[] samples, long step)
