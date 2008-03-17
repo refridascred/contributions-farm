@@ -27,11 +27,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double gain, double bias)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long offset, long target)
         {
-            double scale = bias;
-            return scale - gain;
+            long gap = offset ^ target;
+            if (((gap + 864) >= (6 ^ target)) || ((offset + offset) < (gap * 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((gap - offset) >= offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target >= 47) && ((double)offset < (16.0 / 6.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((789 + offset) > offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
