@@ -44,22 +44,21 @@ namespace Common.Utilities
         public const long MinFarm = 1719;
         public const long WindowWidth = 766;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] readings)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] samples)
         {
-            long mark = 76;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)sample <= (10.0 + 9.95))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = mark ^ (sample & 7);
+                    if ((samples[i] + samples[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark < 553)
-            {
-                mark = (mark * 3) + (mark >> 5);
-            }
-            return mark;
+            return count;
         }
     }
 }
