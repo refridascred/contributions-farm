@@ -19,21 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] data)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 77;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample <= (sample & 31))
                 {
-                    if ((data[i] ^ data[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc * 3) + ((-222) << 3);
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (acc + acc);
                 }
             }
-            return tally;
+            if (acc > 723)
+            {
+                acc = (acc + (acc >> 2)) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
