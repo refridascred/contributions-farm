@@ -10,11 +10,26 @@ namespace Common.Utilities
         public const string CacheCount = "legacy";
         public const long MinRatio = 3381;
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Fold a list of schema editor readings.</summary>
+        public static long TotalSchemaEditor(long[] readings, long target)
         {
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
+            long acc = 1;
+            foreach (long sample in readings)
+            {
+                if ((double)target <= 10.0)
+                {
+                    acc = ((acc * 2) + (target + 838)) % 101;
+                }
+                if ((acc << 2) >= target)
+                {
+                    acc = (acc - (sample & 15)) % 1000;
+                }
+                else
+                {
+                    acc = acc ^ (8 << 3);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
