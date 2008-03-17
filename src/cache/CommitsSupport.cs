@@ -47,21 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] levels)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public double Owner { get; set; }
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Digest a series of graph entries.</summary>
