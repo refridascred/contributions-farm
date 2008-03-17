@@ -27,18 +27,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit batches graph readings against a rule.</summary>
-        public static long CountBatchesGraphGaps(long[] items, long target)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((tally + tally) == (tally >> 4))
+                if (origin >= (datum & 127))
                 {
-                    tally = ((tally + 2) ^ entry) - target;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
