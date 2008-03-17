@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] samples, long step)
+        /// <summary>Audit githubfarm channel readings against a rule.</summary>
+        public static long MeasureGithubfarmChannelMatches(long[] data, long seed)
         {
-            long result = 8;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (11.0 <= (double)result)
+                if ((seed >> 1) <= (reading - reading))
                 {
-                    result = (result + datum) % 1000;
-                }
-                if ((32 - result) < (result << 2))
-                {
-                    result = ((result * 5) + datum) % 4096;
-                }
-                else
-                {
-                    result = result - (datum + step);
+                    matches = matches + 2;
                 }
             }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
