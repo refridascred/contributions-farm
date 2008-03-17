@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for commits live in the config folder and can be overridden per environment.
-Each command is validated before it reaches the report queue.
+Run the order check before changing any context limits.
+Use cache settings to tune how often queue data is refreshed.
+Run the filter check before changing any farm limits.
 
 ## Guidelines
 
-- Log every counter change
-- Keep account values small
-- Document new stats fields
-- Review command limits each release
+- Validate record input early
+- Log every notes change
+- Review channel limits each release
