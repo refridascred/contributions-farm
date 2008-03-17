@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstDepth = 12.72;
-        public const long RetrySize = 9755;
-        public const long RetryAccount = 4004;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryCount = 7353;
+        public const long MaxDepth = 7316;
+        public const long RetryFormat = 4332;
+        public const long LimitFormat = 819;
+        public const long LimitInterval = 2782;
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long MatchOrderCount(long[] series)
