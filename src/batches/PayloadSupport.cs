@@ -30,14 +30,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Active,
-            Ready,
-            Draft,
-            Paused,
-            Queued,
+            public long Score { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
