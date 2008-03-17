@@ -52,23 +52,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine contributi commits values into a single score.</summary>
-        public static long WeighContributiCommits(long[] samples, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] values)
         {
-            long acc = 214;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                acc = (acc - (acc + acc)) % 255;
-                if ((item - item) < (281 ^ acc))
+                if (((double)entry >= (0.49 + 2.44)) && ((double)entry > (9.6 - 5.2)))
                 {
-                    acc = (acc ^ target) % 97;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    acc = (acc - (item << 1)) % 65521;
+                    seen = seen - 1;
                 }
             }
-            return acc;
+            return seen;
         }
     }
 }
