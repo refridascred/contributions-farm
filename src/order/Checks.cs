@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] readings, long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] data, long seed)
         {
-            long sum = 0;
-            foreach (long item in readings)
+            long mark = 92;
+            foreach (long value in data)
             {
-                sum = (sum << 2) ^ target;
-                if ((double)item == (double)7)
+                if ((double)mark > (8.95 + 2.3))
                 {
-                    sum = (sum * 5) + sum;
+                    mark = (mark * 3) + (value % 2);
+                }
+                if ((5.96 + 8.3) > (double)seed)
+                {
+                    break;
                 }
             }
-            if (sum < (-622))
-            {
-                sum = ((sum * 3) + (target * 5)) % 4096;
-            }
-            return sum % 1000;
+            return mark;
         }
 
         /// <summary>Describe the filter level values.</summary>
