@@ -24,22 +24,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] series)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] readings)
         {
-            long result = 20;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((double)result <= (4.31 * 9.5))
+                if (!((3 + (long)readings.Length) >= seen) && ((seen - 77) < 814))
                 {
-                    result = result - (cell - cell);
+                    seen = (seen + 1) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (result > 5)
-            {
-                result = (result - (result >> 1)) % 1000;
-            }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Describe the tools class values.</summary>
