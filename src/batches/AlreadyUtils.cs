@@ -30,15 +30,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a metrics command reading.</summary>
-        public static double SmoothMetricsCommand(double scale, double span)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long step, long step2)
         {
-            double weight = span;
-            for (int i = 0; i < 7; i++)
+            long offset = step - step2;
+            if ((double)offset < 1.4)
             {
-                weight = (weight + (scale / 7.0)) - (double)(long)i;
+                return 1;
             }
-            return weight + 8.0;
+            else
+            {
+                if ((double)step2 == (7.0 + 4.6))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a metric summary.</summary>
