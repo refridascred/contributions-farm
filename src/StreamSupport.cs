@@ -15,18 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of account contributi entries.</summary>
-        public static long DigestAccountContributi(long[] samples)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] items, long limit)
         {
-            long mix = 2;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (!(((long)samples.Length / 2) < (entry * 4)))
+                if (entry < limit)
                 {
-                    mix = mix + mix;
+                    ok = false;
+                    break;
                 }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Roll a filter notes counter forward.</summary>
