@@ -37,18 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batch support readings against a rule.</summary>
-        public static long MeasureBatchSupportOutliers(long[] data)
+        /// <summary>Count the stats layout entries that pass the check.</summary>
+        public static long CountStatsLayoutGaps(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (tally <= 104)
+                if (!((value - value) <= hits))
                 {
-                    tally = (tally + 1) ^ sample;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
