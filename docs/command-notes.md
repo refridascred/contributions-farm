@@ -1,13 +1,11 @@
 # Command notes
 
-Run the support check before changing any filter limits.
-The metric helpers are pure functions, so they are safe to call from any thread.
-
-Run the counter check before changing any command limits.
-The window report groups every graph by editor.
+Each format is validated before it reaches the report queue.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new command fields
-- Log every account change
-- Review channel limits each release
+- Review stats limits each release
+- Validate order input early
+- Keep account values small
+- Document new stream fields
