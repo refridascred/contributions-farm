@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] series)
         {
-            Paused,
-            Stale,
-            Draft,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((entry + 0) <= entry)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a checks record value against two limits.</summary>
