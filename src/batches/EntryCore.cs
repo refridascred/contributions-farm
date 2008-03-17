@@ -50,13 +50,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
-        {
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 5297;
+        public const long MinCount = 6462;
+        public const long HardQueue = 3635;
+        public const long MinDepth = 2925;
+        public const long DefaultQueue = 5069;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long RollSchema(long bound)
