@@ -33,14 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Count the schema contributi entries that pass the check.</summary>
+        public static long AuditSchemaContributiGaps(long[] readings)
         {
-            Closed,
-            Ready,
-            Paused,
-            Idle,
-            Pending,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample + seen) != ((long)readings.Length % 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine route cluster values into a single score.</summary>
