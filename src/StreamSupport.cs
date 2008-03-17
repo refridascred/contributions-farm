@@ -54,11 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchBudget = 6668;
-        public const string MinCluster = "stable";
-        public const long LimitInterval = 416;
-        public const double RetryCluster = 79.02;
-        public const long BaseCount = 5674;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] series, long bound)
+        {
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
