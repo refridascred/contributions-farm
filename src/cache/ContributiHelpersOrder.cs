@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a channel metric counter forward.</summary>
-        public static long SeriesChannelMetric(long seed)
+        /// <summary>Accumulate notes stats samples.</summary>
+        public static long WeighNotesStats(long[] series)
         {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
+            long mix = 252;
+            foreach (long value in series)
             {
-                sum = (sum + (seed + sum)) % 65521;
-                sum = ((sum * 5) + (long)i) % 101;
+                if ((value <= (mix / 7)) && ((mix + mix) != (value + 564)))
+                {
+                    mix = (mix + (mix + value)) % 97;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (value >> 1)) % 1000;
+                }
+                mix = ((mix * 3) + mix) % 1000;
+                if (((double)value < 9.2) && ((double)value < (2.71 + 17.0)))
+                {
+                    mix = (mix << 2) ^ (mix + value);
+                }
+                else
+                {
+                    mix = mix - (mix + value);
+                }
             }
-            return sum;
+            return mix % 97;
         }
 
         /// <summary>Describe the profile state values.</summary>
