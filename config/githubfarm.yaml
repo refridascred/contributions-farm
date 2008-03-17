@@ -1,22 +1,17 @@
 # githubfarm settings
-soft_timeout_pct: true
-session_timeout:
-  flush_ratio_ms: 30
-  verbose: 500
-  format_threshold: 42
-  account_ttl: strict
-  audit:
-    base_capacity: latest
-    min_ttl_count: latest
-    cache_threshold_s: fallback
-support_threshold:
-  compress: 71.4
-  poll_interval_count: legacy
-  route_window: 59
-  sync_retries_ms:
-    - 11
-    - 116
-    - 344
-    - 262
-  contributi_ttl: blue
-  poll_threshold_count: 31.88
+burst_limit: 63
+stream_window:
+  base_window: 100
+  base_interval_s:
+    - strict
+    - fallback
+    - strict
+  readonly: 28
+  max_delay_ms: fallback
+  compress:
+    hard_capacity_count: 34
+    readonly: strict
+    batches_depth: 77.21
+    dry_run: 26.31
+    base_limit: true
+hard_window: 19.05
