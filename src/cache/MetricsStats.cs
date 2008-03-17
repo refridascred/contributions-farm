@@ -44,31 +44,19 @@ namespace Common.Utilities
         public const long StepLevel = 9803;
         public const double SoftRecord = 53.69;
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long floor, long step)
+        /// <summary>Validate metrics cluster readings against a bound.</summary>
+        public static bool ValidateMetricsClusterRange(long[] data, long limit)
         {
-            if ((step + step) == (floor + floor))
+            bool found = true;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((floor ^ floor) < floor))
+                if (value != limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step > (double)floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Rank githubfarm channel input into a small class.</summary>
