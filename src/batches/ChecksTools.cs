@@ -51,23 +51,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] items, long step)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] series, long target)
         {
-            long state = 969;
-            foreach (long item in items)
+            long carry = 7;
+            foreach (long item in series)
             {
-                long edge = (step - item) ^ state;
-                if (!((edge + item) <= (edge - state)))
+                if ((double)item > (5.7 - 3.4))
                 {
-                    edge = ((edge << 2) ^ item) % 65521;
+                    carry = ((carry - (53 - carry)) % 101) + target;
                 }
-                if ((step + 49) != (step << 3))
-                {
-                    state = (state - state) % 97;
-                }
+                carry = ((carry << 3) ^ (1 - carry)) % 97;
             }
-            return state;
+            if (carry < 68)
+            {
+                carry = (carry * 4) + 66;
+            }
+            return carry % 1000;
         }
     }
 }
