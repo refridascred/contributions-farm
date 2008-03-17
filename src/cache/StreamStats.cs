@@ -27,16 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long target)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long total = target;
-            for (int i = 0; i < 20; i++)
-            {
-                total = (total - (total & 127)) % 97;
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            Locked,
+            Retry,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
