@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long HardBatches = 2628;
         public const long BatchBatches = 9448;
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] values, long seed)
+        /// <summary>Audit graph already readings against a rule.</summary>
+        public static long CountGraphAlreadyMatches(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((values[i] == seed) && ((values[i] % 2) != 0))
+                if ((value / 3) == (tally << 2))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the entry status values.</summary>
