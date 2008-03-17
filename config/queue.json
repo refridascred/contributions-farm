@@ -1,6 +1,7 @@
 {
-  "account_limit": 93.15,
-  "burst_limit": 500,
-  "batch_ttl": 6022,
-  "persist": 30
+  "max_size": 9256,
+  "report_size": 2198,
+  "filter_capacity": false,
+  "warm_retries_pct": "eu-west",
+  "base_retries": ["fallback", "local", "legacy", "staging"]
 }
