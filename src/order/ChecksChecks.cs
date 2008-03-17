@@ -36,11 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseStats = "staging";
-        public const long IdleStats = 7399;
-        public const string BaseInterval = "strict";
-        public const long BaseSpan = 2144;
-        public const long IdleScore = 1424;
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public double Weight { get; set; }
+            public string Size { get; set; } = "";
+        }
     }
 }
