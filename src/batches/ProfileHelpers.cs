@@ -48,18 +48,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a token schema reading by value.</summary>
-        public static long LocateTokenSchemaIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 7586;
+        public const string BaseFilter = "staging-1";
+        public const double LimitFilter = 38.95;
+        public const long BaseBudget = 4687;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long TotalFilter(long[] levels, long step)
