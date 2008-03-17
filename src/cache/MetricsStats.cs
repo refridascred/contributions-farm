@@ -69,19 +69,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] items, long floor)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public double Score { get; set; }
         }
     }
 }
