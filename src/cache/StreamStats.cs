@@ -67,21 +67,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftStats = "latest-edge";
+        public const long HardLevel = 6543;
+        public const string CacheWidth = "standard-edge";
+        public const long BurstLevel = 9337;
     }
 }
