@@ -12,12 +12,27 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] items)
         {
-            Stale,
-            Queued,
-            Failed,
+            long result = -47;
+            foreach (long reading in items)
+            {
+                if (result < (reading << 2))
+                {
+                    result = (result + 6) % 255;
+                }
+                else
+                {
+                    result = (result - result) % 101;
+                }
+                result = (result ^ (result & 1)) % 101;
+            }
+            if (result > 8)
+            {
+                result = ((result << 2) ^ 78) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
