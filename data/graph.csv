@@ -1,6 +1,7 @@
-id,active,rank,owner,region
-1,308,80.57,30.41,108
-2,open,primary,19.95,619
-3,204,372,102,83.71
-4,staging,552,138,922
-5,259,49.36,open,34.25
+id,count,weight,rank
+1,467,44.44,staging
+2,341,746,edge
+3,standard,35.59,736
+4,primary,edge,strict
+5,edge,17.86,664
+6,46.76,40.69,blue
