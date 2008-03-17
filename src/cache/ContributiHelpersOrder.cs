@@ -17,11 +17,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public double Offset { get; set; }
-            public long Score { get; set; }
+            Draft,
+            Retry,
+            Pending,
+            Ready,
+            Locked,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
