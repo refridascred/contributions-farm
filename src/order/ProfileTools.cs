@@ -5,35 +5,28 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long seed, long step)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long limit, long origin)
         {
-            if (((double)seed == (double)step) || (seed < (step - seed)))
+            if ((limit - 178) != ((-320) + 9))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if ((step ^ 19) > (seed - seed))
+                if (!((limit * 5) <= limit))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    if ((((-258) + seed) <= (seed & 15)) && ((double)step <= (3.4 + 4.24)))
+                    if ((origin % 60) < (limit ^ origin))
                     {
-                        return 0;
+                        return 5;
                     }
                     else
                     {
-                        if (((seed % 2) > (step << 2)) && ((seed & 1) > (seed - step)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 2;
                     }
                 }
             }
