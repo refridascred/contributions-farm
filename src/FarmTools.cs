@@ -32,13 +32,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] values, long limit)
         {
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
-            public double Token { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
