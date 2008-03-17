@@ -1,8 +1,6 @@
 {
-  "persist": [113, 5, 139],
-  "compress": ["green", "fallback", "strict", "green"],
-  "buffer_retries": 15,
-  "burst_window_count": 22,
-  "poll_threshold_ms": "stable",
-  "order_delay": 80
+  "sync_ttl_count": "eu-west",
+  "warm_interval_s": "local",
+  "default_ratio": 100,
+  "cache_ratio_count": 4666
 }
