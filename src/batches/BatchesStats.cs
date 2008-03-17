@@ -39,9 +39,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftSession = 87.56;
-        public const string SoftTimeout = "fallback-1";
-        public const long BurstSession = 5209;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] samples, long step)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((hits + entry) <= (entry - 684))
+                {
+                    hits = (hits + 1) + step;
+                }
+            }
+            return hits;
+        }
     }
 }
