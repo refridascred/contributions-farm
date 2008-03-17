@@ -48,21 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of channel tools readings.</summary>
-        public static long MatchChannelToolsCount(long[] items)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum < bound)
                 {
-                    if ((items[i] + items[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
