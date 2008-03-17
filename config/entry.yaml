@@ -1,17 +1,34 @@
 # entry settings
-warm_window_count: false
-hard_limit_count: 30
-idle_capacity_pct: 7372
-token_ratio:
-  min_capacity_s: 60
-  burst_retries_s: 76
-  sync_ttl_count: true
-  idle_size:
-    base_capacity_ms: false
-    hard_size: 23
-    sync_interval_s: 500
-    order_interval:
-      - 114
-      - 129
-      - 9
-      - 362
+persist:
+  base_delay: local
+  readonly: 1024
+  audit: fallback
+  base_ttl:
+    - stable
+    - latest
+    - open
+    - latest
+  base_window_pct: 250
+  hard_size: 42.58
+batch_size_pct: 19.39
+metrics_size:
+  - 41
+  - 439
+cache_threshold_count: 620
+warm_capacity:
+  - 122
+  - 455
+flush_limit:
+  retry_depth_ms: open
+  flush_threshold_pct: 100
+  min_size:
+    - 172
+    - 158
+    - 237
+    - 274
+  flush_delay:
+    - blue
+    - green
+    - open
+    - primary
+  soft_ratio_count: false
