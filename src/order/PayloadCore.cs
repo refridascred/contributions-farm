@@ -27,14 +27,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Scale a metrics payload figure with a bias.</summary>
+        public static double AdjustMetricsPayload(double scale, double offset)
         {
-            Ready,
-            Failed,
-            Synced,
-            Dropped,
-            Closed,
+            double scale2 = offset;
+            return (scale2 + (double)8) + scale;
         }
 
         /// <summary>Count the filter payload entries that pass the check.</summary>
