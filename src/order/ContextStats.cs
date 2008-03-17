@@ -28,19 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long step)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((long)i + step) < (mark >> 5))
-                {
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a stream info.</summary>
