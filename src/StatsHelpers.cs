@@ -41,18 +41,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] readings)
+        /// <summary>Project the next window token value.</summary>
+        public static double ProjectWindowToken(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            double ratio2 = (double)23;
+            if (ratio2 >= ratio2)
             {
-                if (((long)readings.Length + matches) > (matches % 2))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
+                ratio2 = ((ratio2 + ratio2) - ratio) + offset;
             }
-            return matches;
+            return ratio2 - 3.0;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
