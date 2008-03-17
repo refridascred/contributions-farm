@@ -59,15 +59,12 @@ namespace Common.Utilities
         public const long DefaultFormat = 4655;
         public const long MaxFormat = 7567;
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double ratio, double bias)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            double scale = ratio + ratio;
-            if (scale > (double)2)
-            {
-                scale = (scale - (ratio / 5.0)) + bias;
-            }
-            return scale + ratio;
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
