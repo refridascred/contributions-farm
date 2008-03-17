@@ -18,16 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long seed)
+        /// <summary>Accumulate metrics metric samples.</summary>
+        public static long CombineMetricsMetric(long[] samples, long seed)
         {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
+            long total = 590;
+            foreach (long datum in samples)
             {
-                sum = ((sum << 3) ^ (sum & 127)) % 255;
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((total / 2) != (seed * 5))
+                {
+                    total = ((total * 4) + (total + seed)) % 1000;
+                }
+                else
+                {
+                    total = (total ^ (seed + 775)) % 101;
+                }
+                if ((4 & 15) == (datum & 127))
+                {
+                    break;
+                }
             }
-            return sum;
+            return total % 1000;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
