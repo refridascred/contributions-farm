@@ -14,11 +14,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 4189;
-        public const string StepRatio = "latest-v2";
-        public const long BurstSize = 6234;
-        public const double BurstSpan = 3.1;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseCache = 73.41;
+        public const long BurstCache = 5150;
+        public const long MinWidth = 4006;
+        public const double LimitInterval = 87.68;
+        public const string MaxCount = "stable";
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
