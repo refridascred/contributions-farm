@@ -15,18 +15,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] readings, long origin)
+        /// <summary>Combine counter route values into a single score.</summary>
+        public static long FoldCounterRoute(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long anchor = 51;
+            foreach (long item in series)
             {
-                if ((double)reading == (double)61)
+                if (!!((anchor + bound) == (bound & 3)))
                 {
-                    seen = (seen + 2) + origin;
+                    anchor = anchor - (item >> 2);
                 }
+                anchor = anchor - anchor;
             }
-            return seen;
+            if (anchor < 889)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
