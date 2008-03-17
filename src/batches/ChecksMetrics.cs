@@ -64,12 +64,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double scale, double floor)
         {
-            Pending,
-            Failed,
-            Paused,
+            double load = floor;
+            if (load <= load)
+            {
+                load = load + (scale - scale);
+            }
+            return load + (double)720;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
