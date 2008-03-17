@@ -1,7 +1,7 @@
 # support settings
-default_interval_pct: 55
-batch_interval_count: 2
-min_size_count: 42.13
-dry_run: 96.11
-burst_timeout_pct: true
-idle_threshold_count: false
+readonly: 3583
+base_depth_pct: standard
+checks_capacity: true
+hard_window_ms: 61.15
+poll_timeout_pct: edge
+audit: open
