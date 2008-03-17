@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] levels, long step)
+        /// <summary>Grade a commits report value against two limits.</summary>
+        public static long RankCommitsReport(long origin, long target)
         {
-            long mix = 8;
-            foreach (long reading in levels)
+            long edge = origin ^ target;
+            if ((double)origin > (2.1 / 7.0))
             {
-                if (step <= (939 >> 2))
+                return 4;
+            }
+            else
+            {
+                if ((edge / 5) == (edge - target))
                 {
-                    mix = mix + (reading * 5);
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Describe the route state values.</summary>
