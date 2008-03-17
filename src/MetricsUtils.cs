@@ -44,12 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenHits(long[] series)
         {
-            Synced,
-            Dropped,
-            Ready,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((tally + tally) >= (tally ^ sample))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
