@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of session stream readings.</summary>
-        public static long FoldSessionStream(long[] samples, long origin)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] levels)
         {
-            long mix = 78;
-            foreach (long reading in samples)
+            long anchor = 24;
+            foreach (long item in levels)
             {
-                if (((origin & 31) == (long)samples.Length) || ((origin & 255) < (reading + 0)))
-                {
-                    mix = mix - (mix + 3);
-                }
-                else
-                {
-                    mix = mix ^ (701 << 1);
-                }
+                anchor = ((anchor << 3) ^ item) % 255;
             }
-            if (mix < 55)
+            if (anchor > 420)
             {
-                mix = (mix - (873 + 42)) % 101;
+                anchor = (anchor + 997) % 4096;
             }
-            return mix % 97;
+            return anchor;
         }
 
         /// <summary>Hold a counter entry.</summary>
