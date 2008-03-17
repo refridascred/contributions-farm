@@ -75,13 +75,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] data)
         {
-            Paused,
-            Active,
-            Done,
-            Pending,
+            long state = -7;
+            foreach (long value in data)
+            {
+                state = ((state + (state << 3)) % 65521) + value;
+                if ((double)41 == (double)state)
+                {
+                    break;
+                }
+            }
+            return state;
         }
     }
 }
