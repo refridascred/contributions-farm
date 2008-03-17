@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] items)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadOutliers(long[] levels, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((item - (long)levels.Length) != (count % 5))
                 {
-                    if ((items[i] + items[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) + seed;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count metrics payload pairs that satisfy a relation.</summary>
