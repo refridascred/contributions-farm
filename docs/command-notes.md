@@ -1,15 +1,11 @@
 # Command notes
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-The stream module keeps payload values in sync with the commits cache.
-The contributi report groups every queue by notes.
-
-Each report is validated before it reaches the report queue.
-A graph that stays idle for too long is moved to the metrics list.
-Run the contributi check before changing any record limits.
+Run the entry check before changing any context limits.
+Run the layout check before changing any graph limits.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review contributi limits each release
+- Validate profile input early
+- Log every payload change
 - Prefer buffer defaults
-- Keep batch values small
