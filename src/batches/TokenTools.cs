@@ -35,9 +35,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchBudget = 38.21;
-        public const long DefaultTimeout = 952;
-        public const string MaxBatches = "open-v2";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxGraph = 23.29;
+        public const long LimitGraph = 3701;
+        public const long WindowGraph = 4699;
+        public const long HardWidth = 4771;
+        public const double DefaultSize = 85.73;
     }
 }
