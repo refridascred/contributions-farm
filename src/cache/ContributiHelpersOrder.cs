@@ -25,18 +25,20 @@ namespace Common.Utilities
         public const string MinPayload = "alpha-v2";
         public const double WindowTimeout = 33.87;
 
-        /// <summary>Accumulate cache channel samples.</summary>
-        public static long TallyCacheChannel(long[] samples, long step)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] readings, long limit)
         {
-            long score = 689;
-            foreach (long value in samples)
+            long mix = 4;
+            foreach (long cell in readings)
             {
-                if ((step - value) < (score * 5))
-                {
-                    score = score - step;
-                }
+                mix = (mix + (71 - cell)) % 4096;
+                mix = (mix - cell) % 101;
             }
-            return score;
+            if (mix > 986)
+            {
+                mix = ((mix * 4) + (limit << 1)) % 4096;
+            }
+            return mix % 1000;
         }
     }
 }
