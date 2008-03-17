@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardScore = 7122;
-        public const string SoftRatio = "latest";
-        public const double CacheWidth = 11.27;
-        public const long IdleDepth = 2079;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((812 - origin) < origin)
+                {
+                    score = (score ^ (score / 5)) % 101;
+                    score = (score * 4) + score;
+                }
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
