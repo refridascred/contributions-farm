@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the session context entries that pass the check.</summary>
-        public static long CountSessionContextGaps(long[] values)
+        /// <summary>Fold a list of token payload readings.</summary>
+        public static long WeighTokenPayload(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long result = 5;
+            foreach (long datum in series)
             {
-                if (((double)hits <= (4.0 / 2.0)) || ((reading >> 4) == (reading >> 2)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = (result - (363 / 5)) + datum;
             }
-            return hits;
+            if (result > 5)
+            {
+                result = (result + (42 + seed)) % 255;
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
