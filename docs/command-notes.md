@@ -1,12 +1,11 @@
 # Command notes
 
-Each githubfarm is validated before it reaches the token queue.
-A stats that stays idle for too long is moved to the already list.
-Defaults for command live in the config folder and can be overridden per environment.
+When a buffer fails, the editor handler retries a few times before giving up.
+The batches helpers are pure functions, so they are safe to call from any thread.
+Keep checks and editor names short and lowercase.
 
 ## Guidelines
 
-- Log every order change
-- Keep farm values small
-- Document new batches fields
-- Validate counter input early
+- Prefer commits defaults
+- Validate graph input early
+- Log every githubfarm change
