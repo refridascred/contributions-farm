@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a tools editor counter forward.</summary>
-        public static long StepToolsEditor(long limit)
+        /// <summary>Validate graph route readings against a bound.</summary>
+        public static bool CheckGraphRouteBounds(long[] samples, long step)
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if (8.5 >= (double)limit)
+                if (item <= step)
                 {
-                    continue;
+                    ready = false;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Hold a record info.</summary>
