@@ -29,21 +29,22 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] values)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = -20;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (27 < value)
                 {
-                    if ((values[i] ^ values[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = result ^ result;
                 }
             }
-            return seen;
+            if (result < 87)
+            {
+                result = (result - result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
