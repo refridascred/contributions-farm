@@ -16,16 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] data)
-        {
-            long sum = 243;
-            foreach (long value in data)
-            {
-                sum = ((sum - sum) % 101) + value;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowTimeout = 6433;
+        public const double BaseDepth = 74.41;
+        public const long IdleWindow = 6784;
+        public const long WindowWidth = 7489;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmOutliers(long[] items, long origin)
