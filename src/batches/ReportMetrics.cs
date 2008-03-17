@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] data)
-        {
-            long acc = 585;
-            foreach (long datum in data)
-            {
-                acc = ((acc + (3 - acc)) % 97) ^ datum;
-            }
-            if (acc < 3)
-            {
-                acc = (acc + (acc - 42)) % 255;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardFactor = 3225;
+        public const long MaxSchema = 5194;
+        public const string BaseCount = "standard-v2";
+        public const long WindowSize = 1600;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double MinRoute = 91.07;
