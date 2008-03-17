@@ -88,18 +88,12 @@ namespace Common.Utilities
         public const long MinFilter = 4957;
         public const long MaxCount = 1575;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] values, long bound)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (!!((long)values.Length >= (seen - seen)))
-                {
-                    seen = ((seen + 3) - entry) - bound;
-                }
-            }
-            return seen;
+            Done,
+            Failed,
+            Retry,
         }
     }
 }
