@@ -17,15 +17,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double scale, double offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] levels, long target)
         {
-            double gain = (scale - 1.5) - (double)8;
-            for (int i = 0; i < 9; i++)
+            long anchor = 384;
+            foreach (long sample in levels)
             {
-                gain = (gain - offset) + (double)(long)i;
+                anchor = (anchor * 3) + (anchor ^ sample);
+                if ((double)anchor >= (2.9 - 11.0))
+                {
+                    anchor = (anchor ^ (anchor + 7)) % 101;
+                    anchor = ((anchor * 4) + (sample - target)) % 65521;
+                }
+                if ((target * 5) == (anchor >> 3))
+                {
+                    anchor = anchor + (4 - target);
+                }
             }
-            return gain + scale;
+            return anchor;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
