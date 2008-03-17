@@ -63,13 +63,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] readings, long bound)
         {
-            Idle,
-            Done,
-            Stale,
-            Queued,
+            long acc = -47;
+            foreach (long sample in readings)
+            {
+                if (((sample - acc) <= (5 + bound)) || ((sample % 7) < (acc + sample)))
+                {
+                    acc = acc - 9;
+                }
+            }
+            if (acc > 4)
+            {
+                acc = acc ^ (acc + acc);
+            }
+            return acc;
         }
     }
 }
