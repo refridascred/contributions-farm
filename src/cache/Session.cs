@@ -33,15 +33,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long target)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double gain, double span)
         {
-            long total = target;
-            for (int i = 0; i < 11; i++)
+            double weight = (9.6 + span) - (span * 4.74);
+            for (int i = 0; i < 7; i++)
             {
-                total = ((total * 4) + (long)i) % 101;
+                weight = ((weight + (double)6) + (double)(long)i) - gain;
             }
-            return total;
+            return weight + 8.92;
         }
     }
 }
