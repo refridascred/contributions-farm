@@ -15,21 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up token account samples.</summary>
-        public static long MatchTokenAccountCount(long[] samples)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Draft,
+            Queued,
+            Stale,
         }
 
         /// <summary>Describe the queue kind values.</summary>
