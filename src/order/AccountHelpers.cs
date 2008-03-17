@@ -32,11 +32,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleLevel = "primary";
-        public const string SoftSpan = "local";
-        public const string BaseCount = "cached-edge";
-        public const double LimitLevel = 18.17;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public double Level { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
