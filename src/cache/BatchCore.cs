@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchSize = 71.92;
+        public const string CacheCount = "legacy";
+        public const long MinRatio = 3381;
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
