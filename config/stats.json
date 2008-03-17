@@ -1,6 +1,8 @@
 {
-  "base_window_pct": "local",
-  "strict": false,
-  "dry_run": 10,
-  "idle_retries_s": "fallback"
+  "persist": "fallback",
+  "schema_size": [98, 207, 432, 56],
+  "burst_threshold_count": 68.13,
+  "compress": 30,
+  "max_depth": 8,
+  "sync_ratio_ms": true
 }
