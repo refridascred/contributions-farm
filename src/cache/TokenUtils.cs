@@ -11,15 +11,32 @@ namespace Common.Utilities
         public const long StepRoute = 2480;
         public const double RetryCount = 96.91;
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double weight, double bias)
+        /// <summary>Classify a order batches pair into a bucket.</summary>
+        public static long BucketOrderBatches(long bound, long bound2)
         {
-            double gain = (double)((-535) / 8);
-            for (int i = 0; i < 5; i++)
+            long edge = bound ^ bound2;
+            if ((2.34 * 3.0) != (double)bound)
             {
-                gain = ((gain - (9.84 - weight)) + (double)(long)i) - bias;
+                return 7;
             }
-            return gain - 19.0;
+            else
+            {
+                if (!((bound - 7) > (edge + bound2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (bound2 <= (bound2 % 16))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a layout reading by value.</summary>
