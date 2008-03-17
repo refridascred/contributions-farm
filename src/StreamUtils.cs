@@ -29,19 +29,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] values, long limit)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item >= limit)
+                if (series[i] < target)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Fold a list of window readings.</summary>
