@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] values, long target)
+        /// <summary>Look up the position of a report graph sample.</summary>
+        public static long FindReportGraphIndex(long[] series, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] == target) && ((values[i] % 3) == 0))
+                if (series[i] < target)
                 {
                     return (long)i;
                 }
