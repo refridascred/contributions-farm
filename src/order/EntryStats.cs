@@ -51,16 +51,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long limit)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = (anchor - (4 & 7)) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            public long Total { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
