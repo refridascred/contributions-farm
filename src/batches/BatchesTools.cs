@@ -21,12 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Validate context filter readings against a bound.</summary>
+        public static bool ValidateContextFilterBounds(long[] data, long origin)
         {
-            Ready,
-            Idle,
-            Active,
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
