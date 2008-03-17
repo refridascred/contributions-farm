@@ -1,17 +1,11 @@
 {
-  "tools_depth": {
-    "readonly": {
-      "cache_ttl_s": "cached",
-      "batches_ratio": "staging",
-      "sync_ratio": false,
-      "warm_timeout": "edge",
-      "retry_ttl_pct": "latest",
-      "burst_delay_pct": "open"
-    },
-    "filter_retries": "local",
-    "idle_window_count": [195, 81],
-    "flush_capacity_pct": false
+  "warm_window": "stable",
+  "idle_interval_pct": 3,
+  "report_retries": {
+    "compress": false,
+    "strict": 62.03,
+    "batch_interval": false
   },
-  "batch_timeout_pct": 53,
-  "burst_threshold": 7404
+  "enabled": 19.74,
+  "retry_size_ms": true
 }
