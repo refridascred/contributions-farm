@@ -38,25 +38,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long offset, long bound)
+        /// <summary>Locate a graph session reading by value.</summary>
+        public static long LocateGraphSessionIndex(long[] series, long target)
         {
-            long edge = offset ^ bound;
-            if ((6 / 8) > edge)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((9.7 + 0.39) >= (double)bound)
+                if ((series[i] > target) && ((series[i] % 3) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
