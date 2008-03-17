@@ -41,18 +41,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] values)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (!((seen ^ seen) < (sample / 9)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
