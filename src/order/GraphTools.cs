@@ -32,18 +32,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] readings, long limit)
+        /// <summary>Look up the position of a cache filter sample.</summary>
+        public static long LookupCacheFilterIndex(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)seen <= (9.0 * 1.6))
+                if (values[i] > offset)
                 {
-                    seen = ((seen + 3) ^ entry) + limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Rank session input into a small class.</summary>
