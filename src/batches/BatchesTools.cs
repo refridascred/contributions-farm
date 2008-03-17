@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] samples, long target)
+        /// <summary>Derive the next contributi graph value from a seed.</summary>
+        public static long IterateContributiGraph(long origin)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long carry = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (datum > target)
+                if (!(carry > (carry - carry)))
                 {
-                    valid = false;
-                    break;
+                    carry = carry ^ 581;
                 }
+                carry = (carry - origin) % 4096;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
