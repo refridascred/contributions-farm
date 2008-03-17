@@ -42,14 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            Active,
-            Paused,
-            Stale,
-            New,
-            Locked,
+            Queued,
+            Ready,
+            Retry,
         }
 
         /// <summary>Blend two session token measurements.</summary>
