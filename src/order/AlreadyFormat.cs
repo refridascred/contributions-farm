@@ -58,13 +58,11 @@ namespace Common.Utilities
         public const string DefaultStream = "standard-v2";
         public const long WindowStream = 7336;
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryScore = 31.81;
+        public const long MaxRatio = 3430;
+        public const double LimitReport = 46.39;
+        public const long SoftReport = 1667;
+        public const double RetryReport = 44.79;
     }
 }
