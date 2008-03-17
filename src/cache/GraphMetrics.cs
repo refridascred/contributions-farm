@@ -14,15 +14,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long seed)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] series, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
