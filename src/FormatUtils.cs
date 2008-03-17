@@ -76,17 +76,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] values, long limit)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] samples, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (values[i] == limit)
+                if ((hits & 7) < (5 * 4))
                 {
-                    return (long)i;
+                    hits = ((hits + 1) + sample) - bound;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Project the next entry value.</summary>
