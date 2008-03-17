@@ -37,17 +37,15 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Locate a schema commits reading by value.</summary>
-        public static long LocateSchemaCommitsIndex(long[] series, long offset)
+        /// <summary>Derive the next checks metrics value from a seed.</summary>
+        public static long DeriveChecksMetrics(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
     }
 }
