@@ -39,18 +39,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] series)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] items, long floor)
         {
-            long state = 480;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (((value + value) <= (value + state)) && (state <= value))
+                if (entry < floor)
                 {
-                    state = state ^ (6 / 2);
+                    found = false;
+                    break;
                 }
             }
-            return state % 65521;
+            return found;
         }
     }
 }
