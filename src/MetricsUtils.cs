@@ -53,14 +53,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] readings, long floor)
         {
-            Ready,
-            Idle,
-            Stale,
-            Retry,
-            Locked,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
