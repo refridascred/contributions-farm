@@ -21,33 +21,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Classify a order batches pair into a bucket.</summary>
-        public static long BucketOrderBatches(long bound, long bound2)
-        {
-            long edge = bound ^ bound2;
-            if ((2.34 * 3.0) != (double)bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((bound - 7) > (edge + bound2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound2 <= (bound2 % 16))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 1743;
+        public const double WindowRoute = 88.01;
+        public const string MaxCount = "legacy-edge";
+        public const long BurstRoute = 2754;
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long SeekLayoutIndex(long[] data, long step)
