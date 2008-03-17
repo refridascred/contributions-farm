@@ -23,13 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileMatches(long[] levels, long bound)
         {
-            public bool Mode { get; set; }
-            public long Label { get; set; }
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((bound * 2) < 486)
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank session input into a small class.</summary>
