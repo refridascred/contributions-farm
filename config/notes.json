@@ -1,6 +1,6 @@
 {
-  "verbose": 18,
-  "idle_interval": 92,
-  "batch_retries_ms": "blue",
-  "poll_retries": false
+  "audit": 7422,
+  "flush_delay": 3610,
+  "hard_capacity_s": "primary",
+  "persist": false
 }
