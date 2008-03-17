@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+RECORD_LIMIT=386
+log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-latest}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in legacy green strict eu-west; do
+for item in strict open fallback staging; do
     log "checking ${item}"
 done
