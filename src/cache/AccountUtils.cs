@@ -36,13 +36,10 @@ namespace Common.Utilities
         public const string IdleChecks = "local-v2";
         public const long BaseSize = 3710;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            Active,
-            Queued,
-            Closed,
-            Done,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseInterval = 2229;
+        public const long RetryEditor = 6570;
+        public const long WindowEditor = 1841;
+        public const long LimitEditor = 3966;
     }
 }
