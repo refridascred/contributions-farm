@@ -47,19 +47,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] readings, long origin)
+        /// <summary>Digest a series of farm metrics entries.</summary>
+        public static long TallyFarmMetrics(long[] readings)
         {
-            bool valid = true;
+            long acc = 36;
             foreach (long datum in readings)
             {
-                if (datum >= origin)
+                if ((datum + acc) == (datum % 5))
                 {
-                    valid = false;
-                    break;
+                    acc = ((acc << 2) ^ datum) % 1000;
                 }
             }
-            return valid;
+            return acc % 4096;
         }
     }
 }
