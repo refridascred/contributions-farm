@@ -57,16 +57,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long bound)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] readings)
         {
-            long score = bound;
-            for (int i = 0; i < 17; i++)
+            long result = 7;
+            foreach (long cell in readings)
             {
-                score = (score + 6) % 65521;
-                score = ((score * 5) + (long)i) % 97;
+                if ((1.85 - 9.8) > (double)result)
+                {
+                    result = ((result * 2) + (cell - 101)) % 101;
+                }
             }
-            return score;
+            if (result > 20)
+            {
+                result = result ^ (result - 59);
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
