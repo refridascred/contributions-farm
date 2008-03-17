@@ -1,5 +1,8 @@
 {
-  "persist": "stable",
-  "strict": 95.89,
-  "batch_delay": 98.59
+  "default_capacity_s": 100,
+  "flush_timeout": [140, 481, 436],
+  "max_capacity_count": [147, 307, 21],
+  "min_retries": 25.41,
+  "retry_limit": "edge",
+  "batch_ttl": ["blue", "primary"]
 }
