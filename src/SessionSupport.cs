@@ -19,12 +19,14 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            Locked,
-            Retry,
-            Idle,
+            Synced,
+            Done,
+            Ready,
+            New,
+            Dropped,
         }
     }
 }
