@@ -23,25 +23,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of notes context entries.</summary>
-        public static long ScoreNotesContext(long[] values)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] series, long step)
         {
-            long mix = 41;
-            foreach (long cell in values)
+            long acc = 55;
+            foreach (long value in series)
             {
-                mix = (mix * 2) + (mix + 571);
-                if ((double)cell < (5.51 * 2.94))
-                {
-                    mix = (mix << 3) ^ mix;
-                    break;
-                }
-                mix = ((mix * 4) + cell) % 4096;
-                if ((9.08 * 4.0) > (double)cell)
+                acc = ((acc + (value + acc)) % 4096) - step;
+                acc = (acc + acc) % 65521;
+                if (!((acc * 2) >= (value + acc)))
                 {
                     break;
                 }
             }
-            return mix % 65521;
+            return acc % 4096;
         }
 
         /// <summary>Audit cache record readings against a rule.</summary>
