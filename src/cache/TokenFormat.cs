@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] series, long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] series, long target)
         {
-            long acc = 853;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long item in series)
             {
-                acc = (acc + (target + acc)) % 1000;
-                if ((acc + acc) == (target - acc))
+                if ((target - item) <= (item >> 4))
                 {
-                    acc = (acc ^ (entry ^ target)) % 101;
+                    seen = seen + 3;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
