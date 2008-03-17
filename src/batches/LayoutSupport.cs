@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double scale, double span)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] data, long step)
         {
-            double weight = scale;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = (weight + (scale / 5.0)) + (double)(long)i;
+                if ((data[i] <= step) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight + span;
+            return -1;
         }
 
         /// <summary>Accumulate metric samples.</summary>
