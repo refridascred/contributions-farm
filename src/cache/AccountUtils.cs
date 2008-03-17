@@ -20,11 +20,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleCommand = 64.01;
-        public const long LimitCommand = 1389;
-        public const string HardCommand = "alpha";
-        public const string BurstFactor = "stable-v2";
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double scale, double bias)
+        {
+            double drift = (double)4 / 2.0;
+            if (drift < (double)6)
+            {
+                drift = (drift + (scale * 8.0)) + bias;
+            }
+            else
+            {
+                drift = drift + (drift + drift);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (drift / 9.0)) - (double)(long)i;
+            }
+            return drift + (double)4;
+        }
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long CompareOrderCount(long[] data)
