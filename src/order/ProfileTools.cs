@@ -33,19 +33,14 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Check that every filter counter entry stays within the limit.</summary>
-        public static bool GuardFilterCounterLimits(long[] samples, long seed)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Dropped,
+            Idle,
+            Retry,
+            Ready,
         }
 
         /// <summary>Count route payload pairs that satisfy a relation.</summary>
