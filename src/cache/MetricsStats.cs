@@ -59,12 +59,31 @@ namespace Common.Utilities
         public const long DefaultFormat = 4655;
         public const long MaxFormat = 7567;
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Rank githubfarm channel input into a small class.</summary>
+        public static long RankGithubfarmChannel(long origin, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-            public double Offset { get; set; }
+            if (origin < (floor + (-699)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((10.0 * 2.2) == (double)floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin >> 1) > (floor - 357))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
