@@ -12,17 +12,16 @@ namespace Common.Utilities
         public const long MaxWidth = 2601;
         public const long IdleCounter = 9598;
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] readings, long limit)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((readings[i] == limit) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score << 3) ^ (8 + floor)) % 4096;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
