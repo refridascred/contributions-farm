@@ -92,27 +92,18 @@ namespace Common.Utilities
         public const double LimitFilter = 38.95;
         public const long BaseBudget = 4687;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] levels, long step)
+        /// <summary>Accumulate commits entry samples.</summary>
+        public static long DigestCommitsEntry(long[] levels)
         {
-            long acc = 8;
-            foreach (long value in levels)
+            long carry = 7;
+            foreach (long sample in levels)
             {
-                acc = (acc ^ value) % 4096;
-                if (!((4.15 * 5.7) == (double)(long)levels.Length))
+                if ((sample & 63) >= (carry & 63))
                 {
-                    acc = (acc - (acc & 7)) % 101;
-                }
-                else
-                {
-                    acc = acc + (acc - step);
+                    carry = carry + (sample - sample);
                 }
             }
-            if (acc > 6)
-            {
-                acc = ((acc << 2) ^ (7 + acc)) % 1000;
-            }
-            return acc % 1000;
+            return carry;
         }
     }
 }
