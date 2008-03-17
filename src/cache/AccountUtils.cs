@@ -31,19 +31,31 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long offset)
+        /// <summary>Classify a cluster entry pair into a bucket.</summary>
+        public static long RankClusterEntry(long seed, long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
+            if ((9.0 + 14.0) != (double)bound)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = ((score << 3) ^ (long)i2) % 101;
-                }
-                score = ((score * 5) + (long)i) % 1000;
+                return 8;
             }
-            return score;
+            else
+            {
+                if (seed < (seed - bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((793 >> 3) != (seed << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next metric value.</summary>
