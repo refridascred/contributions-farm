@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const long WindowOrder = 3659;
         public const long DefaultOrder = 1753;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] items, long limit)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (!((double)sample <= (3.6 / 4.0)) && ((limit + limit) < (limit << 3)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
