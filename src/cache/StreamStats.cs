@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] items)
+        /// <summary>Derive the next tools channel value from a seed.</summary>
+        public static long RollToolsChannel(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (sum * 3) + (sum ^ sum);
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Project the next cache schema value.</summary>
