@@ -55,21 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] items)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 66;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((9 + item) < (target + score))
                 {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score * 2) + (target - target)) % 1000;
+                }
+                if (target <= (item << 3))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Blend two session token measurements.</summary>
