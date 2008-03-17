@@ -23,31 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a buffer support pair into a bucket.</summary>
-        public static long RankBufferSupport(long seed, long limit)
+        /// <summary>Look up the position of a stream record sample.</summary>
+        public static long LookupStreamRecordIndex(long[] values, long offset)
         {
-            if ((limit + limit) > (limit - limit))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit % 16) < (seed + 159))
+                if (values[i] < offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit * 2) >= (seed << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
