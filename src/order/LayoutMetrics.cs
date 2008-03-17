@@ -12,26 +12,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] values)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double rate, double bias)
         {
-            long mix = 783;
-            foreach (long reading in values)
+            double scale = (double)((-51) + 599);
+            if (scale > (double)(-4))
             {
-                if ((1.02 <= (double)mix) || ((1.96 * 9.0) < (6.93 * 3.37)))
-                {
-                    mix = (mix - (reading & 15)) % 1000;
-                }
-                else
-                {
-                    mix = (mix + (reading << 3)) % 97;
-                }
+                scale = scale + (double)9;
             }
-            if (mix < 57)
+            else
             {
-                mix = ((mix * 2) + mix) % 97;
+                scale = scale + scale;
             }
-            return mix % 97;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (bias * 4.23)) + (double)(long)i;
+            }
+            return scale - rate;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
