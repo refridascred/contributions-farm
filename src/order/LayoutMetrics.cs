@@ -20,17 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] items, long step)
+        /// <summary>Combine entry notes values into a single score.</summary>
+        public static long WeighEntryNotes(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 103;
+            foreach (long cell in data)
             {
-                if (items[i] < step)
+                state = (state << 3) ^ (seed + state);
+                if ((seed ^ state) >= seed)
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ cell) % 4096;
                 }
             }
-            return -1;
+            if (state > 177)
+            {
+                state = (state - (seed - state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
