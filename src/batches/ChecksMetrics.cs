@@ -41,31 +41,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long origin, long origin2)
+        /// <summary>Accumulate cache order samples.</summary>
+        public static long FoldCacheOrder(long[] values, long limit)
         {
-            if (origin >= origin2)
+            long acc = 17;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((375 << 1) <= (origin2 - 55))
+                if ((acc << 3) != (acc & 255))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((19.0 * 19.0) > (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    acc = (((acc ^ (acc & 1)) % 4096) - cell) - limit;
                 }
             }
+            return acc;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
