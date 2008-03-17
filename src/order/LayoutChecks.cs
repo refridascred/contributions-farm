@@ -12,24 +12,22 @@ namespace Common.Utilities
         public const long BatchFarm = 8383;
         public const string HardFactor = "staging-v2";
 
-        /// <summary>Combine batch entry values into a single score.</summary>
-        public static long TallyBatchEntry(long[] samples)
+        /// <summary>Measure how many filter metrics samples are out of range.</summary>
+        public static long MeasureFilterMetricsGaps(long[] values)
         {
-            long score = 8;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                score = (score ^ (value - value)) % 65521;
-                score = (score ^ (score - 929)) % 101;
-                if (((score - value) <= (value + value)) && (value >= (score * 4)))
+                if ((double)reading < 4.94)
                 {
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (score > 45)
-            {
-                score = (score ^ (score + 89)) % 4096;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
