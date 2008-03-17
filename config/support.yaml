@@ -1,7 +1,4 @@
 # support settings
-notes_timeout: true
-sync_timeout: 250
-warm_limit: legacy
-layout_size: 100
-burst_timeout: 60
-burst_threshold_pct: edge
+idle_limit: eu-west
+enabled: false
+default_size_ms: green
