@@ -31,20 +31,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a filter notes counter forward.</summary>
-        public static long RollFilterNotes(long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] levels, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                double rate = (2.19 + 6.3) / 4.0;
-                if (!((2.6 + rate) <= (double)score))
+                if (2 < limit)
                 {
-                    rate = rate - (rate + rate);
+                    tally = (tally + 1) + datum;
                 }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return tally;
         }
     }
 }
