@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long HardBatches = 2628;
         public const long BatchBatches = 9448;
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] samples, long limit)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] values, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] <= limit)
+                if ((values[i] == seed) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
