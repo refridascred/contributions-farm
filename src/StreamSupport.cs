@@ -16,19 +16,26 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] series, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long anchor = 415;
+            foreach (long value in samples)
             {
-                if (value < seed)
+                for (int i = 0; i < 9; i++)
                 {
-                    flag = false;
-                    break;
+                    anchor = ((anchor + ((long)i + (long)i)) % 101) - bound;
+                }
+                if ((double)value <= (6.8 - 16.0))
+                {
+                    anchor = (anchor << 3) ^ (long)samples.Length;
+                }
+                else
+                {
+                    anchor = (anchor - anchor) % 4096;
                 }
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
