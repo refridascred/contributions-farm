@@ -20,12 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double scale, double offset)
         {
-            Retry,
-            Closed,
-            Ready,
+            double mean = offset;
+            if (mean >= (double)7)
+            {
+                mean = mean - 4.37;
+            }
+            else
+            {
+                mean = mean - (double)438;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - scale;
         }
 
         /// <summary>Locate a graph session reading by value.</summary>
