@@ -1,6 +1,5 @@
 {
-  "audit": 57,
-  "poll_capacity_count": "legacy",
-  "burst_timeout_pct": "cached",
-  "strict": false
+  "min_interval_count": 4689,
+  "stream_timeout": 250,
+  "retry_size_ms": "fallback"
 }
