@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyMatches(long[] readings, long bound)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((((5.55 / 4.0) == (double)count) || (bound >= (count >> 3))) && ((entry >= (138 / 5)) && ((bound & 255) == (8 - 3))))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Pending,
+            Done,
+            Active,
+            Paused,
+            Draft,
         }
 
         /// <summary>Accumulate graph filter samples.</summary>
