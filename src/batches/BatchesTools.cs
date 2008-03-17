@@ -25,9 +25,12 @@ namespace Common.Utilities
         public const long MinCommits = 486;
         public const long BaseCommits = 3486;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 6798;
-        public const double MaxRatio = 21.23;
-        public const long StepRatio = 7650;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public bool Score { get; set; }
+            public bool Level { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
