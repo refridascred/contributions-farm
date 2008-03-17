@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] levels, long floor)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] values, long target)
         {
-            long total = 329;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total - total) - datum) - floor;
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a counter entry.</summary>
