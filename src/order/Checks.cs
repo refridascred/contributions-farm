@@ -66,18 +66,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] samples)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long acc = 109;
+            foreach (long entry in series)
             {
-                if ((-240) <= reading)
+                if (!((entry & 31) < (entry / 5)))
                 {
-                    tally = tally + 2;
+                    acc = ((acc ^ (916 + 315)) % 65521) - target;
                 }
             }
-            return tally;
+            return acc;
         }
     }
 }
