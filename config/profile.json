@@ -1,8 +1,7 @@
 {
-  "stream_capacity": "edge",
-  "flush_ttl_count": 247,
-  "dry_run": "cached",
-  "metrics_size": 540,
-  "warm_limit_s": 46,
-  "burst_delay": "primary"
+  "dry_run": 16,
+  "compress": 3170,
+  "batch_capacity": true,
+  "warm_ttl_pct": "standard",
+  "idle_window": "edge"
 }
