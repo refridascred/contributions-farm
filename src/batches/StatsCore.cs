@@ -55,22 +55,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] levels, long target)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long score = 66;
-            foreach (long item in levels)
-            {
-                if ((9 + item) < (target + score))
-                {
-                    score = ((score * 2) + (target - target)) % 1000;
-                }
-                if (target <= (item << 3))
-                {
-                    break;
-                }
-            }
-            return score;
+            Active,
+            Paused,
+            Stale,
+            New,
+            Locked,
         }
 
         /// <summary>Blend two session token measurements.</summary>
