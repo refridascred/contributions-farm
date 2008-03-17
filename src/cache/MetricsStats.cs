@@ -52,12 +52,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double StepCount = 21.3;
-        public const long IdleSize = 5158;
-        public const long DefaultRatio = 2501;
-        public const long DefaultFormat = 4655;
-        public const long MaxFormat = 7567;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long floor, long step)
+        {
+            if ((step + step) == (floor + floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((floor ^ floor) < floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step > (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank githubfarm channel input into a small class.</summary>
         public static long RankGithubfarmChannel(long origin, long floor)
