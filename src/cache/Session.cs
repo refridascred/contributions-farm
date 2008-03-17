@@ -46,23 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next record schema value from a seed.</summary>
-        public static long RollRecordSchema(long origin)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mark = ((mark - origin) % 65521) + (long)i2;
-                }
-                if ((double)mark > (7.49 * 7.0))
-                {
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            public string Offset { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
