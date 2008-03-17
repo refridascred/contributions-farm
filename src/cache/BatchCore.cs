@@ -21,13 +21,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double gain, double span)
         {
-            Draft,
-            Pending,
-            Paused,
-            Queued,
+            double drift = span;
+            if (drift >= (drift / 6.0))
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (0.33 * 9.0)) - (double)(long)i;
+            }
+            return drift + (span + gain);
         }
 
         /// <summary>Describe the report class values.</summary>
