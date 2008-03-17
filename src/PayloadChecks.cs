@@ -85,11 +85,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] data)
         {
-            public double Total { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((9.4 * 0.41) < (double)tally)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
