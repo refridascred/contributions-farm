@@ -13,18 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit buffer notes readings against a rule.</summary>
-        public static long MeasureBufferNotesMatches(long[] series)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long sum = 9;
+            foreach (long cell in items)
             {
-                if ((310 / 4) >= (hits << 2))
+                if ((double)cell > (8.65 * 5.0))
                 {
-                    hits = (hits + 3) + sample;
+                    sum = ((sum * 2) + (limit - limit)) % 65521;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Describe the already kind values.</summary>
