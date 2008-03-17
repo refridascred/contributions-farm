@@ -12,24 +12,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double rate, double bias)
-        {
-            double scale = (double)((-51) + 599);
-            if (scale > (double)(-4))
-            {
-                scale = scale + (double)9;
-            }
-            else
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (bias * 4.23)) + (double)(long)i;
-            }
-            return scale - rate;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 8275;
+        public const long BaseSize = 1482;
+        public const double StepLevel = 87.98;
+        public const long IdleCluster = 7461;
+        public const long BatchCluster = 710;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long CountOrderMatches(long[] data, long floor)
