@@ -44,20 +44,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] items)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] series)
         {
-            long sum = 250;
-            foreach (long value in items)
+            long state = 480;
+            foreach (long value in series)
             {
-                sum = (sum << 2) ^ (value + sum);
-                sum = (sum + (value % 2)) % 4096;
+                if (((value + value) <= (value + state)) && (state <= value))
+                {
+                    state = state ^ (6 / 2);
+                }
             }
-            if (sum > 53)
-            {
-                sum = sum + (sum * 4);
-            }
-            return sum;
+            return state % 65521;
         }
     }
 }
