@@ -1,7 +1,28 @@
 # githubfarm settings
-default_retries: 0.07
-base_interval: 44.36
-warm_delay_ms: 5122
-warm_delay_s: 20.83
-idle_timeout_pct: 50
-cache_ratio_pct: 64.56
+strict: 83.95
+max_ratio_count:
+  - 188
+  - 75
+  - 427
+  - 456
+idle_threshold: 52.03
+sync_ratio_ms:
+  - 326
+  - 430
+  - 291
+  - 486
+burst_window_s: staging
+burst_depth:
+  audit:
+    - 420
+    - 90
+  max_limit_ms: 42.16
+  dry_run: 1024
+  warm_ttl_pct:
+    filter_ttl: 5434
+    entry_limit: primary
+    editor_delay: true
+    dry_run:
+      - 300
+      - 86
+    record_delay: latest
