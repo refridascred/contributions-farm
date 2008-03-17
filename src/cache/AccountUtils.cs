@@ -35,32 +35,9 @@ namespace Common.Utilities
             return drift + (double)4;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long step, long target)
-        {
-            long slot = step ^ target;
-            if (slot >= (step / 7))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((18.0 - 9.0) < (0.9 / 2.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)target == (0.51 / 9.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheFactor = 4122;
+        public const long CacheRoute = 5994;
+        public const long WindowRoute = 3383;
     }
 }
