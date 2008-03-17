@@ -27,17 +27,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] data, long origin)
+        /// <summary>Scale a record graph figure with a bias.</summary>
+        public static double ScaleRecordGraph(double gain, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (1.92 * 8.92) - gain;
+            if (ratio <= (ratio / 8.0))
             {
-                if ((data[i] < origin) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (0.58 * 4.09)) + floor;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - (double)65;
+            }
+            return ratio - 2.2;
         }
     }
 }
