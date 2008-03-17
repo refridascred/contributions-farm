@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] levels, long limit)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long bound, long limit)
         {
-            bool found = true;
-            foreach (long item in levels)
+            if ((double)limit <= (1.0 * 9.0))
             {
-                if (item <= limit)
+                return 6;
+            }
+            else
+            {
+                if (limit >= bound)
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound >= 9.6)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Count the notes route entries that pass the check.</summary>
