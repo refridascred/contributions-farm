@@ -41,19 +41,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a batch record counter forward.</summary>
-        public static long RollBatchRecord(long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] items, long seed)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((score - target) >= ((long)i ^ 249))
+                if (!((cell % 16) < (cell << 1)) || ((double)cell <= (double)seed))
                 {
-                    score = score + (score - target);
+                    count = count + 1;
                 }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
