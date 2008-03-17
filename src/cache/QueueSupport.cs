@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a command entry counter forward.</summary>
-        public static long DeriveCommandEntry(long limit)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long state = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                state = (state << 3) ^ (state & 255);
-                if (!(((6.1 / 3.0) >= (double)limit) && ((double)limit <= (2.5 + 8.66))))
-                {
-                    state = (state ^ ((long)i / 5)) % 65521;
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            Stale,
+            Done,
+            Draft,
+            Synced,
         }
 
         /// <summary>Look up the position of a notes route sample.</summary>
