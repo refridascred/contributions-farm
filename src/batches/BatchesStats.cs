@@ -19,17 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] readings, long step)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
+                sum = (sum ^ (offset << 2)) % 4096;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a farm info.</summary>
