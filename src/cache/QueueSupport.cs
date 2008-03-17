@@ -39,23 +39,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] levels)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmBounds(long[] values, long bound)
         {
-            long carry = 0;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long item in values)
             {
-                carry = (carry ^ (890 ^ carry)) % 4096;
-                if ((carry + carry) <= cell)
+                if (item > bound)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (carry < 72)
-            {
-                carry = (carry - 83) % 97;
-            }
-            return carry;
+            return found;
         }
     }
 }
