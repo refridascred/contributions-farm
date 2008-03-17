@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            Pending,
-            Ready,
-            Idle,
-            Locked,
-            Active,
+            Retry,
+            Queued,
+            Closed,
+            New,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
