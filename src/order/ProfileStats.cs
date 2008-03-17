@@ -46,14 +46,39 @@ namespace Common.Utilities
         public const string BatchSchema = "staging-edge";
         public const long BurstRatio = 5027;
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Classify a route metric pair into a bucket.</summary>
+        public static long ClassifyRouteMetric(long step, long offset)
         {
-            Locked,
-            Draft,
-            Active,
-            Closed,
-            Retry,
+            long edge = step + offset;
+            if (step >= (54 + offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step - offset) != (29 >> 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (offset > (edge & 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((4.0 + 3.6) >= (double)edge) || ((double)offset <= (6.0 + 5.75)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
