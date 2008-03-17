@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of session order entries.</summary>
-        public static long TotalSessionOrder(long[] samples)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] items)
         {
-            long sum = -6;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((double)(long)samples.Length > (5.3 - 0.3))
+                if ((((4.72 + 9.5) < (double)seen) && ((7.14 / 4.0) > (double)value)) || ((value * 2) == (value ^ seen)))
                 {
-                    sum = (sum + reading) % 4096;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a cluster entry.</summary>
