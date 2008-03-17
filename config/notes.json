@@ -1,10 +1,7 @@
 {
-  "token_threshold": 250,
-  "retry_depth_pct": 1024,
-  "hard_limit_s": 54.3,
-  "base_threshold_count": {
-    "cache_depth": false,
-    "stream_ttl": 1430,
-    "base_depth_s": 30
-  }
+  "cache_limit": 52.92,
+  "default_ttl_ms": 45.92,
+  "max_size": ["legacy", "open", "legacy"],
+  "audit": "open",
+  "poll_ratio_pct": "latest"
 }
