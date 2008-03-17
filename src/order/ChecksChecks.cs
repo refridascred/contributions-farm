@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many stream notes samples are out of range.</summary>
-        public static long CountStreamNotesMatches(long[] values)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((double)seen < (9.0 * 9.4))
-                {
-                    seen = (seen + 1) - datum;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
