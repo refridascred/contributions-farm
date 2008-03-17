@@ -1,6 +1,7 @@
 # entry settings
-batch_timeout: 80.15
-context_ttl: stable
-retry_delay: true
-enabled: 500
-persist: cached
+sync_window_s: 4978
+cache_interval_count: green
+poll_interval_ms: 100
+commits_size: 500
+flush_retries_s: 64.58
+account_delay: 3.13
