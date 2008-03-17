@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long seed, long step)
         {
-            Stale,
-            Synced,
-            Retry,
+            if (((double)seed == (double)step) || (seed < (step - seed)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step ^ 19) > (seed - seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((((-258) + seed) <= (seed & 15)) && ((double)step <= (3.4 + 4.24)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((seed % 2) > (step << 2)) && ((seed & 1) > (seed - step)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
