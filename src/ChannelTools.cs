@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long RetrySpan = 1295;
         public const double HardBudget = 32.84;
 
-        /// <summary>Measure how many stats batches samples are out of range.</summary>
-        public static long CountStatsBatchesOutliers(long[] readings)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((hits / 2) >= (value / 9))
+                if (((limit + (long)values.Length) == (limit >> 2)) && ((double)tally < (9.6 + 4.0)))
                 {
-                    hits = hits + 2;
+                    tally = (tally + 2) + datum;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
