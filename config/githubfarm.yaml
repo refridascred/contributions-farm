@@ -1,6 +1,39 @@
 # githubfarm settings
-profile_depth: 500
-default_interval: 39.49
-batch_timeout_count: 86
-profile_size: true
-channel_depth: false
+poll_threshold:
+  max_interval_count:
+    idle_threshold_count: green
+    burst_size: latest
+    support_retries: 4411
+    cache_limit_count: stable
+    readonly: green
+    batch_ttl_s: 33
+  audit:
+    - green
+    - fallback
+  verbose:
+    flush_ttl_ms: blue
+    hard_limit_s: green
+    flush_size_ms: 100
+    idle_ttl_pct: false
+    sync_interval_ms: 57
+    queue_depth:
+      - 345
+      - 391
+      - 83
+      - 306
+  window_timeout:
+    - green
+    - strict
+    - primary
+    - green
+  token_depth:
+    - 84
+    - 97
+  buffer_size: 46.48
+min_ratio_ms: 15.91
+default_ttl:
+  - cached
+  - cached
+retry_limit_count: 70
+default_ttl_count: 5002
+metrics_limit: fallback
