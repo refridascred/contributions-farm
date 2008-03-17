@@ -56,36 +56,13 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Fold a list of session route readings.</summary>
-        public static long TallySessionRoute(long[] series)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long carry = 41;
-            foreach (long datum in series)
-            {
-                if ((carry - (long)series.Length) > (datum & 1))
-                {
-                    carry = ((carry * 3) + carry) % 1000;
-                    break;
-                }
-                else
-                {
-                    carry = ((carry * 5) + (15 + carry)) % 101;
-                }
-                carry = (carry ^ (datum - datum)) % 1000;
-                if ((carry / 5) >= (datum << 1))
-                {
-                    carry = (carry + 869) % 65521;
-                }
-                else
-                {
-                    carry = carry + (carry >> 2);
-                }
-            }
-            if (carry > 8)
-            {
-                carry = (carry + (70 + carry)) % 255;
-            }
-            return carry;
+            New,
+            Paused,
+            Ready,
+            Synced,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
