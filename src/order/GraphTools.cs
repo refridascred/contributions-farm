@@ -52,9 +52,19 @@ namespace Common.Utilities
             return ratio - (gain + ratio);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string StepEntry = "local-v2";
-        public const long BatchEntry = 4950;
-        public const string StepTimeout = "fallback-v2";
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                if (total <= (bound / 3))
+                {
+                    break;
+                }
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
