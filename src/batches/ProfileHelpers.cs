@@ -30,19 +30,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] values)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long state = 99;
-            foreach (long item in values)
-            {
-                state = (state + 79) % 65521;
-                if ((5.2 / 4.0) != (double)item)
-                {
-                    state = (state - ((-425) + item)) % 101;
-                }
-            }
-            return state % 97;
+            public bool Limit { get; set; }
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Scale a tools route figure with a bias.</summary>
