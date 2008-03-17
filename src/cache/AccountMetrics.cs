@@ -70,14 +70,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long limit)
         {
-            Dropped,
-            Idle,
-            Locked,
-            Synced,
-            Closed,
+            long acc = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
