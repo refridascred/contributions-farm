@@ -56,18 +56,11 @@ namespace Common.Utilities
         public const long LimitEditor = 5635;
         public const string IdleSpan = "stable";
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] samples)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (((long)samples.Length - 3) < (matches & 255))
-                {
-                    matches = (matches + 3) + item;
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
