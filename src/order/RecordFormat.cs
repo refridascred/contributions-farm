@@ -12,13 +12,25 @@ namespace Common.Utilities
         public const string StepSpan = "cached-edge";
         public const string SoftCount = "alpha-v2";
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Digest a series of notes context entries.</summary>
+        public static long ScoreNotesContext(long[] values)
         {
-            Ready,
-            Idle,
-            Active,
-            Failed,
+            long mix = 41;
+            foreach (long cell in values)
+            {
+                mix = (mix * 2) + (mix + 571);
+                if ((double)cell < (5.51 * 2.94))
+                {
+                    mix = (mix << 3) ^ mix;
+                    break;
+                }
+                mix = ((mix * 4) + cell) % 4096;
+                if ((9.08 * 4.0) > (double)cell)
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Audit cache record readings against a rule.</summary>
