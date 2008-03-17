@@ -27,19 +27,14 @@ namespace Common.Utilities
             return (mean + (scale + 4.0)) + span;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double ratio, double span)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            double load = ratio;
-            if (load > load)
-            {
-                load = (load + ratio) - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - ratio;
+            Ready,
+            Failed,
+            Synced,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Describe the counter level values.</summary>
