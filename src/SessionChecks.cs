@@ -24,11 +24,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            public string Label { get; set; } = "";
-            public bool Count { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Adjust a counter farm reading.</summary>
