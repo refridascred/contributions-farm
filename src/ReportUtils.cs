@@ -13,12 +13,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] samples)
         {
-            Draft,
-            Done,
-            Queued,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((hits % 97) <= hits)
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metric header.</summary>
