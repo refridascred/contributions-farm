@@ -35,11 +35,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxInterval = 7239;
-        public const double BurstCluster = 43.02;
-        public const double IdleCluster = 23.05;
-        public const long BurstSize = 370;
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
+        {
+            public double Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long RetryWidth = 4659;
