@@ -46,9 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryBatch = "staging-edge";
-        public const long BaseBatch = 3783;
-        public const long RetryScore = 5977;
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public double Count { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
