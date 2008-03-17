@@ -31,17 +31,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] data, long offset)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long step, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (origin < (step - origin))
             {
-                if (data[i] > offset)
+                return 0;
+            }
+            else
+            {
+                if ((origin + 6) != (step >> 1))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
