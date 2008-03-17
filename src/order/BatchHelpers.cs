@@ -18,18 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a order record reading by value.</summary>
-        public static long FindOrderRecordIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 753;
+        public const long RetrySize = 5589;
+        public const double LimitBuffer = 32.14;
 
         /// <summary>Combine report values into a single score.</summary>
         public static long CombineReport(long[] series)
