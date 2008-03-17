@@ -76,10 +76,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseInterval = 5484;
-        public const long RetrySpan = 1409;
-        public const long BurstMetric = 9892;
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next entry value.</summary>
         public static double AdjustEntry(double scale, double floor)
