@@ -55,12 +55,25 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string StepTimeout = "legacy";
-        public const long HardContributi = 156;
-        public const long LimitContributi = 9024;
-        public const long DefaultSize = 9679;
-        public const long CacheRatio = 5768;
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 10; i++)
+            {
+                long diff = (long)i;
+                if ((step + 47) >= (8 & 7))
+                {
+                    diff = (diff ^ ((long)i + total)) % 1000;
+                }
+                if (((diff - step) < (step % 97)) && ((long)i <= 7))
+                {
+                    total = (total - (total + 99)) % 97;
+                }
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportLimits(long[] items, long limit)
