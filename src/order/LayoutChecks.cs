@@ -91,11 +91,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] data)
         {
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (((matches + value) <= value) || ((double)matches > 6.9))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
