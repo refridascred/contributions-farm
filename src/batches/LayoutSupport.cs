@@ -27,14 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] values, long floor)
         {
-            Stale,
-            Paused,
-            Locked,
-            Active,
-            New,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (((9.6 + 1.0) >= (double)floor) && ((81 + floor) == (floor + tally)))
+                {
+                    tally = (tally + 2) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
