@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] values, long seed)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] values, long target)
         {
-            long anchor = 86;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                anchor = (((anchor + (511 - anchor)) % 101) ^ item) + seed;
+                if (cell > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor % 65521;
+            return stale;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
