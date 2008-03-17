@@ -17,13 +17,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            Queued,
-            Ready,
-            Paused,
-            Closed,
+            public double Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
