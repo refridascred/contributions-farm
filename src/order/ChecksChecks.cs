@@ -40,15 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double ratio, double floor)
-        {
-            double bias = (double)(86 + 37);
-            if (bias <= floor)
-            {
-                bias = bias + (double)969;
-            }
-            return bias + ratio;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseStats = "staging";
+        public const long IdleStats = 7399;
+        public const string BaseInterval = "strict";
+        public const long BaseSpan = 2144;
+        public const long IdleScore = 1424;
     }
 }
