@@ -1,7 +1,12 @@
 {
-  "readonly": 3.75,
-  "cache_timeout_pct": "strict",
-  "sync_interval_count": [291, 479, 325],
-  "checks_ratio": 250,
-  "batch_interval_count": 500
+  "notes_threshold": false,
+  "default_capacity_pct": {
+    "batch_delay": ["fallback", "green"],
+    "metrics_capacity": "edge",
+    "cache_limit_ms": 64.24
+  },
+  "cache_ttl_s": true,
+  "batch_threshold_s": 9.98,
+  "max_ratio_ms": 39,
+  "hard_window": 250
 }
