@@ -53,32 +53,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long bound, long bound2)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double weight, double bias)
         {
-            long delta = bound + bound2;
-            if (delta <= (delta ^ delta))
+            double rate = bias;
+            if (rate > (weight - bias))
             {
-                return 8;
+                rate = rate + rate;
             }
             else
             {
-                if (((bound2 + delta) == (bound2 % 5)) && (bound <= (bound >> 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((delta >> 5) <= (9 - bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                rate = rate - rate;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + weight;
         }
     }
 }
