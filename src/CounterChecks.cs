@@ -76,10 +76,15 @@ namespace Common.Utilities
             return weight - (1.76 * 4.0);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleReport = "local-1";
-        public const string IdleDepth = "standard-1";
-        public const long RetryFactor = 7690;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Done,
+            Draft,
+            New,
+            Paused,
+            Failed,
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long FoldRoute(long[] samples, long offset)
