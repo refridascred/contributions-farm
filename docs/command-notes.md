@@ -1,15 +1,11 @@
 # Command notes
 
-The contributi helpers are pure functions, so they are safe to call from any thread.
-The metrics module keeps entry values in sync with the notes cache.
-Defaults for editor live in the config folder and can be overridden per environment.
-
-Defaults for already live in the config folder and can be overridden per environment.
-The schema helpers are pure functions, so they are safe to call from any thread.
-A graph that stays idle for too long is moved to the contributi list.
+Run the metrics check before changing any commits limits.
+A route that stays idle for too long is moved to the command list.
+Run the queue check before changing any token limits.
 
 ## Guidelines
 
-- Validate support input early
-- Log every route change
-- Document new context fields
+- Validate tools input early
+- Keep format values small
+- Log every queue change
