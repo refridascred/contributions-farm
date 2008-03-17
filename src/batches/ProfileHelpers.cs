@@ -61,20 +61,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] items, long seed)
-        {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double HardContributi = 92.19;
+        public const long MaxBudget = 8293;
+        public const long SoftContributi = 3817;
+        public const long BurstWidth = 1533;
+        public const long MinTimeout = 2867;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string StepCommand = "staging-v2";
