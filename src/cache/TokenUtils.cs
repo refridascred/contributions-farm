@@ -23,12 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string StepSupport = "primary";
-        public const long WindowSupport = 7830;
-        public const long LimitSupport = 4421;
-        public const double HardSize = 59.83;
-        public const double HardFactor = 13.79;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] levels)
+        {
+            long acc = 6;
+            foreach (long entry in levels)
+            {
+                acc = acc - (acc % 100);
+                if (!((entry / 8) != (acc & 63)))
+                {
+                    acc = ((acc << 2) ^ entry) % 4096;
+                    break;
+                }
+                acc = (acc + (79 + entry)) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long SeekLayoutIndex(long[] data, long step)
