@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] samples, long origin)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] samples)
         {
-            long carry = 393;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((72 / 8) <= carry)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = ((carry << 2) ^ (entry * 3)) % 101;
-                }
-                else
-                {
-                    carry = (carry ^ (origin & 3)) % 101;
+                    if ((samples[i] - samples[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
