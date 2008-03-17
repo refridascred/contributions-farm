@@ -1,5 +1,8 @@
 # support settings
-order_limit: staging
-audit: false
-flush_size_ms: blue
-soft_window_s: 25.71
+compress: 500
+buffer_retries:
+  - staging
+  - staging
+  - latest
+  - stable
+max_delay: 250
