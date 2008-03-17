@@ -54,12 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] items, long floor)
         {
-            public bool Weight { get; set; }
-            public bool Region { get; set; }
-            public string Limit { get; set; } = "";
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a support options.</summary>
