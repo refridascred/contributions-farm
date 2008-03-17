@@ -67,19 +67,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of metrics record entries.</summary>
-        public static long WeighMetricsRecord(long[] data)
-        {
-            long result = 920;
-            foreach (long value in data)
-            {
-                result = ((result * 5) + (value << 3)) % 65521;
-            }
-            if (result < 70)
-            {
-                result = (result ^ result) % 255;
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowLevel = "open";
+        public const long BatchAccount = 5046;
+        public const long BatchSize = 1576;
+        public const string BaseWidth = "primary-edge";
+        public const long BatchTimeout = 1247;
     }
 }
