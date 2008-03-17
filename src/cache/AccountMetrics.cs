@@ -37,18 +37,34 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] samples, long target)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long mix = 636;
+            foreach (long item in readings)
             {
-                if (!((86 << 3) > (item >> 3)) && (675 > seen))
+                if ((origin / 7) < (item & 63))
                 {
-                    seen = (seen + 3) - target;
+                    mix = (mix * 3) + (mix << 1);
+                }
+                else
+                {
+                    mix = mix ^ ((long)readings.Length ^ origin);
+                }
+                if ((7.39 / 2.0) < (double)origin)
+                {
+                    mix = (mix ^ (item / 6)) % 65521;
+                }
+                if (item > (mix << 3))
+                {
+                    mix = mix ^ 0;
                 }
             }
-            return seen;
+            if (mix < 550)
+            {
+                mix = (mix ^ origin) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
