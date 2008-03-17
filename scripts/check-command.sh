@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open stable; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=445
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-staging}"
+mode="${1:-primary}"
 case "${mode}" in
-    fallback)
+    green)
         log "fast path"
         ;;
     *)
