@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for counter live in the config folder and can be overridden per environment.
-Defaults for account live in the config folder and can be overridden per environment.
-Use payload settings to tune how often batch data is refreshed.
+When a cache fails, the window handler retries a few times before giving up.
+Run the support check before changing any stream limits.
 
 ## Guidelines
 
-- Review layout limits each release
-- Validate report input early
-- Document new batches fields
+- Validate schema input early
+- Document new stream fields
+- Prefer buffer defaults
+- Log every stream change
