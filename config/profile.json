@@ -1,6 +1,10 @@
 {
-  "enabled": true,
-  "verbose": "green",
-  "channel_depth": "eu-west",
-  "batches_ttl": 9028
+  "farm_delay": {
+    "poll_delay_pct": 8879,
+    "max_ratio_ms": 30,
+    "window_threshold": true
+  },
+  "sync_capacity": ["blue", "legacy", "standard", "local"],
+  "poll_size": 43,
+  "batch_capacity": "fallback"
 }
