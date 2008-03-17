@@ -34,21 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] data)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((value << 1) >= ((-162) >> 2))
                 {
-                    if ((data[i] + data[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
