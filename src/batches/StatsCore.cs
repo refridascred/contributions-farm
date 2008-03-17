@@ -91,22 +91,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of report cache readings.</summary>
-        public static long OverlapReportCacheCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BatchFactor = 11.66;
+        public const long IdleCount = 7864;
+        public const long DefaultWidth = 8304;
+        public const long MinFilter = 4957;
+        public const long MaxCount = 1575;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long TallyContributiGaps(long[] values, long bound)
