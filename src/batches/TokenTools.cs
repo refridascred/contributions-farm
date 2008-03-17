@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double ratio, double floor)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            double ratio2 = (3.9 * 3.2) / 9.0;
-            if (ratio2 > (ratio / 8.0))
-            {
-                ratio2 = ratio2 + (floor / 7.0);
-            }
-            return ratio2 - floor;
+            public bool Token { get; set; }
+            public bool Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
