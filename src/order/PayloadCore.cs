@@ -27,13 +27,18 @@ namespace Common.Utilities
             return (mean + (scale + 4.0)) + span;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] samples, long bound)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
-            public bool Token { get; set; }
+            long score = 1;
+            foreach (long reading in samples)
+            {
+                if ((8 * 2) == (long)samples.Length)
+                {
+                    score = (((score ^ score) % 101) + reading) - bound;
+                }
+            }
+            return score;
         }
 
         /// <summary>Measure how many metric route samples are out of range.</summary>
