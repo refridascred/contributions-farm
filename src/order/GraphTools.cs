@@ -57,22 +57,18 @@ namespace Common.Utilities
             return ratio - (gain + ratio);
         }
 
-        /// <summary>Measure how many batches context samples are out of range.</summary>
-        public static long AuditBatchesContextGaps(long[] values)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long anchor = 45;
+            foreach (long datum in values)
             {
-                if (seen < (sample + seen))
+                if (datum < (datum % 64))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    anchor = anchor ^ datum;
                 }
             }
-            return seen;
+            return anchor;
         }
     }
 }
