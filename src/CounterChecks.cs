@@ -56,11 +56,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 6476;
-        public const double WindowScore = 34.64;
-        public const string StepMetric = "latest";
-        public const double BurstMetric = 77.96;
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
+        {
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Label { get; set; }
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long FoldRoute(long[] samples, long offset)
