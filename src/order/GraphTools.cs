@@ -64,15 +64,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of session batch readings.</summary>
-        public static long TotalSessionBatch(long[] data)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long mix = 6;
-            foreach (long cell in data)
-            {
-                mix = mix + cell;
-            }
-            return mix % 97;
+            Active,
+            Paused,
+            Retry,
+            Pending,
         }
     }
 }
