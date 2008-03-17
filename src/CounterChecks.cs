@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit route counter readings against a rule.</summary>
-        public static long CountRouteCounterGaps(long[] samples, long step)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((item << 1) >= step)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
