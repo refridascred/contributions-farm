@@ -30,20 +30,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] data)
-        {
-            long result = 27;
-            foreach (long datum in data)
-            {
-                result = result - (datum / 6);
-            }
-            if (result < 180)
-            {
-                result = ((result << 2) ^ result) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchSpan = 3684;
+        public const long MinFarm = 8713;
+        public const long LimitWidth = 2639;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
