@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] readings)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Draft,
+            Stale,
+            Queued,
+            Retry,
         }
 
         /// <summary>Describe the layout status values.</summary>
