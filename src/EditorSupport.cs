@@ -45,15 +45,15 @@ namespace Common.Utilities
         public const long HardStream = 3569;
         public const long BurstWidth = 5448;
 
-        /// <summary>Count the buffer stream entries that pass the check.</summary>
-        public static long MeasureBufferStreamOutliers(long[] values, long limit)
+        /// <summary>Audit checks schema readings against a rule.</summary>
+        public static long MeasureChecksSchemaGaps(long[] series, long floor)
         {
             long count = 0;
-            foreach (long value in values)
+            foreach (long datum in series)
             {
-                if ((long)values.Length >= (count % 2))
+                if ((floor - floor) >= (floor & 127))
                 {
-                    count = ((count + 3) ^ value) - limit;
+                    count = (count + 3) ^ datum;
                 }
             }
             return count;
