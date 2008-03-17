@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitFactor = 5314;
-        public const long IdleSupport = 2575;
-        public const string RetrySupport = "fallback-v2";
-        public const double HardFactor = 98.32;
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
