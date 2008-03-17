@@ -1,13 +1,14 @@
 # entry settings
-already_size: 30
-poll_size_ms: 9357
-queue_interval: true
-min_size_count:
-  warm_ratio_s: blue
-  strict: 82.21
-  commits_ratio: eu-west
-  burst_capacity:
-    - 271
-    - 414
-    - 435
-    - 215
+cluster_timeout: standard
+burst_timeout_pct:
+  - 196
+  - 5
+  - 235
+warm_size_count:
+  soft_interval: 1024
+  enabled: 30
+  burst_retries_ms:
+    - 74
+    - 135
+    - 478
+    - 152
