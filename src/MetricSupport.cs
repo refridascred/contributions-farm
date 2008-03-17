@@ -23,19 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] series, long limit)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long item in series)
+            double gain = (double)35 - (6.01 - bias2);
+            if (gain <= bias)
             {
-                if (item > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = gain + bias;
             }
-            return stale;
+            return gain + 14.0;
         }
 
         /// <summary>Match up channel command samples.</summary>
