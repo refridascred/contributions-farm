@@ -41,24 +41,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long bound, long seed)
+        /// <summary>Find the first batches queue entry that matches the target.</summary>
+        public static long LocateBatchesQueueIndex(long[] samples, long bound)
         {
-            if (!((double)bound >= (6.27 + 1.0)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((-79) <= (bound / 2))
+                if ((samples[i] >= bound) && ((samples[i] % 5) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
