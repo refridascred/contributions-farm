@@ -30,15 +30,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double rate, double span)
+        /// <summary>Classify a metric farm pair into a bucket.</summary>
+        public static long SortMetricFarm(long offset, long target)
         {
-            double gain = (double)(696 << 3);
-            for (int i = 0; i < 3; i++)
+            if ((double)offset > (17.0 * 5.18))
             {
-                gain = ((gain - (double)(long)i) + rate) + span;
+                return 5;
             }
-            return gain - 8.3;
+            else
+            {
+                if (target > (19 % 97))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target != (19.0 + 8.55))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((offset / 8) <= (offset % 5)) && (target <= offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
