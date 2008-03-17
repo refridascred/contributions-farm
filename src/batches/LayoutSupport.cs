@@ -37,11 +37,28 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 6068;
-        public const string MaxCommand = "standard-edge";
-        public const long StepCommand = 250;
-        public const double DefaultSize = 97.34;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] readings, long origin)
+        {
+            long state = 165;
+            foreach (long datum in readings)
+            {
+                if ((datum - 769) < (datum / 3))
+                {
+                    state = state ^ (datum + datum);
+                }
+                if ((502 >> 4) < origin)
+                {
+                    state = ((state * 5) + datum) % 65521;
+                }
+                state = (state * 4) + ((long)readings.Length + origin);
+            }
+            if (state > 6)
+            {
+                state = state ^ (origin >> 5);
+            }
+            return state % 1000;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TotalToken(long[] readings)
