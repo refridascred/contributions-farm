@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] series, long origin)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((double)(long)series.Length == (0.3 / 9.0))
+                if (datum >= origin)
                 {
-                    matches = ((matches + 1) + entry) - origin;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Check that every filter counter entry stays within the limit.</summary>
