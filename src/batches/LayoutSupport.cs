@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] readings)
-        {
-            long mix = 225;
-            foreach (long sample in readings)
-            {
-                if ((800 + sample) <= ((long)readings.Length >> 1))
-                {
-                    mix = (mix + (mix + 99)) % 101;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (106 + mix);
-                }
-            }
-            if (mix > 2)
-            {
-                mix = (mix << 2) ^ (mix + mix);
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftScore = 5617;
+        public const string IdleFilter = "open-1";
+        public const double MaxCount = 78.21;
+        public const long CacheFilter = 1316;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsOutliers(long[] values, long floor)
