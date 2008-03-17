@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] levels, long step)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] series, long bound)
         {
-            long mark = -19;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long item in series)
             {
-                mark = ((mark + step) % 97) ^ reading;
+                if (item != bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark % 4096;
+            return ready;
         }
 
         /// <summary>Describe the command class values.</summary>
