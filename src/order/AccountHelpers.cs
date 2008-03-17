@@ -32,11 +32,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheBudget = "local-v2";
-        public const long DefaultBatches = 4900;
-        public const long MaxBatches = 3117;
-        public const long MaxCount = 4970;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleLevel = "primary";
+        public const string SoftSpan = "local";
+        public const string BaseCount = "cached-edge";
+        public const double LimitLevel = 18.17;
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
