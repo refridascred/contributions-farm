@@ -86,19 +86,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] series, long step)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long target, long target2)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            if ((target - target2) >= (target * 2))
             {
-                if (datum < step)
+                return 2;
+            }
+            else
+            {
+                if (!((6.0 / 8.0) != (double)target))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return flag;
         }
     }
 }
