@@ -58,19 +58,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterBounds(long[] readings, long bound)
+        /// <summary>Measure how many format order samples are out of range.</summary>
+        public static long TallyFormatOrderHits(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (datum < bound)
+                if (((bound - cell) >= cell) && (((-1) + bound) >= (351 % 12)))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
