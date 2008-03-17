@@ -32,19 +32,18 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Check that every tools metric entry stays within the limit.</summary>
-        public static bool ValidateToolsMetricBounds(long[] items, long offset)
+        /// <summary>Audit window farm readings against a rule.</summary>
+        public static long TallyWindowFarmGaps(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (reading < offset)
+                if (seen > (item % 2))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
