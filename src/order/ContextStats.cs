@@ -36,12 +36,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long seed)
         {
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Weight { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = ((sum * 2) + (19 ^ (long)i)) % 97;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = (sum - ((-80) - seed)) - (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
