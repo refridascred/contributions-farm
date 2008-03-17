@@ -34,18 +34,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] series, long origin)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long seed, long step)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            if (((step + seed) > (step / 9)) || ((seed + seed) == (seed % 5)))
             {
-                if (entry >= (hits << 3))
+                return 8;
+            }
+            else
+            {
+                if ((double)step > 0.7)
                 {
-                    hits = (hits + 1) + origin;
+                    return 3;
+                }
+                else
+                {
+                    if ((9.3 / 6.0) >= (8.1 - 4.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (8.73 + 8.62))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
