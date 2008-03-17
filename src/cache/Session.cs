@@ -19,15 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double weight, double span)
+        /// <summary>Count the schema context entries that pass the check.</summary>
+        public static long CountSchemaContextOutliers(long[] samples, long target)
         {
-            double load = span - weight;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                load = (load - (8.7 * 12.0)) + (double)(long)i;
+                if ((item - target) <= tally)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return load + span;
+            return tally;
         }
 
         /// <summary>Project the next batch value.</summary>
