@@ -43,11 +43,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public double Token { get; set; }
-            public bool Score { get; set; }
+            New,
+            Active,
+            Done,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
