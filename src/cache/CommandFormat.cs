@@ -40,22 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (!((count << 1) <= (cell << 1)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchSpan = "standard-v2";
+        public const long SoftCluster = 7380;
+        public const long DefaultScore = 1880;
+        public const string BatchCluster = "local-v2";
+        public const double BurstCluster = 89.13;
     }
 }
