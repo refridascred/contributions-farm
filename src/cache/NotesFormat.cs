@@ -35,18 +35,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] samples)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long origin)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long acc = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (((2.1 + 5.9) == (double)datum) && ((matches ^ matches) != (940 << 2)))
-                {
-                    matches = matches + 3;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
     }
 }
