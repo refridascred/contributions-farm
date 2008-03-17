@@ -1,38 +1,36 @@
 # entry settings
-sync_threshold: eu-west
 persist:
-  enabled: 71
-  min_timeout: 94.86
-  idle_threshold: blue
-graph_limit:
-  format_delay: 64
-  audit: standard
-  cache_depth_count: edge
-  contributi_timeout:
-    - 462
-    - 164
-  warm_delay_pct:
-    hard_timeout: 60
-    sync_depth_s: 60.38
-    cache_retries: 10
-    metric_window: 16.98
-    soft_size_ms: local
-    commits_delay:
+  - 372
+  - 159
+  - 282
+  - 421
+batch_interval_s: legacy
+audit: 78.53
+report_delay:
+  hard_window_count: primary
+  batch_depth: edge
+  warm_window_ms:
+    - local
+    - open
+    - primary
+    - latest
+  hard_retries_pct:
+    route_capacity:
+      - legacy
+      - blue
+      - cached
+    contributi_window:
+      - green
       - fallback
-      - local
-      - stable
-channel_threshold:
-  base_ttl: false
-  report_ratio: 60
-  sync_ttl_pct: blue
-  dry_run: stable
-  audit:
-    commits_ttl: 23.19
-    max_ratio_count: green
-    warm_limit_s: false
-    verbose: staging
-poll_timeout:
-  - primary
-  - open
-  - standard
-format_size: false
+      - open
+    strict: 0.45
+    stream_ttl: 95
+  verbose: fallback
+  min_ratio_pct:
+    - 309
+    - 404
+dry_run:
+  - 300
+  - 105
+  - 107
+idle_threshold: green
