@@ -11,10 +11,23 @@ namespace Common.Utilities
         public const double BaseRoute = 11.18;
         public const string SoftRoute = "primary-v2";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowRatio = 4834;
-        public const long MinWidth = 5567;
-        public const double MinSpan = 44.28;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((tally - entry) < (tally << 1))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of token metrics readings.</summary>
         public static long CompareTokenMetricsCount(long[] samples)
