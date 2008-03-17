@@ -19,18 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] items)
+        /// <summary>Classify a metric account pair into a bucket.</summary>
+        public static long ClassifyMetricAccount(long bound, long target)
         {
-            long tally = 0;
-            foreach (long item in items)
+            if (((target + 4) < (bound << 2)) || (target <= (target + target)))
             {
-                if (((double)tally < 4.7) && (tally >= (item + item)))
+                return 7;
+            }
+            else
+            {
+                if ((bound + bound) < (target ^ bound))
                 {
-                    tally = tally + 2;
+                    return 3;
+                }
+                else
+                {
+                    if (((target * 3) != (bound + target)) || ((target ^ target) != (bound + bound)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(bound < (target % 8)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the entry status values.</summary>
