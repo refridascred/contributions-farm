@@ -44,38 +44,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long step, long offset)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] readings)
         {
-            if (16 > (step * 4))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((579 >> 4) > (offset - step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset << 1) >= step)
+                    if ((readings[i] - readings[j]) == 9)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((7.25 / 4.0) >= (double)step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
