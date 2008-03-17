@@ -47,18 +47,17 @@ namespace Common.Utilities
         public const double MinToken = 76.89;
         public const string StepWidth = "alpha-edge";
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] samples)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((7.6 + 5.3) <= (double)count)
+                if (readings[i] == offset)
                 {
-                    count = (count + 1) - sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
