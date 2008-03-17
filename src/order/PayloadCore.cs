@@ -34,10 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheCount = 2605;
-        public const double BaseTimeout = 52.65;
-        public const string RetryInterval = "stable-edge";
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (8 <= (hits + reading))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many queue stream samples are out of range.</summary>
         public static long MeasureQueueStreamOutliers(long[] levels, long seed)
