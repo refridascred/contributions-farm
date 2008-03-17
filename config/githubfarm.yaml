@@ -1,9 +1,8 @@
 # githubfarm settings
-notes_timeout: open
-warm_timeout_pct:
+hard_depth_count: legacy
+cache_timeout: 16
+persist: 500
+batch_delay_ms:
+  - local
   - eu-west
-  - staging
-warm_window_pct: false
-hard_timeout: 36.74
-readonly: 1024
-warm_ttl: edge
+  - blue
