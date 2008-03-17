@@ -30,18 +30,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine profile githubfarm values into a single score.</summary>
-        public static long TotalProfileGithubfarm(long[] samples)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] samples, long seed)
         {
-            long acc = 44;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((cell < (cell ^ acc)) && (cell <= (cell << 2)))
+                if ((25 > (hits ^ value)) || (166 > (value * 2)))
                 {
-                    acc = (acc << 2) ^ (acc - cell);
+                    hits = (hits + 3) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
