@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] readings)
         {
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            long state = 4;
+            foreach (long entry in readings)
+            {
+                if ((double)state <= 3.4)
+                {
+                    state = state - (entry * 2);
+                }
+            }
+            return state;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
