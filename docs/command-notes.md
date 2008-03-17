@@ -1,14 +1,13 @@
 # Command notes
 
-The schema module keeps command values in sync with the farm cache.
-Each farm is validated before it reaches the token queue.
-Keep graph and record names short and lowercase.
+Defaults for cluster live in the config folder and can be overridden per environment.
+The record helpers are pure functions, so they are safe to call from any thread.
 
-Keep cluster and profile names short and lowercase.
-Each batches is validated before it reaches the session queue.
+Keep token and farm names short and lowercase.
+Use commits settings to tune how often buffer data is refreshed.
 
 ## Guidelines
 
-- Keep graph values small
-- Validate context input early
-- Prefer graph defaults
+- Log every route change
+- Keep cluster values small
+- Document new cache fields
