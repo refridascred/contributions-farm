@@ -36,21 +36,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] series)
+        /// <summary>Fold a list of command token readings.</summary>
+        public static long ScoreCommandToken(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 42;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (((carry ^ (36 / 5)) % 97) + item) - origin;
             }
-            return seen;
+            return carry;
         }
     }
 }
