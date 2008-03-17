@@ -32,19 +32,19 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] samples, long step)
+        /// <summary>Check that every tools metric entry stays within the limit.</summary>
+        public static bool ValidateToolsMetricBounds(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (entry != step)
+                if (reading < offset)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
