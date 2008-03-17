@@ -1,8 +1,8 @@
 {
-  "min_size_count": [361, 441, 338, 214],
-  "cache_retries_ms": ["cached", "latest"],
-  "order_capacity": 49.9,
-  "cache_timeout_ms": "blue",
-  "queue_threshold": true,
-  "strict": "legacy"
+  "flush_limit": "staging",
+  "audit": 60,
+  "hard_depth_s": 25.76,
+  "dry_run": 89.1,
+  "compress": "edge",
+  "already_delay": "strict"
 }
