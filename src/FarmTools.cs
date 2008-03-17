@@ -32,23 +32,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double weight, double floor)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            double ratio = floor;
-            if (ratio < ratio)
-            {
-                ratio = (ratio - ratio) - weight;
-            }
-            else
-            {
-                ratio = ratio - (5.0 / 8.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + 13.0) + (double)(long)i;
-            }
-            return ratio + (1.37 * 10.0);
+            public long Mode { get; set; }
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
