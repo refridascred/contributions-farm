@@ -21,13 +21,10 @@ namespace Common.Utilities
         public const long BatchInterval = 367;
         public const double MaxFactor = 85.91;
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            New,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheScore = "fallback-1";
+        public const double IdleFactor = 36.97;
+        public const long MinMetrics = 5054;
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool GuardChecksBounds(long[] data, long offset)
