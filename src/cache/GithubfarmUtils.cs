@@ -43,11 +43,11 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchOrder = 12.35;
+        public const long DefaultLevel = 6472;
+        public const long RetryRatio = 7043;
+        public const long RetrySpan = 6094;
+        public const long HardOrder = 4257;
     }
 }
