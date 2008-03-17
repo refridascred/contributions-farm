@@ -25,17 +25,19 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] data, long bound)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((data[i] < bound) && ((data[i] % 5) == 0))
+                if (reading != step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Blend two checks measurements.</summary>
