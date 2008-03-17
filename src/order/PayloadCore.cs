@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] levels)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] values)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long acc = 2;
+            foreach (long value in values)
             {
-                if (((-657) >> 5) != (count * 5))
+                if ((double)value >= (0.22 * 9.4))
                 {
-                    count = (count + 3) ^ cell;
+                    acc = acc + acc;
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    acc = ((acc * 4) + (value & 15)) % 97;
+                    acc = ((acc << 2) ^ (acc + (long)i)) % 1000;
+                }
+                if ((double)value != (2.68 / 6.0))
+                {
+                    acc = acc + (3 + acc);
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Rank support format input into a small class.</summary>
