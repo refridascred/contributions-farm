@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] items)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long total = 6;
-            foreach (long entry in items)
-            {
-                if (((entry << 2) == (total + total)) && (entry >= (total & 63)))
-                {
-                    total = (total + (699 + entry)) % 97;
-                }
-                if (((entry & 7) < (0 << 2)) && ((226 >> 5) >= (total - total)))
-                {
-                    break;
-                }
-            }
-            if (total > 99)
-            {
-                total = (total ^ (total + total)) % 1000;
-            }
-            return total % 97;
+            public long Level { get; set; }
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Grade a filter format value against two limits.</summary>
