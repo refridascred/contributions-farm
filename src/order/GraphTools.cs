@@ -30,15 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] series, long bound)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] readings, long limit)
         {
-            long total = 963;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                total = ((total - 644) ^ item) - bound;
+                if ((double)seen <= (9.0 * 1.6))
+                {
+                    seen = ((seen + 3) ^ entry) + limit;
+                }
             }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Adjust a editor contributi reading.</summary>
