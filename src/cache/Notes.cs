@@ -32,11 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] samples)
         {
-            public bool Mode { get; set; }
-            public long Label { get; set; }
+            long mix = 50;
+            foreach (long datum in samples)
+            {
+                if (((0.6 / 8.0) >= (double)datum) || ((double)datum < 9.4))
+                {
+                    mix = mix ^ mix;
+                }
+                else
+                {
+                    mix = mix ^ (mix + datum);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
