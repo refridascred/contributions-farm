@@ -20,13 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            Pending,
-            Synced,
+            Draft,
             Done,
-            Active,
+            Locked,
+            Queued,
+            New,
         }
 
         /// <summary>Count counter command pairs that satisfy a relation.</summary>
