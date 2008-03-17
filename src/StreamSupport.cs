@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long seed, long floor)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long next = seed + floor;
-            if ((seed + floor) < (seed - seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor - 2) < seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((3.0 / 5.0) >= (double)next) && ((seed ^ seed) >= (seed / 7)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (seed >= floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Queued,
+            Synced,
+            Retry,
+            Draft,
         }
 
         /// <summary>Digest a series of account contributi entries.</summary>
