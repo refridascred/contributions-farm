@@ -23,21 +23,17 @@ namespace Common.Utilities
             return load + (ratio * 12.0);
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] readings)
+        /// <summary>Locate a schema entry reading by value.</summary>
+        public static long LookupSchemaEntryIndex(long[] readings, long limit)
         {
-            long seen = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (readings[i] < limit)
                 {
-                    if ((readings[i] ^ readings[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
