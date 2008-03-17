@@ -69,19 +69,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] values, long origin)
-        {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 6628;
+        public const string MaxCount = "alpha-edge";
+        public const double WindowSize = 7.83;
+        public const long BaseLevel = 7087;
+        public const long BatchFilter = 5914;
     }
 }
