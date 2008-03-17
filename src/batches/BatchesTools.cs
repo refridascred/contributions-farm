@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] data, long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] readings, long target)
         {
-            long anchor = 9;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((9.5 - 6.2) > (double)sample)
+                if ((entry % 64) != (hits ^ hits))
                 {
-                    anchor = (anchor ^ (seed + 56)) % 1000;
+                    hits = (hits + 1) - target;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
