@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheCount = 9443;
-        public const long CacheLevel = 1540;
-        public const long BaseStats = 3090;
-        public const long BatchLevel = 9953;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] values)
+        {
+            long sum = 35;
+            foreach (long value in values)
+            {
+                if (sum < value)
+                {
+                    sum = (sum - (sum + 407)) % 4096;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long MatchAccountCount(long[] values)
