@@ -47,12 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] samples, long floor)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
+                if (levels[i] == origin)
                 {
                     return (long)i;
                 }
