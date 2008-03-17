@@ -38,19 +38,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] data, long offset)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long target)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long total = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return stale;
+            return total;
         }
     }
 }
