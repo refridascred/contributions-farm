@@ -1,5 +1,4 @@
 # support settings
-dry_run: stable
-buffer_delay: true
-soft_limit_ms: 18
-batch_interval: 5963
+enabled: latest
+strict: 58
+stats_threshold: standard
