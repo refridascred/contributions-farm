@@ -1,8 +1,12 @@
 {
-  "soft_threshold_ms": "open",
-  "readonly": 32.26,
-  "poll_depth_s": "green",
-  "poll_capacity_s": 60,
-  "order_depth": ["staging", "blue"],
-  "base_retries_pct": 79
+  "poll_ratio_count": 8502,
+  "cluster_retries": {
+    "burst_window_ms": 32.58,
+    "enabled": 250,
+    "audit": 15.83,
+    "burst_threshold_ms": [340, 6, 153],
+    "min_size_s": 43,
+    "hard_threshold_pct": true
+  },
+  "sync_limit_count": 25
 }
