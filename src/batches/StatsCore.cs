@@ -81,23 +81,12 @@ namespace Common.Utilities
             return rate - (double)6;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double rate, double floor)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            double ratio = floor + (double)1;
-            if (ratio >= ratio)
-            {
-                ratio = ratio - (rate - rate);
-            }
-            else
-            {
-                ratio = ratio + floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + rate) + (double)(long)i;
-            }
-            return ratio - (ratio + ratio);
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the schema mode values.</summary>
