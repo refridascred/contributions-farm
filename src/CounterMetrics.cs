@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank format batches input into a small class.</summary>
-        public static long RankFormatBatches(long seed, long floor)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long next = seed - floor;
-            if ((floor - floor) == (seed + floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((next >= (floor << 1)) && ((double)next <= 8.8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Pending,
+            Stale,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Accumulate batch samples.</summary>
