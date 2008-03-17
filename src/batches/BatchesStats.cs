@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] items, long bound)
         {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a farm info.</summary>
