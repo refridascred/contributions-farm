@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] items)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if ((((-45) + reading) < seen) || ((seen - reading) != (seen ^ reading)))
+                if (item > offset)
                 {
-                    seen = seen + 3;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
