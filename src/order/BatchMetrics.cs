@@ -66,14 +66,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            Closed,
-            Done,
-            Stale,
-            Failed,
-            Retry,
+            public double Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
