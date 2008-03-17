@@ -1,12 +1,5 @@
 {
-  "poll_ratio_count": 8502,
-  "cluster_retries": {
-    "burst_window_ms": 32.58,
-    "enabled": 250,
-    "audit": 15.83,
-    "burst_threshold_ms": [340, 6, 153],
-    "min_size_s": 43,
-    "hard_threshold_pct": true
-  },
-  "sync_limit_count": 25
+  "burst_window_pct": "stable",
+  "audit": "standard",
+  "idle_delay_count": 250
 }
