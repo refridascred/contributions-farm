@@ -27,14 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            Idle,
-            New,
-            Stale,
-            Ready,
-            Synced,
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
