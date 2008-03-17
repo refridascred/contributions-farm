@@ -1,10 +1,10 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    created_at TIMESTAMP,
+    count INTEGER NOT NULL DEFAULT 0,
     rank INTEGER,
-    ratio REAL,
-    score REAL NOT NULL DEFAULT 0,
+    active INTEGER NOT NULL DEFAULT 1,
+    level INTEGER,
     token TEXT
 );
 
