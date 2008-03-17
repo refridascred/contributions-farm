@@ -29,15 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double scale, double offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] data)
         {
-            double drift = scale;
-            for (int i = 0; i < 5; i++)
+            long mix = 477;
+            foreach (long datum in data)
             {
-                drift = ((drift + (double)576) - (double)(long)i) - offset;
+                if ((datum & 1) == (datum + datum))
+                {
+                    mix = mix - (mix + 2);
+                }
             }
-            return drift + (double)2;
+            return mix;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
