@@ -32,22 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] items)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] data, long offset)
         {
-            long carry = 7;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (((long)items.Length - carry) >= (long)items.Length)
+                if (datum >= offset)
                 {
-                    carry = ((carry + (carry ^ 49)) % 97) + sample;
+                    flag = false;
+                    break;
                 }
             }
-            if (carry < 415)
-            {
-                carry = carry + (carry - carry);
-            }
-            return carry % 1000;
+            return flag;
         }
 
         /// <summary>Rank window input into a small class.</summary>
