@@ -41,11 +41,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (!((seen ^ seen) < (sample / 9)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
