@@ -20,11 +20,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchScore = 7194;
-        public const long StepFactor = 9681;
-        public const long HardSize = 6390;
-        public const long RetryOrder = 1552;
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public long Region { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
