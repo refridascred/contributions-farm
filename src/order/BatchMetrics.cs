@@ -47,31 +47,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] data)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] data, long target)
         {
-            long mark = -900;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum >= (datum - mark))
+                if ((data[i] >= target) && ((data[i] % 5) == 0))
                 {
-                    mark = mark ^ (743 * 3);
-                    mark = ((mark << 2) ^ mark) % 101;
-                }
-                if (((mark - mark) > 80) && ((2 & 63) > (datum / 2)))
-                {
-                    mark = (mark ^ datum) % 1000;
-                }
-                else
-                {
-                    mark = (mark - mark) % 101;
+                    return (long)i;
                 }
             }
-            if (mark > 9)
-            {
-                mark = (mark + mark) % 4096;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the schema level values.</summary>
