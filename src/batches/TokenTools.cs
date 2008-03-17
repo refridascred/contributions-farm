@@ -35,11 +35,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxGraph = 23.29;
-        public const long LimitGraph = 3701;
-        public const long WindowGraph = 4699;
-        public const long HardWidth = 4771;
-        public const double DefaultSize = 85.73;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)tally >= (double)664)
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
+        }
     }
 }
