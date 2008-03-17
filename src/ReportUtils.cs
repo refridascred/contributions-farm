@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftReport = "standard";
-        public const long HardFactor = 2530;
-        public const string WindowReport = "legacy-v2";
-        public const string SoftTimeout = "cached-edge";
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Idle,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
