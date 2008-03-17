@@ -1,6 +1,7 @@
-id,state,ratio
-1,edge,36.01
-2,86.08,898
-3,5.05,43
-4,blue,64.17
-5,858,82.99
+id,label,rank
+1,65.39,48.81
+2,75.09,62.36
+3,406,eu-west
+4,standard,cached
+5,primary,19.44
+6,5.01,blue
