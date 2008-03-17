@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] samples, long origin)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] data)
         {
-            long total = 64;
-            foreach (long entry in samples)
+            long mix = 97;
+            foreach (long datum in data)
             {
-                total = (((total - (total >> 2)) % 97) + entry) + origin;
+                if (8 > mix)
+                {
+                    mix = (mix - ((long)data.Length / 7)) ^ datum;
+                }
             }
-            if (total < 5)
-            {
-                total = total - 746;
-            }
-            return total;
+            return mix;
         }
 
         /// <summary>Describe the window level values.</summary>
