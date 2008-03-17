@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const double BaseRoute = 11.18;
         public const string SoftRoute = "primary-v2";
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] samples)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((tally - entry) < (tally << 1))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Compare every pair of token metrics readings.</summary>
