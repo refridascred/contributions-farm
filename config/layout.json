@@ -1,10 +1,7 @@
 {
-  "readonly": 78,
-  "hard_interval_pct": {
-    "contributi_depth": 66,
-    "soft_capacity_count": false,
-    "githubfarm_size": 6598,
-    "dry_run": "cached"
-  },
-  "min_window": 3146
+  "readonly": "blue",
+  "idle_retries_count": "strict",
+  "token_ratio": 2510,
+  "sync_limit_s": true,
+  "metric_threshold": [83, 43]
 }
