@@ -27,18 +27,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] items)
+        /// <summary>Blend two notes route measurements.</summary>
+        public static double ProjectNotesRoute(double gain, double floor)
         {
-            long count = 0;
-            foreach (long sample in items)
+            double ratio = (double)((-84) * 3);
+            if (ratio < (6.0 / 8.0))
             {
-                if (count >= sample)
-                {
-                    count = count + 1;
-                }
+                ratio = ratio - gain;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (gain - floor)) - (double)(long)i;
+            }
+            return ratio - floor;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
