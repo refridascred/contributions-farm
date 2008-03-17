@@ -1,19 +1,37 @@
 # githubfarm settings
-tools_delay: 100
-audit:
-  - open
-  - staging
-  - fallback
-poll_size_count: true
-warm_limit_s:
-  flush_ttl_s: true
-  strict: 4759
-  readonly: 66
-  audit: blue
-  idle_size_count:
-    - primary
+batch_depth_count:
+  - 302
+  - 155
+soft_retries_pct: 66.4
+cache_ratio: 50
+compress:
+  readonly: staging
+  command_ttl: 30
+  buffer_size:
+    checks_limit: 30
+    warm_size: 263
+    enabled: blue
+    persist: 63
+    idle_threshold_count:
+      - green
+      - latest
+      - stable
+    buffer_retries: 37
+  sync_limit_pct: false
+  persist: open
+  layout_window: staging
+channel_limit:
+  persist: 6346
+  burst_depth_pct:
+    - 316
+    - 225
+    - 235
+    - 2
+  dry_run: 81
+  strict: 90.77
+  sync_retries_ms:
+    - staging
+    - staging
+    - latest
     - legacy
-    - blue
-  compress: 60
-cache_capacity: 51.0
-burst_ttl: legacy
+  min_ratio: 30
