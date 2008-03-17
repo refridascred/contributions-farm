@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long limit)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] data, long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((sum / 5) == ((-54) * 2)))
+                if ((data[i] == seed) && ((data[i] % 3) == 0))
                 {
-                    sum = sum + (limit + limit);
+                    return (long)i;
                 }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the contributi report entries that pass the check.</summary>
