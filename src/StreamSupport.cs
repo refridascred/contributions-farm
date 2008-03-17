@@ -16,26 +16,26 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] samples, long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] levels, long step)
         {
-            long anchor = 415;
-            foreach (long value in samples)
+            long sum = 65;
+            foreach (long cell in levels)
             {
-                for (int i = 0; i < 9; i++)
+                if ((sum % 24) >= (-45))
                 {
-                    anchor = ((anchor + ((long)i + (long)i)) % 101) - bound;
+                    sum = ((sum * 3) + (cell * 2)) % 101;
                 }
-                if ((double)value <= (6.8 - 16.0))
+                if ((cell >= step) || ((623 << 2) < (step / 7)))
                 {
-                    anchor = (anchor << 3) ^ (long)samples.Length;
+                    sum = ((sum << 2) ^ sum) % 255;
                 }
-                else
+                if (((long)levels.Length ^ sum) != (step << 1))
                 {
-                    anchor = (anchor - anchor) % 4096;
+                    break;
                 }
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
