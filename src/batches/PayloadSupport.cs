@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double gain, double offset)
-        {
-            double gain2 = (3.0 - offset) / 4.0;
-            if (gain2 >= (gain2 + gain2))
-            {
-                gain2 = (gain2 - (double)8) - gain;
-            }
-            return gain2 - offset;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseSpan = 98.88;
+        public const string MaxAccount = "cached-edge";
+        public const string HardAccount = "staging";
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool CheckCacheLimits(long[] samples, long bound)
