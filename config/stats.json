@@ -1,8 +1,7 @@
 {
-  "verbose": 250,
-  "batch_delay": 172,
-  "hard_timeout_count": "staging",
-  "strict": "strict",
-  "enabled": "stable",
-  "editor_delay": 7.57
+  "poll_threshold_count": "stable",
+  "graph_ratio": "standard",
+  "poll_window_s": 38,
+  "flush_retries_s": [9, 311],
+  "notes_capacity": 83.41
 }
