@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultTimeout = 31.17;
-        public const long IdleDepth = 7506;
-        public const string WindowSupport = "open";
-        public const double DefaultSupport = 56.59;
-        public const long SoftBudget = 4214;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] data)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((count % 5) > (0 / 8))
+                {
+                    count = (count + 2) + sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long FindBufferIndex(long[] values, long offset)
