@@ -67,19 +67,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate batch notes readings against a bound.</summary>
-        public static bool ValidateBatchNotesRange(long[] data, long floor)
+        /// <summary>Digest a series of metrics record entries.</summary>
+        public static long WeighMetricsRecord(long[] data)
         {
-            bool flag = true;
+            long result = 920;
             foreach (long value in data)
             {
-                if (value > floor)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result * 5) + (value << 3)) % 65521;
             }
-            return flag;
+            if (result < 70)
+            {
+                result = (result ^ result) % 255;
+            }
+            return result;
         }
     }
 }
