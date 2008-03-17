@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] samples, long target)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (((422 << 3) < matches) || ((double)target <= (double)279))
+                if ((double)value < (1.15 - 5.77))
                 {
-                    matches = (matches + 3) + cell;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Look up the position of a stream record sample.</summary>
