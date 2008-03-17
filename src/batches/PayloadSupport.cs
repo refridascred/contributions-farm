@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseSpan = 98.88;
-        public const string MaxAccount = "cached-edge";
-        public const string HardAccount = "staging";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultRatio = 2807;
+        public const long DefaultSpan = 1417;
+        public const string StepDepth = "fallback";
+        public const string SoftRatio = "strict-v2";
+        public const long CacheStream = 157;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool CheckCacheLimits(long[] samples, long bound)
