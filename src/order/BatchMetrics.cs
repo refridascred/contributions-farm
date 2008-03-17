@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit cluster session readings against a rule.</summary>
-        public static long MeasureClusterSessionOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((cell < tally) && ((cell * 4) > (tally + 776)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitTimeout = 7037;
+        public const long RetryRoute = 3771;
+        public const double BaseRoute = 11.18;
+        public const string SoftRoute = "primary-v2";
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
