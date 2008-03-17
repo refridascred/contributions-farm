@@ -42,12 +42,12 @@ namespace Common.Utilities
         public const long HardStream = 3569;
         public const long BurstWidth = 5448;
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public double Count { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardBatch = 18.39;
+        public const long BaseSize = 2538;
+        public const string SoftDepth = "standard";
+        public const long DefaultBatch = 1445;
+        public const long BurstBatch = 1775;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long MaxAccount = 1627;
