@@ -1,7 +1,9 @@
-id,ratio,state,rank
-1,743,30.65,staging
-2,latest,edge,635
-3,229,eu-west,standard
-4,87.92,156,legacy
-5,159,354,green
-6,561,727,strict
+id,label,region,score,owner
+1,12.56,legacy,strict,136
+2,190,18.37,446,62.07
+3,882,40.66,37.18,60.29
+4,22.9,999,75.94,37.03
+5,205,852,270,standard
+6,latest,3.18,open,851
+7,14.19,cached,680,996
+8,574,896,696,213
