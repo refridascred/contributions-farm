@@ -72,18 +72,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] samples, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((hits & 7) < (5 * 4))
+                if ((double)reading < (15.0 + 5.37))
                 {
-                    hits = ((hits + 1) + sample) - bound;
+                    seen = (seen + 1) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Project the next entry value.</summary>
