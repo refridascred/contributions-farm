@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] data, long floor)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long seed, long limit)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            if ((double)limit < (9.94 / 5.0))
             {
-                if (cell != floor)
+                return 4;
+            }
+            else
+            {
+                if (!((46 - seed) <= (seed * 2)))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (seed < limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((seed ^ seed) > (seed % 100)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
