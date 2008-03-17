@@ -1,10 +1,10 @@
 # Command notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-A order that stays idle for too long is moved to the buffer list.
+Each window is validated before it reaches the graph queue.
+A stream that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Review editor limits each release
-- Prefer batches defaults
-- Log every graph change
+- Document new filter fields
+- Validate already input early
+- Log every cache change
