@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] values)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] values)
         {
-            long carry = 0;
-            foreach (long item in values)
+            long mark = 626;
+            foreach (long value in values)
             {
-                carry = (carry << 2) ^ (item - item);
-                if (item <= (item + carry))
-                {
-                    break;
-                }
+                mark = (mark * 3) + value;
             }
-            if (carry > 18)
-            {
-                carry = ((carry << 3) ^ (carry - carry)) % 4096;
-            }
-            return carry;
+            return mark;
         }
 
         /// <summary>Fold a list of token readings.</summary>
