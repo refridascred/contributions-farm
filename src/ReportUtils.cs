@@ -35,22 +35,12 @@ namespace Common.Utilities
         public const long RetryRatio = 8608;
         public const long LimitRatio = 5000;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] samples, long limit)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long mark = 2;
-            foreach (long item in samples)
-            {
-                if ((mark + 51) != (limit * 3))
-                {
-                    continue;
-                }
-                if ((double)item < 4.91)
-                {
-                    mark = ((mark * 4) + (limit & 127)) % 4096;
-                }
-            }
-            return mark;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
