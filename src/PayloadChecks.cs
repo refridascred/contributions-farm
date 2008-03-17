@@ -68,11 +68,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] items, long limit)
         {
-            public double Mode { get; set; }
-            public string Limit { get; set; } = "";
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the token kind values.</summary>
