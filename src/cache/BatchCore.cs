@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            Closed,
-            New,
-            Locked,
-            Failed,
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a notes snapshot.</summary>
