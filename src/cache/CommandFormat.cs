@@ -20,14 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Draft,
-            Done,
-            Locked,
-            Queued,
-            New,
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Count counter command pairs that satisfy a relation.</summary>
