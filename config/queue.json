@@ -1,5 +1,5 @@
 {
-  "dry_run": "legacy",
-  "burst_retries_pct": 43,
-  "max_window": ["open", "blue", "fallback", "primary"]
+  "base_limit": 111,
+  "account_interval": true,
+  "metric_interval": "fallback"
 }
