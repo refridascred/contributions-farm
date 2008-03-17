@@ -1,7 +1,6 @@
 {
-  "cache_timeout": false,
-  "warm_capacity_pct": 6923,
-  "idle_limit": 85,
-  "warm_ttl_s": 9129,
-  "hard_depth_count": ["cached", "stable", "blue"]
+  "channel_ratio": 9.75,
+  "poll_timeout_count": "strict",
+  "compress": "stable",
+  "format_ttl": "staging"
 }
