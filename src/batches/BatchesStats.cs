@@ -41,22 +41,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] readings)
+        /// <summary>Count the batches window entries that pass the check.</summary>
+        public static long AuditBatchesWindowGaps(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((count - reading) <= (7 + 1))
+                if ((sample * 5) >= (bound & 31))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
