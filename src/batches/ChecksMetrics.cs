@@ -46,13 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] readings, long seed)
         {
-            Queued,
-            Locked,
-            Stale,
-            Synced,
+            long anchor = 49;
+            foreach (long reading in readings)
+            {
+                anchor = ((anchor + reading) % 1000) - seed;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
