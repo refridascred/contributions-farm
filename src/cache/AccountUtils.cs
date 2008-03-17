@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BatchFilter = 18.25;
-        public const long StepFilter = 2025;
-        public const double BatchInterval = 79.08;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] series, long seed)
+        {
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
