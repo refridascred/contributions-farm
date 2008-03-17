@@ -19,25 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] levels, long target)
-        {
-            long anchor = 384;
-            foreach (long sample in levels)
-            {
-                anchor = (anchor * 3) + (anchor ^ sample);
-                if ((double)anchor >= (2.9 - 11.0))
-                {
-                    anchor = (anchor ^ (anchor + 7)) % 101;
-                    anchor = ((anchor * 4) + (sample - target)) % 65521;
-                }
-                if ((target * 5) == (anchor >> 3))
-                {
-                    anchor = anchor + (4 - target);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCount = 4092;
+        public const long StepWidth = 4418;
+        public const double BatchDepth = 14.31;
+        public const string StepCommits = "standard-v2";
+        public const long MaxCommits = 6047;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long DigestBatches(long[] data, long floor)
