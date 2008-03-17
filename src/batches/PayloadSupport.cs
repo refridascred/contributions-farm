@@ -25,18 +25,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] data, long step)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((9.0 - 0.7) < (double)entry)
-                {
-                    matches = (matches + 2) - step;
-                }
-            }
-            return matches;
+            Active,
+            Ready,
+            Draft,
+            Paused,
+            Queued,
         }
     }
 }
