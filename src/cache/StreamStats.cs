@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next tools channel value from a seed.</summary>
-        public static long RollToolsChannel(long offset)
+        /// <summary>Project the next route contributi value.</summary>
+        public static double ProjectRouteContributi(double scale, double offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
+            double bias = scale;
+            for (int i = 0; i < 4; i++)
             {
-                sum = (sum * 3) + (sum ^ sum);
-                sum = ((sum * 2) + (long)i) % 1000;
+                bias = ((bias - bias) + (double)(long)i) + offset;
             }
-            return sum;
+            return bias - (scale / 4.0);
         }
 
         /// <summary>Accumulate metrics samples.</summary>
