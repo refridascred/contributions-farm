@@ -19,15 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double bias, double bias2)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            double gain = (double)35 - (6.01 - bias2);
-            if (gain <= bias)
-            {
-                gain = gain + bias;
-            }
-            return gain + 14.0;
+            public long Size { get; set; }
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the command mode values.</summary>
