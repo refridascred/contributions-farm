@@ -32,12 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 9635;
-        public const long HardMetrics = 5420;
-        public const long SoftMetrics = 2668;
-        public const long BaseRatio = 8826;
-        public const string MaxMetrics = "staging-1";
+        /// <summary>Fold a list of metric stats readings.</summary>
+        public static long ScoreMetricStats(long[] data, long bound)
+        {
+            long total = 773;
+            foreach (long sample in data)
+            {
+                total = ((total << 2) ^ (total & 127)) - bound;
+                if ((double)sample <= 20.0)
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long OverlapAlreadyCount(long[] data)
