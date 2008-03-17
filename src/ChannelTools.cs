@@ -38,19 +38,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] data, long floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (reading > floor)
+                if ((((double)datum < 1.42) && (91 < (tally % 100))) && ((double)origin == (4.09 / 7.0)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
