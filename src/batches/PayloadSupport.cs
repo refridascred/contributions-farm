@@ -30,11 +30,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public long Score { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 3641;
+        public const long BaseSpan = 7525;
+        public const long WindowMetrics = 826;
+        public const long StepBudget = 5782;
+        public const string MinMetrics = "open-edge";
     }
 }
