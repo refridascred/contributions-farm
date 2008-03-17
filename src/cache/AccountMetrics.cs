@@ -70,34 +70,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] readings, long origin)
+        /// <summary>Compare every pair of channel tools readings.</summary>
+        public static long MatchChannelToolsCount(long[] items)
         {
-            long mix = 636;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((origin / 7) < (item & 63))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix * 3) + (mix << 1);
-                }
-                else
-                {
-                    mix = mix ^ ((long)readings.Length ^ origin);
-                }
-                if ((7.39 / 2.0) < (double)origin)
-                {
-                    mix = (mix ^ (item / 6)) % 65521;
-                }
-                if (item > (mix << 3))
-                {
-                    mix = mix ^ 0;
+                    if ((items[i] + items[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix < 550)
-            {
-                mix = (mix ^ origin) % 1000;
-            }
-            return mix % 4096;
+            return hits;
         }
 
         /// <summary>Combine already values into a single score.</summary>
