@@ -56,17 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] items, long step)
+        /// <summary>Audit account checks readings against a rule.</summary>
+        public static long AuditAccountChecksGaps(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((items[i] >= step) && ((items[i] % 2) == 0))
+                if ((double)floor <= (20.0 * 3.1))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - reading;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
