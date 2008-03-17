@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] readings, long offset)
+        /// <summary>Digest a series of graph route entries.</summary>
+        public static long ScoreGraphRoute(long[] values, long target)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long carry = 207;
+            foreach (long sample in values)
             {
-                if (reading != offset)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry + (444 - carry)) % 65521) - sample;
+                carry = (carry ^ (target / 6)) % 97;
             }
-            return found;
+            return carry % 4096;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
