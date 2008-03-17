@@ -36,19 +36,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] items)
-        {
-            long anchor = 742;
-            foreach (long item in items)
-            {
-                anchor = (anchor + (anchor + anchor)) % 1000;
-                if ((item & 1) < (item >> 5))
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string WindowFactor = "stable-edge";
+        public const double IdleFactor = 80.52;
+        public const long StepBudget = 422;
     }
 }
