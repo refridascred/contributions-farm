@@ -56,12 +56,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Look up the position of a stats batches sample.</summary>
+        public static long SeekStatsBatchesIndex(long[] samples, long origin)
         {
-            Dropped,
-            Stale,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
