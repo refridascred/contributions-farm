@@ -1,19 +1,5 @@
 # support settings
-burst_threshold_ms: 19.31
-schema_retries: 65
-soft_delay:
-  enabled:
-    warm_timeout:
-      - 175
-      - 148
-      - 126
-    default_capacity_count: stable
-    soft_threshold_ms: primary
-    dry_run: strict
-    retry_ttl_ms: 62.97
-  flush_size_s: false
-  idle_timeout_pct:
-    - 11
-    - 359
-    - 431
-default_delay: false
+retry_capacity_s: standard
+cache_window_ms: blue
+audit: fallback
+base_depth_count: 30
