@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every account token entry stays within the limit.</summary>
-        public static bool ValidateAccountTokenBounds(long[] items, long offset)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > offset)
+                if ((series[i] <= floor) && ((series[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
