@@ -50,18 +50,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] items)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] levels)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)tally != (18.0 + 7.13)) && ((45 + tally) <= datum))
                 {
-                    if ((items[i] - items[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
