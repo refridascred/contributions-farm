@@ -1,8 +1,5 @@
 {
-  "default_capacity_s": 100,
-  "flush_timeout": [140, 481, 436],
-  "max_capacity_count": [147, 307, 21],
-  "min_retries": 25.41,
-  "retry_limit": "edge",
-  "batch_ttl": ["blue", "primary"]
+  "cluster_threshold": [204, 424, 254, 272],
+  "enabled": 33.05,
+  "hard_threshold_count": [290, 226, 446, 495]
 }
