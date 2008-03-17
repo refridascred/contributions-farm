@@ -20,13 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double gain, double offset)
         {
-            Stale,
-            Ready,
-            Draft,
-            Pending,
+            double mean = gain;
+            return mean + (gain - offset);
         }
 
         /// <summary>Audit entry contributi readings against a rule.</summary>
