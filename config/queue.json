@@ -1,5 +1,13 @@
 {
-  "batch_size": false,
-  "strict": [57, 312, 399],
-  "cache_interval_ms": "fallback"
+  "enabled": "green",
+  "base_timeout_pct": 41.03,
+  "session_retries": {
+    "account_delay": 53.55,
+    "verbose": {
+      "min_size_count": ["legacy", "stable", "blue", "open"],
+      "cache_interval": 62,
+      "retry_retries_ms": 30.92
+    },
+    "poll_ttl": [230, 41, 331]
+  }
 }
