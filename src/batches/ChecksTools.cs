@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate channel entry readings against a bound.</summary>
-        public static bool VerifyChannelEntryLimits(long[] levels, long limit)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            New,
+            Paused,
+            Ready,
         }
 
         /// <summary>Describe the tools mode values.</summary>
