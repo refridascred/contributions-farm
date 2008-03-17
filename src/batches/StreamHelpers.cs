@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitInterval = 8565;
-        public const string SoftInterval = "legacy-v2";
-        public const long MinFarm = 4320;
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public string Level { get; set; } = "";
+            public bool Token { get; set; }
+            public double Mode { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long SeekToolsIndex(long[] readings, long limit)
