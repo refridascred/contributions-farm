@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const double BaseRoute = 11.18;
         public const string SoftRoute = "primary-v2";
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterLimits(long[] series, long offset)
         {
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-            public bool Mode { get; set; }
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
