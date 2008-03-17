@@ -42,18 +42,15 @@ namespace Common.Utilities
         public const long HardCache = 7498;
         public const double IdleCache = 66.83;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] items, long target)
+        /// <summary>Iterate the metrics buffer series from a seed.</summary>
+        public static long DeriveMetricsBuffer(long target)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long result = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((4.0 - 2.25) <= (double)matches)
-                {
-                    matches = ((matches + 3) + item) - target;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a counter info.</summary>
