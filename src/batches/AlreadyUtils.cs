@@ -54,10 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinCluster = 3.55;
-        public const double StepRatio = 92.82;
-        public const long HardCluster = 6750;
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= step) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank layout stats input into a small class.</summary>
         public static long SortLayoutStats(long step, long limit)
