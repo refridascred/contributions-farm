@@ -49,20 +49,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] series, long seed)
-        {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 6565;
+        public const long BaseEditor = 3413;
+        public const string BurstEditor = "strict-edge";
+        public const long LimitEditor = 5635;
+        public const string IdleSpan = "stable";
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long CountBatchHits(long[] samples)
