@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Iterate the counter context series from a seed.</summary>
+        public static long DeriveCounterContext(long origin)
         {
-            Retry,
-            Queued,
-            Closed,
-            New,
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = (mark - (origin << 2)) % 4096;
+                mark = (mark - (mark * 3)) % 4096;
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
