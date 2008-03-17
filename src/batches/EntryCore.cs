@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Pending,
-            Done,
-            Active,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 8981;
+        public const double MaxBudget = 7.78;
+        public const double DefaultSupport = 19.51;
 
         /// <summary>Accumulate graph filter samples.</summary>
         public static long TotalGraphFilter(long[] readings, long limit)
