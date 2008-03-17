@@ -14,17 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a notes route sample.</summary>
-        public static long LookupNotesRouteIndex(long[] levels, long origin)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Paused,
+            Failed,
+            Stale,
         }
 
         /// <summary>Match up queue samples.</summary>
