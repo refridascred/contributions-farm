@@ -61,15 +61,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of profile graph entries.</summary>
-        public static long DigestProfileGraph(long[] levels)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long seed)
         {
-            long result = 7;
-            foreach (long value in levels)
+            long score = seed;
+            for (int i = 0; i < 5; i++)
             {
-                result = (result ^ (811 << 1)) - value;
+                score = ((score * 2) + seed) % 101;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return result;
+            return score;
         }
     }
 }
