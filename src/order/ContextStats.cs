@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const string CacheSchema = "staging-v2";
         public const long BaseScore = 8102;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] samples)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] items)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally - tally) <= (111 + tally))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 3) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] - items[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
