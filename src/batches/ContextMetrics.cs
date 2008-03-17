@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (!(cell > (90 + hits)) || (cell <= (hits + hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string RetryInterval = "stable-v2";
+        public const double CacheScore = 43.9;
+        public const long SoftPayload = 9747;
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long OverlapReportCount(long[] values)
