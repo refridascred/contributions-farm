@@ -1,8 +1,10 @@
 {
-  "default_ttl_pct": true,
-  "compress": 76.17,
-  "min_depth_pct": "green",
-  "verbose": 53.62,
-  "tools_threshold": 13.84,
-  "record_ttl": "stable"
+  "readonly": 78,
+  "hard_interval_pct": {
+    "contributi_depth": 66,
+    "soft_capacity_count": false,
+    "githubfarm_size": 6598,
+    "dry_run": "cached"
+  },
+  "min_window": 3146
 }
