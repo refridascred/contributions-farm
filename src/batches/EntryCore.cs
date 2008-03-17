@@ -24,19 +24,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] samples, long floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (sample >= floor)
+                if (sample < floor)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Check that every stats order entry stays within the limit.</summary>
