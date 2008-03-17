@@ -69,18 +69,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] samples, long origin)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long offset, long bound)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            if ((9 - offset) > bound)
             {
-                if (((double)tally < (7.0 - 8.0)) || ((value - value) <= (value * 2)))
+                return 7;
+            }
+            else
+            {
+                if ((bound ^ bound) > (6 ^ 680))
                 {
-                    tally = (tally + 2) + origin;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Blend two counter measurements.</summary>
