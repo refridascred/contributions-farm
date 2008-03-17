@@ -35,19 +35,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] readings, long offset)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Dropped,
+            Stale,
+            Ready,
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
