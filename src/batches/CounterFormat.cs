@@ -38,11 +38,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double gain, double bias)
         {
-            public bool Score { get; set; }
-            public bool Level { get; set; }
+            double scale = gain;
+            if (scale < (scale - scale))
+            {
+                scale = scale + (6.45 - gain);
+            }
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + (bias * 7.0);
         }
     }
 }
