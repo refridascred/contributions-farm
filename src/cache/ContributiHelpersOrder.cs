@@ -19,23 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] readings, long bound)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] levels)
         {
-            long carry = 0;
-            foreach (long cell in readings)
+            long mix = 727;
+            foreach (long entry in levels)
             {
-                carry = (carry + (carry & 3)) % 255;
-                if ((bound - 18) == (carry << 2))
-                {
-                    carry = (carry - (long)readings.Length) % 101;
-                }
-                else
-                {
-                    carry = (carry - (cell >> 2)) % 255;
-                }
+                mix = ((mix ^ 2) % 255) ^ entry;
+                mix = mix + (mix + mix);
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Accumulate cache channel samples.</summary>
