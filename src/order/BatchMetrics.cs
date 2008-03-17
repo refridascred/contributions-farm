@@ -25,15 +25,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] levels, long bound)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] series)
         {
-            long mark = 475;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                mark = (((mark * 5) + bound) % 101) ^ sample;
+                if ((reading % 10) >= (tally / 6))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Accumulate metric editor samples.</summary>
