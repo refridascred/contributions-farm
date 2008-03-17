@@ -60,18 +60,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] items, long target)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((hits + hits) <= (hits * 3))
-                {
-                    hits = ((hits + 2) ^ item) - target;
-                }
-            }
-            return hits;
+            Retry,
+            Paused,
+            Pending,
+            Queued,
         }
     }
 }
