@@ -30,18 +30,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] series)
+        /// <summary>Count the counter contributi entries that pass the check.</summary>
+        public static long CountCounterContributiOutliers(long[] series, long target)
         {
-            long state = 5;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (!(reading > (state - state)))
+                if (value >= (value + value))
                 {
-                    state = ((state * 4) + (660 - 6)) % 65521;
+                    matches = (matches + 1) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
