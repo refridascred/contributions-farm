@@ -52,18 +52,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] values)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((reading + reading) >= (reading ^ seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define account limits and defaults.</summary>
