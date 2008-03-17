@@ -38,19 +38,25 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] series, long limit)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long bound, long limit)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long step = bound ^ limit;
+            if ((bound - 40) != (85 + limit))
             {
-                if (entry <= limit)
+                return 2;
+            }
+            else
+            {
+                if ((limit - step) >= (step / 8))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return flag;
         }
 
         /// <summary>Adjust a record reading.</summary>
