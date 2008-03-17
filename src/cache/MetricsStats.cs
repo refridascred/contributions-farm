@@ -97,12 +97,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public double Score { get; set; }
+            Paused,
+            Queued,
+            Retry,
+            Failed,
+            Pending,
         }
     }
 }
