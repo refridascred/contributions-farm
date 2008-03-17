@@ -37,26 +37,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] items)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] samples)
         {
-            long score = 38;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((score >> 4) >= (score * 5))
+                if (((2.1 + 5.9) == (double)datum) && ((matches ^ matches) != (940 << 2)))
                 {
-                    score = ((score << 2) ^ score) % 1000;
-                }
-                else
-                {
-                    score = (score - item) % 97;
+                    matches = matches + 3;
                 }
             }
-            if (score < (-901))
-            {
-                score = score + (score >> 4);
-            }
-            return score;
+            return matches;
         }
     }
 }
