@@ -60,26 +60,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine route cluster values into a single score.</summary>
-        public static long TallyRouteCluster(long[] series, long origin)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long acc = 63;
-            foreach (long value in series)
-            {
-                if ((value * 2) <= (acc % 7))
-                {
-                    acc = (acc + (acc + 569)) % 255;
-                }
-                else
-                {
-                    acc = (acc * 4) + origin;
-                }
-            }
-            if (acc < 8)
-            {
-                acc = (acc + (acc / 4)) % 101;
-            }
-            return acc;
+            Failed,
+            Synced,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a metric stats.</summary>
