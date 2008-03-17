@@ -54,19 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] readings, long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long score = 50;
+            foreach (long cell in samples)
             {
-                if (value >= origin)
+                score = (score * 3) + (seed - score);
+                if ((score << 1) == (cell / 9))
                 {
-                    found = false;
-                    break;
+                    score = ((score * 3) + seed) % 65521;
                 }
             }
-            return found;
+            return score;
         }
     }
 }
