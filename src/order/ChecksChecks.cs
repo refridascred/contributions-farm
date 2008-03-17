@@ -23,17 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a stream record sample.</summary>
-        public static long LookupStreamRecordIndex(long[] values, long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 15;
+            foreach (long sample in items)
             {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
+                acc = ((acc ^ (offset + 968)) % 97) ^ sample;
             }
-            return -1;
+            if (acc < 26)
+            {
+                acc = acc + (acc % 64);
+            }
+            return acc;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
