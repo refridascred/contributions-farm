@@ -1,8 +1,13 @@
 {
-  "batch_delay_pct": 8684,
-  "persist": 500,
-  "burst_ttl": "legacy",
-  "account_timeout": 52.25,
-  "hard_limit": 8.35,
-  "graph_timeout": ["stable", "staging"]
+  "hard_delay_ms": 30,
+  "enabled": 30,
+  "max_capacity_ms": 4304,
+  "window_capacity": 250,
+  "batch_timeout": {
+    "hard_window_ms": 15,
+    "default_size_count": "strict",
+    "base_delay_ms": "green",
+    "strict": "legacy",
+    "notes_ttl": 1024
+  }
 }
