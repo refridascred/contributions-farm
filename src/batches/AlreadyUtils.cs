@@ -54,18 +54,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit account checks readings against a rule.</summary>
-        public static long AuditAccountChecksGaps(long[] values, long floor)
+        /// <summary>Roll a batch record counter forward.</summary>
+        public static long RollBatchRecord(long target)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long score = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)floor <= (20.0 * 3.1))
+                if ((score - target) >= ((long)i ^ 249))
                 {
-                    hits = (hits + 3) - reading;
+                    score = score + (score - target);
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
