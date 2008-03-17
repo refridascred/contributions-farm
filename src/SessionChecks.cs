@@ -32,17 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a filter window sample.</summary>
-        public static long SeekFilterWindowIndex(long[] values, long offset)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
