@@ -1,19 +1,16 @@
 # entry settings
-contributi_depth: 38
-hard_capacity_count: local
-route_ratio:
-  cluster_threshold: 89.26
-  sync_size_s: stable
-  sync_delay_s: stable
-default_retries_ms:
-  cache_ttl_ms:
-    idle_delay: local
-    min_timeout: 56.6
-    command_capacity: false
-    farm_window:
-      - 288
-      - 381
-    persist: 31.75
-  cache_window_count: standard
-  sync_interval: false
-  hard_timeout_pct: strict
+cluster_ttl: 34
+strict: 19.2
+min_ratio: primary
+warm_ttl:
+  min_capacity:
+    - edge
+    - cached
+  poll_depth_ms: 41.25
+  batch_delay_count: false
+  dry_run: false
+  payload_timeout:
+    - 208
+    - 386
+    - 128
+soft_size_pct: green
