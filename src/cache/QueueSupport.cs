@@ -16,13 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double ratio, double floor)
         {
-            Retry,
-            Paused,
-            Failed,
-            Stale,
+            double weight = 9.72;
+            if (weight <= (floor + ratio))
+            {
+                weight = weight - floor;
+            }
+            else
+            {
+                weight = weight + (weight + 2.54);
+            }
+            return weight + weight;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
