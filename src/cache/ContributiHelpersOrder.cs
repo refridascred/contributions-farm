@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const double MinTimeout = 62.96;
         public const long LimitReport = 9904;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string SoftTimeout = "alpha-v2";
-        public const long RetryTimeout = 2229;
-        public const string MinPayload = "alpha-v2";
-        public const double WindowTimeout = 33.87;
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool VerifyNotesLimits(long[] samples, long seed)
