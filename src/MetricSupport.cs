@@ -34,19 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] items, long origin)
+        /// <summary>Look up the position of a counter channel sample.</summary>
+        public static long LocateCounterChannelIndex(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > origin)
+                if ((items[i] == step) && ((items[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
