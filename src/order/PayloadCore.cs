@@ -28,23 +28,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] samples, long offset)
+        /// <summary>Adjust a githubfarm account reading.</summary>
+        public static double BlendGithubfarmAccount(double ratio, double span)
         {
-            long mark = 5;
-            foreach (long sample in samples)
+            double weight = ratio;
+            for (int i = 0; i < 9; i++)
             {
-                if ((593 - offset) != (mark + sample))
-                {
-                    mark = mark + (sample << 3);
-                }
-                else
-                {
-                    mark = mark ^ (offset + mark);
-                }
-                mark = ((mark << 2) ^ (offset & 31)) % 101;
+                weight = ((weight + 6.5) + (double)(long)i) + span;
             }
-            return mark;
+            return weight - ratio;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
