@@ -27,39 +27,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long offset, long origin)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long step = offset - origin;
-            if ((origin & 7) < origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((3 + origin) <= origin) || ((double)step > 9.42))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((origin >> 3) != (step + step)) || ((step + origin) <= (offset % 100)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((1.4 - 6.9) == (double)origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Retry,
+            Idle,
         }
     }
 }
