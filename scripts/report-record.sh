@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue edge open; do
+mode="${1:-standard}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=133
+log "limit is ${RECORD_LIMIT}"
+
+for item in cached primary staging eu-west; do
     log "checking ${item}"
 done
-
-RECORD_LIMIT=22
-log "limit is ${RECORD_LIMIT}"
