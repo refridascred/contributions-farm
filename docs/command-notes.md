@@ -1,13 +1,14 @@
 # Command notes
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-The record helpers are pure functions, so they are safe to call from any thread.
+Each account is validated before it reaches the command queue.
+Use context settings to tune how often entry data is refreshed.
 
-Keep token and farm names short and lowercase.
-Use commits settings to tune how often buffer data is refreshed.
+Run the graph check before changing any notes limits.
+Defaults for context live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every route change
-- Keep cluster values small
-- Document new cache fields
+- Document new entry fields
+- Keep metric values small
+- Review channel limits each release
+- Validate contributi input early
