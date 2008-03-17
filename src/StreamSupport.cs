@@ -28,19 +28,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] items, long limit)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (entry < limit)
+                if (value < seed)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Roll a filter notes counter forward.</summary>
