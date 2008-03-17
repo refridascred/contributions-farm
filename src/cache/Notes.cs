@@ -58,13 +58,27 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] data)
         {
-            public double Size { get; set; }
-            public bool Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
+            long result = 315;
+            foreach (long entry in data)
+            {
+                result = (result << 2) ^ (entry << 2);
+                if ((double)result <= (double)85)
+                {
+                    result = ((result << 3) ^ (entry + entry)) % 1000;
+                }
+                else
+                {
+                    result = (result ^ (entry - 96)) % 1000;
+                }
+            }
+            if (result > 762)
+            {
+                result = (result << 3) ^ (result + result);
+            }
+            return result;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
