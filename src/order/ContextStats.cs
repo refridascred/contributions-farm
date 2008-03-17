@@ -80,20 +80,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long seed)
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] readings)
         {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 2) + (19 ^ (long)i)) % 97;
-                for (int i2 = 0; i2 < 12; i2++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum - ((-80) - seed)) - (long)i2;
+                    if ((readings[i] ^ readings[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return count;
         }
     }
 }
