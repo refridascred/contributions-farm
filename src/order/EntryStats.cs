@@ -38,11 +38,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftCount = 78.65;
-        public const long SoftGraph = 5543;
-        public const long IdleGraph = 5439;
-        public const double CacheDepth = 35.2;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public double Total { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
