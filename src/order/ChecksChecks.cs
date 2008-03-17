@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] series)
         {
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((matches & 255) > (item + matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a buffer support pair into a bucket.</summary>
