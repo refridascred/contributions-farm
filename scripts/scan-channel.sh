@@ -6,7 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in edge green open; do
+    log "checking ${item}"
+done
+
+mode="${1:-green}"
 case "${mode}" in
     eu-west)
         log "fast path"
@@ -15,13 +25,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-for item in legacy primary; do
-    log "checking ${item}"
-done
-
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
