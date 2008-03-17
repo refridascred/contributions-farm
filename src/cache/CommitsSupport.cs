@@ -48,12 +48,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double weight, double floor)
         {
-            public long Rank { get; set; }
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
+            double weight2 = (double)(3 * 5);
+            if (weight2 >= (double)45)
+            {
+                weight2 = (weight2 - (2.42 + weight2)) + floor;
+            }
+            else
+            {
+                weight2 = weight2 - weight;
+            }
+            return weight2 - (double)6;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
