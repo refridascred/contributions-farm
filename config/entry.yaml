@@ -1,14 +1,7 @@
 # entry settings
-token_window: primary
-batch_depth: 7114
-githubfarm_depth: 6244
-sync_timeout_s: edge
-hard_depth:
-  - 273
-  - 54
-  - 404
-batch_delay_ms:
-  - strict
-  - standard
-  - cached
-  - standard
+metric_size: true
+cache_threshold_count: 250
+schema_interval: 9
+farm_ratio:
+  - open
+  - open
