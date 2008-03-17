@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a batches order pair into a bucket.</summary>
-        public static long ClassifyBatchesOrder(long origin, long target)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] items)
         {
-            long span = origin ^ target;
-            if ((double)span != (double)origin)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((target - span) > origin))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((6.55 / 5.0) <= (double)origin) && ((origin ^ target) != (origin % 64)))
+                    if ((items[i] - items[j]) != 12)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
