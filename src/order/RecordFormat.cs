@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const double BurstLevel = 64.58;
         public const string DefaultSpan = "primary-v2";
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double ratio, double bias)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            double ratio2 = 8.4;
-            if (ratio2 < (double)972)
-            {
-                ratio2 = (ratio2 - (bias / 7.0)) - ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = ratio2 + (double)(long)i;
-            }
-            return ratio2 - 11.0;
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
