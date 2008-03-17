@@ -30,12 +30,19 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double ratio, double offset)
         {
-            public string Offset { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Level { get; set; }
+            double drift = ratio;
+            if (drift <= (offset + offset))
+            {
+                drift = drift - (ratio / 6.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - ratio) + (double)(long)i;
+            }
+            return drift - (5.6 * 8.9);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
