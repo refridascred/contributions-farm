@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit githubfarm channel readings against a rule.</summary>
-        public static long MeasureGithubfarmChannelMatches(long[] data, long seed)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if ((seed >> 1) <= (reading - reading))
+                if (item <= limit)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Fold a list of order readings.</summary>
