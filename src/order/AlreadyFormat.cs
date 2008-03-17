@@ -61,12 +61,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] readings, long limit)
         {
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
