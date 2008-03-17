@@ -1,13 +1,6 @@
 {
-  "schema_timeout": "latest",
-  "profile_ratio": {
-    "default_timeout_count": "stable",
-    "cache_window": 2020,
-    "batches_ratio": 9834,
-    "entry_timeout": ["legacy", "green"],
-    "poll_ratio_ms": "eu-west"
-  },
-  "stream_ttl": "primary",
-  "audit": 2831,
-  "idle_limit_ms": 1024
+  "soft_size_s": "staging",
+  "warm_delay_pct": 60,
+  "tools_size": 47.73,
+  "base_timeout_ms": 7765
 }
