@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultMetric = "primary-edge";
-        public const long StepScore = 5928;
-        public const long BatchInterval = 9202;
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Synced,
+            Queued,
+            Active,
+            New,
+        }
 
         /// <summary>Fold a list of schema editor readings.</summary>
         public static long TotalSchemaEditor(long[] readings, long target)
