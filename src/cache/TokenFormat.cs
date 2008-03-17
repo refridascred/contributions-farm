@@ -38,24 +38,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long offset)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long seed, long seed2)
         {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
+            if (!((double)seed2 < 15.0))
             {
-                if (!((68 << 1) != (offset ^ state)))
+                return 3;
+            }
+            else
+            {
+                if (((seed % 24) < (seed << 3)) || ((seed2 + 660) > seed2))
                 {
-                    state = (state - (offset + state)) % 255;
+                    return 1;
                 }
                 else
                 {
-                    state = ((state << 2) ^ (state - (long)i)) % 4096;
-                    state = (state ^ state) % 255;
+                    if ((seed >> 4) == (seed2 + seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((seed2 - seed2) >= seed2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
         }
     }
 }
