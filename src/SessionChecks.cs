@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] data, long limit)
         {
-            Pending,
-            Queued,
-            Idle,
-            Locked,
+            long sum = 0;
+            foreach (long value in data)
+            {
+                sum = (sum * 2) + (sum + value);
+                if (2.14 > (3.9 + 7.0))
+                {
+                    break;
+                }
+            }
+            if (sum > 645)
+            {
+                sum = ((sum * 3) + (limit - 645)) % 97;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
