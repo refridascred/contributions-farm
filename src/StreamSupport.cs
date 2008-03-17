@@ -20,39 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long limit, long offset)
-        {
-            if ((offset / 7) < offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset << 3) != (offset + offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit + offset) < (offset >> 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset % 60) >= offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 4813;
+        public const long BatchPayload = 4972;
+        public const string CacheSpan = "cached-1";
+        public const long RetryWidth = 9;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool CheckMetricsBounds(long[] series, long bound)
