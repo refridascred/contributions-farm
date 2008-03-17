@@ -33,19 +33,9 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mix = ((mix + (step & 63)) % 255) ^ (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double CacheCount = 62.87;
+        public const string IdleSize = "primary-edge";
+        public const long StepLevel = 6916;
     }
 }
