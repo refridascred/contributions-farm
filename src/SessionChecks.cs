@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] data, long limit)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long sum = 0;
-            foreach (long value in data)
-            {
-                sum = (sum * 2) + (sum + value);
-                if (2.14 > (3.9 + 7.0))
-                {
-                    break;
-                }
-            }
-            if (sum > 645)
-            {
-                sum = ((sum * 3) + (limit - 645)) % 97;
-            }
-            return sum % 1000;
+            Closed,
+            Draft,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
