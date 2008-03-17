@@ -24,19 +24,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double ratio, double span)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            double scale = 3.0 / 5.0;
-            if (scale < (1.3 + 16.0))
-            {
-                scale = (scale - (span / 2.0)) + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - (span * 2.1);
+            public string Label { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Adjust a counter farm reading.</summary>
