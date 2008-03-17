@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const long LimitFarm = 3128;
         public const long IdleFactor = 6921;
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] values)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] readings, long seed)
         {
-            long state = 8;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)datum < (double)state) || ((4.17 * 8.4) != (double)datum))
+                if (readings[i] < seed)
                 {
-                    state = state - (datum * 2);
-                }
-                else
-                {
-                    state = ((state * 4) + (547 - state)) % 255;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Scale a report counter figure with a bias.</summary>
