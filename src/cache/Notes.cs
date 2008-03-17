@@ -63,10 +63,11 @@ namespace Common.Utilities
         public const long LimitFactor = 9552;
         public const long StepSchema = 4396;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MinGithubfarm = "local";
-        public const long SoftGithubfarm = 5865;
-        public const string BaseGithubfarm = "standard-1";
-        public const string BaseSize = "legacy-v2";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultEntry = "latest";
+        public const string IdleTimeout = "fallback-v2";
+        public const double StepEntry = 33.19;
+        public const long LimitEntry = 8264;
+        public const double MinWidth = 69.1;
     }
 }
