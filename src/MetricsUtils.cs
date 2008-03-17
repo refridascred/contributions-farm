@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long step)
+        /// <summary>Look up the position of a already counter sample.</summary>
+        public static long SeekAlreadyCounterIndex(long[] values, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (values[i] <= floor)
                 {
-                    acc = ((acc << 2) ^ step) ^ (long)i2;
+                    return (long)i;
                 }
-                if (((step >> 4) < (99 ^ acc)) && ((double)3 < (double)step))
-                {
-                    acc = acc + (long)i;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ ((long)i + 0);
-                }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Adjust a layout reading.</summary>
