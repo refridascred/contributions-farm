@@ -19,23 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] samples, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] samples, long step)
         {
-            long mix = 794;
+            long seen = 0;
             foreach (long reading in samples)
             {
-                mix = ((mix - ((long)samples.Length & 255)) % 4096) - seed;
-                for (int i = 0; i < 5; i++)
+                if ((step % 10) != (step + step))
                 {
-                    mix = ((mix ^ (mix % 64)) % 97) - (long)i;
+                    seen = (seen + 3) ^ reading;
                 }
-                if ((7.23 * 7.0) > (double)reading)
+                else
                 {
-                    mix = (mix - reading) % 101;
+                    seen = seen - 1;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
