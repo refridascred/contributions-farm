@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Count the session context entries that pass the check.</summary>
+        public static long CountSessionContextGaps(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((double)hits <= (4.0 / 2.0)) || ((reading >> 4) == (reading >> 2)))
                 {
-                    if ((levels[i] - levels[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
