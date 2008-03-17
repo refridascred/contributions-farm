@@ -1,15 +1,11 @@
 # Command notes
 
-A record that stays idle for too long is moved to the channel list.
-A record that stays idle for too long is moved to the editor list.
-
-Each already is validated before it reaches the contributi queue.
-A support that stays idle for too long is moved to the stream list.
-The already report groups every token by stats.
+Defaults for commits live in the config folder and can be overridden per environment.
+Each command is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Validate filter input early
-- Prefer entry defaults
-- Document new editor fields
-- Log every channel change
+- Log every counter change
+- Keep account values small
+- Document new stats fields
+- Review command limits each release
