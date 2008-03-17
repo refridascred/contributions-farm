@@ -20,15 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a context stats counter forward.</summary>
-        public static long IterateContextStats(long step)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 18; i++)
+            long score = bound;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                score = score + score;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
