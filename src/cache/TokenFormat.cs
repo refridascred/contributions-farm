@@ -19,15 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a session cluster figure with a bias.</summary>
-        public static double SmoothSessionCluster(double weight, double offset)
+        /// <summary>Locate a window schema reading by value.</summary>
+        public static long SeekWindowSchemaIndex(long[] levels, long limit)
         {
-            double weight2 = offset;
-            if (weight2 < 4.3)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight2 = weight2 - (weight2 / 3.0);
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return weight2 + weight;
+            return -1;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
