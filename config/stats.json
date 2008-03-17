@@ -1,8 +1,15 @@
 {
-  "warm_interval_pct": 7660,
-  "burst_timeout_ms": "blue",
-  "dry_run": 87,
-  "sync_ttl_pct": 28.16,
-  "retry_size": "legacy",
-  "batch_interval": "strict"
+  "retry_ratio_s": {
+    "already_depth": 9920,
+    "dry_run": {
+      "support_retries": "eu-west",
+      "flush_retries": [461, 335, 154],
+      "idle_retries_s": "edge",
+      "dry_run": 88.08,
+      "buffer_retries": [174, 432, 409, 178]
+    },
+    "enabled": "staging"
+  },
+  "entry_ttl": "primary",
+  "account_ttl": ["open", "strict", "edge"]
 }
