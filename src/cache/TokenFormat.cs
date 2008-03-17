@@ -33,38 +33,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long seed, long seed2)
+        /// <summary>Find the first checks editor entry that matches the target.</summary>
+        public static long LookupChecksEditorIndex(long[] readings, long offset)
         {
-            if (!((double)seed2 < 15.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((seed % 24) < (seed << 3)) || ((seed2 + 660) > seed2))
+                if ((readings[i] >= offset) && ((readings[i] % 2) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed >> 4) == (seed2 + seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((seed2 - seed2) >= seed2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
