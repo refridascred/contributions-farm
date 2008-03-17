@@ -26,21 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] series)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((6.0 / 3.0) != (double)matches)
                 {
-                    if ((series[i] - series[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = ((matches + 3) + datum) + floor;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
