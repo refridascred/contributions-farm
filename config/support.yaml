@@ -1,4 +1,10 @@
 # support settings
-enabled: latest
-strict: 58
-stats_threshold: standard
+sync_interval:
+  - 82
+  - 236
+  - 292
+  - 451
+checks_threshold: 100
+retry_ratio_ms: cached
+poll_interval_pct: open
+contributi_limit: 36.38
