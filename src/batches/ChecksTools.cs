@@ -30,12 +30,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            Failed,
+            Queued,
+            Idle,
+            Paused,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
