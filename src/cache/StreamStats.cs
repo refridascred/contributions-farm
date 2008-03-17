@@ -17,21 +17,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of token channel readings.</summary>
-        public static long MatchTokenChannelCount(long[] items)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 27;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell > (cell + (-4)))
                 {
-                    if ((items[i] ^ items[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark + (mark ^ cell)) % 255;
                 }
             }
-            return count;
+            if (mark > 1)
+            {
+                mark = ((mark * 4) + mark) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
