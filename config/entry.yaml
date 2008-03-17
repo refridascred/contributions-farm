@@ -1,36 +1,19 @@
 # entry settings
-persist:
-  - 372
-  - 159
-  - 282
-  - 421
-batch_interval_s: legacy
-audit: 78.53
-report_delay:
-  hard_window_count: primary
-  batch_depth: edge
-  warm_window_ms:
-    - local
-    - open
-    - primary
-    - latest
-  hard_retries_pct:
-    route_capacity:
-      - legacy
-      - blue
-      - cached
-    contributi_window:
-      - green
-      - fallback
-      - open
-    strict: 0.45
-    stream_ttl: 95
-  verbose: fallback
-  min_ratio_pct:
-    - 309
-    - 404
 dry_run:
-  - 300
-  - 105
-  - 107
-idle_threshold: green
+  - 163
+  - 196
+  - 31
+  - 297
+compress:
+  dry_run: 61.64
+  burst_threshold:
+    - 146
+    - 209
+  batch_ttl_pct: 5286
+  batch_interval_pct:
+    - open
+    - green
+  profile_ratio: 4744
+idle_retries: standard
+readonly: 62.58
+filter_delay: 8496
