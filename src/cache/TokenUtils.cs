@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] data, long target)
+        /// <summary>Check that every tools format entry stays within the limit.</summary>
+        public static bool ValidateToolsFormatRange(long[] data, long offset)
         {
-            long sum = 89;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                sum = ((sum * 2) + (target & 255)) + reading;
-                sum = (sum ^ (target % 100)) % 4096;
+                if (sample < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (sum > (-92))
-            {
-                sum = (sum - target) % 1000;
-            }
-            return sum % 4096;
+            return ready;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
