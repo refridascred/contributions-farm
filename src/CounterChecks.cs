@@ -48,19 +48,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a contributi notes figure with a bias.</summary>
-        public static double AdjustContributiNotes(double rate, double bias)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            double weight = (double)(87 >> 5);
-            if (weight >= (rate + bias))
-            {
-                weight = weight - (9.4 * 17.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (double)(-71)) + (double)(long)i;
-            }
-            return weight - (1.76 * 4.0);
+            public bool Weight { get; set; }
+            public bool Region { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the metric mode values.</summary>
