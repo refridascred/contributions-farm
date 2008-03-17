@@ -39,17 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a profile report counter forward.</summary>
-        public static long RollProfileReport(long bound)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark << 2) ^ (mark << 1)) % 255;
-                mark = ((mark << 3) ^ (bound % 10)) % 4096;
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            New,
+            Done,
+            Retry,
+            Active,
         }
 
         /// <summary>Find the first batches queue entry that matches the target.</summary>
