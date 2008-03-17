@@ -69,24 +69,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long offset, long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] readings, long target)
         {
-            if ((9 - offset) > bound)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound ^ bound) > (6 ^ 680))
+                if (((target - target) >= target) || ((double)cell == (5.0 * 2.0)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Blend two counter measurements.</summary>
