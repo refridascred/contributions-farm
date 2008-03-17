@@ -24,18 +24,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] values, long floor)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double scale = 3.0 / 5.0;
+            if (scale < (1.3 + 16.0))
             {
-                if ((floor >> 3) >= (floor - floor))
-                {
-                    matches = (matches + 3) + sample;
-                }
+                scale = (scale - (span / 2.0)) + ratio;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - (span * 2.1);
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
