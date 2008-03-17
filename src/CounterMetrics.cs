@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long limit, long target)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] data, long offset)
         {
-            if ((target / 4) == (limit >> 5))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (limit <= target)
+                if (data[i] < offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((70 & 3) <= target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)target >= (double)limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the profile status values.</summary>
