@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the schema account entries that pass the check.</summary>
-        public static long MeasureSchemaAccountHits(long[] items, long offset)
+        /// <summary>Classify a batch stream pair into a bucket.</summary>
+        public static long RankBatchStream(long offset, long bound)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            if (((8.29 / 9.0) <= (double)offset) || (440 > (offset - bound)))
             {
-                if (!!((3.4 + 11.0) == (double)offset))
+                return 8;
+            }
+            else
+            {
+                if ((double)bound == (10.0 + 4.76))
                 {
-                    tally = (tally + 1) - entry;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset - offset) >= offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)bound <= 2.9) || ((bound & 31) != (offset * 5)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
