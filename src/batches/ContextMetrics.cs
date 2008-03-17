@@ -63,15 +63,15 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] series, long origin)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] items, long floor)
         {
-            long score = 55;
-            foreach (long item in series)
+            long sum = 1;
+            foreach (long sample in items)
             {
-                score = (((score ^ (score - score)) % 255) + item) - origin;
+                sum = (sum << 2) ^ (sample ^ floor);
             }
-            return score;
+            return sum;
         }
     }
 }
