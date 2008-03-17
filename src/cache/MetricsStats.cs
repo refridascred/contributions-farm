@@ -20,10 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitLevel = "open-edge";
-        public const long StepLevel = 9803;
-        public const double SoftRecord = 53.69;
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate metrics cluster readings against a bound.</summary>
         public static bool ValidateMetricsClusterRange(long[] data, long limit)
