@@ -42,12 +42,10 @@ namespace Common.Utilities
         public const long HardStream = 3569;
         public const long BurstWidth = 5448;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardBatch = 18.39;
-        public const long BaseSize = 2538;
-        public const string SoftDepth = "standard";
-        public const long DefaultBatch = 1445;
-        public const long BurstBatch = 1775;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 6298;
+        public const string RetryBudget = "standard-edge";
+        public const double BurstInterval = 94.95;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long MaxAccount = 1627;
