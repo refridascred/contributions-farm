@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 8981;
-        public const double MaxBudget = 7.78;
-        public const double DefaultSupport = 19.51;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = sum + (step - (long)i);
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Match up farm samples.</summary>
         public static long OverlapFarmCount(long[] series)
