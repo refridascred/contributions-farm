@@ -34,15 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] values, long step)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] values)
         {
-            long mark = 842;
+            long carry = -170;
             foreach (long cell in values)
             {
-                mark = ((mark * 3) + (step << 2)) - cell;
+                if (carry > (carry - cell))
+                {
+                    carry = ((carry << 3) ^ (carry << 2)) % 255;
+                }
             }
-            return mark;
+            return carry;
         }
     }
 }
