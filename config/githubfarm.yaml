@@ -1,6 +1,17 @@
 # githubfarm settings
-max_ttl_ms: stable
-strict: primary
-graph_ttl: local
-batch_size_pct: strict
-cache_interval: 88
+poll_timeout_s:
+  editor_size: 4285
+  base_retries_pct: 100
+  persist: 4488
+  burst_depth_pct: 83.64
+  warm_capacity_pct: 113
+  channel_capacity: false
+base_capacity_s:
+  - fallback
+  - fallback
+poll_timeout:
+  dry_run: false
+  base_limit_count: open
+  burst_depth_pct: 59
+  burst_delay_pct: eu-west
+persist: standard
