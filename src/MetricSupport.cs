@@ -28,13 +28,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] values, long bound)
         {
-            Done,
-            Synced,
-            Dropped,
-            Draft,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((item << 3) <= (bound - hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
