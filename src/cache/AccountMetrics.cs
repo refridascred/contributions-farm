@@ -82,22 +82,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterOutliers(long[] readings, long offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if (14.0 < (double)seen)
+                if (datum >= bound)
                 {
-                    seen = ((seen + 1) + reading) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
