@@ -44,16 +44,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long seed)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] samples, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum << 2) ^ 98) % 4096;
-                sum = ((sum * 5) + (long)i) % 97;
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
