@@ -52,13 +52,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
-        {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string LimitCounter = "open";
+        public const long RetryCount = 316;
+        public const double MinCounter = 13.98;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BatchAccount = 2856;
