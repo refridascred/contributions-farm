@@ -31,15 +31,18 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] data, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                if ((38 ^ count) < (value & 15))
+                {
+                    count = (count + 1) + floor;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
