@@ -66,18 +66,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] series, long target)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] levels, long origin)
         {
-            long acc = 109;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (!((entry & 31) < (entry / 5)))
+                if ((origin * 3) < origin)
                 {
-                    acc = ((acc ^ (916 + 315)) % 65521) - target;
+                    matches = (matches + 3) - cell;
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
