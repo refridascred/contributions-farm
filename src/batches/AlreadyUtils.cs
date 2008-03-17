@@ -60,20 +60,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Rank layout stats input into a small class.</summary>
+        public static long SortLayoutStats(long step, long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 12; i++)
+            long slot = step ^ limit;
+            if (!(8 <= (step - 1)))
             {
-                bool stale = (target * 4) >= mark;
-                if (stale)
-                {
-                    mark = (mark - ((-71) + target)) % 4096;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if (step <= (91 % 60))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit - slot) >= 53)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step & 63) < limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
