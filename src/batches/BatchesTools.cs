@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long origin)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] data, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
+            long anchor = 9;
+            foreach (long sample in data)
             {
-                if ((812 - origin) < origin)
+                if ((9.5 - 6.2) > (double)sample)
                 {
-                    score = (score ^ (score / 5)) % 101;
-                    score = (score * 4) + score;
+                    anchor = (anchor ^ (seed + 56)) % 1000;
                 }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Validate context filter readings against a bound.</summary>
