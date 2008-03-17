@@ -38,11 +38,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 7940;
-        public const long BurstCount = 5370;
-        public const long MinFarm = 1719;
-        public const long WindowWidth = 766;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 441;
+        public const string BatchSchema = "staging-edge";
+        public const long BurstRatio = 5027;
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long MatchCounterCount(long[] samples)
