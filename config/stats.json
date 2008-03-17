@@ -1,17 +1,7 @@
 {
-  "min_ratio_count": 19.7,
-  "verbose": 100,
-  "default_ttl_s": [174, 42, 4, 372],
-  "readonly": 8452,
-  "burst_threshold_ms": "edge",
-  "batch_retries_s": {
-    "format_retries": [471, 113, 65],
-    "hard_timeout": true,
-    "warm_size_ms": {
-      "max_size_count": 365,
-      "retry_limit": 3590,
-      "cache_capacity": 27
-    },
-    "base_timeout_count": false
-  }
+  "poll_window_pct": false,
+  "readonly": false,
+  "warm_capacity": "green",
+  "poll_timeout_count": 97.66,
+  "hard_delay_ms": 33
 }
