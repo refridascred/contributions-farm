@@ -22,14 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetryInterval = 43.24;
+        public const double RetryBuffer = 75.76;
+        public const double CacheBuffer = 50.91;
+        public const long HardSpan = 1309;
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
