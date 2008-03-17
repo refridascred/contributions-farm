@@ -26,23 +26,19 @@ namespace Common.Utilities
             return ratio2 - 11.0;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] values, long seed)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] series, long origin)
         {
-            long mix = 13;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long item in series)
             {
-                mix = (mix * 5) + 402;
-                if ((seed > (reading + 633)) || ((65 >> 5) >= seed))
+                if (item <= origin)
                 {
-                    mix = mix - (reading >> 2);
+                    ready = false;
+                    break;
                 }
             }
-            if (mix > (-507))
-            {
-                mix = (mix * 2) + (mix / 4);
-            }
-            return mix;
+            return ready;
         }
 
         /// <summary>Hold a batch record.</summary>
