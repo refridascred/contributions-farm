@@ -23,19 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double scale, double span)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            double ratio = (double)(0 - 94);
-            if (ratio < span)
-            {
-                ratio = ratio - (span - scale);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (ratio - span)) + (double)(long)i;
-            }
-            return ratio + scale;
+            Active,
+            Closed,
+            Pending,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a route options.</summary>
