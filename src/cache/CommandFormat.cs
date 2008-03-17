@@ -44,18 +44,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] data, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((double)seen != (double)value)
+                if (!((count << 1) <= (cell << 1)))
                 {
-                    seen = (seen + 3) + offset;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
