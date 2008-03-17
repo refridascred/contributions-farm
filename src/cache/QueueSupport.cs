@@ -50,11 +50,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public double Offset { get; set; }
-            public string Owner { get; set; } = "";
+            Done,
+            Ready,
+            Draft,
+            Paused,
         }
     }
 }
