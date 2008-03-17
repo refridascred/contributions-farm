@@ -69,18 +69,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] items, long bound)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long mark = 9;
-            foreach (long datum in items)
-            {
-                if ((double)mark == (5.0 / 8.0))
-                {
-                    mark = (((mark << 2) ^ (datum + mark)) % 65521) - bound;
-                }
-            }
-            return mark;
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
