@@ -1,10 +1,13 @@
 # Command notes
 
-Run the tools check before changing any farm limits.
-Each tools is validated before it reaches the entry queue.
+Use already settings to tune how often buffer data is refreshed.
+Run the account check before changing any channel limits.
+
+The checks report groups every queue by buffer.
+The stream helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate notes input early
-- Prefer contributi defaults
-- Keep record values small
+- Validate editor input early
+- Log every editor change
+- Document new channel fields
