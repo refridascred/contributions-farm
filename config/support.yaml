@@ -1,7 +1,8 @@
 # support settings
-default_timeout_s: 47.34
-default_limit: 4438
-warm_window_pct: 83.09
-readonly: 70.37
-stats_retries: fallback
-cache_timeout_count: 12
+notes_depth:
+  - fallback
+  - strict
+  - latest
+dry_run: false
+burst_timeout_ms: 71.19
+hard_window_ms: 22
