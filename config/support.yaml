@@ -1,7 +1,19 @@
 # support settings
-readonly: 3583
-base_depth_pct: standard
-checks_capacity: true
-hard_window_ms: 61.15
-poll_timeout_pct: edge
-audit: open
+burst_threshold_ms: 19.31
+schema_retries: 65
+soft_delay:
+  enabled:
+    warm_timeout:
+      - 175
+      - 148
+      - 126
+    default_capacity_count: stable
+    soft_threshold_ms: primary
+    dry_run: strict
+    retry_ttl_ms: 62.97
+  flush_size_s: false
+  idle_timeout_pct:
+    - 11
+    - 359
+    - 431
+default_delay: false
