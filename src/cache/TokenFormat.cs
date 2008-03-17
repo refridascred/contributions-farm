@@ -27,18 +27,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit schema metrics readings against a rule.</summary>
-        public static long MeasureSchemaMetricsOutliers(long[] readings)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((tally + (long)readings.Length) != (tally - tally)))
+                if (series[i] == seed)
                 {
-                    tally = (tally + 1) - reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
