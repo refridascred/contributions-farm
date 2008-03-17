@@ -40,26 +40,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] data)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long result = 1;
-            foreach (long cell in data)
-            {
-                if ((cell ^ (-9)) != (result >> 3))
-                {
-                    result = (result * 3) + (result * 3);
-                }
-                else
-                {
-                    result = result + cell;
-                }
-            }
-            if (result > 78)
-            {
-                result = (result * 4) + (result / 2);
-            }
-            return result % 97;
+            Pending,
+            Closed,
+            Stale,
+            Locked,
+            Queued,
         }
 
         /// <summary>Project the next tools value.</summary>
