@@ -39,10 +39,17 @@ namespace Common.Utilities
         public const long MinLayout = 8839;
         public const double LimitLayout = 14.87;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BatchPayload = 96.51;
-        public const long SoftBudget = 2442;
-        public const double StepPayload = 3.48;
-        public const long MinPayload = 2119;
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > step) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
