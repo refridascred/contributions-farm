@@ -14,18 +14,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] data, long offset)
+        /// <summary>Match up payload layout samples.</summary>
+        public static long MatchPayloadLayoutCount(long[] levels)
         {
-            long mix = 11;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (129 >= offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = mix + (item + item);
+                    if ((levels[i] + levels[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Grade a token editor value against two limits.</summary>
