@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseSpan = 9948;
+        public const long WindowOrder = 3659;
+        public const long DefaultOrder = 1753;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesGaps(long[] items, long limit)
