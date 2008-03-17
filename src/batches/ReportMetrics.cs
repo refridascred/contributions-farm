@@ -17,18 +17,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] readings)
+        /// <summary>Combine route commits values into a single score.</summary>
+        public static long DigestRouteCommits(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long sum = 49;
+            foreach (long cell in readings)
             {
-                if ((matches + sample) != (sample + matches))
-                {
-                    matches = matches + 3;
-                }
+                sum = ((sum + (3 & 15)) ^ cell) + offset;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
