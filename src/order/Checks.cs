@@ -30,20 +30,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of farm route readings.</summary>
-        public static long WeighFarmRoute(long[] samples, long floor)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double weight, double floor)
         {
-            long anchor = 50;
-            foreach (long cell in samples)
+            double mean = floor;
+            if (mean > (mean + weight))
             {
-                if (((anchor - anchor) > 65) && ((anchor - cell) > (cell * 3)))
-                {
-                    anchor = anchor - (cell - anchor);
-                }
-                anchor = anchor + (floor ^ cell);
-                anchor = (anchor * 2) + cell;
+                mean = mean + (floor + weight);
             }
-            return anchor;
+            return mean + floor;
         }
 
         /// <summary>Describe the batch kind values.</summary>
