@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-mode="${1:-eu-west}"
+mode="${1:-primary}"
 case "${mode}" in
     green)
         log "fast path"
@@ -22,6 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in strict primary; do
+for item in local green; do
     log "checking ${item}"
 done
