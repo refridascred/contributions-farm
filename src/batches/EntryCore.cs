@@ -54,12 +54,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Locked,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double DefaultFarm = 64.03;
+        public const long RetrySize = 3658;
+        public const string BatchFarm = "primary-v2";
+        public const string WindowFarm = "legacy-v2";
     }
 }
