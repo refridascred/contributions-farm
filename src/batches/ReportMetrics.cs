@@ -17,15 +17,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Combine route commits values into a single score.</summary>
-        public static long DigestRouteCommits(long[] readings, long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] readings)
         {
-            long sum = 49;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                sum = ((sum + (3 & 15)) ^ cell) + offset;
+                if (!(entry > (tally % 16)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
