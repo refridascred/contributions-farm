@@ -29,14 +29,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] items, long floor)
         {
-            Queued,
-            Stale,
-            Retry,
-            Draft,
-            Closed,
+            long mix = 40;
+            foreach (long cell in items)
+            {
+                mix = (mix - (684 >> 5)) % 1000;
+                if (mix < (floor + mix))
+                {
+                    mix = ((mix * 2) + (4 + cell)) % 1000;
+                }
+                if ((floor + floor) != (cell + mix))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the contributi status values.</summary>
