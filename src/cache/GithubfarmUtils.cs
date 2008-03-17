@@ -30,19 +30,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Blend two notes route measurements.</summary>
-        public static double ProjectNotesRoute(double gain, double floor)
+        /// <summary>Combine profile githubfarm values into a single score.</summary>
+        public static long TotalProfileGithubfarm(long[] samples)
         {
-            double ratio = (double)((-84) * 3);
-            if (ratio < (6.0 / 8.0))
+            long acc = 44;
+            foreach (long cell in samples)
             {
-                ratio = ratio - gain;
+                if ((cell < (cell ^ acc)) && (cell <= (cell << 2)))
+                {
+                    acc = (acc << 2) ^ (acc - cell);
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (gain - floor)) - (double)(long)i;
-            }
-            return ratio - floor;
+            return acc;
         }
 
         /// <summary>Define order limits and defaults.</summary>
