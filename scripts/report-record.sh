@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=309
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-staging}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in legacy fallback latest; do
+for item in fallback open blue local; do
     log "checking ${item}"
 done
