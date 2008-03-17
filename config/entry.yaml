@@ -1,19 +1,5 @@
 # entry settings
-dry_run:
-  - 163
-  - 196
-  - 31
-  - 297
-compress:
-  dry_run: 61.64
-  burst_threshold:
-    - 146
-    - 209
-  batch_ttl_pct: 5286
-  batch_interval_pct:
-    - open
-    - green
-  profile_ratio: 4744
-idle_retries: standard
-readonly: 62.58
-filter_delay: 8496
+sync_delay_count: green
+persist: 26.13
+profile_timeout: strict
+burst_retries_s: green
