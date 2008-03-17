@@ -27,19 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] levels, long step)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long acc = 898;
+            foreach (long item in series)
             {
-                if (reading != step)
+                if (((double)offset >= (double)item) && ((0.5 - 9.0) == (double)acc))
                 {
-                    found = false;
-                    break;
+                    acc = ((acc << 3) ^ (offset ^ 2)) % 101;
                 }
             }
-            return found;
+            if (acc < 2)
+            {
+                acc = ((acc << 3) ^ 124) % 101;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Blend two checks measurements.</summary>
