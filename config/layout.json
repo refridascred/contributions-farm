@@ -1,5 +1,11 @@
 {
-  "base_timeout": 73,
-  "verbose": 6160,
-  "warm_delay_pct": "green"
+  "base_capacity": "cached",
+  "poll_interval": {
+    "order_window": ["strict", "cached", "open"],
+    "schema_timeout": true,
+    "compress": "edge",
+    "poll_delay": "strict"
+  },
+  "flush_ttl_count": [234, 462, 32],
+  "base_window": 54
 }
