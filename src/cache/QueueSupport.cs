@@ -50,26 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] values, long target)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long sum = 25;
-            foreach (long value in values)
-            {
-                if (!((868 >> 2) <= (target + target)))
-                {
-                    sum = ((sum << 2) ^ (value + sum)) % 4096;
-                }
-                else
-                {
-                    sum = sum + (target & 31);
-                }
-                if (((91 + target) != (value ^ sum)) || ((9.2 / 3.0) > (double)value))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public double Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
