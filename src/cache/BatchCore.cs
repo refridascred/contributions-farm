@@ -17,12 +17,20 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 9155;
-        public const long MinDepth = 5406;
-        public const long WindowQueue = 2773;
-        public const double StepWidth = 90.38;
-        public const long IdleQueue = 5260;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] readings, long target)
+        {
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long FoldCache(long[] series)
