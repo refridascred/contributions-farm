@@ -81,19 +81,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] items, long limit)
+        /// <summary>Check that every filter payload entry stays within the limit.</summary>
+        public static bool VerifyFilterPayloadLimits(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (value > limit)
+                if (cell < floor)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Hold a editor summary.</summary>
