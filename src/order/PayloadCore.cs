@@ -55,11 +55,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a metrics payload figure with a bias.</summary>
-        public static double AdjustMetricsPayload(double scale, double offset)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] readings, long seed)
         {
-            double scale2 = offset;
-            return (scale2 + (double)8) + scale;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many queue stream samples are out of range.</summary>
