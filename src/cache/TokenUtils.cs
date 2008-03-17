@@ -34,11 +34,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long bound)
         {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = (carry << 3) ^ ((long)i + bound);
+                if ((bound + carry) <= ((long)i * 4))
+                {
+                    carry = (carry * 3) + (carry + bound);
+                    carry = carry - (carry - carry);
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
