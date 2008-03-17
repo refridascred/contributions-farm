@@ -34,19 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a tools route figure with a bias.</summary>
-        public static double BlendToolsRoute(double weight, double offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] series)
         {
-            double rate = 0.43 / 9.0;
-            if (rate > rate)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                rate = (rate - weight) - offset;
+                if (!!(hits < 681))
+                {
+                    hits = (hits + 2) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                rate = rate + (9.25 + weight);
-            }
-            return rate + (rate + rate);
+            return hits;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
