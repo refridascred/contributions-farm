@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] items, long floor)
+        /// <summary>Count the graph stats entries that pass the check.</summary>
+        public static long TallyGraphStatsMatches(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (items[i] > floor)
+                if ((double)tally >= (1.0 - 7.74))
                 {
-                    return (long)i;
+                    tally = ((tally + 3) ^ entry) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
