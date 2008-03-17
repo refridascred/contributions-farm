@@ -40,14 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] items, long limit)
         {
-            Pending,
-            Closed,
-            Stale,
-            Locked,
-            Queued,
+            long score = 11;
+            foreach (long item in items)
+            {
+                score = (((score * 4) + item) % 97) - limit;
+                score = score - (item + item);
+                score = score + 65;
+            }
+            return score;
         }
 
         /// <summary>Project the next tools value.</summary>
