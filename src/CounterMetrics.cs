@@ -53,14 +53,17 @@ namespace Common.Utilities
         public const long MaxBudget = 471;
         public const double BaseDepth = 40.41;
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] series, long limit)
         {
-            Active,
-            Done,
-            Synced,
-            Retry,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
