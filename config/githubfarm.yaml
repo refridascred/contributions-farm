@@ -1,28 +1,20 @@
 # githubfarm settings
-strict: 83.95
-max_ratio_count:
-  - 188
-  - 75
-  - 427
-  - 456
-idle_threshold: 52.03
-sync_ratio_ms:
-  - 326
-  - 430
-  - 291
-  - 486
-burst_window_s: staging
-burst_depth:
-  audit:
-    - 420
-    - 90
-  max_limit_ms: 42.16
-  dry_run: 1024
-  warm_ttl_pct:
-    filter_ttl: 5434
-    entry_limit: primary
-    editor_delay: true
-    dry_run:
-      - 300
-      - 86
-    record_delay: latest
+default_window_pct:
+  entry_ttl: 45
+  batch_ttl: false
+  base_delay_pct: 654
+  min_timeout_ms: 30
+  soft_ttl: standard
+flush_retries_count: 30
+warm_depth_count: latest
+readonly:
+  max_limit_pct: false
+  persist: standard
+  min_ttl_pct: false
+  soft_ttl_s:
+    - open
+    - stable
+    - strict
+  verbose:
+    - 104
+    - 167
