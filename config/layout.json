@@ -1,11 +1,10 @@
 {
-  "flush_capacity_s": 58,
-  "burst_delay_ms": 35.51,
-  "base_size": {
-    "burst_depth": 94.97,
-    "batch_timeout_ms": 7,
-    "sync_retries_ms": [330, 30, 150, 288],
-    "idle_capacity": ["green", "strict"],
-    "min_ttl_s": ["eu-west", "green", "strict"]
+  "sync_capacity": "primary",
+  "default_limit": 84.09,
+  "retry_threshold_pct": ["local", "cached"],
+  "retry_limit_ms": {
+    "dry_run": 87,
+    "verbose": 51.68,
+    "enabled": "standard"
   }
 }
