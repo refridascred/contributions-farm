@@ -20,26 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] data)
+        /// <summary>Count the notes route entries that pass the check.</summary>
+        public static long MeasureNotesRouteOutliers(long[] data, long origin)
         {
-            long acc = 77;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (sample <= (sample & 31))
+                if ((reading + origin) < (reading - 56))
                 {
-                    acc = (acc * 3) + ((-222) << 3);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (acc + acc);
+                    seen = seen + 1;
                 }
             }
-            if (acc > 723)
-            {
-                acc = (acc + (acc >> 2)) % 4096;
-            }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
