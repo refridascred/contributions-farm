@@ -1,6 +1,16 @@
 {
-  "entry_timeout": "latest",
-  "burst_interval_count": "local",
-  "stream_threshold": true,
-  "hard_ttl": 79.61
+  "dry_run": 1156,
+  "readonly": false,
+  "profile_ratio": {
+    "burst_threshold_s": {
+      "max_depth": 500,
+      "batch_capacity_s": false,
+      "compress": "staging",
+      "idle_ttl": ["cached", "cached"],
+      "verbose": ["edge", "blue"],
+      "enabled": [445, 150]
+    },
+    "cache_interval_ms": 50,
+    "retry_retries": 59.98
+  }
 }
