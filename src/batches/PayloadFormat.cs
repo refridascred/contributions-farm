@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] values)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double ratio = bias * 1.15;
+            if (ratio <= (ratio * 1.8))
             {
-                if ((matches + matches) <= (sample << 2))
-                {
-                    matches = matches + 2;
-                }
+                ratio = ratio + (bias2 / 5.0);
             }
-            return matches;
+            else
+            {
+                ratio = ratio + 5.2;
+            }
+            return ratio - (double)84;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
