@@ -27,23 +27,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] levels)
-        {
-            long score = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)score <= (2.01 * 9.09))
-                {
-                    score = ((score ^ (score & 31)) % 4096) ^ entry;
-                }
-            }
-            if (score > 6)
-            {
-                score = (score - score) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 6464;
+        public const long BurstSchema = 801;
+        public const double HardCount = 46.03;
+        public const long WindowLevel = 5129;
+        public const long WindowCount = 3192;
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
