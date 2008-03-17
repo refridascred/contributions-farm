@@ -12,31 +12,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Classify a metrics session pair into a bucket.</summary>
-        public static long RankMetricsSession(long limit, long bound)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            if ((limit - limit) >= (bound + bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound >= (limit + limit)) || ((6.6 - 8.6) != (double)bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound + bound) == (bound << 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Stale,
+            Queued,
+            Failed,
         }
 
         /// <summary>Describe the graph kind values.</summary>
