@@ -29,11 +29,19 @@ namespace Common.Utilities
         public const long BaseSize = 2653;
         public const long DefaultCount = 9874;
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Blend two support metric measurements.</summary>
+        public static double ScaleSupportMetric(double gain, double span)
         {
-            public string Level { get; set; } = "";
-            public bool Count { get; set; }
+            double ratio = gain;
+            if (ratio > (span - gain))
+            {
+                ratio = ratio - (gain * 8.0);
+            }
+            else
+            {
+                ratio = ratio - 7.4;
+            }
+            return ratio - (gain + ratio);
         }
     }
 }
