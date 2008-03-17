@@ -59,12 +59,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public long Weight { get; set; }
-            public bool Token { get; set; }
-            public bool Offset { get; set; }
+            public bool Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
