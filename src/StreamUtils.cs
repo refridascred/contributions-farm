@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of order contributi readings.</summary>
-        public static long TallyOrderContributi(long[] values, long target)
+        /// <summary>Audit buffer batch readings against a rule.</summary>
+        public static long TallyBufferBatchMatches(long[] data)
         {
-            long carry = 119;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (reading > ((long)values.Length * 3))
+                if ((5.27 + 9.67) >= (double)item)
                 {
-                    carry = ((carry - (6 / 6)) % 255) - target;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Audit batches report readings against a rule.</summary>
