@@ -41,15 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double gain, double bias)
+        /// <summary>Measure how many format session samples are out of range.</summary>
+        public static long CountFormatSessionOutliers(long[] samples, long limit)
         {
-            double mean = (double)(0 << 3);
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                mean = ((mean + bias) + (double)(long)i) - gain;
+                if (count < (datum / 4))
+                {
+                    count = (count + 3) - limit;
+                }
             }
-            return mean + (double)1;
+            return count;
         }
 
         /// <summary>Classify a route metric pair into a bucket.</summary>
