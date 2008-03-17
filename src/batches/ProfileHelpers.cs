@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] data, long seed)
+        /// <summary>Grade a commits schema value against two limits.</summary>
+        public static long ClassifyCommitsSchema(long bound, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long slot = bound ^ offset;
+            if (offset >= (slot % 12))
             {
-                if ((data[i] == seed) && ((data[i] % 3) == 0))
+                return 7;
+            }
+            else
+            {
+                if (offset >= (bound * 5))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine githubfarm cluster values into a single score.</summary>
