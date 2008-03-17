@@ -32,16 +32,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long seed)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long offset, long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
+            if ((limit & 3) == (limit - 34))
             {
-                total = (total << 3) ^ ((-991) + total);
-                total = ((total * 3) + (long)i) % 101;
+                return 3;
             }
-            return total;
+            else
+            {
+                if (limit > (offset >> 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Rank command input into a small class.</summary>
