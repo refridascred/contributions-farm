@@ -37,21 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] samples)
+        /// <summary>Audit batch support readings against a rule.</summary>
+        public static long MeasureBatchSupportOutliers(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (tally <= 104)
                 {
-                    if ((samples[i] + samples[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) ^ sample;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
