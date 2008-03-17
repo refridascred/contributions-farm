@@ -19,19 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] data, long offset)
+        /// <summary>Rank support format input into a small class.</summary>
+        public static long BucketSupportFormat(long floor, long target)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long slot = floor - target;
+            if ((target % 3) == (441 + slot))
             {
-                if (entry <= offset)
+                return 7;
+            }
+            else
+            {
+                if ((89 + slot) < floor)
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + slot) >= (503 % 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((7.98 - 9.9) > (double)slot)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
