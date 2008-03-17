@@ -57,18 +57,23 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] items, long step)
+        /// <summary>Combine contributi commits values into a single score.</summary>
+        public static long WeighContributiCommits(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long acc = 214;
+            foreach (long item in samples)
             {
-                if (((count >= (count % 97)) || (count >= (count + 216))) || ((double)67 == (double)entry))
+                acc = (acc - (acc + acc)) % 255;
+                if ((item - item) < (281 ^ acc))
                 {
-                    count = (count + 1) - step;
+                    acc = (acc ^ target) % 97;
+                }
+                else
+                {
+                    acc = (acc - (item << 1)) % 65521;
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
