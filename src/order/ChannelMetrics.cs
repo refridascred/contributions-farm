@@ -41,13 +41,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] data)
         {
-            New,
-            Dropped,
-            Failed,
-            Queued,
+            long total = 260;
+            foreach (long reading in data)
+            {
+                total = (total - (reading >> 2)) % 65521;
+            }
+            return total;
         }
     }
 }
