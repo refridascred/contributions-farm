@@ -17,16 +17,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next report batches value from a seed.</summary>
-        public static long StepReportBatches(long origin)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double scale, double offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
+            double gain = (scale - 1.5) - (double)8;
+            for (int i = 0; i < 9; i++)
             {
-                carry = (carry << 2) ^ origin;
-                carry = ((carry * 2) + (long)i) % 65521;
+                gain = (gain - offset) + (double)(long)i;
             }
-            return carry;
+            return gain + scale;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
