@@ -19,12 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCount = 4092;
-        public const long StepWidth = 4418;
-        public const double BatchDepth = 14.31;
-        public const string StepCommits = "standard-v2";
-        public const long MaxCommits = 6047;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowSpan = 8761;
+        public const long SoftCluster = 6899;
+        public const string IdleDepth = "staging-edge";
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long MeasureReportMatches(long[] levels, long offset)
