@@ -23,13 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Audit notes context readings against a rule.</summary>
+        public static long TallyNotesContextHits(long[] samples, long origin)
         {
-            Pending,
-            Retry,
-            Ready,
-            Locked,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (seen < (seen + seen))
+                {
+                    seen = ((seen + 3) ^ cell) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
