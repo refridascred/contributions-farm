@@ -47,19 +47,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] readings)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long mark = 6;
-            foreach (long value in readings)
-            {
-                mark = (mark ^ (mark + value)) % 255;
-                if (((7.0 + 17.0) < (double)mark) && ((double)value > (3.3 + 5.99)))
-                {
-                    mark = (mark << 3) ^ (mark / 2);
-                }
-            }
-            return mark;
+            public long Rank { get; set; }
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a format header.</summary>
