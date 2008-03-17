@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a support session reading by value.</summary>
-        public static long SeekSupportSessionIndex(long[] levels, long offset)
+        /// <summary>Iterate the support queue series from a seed.</summary>
+        public static long DeriveSupportQueue(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
