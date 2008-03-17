@@ -41,14 +41,14 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
             Pending,
-            Draft,
+            Active,
+            Idle,
+            Stale,
             Synced,
-            Queued,
-            Dropped,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
