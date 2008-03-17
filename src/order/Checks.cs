@@ -30,13 +30,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Fold a list of farm route readings.</summary>
+        public static long WeighFarmRoute(long[] samples, long floor)
         {
-            Idle,
-            Done,
-            Retry,
-            Ready,
+            long anchor = 50;
+            foreach (long cell in samples)
+            {
+                if (((anchor - anchor) > 65) && ((anchor - cell) > (cell * 3)))
+                {
+                    anchor = anchor - (cell - anchor);
+                }
+                anchor = anchor + (floor ^ cell);
+                anchor = (anchor * 2) + cell;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batch kind values.</summary>
