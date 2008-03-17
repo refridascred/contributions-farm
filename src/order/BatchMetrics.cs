@@ -19,12 +19,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 4635;
-        public const long BurstBudget = 9599;
-        public const long LimitSpan = 6382;
-        public const double WindowBudget = 23.53;
-        public const long CacheWindow = 1542;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] series, long offset)
+        {
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long MatchGraphCount(long[] samples)
