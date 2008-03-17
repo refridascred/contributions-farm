@@ -40,20 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long seed)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double scale, double span)
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
+            double ratio = span + (span / 3.0);
+            if (ratio < ratio)
             {
-                if ((double)result <= (2.87 * 16.0))
-                {
-                    result = (result * 2) + seed;
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 65521;
+                ratio = ratio + 0.12;
             }
-            return result;
+            else
+            {
+                ratio = ratio + (scale - 18.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (ratio * 6.4)) + (double)(long)i;
+            }
+            return ratio + span;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
