@@ -24,11 +24,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowInterval = 26.93;
-        public const long HardProfile = 6126;
-        public const long IdleProfile = 7785;
-        public const long WindowDepth = 2500;
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
+        {
+            Idle,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
