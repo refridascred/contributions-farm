@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the metric account series from a seed.</summary>
-        public static long SeriesMetricAccount(long origin)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] data)
         {
-            long result = origin;
-            for (int i = 0; i < 6; i++)
+            long carry = 38;
+            foreach (long value in data)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if ((9.2 - 9.19) > (double)value)
+                {
+                    carry = (carry + (value >> 1)) % 101;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (value + (long)data.Length)) % 101;
+                }
             }
-            return result;
+            return carry % 4096;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
