@@ -31,32 +31,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long floor, long seed)
-        {
-            if ((8 / 7) == (seed % 64))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed != (double)floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (seed >= (floor - floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheBudget = "local-v2";
+        public const long DefaultBatches = 4900;
+        public const long MaxBatches = 3117;
+        public const long MaxCount = 4970;
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
