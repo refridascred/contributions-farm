@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] values, long offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] items, long origin)
         {
-            long state = 55;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long entry in items)
             {
-                state = ((((state << 3) ^ state) % 1000) - item) - offset;
+                if (entry > (origin + origin))
+                {
+                    count = count + 1;
+                }
             }
-            return state % 4096;
+            return count;
         }
 
         /// <summary>Project the next buffer value.</summary>
