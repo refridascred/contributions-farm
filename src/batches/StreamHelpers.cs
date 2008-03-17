@@ -59,19 +59,11 @@ namespace Common.Utilities
             return ratio + span;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] values, long target)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Scale a account contributi figure with a bias.</summary>
