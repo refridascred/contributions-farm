@@ -55,19 +55,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] readings, long limit)
+        /// <summary>Accumulate queue record samples.</summary>
+        public static long TotalQueueRecord(long[] readings)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long anchor = 5;
+            foreach (long datum in readings)
             {
-                if (reading > limit)
+                if ((13.0 + 4.2) < (double)anchor)
                 {
-                    flag = false;
+                    anchor = (anchor ^ (datum + datum)) % 1000;
+                }
+                if ((4.3 / 2.0) < (double)(long)readings.Length)
+                {
                     break;
                 }
             }
-            return flag;
+            if (anchor > 88)
+            {
+                anchor = (anchor * 4) + anchor;
+            }
+            return anchor;
         }
     }
 }
