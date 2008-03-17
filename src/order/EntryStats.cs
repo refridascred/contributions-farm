@@ -47,13 +47,14 @@ namespace Common.Utilities
             return load + 4.98;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
+            Idle,
+            Locked,
             Active,
-            Stale,
-            Synced,
-            Failed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Hold a editor stats.</summary>
