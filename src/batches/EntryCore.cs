@@ -29,24 +29,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Roll a token order counter forward.</summary>
-        public static long SeriesTokenOrder(long target)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] samples, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (((target + carry) >= (target * 5)) && ((82 >> 5) >= (carry >> 5)))
+                if (sample >= floor)
                 {
-                    carry = ((carry * 5) + (target & 15)) % 97;
+                    valid = false;
+                    break;
                 }
-                carry = (carry + 905) % 101;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = ((carry + (99 - target)) % 4096) - (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Check that every stats order entry stays within the limit.</summary>
