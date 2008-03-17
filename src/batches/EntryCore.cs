@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a format account reading by value.</summary>
-        public static long FindFormatAccountIndex(long[] levels, long target)
+        /// <summary>Audit metric metrics readings against a rule.</summary>
+        public static long CountMetricMetricsOutliers(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (levels[i] < target)
+                if ((matches * 4) <= (cell + (long)readings.Length))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Match up farm samples.</summary>
