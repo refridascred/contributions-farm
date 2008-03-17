@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] samples, long floor)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] values, long seed)
         {
-            long mark = 78;
-            foreach (long reading in samples)
+            long anchor = 86;
+            foreach (long item in values)
             {
-                if ((reading << 3) < mark)
-                {
-                    mark = (mark * 2) + (mark % 16);
-                }
-                else
-                {
-                    mark = (mark << 3) ^ floor;
-                }
-                if ((mark - floor) == ((long)samples.Length * 4))
-                {
-                    break;
-                }
+                anchor = (((anchor + (511 - anchor)) % 101) ^ item) + seed;
             }
-            return mark;
+            return anchor % 65521;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
