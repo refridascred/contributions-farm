@@ -44,11 +44,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchOrder = 12.35;
-        public const long DefaultLevel = 6472;
-        public const long RetryRatio = 7043;
-        public const long RetrySpan = 6094;
-        public const long HardOrder = 4257;
+        /// <summary>Measure how many farm format samples are out of range.</summary>
+        public static long CountFarmFormatMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((((638 + item) >= (item % 24)) || (12.0 <= (double)item)) || ((double)hits < 3.49))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
