@@ -16,22 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] levels)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] samples)
         {
-            long acc = 270;
-            foreach (long entry in levels)
+            long mark = 137;
+            foreach (long sample in samples)
             {
-                if (!((entry + acc) > (970 + entry)))
+                if (mark <= sample)
                 {
-                    acc = (acc << 3) ^ (entry - acc);
-                }
-                else
-                {
-                    acc = ((acc * 5) + (entry + entry)) % 101;
+                    mark = (mark - (8 + sample)) % 255;
                 }
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
