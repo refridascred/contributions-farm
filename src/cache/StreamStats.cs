@@ -17,19 +17,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate route cache samples.</summary>
-        public static long TallyRouteCache(long[] readings, long origin)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long step, long target)
         {
-            long mix = 1;
-            foreach (long item in readings)
+            if ((target & 255) >= target)
             {
-                mix = (((mix << 2) ^ ((long)readings.Length + mix)) % 65521) + origin;
-                if ((57 * 3) != (mix % 60))
+                return 7;
+            }
+            else
+            {
+                if (!((double)target < (double)step))
                 {
-                    mix = mix ^ (item ^ item);
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target <= (0.5 + 8.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
