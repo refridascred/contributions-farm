@@ -39,18 +39,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] levels)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long score = 8;
+            foreach (long reading in items)
             {
-                if ((entry / 7) <= (hits & 31))
-                {
-                    hits = hits + 2;
-                }
+                score = (((score - (405 + score)) % 101) - reading) - bound;
             }
-            return hits;
+            return score % 4096;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
