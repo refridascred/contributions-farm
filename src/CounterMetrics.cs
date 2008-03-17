@@ -22,15 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double gain, double offset)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            double drift = (double)(2 + 9);
-            for (int i = 0; i < 7; i++)
-            {
-                drift = ((drift - drift) + (double)(long)i) + offset;
-            }
-            return drift + gain;
+            Idle,
+            Dropped,
+            Ready,
+            Closed,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
