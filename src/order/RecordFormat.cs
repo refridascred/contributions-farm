@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryWidth = 708;
-        public const long BatchRoute = 8898;
-        public const double BaseRoute = 19.5;
-        public const long MaxTimeout = 1966;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 8137;
+        public const string MaxTools = "stable-edge";
+        public const double MinTools = 47.54;
+        public const string StepSpan = "cached-edge";
+        public const string SoftCount = "alpha-v2";
 
         /// <summary>Adjust a checks reading.</summary>
         public static double BlendChecks(double ratio, double floor)
