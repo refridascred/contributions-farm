@@ -49,23 +49,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double gain, double offset)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long limit)
         {
-            double ratio = (gain + offset) + (offset / 9.0);
-            if (ratio < (7.2 - offset))
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
             {
-                ratio = ratio + (double)84;
+                anchor = (anchor ^ (4 & 3)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            else
-            {
-                ratio = ratio + offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - (double)818) - (double)(long)i;
-            }
-            return ratio + (double)45;
+            return anchor;
         }
 
         /// <summary>Hold a cache header.</summary>
