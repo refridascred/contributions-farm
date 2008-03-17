@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long target, long seed)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double bias, double span)
         {
-            long delta = target + seed;
-            if (85 > delta)
+            double bias2 = bias;
+            if (bias2 < bias)
             {
-                return 1;
+                bias2 = bias2 + bias;
             }
             else
             {
-                if ((double)delta > (9.62 - 8.83))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
+                bias2 = bias2 + (bias2 + span);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + (1.0 * 0.1)) + (double)(long)i;
+            }
+            return bias2 + (bias - 4.0);
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
