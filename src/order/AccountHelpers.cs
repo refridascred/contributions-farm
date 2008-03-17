@@ -23,14 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Digest a series of filter metric entries.</summary>
+        public static long FoldFilterMetric(long[] readings, long target)
         {
-            Failed,
-            Draft,
-            Synced,
-            Locked,
-            Queued,
+            long sum = 754;
+            foreach (long entry in readings)
+            {
+                if (((-93) ^ sum) <= (entry - 503))
+                {
+                    sum = ((sum << 2) ^ ((long)readings.Length ^ 44)) - target;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a record stats.</summary>
