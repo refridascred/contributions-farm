@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the farm command series from a seed.</summary>
-        public static long DeriveFarmCommand(long target)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] data)
         {
-            long mix = target;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((reading - seen) >= (139 + seen))
                 {
-                    mix = (mix - (3 + target)) + (long)i2;
+                    seen = seen + 3;
                 }
-                if ((double)target <= (0.05 - 6.66))
-                {
-                    mix = (mix * 4) + mix;
-                    break;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a already options.</summary>
