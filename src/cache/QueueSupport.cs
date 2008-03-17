@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmMatches(long[] items, long origin)
         {
-            Failed,
-            Idle,
-            Ready,
-            Queued,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (4.0 <= (double)entry)
+                {
+                    hits = (hits + 1) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of payload token entries.</summary>
