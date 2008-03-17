@@ -21,11 +21,20 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 1743;
-        public const double WindowRoute = 88.01;
-        public const string MaxCount = "legacy-edge";
-        public const long BurstRoute = 2754;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] series, long offset)
+        {
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandBounds(long[] samples, long limit)
