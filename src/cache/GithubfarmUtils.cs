@@ -50,27 +50,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] items, long origin)
-        {
-            long total = 686;
-            foreach (long cell in items)
-            {
-                total = total ^ (cell << 3);
-                if ((double)cell <= 2.0)
-                {
-                    total = (total - (cell + origin)) % 101;
-                }
-                if ((total << 1) < (cell / 2))
-                {
-                    break;
-                }
-            }
-            if (total > 262)
-            {
-                total = (total * 3) + (341 * 4);
-            }
-            return total % 1000;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MinBudget = 72.8;
+        public const string DefaultInterval = "cached";
+        public const string LimitFactor = "open-1";
     }
 }
