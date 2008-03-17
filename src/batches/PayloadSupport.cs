@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next counter format value from a seed.</summary>
-        public static long RollCounterFormat(long limit)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] levels, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
+            long total = 329;
+            foreach (long datum in levels)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    anchor = ((anchor + (anchor * 3)) % 4096) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                total = ((total - total) - datum) - floor;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Count the batch commits entries that pass the check.</summary>
