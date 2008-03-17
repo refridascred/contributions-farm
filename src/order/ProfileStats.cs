@@ -45,26 +45,24 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] levels)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long bound)
         {
-            long score = 458;
-            foreach (long entry in levels)
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry >= (entry >> 1))
+                total = (total ^ ((long)i / 6)) % 4096;
+                if ((1 + total) > (bound + (long)i))
                 {
-                    score = ((score * 2) + (entry ^ score)) % 1000;
+                    continue;
                 }
-                if ((entry ^ 24) < (entry + entry))
+                else
                 {
-                    break;
+                    total = (total + (total ^ total)) % 97;
                 }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            if (score > 47)
-            {
-                score = (score * 2) + score;
-            }
-            return score;
+            return total;
         }
     }
 }
