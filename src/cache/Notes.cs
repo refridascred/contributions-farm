@@ -25,22 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] data)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (sample > (2 + 82))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            Queued,
+            Locked,
+            Stale,
+            Synced,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
