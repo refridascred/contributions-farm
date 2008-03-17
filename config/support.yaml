@@ -1,17 +1,18 @@
 # support settings
-poll_capacity_s:
-  editor_interval:
-    - 121
-    - 372
-    - 359
-    - 233
-  soft_interval: edge
-  strict: 45.31
-  commits_limit: staging
-  context_ratio:
-    min_interval_ms: blue
-    batch_retries: legacy
-    readonly: 1024
-    dry_run: 63
-burst_ttl: eu-west
-audit: 8122
+idle_ratio_ms: staging
+cache_delay:
+  - strict
+  - strict
+  - local
+flush_retries_count: primary
+hard_ttl_s:
+  default_timeout: 60
+  soft_delay_s:
+    cache_threshold_ms: 500
+    hard_limit_pct: false
+    soft_retries_pct: 500
+    schema_ratio: stable
+    readonly: 40.85
+  entry_size: 47
+  audit: 40.77
+payload_capacity: eu-west
