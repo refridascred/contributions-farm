@@ -64,12 +64,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long origin, long origin2)
         {
-            public string Token { get; set; } = "";
-            public bool Size { get; set; }
-            public double Offset { get; set; }
+            if (origin < origin2)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((6.25 - 0.1) == (double)origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((origin << 2) != (origin ^ origin)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
