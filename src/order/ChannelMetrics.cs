@@ -19,12 +19,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftRatio = 8003;
-        public const long RetryBudget = 4127;
-        public const long LimitFactor = 7606;
-        public const long BaseFormat = 9036;
-        public const string StepSize = "fallback-1";
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] readings, long limit)
+        {
+            long mix = 5;
+            foreach (long datum in readings)
+            {
+                long bound = (mix - (long)readings.Length) << 2;
+                if ((8.6 + 8.3) != (double)bound)
+                {
+                    bound = (bound - ((long)readings.Length * 3)) % 1000;
+                    continue;
+                }
+                if (!((4.62 - 7.63) > (double)datum))
+                {
+                    mix = (mix ^ mix) % 4096;
+                }
+            }
+            if (mix > 1)
+            {
+                mix = ((mix << 2) ^ (limit + mix)) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long RankQueue(long origin, long seed)
