@@ -1,8 +1,6 @@
 {
-  "dry_run": true,
-  "idle_threshold_pct": 61,
-  "warm_ttl": "edge",
-  "poll_interval_ms": 21.98,
-  "editor_ratio": 60,
-  "compress": true
+  "cache_limit_ms": ["legacy", "fallback"],
+  "poll_threshold_pct": 60,
+  "compress": ["green", "local"],
+  "report_limit": 6042
 }
