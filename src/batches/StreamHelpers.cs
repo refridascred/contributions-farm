@@ -109,15 +109,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a profile entry figure with a bias.</summary>
-        public static double BlendProfileEntry(double ratio, double span)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] values, long step)
         {
-            double bias = 1.0;
-            if (bias >= span)
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = (bias - (span / 4.0)) - ratio;
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return bias + bias;
+            return -1;
         }
     }
 }
