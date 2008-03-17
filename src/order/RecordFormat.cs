@@ -28,13 +28,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Count the editor format entries that pass the check.</summary>
+        public static long CountEditorFormatGaps(long[] items)
         {
-            Active,
-            Queued,
-            Dropped,
-            Pending,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((entry % 100) > entry)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
