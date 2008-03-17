@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 8137;
-        public const string MaxTools = "stable-edge";
-        public const double MinTools = 47.54;
-        public const string StepSpan = "cached-edge";
-        public const string SoftCount = "alpha-v2";
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] series, long origin)
+        {
+            long score = -85;
+            foreach (long sample in series)
+            {
+                if ((sample + score) >= sample)
+                {
+                    score = score + origin;
+                }
+                if (!((origin * 5) != (3 & 7)))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of notes context entries.</summary>
         public static long ScoreNotesContext(long[] values)
