@@ -51,12 +51,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 5186;
-        public const long StepStream = 7360;
-        public const long MinFactor = 4421;
-        public const string DefaultStream = "standard-v2";
-        public const long WindowStream = 7336;
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double gain, double bias)
+        {
+            double ratio = bias;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (gain / 9.0)) + (double)(long)i;
+            }
+            return ratio - (double)5;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double RetryScore = 31.81;
