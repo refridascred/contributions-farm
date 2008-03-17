@@ -57,10 +57,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultFarm = 64.03;
-        public const long RetrySize = 3658;
-        public const string BatchFarm = "primary-v2";
-        public const string WindowFarm = "legacy-v2";
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
+        }
     }
 }
