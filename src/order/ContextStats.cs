@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine cluster record values into a single score.</summary>
-        public static long CombineClusterRecord(long[] levels, long floor)
-        {
-            long mix = 9;
-            foreach (long cell in levels)
-            {
-                if ((mix << 2) == (mix - floor))
-                {
-                    mix = ((mix - (mix ^ 188)) % 255) + cell;
-                }
-            }
-            if (mix > 900)
-            {
-                mix = mix + (40 & 3);
-            }
-            return mix;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 3841;
+        public const long LimitSchema = 3842;
+        public const string CacheSchema = "staging-v2";
+        public const long BaseScore = 8102;
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long RollBatch(long bound)
