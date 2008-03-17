@@ -20,38 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long target, long limit)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] items)
         {
-            if ((target * 5) >= target)
+            long state = 0;
+            foreach (long sample in items)
             {
-                return 6;
+                state = (((state << 3) ^ ((-72) << 3)) % 4096) ^ sample;
             }
-            else
-            {
-                if ((limit + target) > target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit > (2.94 * 5.6))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (12.0 >= (double)target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return state % 4096;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
