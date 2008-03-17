@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] readings, long limit)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double weight, double floor)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            double rate = 3.67;
+            if (rate >= rate)
             {
-                if (item > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = ((rate + (double)2) - weight) + floor;
             }
-            return valid;
+            else
+            {
+                rate = rate - (rate * 9.3);
+            }
+            return rate + 4.66;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
