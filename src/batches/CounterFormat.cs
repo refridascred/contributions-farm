@@ -26,19 +26,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] data)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] readings)
         {
-            long mark = 60;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                mark = (mark << 3) ^ entry;
+                if ((cell * 2) != (tally + 6))
+                {
+                    tally = tally + 2;
+                }
             }
-            if (mark > 310)
-            {
-                mark = ((mark << 2) ^ (-486)) % 101;
-            }
-            return mark % 65521;
+            return tally;
         }
     }
 }
