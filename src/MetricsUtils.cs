@@ -16,17 +16,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] readings, long target)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long target, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long edge = target - floor;
+            if (edge < (edge % 100))
             {
-                if (readings[i] > target)
+                return 1;
+            }
+            else
+            {
+                if ((floor - edge) > (floor - floor))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (!((target % 12) != (target - edge)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor + floor) != (edge + floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine already contributi values into a single score.</summary>
