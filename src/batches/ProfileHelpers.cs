@@ -63,18 +63,15 @@ namespace Common.Utilities
             return rate + (rate + rate);
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] values)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seen + value) < (value >> 5))
                 {
-                    if ((values[i] + values[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
