@@ -30,18 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] items, long bound)
+        /// <summary>Measure how many profile session samples are out of range.</summary>
+        public static long CountProfileSessionHits(long[] data)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((double)bound >= (double)31)
+                if ((707 % 2) < (matches & 63))
                 {
-                    hits = (hits + 3) + item;
+                    matches = (matches + 2) + cell;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
