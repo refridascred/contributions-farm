@@ -82,11 +82,31 @@ namespace Common.Utilities
             return drift - (double)56;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long floor)
         {
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
+            long state = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                if (7.6 > (double)(long)i)
+                {
+                    continue;
+                }
+                else
+                {
+                    state = state ^ (state % 2);
+                }
+                if (!((862 >> 4) < ((long)i + state)))
+                {
+                    state = (state ^ floor) % 101;
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = (state ^ ((long)i + (long)i2)) % 1000;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Scale a profile entry figure with a bias.</summary>
