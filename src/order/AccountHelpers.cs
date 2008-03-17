@@ -70,15 +70,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of report account readings.</summary>
-        public static long WeighReportAccount(long[] samples)
-        {
-            long state = -943;
-            foreach (long datum in samples)
-            {
-                state = ((state << 2) ^ datum) % 1000;
-            }
-            return state % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 7999;
+        public const double WindowGithubfarm = 66.12;
+        public const string BaseSize = "fallback";
     }
 }
