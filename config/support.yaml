@@ -1,26 +1,36 @@
 # support settings
-strict: cached
-warm_threshold_ms: primary
-persist:
-  burst_capacity_count: edge
-  entry_timeout:
-    audit:
-      - local
-      - blue
-      - fallback
-      - staging
-    compress: edge
-    enabled:
-      - 409
-      - 24
-      - 295
-    counter_timeout: standard
-    hard_ratio_s: 65
-    hard_ttl_count: stable
-  audit: 500
-  route_depth: 1024
-  flush_size_s:
-    - latest
-    - standard
-  burst_ttl_s: false
-max_capacity: 62.18
+cluster_window:
+  - 380
+  - 167
+  - 49
+  - 136
+persist: 26
+idle_limit_s:
+  poll_capacity:
+    - stable
+    - strict
+    - cached
+    - eu-west
+  strict: true
+  idle_limit_s: 100
+  burst_delay_ms: 60
+  audit:
+    payload_threshold: 73.72
+    hard_threshold_pct:
+      - 324
+      - 247
+      - 355
+      - 85
+    retry_threshold: 52
+    filter_size: 500
+    default_window: green
+poll_capacity_s: 1.22
+default_delay:
+  warm_interval:
+    cluster_ttl: 7890
+    commits_threshold: fallback
+    flush_ttl: false
+    strict: 786
+  poll_threshold: 40.18
+  cache_capacity_pct: false
+  flush_timeout_count: 1121
