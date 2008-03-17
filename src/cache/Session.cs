@@ -46,10 +46,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 3340;
-        public const long BatchRatio = 9988;
-        public const long MinWidth = 7861;
+        /// <summary>Derive the next record schema value from a seed.</summary>
+        public static long RollRecordSchema(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mark = ((mark - origin) % 65521) + (long)i2;
+                }
+                if ((double)mark > (7.49 * 7.0))
+                {
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
