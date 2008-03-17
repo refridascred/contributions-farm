@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] items)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long total = 379;
-            foreach (long item in items)
-            {
-                if ((double)total != (0.86 * 4.7))
-                {
-                    total = (total * 3) + ((long)items.Length >> 2);
-                }
-                else
-                {
-                    total = ((total * 2) + (item + item)) % 65521;
-                }
-            }
-            return total;
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Roll a batches counter forward.</summary>
