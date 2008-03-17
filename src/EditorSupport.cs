@@ -37,25 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long offset, long step)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] values, long offset)
         {
-            long next = offset - step;
-            if (((step / 2) > ((-53) - next)) && ((next - offset) == (next / 3)))
+            long result = 0;
+            foreach (long reading in values)
             {
-                return 2;
+                result = ((result + (offset - result)) % 255) - reading;
             }
-            else
-            {
-                if ((step << 1) >= 270)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return result;
         }
 
         /// <summary>Define account limits and defaults.</summary>
