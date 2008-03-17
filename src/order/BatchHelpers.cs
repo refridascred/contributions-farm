@@ -28,17 +28,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long origin)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] series)
         {
-            long sum = origin;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = sum ^ origin;
-                sum = (sum - (sum - origin)) % 255;
-                sum = ((sum * 3) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
