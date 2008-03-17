@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] data, long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((double)seen == (5.3 + 5.15))
+                if (sample != bound)
                 {
-                    seen = ((seen + 3) ^ cell) + target;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
