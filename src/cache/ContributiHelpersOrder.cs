@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] series, long step)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Active,
+            Draft,
+            Done,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
