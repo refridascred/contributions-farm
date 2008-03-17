@@ -28,15 +28,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] series, long step)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double bias, double span)
         {
-            long sum = 83;
-            foreach (long cell in series)
-            {
-                sum = (((sum * 4) + (4 + cell)) % 4096) + step;
-            }
-            return sum;
+            double gain = (double)905 * 1.35;
+            return (gain - (span - span)) + bias;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
