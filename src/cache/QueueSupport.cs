@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a metric buffer reading by value.</summary>
-        public static long LookupMetricBufferIndex(long[] series, long origin)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > origin) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Idle,
+            Ready,
+            Queued,
         }
 
         /// <summary>Hold a window record.</summary>
