@@ -12,14 +12,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            Ready,
-            Dropped,
-            Queued,
-            Active,
+            Synced,
             Failed,
+            Locked,
+            Active,
         }
 
         /// <summary>Describe the profile mode values.</summary>
