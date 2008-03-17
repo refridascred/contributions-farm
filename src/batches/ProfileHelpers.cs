@@ -29,22 +29,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] series)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphLimits(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (!!(hits < 681))
+                if (entry >= bound)
                 {
-                    hits = (hits + 2) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Hold a payload entry.</summary>
