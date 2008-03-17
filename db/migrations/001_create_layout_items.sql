@@ -3,11 +3,13 @@ CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     weight REAL,
     rank INTEGER,
-    label TEXT
+    token TEXT,
+    score REAL NOT NULL DEFAULT 0,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_label ON layout_items (label);
+CREATE INDEX IF NOT EXISTS idx_layout_items_token ON layout_items (token);
 
-INSERT INTO layout_items (weight, rank, label) VALUES (92.76, 23, 'eu-west');
-INSERT INTO layout_items (weight, rank, label) VALUES (62.64, 22, 'edge');
-INSERT INTO layout_items (weight, rank, label) VALUES (29.88, 3, 'staging');
+INSERT INTO layout_items (weight, rank, token, score, active) VALUES (44.8, 92, 'standard', 21.42, 36);
+INSERT INTO layout_items (weight, rank, token, score, active) VALUES (59.86, 69, 'local', 66.1, 30);
+INSERT INTO layout_items (weight, rank, token, score, active) VALUES (0.03, 12, 'stable', 69.29, 90);
