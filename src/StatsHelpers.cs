@@ -51,18 +51,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] series)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (((cell / 4) >= cell) && ((seen >= (cell * 5)) || ((8.77 + 2.5) <= (double)seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Synced,
+            Closed,
+            Queued,
+            Paused,
         }
     }
 }
