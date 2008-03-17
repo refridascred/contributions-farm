@@ -46,23 +46,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support already entries.</summary>
-        public static long DigestSupportAlready(long[] samples)
-        {
-            long score = 258;
-            foreach (long cell in samples)
-            {
-                score = score - (score & 63);
-                if ((score - score) != (score + cell))
-                {
-                    break;
-                }
-            }
-            if (score < 552)
-            {
-                score = (score << 3) ^ score;
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryBatch = "staging-edge";
+        public const long BaseBatch = 3783;
+        public const long RetryScore = 5977;
     }
 }
