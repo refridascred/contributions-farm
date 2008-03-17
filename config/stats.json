@@ -1,8 +1,18 @@
 {
-  "persist": "fallback",
-  "schema_size": [98, 207, 432, 56],
-  "burst_threshold_count": 68.13,
-  "compress": 30,
-  "max_depth": 8,
-  "sync_ratio_ms": true
+  "schema_limit": true,
+  "readonly": "green",
+  "soft_depth_count": {
+    "idle_size": {
+      "batch_depth": "legacy",
+      "strict": "blue",
+      "route_threshold": 250,
+      "audit": true,
+      "max_capacity_ms": "eu-west"
+    },
+    "already_size": 55.62,
+    "filter_threshold": false,
+    "buffer_delay": 17.08,
+    "cache_size_s": 8248,
+    "soft_delay_s": "fallback"
+  }
 }
