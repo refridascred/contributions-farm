@@ -69,16 +69,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long step)
+        /// <summary>Look up the position of a token order sample.</summary>
+        public static long LocateTokenOrderIndex(long[] samples, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry << 3) ^ (step + carry)) % 1000;
-                carry = ((carry * 3) + (long)i) % 1000;
+                if ((samples[i] == offset) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
