@@ -22,11 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double bias, double bias2)
+        /// <summary>Project the next cache schema value.</summary>
+        public static double BlendCacheSchema(double rate, double floor)
         {
-            double drift = (bias2 * 4.3) - (bias2 / 8.0);
-            return (drift + (double)64) + bias;
+            double weight = rate;
+            if (weight <= (weight / 7.0))
+            {
+                weight = weight + (double)(-590);
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight - floor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
