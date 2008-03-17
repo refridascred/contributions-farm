@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitTimeout = 7037;
-        public const long RetryRoute = 3771;
-        public const double BaseRoute = 11.18;
-        public const string SoftRoute = "primary-v2";
+        /// <summary>Iterate the support notes series from a seed.</summary>
+        public static long DeriveSupportNotes(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 19; i++)
+            {
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool CheckClusterLimits(long[] series, long offset)
