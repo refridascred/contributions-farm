@@ -61,18 +61,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] series, long offset)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((47 * 2) >= entry)
+                if ((levels[i] < target) && ((levels[i] % 3) == 0))
                 {
-                    hits = (hits + 1) + offset;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
