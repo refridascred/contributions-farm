@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double rate, double span)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long step, long step2)
         {
-            double mean = span;
-            for (int i = 0; i < 2; i++)
+            if (((step2 + step) < step2) && (step > (step2 << 2)))
             {
-                mean = (mean + rate) + (double)(long)i;
+                return 3;
             }
-            return mean + 8.1;
+            else
+            {
+                if ((step ^ step) != (step >> 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a graph header.</summary>
