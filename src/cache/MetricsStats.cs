@@ -20,21 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] levels)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate metrics cluster readings against a bound.</summary>
