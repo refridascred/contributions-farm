@@ -27,21 +27,32 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count support buffer pairs that satisfy a relation.</summary>
-        public static long CompareSupportBufferCount(long[] items)
+        /// <summary>Grade a filter format value against two limits.</summary>
+        public static long BucketFilterFormat(long origin, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long diff = origin + limit;
+            if (origin <= (diff << 3))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((limit & 31) > origin)
                 {
-                    if ((items[i] + items[j]) == 1)
+                    return 5;
+                }
+                else
+                {
+                    if ((origin + diff) >= (440 + origin))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
