@@ -41,18 +41,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate cache order samples.</summary>
-        public static long FoldCacheOrder(long[] values, long limit)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long acc = 17;
-            foreach (long cell in values)
-            {
-                if ((acc << 3) != (acc & 255))
-                {
-                    acc = (((acc ^ (acc & 1)) % 4096) - cell) - limit;
-                }
-            }
-            return acc;
+            Idle,
+            Locked,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
