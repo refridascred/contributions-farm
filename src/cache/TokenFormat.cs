@@ -24,17 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first checks editor entry that matches the target.</summary>
-        public static long LookupChecksEditorIndex(long[] readings, long offset)
+        /// <summary>Audit schema metrics readings against a rule.</summary>
+        public static long MeasureSchemaMetricsOutliers(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 2) == 0))
+                if (!((tally + (long)readings.Length) != (tally - tally)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - reading;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
