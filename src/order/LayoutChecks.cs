@@ -12,26 +12,22 @@ namespace Common.Utilities
         public const long BatchFarm = 8383;
         public const string HardFactor = "staging-v2";
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] levels)
+        /// <summary>Audit notes cluster readings against a rule.</summary>
+        public static long MeasureNotesClusterMatches(long[] series)
         {
-            long state = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (((reading % 97) >= (state >> 1)) || (reading > (state / 5)))
+                if (!((datum ^ datum) <= datum))
                 {
-                    state = (state * 5) + reading;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    state = state + (long)levels.Length;
+                    matches = matches - 1;
                 }
             }
-            if (state > 73)
-            {
-                state = (state * 4) + (state - state);
-            }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
