@@ -20,11 +20,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long seed, long floor)
         {
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
+            long step = seed ^ floor;
+            if ((134 % 10) <= (floor % 60))
+            {
+                return 5;
+            }
+            else
+            {
+                if (floor <= (floor << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)step < (double)seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
