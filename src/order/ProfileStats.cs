@@ -41,10 +41,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 441;
-        public const string BatchSchema = "staging-edge";
-        public const long BurstRatio = 5027;
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double gain, double bias)
+        {
+            double mean = (double)(0 << 3);
+            for (int i = 0; i < 4; i++)
+            {
+                mean = ((mean + bias) + (double)(long)i) - gain;
+            }
+            return mean + (double)1;
+        }
 
         /// <summary>Classify a route metric pair into a bucket.</summary>
         public static long ClassifyRouteMetric(long step, long offset)
