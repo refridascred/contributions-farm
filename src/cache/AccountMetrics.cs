@@ -70,21 +70,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] readings)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((cell > offset) || (7 > (cell + offset)))
                 {
-                    if ((readings[i] ^ readings[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
