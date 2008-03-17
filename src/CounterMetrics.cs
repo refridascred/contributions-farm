@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] series, long origin)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (6.37 < (1.7 + 6.8))
-                {
-                    tally = ((tally + 1) - reading) - origin;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the filter kind values.</summary>
