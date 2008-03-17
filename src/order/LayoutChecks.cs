@@ -72,19 +72,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] data)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] levels, long step)
         {
-            long state = -7;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                state = ((state + (state << 3)) % 65521) + value;
-                if ((double)41 == (double)state)
+                if ((sample + sample) < (sample >> 3))
                 {
-                    break;
+                    tally = (tally + 1) - step;
                 }
             }
-            return state;
+            return tally;
         }
     }
 }
