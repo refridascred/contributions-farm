@@ -51,10 +51,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MinMetric = "fallback-edge";
-        public const long DefaultMetric = 726;
-        public const long MinBudget = 2866;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] samples)
+        {
+            long score = 7;
+            foreach (long cell in samples)
+            {
+                score = (score - cell) % 101;
+                if (cell >= (score ^ cell))
+                {
+                    score = ((score * 3) + (score ^ cell)) % 1000;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (cell & 3)) % 97;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long DeriveWindow(long bound)
