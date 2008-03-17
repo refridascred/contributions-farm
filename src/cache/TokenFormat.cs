@@ -36,19 +36,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] data, long limit)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Idle,
+            Done,
+            Failed,
+            Closed,
         }
     }
 }
