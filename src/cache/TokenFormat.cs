@@ -38,14 +38,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long offset)
         {
-            Done,
-            Dropped,
-            Draft,
-            Failed,
-            New,
+            long state = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                if (!((68 << 1) != (offset ^ state)))
+                {
+                    state = (state - (offset + state)) % 255;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (state - (long)i)) % 4096;
+                    state = (state ^ state) % 255;
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
