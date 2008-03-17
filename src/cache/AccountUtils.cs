@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] series, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] readings, long seed)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long acc = 781;
+            foreach (long value in readings)
             {
-                if (entry < seed)
+                acc = (acc + (4 - value)) % 255;
+                if ((double)seed < (4.14 + 2.37))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            if (acc < 268)
+            {
+                acc = ((acc << 3) ^ acc) % 101;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
