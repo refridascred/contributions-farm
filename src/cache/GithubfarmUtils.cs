@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double scale, double offset)
         {
-            New,
-            Retry,
-            Active,
-            Stale,
-            Idle,
+            double bias = (double)(61 - (-7));
+            for (int i = 0; i < 7; i++)
+            {
+                bias = ((bias - offset) - (double)(long)i) + scale;
+            }
+            return bias - (offset / 3.0);
         }
 
         /// <summary>Combine cache values into a single score.</summary>
