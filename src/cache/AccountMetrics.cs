@@ -12,18 +12,34 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] series, long floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long result = 419;
+            foreach (long value in data)
             {
-                if ((((seen - datum) > datum) || ((floor + datum) != (datum - 6))) && ((double)datum >= (3.6 / 3.0)))
+                if (!((floor & 15) >= (floor - floor)))
                 {
-                    seen = seen + 3;
+                    result = result - (result >> 1);
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    result = (result ^ (value % 10)) + (long)i;
+                }
+                if (((1.4 / 3.0) == (double)result) && ((double)floor <= (3.02 * 3.0)))
+                {
+                    result = ((result << 3) ^ floor) % 97;
+                }
+                if (((floor / 7) >= (floor << 2)) && ((552 % 7) != (result << 3)))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (result < 86)
+            {
+                result = ((result << 3) ^ (3 >> 4)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
