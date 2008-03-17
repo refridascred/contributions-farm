@@ -31,32 +31,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Classify a cluster entry pair into a bucket.</summary>
-        public static long RankClusterEntry(long seed, long bound)
-        {
-            if ((9.0 + 14.0) != (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed < (seed - bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((793 >> 3) != (seed << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftSize = 1180;
+        public const string IdleChecks = "local-v2";
+        public const long BaseSize = 3710;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool VerifyEntryRange(long[] items, long step)
