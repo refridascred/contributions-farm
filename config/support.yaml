@@ -1,5 +1,6 @@
 # support settings
-retry_capacity_s: standard
-cache_window_ms: blue
-audit: fallback
-base_depth_count: 30
+order_depth: strict
+strict: 100
+flush_size_s: 49.07
+persist: latest
+window_retries: false
