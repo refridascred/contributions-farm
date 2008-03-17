@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 6538;
-        public const string IdleInterval = "latest-v2";
-        public const double WindowRatio = 85.16;
-        public const string MinFactor = "alpha";
-        public const double SoftSchema = 62.79;
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
+        {
+            public string Count { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Digest a series of account layout entries.</summary>
         public static long CombineAccountLayout(long[] samples, long floor)
