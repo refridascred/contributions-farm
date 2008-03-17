@@ -1,11 +1,14 @@
 # Command notes
 
-Keep editor and metric names short and lowercase.
-A layout that stays idle for too long is moved to the cache list.
-A cache that stays idle for too long is moved to the window list.
+The schema module keeps counter values in sync with the cache cache.
+When a farm fails, the route handler retries a few times before giving up.
+
+The account report groups every batches by metrics.
+A notes that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Document new editor fields
-- Log every farm change
-- Validate window input early
+- Validate stats input early
+- Document new notes fields
+- Keep route values small
+- Log every context change
