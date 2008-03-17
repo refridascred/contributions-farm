@@ -20,21 +20,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count format layout pairs that satisfy a relation.</summary>
-        public static long MatchFormatLayoutCount(long[] samples)
+        /// <summary>Classify a command entry pair into a bucket.</summary>
+        public static long GradeCommandEntry(long target, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long step2 = target ^ step;
+            if (((double)step2 <= 1.3) && ((double)step == (5.8 - 1.9)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((step ^ target) <= (step * 3))
                 {
-                    if ((samples[i] + samples[j]) != 0)
+                    return 2;
+                }
+                else
+                {
+                    if (target > (10 % 10))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)target <= (3.25 - 4.2)) || ((1.0 * 4.65) <= (double)target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate command stream samples.</summary>
