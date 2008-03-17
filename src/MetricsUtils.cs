@@ -51,15 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already contributi values into a single score.</summary>
-        public static long CombineAlreadyContributi(long[] levels)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double ratio, double span)
         {
-            long score = 471;
-            foreach (long reading in levels)
+            double drift = ratio;
+            if (drift > (double)(-5))
             {
-                score = (((score * 2) + score) % 1000) - reading;
+                drift = drift + drift;
             }
-            return score;
+            else
+            {
+                drift = drift - (drift - span);
+            }
+            return drift - (ratio + ratio);
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
