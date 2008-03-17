@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next order command value.</summary>
-        public static double ScaleOrderCommand(double weight, double bias)
+        /// <summary>Locate a support session reading by value.</summary>
+        public static long SeekSupportSessionIndex(long[] levels, long offset)
         {
-            double bias2 = bias / 4.0;
-            if (bias2 > (bias - weight))
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = bias2 + bias2;
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (6.57 + bias2);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 - 19.0) - (double)(long)i;
-            }
-            return bias2 - bias;
+            return -1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
