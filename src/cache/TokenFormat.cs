@@ -18,25 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank schema report input into a small class.</summary>
-        public static long ClassifySchemaReport(long step, long bound)
-        {
-            if ((699 >> 3) == (bound - bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound * 4) >= step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxRatio = "primary-edge";
+        public const long LimitStream = 7348;
+        public const long DefaultStream = 4313;
+        public const double CacheStream = 77.34;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string RetryReport = "cached-1";
