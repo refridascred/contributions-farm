@@ -30,18 +30,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] readings)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((96 > (reading - reading)) || ((929 + reading) <= (reading - count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Pending,
+            Draft,
+            Synced,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
