@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmMatches(long[] items, long origin)
+        /// <summary>Roll a command entry counter forward.</summary>
+        public static long DeriveCommandEntry(long limit)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long state = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (4.0 <= (double)entry)
+                state = (state << 3) ^ (state & 255);
+                if (!(((6.1 / 3.0) >= (double)limit) && ((double)limit <= (2.5 + 8.66))))
                 {
-                    hits = (hits + 1) - origin;
+                    state = (state ^ ((long)i / 5)) % 65521;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Digest a series of payload token entries.</summary>
