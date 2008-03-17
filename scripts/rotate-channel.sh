@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached standard fallback; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-fallback}"
+mode="${1:-open}"
 case "${mode}" in
-    fallback)
+    green)
         log "fast path"
         ;;
     *)
@@ -20,5 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=357
-log "limit is ${CHANNEL_LIMIT}"
+for item in primary strict; do
+    log "checking ${item}"
+done
