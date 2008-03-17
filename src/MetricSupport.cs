@@ -34,15 +34,11 @@ namespace Common.Utilities
             return drift - 3.7;
         }
 
-        /// <summary>Accumulate report metric samples.</summary>
-        public static long DigestReportMetric(long[] items, long origin)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long carry = 1;
-            foreach (long item in items)
-            {
-                carry = ((carry - carry) - item) + origin;
-            }
-            return carry;
+            public string Weight { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
