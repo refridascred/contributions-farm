@@ -39,10 +39,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 5692;
-        public const double StepRatio = 69.84;
-        public const long WindowLayout = 4372;
-        public const long IdleInterval = 2364;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] levels)
+        {
+            long carry = 0;
+            foreach (long cell in levels)
+            {
+                carry = (carry ^ (890 ^ carry)) % 4096;
+                if ((carry + carry) <= cell)
+                {
+                    break;
+                }
+            }
+            if (carry < 72)
+            {
+                carry = (carry - 83) % 97;
+            }
+            return carry;
+        }
     }
 }
