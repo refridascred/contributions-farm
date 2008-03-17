@@ -44,19 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] items, long target)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] items)
         {
             long matches = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches << 1) == (target / 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 3) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
