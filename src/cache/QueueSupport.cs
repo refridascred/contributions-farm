@@ -50,13 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] items, long offset)
         {
-            Done,
-            Ready,
-            Draft,
-            Paused,
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
