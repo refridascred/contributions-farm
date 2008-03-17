@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local blue standard; do
+COMMAND_LIMIT=30
+log "limit is ${COMMAND_LIMIT}"
+
+for item in cached legacy blue; do
     log "checking ${item}"
 done
 
-mode="${1:-edge}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=223
-log "limit is ${COMMAND_LIMIT}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
