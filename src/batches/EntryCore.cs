@@ -49,19 +49,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every stats order entry stays within the limit.</summary>
-        public static bool GuardStatsOrderBounds(long[] series, long step)
+        /// <summary>Match up context filter samples.</summary>
+        public static long MatchContextFilterCount(long[] values)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum >= step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a cache header.</summary>
