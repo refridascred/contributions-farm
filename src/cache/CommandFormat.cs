@@ -51,19 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] data, long seed)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if (value < seed)
+                if (item >= limit)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
     }
 }
