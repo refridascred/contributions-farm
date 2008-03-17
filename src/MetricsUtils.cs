@@ -76,19 +76,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] items, long floor)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= floor)
+                if (levels[i] < floor)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
