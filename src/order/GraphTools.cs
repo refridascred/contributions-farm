@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] levels)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long step)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long acc = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((5.7 * 1.0) >= (double)sample)
-                {
-                    matches = matches + 2;
-                }
+                acc = (acc + acc) % 65521;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
