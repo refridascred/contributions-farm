@@ -22,18 +22,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] data, long limit)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (8 >= (limit & 7))
-                {
-                    count = (count + 2) - datum;
-                }
-            }
-            return count;
+            Done,
+            Locked,
+            Synced,
         }
     }
 }
