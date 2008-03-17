@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] levels)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double gain, double bias)
         {
-            long anchor = 24;
-            foreach (long item in levels)
-            {
-                anchor = ((anchor << 3) ^ item) % 255;
-            }
-            if (anchor > 420)
-            {
-                anchor = (anchor + 997) % 4096;
-            }
-            return anchor;
+            double mean = 5.25;
+            return ((mean - 4.2) + gain) + bias;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
