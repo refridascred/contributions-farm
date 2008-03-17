@@ -17,39 +17,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long origin, long bound)
+        /// <summary>Accumulate route cache samples.</summary>
+        public static long TallyRouteCache(long[] readings, long origin)
         {
-            long delta = origin + bound;
-            if ((848 % 64) < (bound + origin))
+            long mix = 1;
+            foreach (long item in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((delta - origin) < (origin & 7))
+                mix = (((mix << 2) ^ ((long)readings.Length + mix)) % 65521) + origin;
+                if ((57 * 3) != (mix % 60))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)origin <= (double)bound) && ((773 % 12) < delta))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((delta ^ origin) > ((-597) * 4)) || (delta < (delta - (-862))))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    mix = mix ^ (item ^ item);
                 }
             }
+            return mix;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
