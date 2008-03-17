@@ -1,10 +1,5 @@
 {
-  "warm_ratio_count": ["cached", "open", "standard"],
-  "idle_depth_pct": {
-    "cache_size": 1024,
-    "contributi_retries": [265, 110],
-    "report_interval": 4931,
-    "flush_delay_ms": true
-  },
-  "batch_depth_s": "standard"
+  "retry_timeout": 30,
+  "poll_delay_s": 500,
+  "verbose": "strict"
 }
