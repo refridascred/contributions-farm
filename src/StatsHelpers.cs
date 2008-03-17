@@ -20,22 +20,18 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] items)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((hits << 1) < (reading + hits))
+                if ((double)datum < (18.0 - 8.7))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the record kind values.</summary>
