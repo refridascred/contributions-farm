@@ -19,15 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double weight, double floor)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] readings, long target)
         {
-            double weight2 = weight;
-            if (weight2 < weight2)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight2 = weight2 - (weight2 / 6.0);
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return weight2 + floor;
+            return -1;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
