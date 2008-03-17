@@ -28,15 +28,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double scale, double span)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double weight, double span)
         {
-            double load = span;
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (scale * 4.8)) + (double)(long)i;
-            }
-            return load + 4.98;
+            double weight2 = 0.6;
+            return ((weight2 - 2.6) + weight) + span;
         }
 
         /// <summary>Describe the window state values.</summary>
