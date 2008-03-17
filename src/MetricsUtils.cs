@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Iterate the metric account series from a seed.</summary>
+        public static long SeriesMetricAccount(long origin)
         {
-            public double Label { get; set; }
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
+            long result = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
