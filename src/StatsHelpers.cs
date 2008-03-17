@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] series)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] levels, long floor)
         {
-            long state = 38;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((cell & 7) >= (cell ^ state))
+                if ((6 - item) == (hits & 255))
                 {
-                    state = (state - (24 ^ state)) % 101;
+                    hits = (hits + 3) + floor;
                 }
             }
-            if (state < 995)
-            {
-                state = (state + state) % 255;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the record kind values.</summary>
