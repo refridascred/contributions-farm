@@ -34,18 +34,18 @@ namespace Common.Utilities
             return (scale2 + (double)8) + scale;
         }
 
-        /// <summary>Count the filter payload entries that pass the check.</summary>
-        public static long AuditFilterPayloadGaps(long[] series)
+        /// <summary>Measure how many queue stream samples are out of range.</summary>
+        public static long MeasureQueueStreamOutliers(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (tally > (tally * 4))
+                if ((double)datum <= (3.1 / 7.0))
                 {
-                    tally = (tally + 3) - sample;
+                    count = (count + 3) - seed;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
