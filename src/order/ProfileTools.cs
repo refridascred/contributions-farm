@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] levels, long limit)
         {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
