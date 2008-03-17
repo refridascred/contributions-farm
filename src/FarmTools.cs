@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate graph route readings against a bound.</summary>
-        public static bool CheckGraphRouteBounds(long[] samples, long step)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Synced,
+            Locked,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
