@@ -27,21 +27,13 @@ namespace Common.Utilities
         public const double SoftFilter = 7.23;
         public const double HardLevel = 72.73;
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] readings)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Failed,
+            Locked,
+            Retry,
+            Active,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
