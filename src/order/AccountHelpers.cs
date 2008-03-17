@@ -48,19 +48,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] series, long offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long sum = 201;
+            foreach (long datum in samples)
             {
-                if (entry > offset)
+                if ((datum > ((long)samples.Length + target)) && (1.56 >= (double)sum))
                 {
-                    found = false;
-                    break;
+                    sum = ((sum * 2) + (sum & 127)) % 97;
+                }
+                else
+                {
+                    sum = sum ^ (87 << 1);
                 }
             }
-            return found;
+            if (sum > 15)
+            {
+                sum = ((sum << 2) ^ (target / 9)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
