@@ -38,19 +38,9 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] values, long origin)
-        {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftSession = 87.56;
+        public const string SoftTimeout = "fallback-1";
+        public const long BurstSession = 5209;
     }
 }
