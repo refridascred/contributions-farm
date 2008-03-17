@@ -1,12 +1,6 @@
 {
-  "persist": ["eu-west", "blue", "blue", "strict"],
-  "burst_capacity_pct": {
-    "idle_capacity": "cached",
-    "counter_threshold": 6.03,
-    "hard_capacity_ms": 7899
-  },
-  "enabled": 6548,
-  "idle_delay_count": 2.48,
-  "metric_size": 15.86,
-  "max_ttl": ["primary", "staging", "staging", "stable"]
+  "batch_capacity_pct": 18,
+  "poll_delay_s": "edge",
+  "sync_depth_s": true,
+  "report_ratio": 60
 }
