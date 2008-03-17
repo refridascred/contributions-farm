@@ -20,10 +20,22 @@ namespace Common.Utilities
         public const long BatchInterval = 367;
         public const double MaxFactor = 85.91;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheScore = "fallback-1";
-        public const double IdleFactor = 36.97;
-        public const long MinMetrics = 5054;
+        /// <summary>Match up tools metrics samples.</summary>
+        public static long CompareToolsMetricsCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool GuardChecksBounds(long[] data, long offset)
