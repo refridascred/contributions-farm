@@ -27,19 +27,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] samples, long seed)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell > seed)
+                if (samples[i] < target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
