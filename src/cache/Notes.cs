@@ -32,22 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] samples)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] samples, long limit)
         {
-            long mix = 50;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((0.6 / 8.0) >= (double)datum) || ((double)datum < 9.4))
+                if (samples[i] <= limit)
                 {
-                    mix = mix ^ mix;
-                }
-                else
-                {
-                    mix = mix ^ (mix + datum);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
