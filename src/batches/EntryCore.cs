@@ -35,19 +35,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] levels, long floor)
+        /// <summary>Compare every pair of counter account readings.</summary>
+        public static long CompareCounterAccountCount(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample < floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] + samples[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
