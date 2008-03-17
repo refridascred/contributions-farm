@@ -19,22 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit record stats readings against a rule.</summary>
-        public static long CountRecordStatsHits(long[] readings, long floor)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((-5) << 1) < (seen >> 5))
+                if (readings[i] == step)
                 {
-                    seen = ((seen + 3) + reading) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a farm info.</summary>
