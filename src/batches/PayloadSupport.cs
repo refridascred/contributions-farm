@@ -31,17 +31,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] items, long limit)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] data, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (items[i] == limit)
+                if ((9.0 - 0.7) < (double)entry)
                 {
-                    return (long)i;
+                    matches = (matches + 2) - step;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
