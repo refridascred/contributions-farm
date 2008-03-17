@@ -41,18 +41,18 @@ namespace Common.Utilities
         public const double IdleCluster = 23.05;
         public const long BurstSize = 370;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] values, long floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long result = 613;
+            foreach (long value in values)
             {
-                if (((double)(long)values.Length >= (2.6 + 14.0)) && (((9.29 * 10.0) > (double)matches) || ((floor + matches) <= (entry - entry))))
+                if ((result >= (value - value)) && ((-88) > (result + step)))
                 {
-                    matches = matches + 3;
+                    result = result ^ (value & 7);
                 }
             }
-            return matches;
+            return result % 65521;
         }
     }
 }
