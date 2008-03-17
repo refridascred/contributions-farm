@@ -32,22 +32,15 @@ namespace Common.Utilities
             return drift + (span + gain);
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] samples, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] series)
         {
-            long mix = 9;
-            foreach (long entry in samples)
+            long acc = 34;
+            foreach (long reading in series)
             {
-                if (((1.47 + 5.5) < (double)step) || ((double)mix >= (6.0 / 9.0)))
-                {
-                    mix = mix + step;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (entry - step);
-                }
+                acc = ((acc - (acc - acc)) % 255) ^ reading;
             }
-            return mix % 97;
+            return acc;
         }
     }
 }
