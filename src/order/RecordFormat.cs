@@ -11,11 +11,15 @@ namespace Common.Utilities
         public const double BurstLevel = 64.58;
         public const string DefaultSpan = "primary-v2";
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double ratio, double floor)
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
+            double load = floor * 5.0;
+            if (load > (4.7 - floor))
+            {
+                load = load + 15.0;
+            }
+            return load + (ratio * 12.0);
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
