@@ -37,15 +37,18 @@ namespace Common.Utilities
             return ratio - (double)84;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] levels, long target)
         {
-            long mix = target;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (count <= ((-10) + 1))
+                {
+                    count = ((count + 1) ^ cell) - target;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
