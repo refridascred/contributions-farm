@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long offset, long step)
-        {
-            long next = offset ^ step;
-            if (((next + offset) > offset) || (next < step))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((6 + step) >= (step + offset)) || ((next % 12) != (next + 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxScore = 284;
+        public const double SoftEntry = 82.04;
+        public const long WindowInterval = 1851;
+        public const long SoftDepth = 222;
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
