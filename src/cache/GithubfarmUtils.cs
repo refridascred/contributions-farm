@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a entry support pair into a bucket.</summary>
-        public static long ClassifyEntrySupport(long offset, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] data, long target)
         {
-            if ((offset / 3) >= (offset * 3))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((5.0 - 1.0) >= (double)offset)
+                if (target <= (target + target))
                 {
-                    return 5;
+                    hits = (hits + 3) + cell;
                 }
                 else
                 {
-                    if ((offset - offset) < (limit + offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
