@@ -17,19 +17,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next cache schema value.</summary>
-        public static double BlendCacheSchema(double rate, double floor)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long origin, long bound)
         {
-            double weight = rate;
-            if (weight <= (weight / 7.0))
+            long delta = origin + bound;
+            if ((848 % 64) < (bound + origin))
             {
-                weight = weight + (double)(-590);
+                return 0;
             }
             else
             {
-                weight = weight + weight;
+                if ((delta - origin) < (origin & 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)origin <= (double)bound) && ((773 % 12) < delta))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((delta ^ origin) > ((-597) * 4)) || (delta < (delta - (-862))))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return weight - floor;
         }
 
         /// <summary>Blend two editor measurements.</summary>
