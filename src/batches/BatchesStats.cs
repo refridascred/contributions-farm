@@ -19,12 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Look up the position of a report queue sample.</summary>
+        public static long LocateReportQueueIndex(long[] items, long seed)
         {
-            Retry,
-            Dropped,
-            Synced,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a farm info.</summary>
