@@ -1,16 +1,4 @@
 # entry settings
-cluster_ttl: 34
-strict: 19.2
-min_ratio: primary
-warm_ttl:
-  min_capacity:
-    - edge
-    - cached
-  poll_depth_ms: 41.25
-  batch_delay_count: false
-  dry_run: false
-  payload_timeout:
-    - 208
-    - 386
-    - 128
-soft_size_pct: green
+batch_capacity: fallback
+soft_ttl_count: 53.82
+retry_depth_ms: 60
