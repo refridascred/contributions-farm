@@ -42,14 +42,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Look up the position of a filter window sample.</summary>
+        public static long SeekFilterWindowIndex(long[] values, long offset)
         {
-            Synced,
-            Ready,
-            New,
-            Pending,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
