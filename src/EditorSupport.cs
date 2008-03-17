@@ -22,19 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] readings, long seed)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading + matches) != (reading * 3))
-                {
-                    matches = (matches + 3) + seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 3909;
+        public const double SoftFilter = 7.23;
+        public const double HardLevel = 72.73;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long PairEntryCount(long[] readings)
