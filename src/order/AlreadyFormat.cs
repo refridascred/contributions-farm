@@ -51,15 +51,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double gain, double bias)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            double ratio = bias;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (gain / 9.0)) + (double)(long)i;
-            }
-            return ratio - (double)5;
+            Closed,
+            Idle,
+            Paused,
+            Draft,
         }
 
         /// <summary>Define report limits and defaults.</summary>
