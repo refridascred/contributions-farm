@@ -31,12 +31,13 @@ namespace Common.Utilities
             return scale - 9.6;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            Idle,
-            Failed,
-            Dropped,
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
     }
 }
