@@ -45,18 +45,11 @@ namespace Common.Utilities
         public const long HardStream = 3569;
         public const long BurstWidth = 5448;
 
-        /// <summary>Audit checks schema readings against a rule.</summary>
-        public static long MeasureChecksSchemaGaps(long[] series, long floor)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((floor - floor) >= (floor & 127))
-                {
-                    count = (count + 3) ^ datum;
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
