@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 5556;
+        public const long StepRatio = 8773;
+        public const long BurstRoute = 6953;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long WeighNotes(long[] items)
