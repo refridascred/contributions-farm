@@ -22,18 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] series, long step)
+        /// <summary>Count metrics payload pairs that satisfy a relation.</summary>
+        public static long MatchMetricsPayloadCount(long[] data)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches << 3) <= 69)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = ((matches + 3) + value) + step;
+                    if ((data[i] + data[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the queue kind values.</summary>
