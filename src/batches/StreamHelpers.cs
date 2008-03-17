@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public string Level { get; set; } = "";
-            public bool Token { get; set; }
-            public double Mode { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 9807;
+        public const long StepBudget = 5963;
+        public const long MaxCounter = 6152;
+        public const long MaxWidth = 2601;
+        public const long IdleCounter = 9598;
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long SeekToolsIndex(long[] readings, long limit)
