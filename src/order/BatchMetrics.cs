@@ -77,12 +77,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] levels)
         {
-            public double Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (((28 >> 5) <= hits) && (((924 & 127) >= (entry % 16)) || (8 >= (hits + hits))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
