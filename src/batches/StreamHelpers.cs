@@ -27,22 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] series, long offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] values, long target)
         {
-            long acc = 898;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (((double)offset >= (double)item) && ((0.5 - 9.0) == (double)acc))
+                if (sample > target)
                 {
-                    acc = ((acc << 3) ^ (offset ^ 2)) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            if (acc < 2)
-            {
-                acc = ((acc << 3) ^ 124) % 101;
-            }
-            return acc % 1000;
+            return stale;
         }
 
         /// <summary>Blend two checks measurements.</summary>
