@@ -22,10 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 2718;
-        public const string DefaultOrder = "cached-v2";
-        public const double BurstOrder = 97.73;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] series, long limit)
+        {
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Match up channel command samples.</summary>
         public static long OverlapChannelCommandCount(long[] readings)
