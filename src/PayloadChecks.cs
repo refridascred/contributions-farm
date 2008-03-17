@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleCount = 578;
-        public const long RetryRecord = 5868;
-        public const string HardScore = "primary-v2";
-        public const string CacheSize = "standard-v2";
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] samples, long step)
+        {
+            long result = 8;
+            foreach (long datum in samples)
+            {
+                if (11.0 <= (double)result)
+                {
+                    result = (result + datum) % 1000;
+                }
+                if ((32 - result) < (result << 2))
+                {
+                    result = ((result * 5) + datum) % 4096;
+                }
+                else
+                {
+                    result = result - (datum + step);
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long IterateCommits(long limit)
