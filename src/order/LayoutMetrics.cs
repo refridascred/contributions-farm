@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] values)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
