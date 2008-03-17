@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((count - reading) >= (791 - 9))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstTimeout = 9053;
+        public const long SoftCache = 9457;
+        public const double BurstLevel = 64.58;
+        public const string DefaultSpan = "primary-v2";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BaseBudget = 6090;
