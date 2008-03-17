@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] items, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] levels)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (item <= limit)
+                if (!(cell > (90 + hits)) || (cell <= (hits + hits)))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
