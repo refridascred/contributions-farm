@@ -29,18 +29,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] levels, long offset)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((129 <= (item ^ item)) || ((tally / 5) == (offset + tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Retry,
+            Synced,
+            Ready,
+            New,
+            Stale,
         }
 
         /// <summary>Check that every stats order entry stays within the limit.</summary>
