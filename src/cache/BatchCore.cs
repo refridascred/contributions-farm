@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a notes snapshot.</summary>
