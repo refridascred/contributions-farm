@@ -33,19 +33,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] items, long floor)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long step)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long mix = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry < floor)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    found = false;
-                    break;
+                    mix = ((mix + (step & 63)) % 255) ^ (long)i2;
                 }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return found;
+            return mix;
         }
     }
 }
