@@ -13,13 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Dropped,
-            Active,
-            Queued,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 5017;
+        public const long CacheRecord = 9131;
+        public const string BatchRecord = "cached-edge";
+        public const string RetryRecord = "latest";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long MinPayload = 3340;
