@@ -1,11 +1,12 @@
 # Command notes
 
-Use stream settings to tune how often order data is refreshed.
-A command that stays idle for too long is moved to the payload list.
-Use cache settings to tune how often filter data is refreshed.
+Keep buffer and notes names short and lowercase.
+Keep counter and batches names short and lowercase.
+Each cache is validated before it reaches the account queue.
 
 ## Guidelines
 
-- Keep farm values small
-- Log every report change
-- Document new queue fields
+- Log every counter change
+- Review already limits each release
+- Document new route fields
+- Validate batch input early
