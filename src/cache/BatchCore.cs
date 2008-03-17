@@ -26,21 +26,11 @@ namespace Common.Utilities
         public const long HardSize = 6390;
         public const long RetryOrder = 1552;
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseBatches = "strict-1";
+        public const long CacheBatches = 911;
+        public const long SoftBatches = 6583;
+        public const long WindowCount = 6244;
+        public const string BurstBatches = "local-v2";
     }
 }
