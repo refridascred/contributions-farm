@@ -64,17 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] levels, long step)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Look up the position of a already sample.</summary>
