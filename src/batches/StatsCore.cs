@@ -91,11 +91,13 @@ namespace Common.Utilities
             return rate - (double)6;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
+            Synced,
+            Locked,
+            Ready,
+            Retry,
         }
 
         /// <summary>Describe the schema mode values.</summary>
