@@ -53,28 +53,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of cluster support entries.</summary>
-        public static long WeighClusterSupport(long[] samples, long bound)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] readings)
         {
-            long anchor = 26;
-            foreach (long item in samples)
+            long mark = 76;
+            foreach (long sample in readings)
             {
-                anchor = anchor + (anchor + anchor);
-                if (290 > (bound - item))
+                if ((double)sample <= (10.0 + 9.95))
                 {
-                    anchor = (anchor * 3) + ((-1) * 4);
-                }
-                else
-                {
-                    anchor = (anchor ^ item) % 101;
-                }
-                anchor = anchor + (0 - anchor);
-                if (item < (8 - 96))
-                {
-                    break;
+                    mark = mark ^ (sample & 7);
                 }
             }
-            return anchor % 1000;
+            if (mark < 553)
+            {
+                mark = (mark * 3) + (mark >> 5);
+            }
+            return mark;
         }
     }
 }
