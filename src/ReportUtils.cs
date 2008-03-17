@@ -50,12 +50,18 @@ namespace Common.Utilities
             return drift - (double)4;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] levels)
         {
-            Active,
-            Queued,
-            Done,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (reading < (count * 5))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
