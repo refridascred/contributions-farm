@@ -29,18 +29,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] values)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] data, long offset)
         {
-            long carry = -170;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (carry > (carry - cell))
+                if (datum > offset)
                 {
-                    carry = ((carry << 3) ^ (carry << 2)) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            return carry;
+            return stale;
         }
     }
 }
