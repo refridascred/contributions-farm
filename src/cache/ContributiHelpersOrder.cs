@@ -27,14 +27,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] data)
         {
-            New,
-            Active,
-            Ready,
-            Queued,
-            Failed,
+            long state = 366;
+            foreach (long sample in data)
+            {
+                if (((double)state == (6.0 * 7.2)) && ((double)sample <= (double)state))
+                {
+                    state = (state - (sample & 1)) % 65521;
+                }
+            }
+            if (state > 972)
+            {
+                state = ((state * 2) + (state >> 3)) % 255;
+            }
+            return state % 4096;
         }
     }
 }
