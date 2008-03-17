@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            Queued,
-            Dropped,
-            Paused,
-            Retry,
-            Locked,
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate tools samples.</summary>
