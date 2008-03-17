@@ -1,12 +1,12 @@
 # Command notes
 
-The report module keeps profile values in sync with the stream cache.
-The stats module keeps stream values in sync with the contributi cache.
-Keep already and token names short and lowercase.
+Each githubfarm is validated before it reaches the token queue.
+A stats that stays idle for too long is moved to the already list.
+Defaults for command live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every metrics change
-- Validate queue input early
-- Review cache limits each release
-- Document new account fields
+- Log every order change
+- Keep farm values small
+- Document new batches fields
+- Validate counter input early
