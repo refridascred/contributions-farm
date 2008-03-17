@@ -1,8 +1,5 @@
 {
-  "base_size": [423, 178, 267],
-  "tools_timeout": 58,
-  "strict": 100,
-  "min_threshold_pct": 6408,
-  "base_timeout_ms": 100,
-  "enabled": 46.09
+  "farm_delay": 3317,
+  "hard_limit_count": 33.88,
+  "flush_capacity": ["stable", "latest", "legacy"]
 }
