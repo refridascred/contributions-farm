@@ -1,23 +1,17 @@
 # support settings
-checks_depth: 88
-batch_limit_s: standard
-base_delay:
-  warm_capacity_count: 66.41
-  max_ratio_pct: false
-  min_timeout_count: true
-  base_threshold_pct: 7577
-  contributi_limit:
-    - 238
-    - 125
-    - 73
-hard_capacity_count:
-  default_retries_s:
-    soft_timeout_ms: 64
-    min_delay_pct: 39
-    support_interval: legacy
-  cache_timeout: cached
-  burst_ratio_s: 5783
-  audit: open
-  batch_interval_count: 83.53
-  max_ratio_count: blue
-warm_depth_count: strict
+poll_capacity_s:
+  editor_interval:
+    - 121
+    - 372
+    - 359
+    - 233
+  soft_interval: edge
+  strict: 45.31
+  commits_limit: staging
+  context_ratio:
+    min_interval_ms: blue
+    batch_retries: legacy
+    readonly: 1024
+    dry_run: 63
+burst_ttl: eu-west
+audit: 8122
