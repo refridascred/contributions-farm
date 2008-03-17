@@ -41,22 +41,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many metric route samples are out of range.</summary>
-        public static long CountMetricRouteGaps(long[] samples, long step)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (38 >= (seen - 3))
-                {
-                    seen = ((seen + 2) - value) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Pending,
+            Draft,
         }
     }
 }
