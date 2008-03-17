@@ -43,14 +43,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] samples, long offset)
         {
-            Paused,
-            Idle,
-            Done,
-            Failed,
-            Closed,
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
