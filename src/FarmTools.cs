@@ -15,15 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double weight, double span)
+        /// <summary>Match up token account samples.</summary>
+        public static long MatchTokenAccountCount(long[] samples)
         {
-            double scale = weight;
-            if (scale >= scale)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = (scale - 18.0) + span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale - 9.6;
+            return seen;
         }
 
         /// <summary>Describe the queue kind values.</summary>
