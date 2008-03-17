@@ -17,32 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long limit, long origin)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long lane = limit ^ origin;
-            if ((double)limit < (6.8 * 8.8))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((lane >> 4) != (lane >> 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit <= (8.46 / 4.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Retry,
+            Pending,
+            Draft,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
