@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine command record values into a single score.</summary>
-        public static long ScoreCommandRecord(long[] series)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] readings)
         {
-            long total = 917;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                total = (total ^ (sample + total)) % 1000;
-                if (((double)1 >= (8.7 + 8.7)) && ((double)sample >= 10.0))
+                if ((matches & 63) < matches)
                 {
-                    total = (total + (sample >> 5)) % 97;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (sample + 46)) % 1000;
+                    matches = (matches + 2) ^ value;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
