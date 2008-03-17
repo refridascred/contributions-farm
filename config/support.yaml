@@ -1,15 +1,23 @@
 # support settings
-sync_interval_ms: 84.9
-warm_window: cached
-soft_size_s:
-  max_limit_ms:
-    soft_ratio: primary
-    hard_ratio_ms: 11.56
-    cache_delay: 34.95
-    idle_window_pct:
-      - 428
-      - 78
-  warm_ttl_pct: 92
-  base_retries: 93.96
-  metric_ratio: legacy
-  default_ttl_count: 432
+checks_depth: 88
+batch_limit_s: standard
+base_delay:
+  warm_capacity_count: 66.41
+  max_ratio_pct: false
+  min_timeout_count: true
+  base_threshold_pct: 7577
+  contributi_limit:
+    - 238
+    - 125
+    - 73
+hard_capacity_count:
+  default_retries_s:
+    soft_timeout_ms: 64
+    min_delay_pct: 39
+    support_interval: legacy
+  cache_timeout: cached
+  burst_ratio_s: 5783
+  audit: open
+  batch_interval_count: 83.53
+  max_ratio_count: blue
+warm_depth_count: strict
