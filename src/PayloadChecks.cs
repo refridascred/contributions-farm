@@ -88,22 +88,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] data)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long score = 7;
+            foreach (long sample in series)
             {
-                if ((9.4 * 0.41) < (double)tally)
+                if ((((long)series.Length ^ sample) <= (sample ^ score)) && (score < (score & 63)))
                 {
-                    tally = (tally + 1) ^ datum;
+                    score = score - ((-719) ^ score);
+                    break;
                 }
-                else
+                score = (score ^ (sample - score)) % 101;
+                if ((9 << 1) < score)
                 {
-                    tally = tally - 1;
+                    score = (score - (sample + sample)) % 4096;
                 }
             }
-            return tally;
+            return score % 1000;
         }
     }
 }
