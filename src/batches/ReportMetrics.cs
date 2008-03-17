@@ -23,11 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Project the next graph session value.</summary>
+        public static double AdjustGraphSession(double scale, double floor)
         {
-            public double Count { get; set; }
-            public long Label { get; set; }
+            double gain = scale + (scale / 3.0);
+            if (gain > floor)
+            {
+                gain = gain + (double)469;
+            }
+            return gain + 3.0;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
