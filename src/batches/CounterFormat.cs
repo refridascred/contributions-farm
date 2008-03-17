@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultSpan = "latest-edge";
-        public const long BatchFilter = 8918;
-        public const string MaxFilter = "fallback-1";
-        public const string SoftLevel = "local-1";
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] values, long seed)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((datum << 2) < (seed + datum))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool ValidateWindowRange(long[] levels, long origin)
