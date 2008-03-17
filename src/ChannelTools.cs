@@ -36,12 +36,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
+            Idle,
+            Failed,
             Done,
-            Locked,
-            Synced,
         }
     }
 }
