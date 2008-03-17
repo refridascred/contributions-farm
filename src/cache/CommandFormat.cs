@@ -12,21 +12,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] data)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 34;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((((result * 3) + (result ^ 7)) % 101) + item) - bound;
             }
-            return count;
+            if (result > 73)
+            {
+                result = (result ^ (result << 3)) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
