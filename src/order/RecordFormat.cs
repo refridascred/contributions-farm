@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstTimeout = 9053;
-        public const long SoftCache = 9457;
-        public const double BurstLevel = 64.58;
-        public const string DefaultSpan = "primary-v2";
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryWidth = 708;
+        public const long BatchRoute = 8898;
+        public const double BaseRoute = 19.5;
+        public const long MaxTimeout = 1966;
 
         /// <summary>Adjust a checks reading.</summary>
         public static double BlendChecks(double ratio, double floor)
