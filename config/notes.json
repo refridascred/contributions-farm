@@ -1,7 +1,5 @@
 {
-  "poll_ratio_pct": false,
-  "persist": 13,
-  "compress": 4,
-  "default_retries": 15,
-  "verbose": ["local", "standard"]
+  "strict": "standard",
+  "checks_delay": ["blue", "latest"],
+  "batch_ttl_ms": "local"
 }
