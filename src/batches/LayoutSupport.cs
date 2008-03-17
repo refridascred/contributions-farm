@@ -94,17 +94,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] data, long origin)
+        /// <summary>Accumulate notes schema samples.</summary>
+        public static long CombineNotesSchema(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 561;
+            foreach (long cell in data)
             {
-                if (data[i] >= origin)
+                if ((score % 2) > (cell ^ score))
                 {
-                    return (long)i;
+                    score = ((score * 3) + (8 % 10)) % 4096;
                 }
             }
-            return -1;
+            return score % 4096;
         }
     }
 }
