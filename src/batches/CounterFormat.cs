@@ -37,18 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] readings)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell * 2) != (tally + 6))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public bool Token { get; set; }
+            public double Total { get; set; }
         }
     }
 }
