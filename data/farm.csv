@@ -1,6 +1,10 @@
-id,state,level,owner
-1,open,269,386
-2,50.49,87,93.33
-3,blue,84.5,533
-4,69.22,284,864
-5,eu-west,green,699
+id,state,label,count
+1,769,126,21.09
+2,381,497,576
+3,standard,839,999
+4,19.01,83.71,87.86
+5,primary,12.1,eu-west
+6,27.25,standard,42
+7,eu-west,482,536
+8,cached,30.74,primary
+9,stable,53.4,91.94
