@@ -1,11 +1,6 @@
-id,score,weight
-1,open,658
-2,green,903
-3,cached,green
-4,legacy,cached
-5,799,431
-6,90.69,17
-7,928,fallback
-8,962,431
-9,legacy,latest
-10,50.68,44.8
+id,token,count,region
+1,90.77,78.77,948
+2,blue,green,fallback
+3,39.96,eu-west,fallback
+4,851,273,497
+5,34.17,local,71
