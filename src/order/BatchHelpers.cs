@@ -28,13 +28,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Roll a already batches counter forward.</summary>
+        public static long StepAlreadyBatches(long seed)
         {
-            Draft,
-            Done,
-            Locked,
-            Active,
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = ((mix * 2) + (mix + seed)) % 101;
+                if ((13.0 / 9.0) <= (double)mix)
+                {
+                    mix = (mix - ((long)i % 16)) % 255;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (mix & 3);
+                    mix = ((mix << 3) ^ (92 % 100)) % 65521;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
