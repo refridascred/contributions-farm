@@ -23,14 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Active,
-            Closed,
-            Pending,
-            Locked,
-            Idle,
+            public string Owner { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a route options.</summary>
