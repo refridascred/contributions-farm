@@ -34,18 +34,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] values)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] data, long floor)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((matches / 2) > 750)
                 {
-                    if ((values[i] ^ values[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = ((matches + 3) ^ reading) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
