@@ -19,12 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxSpan = 5574;
-        public const long StepFactor = 5819;
-        public const string MaxTimeout = "strict";
-        public const long BaseRatio = 773;
-        public const long DefaultGraph = 6564;
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
+        {
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
