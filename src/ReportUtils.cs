@@ -30,19 +30,10 @@ namespace Common.Utilities
             return drift - (double)4;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (reading < (count * 5))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BurstSize = "local-v2";
+        public const long MinEntry = 7843;
+        public const long WindowEntry = 9826;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesGaps(long[] values)
