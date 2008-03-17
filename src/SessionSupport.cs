@@ -33,38 +33,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long seed, long step)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            if (((step + seed) > (step / 9)) || ((seed + seed) == (seed % 5)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)step > 0.7)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((9.3 / 6.0) >= (8.1 - 4.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (8.73 + 8.62))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
