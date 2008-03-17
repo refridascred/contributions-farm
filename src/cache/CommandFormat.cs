@@ -40,11 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchSpan = "standard-v2";
-        public const long SoftCluster = 7380;
-        public const long DefaultScore = 1880;
-        public const string BatchCluster = "local-v2";
-        public const double BurstCluster = 89.13;
+        /// <summary>Look up the position of a githubfarm payload sample.</summary>
+        public static long LocateGithubfarmPayloadIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
