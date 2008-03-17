@@ -89,17 +89,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] readings, long origin)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long step, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((offset & 63) != (289 ^ offset))
             {
-                if (readings[i] == origin)
+                return 6;
+            }
+            else
+            {
+                if (!((offset << 1) >= step))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((step & 3) > (step + offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset & 255) <= (offset + step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
