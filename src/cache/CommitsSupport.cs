@@ -34,21 +34,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] samples)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] samples, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 5;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((5.85 - 3.06) < (double)item))
                 {
-                    if ((samples[i] ^ samples[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (((total << 3) ^ total) % 101) + bound;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
