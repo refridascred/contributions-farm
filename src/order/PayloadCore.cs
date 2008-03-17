@@ -20,39 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long bound, long floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long bound2 = bound ^ floor;
-            if (((59 / 6) >= (floor + bound2)) || (bound2 <= ((-7) + bound)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((5.0 * 2.99) > (double)floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)(-997) > (double)bound) || ((bound + 6) != (7 + 56)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound ^ bound2) != (bound2 % 64))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Done,
+            New,
+            Queued,
         }
 
         /// <summary>Hold a profile options.</summary>
