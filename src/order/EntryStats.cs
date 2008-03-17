@@ -52,11 +52,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Rank payload cluster input into a small class.</summary>
+        public static long BucketPayloadCluster(long offset, long offset2)
         {
-            public long Total { get; set; }
-            public double Weight { get; set; }
+            long span = offset ^ offset2;
+            if ((offset & 127) != (offset * 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((span ^ span) >= (span - offset2)) && (((-6) + 75) > (offset + offset)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((span & 7) > (offset2 % 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset + span) == (22 * 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
