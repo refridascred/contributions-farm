@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long limit, long seed)
-        {
-            if (((seed ^ limit) == (19 % 64)) && ((limit % 2) != (706 << 1)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed / 6) == (limit >> 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((17 - limit) > limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit - seed) < seed)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheSpan = 5886;
+        public const long StepFilter = 9348;
+        public const long CacheWidth = 5728;
+        public const double BatchTimeout = 50.55;
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
