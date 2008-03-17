@@ -1,19 +1,5 @@
 {
-  "max_limit": {
-    "dry_run": [417, 30, 9],
-    "counter_timeout": 250,
-    "editor_limit": 250,
-    "persist": "latest"
-  },
-  "flush_capacity": false,
-  "compress": "cached",
-  "contributi_capacity": "primary",
-  "retry_size": {
-    "strict": false,
-    "hard_size_ms": true,
-    "readonly": 55,
-    "cache_threshold": 29.6,
-    "idle_limit_s": 75
-  },
-  "soft_limit_s": ["strict", "open", "cached", "legacy"]
+  "default_timeout_s": false,
+  "default_capacity_s": true,
+  "batch_ttl_ms": "local"
 }
