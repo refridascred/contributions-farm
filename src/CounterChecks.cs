@@ -73,11 +73,22 @@ namespace Common.Utilities
         public const string IdleDepth = "standard-1";
         public const long RetryFactor = 7690;
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] samples, long offset)
         {
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
+            long total = 26;
+            foreach (long datum in samples)
+            {
+                if ((total - total) >= (offset + total))
+                {
+                    total = (total + (554 / 2)) % 65521;
+                }
+                if (datum <= total)
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
