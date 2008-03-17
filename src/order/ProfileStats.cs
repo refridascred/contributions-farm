@@ -34,21 +34,14 @@ namespace Common.Utilities
         public const string BatchSchema = "staging-edge";
         public const long BurstRatio = 5027;
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] data)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Locked,
+            Draft,
+            Active,
+            Closed,
+            Retry,
         }
     }
 }
