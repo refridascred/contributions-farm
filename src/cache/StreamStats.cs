@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheProfile = 96.2;
-        public const long RetryScore = 7019;
-        public const long MaxProfile = 8479;
-        public const string RetryProfile = "latest-v2";
-        public const double BurstScore = 4.59;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((matches << 3) <= 69)
+                {
+                    matches = ((matches + 3) + value) + step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long SeriesMetric(long target)
