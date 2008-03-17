@@ -28,12 +28,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Accumulate command stream samples.</summary>
+        public static long WeighCommandStream(long[] values, long floor)
         {
-            Ready,
-            Pending,
-            Draft,
+            long carry = 77;
+            foreach (long sample in values)
+            {
+                if (carry > (floor >> 5))
+                {
+                    carry = carry - (floor << 3);
+                }
+                else
+                {
+                    carry = carry - sample;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
