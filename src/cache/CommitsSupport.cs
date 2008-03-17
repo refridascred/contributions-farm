@@ -16,18 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the metric command entries that pass the check.</summary>
-        public static long MeasureMetricCommandOutliers(long[] readings, long step)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (value <= step)
+                if (((matches >> 3) >= floor) || (entry > floor))
                 {
-                    seen = seen + 2;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
