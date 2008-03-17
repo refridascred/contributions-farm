@@ -48,26 +48,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] samples, long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] series, long offset)
         {
-            long sum = 201;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((datum > ((long)samples.Length + target)) && (1.56 >= (double)sum))
+                if (datum > offset)
                 {
-                    sum = ((sum * 2) + (sum & 127)) % 97;
-                }
-                else
-                {
-                    sum = sum ^ (87 << 1);
+                    valid = false;
+                    break;
                 }
             }
-            if (sum > 15)
-            {
-                sum = ((sum << 2) ^ (target / 9)) % 97;
-            }
-            return sum;
+            return valid;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
