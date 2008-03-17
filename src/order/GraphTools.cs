@@ -55,19 +55,38 @@ namespace Common.Utilities
             return ratio - (gain + ratio);
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long bound)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long limit, long limit2)
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
+            if ((limit2 + 4) <= (limit >> 5))
             {
-                if (total <= (bound / 3))
-                {
-                    break;
-                }
-                total = ((total * 4) + (long)i) % 1000;
+                return 6;
             }
-            return total;
+            else
+            {
+                if ((double)limit != (15.0 / 3.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (limit2 < (limit << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit2 ^ limit2) > (limit / 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
