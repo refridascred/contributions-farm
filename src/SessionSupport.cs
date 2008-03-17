@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] levels, long seed)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] series, long seed)
         {
-            long mix = 4;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (((mix + (4 / 9)) % 65521) ^ entry) - seed;
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
