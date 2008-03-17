@@ -28,17 +28,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] series, long step)
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
+            long sum = 83;
+            foreach (long cell in series)
             {
-                result = result - (result + result);
-                result = (result * 3) + (offset << 1);
-                result = ((result * 2) + (long)i) % 4093;
+                sum = (((sum * 4) + (4 + cell)) % 4096) + step;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
