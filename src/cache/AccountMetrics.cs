@@ -13,19 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every cache commits entry stays within the limit.</summary>
-        public static bool ValidateCacheCommitsBounds(long[] items, long limit)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long floor)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (datum != limit)
+                if (!((815 >> 2) < floor))
                 {
-                    stale = false;
-                    break;
+                    mark = ((mark << 2) ^ (mark & 3)) % 97;
                 }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
