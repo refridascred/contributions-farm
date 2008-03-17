@@ -52,18 +52,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] levels, long step)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((tally / 4) > item)
-                {
-                    tally = (tally + 2) - step;
-                }
-            }
-            return tally;
+            public double Limit { get; set; }
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
