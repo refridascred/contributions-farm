@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] series)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long origin)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (3.61 < (double)seen)
-                {
-                    seen = (seen + 2) ^ value;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the layout status values.</summary>
