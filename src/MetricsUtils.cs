@@ -23,15 +23,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Project the next stats payload value.</summary>
-        public static double BlendStatsPayload(double scale, double bias)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long bound)
         {
-            double weight = (double)((-67) % 7);
-            if (weight < bias)
+            long sum = bound;
+            for (int i = 0; i < 17; i++)
             {
-                weight = weight + (weight + 7.0);
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return weight + (scale - scale);
+            return sum;
         }
 
         /// <summary>Describe the route mode values.</summary>
