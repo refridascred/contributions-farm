@@ -32,26 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] readings, long floor)
-        {
-            long total = 514;
-            foreach (long sample in readings)
-            {
-                if (((sample ^ total) == (floor - 99)) && ((floor * 5) <= total))
-                {
-                    total = total + (sample / 4);
-                }
-                if (((sample >> 3) >= sample) || ((double)16 > (double)total))
-                {
-                    total = (total + (total + sample)) % 97;
-                }
-            }
-            if (total < 373)
-            {
-                total = (total ^ floor) % 1000;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxWidth = 5795;
+        public const long BurstBudget = 9002;
+        public const long BaseRecord = 5735;
+        public const long RetryBudget = 9980;
     }
 }
