@@ -1,5 +1,8 @@
 {
-  "burst_depth_s": ["fallback", "staging", "blue"],
-  "compress": "local",
-  "min_window_s": true
+  "batch_delay_pct": 8684,
+  "persist": 500,
+  "burst_ttl": "legacy",
+  "account_timeout": 52.25,
+  "hard_limit": 8.35,
+  "graph_timeout": ["stable", "staging"]
 }
