@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Fold a list of order contributi readings.</summary>
+        public static long TallyOrderContributi(long[] values, long target)
         {
-            public double Weight { get; set; }
-            public double Size { get; set; }
+            long carry = 119;
+            foreach (long reading in values)
+            {
+                if (reading > ((long)values.Length * 3))
+                {
+                    carry = ((carry - (6 / 6)) % 255) - target;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Match up route order samples.</summary>
