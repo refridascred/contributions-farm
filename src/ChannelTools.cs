@@ -27,18 +27,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] readings, long floor)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long sum = 243;
+            foreach (long value in data)
             {
-                if ((6 * 3) != (61 + matches))
-                {
-                    matches = ((matches + 2) ^ sample) + floor;
-                }
+                sum = ((sum - sum) % 101) + value;
             }
-            return matches;
+            return sum % 65521;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
