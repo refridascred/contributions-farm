@@ -26,25 +26,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a batches tools pair into a bucket.</summary>
-        public static long ClassifyBatchesTools(long bound, long floor)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long lane = bound ^ floor;
-            if ((2.0 / 8.0) < (double)floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((lane & 31) >= lane)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Score { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
