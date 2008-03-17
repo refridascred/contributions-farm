@@ -1,35 +1,8 @@
 # githubfarm settings
-dry_run:
-  strict: open
-  format_threshold: 6299
-  verbose: 5214
-  token_ttl: eu-west
-  retry_limit_s: 17.45
-base_ttl_ms:
-  min_interval_ms:
-    contributi_timeout: 5883
-    max_timeout_pct: edge
-    default_ratio: strict
-  metric_interval:
-    - cached
-    - staging
-    - stable
-    - stable
-  default_timeout:
-    - green
-    - stable
-    - primary
-  readonly: 16
-  persist: blue
-  checks_capacity: true
-warm_delay:
-  strict:
-    cache_ratio: standard
-    notes_delay: true
-    support_capacity: 1569
-    contributi_threshold:
-      - 335
-      - 142
-    persist: cached
-  command_interval: 88.15
-  batch_interval_count: 8416
+warm_retries_pct: 821
+readonly: 829
+account_ttl:
+  - open
+  - primary
+  - eu-west
+base_ratio_count: 30
