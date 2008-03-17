@@ -1,50 +1,30 @@
 # entry settings
-max_depth:
-  - 406
-  - 187
-  - 210
-dry_run:
-  sync_size_ms:
-    - primary
-    - open
+poll_ratio_ms: 2801
+window_window: staging
+default_delay_count:
+  cluster_size:
     - latest
-  stream_threshold:
-    hard_ttl: 250
-    readonly: 7386
-    retry_delay_count: staging
-    support_capacity: false
-    warm_depth: true
-    flush_delay_s: 7642
-  payload_delay:
-    idle_retries:
-      - 411
-      - 334
-      - 62
-      - 350
-    readonly:
-      - local
-      - staging
-    poll_interval_ms: standard
-    sync_window_count: true
-    batch_threshold: 93
-  cache_size_s: 1725
-  poll_retries_pct: open
-  payload_timeout: open
-poll_ttl_pct:
-  token_ttl: 100
-  burst_capacity_ms: 36.64
-  dry_run: edge
-  soft_limit: 4219
-  order_delay:
-    already_interval: 33.76
-    flush_depth_pct:
-      - 377
-      - 142
-    enabled: true
-    min_window: false
-    flush_capacity_ms: 500
-    command_limit: staging
-  warm_timeout_ms: legacy
-retry_size: true
-strict: 100
-editor_delay: 91
+    - blue
+    - primary
+  batch_limit: 78.06
+  poll_threshold_pct: false
+base_interval_ms:
+  warm_depth:
+    - 33
+    - 495
+    - 312
+  poll_retries_count: false
+  report_limit: fallback
+  min_limit: 6718
+  persist:
+    flush_size_count: staging
+    strict: fallback
+    graph_limit: eu-west
+    persist:
+      - primary
+      - legacy
+      - open
+      - green
+  editor_delay: latest
+dry_run: 9930
+strict: open
