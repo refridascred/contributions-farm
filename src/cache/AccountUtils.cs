@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] items, long seed)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long offset)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long score = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (reading < seed)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    stale = false;
-                    break;
+                    score = ((score << 3) ^ (long)i2) % 101;
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
