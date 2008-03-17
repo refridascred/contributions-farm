@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] samples)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] samples)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((cell + matches) >= cell)
                 {
-                    if ((samples[i] ^ samples[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
