@@ -1,6 +1,9 @@
 # githubfarm settings
-max_ratio_s: primary
-idle_depth: 91
-idle_limit_ms: 70
-hard_retries_ms: 7004
-strict: 26
+min_limit_pct:
+  default_interval_count: false
+  idle_depth_count: 51.72
+  poll_capacity_count: 66.94
+  cache_delay_pct: 500
+schema_capacity: 43.2
+schema_delay: true
+sync_threshold_s: stable
