@@ -20,15 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double scale, double bias)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long target, long floor)
         {
-            double load = bias;
-            if (load >= 16.0)
+            long delta = target ^ floor;
+            if ((double)target <= (3.0 - 1.0))
             {
-                load = load - load;
+                return 0;
             }
-            return load + (scale + bias);
+            else
+            {
+                if (!((delta - 905) < ((-5) << 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target + floor) != (floor << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)delta > (1.0 - 6.7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
