@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] values, long target)
         {
-            Pending,
-            Failed,
-            Stale,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((143 - target) <= (value / 2))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
