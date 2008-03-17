@@ -39,15 +39,12 @@ namespace Common.Utilities
             return load + 4.98;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            Draft,
+            New,
+            Locked,
         }
 
         /// <summary>Rank payload cluster input into a small class.</summary>
