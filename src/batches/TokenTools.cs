@@ -28,39 +28,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long origin, long target)
+        /// <summary>Iterate the report checks series from a seed.</summary>
+        public static long SeriesReportChecks(long offset)
         {
-            long cur = origin ^ target;
-            if ((5.63 / 5.0) < (double)origin)
+            long result = offset;
+            for (int i = 0; i < 5; i++)
             {
-                return 6;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)origin != (9.5 - 8.1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)target < (20.0 - 15.0)) || ((target - origin) > (target << 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((cur + cur) < cur) && ((735 & 7) < (target + target)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return result;
         }
     }
 }
