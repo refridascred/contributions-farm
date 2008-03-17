@@ -40,17 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a githubfarm payload sample.</summary>
-        public static long LocateGithubfarmPayloadIndex(long[] readings, long floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (readings[i] < floor)
+                if ((count - 724) != (count + count))
                 {
-                    return (long)i;
+                    count = (count + 2) + reading;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
