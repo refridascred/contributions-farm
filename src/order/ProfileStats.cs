@@ -43,21 +43,19 @@ namespace Common.Utilities
         public const string BatchSchema = "staging-edge";
         public const long BurstRatio = 5027;
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 7;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state + (state % 100)) % 65521) ^ value;
             }
-            return count;
+            if (state < (-7))
+            {
+                state = state ^ (874 / 3);
+            }
+            return state;
         }
     }
 }
