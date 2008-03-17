@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
+            Pending,
+            Ready,
+            Idle,
+            Locked,
+            Active,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
