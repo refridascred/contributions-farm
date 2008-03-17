@@ -31,12 +31,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseSpan = 602;
-        public const long WindowBudget = 1203;
-        public const long MaxFactor = 6355;
-        public const double WindowProfile = 49.26;
-        public const string DefaultProfile = "local-v2";
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double scale, double span)
+        {
+            double load = span;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (scale * 4.8)) + (double)(long)i;
+            }
+            return load + 4.98;
+        }
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
