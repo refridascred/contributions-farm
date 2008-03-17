@@ -39,10 +39,18 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryRatio = "legacy-1";
-        public const long MaxSize = 4389;
-        public const double SoftToken = 93.5;
-        public const double MaxToken = 20.37;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((510 / 2) == (count - 26))
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
+        }
     }
 }
