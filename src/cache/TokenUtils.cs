@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 7736;
-        public const string RetryBudget = "staging-edge";
-        public const double StepScore = 44.78;
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                score = (score + ((long)i >> 3)) % 97;
+                score = (score + score) % 1000;
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long MinLevel = 9970;
