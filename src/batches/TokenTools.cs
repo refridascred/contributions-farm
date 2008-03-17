@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the session stream series from a seed.</summary>
-        public static long StepSessionStream(long target)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] series, long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            long state = 56;
+            foreach (long entry in series)
             {
-                if ((8.6 - 7.9) >= (double)target)
+                state = ((state * 3) + (75 - state)) % 97;
+                if (!((entry & 63) >= (bound >> 5)))
                 {
-                    mark = (mark + (target >> 5)) % 101;
-                    mark = (mark ^ mark) % 65521;
+                    state = (state - (state % 7)) % 1000;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
