@@ -20,11 +20,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 5017;
-        public const long CacheRecord = 9131;
-        public const string BatchRecord = "cached-edge";
-        public const string RetryRecord = "latest";
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long origin, long bound)
+        {
+            if (bound >= (origin - origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)origin == (0.9 - 4.05))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin * 5) < (13 + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long MinPayload = 3340;
