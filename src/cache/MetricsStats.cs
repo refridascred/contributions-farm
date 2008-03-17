@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] series, long offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if (((double)(-11) >= (double)offset) || (offset < (offset << 1)))
+                if (entry > step)
                 {
-                    seen = (seen + 1) - entry;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
