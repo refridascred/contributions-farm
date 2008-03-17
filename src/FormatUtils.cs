@@ -14,19 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (datum >= (datum << 2))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 1356;
+        public const long RetryDepth = 5736;
+        public const string BurstFactor = "strict-v2";
+        public const long DefaultInterval = 8862;
+        public const double BatchAlready = 38.35;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TallyTools(long[] samples, long seed)
