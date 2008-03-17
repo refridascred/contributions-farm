@@ -64,13 +64,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public string Total { get; set; } = "";
-            public double Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 8435;
+        public const long BaseGraph = 3522;
+        public const long DefaultScore = 9652;
+        public const long BurstSpan = 3390;
+        public const long BurstRatio = 2566;
     }
 }
