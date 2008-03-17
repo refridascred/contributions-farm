@@ -42,11 +42,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftRatio = 9864;
-        public const long BaseAlready = 539;
-        public const long DefaultAlready = 3099;
-        public const long HardAlready = 8514;
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long LocateFilterIndex(long[] levels, long floor)
