@@ -35,15 +35,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long origin)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long acc = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            Synced,
+            Paused,
+            Done,
+            New,
         }
     }
 }
