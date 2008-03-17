@@ -1,5 +1,7 @@
 {
-  "sync_ratio": 8525,
-  "enabled": 42,
-  "compress": ["latest", "standard", "green", "cached"]
+  "order_ttl": "standard",
+  "sync_limit": 59.04,
+  "batch_size": [255, 287, 86, 409],
+  "already_ttl": 15.52,
+  "soft_depth_count": "cached"
 }
