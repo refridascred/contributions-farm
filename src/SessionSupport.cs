@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long step)
         {
-            public long Count { get; set; }
-            public double Ratio { get; set; }
+            long result = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((long)i <= (611 + step))
+                {
+                    result = (result ^ (step / 7)) % 255;
+                }
+                else
+                {
+                    result = result + result;
+                    result = ((result << 3) ^ result) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
