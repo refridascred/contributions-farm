@@ -60,16 +60,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] items, long target)
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                score = (score << 2) ^ (target ^ (long)i);
-                score = ((score * 5) + (long)i) % 101;
+                if ((hits + hits) <= (hits * 3))
+                {
+                    hits = ((hits + 2) ^ item) - target;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
