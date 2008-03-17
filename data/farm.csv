@@ -1,6 +1,8 @@
-id,owner,count,region
-1,874,236,317
-2,654,latest,local
-3,82.59,481,staging
-4,strict,808,91.47
-5,8.89,562,167
+id,label,count,owner
+1,26.08,718,754
+2,edge,47.1,standard
+3,174,453,732
+4,228,98.62,674
+5,372,66.5,fallback
+6,909,628,cached
+7,202,804,787
