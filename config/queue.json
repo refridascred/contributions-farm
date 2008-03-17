@@ -1,5 +1,8 @@
 {
-  "cluster_threshold": [204, 424, 254, 272],
-  "enabled": 33.05,
-  "hard_threshold_count": [290, 226, 446, 495]
+  "idle_threshold_s": ["fallback", "blue", "primary"],
+  "default_timeout_ms": 16.84,
+  "max_window": 7608,
+  "max_delay_s": "staging",
+  "base_ratio_count": "latest",
+  "base_timeout_ms": 79.95
 }
