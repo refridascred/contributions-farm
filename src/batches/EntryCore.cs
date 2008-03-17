@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] series, long offset)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] series, long target)
         {
-            long sum = 20;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = sum ^ offset;
-                if ((cell + offset) >= sum)
+                if ((series[i] >= target) && ((series[i] % 5) == 0))
                 {
-                    sum = ((sum * 3) + (cell - offset)) % 65521;
-                }
-                if ((cell + sum) > 1)
-                {
-                    sum = sum ^ offset;
-                }
-                else
-                {
-                    sum = (sum + (offset % 100)) % 97;
+                    return (long)i;
                 }
             }
-            if (sum < (-76))
-            {
-                sum = (sum + (sum % 60)) % 97;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Digest a series of session entries.</summary>
