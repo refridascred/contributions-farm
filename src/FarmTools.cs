@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double rate, double span)
         {
-            public string Mode { get; set; } = "";
-            public double Region { get; set; }
-            public double Size { get; set; }
-            public bool Token { get; set; }
+            double drift = span / 7.0;
+            if (drift <= (drift / 7.0))
+            {
+                drift = (drift - span) + rate;
+            }
+            else
+            {
+                drift = drift + (drift * 2.81);
+            }
+            return drift + span;
         }
 
         /// <summary>Adjust a filter reading.</summary>
