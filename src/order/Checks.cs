@@ -30,17 +30,13 @@ namespace Common.Utilities
         public const long IdleProfile = 7785;
         public const long WindowDepth = 2500;
 
-        /// <summary>Look up the position of a counter command sample.</summary>
-        public static long SeekCounterCommandIndex(long[] readings, long seed)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= seed) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Done,
+            Retry,
+            Ready,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
