@@ -63,21 +63,15 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Compare every pair of context account readings.</summary>
-        public static long CompareContextAccountCount(long[] values)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 55;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = (((score ^ (score - score)) % 255) + item) - origin;
             }
-            return matches;
+            return score;
         }
     }
 }
