@@ -12,12 +12,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Locked,
-            Idle,
-            New,
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a queue summary.</summary>
