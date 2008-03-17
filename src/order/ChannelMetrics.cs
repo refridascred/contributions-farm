@@ -43,32 +43,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long origin, long seed)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] series, long origin)
         {
-            long prev = origin + seed;
-            if (!((204 - seed) > (88 - prev)))
+            long state = 513;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (prev >= (seed + origin))
+                if ((state + cell) != (state >> 1))
                 {
-                    return 7;
+                    state = ((state << 3) ^ (state - origin)) % 65521;
                 }
                 else
                 {
-                    if (((origin * 2) <= prev) || ((seed & 31) <= origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    state = (state * 4) + (state << 2);
                 }
             }
+            if (state < 69)
+            {
+                state = ((state * 5) + origin) % 65521;
+            }
+            return state;
         }
     }
 }
