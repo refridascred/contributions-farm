@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchReport = 92.55;
-        public const double MinTimeout = 62.96;
-        public const long LimitReport = 9904;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Retry,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long PairEntryCount(long[] readings)
