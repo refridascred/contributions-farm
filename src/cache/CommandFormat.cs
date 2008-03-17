@@ -37,15 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] series)
+        /// <summary>Count counter command pairs that satisfy a relation.</summary>
+        public static long CompareCounterCommandCount(long[] items)
         {
             long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((item >> 5) != (count & 63)) && ((item + 233) >= (item + count)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 3;
+                    if ((items[i] ^ items[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
