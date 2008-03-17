@@ -35,18 +35,17 @@ namespace Common.Utilities
             return ratio - (double)84;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] values)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8.95 + 15.0) == (double)datum)
+                if (items[i] < bound)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
