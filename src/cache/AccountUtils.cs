@@ -58,19 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double scale, double bias)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] items, long step)
         {
-            double ratio = (double)(94 >> 4);
-            if (ratio > (double)(-6))
+            bool valid = true;
+            foreach (long cell in items)
             {
-                ratio = ratio - (ratio * 7.25);
+                if (cell > step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (9.6 + scale)) + (double)(long)i;
-            }
-            return ratio - bias;
+            return valid;
         }
     }
 }
