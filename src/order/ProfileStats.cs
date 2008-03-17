@@ -53,15 +53,28 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double ratio, double span)
+        /// <summary>Digest a series of cluster support entries.</summary>
+        public static long WeighClusterSupport(long[] samples, long bound)
         {
-            double rate = span / 2.0;
-            if (rate >= span)
+            long anchor = 26;
+            foreach (long item in samples)
             {
-                rate = rate - (ratio - span);
+                anchor = anchor + (anchor + anchor);
+                if (290 > (bound - item))
+                {
+                    anchor = (anchor * 3) + ((-1) * 4);
+                }
+                else
+                {
+                    anchor = (anchor ^ item) % 101;
+                }
+                anchor = anchor + (0 - anchor);
+                if (item < (8 - 96))
+                {
+                    break;
+                }
             }
-            return rate - span;
+            return anchor % 1000;
         }
     }
 }
