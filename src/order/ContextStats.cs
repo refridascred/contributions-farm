@@ -29,18 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmGaps(long[] series, long bound)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long step)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long mark = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (3 > (bound / 6))
+                if (((long)i + step) < (mark >> 5))
                 {
-                    seen = (seen + 1) ^ value;
+                    continue;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Measure how many token contributi samples are out of range.</summary>
