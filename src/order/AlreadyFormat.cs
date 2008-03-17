@@ -61,11 +61,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryScore = 31.81;
-        public const long MaxRatio = 3430;
-        public const double LimitReport = 46.39;
-        public const long SoftReport = 1667;
-        public const double RetryReport = 44.79;
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
