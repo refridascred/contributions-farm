@@ -31,18 +31,20 @@ namespace Common.Utilities
         public const string BaseSpan = "local";
         public const long HardRoute = 5766;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] items, long seed)
+        /// <summary>Iterate the account editor series from a seed.</summary>
+        public static long SeriesAccountEditor(long floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long total = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (((97 - 71) != (reading >> 1)) && ((reading & 1) != (hits + seed)))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    hits = hits + 1;
+                    total = ((total ^ floor) % 65521) + (long)i2;
+                    total = (total << 2) ^ (total + floor);
                 }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
     }
 }
