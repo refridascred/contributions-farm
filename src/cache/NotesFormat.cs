@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] items, long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] samples, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 393;
+            foreach (long entry in samples)
             {
-                if (items[i] < floor)
+                if ((72 / 8) <= carry)
                 {
-                    return (long)i;
+                    carry = ((carry << 2) ^ (entry * 3)) % 101;
+                }
+                else
+                {
+                    carry = (carry ^ (origin & 3)) % 101;
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Define route limits and defaults.</summary>
