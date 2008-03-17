@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] levels, long target)
         {
-            public double Token { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((16.0 * 8.1) == (double)target)
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit notes context readings against a rule.</summary>
