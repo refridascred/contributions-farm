@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] levels, long step)
-        {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultMetric = "primary-edge";
+        public const long StepScore = 5928;
+        public const long BatchInterval = 9202;
 
         /// <summary>Fold a list of schema editor readings.</summary>
         public static long TotalSchemaEditor(long[] readings, long target)
