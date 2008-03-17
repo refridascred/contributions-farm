@@ -19,11 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowGithubfarm = "strict";
-        public const double DefaultGithubfarm = 39.63;
-        public const long StepTimeout = 3341;
-        public const long BatchGithubfarm = 1002;
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public long Level { get; set; }
+            public bool Weight { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Locate a cache tools reading by value.</summary>
         public static long LocateCacheToolsIndex(long[] items, long floor)
