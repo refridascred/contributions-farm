@@ -43,25 +43,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long step, long origin)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long gap = step - origin;
-            if (!(step >= (gap << 1)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin > (3 / 5)) && (origin > (gap / 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
