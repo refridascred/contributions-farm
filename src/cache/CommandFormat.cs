@@ -12,27 +12,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] items)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] samples)
         {
-            long result = -47;
-            foreach (long reading in items)
+            long mark = 5;
+            foreach (long item in samples)
             {
-                if (result < (reading << 2))
+                if ((item + mark) >= (mark + item))
                 {
-                    result = (result + 6) % 255;
+                    mark = ((mark * 2) + (7 / 9)) % 101;
                 }
-                else
-                {
-                    result = (result - result) % 101;
-                }
-                result = (result ^ (result & 1)) % 101;
             }
-            if (result > 8)
-            {
-                result = ((result << 2) ^ 78) % 1000;
-            }
-            return result;
+            return mark % 1000;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
