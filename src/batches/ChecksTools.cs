@@ -32,14 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
+            Done,
             Stale,
-            Closed,
-            Queued,
+            Paused,
             Idle,
-            Pending,
+            New,
         }
 
         /// <summary>Hold a filter snapshot.</summary>
