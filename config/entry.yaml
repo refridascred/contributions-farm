@@ -1,12 +1,25 @@
 # entry settings
-tools_limit: 6353
-strict: edge
-queue_capacity: edge
-batches_interval:
-  verbose: false
-  payload_timeout:
-    verbose: 972
-    batch_limit_s: standard
-    checks_interval: standard
-  warm_retries_s: 95.64
-retry_depth_pct: eu-west
+readonly: false
+metrics_size: fallback
+retry_capacity_pct:
+  verbose:
+    strict: 1102
+    stream_depth:
+      - 146
+      - 125
+      - 145
+    commits_delay: open
+  max_size: 500
+  strict: 55
+  dry_run: 13
+  burst_interval:
+    burst_ratio_pct:
+      - legacy
+      - blue
+      - edge
+      - open
+    enabled: 25.35
+    idle_limit: staging
+    compress: blue
+    cache_delay: 33.1
+cache_limit_count: cached
