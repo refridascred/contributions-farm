@@ -27,31 +27,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long step, long floor)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            if (((18.0 / 3.0) >= (double)floor) && (floor <= (step / 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step + step) > step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((-71) <= (floor % 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Compare every pair of tools commits readings.</summary>
