@@ -39,14 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Locked,
-            Retry,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheCount = 8181;
+        public const double WindowCache = 83.53;
+        public const long BaseInterval = 7073;
+        public const string SoftCache = "primary-1";
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
