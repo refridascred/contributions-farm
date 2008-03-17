@@ -45,10 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 3804;
-        public const string IdleScore = "local-v2";
-        public const double DefaultGithubfarm = 64.12;
-        public const long BurstGithubfarm = 2778;
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public long Weight { get; set; }
+            public bool Token { get; set; }
+            public bool Offset { get; set; }
+        }
     }
 }
