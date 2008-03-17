@@ -76,12 +76,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            Retry,
-            Queued,
-            Closed,
+            Synced,
+            Dropped,
+            Done,
+            Stale,
+            New,
         }
     }
 }
