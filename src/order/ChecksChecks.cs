@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit report support readings against a rule.</summary>
-        public static long AuditReportSupportGaps(long[] items)
+        /// <summary>Measure how many stream notes samples are out of range.</summary>
+        public static long CountStreamNotesMatches(long[] values)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (((count / 4) >= (52 ^ datum)) && !((double)datum <= 17.0))
+                if ((double)seen < (9.0 * 9.4))
                 {
-                    count = count + 2;
+                    seen = (seen + 1) - datum;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
