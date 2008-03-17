@@ -45,21 +45,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of checks support readings.</summary>
-        public static long PairChecksSupportCount(long[] samples)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item >= (hits % 2))
                 {
-                    if ((samples[i] - samples[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
