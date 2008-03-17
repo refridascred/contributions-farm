@@ -67,19 +67,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double rate, double bias)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            double drift = bias;
-            if (drift <= (double)717)
-            {
-                drift = drift + (double)881;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + bias) + (double)(long)i;
-            }
-            return drift - rate;
+            public double Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
