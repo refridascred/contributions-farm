@@ -83,18 +83,31 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many token route samples are out of range.</summary>
-        public static long AuditTokenRouteHits(long[] data)
+        /// <summary>Rank notes commits input into a small class.</summary>
+        public static long RankNotesCommits(long seed, long bound)
         {
-            long seen = 0;
-            foreach (long item in data)
+            if ((6 >> 1) != (693 + bound))
             {
-                if ((double)(long)data.Length >= (17.0 / 8.0))
+                return 8;
+            }
+            else
+            {
+                if ((bound + bound) >= bound)
                 {
-                    seen = (seen + 2) + item;
+                    return 1;
+                }
+                else
+                {
+                    if (!((68 * 5) >= (seed - bound)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the record mode values.</summary>
