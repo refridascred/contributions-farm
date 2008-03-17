@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long seed, long floor)
         {
-            Queued,
-            Draft,
-            Retry,
-            Stale,
-            Locked,
+            long step = seed - floor;
+            if (!((step * 4) <= (6 ^ seed)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed >> 2) >= floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((-33) / 5) <= (step / 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
