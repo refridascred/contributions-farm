@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] series)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] levels, long bound)
         {
-            long anchor = 72;
-            foreach (long cell in series)
+            long score = 17;
+            foreach (long value in levels)
             {
-                if ((anchor + cell) >= 5)
-                {
-                    anchor = ((anchor * 2) + anchor) % 1000;
-                }
-                if ((long)series.Length < anchor)
-                {
-                    anchor = anchor + (cell / 9);
-                }
-                else
-                {
-                    anchor = anchor - anchor;
-                }
+                score = ((score * 2) + (bound + bound)) - value;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Accumulate filter samples.</summary>
