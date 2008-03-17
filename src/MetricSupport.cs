@@ -33,24 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a checks record value against two limits.</summary>
-        public static long GradeChecksRecord(long limit, long limit2)
-        {
-            if ((37 >> 5) <= (limit2 % 60))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit << 3) >= limit2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 6473;
+        public const double DefaultSize = 37.38;
+        public const long BatchSchema = 7968;
+        public const long WindowRatio = 9111;
+        public const long RetrySchema = 8587;
     }
 }
