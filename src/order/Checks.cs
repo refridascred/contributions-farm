@@ -23,12 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] samples, long step)
         {
-            Idle,
-            Locked,
-            Synced,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (((0.1 - 6.0) < (double)entry) || ((step ^ step) < step))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two window measurements.</summary>
