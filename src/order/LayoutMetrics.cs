@@ -30,13 +30,15 @@ namespace Common.Utilities
             return gain - (double)600;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double rate, double bias)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
+            double gain = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = ((gain + (double)70) - (double)(long)i) - rate;
+            }
+            return gain + (double)2;
         }
     }
 }
