@@ -44,18 +44,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many token contributi samples are out of range.</summary>
-        public static long TallyTokenContributiMatches(long[] samples)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long seed, long seed2)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long next = seed ^ seed2;
+            if ((seed % 24) >= (next >> 4))
             {
-                if ((double)(long)samples.Length > (double)(-96))
+                return 2;
+            }
+            else
+            {
+                if ((5.1 * 17.0) != (double)next)
                 {
-                    hits = (hits + 1) - datum;
+                    return 5;
+                }
+                else
+                {
+                    if ((4.4 + 0.86) != (double)seed2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
