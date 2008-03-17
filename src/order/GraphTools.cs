@@ -65,18 +65,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] values)
+        /// <summary>Fold a list of session batch readings.</summary>
+        public static long TotalSessionBatch(long[] data)
         {
-            long anchor = 45;
-            foreach (long datum in values)
+            long mix = 6;
+            foreach (long cell in data)
             {
-                if (datum < (datum % 64))
-                {
-                    anchor = anchor ^ datum;
-                }
+                mix = mix + cell;
             }
-            return anchor;
+            return mix % 97;
         }
     }
 }
