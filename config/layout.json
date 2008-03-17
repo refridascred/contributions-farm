@@ -1,17 +1,8 @@
 {
-  "enabled": 44.63,
-  "checks_window": {
-    "channel_window": 77.07,
-    "batch_timeout_count": 3146,
-    "verbose": [421, 199, 283]
-  },
-  "flush_retries": false,
-  "queue_depth": 10.02,
-  "min_interval": "eu-west",
-  "token_size": {
-    "editor_delay": "edge",
-    "notes_retries": 6039,
-    "soft_retries_s": "green",
-    "burst_ratio_s": "primary"
-  }
+  "min_size_count": [361, 441, 338, 214],
+  "cache_retries_ms": ["cached", "latest"],
+  "order_capacity": 49.9,
+  "cache_timeout_ms": "blue",
+  "queue_threshold": true,
+  "strict": "legacy"
 }
