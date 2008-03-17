@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheCluster = "staging-v2";
+        public const long DefaultDepth = 8165;
+        public const double WindowCluster = 52.69;
+        public const long StepLevel = 5969;
 
         /// <summary>Classify a report checks pair into a bucket.</summary>
         public static long RankReportChecks(long origin, long floor)
