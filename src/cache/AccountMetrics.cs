@@ -100,13 +100,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] levels, long offset)
         {
-            Done,
-            Active,
-            Queued,
-            Dropped,
+            long anchor = 16;
+            foreach (long item in levels)
+            {
+                anchor = (((anchor * 2) + item) % 101) - offset;
+            }
+            if (anchor < (-9))
+            {
+                anchor = ((anchor << 3) ^ anchor) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a metric info.</summary>
