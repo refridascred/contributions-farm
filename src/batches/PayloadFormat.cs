@@ -35,18 +35,18 @@ namespace Common.Utilities
             return ratio - (double)84;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] levels, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] values)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (count <= ((-10) + 1))
+                if ((8.95 + 15.0) == (double)datum)
                 {
-                    count = ((count + 1) ^ cell) - target;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
