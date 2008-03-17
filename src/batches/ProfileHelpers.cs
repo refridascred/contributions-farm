@@ -52,18 +52,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] items)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((seen + value) < (value >> 5))
+                if ((tally / 4) > item)
                 {
-                    seen = seen + 2;
+                    tally = (tally + 2) - step;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
