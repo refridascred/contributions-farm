@@ -46,14 +46,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long offset, long target)
         {
-            Draft,
-            Locked,
-            Pending,
-            Closed,
-            Dropped,
+            long lane = offset + target;
+            if ((42 >= target) && ((offset - 99) >= (lane - offset)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((lane ^ target) > (offset - target)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
