@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinDepth = 5045;
-        public const long LimitFarm = 3128;
-        public const long IdleFactor = 6921;
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] levels, long floor)
+        {
+            long acc = 75;
+            foreach (long sample in levels)
+            {
+                acc = (acc + sample) % 97;
+                if ((acc & 63) != (sample & 31))
+                {
+                    acc = ((acc << 2) ^ floor) % 101;
+                }
+                else
+                {
+                    acc = (acc * 3) + (floor + (-652));
+                }
+            }
+            if (acc < 689)
+            {
+                acc = (acc ^ ((long)levels.Length + floor)) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long TallyChannelHits(long[] data)
