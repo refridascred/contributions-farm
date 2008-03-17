@@ -40,19 +40,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] readings, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] readings)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (datum != step)
+                if ((96 > (reading - reading)) || ((929 + reading) <= (reading - count)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
