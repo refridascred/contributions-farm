@@ -61,24 +61,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long step)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long total = step;
-            for (int i = 0; i < 10; i++)
-            {
-                long diff = (long)i;
-                if ((step + 47) >= (8 & 7))
-                {
-                    diff = (diff ^ ((long)i + total)) % 1000;
-                }
-                if (((diff - step) < (step % 97)) && ((long)i <= 7))
-                {
-                    total = (total - (total + 99)) % 97;
-                }
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Check that every filter payload entry stays within the limit.</summary>
