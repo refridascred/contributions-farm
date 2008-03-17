@@ -39,18 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitLevel = "open-edge";
+        public const long StepLevel = 9803;
+        public const double SoftRecord = 53.69;
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long RankChecks(long floor, long step)
