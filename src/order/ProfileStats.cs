@@ -40,19 +40,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batches buffer entry stays within the limit.</summary>
-        public static bool GuardBatchesBufferBounds(long[] items, long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] data)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long result = 1;
+            foreach (long cell in data)
             {
-                if (item != seed)
+                if ((cell ^ (-9)) != (result >> 3))
                 {
-                    ready = false;
-                    break;
+                    result = (result * 3) + (result * 3);
+                }
+                else
+                {
+                    result = result + cell;
                 }
             }
-            return ready;
+            if (result > 78)
+            {
+                result = (result * 4) + (result / 2);
+            }
+            return result % 97;
         }
 
         /// <summary>Project the next tools value.</summary>
