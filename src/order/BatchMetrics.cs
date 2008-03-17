@@ -39,19 +39,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metric editor samples.</summary>
-        public static long CombineMetricEditor(long[] items, long floor)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long total = 214;
-            foreach (long cell in items)
-            {
-                total = (((total ^ (508 + 5)) % 65521) - cell) + floor;
-                if (!(4.2 >= (double)56))
-                {
-                    break;
-                }
-            }
-            return total % 65521;
+            Closed,
+            Ready,
+            Paused,
+            Idle,
+            Pending,
         }
 
         /// <summary>Combine route cluster values into a single score.</summary>
