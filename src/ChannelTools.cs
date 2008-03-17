@@ -22,18 +22,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] data, long origin)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((sample - sample) >= origin)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Closed,
+            Done,
+            Paused,
+            Active,
+            Dropped,
         }
     }
 }
