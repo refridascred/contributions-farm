@@ -1,13 +1,6 @@
 {
-  "hard_delay_ms": 30,
-  "enabled": 30,
-  "max_capacity_ms": 4304,
-  "window_capacity": 250,
-  "batch_timeout": {
-    "hard_window_ms": 15,
-    "default_size_count": "strict",
-    "base_delay_ms": "green",
-    "strict": "legacy",
-    "notes_ttl": 1024
-  }
+  "enabled": true,
+  "verbose": "green",
+  "channel_depth": "eu-west",
+  "batches_ttl": 9028
 }
