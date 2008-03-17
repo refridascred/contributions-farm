@@ -34,16 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long seed)
+        /// <summary>Blend two tools schema measurements.</summary>
+        public static double AdjustToolsSchema(double weight, double floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = ((acc * 3) + (acc & 31)) % 65521;
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            double gain = floor;
+            return (gain - (18.0 - gain)) + weight;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
