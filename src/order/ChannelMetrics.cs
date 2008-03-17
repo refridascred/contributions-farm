@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batches report readings against a bound.</summary>
-        public static bool CheckBatchesReportLimits(long[] data, long origin)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (entry >= origin)
+                if (item <= target)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Accumulate payload samples.</summary>
