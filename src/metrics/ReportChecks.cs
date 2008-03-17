@@ -59,9 +59,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleSize = 97.52;
-        public const string MaxMetrics = "staging-edge";
-        public const long BatchMetrics = 6778;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double gain, double floor)
+        {
+            double rate = gain * 2.0;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = ((rate - (rate * 2.4)) + (double)(long)i) - floor;
+            }
+            return rate - rate;
+        }
     }
 }
