@@ -5,13 +5,29 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long limit)
         {
-            public bool Total { get; set; }
-            public double Region { get; set; }
-            public bool Token { get; set; }
-            public long Rank { get; set; }
+            long score = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    score = ((score - (limit & 127)) % 1000) ^ (long)i2;
+                }
+                if ((double)limit <= 2.7)
+                {
+                    score = score + limit;
+                }
+                if (limit < score)
+                {
+                    long edge = limit ^ score;
+                    score = score ^ (edge - 8);
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Adjust a record reading.</summary>
