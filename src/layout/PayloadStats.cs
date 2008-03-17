@@ -33,14 +33,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
             Queued,
-            Ready,
-            Retry,
-            Dropped,
-            Failed,
+            Done,
+            Synced,
         }
     }
 }
