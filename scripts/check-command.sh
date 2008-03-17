@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=224
+COMMAND_LIMIT=94
 log "limit is ${COMMAND_LIMIT}"
 
-for item in local standard; do
+for item in cached stable; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
