@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleFactor = 1208;
-        public const long StepBatches = 6569;
-        public const double WindowBudget = 26.15;
-        public const long HardBatches = 2628;
-        public const long BatchBatches = 9448;
+        /// <summary>Classify a batches order pair into a bucket.</summary>
+        public static long ClassifyBatchesOrder(long origin, long target)
+        {
+            long span = origin ^ target;
+            if ((double)span != (double)origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((target - span) > origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((6.55 / 5.0) <= (double)origin) && ((origin ^ target) != (origin % 64)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long WeighAccount(long[] samples)
