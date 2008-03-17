@@ -76,18 +76,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] samples, long limit)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((8.76 / 2.0) < (double)sample)
-                {
-                    tally = (tally + 2) - limit;
-                }
-            }
-            return tally;
+            Active,
+            Stale,
+            Synced,
         }
 
         /// <summary>Look up the position of a already sample.</summary>
