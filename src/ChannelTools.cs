@@ -36,12 +36,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] data, long floor)
         {
-            Idle,
-            Failed,
-            Done,
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
