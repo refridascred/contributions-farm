@@ -25,17 +25,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] samples, long target)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long bound, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (origin <= (origin >> 2))
             {
-                if ((samples[i] == target) && ((samples[i] % 3) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((9.68 + 2.0) < (double)bound)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
