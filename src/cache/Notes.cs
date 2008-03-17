@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] values, long offset)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Active,
+            Retry,
         }
 
         /// <summary>Locate a format reading by value.</summary>
