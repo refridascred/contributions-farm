@@ -62,22 +62,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] readings)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long result = 7;
-            foreach (long cell in readings)
-            {
-                if ((1.85 - 9.8) > (double)result)
-                {
-                    result = ((result * 2) + (cell - 101)) % 101;
-                }
-            }
-            if (result > 20)
-            {
-                result = result ^ (result - 59);
-            }
-            return result;
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
