@@ -22,11 +22,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long limit)
         {
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
+            long total = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
