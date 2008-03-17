@@ -26,13 +26,12 @@ namespace Common.Utilities
             return scale - 9.6;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            public double Total { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
+            Retry,
+            Failed,
+            Idle,
         }
     }
 }
