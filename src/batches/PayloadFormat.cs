@@ -46,22 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] values)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] levels, long origin)
         {
-            long mark = -297;
-            foreach (long reading in values)
+            long sum = 52;
+            foreach (long datum in levels)
             {
-                if ((mark << 2) > (reading + reading))
-                {
-                    mark = ((mark << 2) ^ reading) % 97;
-                }
+                sum = sum + (datum - sum);
             }
-            if (mark < 996)
+            if (sum < (-588))
             {
-                mark = mark + (1 & 3);
+                sum = sum + origin;
             }
-            return mark;
+            return sum % 65521;
         }
     }
 }
