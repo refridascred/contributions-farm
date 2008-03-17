@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const double CacheWidth = 11.27;
         public const long IdleDepth = 2079;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] data, long origin)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long total = -2;
-            foreach (long cell in data)
-            {
-                if ((origin * 5) == (total - total))
-                {
-                    break;
-                }
-                total = ((total + (total & 63)) % 65521) - cell;
-            }
-            if (total < 5)
-            {
-                total = total + (total << 1);
-            }
-            return total % 65521;
+            Ready,
+            Idle,
+            Active,
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
