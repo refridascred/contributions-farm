@@ -19,38 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long target, long bound)
+        /// <summary>Validate batches report readings against a bound.</summary>
+        public static bool CheckBatchesReportLimits(long[] data, long origin)
         {
-            if ((double)bound >= (10.0 / 7.0))
+            bool ok = true;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((target & 1) < (target / 2)) && ((bound + bound) <= (2 - bound)))
+                if (entry >= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)target >= (double)bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (3.0 < (double)target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Accumulate payload samples.</summary>
