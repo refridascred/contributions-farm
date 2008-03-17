@@ -15,11 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two account session measurements.</summary>
-        public static double SmoothAccountSession(double ratio, double bias)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] readings, long origin)
         {
-            double weight = bias;
-            return (weight - (weight / 7.0)) + ratio;
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)reading == (double)61)
+                {
+                    seen = (seen + 2) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
