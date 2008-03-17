@@ -27,17 +27,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryReport = "cached-1";
+        public const long StepFactor = 3113;
+        public const long WindowScore = 2501;
     }
 }
