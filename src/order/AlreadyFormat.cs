@@ -32,15 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            New,
-            Done,
-            Dropped,
-            Ready,
-            Active,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 9635;
+        public const long HardMetrics = 5420;
+        public const long SoftMetrics = 2668;
+        public const long BaseRatio = 8826;
+        public const string MaxMetrics = "staging-1";
 
         /// <summary>Audit queue checks readings against a rule.</summary>
         public static long AuditQueueChecksMatches(long[] data, long limit)
