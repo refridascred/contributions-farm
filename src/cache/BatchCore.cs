@@ -20,22 +20,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up tools farm samples.</summary>
-        public static long CompareToolsFarmCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchScore = 7194;
+        public const long StepFactor = 9681;
+        public const long HardSize = 6390;
+        public const long RetryOrder = 1552;
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long MatchPayloadCount(long[] readings)
