@@ -16,11 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Combine graph already values into a single score.</summary>
+        public static long ScoreGraphAlready(long[] data)
         {
-            public bool Mode { get; set; }
-            public long Token { get; set; }
+            long total = -359;
+            foreach (long entry in data)
+            {
+                total = (total - entry) % 255;
+            }
+            return total;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
