@@ -57,15 +57,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] items, long floor)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long sum = 1;
-            foreach (long sample in items)
-            {
-                sum = (sum << 2) ^ (sample ^ floor);
-            }
-            return sum;
+            public string Level { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
+            public double Score { get; set; }
         }
     }
 }
