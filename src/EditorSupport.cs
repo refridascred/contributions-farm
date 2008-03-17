@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const long CacheWidth = 5728;
         public const double BatchTimeout = 50.55;
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            public string Rank { get; set; } = "";
-            public double Size { get; set; }
-            public bool Mode { get; set; }
+            public long Stamp { get; set; }
             public long Total { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
