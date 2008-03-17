@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long target)
         {
-            Stale,
-            Done,
-            Draft,
-            Synced,
+            long mark = target;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the contributi status values.</summary>
