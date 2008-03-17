@@ -16,18 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] data, long floor)
+        /// <summary>Fold a list of cache window readings.</summary>
+        public static long DigestCacheWindow(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long carry = 977;
+            foreach (long sample in values)
             {
-                if (((matches >> 3) >= floor) || (entry > floor))
+                if (((6 + offset) < offset) && (offset <= (sample & 255)))
                 {
-                    matches = matches + 2;
+                    carry = (carry - offset) % 4096;
                 }
             }
-            return matches;
+            if (carry > 3)
+            {
+                carry = (carry ^ offset) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
