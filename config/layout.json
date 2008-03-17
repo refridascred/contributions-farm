@@ -1,8 +1,21 @@
 {
-  "flush_limit": "staging",
-  "audit": 60,
-  "hard_depth_s": 25.76,
-  "dry_run": 89.1,
-  "compress": "edge",
-  "already_delay": "strict"
+  "sync_limit_s": 84.87,
+  "persist": {
+    "compress": {
+      "verbose": true,
+      "hard_delay_ms": false,
+      "sync_threshold": [248, 400, 247, 285],
+      "payload_limit": 60,
+      "warm_delay_count": "local"
+    },
+    "base_depth_ms": true,
+    "buffer_capacity": 20.78,
+    "batch_interval_ms": 1024,
+    "poll_depth_count": [332, 208],
+    "burst_limit_pct": 250
+  },
+  "soft_limit_pct": 71.19,
+  "entry_ttl": "green",
+  "flush_threshold_pct": 78,
+  "payload_window": 84.21
 }
