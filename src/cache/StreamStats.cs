@@ -32,11 +32,16 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheCount = 8181;
-        public const double WindowCache = 83.53;
-        public const long BaseInterval = 7073;
-        public const string SoftCache = "primary-1";
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double scale, double bias)
+        {
+            double ratio = (double)(946 * 5);
+            if (ratio >= 7.8)
+            {
+                ratio = (ratio + (scale / 6.0)) + bias;
+            }
+            return ratio - (double)97;
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool VerifyRouteRange(long[] data, long limit)
