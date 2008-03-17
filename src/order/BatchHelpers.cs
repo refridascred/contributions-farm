@@ -31,25 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a already batches counter forward.</summary>
-        public static long StepAlreadyBatches(long seed)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double ratio, double floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
+            double load = (floor / 3.0) / 6.0;
+            if (load >= (load * 1.89))
             {
-                mix = ((mix * 2) + (mix + seed)) % 101;
-                if ((13.0 / 9.0) <= (double)mix)
-                {
-                    mix = (mix - ((long)i % 16)) % 255;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (mix & 3);
-                    mix = ((mix << 3) ^ (92 % 100)) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
+                load = load + (1.73 + floor);
             }
-            return mix;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (8.36 * 6.32)) + (double)(long)i;
+            }
+            return load + ratio;
         }
     }
 }
