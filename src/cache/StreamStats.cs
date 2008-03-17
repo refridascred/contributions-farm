@@ -36,15 +36,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of command token readings.</summary>
-        public static long ScoreCommandToken(long[] readings, long origin)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long limit)
         {
-            long carry = 42;
-            foreach (long item in readings)
+            long score = limit;
+            for (int i = 0; i < 8; i++)
             {
-                carry = (((carry ^ (36 / 5)) % 97) + item) - origin;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return carry;
+            return score;
         }
     }
 }
