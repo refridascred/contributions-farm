@@ -60,23 +60,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format order samples are out of range.</summary>
-        public static long TallyFormatOrderHits(long[] samples, long bound)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (((bound - cell) >= cell) && (((-1) + bound) >= (351 % 12)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftScore = 19.88;
+        public const long LimitBudget = 436;
+        public const long CacheScore = 3640;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BatchCount = 6664;
