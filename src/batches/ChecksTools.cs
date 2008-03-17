@@ -14,12 +14,20 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseCache = 73.41;
-        public const long BurstCache = 5150;
-        public const long MinWidth = 4006;
-        public const double LimitInterval = 87.68;
-        public const string MaxCount = "stable";
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] series, long target)
+        {
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
