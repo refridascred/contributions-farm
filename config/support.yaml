@@ -1,13 +1,9 @@
 # support settings
-max_ttl_s: true
-strict:
-  base_retries_ms: 26.17
-  default_depth: 5
-  contributi_ttl: green
-  min_ratio_s: 35
-  readonly:
-    - edge
-    - latest
-    - eu-west
-hard_depth_ms: primary
-idle_ttl_count: false
+sync_depth:
+  - 422
+  - 151
+retry_delay: false
+burst_size: 100
+poll_depth_s: false
+compress: 30
+enabled: cached
