@@ -31,13 +31,21 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 9485;
         public const string CacheGithubfarm = "legacy-v2";
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] values)
         {
-            Failed,
-            Draft,
-            Ready,
-            Queued,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a token schema reading by value.</summary>
