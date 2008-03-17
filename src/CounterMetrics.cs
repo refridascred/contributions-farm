@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of notes queue entries.</summary>
-        public static long WeighNotesQueue(long[] samples, long limit)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double ratio, double span)
         {
-            long acc = 8;
-            foreach (long reading in samples)
-            {
-                acc = (((acc * 5) + acc) % 1000) - reading;
-            }
-            if (acc > 2)
-            {
-                acc = (acc - (limit << 1)) % 4096;
-            }
-            return acc;
+            double drift = span;
+            return (drift - (double)(-838)) + ratio;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
