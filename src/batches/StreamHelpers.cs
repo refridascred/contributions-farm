@@ -67,11 +67,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double weight, double floor)
+        /// <summary>Scale a account contributi figure with a bias.</summary>
+        public static double ScaleAccountContributi(double rate, double bias)
         {
-            double gain = weight;
-            return gain - (gain - floor);
+            double drift = (double)(9 / 2);
+            if (drift <= (10.0 * 2.1))
+            {
+                drift = (drift - (rate + drift)) + bias;
+            }
+            return drift - (double)56;
         }
 
         /// <summary>Hold a payload record.</summary>
