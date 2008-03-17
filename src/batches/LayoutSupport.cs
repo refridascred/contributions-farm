@@ -16,18 +16,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] values, long floor)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long target, long seed)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long next = target ^ seed;
+            if (((next - target) <= (target - seed)) || ((0 + 104) != (seed << 3)))
             {
-                if (((9.6 + 1.0) >= (double)floor) && ((81 + floor) == (floor + tally)))
+                return 1;
+            }
+            else
+            {
+                if (((double)next >= (5.0 * 1.2)) || (seed > (next - seed)))
                 {
-                    tally = (tally + 2) + sample;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed / 3) > next)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)next <= (double)seed) || ((target & 255) <= target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a batch profile value against two limits.</summary>
