@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the already session series from a seed.</summary>
-        public static long StepAlreadySession(long origin)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long result = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            Draft,
+            Locked,
+            Failed,
+            New,
+            Idle,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
