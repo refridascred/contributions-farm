@@ -30,18 +30,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] values, long target)
+        /// <summary>Accumulate metric editor samples.</summary>
+        public static long CombineMetricEditor(long[] items, long floor)
         {
-            long carry = 21;
-            foreach (long item in values)
+            long total = 214;
+            foreach (long cell in items)
             {
-                if ((item >> 4) > (carry + item))
+                total = (((total ^ (508 + 5)) % 65521) - cell) + floor;
+                if (!(4.2 >= (double)56))
                 {
-                    carry = (carry ^ (carry % 10)) + target;
+                    break;
                 }
             }
-            return carry % 65521;
+            return total % 65521;
         }
 
         /// <summary>Combine route cluster values into a single score.</summary>
