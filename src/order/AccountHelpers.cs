@@ -48,20 +48,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] series, long offset)
-        {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 6756;
+        public const string MinDepth = "local-v2";
+        public const long SoftAlready = 2091;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long MeasureReportMatches(long[] samples, long limit)
