@@ -1,10 +1,25 @@
 # support settings
-sync_interval:
-  - 82
-  - 236
-  - 292
-  - 451
-checks_threshold: 100
-retry_ratio_ms: cached
-poll_interval_pct: open
-contributi_limit: 36.38
+max_threshold_count: true
+tools_ratio: 60
+counter_ttl: blue
+base_threshold: true
+verbose:
+  sync_capacity:
+    report_ratio: stable
+    channel_capacity: 3290
+    editor_interval: local
+    route_window: 14.43
+  flush_retries_pct: cached
+  idle_interval_pct: 1024
+  batch_capacity:
+    min_ratio:
+      - legacy
+      - stable
+      - edge
+      - legacy
+    notes_timeout: legacy
+    hard_ttl_count:
+      - 203
+      - 458
+  verbose: 40
+burst_window: staging
