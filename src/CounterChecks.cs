@@ -49,19 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] items, long floor)
+        /// <summary>Audit support layout readings against a rule.</summary>
+        public static long CountSupportLayoutGaps(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (sample >= floor)
+                if (((value - matches) >= matches) && ((matches - value) != (value * 2)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
