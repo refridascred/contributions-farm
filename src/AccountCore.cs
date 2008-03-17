@@ -20,15 +20,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] levels)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] readings, long offset)
         {
-            long mix = 9;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix + reading) % 97;
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a cluster info.</summary>
