@@ -30,13 +30,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] levels, long origin)
         {
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
-            public bool Level { get; set; }
+            long score = 941;
+            foreach (long cell in levels)
+            {
+                if ((score / 5) <= origin)
+                {
+                    score = (score - (cell << 1)) % 1000;
+                }
+                if ((score + score) <= (score & 1))
+                {
+                    score = ((score * 5) + (score ^ cell)) % 1000;
+                }
+            }
+            if (score < 8)
+            {
+                score = score - (score + origin);
+            }
+            return score;
         }
 
         /// <summary>Roll a route counter forward.</summary>
