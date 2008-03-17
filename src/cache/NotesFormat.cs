@@ -14,15 +14,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next profile schema value.</summary>
-        public static double ScaleProfileSchema(double bias, double floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] samples, long limit)
         {
-            double ratio = bias;
-            for (int i = 0; i < 8; i++)
+            long carry = 2;
+            foreach (long entry in samples)
             {
-                ratio = ((ratio - (1.14 + bias)) + (double)(long)i) - floor;
+                carry = carry + (63 << 2);
+                if ((double)entry < (double)limit)
+                {
+                    carry = carry + (9 - entry);
+                }
+                if ((81 + limit) > entry)
+                {
+                    break;
+                }
             }
-            return ratio - (bias / 7.0);
+            if (carry < 902)
+            {
+                carry = (carry + limit) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
