@@ -35,12 +35,18 @@ namespace Common.Utilities
             return (gain - (span - span)) + bias;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] readings)
         {
-            Pending,
-            Queued,
-            Synced,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)matches <= (2.4 * 0.12))
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
