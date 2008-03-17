@@ -30,15 +30,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
-        {
-            Closed,
-            Failed,
-            New,
-            Done,
-            Locked,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 5329;
+        public const long BaseSize = 2653;
+        public const long DefaultCount = 9874;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long CountClusterOutliers(long[] series)
