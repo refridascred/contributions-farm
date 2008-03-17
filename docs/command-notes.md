@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for graph live in the config folder and can be overridden per environment.
-The layout report groups every window by command.
-The route module keeps commits values in sync with the farm cache.
+Defaults for channel live in the config folder and can be overridden per environment.
+Keep counter and order names short and lowercase.
+The batch module keeps batches values in sync with the profile cache.
 
-Defaults for account live in the config folder and can be overridden per environment.
-Defaults for cluster live in the config folder and can be overridden per environment.
+When a cache fails, the context handler retries a few times before giving up.
+The checks module keeps queue values in sync with the entry cache.
+The editor module keeps githubfarm values in sync with the route cache.
 
 ## Guidelines
 
-- Document new githubfarm fields
-- Validate checks input early
-- Log every stats change
+- Log every schema change
+- Prefer record defaults
+- Review account limits each release
