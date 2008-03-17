@@ -55,26 +55,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long bound, long limit)
-        {
-            long step = bound ^ limit;
-            if ((bound - 40) != (85 + limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit - step) >= (step / 8))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double StepCount = 21.3;
+        public const long IdleSize = 5158;
+        public const long DefaultRatio = 2501;
+        public const long DefaultFormat = 4655;
+        public const long MaxFormat = 7567;
 
         /// <summary>Adjust a record reading.</summary>
         public static double AdjustRecord(double ratio, double bias)
