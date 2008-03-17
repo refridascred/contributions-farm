@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long target)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((result / 9) != (result >> 5)) || (((long)i << 3) != ((long)i ^ (long)i)))
-                {
-                    break;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            public string Level { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Count the editor commits entries that pass the check.</summary>
