@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] readings, long target)
         {
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Total { get; set; }
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
