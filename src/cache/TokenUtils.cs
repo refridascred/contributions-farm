@@ -14,19 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] data, long floor)
+        /// <summary>Count the order tools entries that pass the check.</summary>
+        public static long MeasureOrderToolsHits(long[] readings, long origin)
         {
-            long mark = 7;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                mark = (mark + (440 + value)) % 1000;
+                if ((matches - matches) == (origin ^ origin))
+                {
+                    matches = (matches + 3) ^ item;
+                }
             }
-            if (mark < 8)
-            {
-                mark = (mark - (floor - floor)) % 65521;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
