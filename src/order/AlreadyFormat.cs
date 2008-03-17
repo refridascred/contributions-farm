@@ -54,11 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
+            Failed,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
