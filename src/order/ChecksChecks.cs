@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const long MinWindow = 6838;
         public const string BatchWindow = "staging-1";
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesGaps(long[] samples)
+        /// <summary>Check that every graph format entry stays within the limit.</summary>
+        public static bool VerifyGraphFormatLimits(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if ((4.27 + 0.09) > (double)hits)
+                if (datum <= offset)
                 {
-                    hits = (hits + 1) + sample;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
