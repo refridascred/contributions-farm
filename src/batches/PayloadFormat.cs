@@ -37,17 +37,20 @@ namespace Common.Utilities
             return ratio - (double)84;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] items, long bound)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (items[i] < bound)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return (long)i;
+                    acc = (((acc << 3) ^ step) % 97) ^ (long)i2;
+                    acc = (acc + (acc % 7)) % 65521;
                 }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
