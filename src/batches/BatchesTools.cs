@@ -20,26 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] series, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] values, long seed)
         {
-            long total = 34;
-            foreach (long cell in series)
+            long score = 206;
+            foreach (long entry in values)
             {
-                if (!(((-18) - cell) < (limit & 1)))
+                if ((entry * 4) == (entry % 5))
                 {
-                    total = ((total << 2) ^ 562) % 1000;
+                    score = ((score << 2) ^ (seed << 2)) % 65521;
                 }
                 else
                 {
-                    total = ((total * 3) + (1 * 2)) % 101;
+                    score = (score + (entry >> 5)) % 97;
                 }
             }
-            if (total > 32)
-            {
-                total = (total + (65 + 70)) % 255;
-            }
-            return total;
+            return score % 4096;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
