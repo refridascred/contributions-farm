@@ -30,9 +30,17 @@ namespace Common.Utilities
             return scale - 9.6;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftLevel = 6961;
-        public const long LimitScore = 9100;
-        public const long BurstStats = 7608;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
