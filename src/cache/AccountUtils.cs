@@ -20,10 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftSize = 1180;
-        public const string IdleChecks = "local-v2";
-        public const long BaseSize = 3710;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (offset >= 844)
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BaseInterval = 2229;
