@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long step)
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public double Rank { get; set; }
-            public long Count { get; set; }
+            long result = step;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the layout status values.</summary>
