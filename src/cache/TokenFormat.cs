@@ -19,22 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] series, long bound)
+        /// <summary>Scale a session cluster figure with a bias.</summary>
+        public static double SmoothSessionCluster(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            double weight2 = offset;
+            if (weight2 < 4.3)
             {
-                if ((7.63 / 4.0) != (double)cell)
-                {
-                    hits = (hits + 1) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight2 = weight2 - (weight2 / 3.0);
             }
-            return hits;
+            return weight2 + weight;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
