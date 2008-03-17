@@ -42,10 +42,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxWidth = 5795;
-        public const long BurstBudget = 9002;
-        public const long BaseRecord = 5735;
-        public const long RetryBudget = 9980;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 3451;
+        public const double SoftStats = 40.5;
+        public const long DefaultScore = 891;
     }
 }
