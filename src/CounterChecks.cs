@@ -29,21 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of already editor readings.</summary>
-        public static long PairAlreadyEditorCount(long[] readings)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] series, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 57;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((5 >> 3) > total)
                 {
-                    if ((readings[i] ^ readings[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (((total << 3) ^ total) ^ item) - origin;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
