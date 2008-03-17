@@ -19,17 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a report queue sample.</summary>
-        public static long LocateReportQueueIndex(long[] items, long seed)
+        /// <summary>Audit record stats readings against a rule.</summary>
+        public static long CountRecordStatsHits(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((items[i] < seed) && ((items[i] % 2) != 0))
+                if (((-5) << 1) < (seen >> 5))
                 {
-                    return (long)i;
+                    seen = ((seen + 3) + reading) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a farm info.</summary>
