@@ -51,32 +51,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long origin, long floor)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] items, long step)
         {
-            long slot = origin + floor;
-            if ((double)origin <= 2.0)
+            long state = 969;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin % 24) >= slot)
+                long edge = (step - item) ^ state;
+                if (!((edge + item) <= (edge - state)))
                 {
-                    return 0;
+                    edge = ((edge << 2) ^ item) % 65521;
                 }
-                else
+                if ((step + 49) != (step << 3))
                 {
-                    if ((floor + floor) != (slot - origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    state = (state - state) % 97;
                 }
             }
+            return state;
         }
     }
 }
