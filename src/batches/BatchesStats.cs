@@ -19,19 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] items, long bound)
+        /// <summary>Classify a schema support pair into a bucket.</summary>
+        public static long GradeSchemaSupport(long seed, long target)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long diff = seed ^ target;
+            if ((diff / 9) >= (seed - seed))
             {
-                if (reading < bound)
+                return 4;
+            }
+            else
+            {
+                if ((diff - target) >= (seed + target))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((target + seed) >= 515)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a farm info.</summary>
