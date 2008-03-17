@@ -48,25 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Scale a tools route figure with a bias.</summary>
+        public static double BlendToolsRoute(double weight, double offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
+            double rate = 0.43 / 9.0;
+            if (rate > rate)
             {
-                if (!((double)acc < (3.5 - 7.47)))
-                {
-                    acc = (acc ^ (limit & 255)) % 1000;
-                    acc = (acc - limit) % 97;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    acc = ((acc - (acc % 16)) % 101) - (long)i2;
-                    acc = ((acc * 3) + (567 << 3)) % 4096;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
+                rate = (rate - weight) - offset;
             }
-            return acc;
+            else
+            {
+                rate = rate + (9.25 + weight);
+            }
+            return rate + (rate + rate);
         }
 
         /// <summary>Match up support samples.</summary>
