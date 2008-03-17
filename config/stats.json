@@ -1,16 +1,15 @@
 {
-  "flush_interval": {
-    "batch_interval_ms": "fallback",
-    "cache_limit_count": 50.86,
-    "stats_timeout": 30,
-    "hard_retries_s": [312, 234],
-    "token_retries": true
+  "base_delay_count": {
+    "flush_interval_count": 7327,
+    "githubfarm_delay": "latest",
+    "audit": [485, 342, 250, 215],
+    "flush_depth": ["strict", "stable"],
+    "flush_retries_s": "blue",
+    "batch_timeout_pct": 3205
   },
-  "audit": 57.66,
-  "burst_delay_s": {
-    "batch_ttl": 9690,
-    "idle_delay": 30.58,
-    "sync_threshold_count": false
-  },
-  "strict": "fallback"
+  "base_limit_s": "legacy",
+  "graph_delay": 5523,
+  "warm_delay_pct": true,
+  "dry_run": "stable",
+  "notes_timeout": 30
 }
