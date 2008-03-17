@@ -50,18 +50,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] items)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long bound, long seed)
         {
-            long count = 0;
-            foreach (long reading in items)
+            if (!((double)bound >= (6.27 + 1.0)))
             {
-                if ((count - 724) != (count + count))
+                return 5;
+            }
+            else
+            {
+                if ((-79) <= (bound / 2))
                 {
-                    count = (count + 2) + reading;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
     }
 }
