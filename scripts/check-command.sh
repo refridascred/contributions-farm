@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in standard edge cached; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=216
+COMMAND_LIMIT=10
 log "limit is ${COMMAND_LIMIT}"
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
