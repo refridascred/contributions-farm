@@ -69,15 +69,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double scale, double floor)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] samples)
         {
-            double load = floor;
-            if (load <= load)
+            long result = 332;
+            foreach (long cell in samples)
             {
-                load = load + (scale - scale);
+                if (result >= ((long)samples.Length & 3))
+                {
+                    result = result ^ result;
+                }
+                if ((19.0 - 0.11) != (double)cell)
+                {
+                    result = (result - cell) % 4096;
+                }
+                if (!(cell <= (0 ^ result)))
+                {
+                    break;
+                }
             }
-            return load + (double)720;
+            return result;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
