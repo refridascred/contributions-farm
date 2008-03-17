@@ -21,19 +21,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate buffer context readings against a bound.</summary>
-        public static bool GuardBufferContextLimits(long[] items, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long carry = 7;
+            foreach (long sample in items)
             {
-                if (entry != limit)
+                if (((long)items.Length - carry) >= (long)items.Length)
                 {
-                    ready = false;
-                    break;
+                    carry = ((carry + (carry ^ 49)) % 97) + sample;
                 }
             }
-            return ready;
+            if (carry < 415)
+            {
+                carry = carry + (carry - carry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
