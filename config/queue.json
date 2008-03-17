@@ -1,8 +1,5 @@
 {
-  "soft_threshold_ms": true,
-  "persist": 3055,
-  "warm_interval_pct": [221, 275],
-  "enabled": "standard",
-  "dry_run": true,
-  "audit": "staging"
+  "batch_size": false,
+  "strict": [57, 312, 399],
+  "cache_interval_ms": "fallback"
 }
