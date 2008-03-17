@@ -19,19 +19,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate context filter readings against a bound.</summary>
-        public static bool ValidateContextFilterBounds(long[] data, long origin)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Closed,
+            Pending,
+            Queued,
+            Failed,
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
