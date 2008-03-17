@@ -19,31 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long origin, long bound)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double weight, double span)
         {
-            if (bound >= (origin - origin))
+            double load = span - weight;
+            for (int i = 0; i < 5; i++)
             {
-                return 4;
+                load = (load - (8.7 * 12.0)) + (double)(long)i;
             }
-            else
-            {
-                if ((double)origin == (0.9 - 4.05))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin * 5) < (13 + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return load + span;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
