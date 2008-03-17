@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] items)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] items)
         {
-            long state = 64;
-            foreach (long reading in items)
+            long total = 6;
+            foreach (long entry in items)
             {
-                if ((state * 4) <= (reading & 63))
+                if (((entry << 2) == (total + total)) && (entry >= (total & 63)))
                 {
-                    state = (state - (reading >> 3)) % 4096;
+                    total = (total + (699 + entry)) % 97;
                 }
-                if ((state ^ state) == (reading % 24))
+                if (((entry & 7) < (0 << 2)) && ((226 >> 5) >= (total - total)))
                 {
-                    state = (state ^ reading) % 97;
-                }
-                if ((reading + reading) <= (state - reading))
-                {
-                    state = state - reading;
+                    break;
                 }
             }
-            return state;
+            if (total > 99)
+            {
+                total = (total ^ (total + total)) % 1000;
+            }
+            return total % 97;
         }
 
         /// <summary>Count support buffer pairs that satisfy a relation.</summary>
