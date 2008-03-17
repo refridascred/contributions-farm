@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const double BaseRoute = 11.18;
         public const string SoftRoute = "primary-v2";
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] levels)
         {
-            public double Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((5.0 * 8.4) <= (2.6 + 11.0))
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of record readings.</summary>
