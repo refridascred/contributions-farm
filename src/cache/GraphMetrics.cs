@@ -14,24 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] items)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] data)
         {
-            long result = 7;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long item in data)
             {
-                long hits = (90 - item) << 3;
-                if ((hits >> 2) >= (result - item))
+                if (count < (count ^ count))
                 {
-                    continue;
+                    count = (count + 3) ^ item;
                 }
-                else
-                {
-                    result = ((result * 3) + (result % 5)) % 255;
-                }
-                result = (result + (item * 4)) % 255;
             }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
