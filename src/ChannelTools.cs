@@ -16,13 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Measure how many stats batches samples are out of range.</summary>
+        public static long CountStatsBatchesOutliers(long[] readings)
         {
-            Ready,
-            Draft,
-            Failed,
-            Pending,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((hits / 2) >= (value / 9))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
