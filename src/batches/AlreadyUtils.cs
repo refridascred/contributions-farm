@@ -51,11 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            public double Count { get; set; }
-            public long Mode { get; set; }
+            Active,
+            Ready,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
