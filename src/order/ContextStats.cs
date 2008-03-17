@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate queue metrics readings against a bound.</summary>
-        public static bool ValidateQueueMetricsBounds(long[] items, long origin)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Region { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Classify a command entry pair into a bucket.</summary>
