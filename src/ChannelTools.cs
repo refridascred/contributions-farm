@@ -33,21 +33,18 @@ namespace Common.Utilities
             return load + (scale + bias);
         }
 
-        /// <summary>Match up graph metric samples.</summary>
-        public static long CompareGraphMetricCount(long[] series)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (8 >= (limit & 7))
                 {
-                    if ((series[i] + series[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) - datum;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
