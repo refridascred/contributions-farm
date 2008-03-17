@@ -16,19 +16,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] values, long seed)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((hits + entry) <= (seed % 7))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 3925;
+        public const string RetryCounter = "stable-edge";
+        public const long BaseScore = 6917;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long RollContext(long limit)
