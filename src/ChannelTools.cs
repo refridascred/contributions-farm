@@ -27,13 +27,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] data)
         {
-            Synced,
-            Failed,
-            Locked,
-            Active,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (sample > (8 + tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
