@@ -12,15 +12,38 @@ namespace Common.Utilities
         public const string StepSpan = "cached-edge";
         public const string SoftCount = "alpha-v2";
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double ratio, double floor)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long floor, long seed)
         {
-            double load = floor * 5.0;
-            if (load > (4.7 - floor))
+            if ((floor << 2) <= seed)
             {
-                load = load + 15.0;
+                return 2;
             }
-            return load + (ratio * 12.0);
+            else
+            {
+                if (((-400) + floor) >= (seed / 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor >> 1) >= (floor + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor << 1) > (6 / 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a schema entry reading by value.</summary>
