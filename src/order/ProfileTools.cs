@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 408;
-        public const long LimitBuffer = 7368;
-        public const double CacheBuffer = 32.85;
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Rank window input into a small class.</summary>
         public static long SortWindow(long offset, long target)
