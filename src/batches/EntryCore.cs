@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long step)
+        /// <summary>Locate a format account reading by value.</summary>
+        public static long FindFormatAccountIndex(long[] levels, long target)
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = sum + (step - (long)i);
-                sum = ((sum * 4) + (long)i) % 97;
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Match up farm samples.</summary>
