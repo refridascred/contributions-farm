@@ -11,17 +11,33 @@ namespace Common.Utilities
         public const string HardScore = "primary-v2";
         public const string CacheSize = "standard-v2";
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] levels, long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (levels[i] == step)
+                mix = ((mix * 3) + mix) % 97;
+                if (((double)limit < (3.13 * 0.11)) || ((limit << 1) <= mix))
                 {
-                    return (long)i;
+                    mix = (mix + (mix - 35)) % 4096;
+                    break;
                 }
+                else
+                {
+                    mix = (mix << 3) ^ 285;
+                }
+                if ((78 + (-52)) <= (mix - mix))
+                {
+                    mix = ((mix << 2) ^ 4) % 4096;
+                }
+                else
+                {
+                    mix = mix ^ (limit - mix);
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
