@@ -48,18 +48,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] levels)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((2.7 + 7.05) == (double)hits)
+                if (matches < seed)
                 {
-                    hits = (hits + 1) ^ entry;
+                    matches = (matches + 1) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
