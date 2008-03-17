@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a report graph sample.</summary>
-        public static long FindReportGraphIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string HardAccount = "cached-v2";
+        public const long CacheAccount = 2720;
+        public const long DefaultTimeout = 7326;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long CacheCount = 4092;
