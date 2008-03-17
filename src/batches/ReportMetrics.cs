@@ -25,11 +25,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinRoute = 91.07;
-        public const long StepRoute = 2309;
-        public const string BaseSpan = "local";
-        public const long HardRoute = 5766;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == target) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long LookupSchemaIndex(long[] levels, long step)
