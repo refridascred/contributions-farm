@@ -1,6 +1,17 @@
 # githubfarm settings
-cache_ratio_s: 2287
-audit: open
-min_size_count: true
-max_capacity: true
-min_timeout_s: 35
+soft_window_s:
+  warm_size: 51.58
+  editor_ratio:
+    - edge
+    - green
+    - local
+  base_depth_pct:
+    - 98
+    - 235
+  batches_timeout: 4.0
+  strict: strict
+batch_ttl_s: 88.2
+tools_delay: true
+hard_interval_pct: false
+command_capacity: 110
+window_timeout: false
