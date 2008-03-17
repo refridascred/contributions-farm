@@ -1,12 +1,6 @@
 # githubfarm settings
-persist: 1024
-flush_delay: 62.02
-enabled:
-  flush_interval: 100
-  flush_window_count: 39
-  profile_ttl: true
-  batch_window: 76.07
-  cluster_delay: primary
-  hard_depth_pct: 11.45
-batch_window: green
-soft_size_count: 250
+max_ttl_ms: stable
+strict: primary
+graph_ttl: local
+batch_size_pct: strict
+cache_interval: 88
