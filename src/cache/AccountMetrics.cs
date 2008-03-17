@@ -33,21 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] samples)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] levels, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (levels[i] == step)
                 {
-                    if ((samples[i] + samples[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
