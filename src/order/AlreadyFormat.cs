@@ -58,9 +58,13 @@ namespace Common.Utilities
         public const string DefaultStream = "standard-v2";
         public const long WindowStream = 7336;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 2284;
-        public const string StepToken = "open-1";
-        public const double IdleToken = 17.25;
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
+        }
     }
 }
