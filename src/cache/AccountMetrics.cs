@@ -65,22 +65,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of format schema entries.</summary>
-        public static long DigestFormatSchema(long[] readings)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] samples, long bound)
         {
-            long mark = 36;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((7.35 + 1.17) > (double)reading)
+                if ((double)item >= (8.4 + 2.2))
                 {
-                    mark = ((mark * 3) + (897 << 1)) % 4096;
+                    tally = (tally + 2) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (mark < 549)
-            {
-                mark = ((mark << 3) ^ 9) % 4096;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Check that every editor schema entry stays within the limit.</summary>
