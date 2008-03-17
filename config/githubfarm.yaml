@@ -1,4 +1,6 @@
 # githubfarm settings
-account_retries: true
-audit: fallback
-batch_ttl: legacy
+audit: latest
+checks_size: 7
+verbose: green
+compress: legacy
+readonly: primary
