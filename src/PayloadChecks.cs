@@ -76,14 +76,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            Synced,
-            Dropped,
-            Done,
-            Stale,
-            New,
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
