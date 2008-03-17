@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public double Limit { get; set; }
-            public bool Stamp { get; set; }
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
