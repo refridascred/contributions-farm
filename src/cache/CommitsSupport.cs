@@ -30,19 +30,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] readings, long floor)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Draft,
+            Locked,
+            Paused,
+            New,
         }
 
         /// <summary>Match up batches samples.</summary>
