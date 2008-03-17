@@ -20,11 +20,18 @@ namespace Common.Utilities
             return drift + (double)233;
         }
 
-        /// <summary>Scale a notes token figure with a bias.</summary>
-        public static double BlendNotesToken(double rate, double bias)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] items)
         {
-            double load = (double)((-481) + 281);
-            return ((load - (double)(-7)) + rate) + bias;
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (((double)tally < 4.7) && (tally >= (item + item)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
