@@ -66,15 +66,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Adjust a account commits reading.</summary>
-        public static double ScaleAccountCommits(double rate, double bias)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            double ratio = (double)(288 >> 2);
-            if (ratio < bias)
-            {
-                ratio = (ratio + (bias / 2.0)) + rate;
-            }
-            return ratio + bias;
+            public bool Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
