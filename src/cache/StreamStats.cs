@@ -22,21 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count metrics payload pairs that satisfy a relation.</summary>
-        public static long MatchMetricsPayloadCount(long[] data)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double bias, double bias2)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double drift = (bias2 * 4.3) - (bias2 / 8.0);
+            return (drift + (double)64) + bias;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
