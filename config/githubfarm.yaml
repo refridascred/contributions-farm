@@ -1,20 +1,9 @@
 # githubfarm settings
-default_window_pct:
-  entry_ttl: 45
-  batch_ttl: false
-  base_delay_pct: 654
-  min_timeout_ms: 30
-  soft_ttl: standard
-flush_retries_count: 30
-warm_depth_count: latest
-readonly:
-  max_limit_pct: false
-  persist: standard
-  min_ttl_pct: false
-  soft_ttl_s:
-    - open
-    - stable
-    - strict
-  verbose:
-    - 104
-    - 167
+notes_timeout: open
+warm_timeout_pct:
+  - eu-west
+  - staging
+warm_window_pct: false
+hard_timeout: 36.74
+readonly: 1024
+warm_ttl: edge
