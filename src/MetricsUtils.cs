@@ -53,17 +53,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] levels, long floor)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Idle,
+            Stale,
+            Retry,
+            Locked,
         }
     }
 }
