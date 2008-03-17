@@ -52,15 +52,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double gain, double span)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            double gain2 = (double)4 + gain;
-            if (gain2 < span)
-            {
-                gain2 = gain2 - 7.0;
-            }
-            return gain2 - span;
+            Idle,
+            Synced,
+            Closed,
+            Paused,
         }
     }
 }
