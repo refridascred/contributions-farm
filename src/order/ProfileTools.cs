@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] series)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((long)series.Length <= (count * 3))
-                {
-                    count = (count + 3) ^ sample;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the batches class values.</summary>
