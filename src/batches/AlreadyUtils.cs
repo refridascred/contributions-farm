@@ -12,22 +12,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count the editor commits entries that pass the check.</summary>
-        public static long CountEditorCommitsOutliers(long[] readings, long limit)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((tally + limit) >= (659 / 2))
-                {
-                    tally = (tally + 2) - sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Pending,
+            New,
+            Synced,
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
