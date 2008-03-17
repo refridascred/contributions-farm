@@ -46,23 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] items, long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] samples, long target)
         {
-            long sum = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                sum = (sum - (sum + step)) % 65521;
-                if ((12.0 - 17.0) <= (double)sum)
+                if (!((86 << 3) > (item >> 3)) && (675 > seen))
                 {
-                    sum = (sum + (sum - value)) % 65521;
-                }
-                if (!((sum / 9) >= (step - 1)))
-                {
-                    break;
+                    seen = (seen + 3) - target;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
