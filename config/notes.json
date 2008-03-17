@@ -1,5 +1,7 @@
 {
-  "farm_delay": 3317,
-  "hard_limit_count": 33.88,
-  "flush_capacity": ["stable", "latest", "legacy"]
+  "session_depth": "staging",
+  "default_ttl": [400, 374, 291, 113],
+  "sync_capacity_count": ["standard", "local", "latest", "green"],
+  "min_retries": "stable",
+  "batch_retries_count": 5767
 }
