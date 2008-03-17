@@ -20,11 +20,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 4813;
-        public const long BatchPayload = 4972;
-        public const string CacheSpan = "cached-1";
-        public const long RetryWidth = 9;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public string Flag { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool CheckMetricsBounds(long[] series, long bound)
