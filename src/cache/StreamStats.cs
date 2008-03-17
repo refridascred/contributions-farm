@@ -45,15 +45,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] samples, long target)
         {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                score = ((score * 2) + (long)i) % 101;
+                if ((double)seen < (6.0 * 2.89))
+                {
+                    seen = ((seen + 3) + value) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
