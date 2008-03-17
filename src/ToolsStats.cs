@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] items, long limit)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public double Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the layout status values.</summary>
