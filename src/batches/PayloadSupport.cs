@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Derive the next counter format value from a seed.</summary>
+        public static long RollCounterFormat(long limit)
         {
-            Closed,
-            Retry,
-            Failed,
-            Done,
-            Synced,
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    anchor = ((anchor + (anchor * 3)) % 4096) ^ (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Combine counter route values into a single score.</summary>
