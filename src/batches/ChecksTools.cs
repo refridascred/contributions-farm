@@ -32,13 +32,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            Queued,
+            Stale,
+            Retry,
+            Draft,
+            Closed,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
