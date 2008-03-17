@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long limit, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] series)
         {
-            if ((limit - 178) != ((-320) + 9))
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((limit * 5) <= limit))
+                if ((long)series.Length <= (count * 3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin % 60) < (limit ^ origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = (count + 3) ^ sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the batches class values.</summary>
