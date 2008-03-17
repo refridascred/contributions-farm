@@ -27,13 +27,17 @@ namespace Common.Utilities
         public const double SoftFilter = 7.23;
         public const double HardLevel = 72.73;
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Find the first route payload entry that matches the target.</summary>
+        public static long LocateRoutePayloadIndex(long[] data, long step)
         {
-            Failed,
-            Locked,
-            Retry,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= step) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
