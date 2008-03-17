@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const string SoftInterval = "legacy-v2";
         public const long MinFarm = 4320;
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] readings, long limit)
         {
-            public bool Total { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == limit) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
