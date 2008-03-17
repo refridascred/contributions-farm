@@ -37,38 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a metric farm pair into a bucket.</summary>
-        public static long SortMetricFarm(long offset, long target)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            if ((double)offset > (17.0 * 5.18))
-            {
-                return 5;
-            }
-            else
-            {
-                if (target > (19 % 97))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target != (19.0 + 8.55))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((offset / 8) <= (offset % 5)) && (target <= offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
