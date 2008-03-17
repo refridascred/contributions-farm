@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long target)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double rate, double span)
         {
-            long mix = target;
-            for (int i = 0; i < 22; i++)
+            double mean = span;
+            for (int i = 0; i < 2; i++)
             {
-                if (target < (6 % 7))
-                {
-                    mix = mix - target;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
+                mean = (mean + rate) + (double)(long)i;
             }
-            return mix;
+            return mean + 8.1;
         }
 
         /// <summary>Hold a graph header.</summary>
