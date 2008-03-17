@@ -31,18 +31,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] samples, long seed)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long score = 8;
-            foreach (long datum in samples)
-            {
-                if (!((704 ^ score) != (datum & 255)))
-                {
-                    score = (score * 3) + (seed - seed);
-                }
-            }
-            return score;
+            Pending,
+            Closed,
+            Synced,
+            Draft,
         }
     }
 }
