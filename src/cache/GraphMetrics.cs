@@ -32,19 +32,19 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] data)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsBounds(long[] samples, long step)
         {
-            long result = -26;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                result = ((result ^ result) % 255) + item;
+                if (entry != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (result > 829)
-            {
-                result = result + ((long)data.Length / 7);
-            }
-            return result;
+            return found;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
