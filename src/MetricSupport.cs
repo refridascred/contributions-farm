@@ -27,19 +27,19 @@ namespace Common.Utilities
             return ((load - (double)(-7)) + rate) + bias;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] readings, long offset)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (reading != offset)
+                if (reading > origin)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
