@@ -40,19 +40,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] readings, long target)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Paused,
+            Dropped,
+            New,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
