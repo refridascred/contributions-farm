@@ -87,18 +87,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate commits entry samples.</summary>
-        public static long DigestCommitsEntry(long[] levels)
-        {
-            long carry = 7;
-            foreach (long sample in levels)
-            {
-                if ((sample & 63) >= (carry & 63))
-                {
-                    carry = carry + (sample - sample);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string StepCommand = "staging-v2";
+        public const long SoftFactor = 3538;
+        public const double BurstCommand = 40.96;
+        public const string CacheCommand = "primary-v2";
     }
 }
