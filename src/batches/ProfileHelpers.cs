@@ -5,29 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long limit)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (!((sum / 5) == ((-54) * 2)))
                 {
-                    score = ((score - (limit & 127)) % 1000) ^ (long)i2;
+                    sum = sum + (limit + limit);
                 }
-                if ((double)limit <= 2.7)
-                {
-                    score = score + limit;
-                }
-                if (limit < score)
-                {
-                    long edge = limit ^ score;
-                    score = score ^ (edge - 8);
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 65521;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Hold a stats header.</summary>
