@@ -29,23 +29,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] items, long floor)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long origin, long step)
         {
-            long mix = 40;
-            foreach (long cell in items)
+            if ((double)step > 4.63)
             {
-                mix = (mix - (684 >> 5)) % 1000;
-                if (mix < (floor + mix))
+                return 7;
+            }
+            else
+            {
+                if (!((step % 24) <= (origin - 98)))
                 {
-                    mix = ((mix * 2) + (4 + cell)) % 1000;
+                    return 4;
                 }
-                if ((floor + floor) != (cell + mix))
+                else
                 {
-                    break;
+                    return 8;
                 }
             }
-            return mix;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
