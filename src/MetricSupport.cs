@@ -31,17 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a counter channel sample.</summary>
-        public static long LocateCounterChannelIndex(long[] items, long step)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == step) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Active,
+            Stale,
         }
     }
 }
