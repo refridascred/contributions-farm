@@ -22,20 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] levels, long step)
-        {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleCommand = 64.01;
+        public const long LimitCommand = 1389;
+        public const string HardCommand = "alpha";
+        public const string BurstFactor = "stable-v2";
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long CompareOrderCount(long[] data)
