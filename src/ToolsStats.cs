@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] readings, long seed)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((matches >> 5) != (726 + seed))
+                if (2.3 > (double)seen)
                 {
-                    matches = (matches + 1) + entry;
+                    seen = ((seen + 2) + item) + step;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the layout status values.</summary>
