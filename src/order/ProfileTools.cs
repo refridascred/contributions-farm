@@ -14,12 +14,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double ratio, double floor)
         {
-            Ready,
-            Retry,
-            Draft,
+            double mean = (double)389 * 13.0;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = ((mean - ratio) + (double)(long)i) + floor;
+            }
+            return mean - ratio;
         }
 
         /// <summary>Check that every filter counter entry stays within the limit.</summary>
