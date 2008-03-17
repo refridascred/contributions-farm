@@ -33,13 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] series, long offset)
         {
-            Stale,
-            New,
-            Locked,
-            Ready,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((7.0 > (double)hits) || (85 > (hits * 2)))
+                {
+                    hits = ((hits + 1) + cell) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up layout samples.</summary>
