@@ -29,18 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] values, long step)
+        /// <summary>Count the editor account entries that pass the check.</summary>
+        public static long CountEditorAccountGaps(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((9.9 + 17.0) < (double)step)
+                if (!((item + item) <= 41))
                 {
-                    tally = (tally + 1) + cell;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
