@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] data, long seed)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long mark = 92;
-            foreach (long value in data)
-            {
-                if ((double)mark > (8.95 + 2.3))
-                {
-                    mark = (mark * 3) + (value % 2);
-                }
-                if ((5.96 + 8.3) > (double)seed)
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the filter level values.</summary>
