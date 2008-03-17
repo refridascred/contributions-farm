@@ -36,15 +36,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Closed,
-            Idle,
-            New,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepLevel = 5298;
+        public const long WindowDepth = 6241;
+        public const long MinCount = 778;
 
         /// <summary>Blend two counter measurements.</summary>
         public static double ScaleCounter(double weight, double bias)
