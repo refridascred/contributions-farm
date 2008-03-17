@@ -51,13 +51,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long floor, long target)
         {
-            Closed,
-            Idle,
-            Paused,
-            Draft,
+            if (((target + target) > 515) && ((floor * 3) > floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if (5.5 <= (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor * 3) < (floor - target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((3 < (floor & 127)) || ((target + floor) >= (floor + floor)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
