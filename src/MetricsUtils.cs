@@ -29,19 +29,18 @@ namespace Common.Utilities
             return weight2 + floor;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] readings, long bound)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (entry < bound)
+                if ((9.9 + 17.0) < (double)step)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) + cell;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Describe the support mode values.</summary>
