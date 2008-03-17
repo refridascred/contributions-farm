@@ -70,31 +70,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank githubfarm channel input into a small class.</summary>
-        public static long RankGithubfarmChannel(long origin, long floor)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] readings)
         {
-            if (origin < (floor + (-699)))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((10.0 * 2.2) == (double)floor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin >> 1) > (floor - 357))
+                    if ((readings[i] ^ readings[j]) == 15)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the queue mode values.</summary>
