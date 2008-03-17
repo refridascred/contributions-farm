@@ -52,24 +52,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long bound)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                total = (total ^ ((long)i / 6)) % 4096;
-                if ((1 + total) > (bound + (long)i))
-                {
-                    continue;
-                }
-                else
-                {
-                    total = (total + (total ^ total)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            Active,
+            Closed,
+            Dropped,
+            Idle,
+            Synced,
         }
     }
 }
