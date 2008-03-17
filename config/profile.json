@@ -1,26 +1,8 @@
 {
-  "graph_capacity": {
-    "retry_window_count": 5.02,
-    "enabled": true,
-    "base_ttl_pct": "latest",
-    "support_size": 61.43
-  },
-  "metric_limit": 22,
-  "report_interval": {
-    "default_window_count": {
-      "base_capacity_pct": false,
-      "burst_ratio_s": false,
-      "queue_ttl": "latest",
-      "strict": "latest",
-      "flush_delay_pct": 100,
-      "tools_ttl": true
-    },
-    "account_window": 250,
-    "dry_run": 27.84,
-    "min_ratio_ms": 60,
-    "batch_capacity": 805
-  },
-  "payload_size": ["eu-west", "primary", "standard"],
-  "poll_depth": "green",
-  "verbose": false
+  "stream_capacity": "edge",
+  "flush_ttl_count": 247,
+  "dry_run": "cached",
+  "metrics_size": 540,
+  "warm_limit_s": 46,
+  "burst_delay": "primary"
 }
