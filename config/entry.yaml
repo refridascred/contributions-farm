@@ -1,7 +1,11 @@
 # entry settings
-metric_size: true
-cache_threshold_count: 250
-schema_interval: 9
-farm_ratio:
-  - open
-  - open
+max_ratio_pct: strict
+default_capacity_s: true
+batch_interval:
+  - 134
+  - 143
+checks_delay: fallback
+batches_limit:
+  - 285
+  - 498
+  - 143
