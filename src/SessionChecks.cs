@@ -47,17 +47,18 @@ namespace Common.Utilities
         public const double MinToken = 76.89;
         public const string StepWidth = "alpha-edge";
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] readings, long offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenHits(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (readings[i] == offset)
+                if (matches >= (entry + entry))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
