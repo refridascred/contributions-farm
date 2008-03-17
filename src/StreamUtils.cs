@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double ratio, double offset)
         {
-            public double Score { get; set; }
-            public long Owner { get; set; }
-            public double Offset { get; set; }
+            double gain = ratio;
+            if (gain < (offset * 3.22))
+            {
+                gain = gain - (11.0 + ratio);
+            }
+            return gain + offset;
         }
 
         /// <summary>Audit batches report readings against a rule.</summary>
