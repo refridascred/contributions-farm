@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Pending,
-            Queued,
-            Retry,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultInterval = 9533;
+        public const double IdleLevel = 92.32;
+        public const long MaxStream = 9671;
+        public const long BatchSize = 5852;
+        public const long DefaultStream = 7135;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TotalCounter(long[] series, long step)
