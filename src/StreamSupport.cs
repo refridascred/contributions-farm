@@ -54,18 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] readings, long bound)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (!(2.38 <= (double)bound))
-                {
-                    seen = (seen + 1) - sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchBudget = 6668;
+        public const string MinCluster = "stable";
+        public const long LimitInterval = 416;
+        public const double RetryCluster = 79.02;
+        public const long BaseCount = 5674;
     }
 }
