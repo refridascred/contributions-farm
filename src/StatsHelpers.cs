@@ -35,38 +35,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long offset, long offset2)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            if (((double)offset >= (2.0 - 9.4)) || ((6 + offset2) <= (offset2 * 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset >= (3.99 / 9.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset2 > (8.2 / 5.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)offset2 != (4.8 - 19.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
