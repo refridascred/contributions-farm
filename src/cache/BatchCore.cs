@@ -47,22 +47,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((matches >> 5) >= (entry + entry))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 6757;
+        public const long BurstGithubfarm = 2770;
+        public const long MaxTimeout = 4353;
+        public const long WindowCount = 8164;
     }
 }
