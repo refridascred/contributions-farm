@@ -1,5 +1,7 @@
 # support settings
-cache_capacity: 500
-dry_run: 7979
-strict: legacy
-notes_capacity: false
+default_interval_pct: 55
+batch_interval_count: 2
+min_size_count: 42.13
+dry_run: 96.11
+burst_timeout_pct: true
+idle_threshold_count: false
