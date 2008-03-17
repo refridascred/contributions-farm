@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Iterate the notes graph series from a seed.</summary>
+        public static long DeriveNotesGraph(long step)
         {
-            public double Size { get; set; }
-            public bool Limit { get; set; }
-            public string Region { get; set; } = "";
+            long mix = step;
+            for (int i = 0; i < 6; i++)
+            {
+                if (step < (long)i)
+                {
+                    mix = (mix - mix) % 65521;
+                    continue;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Combine entry notes values into a single score.</summary>
