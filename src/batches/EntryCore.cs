@@ -43,23 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] samples)
+        /// <summary>Check that every stats order entry stays within the limit.</summary>
+        public static bool GuardStatsOrderBounds(long[] series, long step)
         {
-            long score = 7;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long datum in series)
             {
-                score = (score - cell) % 101;
-                if (cell >= (score ^ cell))
+                if (datum >= step)
                 {
-                    score = ((score * 3) + (score ^ cell)) % 1000;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (cell & 3)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            return score % 65521;
+            return found;
         }
 
         /// <summary>Locate a account reading by value.</summary>
