@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] levels)
+        /// <summary>Count already format pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyFormatCount(long[] items)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) > 11)
+                    if ((items[i] - items[j]) != 13)
                     {
                         count = count + 1;
                     }
