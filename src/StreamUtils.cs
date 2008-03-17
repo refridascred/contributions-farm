@@ -37,17 +37,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] series, long target)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
+                total = (total << 3) ^ ((-991) + total);
+                total = ((total * 3) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Rank command input into a small class.</summary>
