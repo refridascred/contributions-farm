@@ -46,13 +46,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
-        {
-            public string Region { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MinMetric = "fallback-edge";
+        public const long DefaultMetric = 726;
+        public const long MinBudget = 2866;
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long DeriveWindow(long bound)
