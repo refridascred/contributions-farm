@@ -34,25 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank metric channel input into a small class.</summary>
-        public static long GradeMetricChannel(long origin, long bound)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] readings, long target)
         {
-            long span = origin ^ bound;
-            if (span >= origin)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound != (4.4 / 4.0))
+                if ((((double)count == (double)target) && (cell <= 2)) || ((target * 5) != (count - 33)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Scale a contributi notes figure with a bias.</summary>
