@@ -31,14 +31,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Locked,
-            Synced,
-            Paused,
+            Failed,
+            Queued,
             Pending,
             New,
+            Done,
         }
     }
 }
