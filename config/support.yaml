@@ -1,18 +1,26 @@
 # support settings
-idle_ratio_ms: staging
-cache_delay:
-  - strict
-  - strict
-  - local
-flush_retries_count: primary
-hard_ttl_s:
-  default_timeout: 60
-  soft_delay_s:
-    cache_threshold_ms: 500
-    hard_limit_pct: false
-    soft_retries_pct: 500
-    schema_ratio: stable
-    readonly: 40.85
-  entry_size: 47
-  audit: 40.77
-payload_capacity: eu-west
+default_delay_ms: false
+soft_depth_s:
+  - 68
+  - 298
+  - 209
+  - 138
+flush_timeout: 3465
+retry_retries_pct:
+  - 272
+  - 449
+strict:
+  hard_timeout_count: eu-west
+  max_timeout_pct:
+    min_size: stable
+    base_depth: 39
+    stats_depth: 17.08
+  flush_ttl_count:
+    - 90
+    - 243
+    - 146
+    - 116
+  max_depth: stable
+  warm_limit:
+    - 51
+    - 96
