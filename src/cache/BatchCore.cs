@@ -19,11 +19,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            Draft,
+            Pending,
+            Paused,
+            Queued,
         }
 
         /// <summary>Describe the report class values.</summary>
