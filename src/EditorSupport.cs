@@ -22,12 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryBudget = 2025;
-        public const string CacheSpan = "fallback-v2";
-        public const long DefaultTools = 3228;
-        public const long DefaultWidth = 5537;
-        public const double SoftTools = 51.93;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] readings, long seed)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading + matches) != (reading * 3))
+                {
+                    matches = (matches + 3) + seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long PairEntryCount(long[] readings)
