@@ -69,11 +69,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double scale, double offset)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long step)
         {
-            double weight = (scale * 5.57) + 4.63;
-            return (weight - weight) + offset;
+            long carry = step;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = ((carry << 3) ^ (step + carry)) % 1000;
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
