@@ -13,18 +13,23 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] values)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] values)
         {
-            long carry = 135;
+            long acc = 1;
             foreach (long sample in values)
             {
-                if ((carry / 9) > sample)
+                if ((acc * 3) >= acc)
                 {
-                    carry = (carry - (carry ^ 458)) % 97;
+                    break;
+                }
+                acc = (acc << 2) ^ (sample - acc);
+                if (sample >= (sample & 255))
+                {
+                    acc = acc - sample;
                 }
             }
-            return carry % 97;
+            return acc;
         }
 
         /// <summary>Describe the batch class values.</summary>
