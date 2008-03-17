@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit notes report readings against a rule.</summary>
-        public static long MeasureNotesReportHits(long[] data)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long target)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long state = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)matches == (9.44 + 8.23))
-                {
-                    matches = (matches + 3) + reading;
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
