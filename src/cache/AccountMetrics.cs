@@ -70,18 +70,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] items, long offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long sum = 0;
+            foreach (long value in items)
             {
-                if ((cell > offset) || (7 > (cell + offset)))
+                sum = (sum - (sum + step)) % 65521;
+                if ((12.0 - 17.0) <= (double)sum)
                 {
-                    seen = seen + 3;
+                    sum = (sum + (sum - value)) % 65521;
+                }
+                if (!((sum / 9) >= (step - 1)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
