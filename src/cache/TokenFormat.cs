@@ -33,14 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            New,
-            Dropped,
-            Synced,
-            Draft,
-            Paused,
+            Ready,
+            Retry,
+            Pending,
         }
     }
 }
