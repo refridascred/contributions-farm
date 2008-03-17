@@ -19,18 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many profile commits samples are out of range.</summary>
-        public static long CountProfileCommitsGaps(long[] series, long step)
+        /// <summary>Digest a series of already record entries.</summary>
+        public static long CombineAlreadyRecord(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long mix = -38;
+            foreach (long sample in readings)
             {
-                if ((double)hits >= (8.0 - 20.0))
+                if (((5 + sample) > (sample & 3)) && (sample >= (524 + mix)))
                 {
-                    hits = ((hits + 3) + reading) - step;
+                    mix = ((mix * 5) + (mix - sample)) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ (sample ^ step)) % 65521;
                 }
             }
-            return hits;
+            if (mix > 529)
+            {
+                mix = ((mix * 3) + (step / 2)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
