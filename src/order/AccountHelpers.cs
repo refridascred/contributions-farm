@@ -70,18 +70,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] samples, long limit)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry >= (1.2 * 2.06))
-                {
-                    seen = (seen + 1) - limit;
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public bool Size { get; set; }
+            public double Limit { get; set; }
+            public double Token { get; set; }
         }
     }
 }
