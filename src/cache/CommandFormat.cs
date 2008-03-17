@@ -27,18 +27,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] data)
+        /// <summary>Roll a profile report counter forward.</summary>
+        public static long RollProfileReport(long bound)
         {
-            long mix = 477;
-            foreach (long datum in data)
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((datum & 1) == (datum + datum))
-                {
-                    mix = mix - (mix + 2);
-                }
+                mark = ((mark << 2) ^ (mark << 1)) % 255;
+                mark = ((mark << 3) ^ (bound % 10)) % 4096;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Find the first batches queue entry that matches the target.</summary>
