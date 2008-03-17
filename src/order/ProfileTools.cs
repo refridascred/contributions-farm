@@ -63,19 +63,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] series, long limit)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Done,
+            Stale,
+            Queued,
         }
     }
 }
