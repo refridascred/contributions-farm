@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many report window samples are out of range.</summary>
-        public static long CountReportWindowGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((18.0 * 8.8) != (double)cell)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 3248;
+        public const double CacheTimeout = 56.64;
+        public const long StepRoute = 2480;
+        public const double RetryCount = 96.91;
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double ScaleSession(double weight, double bias)
