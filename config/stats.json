@@ -1,20 +1,8 @@
 {
-  "payload_delay": {
-    "notes_ratio": 2.2,
-    "default_ratio": {
-      "compress": "fallback",
-      "dry_run": false,
-      "metrics_ttl": 1024,
-      "cache_ratio_s": 1024,
-      "counter_timeout": 21.84
-    },
-    "strict": "latest",
-    "audit": true,
-    "sync_threshold": true
-  },
-  "compress": 1784,
-  "poll_depth_s": [14, 105],
-  "readonly": "open",
-  "entry_ratio": 2653,
-  "sync_ratio": 47.85
+  "dry_run": true,
+  "idle_threshold_pct": 61,
+  "warm_ttl": "edge",
+  "poll_interval_ms": 21.98,
+  "editor_ratio": 60,
+  "compress": true
 }
