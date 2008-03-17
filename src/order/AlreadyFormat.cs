@@ -40,21 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] samples)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Done,
+            Dropped,
+            Ready,
+            Active,
         }
 
         /// <summary>Audit queue checks readings against a rule.</summary>
