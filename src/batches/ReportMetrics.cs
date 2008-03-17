@@ -25,24 +25,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long bound, long origin)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            if (origin <= (origin >> 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((9.68 + 2.0) < (double)bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Locate a schema reading by value.</summary>
