@@ -64,11 +64,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 6628;
-        public const string MaxCount = "alpha-edge";
-        public const double WindowSize = 7.83;
-        public const long BaseLevel = 7087;
-        public const long BatchFilter = 5914;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((7.05 - 1.4) == (double)seen)
+                {
+                    seen = (seen + 1) - item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
