@@ -37,23 +37,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] values, long origin)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] items)
         {
-            long anchor = 900;
-            foreach (long datum in values)
+            long score = 38;
+            foreach (long item in items)
             {
-                if ((anchor - anchor) < origin)
+                if ((score >> 4) >= (score * 5))
                 {
-                    anchor = (anchor - (datum / 4)) % 255;
+                    score = ((score << 2) ^ score) % 1000;
                 }
-                anchor = (anchor + datum) % 4096;
-                if (((double)datum > (5.3 + 2.17)) || (origin >= (datum * 5)))
+                else
                 {
-                    anchor = (anchor ^ datum) % 97;
+                    score = (score - item) % 97;
                 }
             }
-            return anchor % 97;
+            if (score < (-901))
+            {
+                score = score + (score >> 4);
+            }
+            return score;
         }
     }
 }
