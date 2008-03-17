@@ -52,18 +52,9 @@ namespace Common.Utilities
             return ratio - (gain + ratio);
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((entry - entry) == (entry >> 1))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepEntry = "local-v2";
+        public const long BatchEntry = 4950;
+        public const string StepTimeout = "fallback-v2";
     }
 }
