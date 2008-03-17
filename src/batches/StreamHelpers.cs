@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 9807;
-        public const long StepBudget = 5963;
-        public const long MaxCounter = 6152;
-        public const long MaxWidth = 2601;
-        public const long IdleCounter = 9598;
+        /// <summary>Grade a graph session value against two limits.</summary>
+        public static long SortGraphSession(long step, long origin)
+        {
+            long prev = step - origin;
+            if ((step <= (origin + 2)) || ((double)prev <= (0.55 + 7.14)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step + prev) <= (origin / 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (12.0 > (double)655)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step / 5) < (step % 16))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long SeriesAlready(long floor)
