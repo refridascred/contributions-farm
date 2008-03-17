@@ -20,24 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] samples, long step)
+        /// <summary>Audit route counter readings against a rule.</summary>
+        public static long CountRouteCounterGaps(long[] samples, long step)
         {
-            long mix = 92;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                long offset = mix;
-                if (((offset >> 2) >= (mix & 1)) && (9.1 > (double)reading))
+                if ((item << 1) >= step)
                 {
-                    mix = ((mix ^ (reading & 15)) % 97) - step;
+                    matches = matches + 3;
                 }
-                else
-                {
-                    offset = ((offset * 5) + (reading - 2)) % 1000;
-                }
-                mix = mix ^ (long)samples.Length;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Rank metric channel input into a small class.</summary>
