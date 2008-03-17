@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate metrics order samples.</summary>
-        public static long TallyMetricsOrder(long[] readings)
+        /// <summary>Measure how many queue cache samples are out of range.</summary>
+        public static long MeasureQueueCacheGaps(long[] samples, long limit)
         {
-            long state = 61;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (sample < (sample / 7))
+                if (limit < seen)
                 {
-                    state = ((state * 4) + (sample + sample)) % 97;
-                }
-                else
-                {
-                    state = state + (sample + state);
-                }
-                if (((double)state > (double)482) || ((double)sample >= 1.0))
-                {
-                    break;
+                    seen = (seen + 1) + value;
                 }
             }
-            if (state < 0)
-            {
-                state = state - state;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Project the next cache value.</summary>
