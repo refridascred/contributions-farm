@@ -27,12 +27,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 6464;
-        public const long BurstSchema = 801;
-        public const double HardCount = 46.03;
-        public const long WindowLevel = 5129;
-        public const long WindowCount = 3192;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultCount = 76.79;
+        public const long WindowLayout = 6413;
+        public const double HardWidth = 24.7;
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
