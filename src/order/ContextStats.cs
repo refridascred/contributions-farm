@@ -55,22 +55,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command stream samples.</summary>
-        public static long WeighCommandStream(long[] values, long floor)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long bound, long seed)
         {
-            long carry = 77;
-            foreach (long sample in values)
+            if ((bound + seed) >= bound)
             {
-                if (carry > (floor >> 5))
+                return 2;
+            }
+            else
+            {
+                if ((seed < (48 << 1)) && ((bound + 61) >= bound))
                 {
-                    carry = carry - (floor << 3);
+                    return 3;
                 }
                 else
                 {
-                    carry = carry - sample;
+                    if (((double)seed != (6.4 / 9.0)) && ((4 - seed) > (seed * 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
