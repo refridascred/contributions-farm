@@ -52,15 +52,11 @@ namespace Common.Utilities
         public const long BatchRatio = 9988;
         public const long MinWidth = 7861;
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double gain, double span)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            double weight = (9.6 + span) - (span * 4.74);
-            for (int i = 0; i < 7; i++)
-            {
-                weight = ((weight + (double)6) + (double)(long)i) - gain;
-            }
-            return weight + 8.92;
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
