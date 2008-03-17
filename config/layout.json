@@ -1,6 +1,6 @@
 {
-  "command_timeout": 4347,
-  "retry_capacity_pct": 29.16,
-  "editor_ratio": false,
-  "max_timeout_ms": false
+  "burst_timeout_s": 3597,
+  "flush_ttl_pct": 100,
+  "poll_ratio": 250,
+  "verbose": 87
 }
