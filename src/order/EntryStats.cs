@@ -39,18 +39,15 @@ namespace Common.Utilities
             return load + 4.98;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] series)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long floor)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (((hits + reading) <= (hits - 771)) || ((reading / 3) != (33 + 0)))
-                {
-                    hits = hits + 1;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Rank payload cluster input into a small class.</summary>
