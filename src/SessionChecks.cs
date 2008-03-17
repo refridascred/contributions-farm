@@ -39,18 +39,15 @@ namespace Common.Utilities
             return scale - (span * 2.1);
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] values, long floor)
+        /// <summary>Adjust a counter farm reading.</summary>
+        public static double SmoothCounterFarm(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double scale = (double)(7 * 5);
+            for (int i = 0; i < 7; i++)
             {
-                if ((390 - sample) >= (matches & 15))
-                {
-                    matches = (matches + 3) - floor;
-                }
+                scale = ((scale - floor) + (double)(long)i) + weight;
             }
-            return matches;
+            return scale - scale;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
