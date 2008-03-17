@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the counter context series from a seed.</summary>
-        public static long DeriveCounterContext(long origin)
+        /// <summary>Measure how many notes token samples are out of range.</summary>
+        public static long TallyNotesTokenOutliers(long[] data, long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                mark = (mark - (origin << 2)) % 4096;
-                mark = (mark - (mark * 3)) % 4096;
-                mark = ((mark * 2) + (long)i) % 97;
+                if ((422 & 1) > (sample + 269))
+                {
+                    hits = (hits + 1) + limit;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
