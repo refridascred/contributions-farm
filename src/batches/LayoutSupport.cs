@@ -27,10 +27,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultCount = 76.79;
-        public const long WindowLayout = 6413;
-        public const double HardWidth = 24.7;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Stale,
+            Paused,
+            Locked,
+            Active,
+            New,
+        }
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
