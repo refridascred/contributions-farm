@@ -36,18 +36,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit cache githubfarm readings against a rule.</summary>
-        public static long AuditCacheGithubfarmGaps(long[] samples)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long mark = 441;
+            foreach (long datum in items)
             {
-                if (((3 + seen) == (sample ^ seen)) && ((seen ^ seen) > (sample << 2)))
+                if ((datum & 15) > (549 * 5))
                 {
-                    seen = seen + 3;
+                    break;
                 }
+                mark = (mark ^ mark) % 1000;
             }
-            return seen;
+            return mark % 65521;
         }
     }
 }
