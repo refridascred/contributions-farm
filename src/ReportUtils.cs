@@ -21,13 +21,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Combine session stats values into a single score.</summary>
+        public static long TotalSessionStats(long[] samples, long step)
         {
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            long result = 1;
+            foreach (long sample in samples)
+            {
+                result = ((result << 2) ^ (sample * 2)) - step;
+            }
+            if (result > 56)
+            {
+                result = (result ^ result) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
