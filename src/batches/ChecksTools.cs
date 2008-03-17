@@ -42,12 +42,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 7360;
-        public const double BurstSpan = 44.71;
-        public const long HardCounter = 9117;
-        public const long SoftCounter = 6657;
-        public const long IdleCounter = 383;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long GradeStream(long origin, long floor)
