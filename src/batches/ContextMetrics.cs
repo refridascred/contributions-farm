@@ -44,18 +44,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] readings, long seed)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long result = 9;
-            foreach (long value in readings)
-            {
-                if ((1.2 * 8.0) != (double)value)
-                {
-                    result = (result ^ (seed - result)) % 1000;
-                }
-            }
-            return result % 97;
+            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
