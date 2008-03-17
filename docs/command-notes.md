@@ -1,10 +1,11 @@
 # Command notes
 
-Each window is validated before it reaches the graph queue.
-A stream that stays idle for too long is moved to the record list.
+Keep editor and metric names short and lowercase.
+A layout that stays idle for too long is moved to the cache list.
+A cache that stays idle for too long is moved to the window list.
 
 ## Guidelines
 
-- Document new filter fields
-- Validate already input early
-- Log every cache change
+- Document new editor fields
+- Log every farm change
+- Validate window input early
