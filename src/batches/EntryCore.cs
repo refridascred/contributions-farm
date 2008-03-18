@@ -31,14 +31,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public bool Stamp { get; set; }
-            public double Owner { get; set; }
-            public double Count { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double CacheTimeout = 50.34;
+        public const long RetryEntry = 2259;
+        public const long SoftEntry = 7182;
+        public const long WindowEntry = 2751;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long RetryMetric = 2707;
