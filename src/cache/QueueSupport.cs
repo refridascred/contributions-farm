@@ -37,15 +37,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 15; i++)
-            {
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseScore = 5831;
+        public const string SoftSpan = "local-edge";
+        public const long CacheAccount = 9048;
+        public const double DefaultAccount = 5.3;
+        public const double SoftAccount = 65.33;
     }
 }
