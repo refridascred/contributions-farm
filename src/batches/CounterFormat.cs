@@ -35,24 +35,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long bound, long seed)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            if ((bound >= seed) || ((double)seed > 9.45))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed % 2) != (bound + 628))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Total { get; set; }
+            public double Region { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
