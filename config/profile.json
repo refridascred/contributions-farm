@@ -1,7 +1,5 @@
 {
-  "soft_size": "cached",
-  "burst_limit_pct": true,
-  "base_depth_s": 3.49,
-  "batch_retries": [422, 259],
-  "strict": [466, 127, 94, 204]
+  "editor_limit": 80.66,
+  "default_ratio": [56, 345, 280, 345],
+  "stream_capacity": true
 }
