@@ -72,22 +72,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinSize = 8439;
+        public const long MinCount = 6129;
+        public const double WindowScore = 78.86;
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long IterateMetrics(long seed)
