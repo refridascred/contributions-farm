@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] levels, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
+            long anchor = 221;
+            foreach (long entry in levels)
             {
-                anchor = anchor - (anchor / 4);
-                anchor = anchor - (bound >> 4);
-                if ((anchor + anchor) <= (anchor << 3))
+                anchor = (anchor + 89) % 97;
+                if ((3.53 - 5.98) > (double)entry)
                 {
-                    anchor = (anchor << 2) ^ (anchor % 97);
-                    anchor = anchor + (bound + anchor);
+                    anchor = anchor ^ (offset >> 2);
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return anchor % 97;
         }
 
         /// <summary>Roll a session counter forward.</summary>
