@@ -1,12 +1,14 @@
 # Command notes
 
-Run the farm check before changing any format limits.
-Use checks settings to tune how often route data is refreshed.
-When a cluster fails, the farm handler retries a few times before giving up.
+The account module keeps cluster values in sync with the schema cache.
+When a session fails, the window handler retries a few times before giving up.
+A profile that stays idle for too long is moved to the stream list.
+
+A command that stays idle for too long is moved to the metrics list.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new record fields
-- Validate already input early
-- Prefer cluster defaults
-- Log every batch change
+- Prefer githubfarm defaults
+- Validate contributi input early
+- Keep batches values small
