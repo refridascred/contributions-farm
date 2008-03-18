@@ -18,12 +18,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double scale, double floor)
         {
-            Failed,
-            Locked,
-            Synced,
+            double mean = floor / 2.0;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = ((mean + (double)84) - (double)(long)i) + scale;
+            }
+            return mean - 1.0;
         }
 
         /// <summary>Describe the stream status values.</summary>
