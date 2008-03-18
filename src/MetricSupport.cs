@@ -15,23 +15,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] series)
-        {
-            long state = 566;
-            foreach (long entry in series)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    state = ((state + (state / 6)) ^ (long)i) + entry;
-                }
-                if ((state >> 4) > (state & 127))
-                {
-                    state = state + (state + state);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseBudget = 9586;
+        public const string BatchSchema = "fallback-1";
+        public const long CacheCount = 9275;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string SoftReport = "staging-edge";
