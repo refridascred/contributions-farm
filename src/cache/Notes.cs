@@ -55,19 +55,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] values, long origin)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (value > origin)
+                if ((floor * 4) != (hits + value))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
