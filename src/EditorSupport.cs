@@ -62,21 +62,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] series)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum > floor)
                 {
-                    if ((series[i] - series[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Hold a route snapshot.</summary>
