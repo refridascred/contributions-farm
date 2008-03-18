@@ -5,29 +5,29 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long limit, long bound)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long origin, long bound)
         {
-            long offset = limit ^ bound;
-            if (limit < (bound >> 2))
+            long edge = origin - bound;
+            if (edge > origin)
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((offset >> 4) == (bound * 5))
+                if (origin <= (origin << 1))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    if ((bound - offset) < bound)
+                    if ((edge >= (bound >> 4)) && ((4.0 / 7.0) < (double)origin))
                     {
-                        return 4;
+                        return 8;
                     }
                     else
                     {
-                        return 0;
+                        return 3;
                     }
                 }
             }
