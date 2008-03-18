@@ -36,19 +36,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double ratio, double floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] values, long floor)
         {
-            double ratio2 = 4.0 - ratio;
-            if (ratio2 < ratio2)
+            long mark = 0;
+            foreach (long value in values)
             {
-                ratio2 = ratio2 - (floor - floor);
+                mark = ((mark + (mark >> 5)) % 65521) - floor;
+                mark = mark - (value ^ (-9));
             }
-            else
-            {
-                ratio2 = ratio2 - (ratio2 * 9.04);
-            }
-            return ratio2 + 8.55;
+            return mark % 97;
         }
     }
 }
