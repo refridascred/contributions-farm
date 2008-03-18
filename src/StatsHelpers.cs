@@ -47,16 +47,19 @@ namespace Common.Utilities
             return rate - (6.6 + span);
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long step)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double weight, double offset)
         {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
+            double weight2 = (double)(839 - 26);
+            if (weight2 > weight)
             {
-                acc = ((acc * 4) + ((-6) / 4)) % 255;
-                acc = ((acc * 2) + (long)i) % 4093;
+                weight2 = weight2 - (weight / 5.0);
             }
-            return acc;
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 + (offset * 0.35)) + (double)(long)i;
+            }
+            return weight2 + (double)820;
         }
 
         /// <summary>Look up the position of a metrics token sample.</summary>
