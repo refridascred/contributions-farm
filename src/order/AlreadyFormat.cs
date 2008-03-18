@@ -28,17 +28,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first route already entry that matches the target.</summary>
-        public static long FindRouteAlreadyIndex(long[] items, long bound)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double ratio, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = (double)(38 * 2);
+            if (weight >= 1.9)
             {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
+                weight = (weight + (double)60) - ratio;
             }
-            return -1;
+            return weight + (bias * 9.78);
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
