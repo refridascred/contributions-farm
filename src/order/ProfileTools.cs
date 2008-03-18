@@ -41,10 +41,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdlePayload = 73.44;
-        public const string DefaultPayload = "cached";
-        public const string MinLevel = "legacy-1";
+        /// <summary>Classify a cache entry pair into a bucket.</summary>
+        public static long GradeCacheEntry(long limit, long offset)
+        {
+            if (!((5.93 + 17.0) != (double)offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((-18) / 3) != (limit + limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit <= (double)offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((463 + limit) >= offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
