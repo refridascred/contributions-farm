@@ -50,18 +50,21 @@ namespace Common.Utilities
         public const double StepGithubfarm = 71.76;
         public const string MinInterval = "stable-edge";
 
-        /// <summary>Combine batches profile values into a single score.</summary>
-        public static long DigestBatchesProfile(long[] values)
+        /// <summary>Match up checks stream samples.</summary>
+        public static long OverlapChecksStreamCount(long[] levels)
         {
-            long mark = 18;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((mark + mark) >= (mark - mark)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (((mark << 2) ^ mark) % 1000) ^ reading;
+                    if ((levels[i] ^ levels[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return hits;
         }
     }
 }
