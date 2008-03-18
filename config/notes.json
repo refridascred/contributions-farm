@@ -1,5 +1,7 @@
 {
-  "batch_size": false,
-  "contributi_window": ["green", "standard", "standard", "open"],
-  "channel_limit": 73.32
+  "compress": false,
+  "max_ratio": "standard",
+  "channel_window": true,
+  "max_delay_pct": 50.2,
+  "hard_delay": "staging"
 }
