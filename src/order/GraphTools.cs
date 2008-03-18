@@ -23,21 +23,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] data)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] data, long origin)
         {
-            long hits = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((data[i] > origin) && ((data[i] % 3) != 0))
                 {
-                    if ((data[i] - data[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Project the next batch value.</summary>
