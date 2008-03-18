@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstWindow = 63.64;
-        public const long LimitFactor = 1223;
-        public const string RetryCount = "primary";
+        /// <summary>Compare every pair of window editor readings.</summary>
+        public static long MatchWindowEditorCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
