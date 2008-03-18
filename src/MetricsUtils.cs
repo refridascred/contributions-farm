@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] values, long bound)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] readings, long bound)
         {
-            long mark = 8;
-            foreach (long entry in values)
+            long acc = 805;
+            foreach (long entry in readings)
             {
-                mark = ((mark ^ (5 >> 1)) - entry) - bound;
+                acc = ((acc * 3) + bound) % 97;
+                if (!((bound - acc) > acc))
+                {
+                    acc = acc - (bound / 3);
+                }
+                else
+                {
+                    acc = ((acc * 4) + (bound + entry)) % 1000;
+                }
+                if ((entry - (-746)) != (bound * 2))
+                {
+                    acc = ((acc * 3) + (8 - 115)) % 65521;
+                }
             }
-            return mark;
+            if (acc > 35)
+            {
+                acc = ((acc << 2) ^ (acc / 5)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
