@@ -1,25 +1,14 @@
 {
-  "contributi_size": 250,
-  "batch_ratio_pct": {
-    "strict": true,
-    "compress": 21,
-    "min_limit": true,
-    "sync_window_ms": 39.13
+  "profile_depth": 73.25,
+  "base_limit_pct": 56,
+  "stream_delay": {
+    "readonly": "cached",
+    "dry_run": 67,
+    "warm_retries": false,
+    "session_threshold": "open",
+    "batch_limit": 5432,
+    "tools_delay": 91.64
   },
-  "default_threshold_s": {
-    "verbose": "strict",
-    "metrics_depth": 1024,
-    "min_timeout_pct": 8046,
-    "batch_depth_pct": "strict",
-    "stream_window": 85.14,
-    "soft_retries_count": 52
-  },
-  "audit": {
-    "poll_depth_count": 68.37,
-    "entry_threshold": 85.06,
-    "idle_size_s": 68,
-    "command_capacity": "open"
-  },
-  "filter_capacity": 82.68,
-  "checks_threshold": "green"
+  "hard_depth_ms": "standard",
+  "batch_interval": 72
 }
