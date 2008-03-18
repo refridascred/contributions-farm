@@ -39,16 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long step)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] items)
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                anchor = (anchor - (step + step)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (item > (item - item))
+                {
+                    tally = tally + 1;
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
