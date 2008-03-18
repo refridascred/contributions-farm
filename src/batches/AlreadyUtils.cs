@@ -30,11 +30,21 @@ namespace Common.Utilities
         public const double HardMetrics = 68.44;
         public const string MinMetrics = "staging-1";
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] series)
         {
-            public string Owner { get; set; } = "";
-            public string Label { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
