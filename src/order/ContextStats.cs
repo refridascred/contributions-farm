@@ -34,15 +34,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long floor)
+        /// <summary>Iterate the metric route series from a seed.</summary>
+        public static long SeriesMetricRoute(long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
+            long mix = seed;
+            for (int i = 0; i < 10; i++)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Define report limits and defaults.</summary>
