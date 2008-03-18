@@ -32,10 +32,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 86;
-        public const long MaxLevel = 490;
-        public const double BaseSize = 88.78;
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
+        {
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long MinEditor = 4867;
