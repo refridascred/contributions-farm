@@ -30,22 +30,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] readings)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] readings, long floor)
         {
-            long seen = 0;
+            bool stale = true;
             foreach (long datum in readings)
             {
-                if ((44 * 2) != (datum / 2))
+                if (datum != floor)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
