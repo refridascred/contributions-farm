@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            New,
-            Retry,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleFactor = "cached";
+        public const double HardSession = 37.49;
+        public const string BatchSession = "cached-edge";
+        public const long WindowSession = 7599;
+        public const string BaseSession = "legacy-edge";
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
