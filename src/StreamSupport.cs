@@ -14,13 +14,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long floor, long limit)
         {
-            Ready,
-            Idle,
-            Done,
-            Locked,
+            if ((floor % 64) <= (limit ^ limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((15.0 + 5.92) > (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Locate a commits reading by value.</summary>
