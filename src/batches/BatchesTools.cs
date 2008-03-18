@@ -24,9 +24,17 @@ namespace Common.Utilities
         public const long IdleInterval = 5230;
         public const double IdleFactor = 20.83;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string DefaultMetrics = "stable";
-        public const double RetryRatio = 38.7;
-        public const long IdleBudget = 9612;
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                long tally = (result ^ result) % 64;
+                result = result + tally;
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
     }
 }
