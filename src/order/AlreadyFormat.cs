@@ -53,11 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double bias, double offset)
+        /// <summary>Audit stats account readings against a rule.</summary>
+        public static long AuditStatsAccountGaps(long[] values, long limit)
         {
-            double scale = bias;
-            return (scale - (scale / 8.0)) + offset;
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (((limit < sample) && ((matches + matches) <= sample)) && ((4.0 - 19.0) <= (double)matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a commits token counter forward.</summary>
