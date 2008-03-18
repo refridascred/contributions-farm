@@ -46,12 +46,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] values, long offset)
         {
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < offset) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
