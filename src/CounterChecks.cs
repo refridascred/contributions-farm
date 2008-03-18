@@ -47,21 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] levels)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((reading + seed) >= seed)
                 {
-                    if ((levels[i] + levels[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
