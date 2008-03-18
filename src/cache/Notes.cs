@@ -63,18 +63,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] samples, long origin)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((seen % 12) <= (origin + seen))
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public double Count { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
