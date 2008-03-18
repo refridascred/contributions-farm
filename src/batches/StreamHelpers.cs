@@ -54,18 +54,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools layout samples are out of range.</summary>
-        public static long CountToolsLayoutMatches(long[] readings, long step)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry - hits) > (entry + step))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Active,
+            Done,
+            Retry,
+            New,
         }
 
         /// <summary>Validate buffer metrics readings against a bound.</summary>
