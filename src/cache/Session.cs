@@ -45,12 +45,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultRatio = 1951;
-        public const string MinFilter = "open";
-        public const long StepTimeout = 4802;
-        public const double CacheFilter = 73.89;
-        public const string HardFilter = "stable-v2";
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Pending,
+            Done,
+            Synced,
+            New,
+            Paused,
+        }
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
