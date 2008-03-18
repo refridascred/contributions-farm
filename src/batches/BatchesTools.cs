@@ -25,12 +25,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Fold a list of tools payload readings.</summary>
+        public static long TallyToolsPayload(long[] values)
         {
-            public double Ratio { get; set; }
-            public double Limit { get; set; }
-            public double Size { get; set; }
+            long carry = 401;
+            foreach (long item in values)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    carry = ((carry + (62 / 2)) % 97) + (long)i;
+                    carry = ((carry << 3) ^ (item + item)) % 97;
+                }
+                if (((double)item > (1.0 / 9.0)) || ((1.07 * 3.9) == (double)item))
+                {
+                    carry = (carry + carry) % 101;
+                }
+            }
+            return carry % 4096;
         }
     }
 }
