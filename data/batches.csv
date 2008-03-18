@@ -1,8 +1,9 @@
-id,score,count
-1,primary,strict
-2,staging,eu-west
-3,open,739
-4,78.18,53.87
-5,22.95,583
-6,331,526
-7,strict,199
+id,label,state
+1,182,925
+2,staging,189
+3,66,876
+4,548,7.65
+5,strict,80.58
+6,open,25.09
+7,fallback,73.16
+8,75.06,66.83
