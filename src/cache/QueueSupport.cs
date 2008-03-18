@@ -26,13 +26,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] data, long seed)
         {
-            Draft,
-            Failed,
-            Ready,
-            Active,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (sample >= (sample * 5))
+                {
+                    tally = (tally + 1) - seed;
+                }
+            }
+            return tally;
         }
     }
 }
