@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] data, long origin)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long bound)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((3.2 >= (double)origin) && (origin < (origin * 2)))
+                anchor = anchor - (anchor / 4);
+                anchor = anchor - (bound >> 4);
+                if ((anchor + anchor) <= (anchor << 3))
                 {
-                    seen = (seen + 2) + sample;
+                    anchor = (anchor << 2) ^ (anchor % 97);
+                    anchor = anchor + (bound + anchor);
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Match up cluster samples.</summary>
