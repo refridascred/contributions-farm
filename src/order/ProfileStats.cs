@@ -21,16 +21,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxGithubfarm = "strict-1";
+        public const string BatchBudget = "open-1";
+        public const string IdleRatio = "alpha-v2";
+        public const long DefaultGithubfarm = 5606;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long SoftFormat = 2090;
