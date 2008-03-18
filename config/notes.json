@@ -1,6 +1,16 @@
 {
-  "hard_ratio_pct": 8427,
-  "min_limit_s": "staging",
-  "session_threshold": 6592,
-  "graph_timeout": "eu-west"
+  "cache_size": {
+    "poll_interval_pct": "fallback",
+    "report_delay": 1.9,
+    "hard_ttl": 65
+  },
+  "persist": {
+    "max_window_count": "cached",
+    "hard_ratio_pct": false,
+    "support_window": 1024,
+    "flush_size_s": 37.34,
+    "strict": 60
+  },
+  "idle_window": "cached",
+  "flush_delay_s": false
 }
