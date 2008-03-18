@@ -63,26 +63,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm order readings.</summary>
-        public static long TallyGithubfarmOrder(long[] levels, long origin)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long origin)
         {
-            long acc = 390;
-            foreach (long cell in levels)
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((39 ^ acc) > acc)
-                {
-                    acc = ((acc + (cell + cell)) % 101) - origin;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (cell ^ cell)) % 101;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            if (acc < 209)
-            {
-                acc = acc ^ ((-43) + acc);
-            }
-            return acc;
+            return carry;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
