@@ -74,13 +74,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            Draft,
-            Ready,
-            Queued,
-            Stale,
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
