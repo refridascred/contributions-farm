@@ -60,20 +60,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two already support measurements.</summary>
-        public static double AdjustAlreadySupport(double weight, double span)
-        {
-            double gain = (5.5 * 1.0) + (span - weight);
-            if (gain > (gain / 2.0))
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + 3.0) - (double)(long)i;
-            }
-            return gain + gain;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstRatio = "local-edge";
+        public const long WindowInterval = 417;
+        public const string MaxCounter = "latest";
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
