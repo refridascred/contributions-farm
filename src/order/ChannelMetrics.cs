@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double weight, double span)
+        /// <summary>Combine batch session values into a single score.</summary>
+        public static long TallyBatchSession(long[] items, long bound)
         {
-            double weight2 = weight;
-            if (weight2 > (weight * 7.09))
+            long result = 631;
+            foreach (long value in items)
             {
-                weight2 = weight2 + (span / 3.0);
+                if ((86 + value) > bound)
+                {
+                    result = result + (result ^ bound);
+                }
+                else
+                {
+                    result = result ^ (67 >> 4);
+                }
+                result = (result * 4) + (430 << 2);
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 - span) + (double)(long)i;
-            }
-            return weight2 + (8.61 + 1.0);
+            return result;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
