@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a cluster metrics sample.</summary>
-        public static long SeekClusterMetricsIndex(long[] data, long floor)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Ready,
+            Done,
+            Pending,
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
