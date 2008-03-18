@@ -25,16 +25,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double weight, double floor)
-        {
-            double mean = floor;
-            if (mean > (mean + weight))
-            {
-                mean = mean + (floor + weight);
-            }
-            return mean + floor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstDepth = 2615;
+        public const long MaxTimeout = 4906;
+        public const long IdleSpan = 9645;
+        public const long WindowScore = 160;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long DigestBatch(long[] series, long step)
