@@ -1,9 +1,12 @@
 # support settings
-min_window_count: false
-soft_depth: 45.25
-cache_timeout: primary
-stats_retries:
-  hard_size: 87.89
-  sync_threshold_count: local
-  notes_interval: stable
-  stats_timeout: standard
+readonly: 68.47
+idle_retries_count: fallback
+soft_ttl_count:
+  dry_run: true
+  audit: true
+  batch_size: 8
+  base_window_ms:
+    cache_timeout: blue
+    base_depth_count: 64.09
+    max_limit_s: standard
+    max_depth_s: primary
