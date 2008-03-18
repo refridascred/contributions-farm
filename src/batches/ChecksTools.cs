@@ -57,19 +57,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate layout record readings against a bound.</summary>
-        public static bool GuardLayoutRecordLimits(long[] readings, long limit)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long seed)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long state = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (value <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (state - ((long)i + state)) % 255;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return ready;
+            return state;
         }
     }
 }
