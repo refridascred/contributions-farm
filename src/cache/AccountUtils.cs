@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] items, long floor)
+        /// <summary>Count the queue githubfarm entries that pass the check.</summary>
+        public static long AuditQueueGithubfarmGaps(long[] readings, long origin)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (sample >= floor)
+                if ((9.0 * 3.26) == (double)origin)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) - entry;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the record class values.</summary>
