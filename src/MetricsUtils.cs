@@ -45,12 +45,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 3935;
-        public const double CacheTimeout = 26.87;
-        public const long BurstFactor = 8996;
-        public const double BurstCommand = 34.11;
-        public const long StepDepth = 4419;
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
+        {
+            Pending,
+            Dropped,
+            Active,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
