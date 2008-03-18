@@ -32,9 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowFactor = "legacy-edge";
-        public const long SoftFarm = 7319;
-        public const double SoftInterval = 51.72;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Paused,
+            Locked,
+            Ready,
+            Stale,
+        }
     }
 }
