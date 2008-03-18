@@ -38,18 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] values)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((double)item <= (9.64 / 4.0))
+                if ((59 >> 1) <= hits)
                 {
-                    seen = seen + 3;
+                    hits = ((hits + 3) + cell) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
