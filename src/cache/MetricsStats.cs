@@ -20,14 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] readings)
         {
-            Retry,
-            Idle,
-            Queued,
-            Active,
-            Failed,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry & 1) <= (matches / 4))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
