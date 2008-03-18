@@ -59,18 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window cache entries that pass the check.</summary>
-        public static long CountWindowCacheMatches(long[] values)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (((0.24 - 14.0) >= (4.4 + 8.24)) || ((seen % 2) <= (datum / 7)))
+                if (reading < offset)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
