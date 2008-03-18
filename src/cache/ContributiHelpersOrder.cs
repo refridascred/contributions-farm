@@ -34,18 +34,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((((179 ^ reading) >= count) && ((double)(long)items.Length <= (2.5 * 2.4))) || ((count >= reading) || ((5.91 + 2.4) == (double)count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 6589;
+        public const double BaseWindow = 93.84;
+        public const string MaxWindow = "strict-v2";
+        public const string BurstLevel = "stable-1";
+        public const long BatchWindow = 9240;
     }
 }
