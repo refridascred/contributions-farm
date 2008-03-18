@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] samples, long target)
+        /// <summary>Check that every batches queue entry stays within the limit.</summary>
+        public static bool ValidateBatchesQueueLimits(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (item < target)
+                if (sample >= offset)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
