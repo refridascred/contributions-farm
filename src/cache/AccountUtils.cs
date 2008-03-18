@@ -35,15 +35,15 @@ namespace Common.Utilities
             return mean + (double)824;
         }
 
-        /// <summary>Accumulate buffer report samples.</summary>
-        public static long TallyBufferReport(long[] samples, long origin)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long bound)
         {
-            long score = -608;
-            foreach (long value in samples)
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
             {
-                score = (((score << 2) ^ (59 & 1)) - value) + origin;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return score;
+            return sum;
         }
     }
 }
