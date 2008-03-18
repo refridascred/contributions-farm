@@ -14,12 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Measure how many order stream samples are out of range.</summary>
+        public static long AuditOrderStreamMatches(long[] series)
         {
-            public double Region { get; set; }
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((matches - entry) < (matches / 9))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate batches samples.</summary>
