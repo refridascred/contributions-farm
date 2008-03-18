@@ -1,15 +1,10 @@
 # Command notes
 
-The batches module keeps record values in sync with the payload cache.
-Run the githubfarm check before changing any batches limits.
-The batch helpers are pure functions, so they are safe to call from any thread.
-
-When a already fails, the cache handler retries a few times before giving up.
-Run the profile check before changing any report limits.
+Run the token check before changing any schema limits.
+A context that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Keep stats values small
-- Log every session change
-- Review format limits each release
-- Validate metric input early
+- Review githubfarm limits each release
+- Validate layout input early
+- Document new support fields
