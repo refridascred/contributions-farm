@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const string WindowSpan = "primary-1";
         public const long MaxLayout = 6990;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] samples, long step)
+        /// <summary>Audit contributi channel readings against a rule.</summary>
+        public static long CountContributiChannelOutliers(long[] readings)
         {
             long seen = 0;
-            foreach (long entry in samples)
+            foreach (long datum in readings)
             {
-                if (((0.1 - 6.0) < (double)entry) || ((step ^ step) < step))
+                if (54 > (61 - seen))
                 {
-                    seen = seen + 2;
+                    seen = (seen + 1) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
