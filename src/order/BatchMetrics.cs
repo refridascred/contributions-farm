@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] readings)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] levels, long limit)
         {
-            long score = 23;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score * 3) + (9 & 7)) % 97;
-                score = ((score << 3) ^ score) % 97;
-                if (5.5 > (double)sample)
+                if (levels[i] == limit)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score > 170)
-            {
-                score = (score ^ (score - score)) % 97;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the report mode values.</summary>
