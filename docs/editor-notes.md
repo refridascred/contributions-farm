@@ -1,13 +1,11 @@
 # Editor notes
 
-Use profile settings to tune how often session data is refreshed.
-Each support is validated before it reaches the profile queue.
-
-The account report groups every filter by order.
-The record report groups every window by queue.
+The batch report groups every account by editor.
+A batch that stays idle for too long is moved to the metrics list.
 
 ## Guidelines
 
-- Prefer record defaults
-- Review counter limits each release
-- Validate stream input early
+- Validate token input early
+- Review window limits each release
+- Document new githubfarm fields
+- Keep window values small
