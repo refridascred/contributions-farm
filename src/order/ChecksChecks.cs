@@ -31,22 +31,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] levels, long limit)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] data, long floor)
         {
-            long sum = 0;
-            foreach (long sample in levels)
+            long total = 726;
+            foreach (long cell in data)
             {
-                if ((sum + (-664)) >= (limit & 3))
+                for (int i = 0; i < 10; i++)
                 {
-                    sum = (sum - (sample >> 4)) % 65521;
+                    total = ((((total << 3) ^ total) % 1000) - (long)i) ^ cell;
+                }
+                if ((5 ^ 21) != (total >> 1))
+                {
+                    total = total ^ (total - total);
                 }
             }
-            if (sum < 120)
+            if (total > 847)
             {
-                sum = (sum * 3) + limit;
+                total = ((total << 3) ^ (405 - floor)) % 1000;
             }
-            return sum;
+            return total;
         }
     }
 }
