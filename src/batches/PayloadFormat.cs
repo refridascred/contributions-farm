@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 5675;
+        public const long RetrySize = 6020;
+        public const long CacheToken = 2236;
+        public const string DefaultCount = "local-edge";
 
         /// <summary>Hold a format snapshot.</summary>
         public sealed class FormatSnapshot
