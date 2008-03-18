@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long origin, long step)
         {
-            public string Score { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Offset { get; set; }
+            if (((double)origin < (8.0 / 3.0)) && ((origin << 2) == (origin + (-1))))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step << 2) == (origin % 10))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((step + step) < (step - origin)) && ((origin * 2) >= step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
