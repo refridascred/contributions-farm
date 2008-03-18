@@ -1,7 +1,6 @@
 # support settings
-dry_run: 91
-strict:
-  persist: latest
-  verbose: 67
-  poll_limit_s: false
-flush_ttl_count: 4608
+base_size: 42.63
+default_limit: latest
+poll_timeout: stable
+batch_interval: staging
+retry_size: standard
