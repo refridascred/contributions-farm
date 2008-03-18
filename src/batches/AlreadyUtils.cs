@@ -23,39 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long step, long offset)
-        {
-            if (!((double)step != (6.0 - 3.56)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(5.5 <= (double)offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (2.45 <= (double)step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (9.5 <= (double)step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheMetrics = 37.94;
+        public const double BatchFactor = 22.02;
+        public const long HardTimeout = 9087;
+        public const double HardMetrics = 68.44;
+        public const string MinMetrics = "staging-1";
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
