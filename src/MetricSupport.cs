@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of route profile readings.</summary>
-        public static long ScoreRouteProfile(long[] levels, long limit)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long score = 3;
-            foreach (long reading in levels)
-            {
-                if ((double)score > 8.81)
-                {
-                    score = ((score + (reading ^ score)) % 97) + limit;
-                }
-            }
-            if (score > (-3))
-            {
-                score = ((score << 2) ^ (score >> 4)) % 1000;
-            }
-            return score % 97;
+            New,
+            Locked,
+            Dropped,
+            Failed,
+            Closed,
         }
 
         /// <summary>Combine support values into a single score.</summary>
