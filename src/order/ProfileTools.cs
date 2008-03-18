@@ -30,14 +30,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long floor, long seed)
         {
-            Idle,
-            New,
-            Failed,
-            Stale,
-            Active,
+            if (61 <= (seed & 127))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((6.11 * 6.8) <= (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((9.55 / 8.0) >= (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of window readings.</summary>
