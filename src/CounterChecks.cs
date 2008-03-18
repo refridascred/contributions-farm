@@ -37,22 +37,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitGraph = "latest-v2";
+        public const long BaseGraph = 8045;
+        public const long SoftGraph = 9901;
+        public const long CacheGraph = 2927;
+        public const long MinGraph = 4542;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool GuardBufferRange(long[] items, long seed)
