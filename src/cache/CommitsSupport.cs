@@ -20,25 +20,11 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long bound, long seed)
-        {
-            if ((double)bound != (13.0 / 8.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed << 1) >= (bound + seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 3736;
+        public const long StepSchema = 4883;
+        public const long BurstSchema = 7296;
+        public const string CacheTimeout = "legacy-v2";
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long CountCounterHits(long[] items)
