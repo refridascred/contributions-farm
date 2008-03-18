@@ -1,10 +1,14 @@
 # Command notes
 
-The commits module keeps record values in sync with the window cache.
-The cluster report groups every entry by graph.
+A entry that stays idle for too long is moved to the notes list.
+The window module keeps tools values in sync with the notes cache.
+
+Use buffer settings to tune how often counter data is refreshed.
+The session helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review profile limits each release
-- Prefer token defaults
-- Validate profile input early
+- Review batch limits each release
+- Validate tools input early
+- Prefer channel defaults
+- Document new channel fields
