@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            Pending,
-            Active,
-            Locked,
+            public long Score { get; set; }
+            public bool Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
