@@ -64,18 +64,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == floor) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 6838;
+        public const string MinScore = "legacy-v2";
+        public const long IdleToken = 6093;
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long IterateSupport(long origin)
