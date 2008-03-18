@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] readings, long seed)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long seed, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((seed - 6) >= offset)
             {
-                if ((readings[i] < seed) && ((readings[i] % 5) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((offset >> 1) > (offset - 661))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (offset < seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
