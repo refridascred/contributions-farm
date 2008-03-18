@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank batch tools input into a small class.</summary>
-        public static long ClassifyBatchTools(long floor, long floor2)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] readings)
         {
-            if (!((double)floor2 != (9.43 + 6.31)))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor ^ floor2) > floor2)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((7.1 + 2.0) != (double)floor2)
+                    if ((readings[i] - readings[j]) != 9)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Match up cache metrics samples.</summary>
