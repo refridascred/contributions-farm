@@ -1,20 +1,8 @@
 # entry settings
-sync_interval_count:
-  sync_window_count: 4148
-  flush_window_s: open
-  stats_size:
-    sync_depth_pct: true
-    editor_size: open
-    min_retries_count: cached
-    soft_timeout_s: 97.34
-    hard_window: stable
-    record_interval:
-      - 476
-      - 475
-      - 370
-  default_timeout: 69.52
-audit:
-  - 485
-  - 170
-  - 453
-readonly: 1024
+dry_run: legacy
+account_retries: edge
+default_delay_s: 60.55
+poll_delay_pct:
+  - open
+  - fallback
+batch_retries: 38
