@@ -38,22 +38,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] levels, long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long mix = 23;
+            foreach (long cell in levels)
             {
-                if (matches < seed)
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = (((mix * 3) + mix) % 97) - cell;
+                mix = (mix ^ bound) % 1000;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Roll a farm tools counter forward.</summary>
