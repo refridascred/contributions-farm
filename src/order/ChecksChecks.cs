@@ -29,19 +29,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] values, long seed)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long limit, long origin)
         {
-            bool ready = true;
-            foreach (long value in values)
+            if (!(origin > (780 + limit)))
             {
-                if (value != seed)
+                return 5;
+            }
+            else
+            {
+                if ((origin + (-787)) <= (limit >> 4))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((4 + origin) != ((-5) & 15)) && ((double)origin != (9.11 - 9.5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((limit * 2) != (origin << 3)) && ((double)origin > (double)6))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
