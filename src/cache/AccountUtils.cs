@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > origin) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseSpan = "staging-1";
+        public const string RetryRoute = "latest-1";
+        public const string MaxSize = "local-edge";
+        public const long DefaultRoute = 2928;
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
