@@ -37,11 +37,17 @@ namespace Common.Utilities
         public const long StepWindow = 9996;
         public const long IdleWindow = 8051;
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double ratio, double bias)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] levels, long floor)
         {
-            double gain = (double)(4 ^ 93);
-            return (gain + (0.2 + ratio)) + bias;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < floor) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
