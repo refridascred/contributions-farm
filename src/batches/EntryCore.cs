@@ -53,12 +53,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 5297;
-        public const long MinCount = 6462;
-        public const long HardQueue = 3635;
-        public const long MinDepth = 2925;
-        public const long DefaultQueue = 5069;
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long CountAlreadyOutliers(long[] samples)
