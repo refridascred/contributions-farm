@@ -18,15 +18,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long limit)
+        /// <summary>Grade a context contributi value against two limits.</summary>
+        public static long RankContextContributi(long target, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
+            if ((target * 3) > (offset - 72))
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                return 3;
             }
-            return sum;
+            else
+            {
+                if (76 > (offset * 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a channel entry.</summary>
