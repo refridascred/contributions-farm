@@ -1,9 +1,13 @@
 # entry settings
-idle_interval_s: false
-audit:
-  - stable
-  - staging
-enabled: 26.22
-max_ttl_ms: false
-idle_capacity: 94
-max_interval_pct: 7077
+flush_ttl_ms:
+  strict: false
+  audit: cached
+  compress: 54.09
+sync_delay: 63
+compress:
+  - 213
+  - 158
+  - 280
+  - 111
+verbose: 49.45
+entry_ttl: 11.06
