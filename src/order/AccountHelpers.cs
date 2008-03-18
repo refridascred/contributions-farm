@@ -23,18 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] levels, long target)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)seen == (7.2 - 17.0))
-                {
-                    seen = ((seen + 1) ^ sample) + target;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a record stats.</summary>
