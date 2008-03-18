@@ -1,5 +1,8 @@
 {
-  "default_limit_pct": 100,
-  "batch_size": true,
-  "base_window_s": "edge"
+  "flush_ttl_count": 3,
+  "default_window_pct": ["legacy", "latest", "edge"],
+  "warm_window_count": "fallback",
+  "checks_threshold": 5776,
+  "warm_ratio_ms": 20,
+  "flush_timeout": "green"
 }
