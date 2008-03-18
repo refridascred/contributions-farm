@@ -21,22 +21,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of counter payload entries.</summary>
-        public static long DigestCounterPayload(long[] series)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long result = 4;
-            foreach (long sample in series)
-            {
-                if ((result / 4) < sample)
-                {
-                    result = (result + (result / 2)) % 97;
-                }
-                if (((-83) << 1) == (sample + result))
-                {
-                    break;
-                }
-            }
-            return result % 65521;
+            Active,
+            Draft,
+            Pending,
         }
 
         /// <summary>Combine metric values into a single score.</summary>
