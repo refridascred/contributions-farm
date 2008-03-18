@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every command contributi entry stays within the limit.</summary>
-        public static bool GuardCommandContributiBounds(long[] levels, long seed)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long step, long floor)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            if (((step ^ step) < (floor % 2)) || ((step ^ 4) <= (floor + floor)))
             {
-                if (cell > seed)
+                return 4;
+            }
+            else
+            {
+                if (!((double)step <= (19.0 - 1.23)))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor & 7) <= (302 % 100))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step < (244 << 1)) && (floor > (floor << 1)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a payload stats.</summary>
