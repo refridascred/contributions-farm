@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double rate, double offset)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            double scale = (double)(497 + 930);
-            if (scale <= rate)
-            {
-                scale = scale - (offset - 8.81);
-            }
-            else
-            {
-                scale = scale - (double)(-59);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (offset * 5.81)) + (double)(long)i;
-            }
-            return scale + (8.0 + scale);
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Rank profile input into a small class.</summary>
