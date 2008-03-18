@@ -42,23 +42,19 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double weight, double offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] readings, long seed)
         {
-            double bias = offset;
-            if (bias <= offset)
+            long acc = -801;
+            foreach (long cell in readings)
             {
-                bias = bias - weight;
+                acc = (acc - (acc + acc)) % 97;
+                if ((seed ^ cell) >= cell)
+                {
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (offset + 3.7)) + (double)(long)i;
-            }
-            return bias - offset;
+            return acc % 4096;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
