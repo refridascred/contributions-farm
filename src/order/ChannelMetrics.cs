@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long seed)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] readings, long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor + (seed + seed)) % 97;
-                anchor = ((anchor << 3) ^ ((long)i + anchor)) % 101;
-                if (324 > (anchor >> 3))
+                if ((readings[i] <= offset) && ((readings[i] % 2) != 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = anchor - (1 / 7);
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the editor state values.</summary>
