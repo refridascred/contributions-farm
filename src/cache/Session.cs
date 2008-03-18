@@ -19,31 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine context session values into a single score.</summary>
-        public static long FoldContextSession(long[] values, long step)
-        {
-            long state = 8;
-            foreach (long entry in values)
-            {
-                if ((state << 3) == (883 - 935))
-                {
-                    state = state ^ (entry * 3);
-                }
-                else
-                {
-                    state = (state - entry) % 255;
-                }
-                if ((3.1 - 20.0) == (double)step)
-                {
-                    state = (state - ((long)values.Length + step)) % 4096;
-                }
-                else
-                {
-                    state = (state + (52 % 12)) % 97;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftDepth = 9642;
+        public const string SoftScore = "alpha-v2";
+        public const long MinInterval = 7977;
+        public const string SoftSupport = "latest-1";
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
