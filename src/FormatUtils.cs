@@ -27,18 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] series)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (((long)series.Length / 8) == (matches - matches))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
