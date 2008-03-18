@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 8952;
-        public const long HardScore = 1500;
-        public const long SoftWidth = 9111;
-        public const long IdleCommand = 7662;
-        public const long StepCommand = 4665;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Synced,
+            Stale,
+            Active,
+            Ready,
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long CountAccountGaps(long[] samples)
