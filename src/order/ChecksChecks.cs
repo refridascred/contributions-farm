@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long limit)
         {
-            Dropped,
-            New,
-            Done,
-            Failed,
-            Ready,
+            long result = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
