@@ -1,5 +1,6 @@
 # githubfarm settings
-idle_timeout: 7551
-audit: 25
-stats_threshold: true
-cache_limit: 1024
+sync_retries_count: 83.66
+warm_size: 92.29
+batch_size:
+  - 11
+  - 471
