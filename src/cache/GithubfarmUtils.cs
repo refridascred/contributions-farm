@@ -17,22 +17,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] values, long offset)
+        /// <summary>Match up metric checks samples.</summary>
+        public static long MatchMetricChecksCount(long[] values)
         {
-            long mark = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample + offset) < (offset - 529))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark * 5) + (sample ^ offset);
-                }
-                else
-                {
-                    mark = mark ^ (4 + offset);
+                    if ((values[i] + values[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Look up the position of a farm profile sample.</summary>
