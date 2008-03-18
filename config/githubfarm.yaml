@@ -1,17 +1,5 @@
 # githubfarm settings
-base_retries: fallback
-graph_timeout: 24.34
-warm_capacity: 34.96
-graph_size:
-  tools_interval: staging
-  min_ratio_pct: true
-  window_interval: 98.99
-  audit: 1306
-  sync_capacity_s:
-    burst_size_ms: true
-    persist:
-      - edge
-      - blue
-    strict: true
-min_size_count: 3652
-warm_limit_s: 34.55
+idle_timeout: 7551
+audit: 25
+stats_threshold: true
+cache_limit: 1024
