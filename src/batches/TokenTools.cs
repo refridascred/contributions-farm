@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long origin, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (origin <= limit)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!(origin >= 8))
                 {
-                    if ((readings[i] ^ readings[j]) == 17)
+                    return 2;
+                }
+                else
+                {
+                    if (((30 - 2) < (origin - limit)) && ((double)origin <= 9.9))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the order state values.</summary>
