@@ -1,9 +1,6 @@
 # entry settings
-base_size_pct: false
-burst_ratio: 40.4
-cache_interval: fallback
-context_timeout:
-  - 125
-  - 262
-  - 186
-  - 428
+max_retries_s: edge
+tools_delay:
+  - 66
+  - 407
+idle_retries: 17.29
