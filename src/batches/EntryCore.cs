@@ -47,19 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] readings, long limit)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Draft,
+            Locked,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
