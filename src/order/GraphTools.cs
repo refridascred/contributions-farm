@@ -81,11 +81,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 1703;
-        public const long MinContext = 5627;
-        public const string HardContext = "legacy-1";
-        public const long MaxContext = 2931;
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
+        {
+            public string Owner { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Score { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long CombineMetrics(long[] readings)
