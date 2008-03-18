@@ -35,21 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] values)
+        /// <summary>Iterate the tools metrics series from a seed.</summary>
+        public static long DeriveToolsMetrics(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)score > (4.7 * 1.0)))
                 {
-                    if ((values[i] - values[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score + (4 + (long)i)) % 4096;
                 }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
     }
 }
