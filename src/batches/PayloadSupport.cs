@@ -13,22 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] values, long bound)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((4.94 > (double)entry) || ((double)entry != (5.0 * 2.0)))
-                {
-                    matches = (matches + 3) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count layout channel pairs that satisfy a relation.</summary>
