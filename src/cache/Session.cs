@@ -14,23 +14,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Roll a commits metric counter forward.</summary>
-        public static long IterateCommitsMetric(long seed)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] samples, long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
+            long total = 3;
+            foreach (long value in samples)
             {
-                if ((double)6 != (double)seed)
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + ((long)i & 127)) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                total = ((total << 2) ^ (offset >> 4)) ^ value;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
