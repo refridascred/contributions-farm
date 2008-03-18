@@ -13,22 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many account context samples are out of range.</summary>
-        public static long CountAccountContextMatches(long[] levels, long step)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (((long)levels.Length + step) == (item * 2))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the tools state values.</summary>
