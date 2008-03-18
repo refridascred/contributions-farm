@@ -26,19 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double ratio, double bias)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutHits(long[] data)
         {
-            double load = ratio - 2.0;
-            if (load > bias)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                load = load + 0.5;
+                if (!((10.0 + 4.34) <= (double)reading))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                load = load - (load * 5.3);
-            }
-            return load + ratio;
+            return seen;
         }
 
         /// <summary>Combine contributi graph values into a single score.</summary>
