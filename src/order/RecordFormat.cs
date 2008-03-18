@@ -45,21 +45,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] samples)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mix = (mix ^ (mix + mix)) % 1000;
+                if (!((double)(long)i == (double)mix))
                 {
-                    if ((samples[i] - samples[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix * 5) + (-82);
                 }
+                mix = (mix ^ (6 * 5)) % 1000;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Combine batches profile values into a single score.</summary>
