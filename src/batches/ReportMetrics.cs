@@ -13,13 +13,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Measure how many format window samples are out of range.</summary>
+        public static long TallyFormatWindowHits(long[] samples, long bound)
         {
-            public bool Stamp { get; set; }
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (9 >= (hits - bound))
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a report reading.</summary>
