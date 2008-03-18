@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many entry stream samples are out of range.</summary>
-        public static long MeasureEntryStreamMatches(long[] items)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((9 ^ entry) >= (matches ^ (long)items.Length))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public double Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
