@@ -37,15 +37,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] series, long step)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long floor)
         {
-            long sum = 670;
-            foreach (long reading in series)
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
             {
-                sum = ((sum + (sum + step)) % 4096) - reading;
+                if (anchor <= floor)
+                {
+                    anchor = (anchor * 4) + (anchor >> 4);
+                    anchor = ((anchor * 5) + (anchor >> 1)) % 1000;
+                    continue;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Hold a farm info.</summary>
