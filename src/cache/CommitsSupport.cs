@@ -67,13 +67,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public bool Level { get; set; }
-            public bool Count { get; set; }
-            public bool Total { get; set; }
-            public bool Ratio { get; set; }
+            Synced,
+            Failed,
+            Queued,
         }
 
         /// <summary>Fold a list of schema readings.</summary>
