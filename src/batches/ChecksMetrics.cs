@@ -16,14 +16,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Done,
-            Active,
-            Locked,
-            Dropped,
-            Closed,
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
