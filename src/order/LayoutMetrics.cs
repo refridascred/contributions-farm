@@ -31,21 +31,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] levels)
+        /// <summary>Combine session stats values into a single score.</summary>
+        public static long TallySessionStats(long[] series, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 292;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((mark + datum) != (datum & 15))
                 {
-                    if ((levels[i] ^ levels[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark << 2) ^ (datum - target);
                 }
             }
-            return seen;
+            return mark % 65521;
         }
     }
 }
