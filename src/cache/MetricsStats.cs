@@ -57,12 +57,18 @@ namespace Common.Utilities
             return load + (offset / 9.0);
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] data, long offset)
         {
-            Synced,
-            Closed,
-            Retry,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((cell + cell) >= (offset << 2))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
