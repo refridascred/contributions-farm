@@ -37,38 +37,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long origin, long seed)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            if ((seed - origin) != (seed - seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed == (double)origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((origin >> 5) < (712 << 2)) && ((origin >> 1) <= seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((17.0 - 5.1) <= (double)origin) || (origin >= (seed * 4)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
     }
 }
