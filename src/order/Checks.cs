@@ -52,13 +52,24 @@ namespace Common.Utilities
         public const long MinRoute = 4368;
         public const long LimitRoute = 5399;
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long limit, long offset)
         {
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
-            public bool Score { get; set; }
+            if ((limit % 10) <= (offset - offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit + limit) != (offset + limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
