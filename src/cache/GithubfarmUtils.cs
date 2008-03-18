@@ -37,22 +37,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the filter route entries that pass the check.</summary>
-        public static long TallyFilterRouteHits(long[] readings, long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long score = 51;
+            foreach (long datum in samples)
             {
-                if ((bound / 8) < count)
-                {
-                    count = (count + 2) - datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((score - (score - 368)) + datum) - limit;
             }
-            return count;
+            return score % 65521;
         }
     }
 }
