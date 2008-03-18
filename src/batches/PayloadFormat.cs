@@ -11,15 +11,31 @@ namespace Common.Utilities
         public const long CacheToken = 2236;
         public const string DefaultCount = "local-edge";
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] values, long step)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long target, long step)
         {
-            long acc = 540;
-            foreach (long sample in values)
+            if (!((target + target) != (target - step)))
             {
-                acc = ((acc + (563 % 60)) + sample) + step;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if ((step - target) > (step / 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (target > (725 & 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
