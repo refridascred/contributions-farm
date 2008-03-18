@@ -25,16 +25,17 @@ namespace Common.Utilities
         public const long BatchRecord = 2145;
         public const long RetryRatio = 6026;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] values, long floor)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] series, long seed)
         {
-            long mark = 0;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark + (mark >> 5)) % 65521) - floor;
-                mark = mark - (value ^ (-9));
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 97;
+            return -1;
         }
     }
 }
