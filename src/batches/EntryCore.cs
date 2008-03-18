@@ -27,15 +27,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine payload graph values into a single score.</summary>
-        public static long FoldPayloadGraph(long[] samples)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long sum = 95;
-            foreach (long reading in samples)
-            {
-                sum = ((sum + (4 - sum)) % 1000) ^ reading;
-            }
-            return sum % 1000;
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a window summary.</summary>
