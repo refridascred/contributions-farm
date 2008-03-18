@@ -24,14 +24,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] series, long limit)
         {
-            Done,
-            Dropped,
-            Paused,
-            Ready,
-            Closed,
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
