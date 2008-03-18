@@ -14,22 +14,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] readings)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] data)
         {
-            long mark = 27;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (cell > (cell + (-4)))
+                if ((matches + 255) >= matches)
                 {
-                    mark = (mark + (mark ^ cell)) % 255;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            if (mark > 1)
-            {
-                mark = ((mark * 4) + mark) % 97;
-            }
-            return mark % 4096;
+            return matches;
         }
 
         /// <summary>Hold a graph options.</summary>
