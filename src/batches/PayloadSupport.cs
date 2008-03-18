@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a channel notes sample.</summary>
-        public static long FindChannelNotesIndex(long[] samples, long seed)
+        /// <summary>Combine cache checks values into a single score.</summary>
+        public static long FoldCacheChecks(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 26;
+            foreach (long item in series)
             {
-                if (samples[i] == seed)
+                if ((state - state) >= 895)
                 {
-                    return (long)i;
+                    state = (state << 3) ^ (item * 3);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
