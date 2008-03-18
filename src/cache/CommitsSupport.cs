@@ -51,10 +51,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 6838;
-        public const string MinScore = "legacy-v2";
-        public const long IdleToken = 6093;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public bool Level { get; set; }
+            public bool Count { get; set; }
+            public bool Total { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
