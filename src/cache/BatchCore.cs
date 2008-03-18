@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double gain, double bias)
         {
-            Draft,
-            Locked,
-            Queued,
+            double bias2 = (double)(41 + 460);
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (bias + gain)) + (double)(long)i;
+            }
+            return bias2 + 6.0;
         }
 
         /// <summary>Describe the format mode values.</summary>
