@@ -20,32 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate tools editor samples.</summary>
-        public static long TallyToolsEditor(long[] data)
-        {
-            long anchor = 56;
-            foreach (long datum in data)
-            {
-                if (datum < (datum * 3))
-                {
-                    anchor = (anchor ^ (anchor + datum)) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (453 % 12)) % 255;
-                    anchor = (anchor + (anchor + datum)) % 1000;
-                }
-                if ((anchor / 7) < (datum + datum))
-                {
-                    anchor = (anchor ^ datum) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor ^ anchor)) % 97;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string IdleLevel = "fallback";
+        public const long BatchContext = 1244;
+        public const long MaxSpan = 354;
+        public const long HardContext = 2965;
 
         /// <summary>Match up stats samples.</summary>
         public static long PairStatsCount(long[] samples)
