@@ -1,7 +1,5 @@
 {
-  "dry_run": 250,
-  "soft_retries_s": 30,
-  "poll_delay_count": 2.2,
-  "verbose": 3.8,
-  "stream_delay": 4789
+  "max_limit_ms": "green",
+  "retry_size_pct": [336, 405],
+  "support_ratio": 58.7
 }
