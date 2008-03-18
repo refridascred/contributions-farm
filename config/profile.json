@@ -1,8 +1,5 @@
 {
-  "entry_timeout": "edge",
-  "hard_capacity_s": 76.38,
-  "batch_depth": 36,
-  "sync_timeout": "legacy",
-  "idle_timeout": [118, 48],
-  "warm_interval_count": "staging"
+  "base_ttl_ms": "stable",
+  "persist": 41,
+  "warm_size_pct": false
 }
