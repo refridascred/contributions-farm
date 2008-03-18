@@ -19,21 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] levels)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state * 5) + (floor ^ state)) % 1000;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Describe the notes mode values.</summary>
