@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] values)
-        {
-            long sum = 919;
-            foreach (long datum in values)
-            {
-                if ((3 + sum) < (datum << 1))
-                {
-                    sum = sum + (datum - sum);
-                }
-                else
-                {
-                    sum = (sum + (956 * 3)) % 97;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCount = 4946;
+        public const string BurstCommand = "staging-edge";
+        public const double BatchInterval = 32.38;
+        public const long WindowCommand = 473;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long TallyEditorGaps(long[] samples, long step)
