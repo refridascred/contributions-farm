@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long limit, long origin)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            long step = limit + origin;
-            if (limit >= (147 & 63))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step + origin) <= (59 ^ step))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (limit <= (origin + limit))
+                    if ((items[i] + items[j]) != 20)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a metrics record.</summary>
