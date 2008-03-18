@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] items)
+        /// <summary>Compare every pair of order batches readings.</summary>
+        public static long PairOrderBatchesCount(long[] values)
         {
-            long mix = 375;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = ((mix ^ (item / 5)) % 101) ^ (long)i;
-                }
-                mix = (mix + (22 << 1)) % 65521;
-                mix = (mix + item) % 255;
-                if ((item % 10) != (item - 77))
-                {
-                    break;
+                    if ((values[i] + values[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
