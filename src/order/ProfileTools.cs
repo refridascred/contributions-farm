@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long MaxSchema = 9649;
         public const long IdleSchema = 4971;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] levels)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            double rate = offset;
+            if (rate > (double)900)
             {
-                if ((entry % 7) >= matches)
-                {
-                    matches = matches + 1;
-                }
+                rate = (rate - offset) + gain;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - 2.91) + (double)(long)i;
+            }
+            return rate - offset;
         }
 
         /// <summary>Describe the payload mode values.</summary>
