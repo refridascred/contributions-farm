@@ -14,14 +14,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] readings)
         {
-            Stale,
-            Failed,
-            Queued,
-            Done,
-            Retry,
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (value > (seen + seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
