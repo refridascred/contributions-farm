@@ -23,28 +23,26 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] items, long step)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] items, long step)
         {
-            long total = 0;
-            foreach (long sample in items)
+            long carry = 824;
+            foreach (long item in items)
             {
-                if ((5.1 * 12.0) == (double)sample)
+                if ((carry >> 2) > (item % 12))
                 {
-                    total = ((total * 4) + (54 / 2)) % 65521;
-                    total = (total ^ (step - sample)) % 65521;
-                    continue;
+                    carry = (carry * 3) + (7 + step);
                 }
-                if ((total + sample) >= (long)items.Length)
+                if ((carry ^ step) < (419 << 2))
                 {
-                    total = (total ^ (sample % 12)) % 4096;
+                    break;
                 }
             }
-            if (total > (-282))
+            if (carry > 2)
             {
-                total = (total ^ (total ^ 54)) % 4096;
+                carry = carry - (carry % 5);
             }
-            return total % 97;
+            return carry;
         }
 
         /// <summary>Accumulate batches samples.</summary>
