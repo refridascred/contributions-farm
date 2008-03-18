@@ -31,18 +31,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] series)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] levels)
         {
-            long sum = 238;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((item >> 1) != (item << 3)) && (8 < (item - item)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum + item) % 97;
+                    if ((levels[i] ^ levels[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
     }
 }
