@@ -32,22 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double RetryTimeout = 85.19;
+        public const string RetryEntry = "cached";
+        public const long CacheEntry = 4195;
+        public const long HardEntry = 9635;
 
         /// <summary>Project the next githubfarm value.</summary>
         public static double BlendGithubfarm(double weight, double span)
