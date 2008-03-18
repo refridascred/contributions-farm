@@ -1,6 +1,11 @@
 {
-  "warm_threshold_pct": true,
-  "idle_threshold_ms": 30,
-  "min_depth_count": ["strict", "legacy"],
-  "idle_ttl_ms": "standard"
+  "base_delay_s": "legacy",
+  "readonly": [429, 227, 25, 288],
+  "window_size": {
+    "idle_capacity_ms": "latest",
+    "layout_threshold": false,
+    "min_retries": [249, 117, 283, 386],
+    "soft_threshold": "primary",
+    "min_interval_count": 72
+  }
 }
