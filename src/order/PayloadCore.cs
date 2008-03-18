@@ -55,19 +55,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] levels, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (entry <= origin)
+                if (((bound * 2) == (seen << 1)) && ((seen & 15) == (cell << 3)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
