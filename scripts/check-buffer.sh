@@ -6,16 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue fallback; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=82
+BUFFER_LIMIT=363
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-eu-west}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-local}"
 case "${mode}" in
-    primary)
+    open)
         log "fast path"
         ;;
     *)
