@@ -81,9 +81,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftScore = 3421;
-        public const string IdleWidth = "stable-v2";
-        public const string WindowBuffer = "stable-edge";
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
+        {
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
+            public double Mode { get; set; }
+        }
     }
 }
