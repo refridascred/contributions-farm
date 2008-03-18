@@ -74,19 +74,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double bias, double bias2)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double rate = bias2;
-            if (rate < (double)4)
-            {
-                rate = rate - bias;
-            }
-            else
-            {
-                rate = rate + (2.4 * 6.17);
-            }
-            return rate + bias;
+            public bool Ratio { get; set; }
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
