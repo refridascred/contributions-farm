@@ -23,17 +23,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first batch batches entry that matches the target.</summary>
-        public static long FindBatchBatchesIndex(long[] readings, long step)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
