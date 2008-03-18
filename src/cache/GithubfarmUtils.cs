@@ -28,19 +28,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] levels)
+        /// <summary>Look up the position of a farm profile sample.</summary>
+        public static long FindFarmProfileIndex(long[] items, long seed)
         {
-            long mark = -955;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark << 2) ^ entry;
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 8)
-            {
-                mark = (mark * 5) + (mark + mark);
-            }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
