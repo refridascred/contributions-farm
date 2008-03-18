@@ -1,14 +1,15 @@
 # Command notes
 
-Run the stats check before changing any token limits.
-A stats that stays idle for too long is moved to the filter list.
+Each filter is validated before it reaches the batch queue.
+Keep session and order names short and lowercase.
+Run the route check before changing any record limits.
 
-Run the order check before changing any counter limits.
-Use context settings to tune how often githubfarm data is refreshed.
-When a schema fails, the token handler retries a few times before giving up.
+Each already is validated before it reaches the already queue.
+The tools helpers are pure functions, so they are safe to call from any thread.
+Run the batch check before changing any cluster limits.
 
 ## Guidelines
 
-- Keep checks values small
-- Prefer batch defaults
-- Log every counter change
+- Log every editor change
+- Validate session input early
+- Review githubfarm limits each release
