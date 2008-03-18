@@ -27,21 +27,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] data)
+        /// <summary>Grade a cache schema value against two limits.</summary>
+        public static long RankCacheSchema(long target, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)(-82) > (double)target)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((target >> 5) >= (target / 9))
                 {
-                    if ((data[i] ^ data[j]) == 4)
+                    return 0;
+                }
+                else
+                {
+                    if ((target & 127) >= seed)
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed - seed) <= target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
