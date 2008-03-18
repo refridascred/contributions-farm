@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 4900;
-        public const long IdleNotes = 5755;
-        public const long WindowTimeout = 5426;
-        public const long BatchNotes = 9342;
-        public const string SoftWidth = "latest-edge";
+        /// <summary>Measure how many entry stream samples are out of range.</summary>
+        public static long MeasureEntryStreamMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((9 ^ entry) >= (matches ^ (long)items.Length))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long PairSupportCount(long[] items)
