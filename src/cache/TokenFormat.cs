@@ -18,19 +18,17 @@ namespace Common.Utilities
         public const long DefaultStream = 4313;
         public const double CacheStream = 77.34;
 
-        /// <summary>Validate account support readings against a bound.</summary>
-        public static bool VerifyAccountSupportBounds(long[] items, long floor)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell > floor)
+                if (series[i] < offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
