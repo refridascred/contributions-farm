@@ -47,11 +47,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] levels, long origin)
         {
-            public bool Token { get; set; }
-            public double Offset { get; set; }
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
