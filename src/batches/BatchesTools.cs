@@ -30,19 +30,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of profile command readings.</summary>
-        public static long CombineProfileCommand(long[] items, long limit)
-        {
-            long anchor = 21;
-            foreach (long value in items)
-            {
-                anchor = ((anchor - 48) + value) + limit;
-            }
-            if (anchor > (-7))
-            {
-                anchor = (anchor - anchor) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string DefaultMetrics = "stable";
+        public const double RetryRatio = 38.7;
+        public const long IdleBudget = 9612;
     }
 }
