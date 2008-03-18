@@ -46,22 +46,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] items, long offset)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long bound, long offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            if ((double)offset >= (5.0 + 3.6))
             {
-                if (!!(18.0 < (double)count))
+                return 3;
+            }
+            else
+            {
+                if (bound > (bound % 100))
                 {
-                    count = ((count + 1) ^ reading) + offset;
+                    return 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)bound <= (1.0 + 2.1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)bound >= 4.04) && ((bound >> 5) >= (offset * 4)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
