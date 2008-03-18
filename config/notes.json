@@ -1,8 +1,5 @@
 {
-  "filter_threshold": true,
-  "context_delay": [148, 388, 241, 284],
-  "cache_ttl_s": 77.24,
-  "batch_limit_ms": "staging",
-  "compress": 250,
-  "soft_ratio_s": ["eu-west", "latest", "standard", "edge"]
+  "profile_size": 3797,
+  "soft_depth": 62.87,
+  "min_limit": 94.44
 }
