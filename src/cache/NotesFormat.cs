@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Validate order command readings against a bound.</summary>
+        public static bool GuardOrderCommandRange(long[] items, long origin)
         {
-            public long Label { get; set; }
-            public double Flag { get; set; }
-            public double Score { get; set; }
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
