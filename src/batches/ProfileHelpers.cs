@@ -67,12 +67,18 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double HardContributi = 92.19;
-        public const long MaxBudget = 8293;
-        public const long SoftContributi = 3817;
-        public const long BurstWidth = 1533;
-        public const long MinTimeout = 2867;
+        /// <summary>Locate a profile route reading by value.</summary>
+        public static long LocateProfileRouteIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == origin) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string StepCommand = "staging-v2";
