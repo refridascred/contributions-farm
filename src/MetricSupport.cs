@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Measure how many format context samples are out of range.</summary>
+        public static long AuditFormatContextOutliers(long[] data, long offset)
         {
-            New,
-            Locked,
-            Dropped,
-            Failed,
-            Closed,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((offset >> 3) >= count)
+                {
+                    count = (count + 3) - sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
