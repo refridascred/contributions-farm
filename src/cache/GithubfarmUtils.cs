@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-            public long Size { get; set; }
+            long mix = 7;
+            foreach (long item in levels)
+            {
+                mix = (mix * 3) + item;
+            }
+            if (mix > (-766))
+            {
+                mix = ((mix * 2) + (mix >> 5)) % 101;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
