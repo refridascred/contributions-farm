@@ -13,19 +13,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] readings, long seed)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] items, long limit)
         {
-            long state = 1;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state + 50) % 97;
-                if (((seed - state) >= (state / 6)) && ((4.47 / 3.0) == (double)item))
+                if (items[i] <= limit)
                 {
-                    state = (state ^ (seed + seed)) % 255;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
