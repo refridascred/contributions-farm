@@ -23,19 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stream record entry stays within the limit.</summary>
-        public static bool ValidateStreamRecordBounds(long[] readings, long floor)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every already context entry stays within the limit.</summary>
