@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a route batch counter forward.</summary>
-        public static long StepRouteBatch(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 23; i++)
-            {
-                total = ((total * 3) + ((long)i - total)) % 65521;
-                total = ((total * 5) + (target + target)) % 97;
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string CacheGithubfarm = "stable-edge";
+        public const double BatchGithubfarm = 25.19;
+        public const long RetryGithubfarm = 581;
+        public const double BatchCount = 25.62;
+        public const double SoftGithubfarm = 73.6;
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
