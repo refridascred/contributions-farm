@@ -42,11 +42,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MinStats = 81.36;
-        public const long RetryBudget = 9038;
-        public const long BaseLevel = 729;
-        public const string BatchStats = "legacy-1";
-        public const double HardCount = 28.75;
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
