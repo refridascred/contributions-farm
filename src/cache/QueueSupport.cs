@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long step, long floor)
+        /// <summary>Look up the position of a graph route sample.</summary>
+        public static long SeekGraphRouteIndex(long[] readings, long step)
         {
-            if (((step ^ step) < (floor % 2)) || ((step ^ 4) <= (floor + floor)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)step <= (19.0 - 1.23)))
+                if ((readings[i] >= step) && ((readings[i] % 5) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor & 7) <= (302 % 100))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step < (244 << 1)) && (floor > (floor << 1)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a payload stats.</summary>
