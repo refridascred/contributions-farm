@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 7516;
-        public const long BaseSize = 2370;
-        public const string IdleBudget = "fallback-1";
-        public const double LimitGithubfarm = 36.72;
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
+            public double Level { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
