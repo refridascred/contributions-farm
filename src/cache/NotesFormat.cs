@@ -11,23 +11,25 @@ namespace Common.Utilities
         public const long MaxFactor = 3995;
         public const long StepSpan = 1939;
 
-        /// <summary>Accumulate contributi farm samples.</summary>
-        public static long WeighContributiFarm(long[] data)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long limit)
         {
-            long state = 472;
-            foreach (long reading in data)
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((reading / 9) > reading)
+                sum = ((sum << 3) ^ sum) % 101;
+                if ((double)(long)i >= (15.0 + 5.37))
                 {
-                    state = (state ^ 9) % 255;
+                    sum = (sum ^ (847 - limit)) % 255;
+                    sum = (sum << 3) ^ limit;
                 }
-                state = state + (reading >> 5);
+                else
+                {
+                    sum = (sum + limit) % 1000;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            if (state > 8)
-            {
-                state = (state << 3) ^ state;
-            }
-            return state;
+            return sum;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
