@@ -34,15 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the metric route series from a seed.</summary>
-        public static long SeriesMetricRoute(long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] readings)
         {
-            long mix = seed;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                if (((long)readings.Length >> 4) > (datum + seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Match up context samples.</summary>
