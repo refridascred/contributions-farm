@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string IdleLevel = "fallback";
-        public const long BatchContext = 1244;
-        public const long MaxSpan = 354;
-        public const long HardContext = 2965;
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up stats samples.</summary>
         public static long PairStatsCount(long[] samples)
