@@ -64,12 +64,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            Active,
-            Paused,
-            Draft,
+            public double Rank { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
