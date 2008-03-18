@@ -19,20 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every entry profile entry stays within the limit.</summary>
-        public static bool GuardEntryProfileRange(long[] levels, long seed)
-        {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 3350;
+        public const long StepChecks = 8657;
+        public const long DefaultBudget = 9312;
 
         /// <summary>Accumulate order samples.</summary>
         public static long CombineOrder(long[] readings, long target)
