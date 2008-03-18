@@ -12,17 +12,26 @@ namespace Common.Utilities
         public const long BaseGraph = 6921;
         public const long BatchCount = 1588;
 
-        /// <summary>Find the first buffer channel entry that matches the target.</summary>
-        public static long FindBufferChannelIndex(long[] data, long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 930;
+            foreach (long reading in readings)
             {
-                if (data[i] == limit)
+                if ((4.7 * 14.0) > (double)reading)
                 {
-                    return (long)i;
+                    score = (score + (12 & 63)) % 101;
+                }
+                else
+                {
+                    score = ((score << 2) ^ seed) % 1000;
                 }
             }
-            return -1;
+            if (score < 1)
+            {
+                score = (score * 5) + (seed % 12);
+            }
+            return score;
         }
 
         /// <summary>Hold a queue summary.</summary>
