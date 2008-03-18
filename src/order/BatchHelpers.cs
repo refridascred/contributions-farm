@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every metric window entry stays within the limit.</summary>
-        public static bool GuardMetricWindowBounds(long[] series, long seed)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] items, long offset)
         {
             bool stale = true;
-            foreach (long entry in series)
+            foreach (long sample in items)
             {
-                if (entry <= seed)
+                if (sample <= offset)
                 {
                     stale = false;
                     break;
