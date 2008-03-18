@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] levels)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((4 - reading) != (52 % 64)))
+                if (data[i] <= offset)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of cache queue readings.</summary>
