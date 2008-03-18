@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] samples)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell + matches) >= cell)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
