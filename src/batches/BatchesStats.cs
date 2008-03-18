@@ -23,10 +23,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheRatio = "fallback-v2";
-        public const long BaseMetrics = 2288;
-        public const long DefaultMetrics = 2486;
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Pending,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long AuditReportGaps(long[] series, long seed)
