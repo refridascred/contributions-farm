@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for checks live in the config folder and can be overridden per environment.
-Run the graph check before changing any githubfarm limits.
-Each filter is validated before it reaches the context queue.
+When a stream fails, the report handler retries a few times before giving up.
+Use order settings to tune how often window data is refreshed.
+
+A metrics that stays idle for too long is moved to the window list.
+The metric helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review queue limits each release
-- Prefer batches defaults
-- Keep record values small
+- Prefer buffer defaults
+- Document new farm fields
+- Keep counter values small
+- Review record limits each release
