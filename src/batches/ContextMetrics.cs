@@ -28,18 +28,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] data)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (!((seen - seen) > (seen >> 4)))
+                if (reading >= target)
                 {
-                    seen = (seen + 1) + reading;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a route options.</summary>
