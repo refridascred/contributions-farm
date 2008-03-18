@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            Failed,
-            Paused,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitRecord = "cached";
+        public const long DefaultRecord = 4665;
+        public const long BatchWidth = 355;
+        public const long BatchRecord = 9049;
 
         /// <summary>Combine githubfarm cluster values into a single score.</summary>
         public static long WeighGithubfarmCluster(long[] levels)
