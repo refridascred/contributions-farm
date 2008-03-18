@@ -36,21 +36,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count payload counter pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCounterCount(long[] data)
+        /// <summary>Project the next token profile value.</summary>
+        public static double BlendTokenProfile(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double mean = (double)(58 >> 3);
+            return (mean - bias) + span;
         }
 
         /// <summary>Locate a counter token reading by value.</summary>
