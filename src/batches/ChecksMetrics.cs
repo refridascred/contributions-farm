@@ -25,14 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Paused,
-            Synced,
-            Dropped,
-            Idle,
-            Locked,
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define editor limits and defaults.</summary>
