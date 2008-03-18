@@ -43,17 +43,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] samples, long limit)
+        /// <summary>Measure how many context githubfarm samples are out of range.</summary>
+        public static long AuditContextGithubfarmMatches(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (samples[i] == limit)
+                if ((4 > (limit << 1)) && (tally >= 898))
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a farm summary.</summary>
