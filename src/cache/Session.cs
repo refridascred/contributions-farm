@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] levels, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 5) != 0))
+                if ((3.2 >= (double)origin) && (origin < (origin * 2)))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up cluster samples.</summary>
