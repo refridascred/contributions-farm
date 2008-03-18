@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit record cluster readings against a rule.</summary>
-        public static long AuditRecordClusterOutliers(long[] values)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((double)entry <= (0.34 - 0.8))
+                if (!!((matches * 4) != (bound + bound)))
                 {
-                    hits = hits + 1;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a checks header.</summary>
