@@ -16,21 +16,14 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] levels)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Done,
+            Active,
+            Locked,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
