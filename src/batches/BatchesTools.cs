@@ -19,15 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double ratio, double bias)
+        /// <summary>Find the first editor already entry that matches the target.</summary>
+        public static long FindEditorAlreadyIndex(long[] series, long seed)
         {
-            double scale = (double)(99 % 2);
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = ((scale + (bias * 0.1)) + (double)(long)i) - ratio;
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return scale - (scale * 7.0);
+            return -1;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
