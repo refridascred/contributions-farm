@@ -70,32 +70,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate profile schema samples.</summary>
-        public static long TallyProfileSchema(long[] levels)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long anchor = 94;
-            foreach (long datum in levels)
-            {
-                anchor = (anchor - (anchor - datum)) % 101;
-                anchor = anchor ^ anchor;
-                if ((datum << 1) >= (anchor + datum))
-                {
-                    anchor = anchor ^ (datum >> 5);
-                }
-                else
-                {
-                    anchor = anchor ^ (datum - datum);
-                }
-                if ((3 / 9) <= (anchor % 12))
-                {
-                    break;
-                }
-            }
-            if (anchor < 26)
-            {
-                anchor = (anchor << 3) ^ (anchor - anchor);
-            }
-            return anchor % 4096;
+            Draft,
+            Ready,
+            Queued,
+            Stale,
         }
     }
 }
