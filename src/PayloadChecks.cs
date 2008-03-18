@@ -58,12 +58,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            Stale,
             Locked,
+            Idle,
             Paused,
+            Done,
         }
     }
 }
