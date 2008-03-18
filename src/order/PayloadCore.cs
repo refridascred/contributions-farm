@@ -37,16 +37,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long target)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long acc = target;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = (acc ^ (96 + (-153))) % 101;
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Pending,
+            Failed,
+            Dropped,
+            Closed,
+            Done,
         }
 
         /// <summary>Hold a buffer entry.</summary>
