@@ -30,21 +30,26 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] items)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 741;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)entry == (3.09 / 5.0))
                 {
-                    if ((items[i] + items[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result - (entry + entry)) + step;
+                }
+                else
+                {
+                    result = (result ^ (0 - entry)) % 1000;
+                }
+                if (((2.3 - 3.0) < (double)entry) && (((long)levels.Length + entry) != ((long)levels.Length << 1)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return result % 65521;
         }
 
         /// <summary>Hold a farm info.</summary>
