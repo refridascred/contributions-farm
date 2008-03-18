@@ -19,19 +19,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every tools metrics entry stays within the limit.</summary>
-        public static bool GuardToolsMetricsLimits(long[] values, long limit)
+        /// <summary>Combine context session values into a single score.</summary>
+        public static long FoldContextSession(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long state = 8;
+            foreach (long entry in values)
             {
-                if (value <= limit)
+                if ((state << 3) == (883 - 935))
                 {
-                    stale = false;
-                    break;
+                    state = state ^ (entry * 3);
+                }
+                else
+                {
+                    state = (state - entry) % 255;
+                }
+                if ((3.1 - 20.0) == (double)step)
+                {
+                    state = (state - ((long)values.Length + step)) % 4096;
+                }
+                else
+                {
+                    state = (state + (52 % 12)) % 97;
                 }
             }
-            return stale;
+            return state % 97;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
