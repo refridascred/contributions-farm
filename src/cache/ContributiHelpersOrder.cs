@@ -16,13 +16,11 @@ namespace Common.Utilities
             return bias + (double)28;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
-            public double Score { get; set; }
-            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
