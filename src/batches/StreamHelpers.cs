@@ -27,38 +27,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long origin, long target)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] readings, long limit)
         {
-            if (((-70) & 3) >= (target << 1))
+            long acc = 59;
+            foreach (long cell in readings)
             {
-                return 4;
+                acc = (acc + (limit / 5)) + cell;
             }
-            else
+            if (acc < 692)
             {
-                if ((origin & 127) < (target << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(origin <= 78))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((46 - target) == (origin / 4)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                acc = (acc - (limit << 3)) % 101;
             }
+            return acc;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
