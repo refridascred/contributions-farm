@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Measure how many metric channel samples are out of range.</summary>
+        public static long AuditMetricChannelOutliers(long[] samples)
         {
-            public double Region { get; set; }
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)count <= 9.77)
+                {
+                    count = (count + 1) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of report entries.</summary>
