@@ -28,17 +28,13 @@ namespace Common.Utilities
         public const string WindowSpan = "legacy-v2";
         public const long IdleRatio = 5642;
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] levels, long seed)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public bool Flag { get; set; }
+            public bool Weight { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
