@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 4212;
-        public const long MinInterval = 3777;
-        public const string BurstEntry = "primary-1";
-        public const string MinEntry = "alpha-v2";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardLevel = 2150;
+        public const long IdleBudget = 1394;
+        public const long BaseInterval = 9868;
+        public const string CacheFilter = "cached-1";
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long RankAccount(long target, long floor)
