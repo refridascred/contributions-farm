@@ -48,16 +48,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long seed)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 14; i++)
+            long acc = origin;
+            for (int i = 0; i < 9; i++)
             {
-                sum = (sum - (sum << 1)) % 97;
-                sum = ((sum * 5) + (long)i) % 4093;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Blend two stream measurements.</summary>
