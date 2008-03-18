@@ -37,19 +37,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] items, long bound)
-        {
-            long mix = 397;
-            foreach (long datum in items)
-            {
-                if ((mix ^ 2) <= (7 % 24))
-                {
-                    mix = ((mix ^ datum) % 65521) + bound;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheSpan = 306;
+        public const string BatchSpan = "latest-edge";
+        public const long MaxEditor = 5453;
+        public const double DefaultEditor = 34.98;
+        public const long HardEditor = 2524;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double IdleMetric = 40.81;
