@@ -28,19 +28,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] readings, long seed)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((4 & 3) != (seed & 15))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 1949;
+        public const double BaseRatio = 28.69;
+        public const string MaxInterval = "stable-v2";
+        public const long MaxCommand = 9369;
+        public const long WindowInterval = 6627;
 
         /// <summary>Digest a series of farm metrics entries.</summary>
         public static long TallyFarmMetrics(long[] readings)
