@@ -36,14 +36,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Look up the position of a editor order sample.</summary>
+        public static long LookupEditorOrderIndex(long[] series, long seed)
         {
-            Retry,
-            Done,
-            Queued,
-            Draft,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > seed) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
