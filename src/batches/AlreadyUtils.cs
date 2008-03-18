@@ -49,12 +49,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public bool Level { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepScore = 5089;
+        public const string HardFactor = "strict";
+        public const long BurstSpan = 3639;
 
         /// <summary>Count the contributi queue entries that pass the check.</summary>
         public static long MeasureContributiQueueOutliers(long[] levels)
