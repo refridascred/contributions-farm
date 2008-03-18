@@ -67,29 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] readings)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long anchor = 41;
-            foreach (long datum in readings)
-            {
-                if (datum < (datum + (-60)))
-                {
-                    anchor = (anchor ^ (datum & 31)) % 97;
-                    anchor = (anchor + (anchor + datum)) % 101;
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (anchor % 5);
-                    anchor = (anchor - (520 << 1)) % 1000;
-                }
-                if ((datum * 3) < (anchor + anchor))
-                {
-                    anchor = (anchor ^ (anchor + datum)) % 4096;
-                }
-            }
-            return anchor;
+            public long Total { get; set; }
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
