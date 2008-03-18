@@ -1,5 +1,7 @@
 {
-  "base_ttl_ms": "stable",
-  "persist": 41,
-  "warm_size_pct": false
+  "compress": false,
+  "verbose": false,
+  "idle_timeout_s": "cached",
+  "poll_size_count": "stable",
+  "strict": "open"
 }
