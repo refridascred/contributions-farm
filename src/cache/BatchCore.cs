@@ -16,13 +16,11 @@ namespace Common.Utilities
             return bias2 + 6.0;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double scale, double bias)
         {
-            Draft,
-            Active,
-            Done,
-            Queued,
+            double gain = scale;
+            return gain + (bias / 5.0);
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
