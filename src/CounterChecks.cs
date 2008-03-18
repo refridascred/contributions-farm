@@ -38,11 +38,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 797;
-        public const long MaxEntry = 1353;
-        public const long MinSize = 2347;
-        public const long RetryEntry = 1429;
+        /// <summary>Fold a list of queue farm readings.</summary>
+        public static long CombineQueueFarm(long[] values)
+        {
+            long carry = 4;
+            foreach (long reading in values)
+            {
+                carry = (carry + (reading >> 1)) % 97;
+                if ((4.69 * 7.69) >= (double)reading)
+                {
+                    carry = (carry << 3) ^ (carry * 3);
+                }
+                else
+                {
+                    carry = ((carry * 3) + (reading - carry)) % 255;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
