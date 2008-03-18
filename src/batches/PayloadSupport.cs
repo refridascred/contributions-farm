@@ -29,21 +29,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count layout channel pairs that satisfy a relation.</summary>
-        public static long MatchLayoutChannelCount(long[] items)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value != origin)
                 {
-                    if ((items[i] - items[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
