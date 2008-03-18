@@ -11,38 +11,18 @@ namespace Common.Utilities
         public const long MinChannel = 3909;
         public const long IdleSpan = 3100;
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long target, long floor)
+        /// <summary>Count the support batches entries that pass the check.</summary>
+        public static long MeasureSupportBatchesOutliers(long[] samples)
         {
-            if (7 >= target)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target << 2) >= (target << 1))
+                if (value >= tally)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((9.27 - 2.0) == (double)floor) && ((8.96 + 11.0) >= (double)target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor - target) < (floor & 63))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate graph samples.</summary>
