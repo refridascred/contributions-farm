@@ -36,21 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Count the batches schema entries that pass the check.</summary>
+        public static long TallyBatchesSchemaMatches(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)item > (5.33 * 5.47))
                 {
-                    if ((series[i] + series[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count the contributi queue entries that pass the check.</summary>
