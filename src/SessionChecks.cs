@@ -43,18 +43,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] samples)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] values, long floor)
         {
-            long state = 1;
-            foreach (long datum in samples)
+            long mix = -61;
+            foreach (long sample in values)
             {
-                if ((state / 5) > (datum << 3))
+                if ((sample + 717) == (mix + sample))
                 {
-                    state = state ^ (datum - state);
+                    mix = ((mix << 3) ^ (sample - 550)) - floor;
                 }
             }
-            return state;
+            return mix % 1000;
         }
     }
 }
