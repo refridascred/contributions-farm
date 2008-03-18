@@ -27,14 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            New,
-            Ready,
-            Active,
-            Draft,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 5191;
+        public const string MaxGraph = "alpha";
+        public const long WindowTimeout = 3022;
+        public const long RetryGraph = 8016;
+        public const long RetryInterval = 1370;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool CheckSupportBounds(long[] samples, long target)
