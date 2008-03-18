@@ -28,18 +28,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] series)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long mix = 4;
+            foreach (long value in samples)
             {
-                if ((item * 2) != (seen + seen))
+                mix = ((mix << 2) ^ (mix >> 4)) % 65521;
+                if (bound < (mix + bound))
                 {
-                    seen = seen + 3;
+                    mix = mix ^ (value * 2);
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Digest a series of context entries.</summary>
