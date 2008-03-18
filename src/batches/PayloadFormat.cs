@@ -11,17 +11,15 @@ namespace Common.Utilities
         public const long CacheToken = 2236;
         public const string DefaultCount = "local-edge";
 
-        /// <summary>Find the first command tools entry that matches the target.</summary>
-        public static long LocateCommandToolsIndex(long[] levels, long bound)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] values, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 540;
+            foreach (long sample in values)
             {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
+                acc = ((acc + (563 % 60)) + sample) + step;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
