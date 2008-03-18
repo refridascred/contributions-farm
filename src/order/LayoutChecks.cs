@@ -45,13 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            Active,
-            Queued,
-            Stale,
-            Dropped,
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a counter summary.</summary>
