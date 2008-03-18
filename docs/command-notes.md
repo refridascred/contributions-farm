@@ -1,11 +1,15 @@
 # Command notes
 
-Each tools is validated before it reaches the token queue.
-Keep metrics and counter names short and lowercase.
-Run the queue check before changing any batch limits.
+The batches module keeps record values in sync with the payload cache.
+Run the githubfarm check before changing any batches limits.
+The batch helpers are pure functions, so they are safe to call from any thread.
+
+When a already fails, the cache handler retries a few times before giving up.
+Run the profile check before changing any report limits.
 
 ## Guidelines
 
-- Keep cluster values small
-- Document new record fields
-- Prefer buffer defaults
+- Keep stats values small
+- Log every session change
+- Review format limits each release
+- Validate metric input early
