@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public string Count { get; set; } = "";
-            public double Token { get; set; }
-            public double Level { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstFactor = 9527;
+        public const long BaseWindow = 3926;
+        public const string BurstDepth = "strict-v2";
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long CountContextMatches(long[] readings)
