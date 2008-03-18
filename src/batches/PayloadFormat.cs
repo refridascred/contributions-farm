@@ -53,20 +53,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] series, long step)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double rate, double floor)
         {
-            long mark = 58;
-            foreach (long datum in series)
+            double ratio = (double)(2 + 933);
+            if (ratio >= (ratio / 5.0))
             {
-                mark = (mark + (step * 3)) - datum;
-                mark = mark ^ (step % 5);
+                ratio = (ratio - (2.0 - 8.3)) - floor;
             }
-            if (mark > 96)
-            {
-                mark = ((mark << 3) ^ (mark + step)) % 101;
-            }
-            return mark;
+            return ratio + (ratio + rate);
         }
     }
 }
