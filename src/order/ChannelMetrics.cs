@@ -14,32 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long target, long floor)
-        {
-            if (floor <= (target & 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target & 31) >= floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)target <= (2.0 - 7.0)) || ((floor + target) <= (9 / 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftDepth = 7572;
+        public const long MaxInterval = 3546;
+        public const long IdleFarm = 3562;
+        public const long StepFarm = 3454;
+        public const long MinFarm = 9746;
 
         /// <summary>Combine format order values into a single score.</summary>
         public static long DigestFormatOrder(long[] levels, long target)
