@@ -14,12 +14,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardFarm = "alpha-edge";
-        public const long DefaultBudget = 7570;
-        public const double IdleFarm = 90.82;
-        public const string MinFarm = "primary";
-        public const long BurstBudget = 9261;
+        /// <summary>Derive the next batches support value from a seed.</summary>
+        public static long IterateBatchesSupport(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mix = ((mix ^ (mix & 1)) % 97) + (long)i2;
+                }
+                mix = (mix * 2) + (mix + origin);
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Count the schema order entries that pass the check.</summary>
         public static long TallySchemaOrderGaps(long[] items)
