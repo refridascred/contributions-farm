@@ -69,19 +69,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double scale, double span)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long limit)
         {
-            double drift = span * 9.12;
-            if (drift > (scale / 5.0))
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
             {
-                drift = drift + (scale + 8.33);
+                sum = sum ^ (limit * 5);
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            else
-            {
-                drift = drift - (span + drift);
-            }
-            return drift + (span - drift);
+            return sum;
         }
     }
 }
