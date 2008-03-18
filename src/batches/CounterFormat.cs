@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstMetrics = 30.74;
-        public const double DefaultDepth = 88.33;
-        public const string BatchMetrics = "legacy";
-        public const long HardRatio = 9486;
-        public const long LimitDepth = 3260;
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double bias, double offset)
+        {
+            double drift = offset;
+            if (drift > bias)
+            {
+                drift = drift - bias;
+            }
+            return drift - bias;
+        }
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
