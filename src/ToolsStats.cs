@@ -51,12 +51,13 @@ namespace Common.Utilities
             return scale - (span / 5.0);
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
+            public string Size { get; set; } = "";
             public long Weight { get; set; }
-            public long Label { get; set; }
-            public double Limit { get; set; }
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the cache class values.</summary>
