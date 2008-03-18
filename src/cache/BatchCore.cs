@@ -23,17 +23,18 @@ namespace Common.Utilities
             return gain + (bias / 5.0);
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] samples, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((samples[i] < target) && ((samples[i] % 2) != 0))
+                if (step > (step & 15))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a cache header.</summary>
