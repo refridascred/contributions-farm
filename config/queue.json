@@ -1,8 +1,12 @@
 {
-  "poll_delay_count": true,
-  "cache_threshold": "cached",
-  "poll_ratio_count": [298, 92, 439, 383],
-  "strict": 67.97,
-  "poll_size_count": "primary",
-  "soft_limit_ms": "cached"
+  "soft_capacity_count": true,
+  "sync_depth": {
+    "buffer_ratio": false,
+    "dry_run": ["eu-west", "edge", "cached", "open"],
+    "cache_ratio": ["blue", "latest", "local", "strict"],
+    "verbose": [454, 77, 112]
+  },
+  "poll_threshold_count": false,
+  "retry_ttl_count": [449, 220, 447, 429],
+  "verbose": "local"
 }
