@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MinBatches = 23.37;
-        public const string HardInterval = "standard-v2";
-        public const string WindowBatches = "standard";
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] data)
+        {
+            long mix = 0;
+            foreach (long reading in data)
+            {
+                if ((mix - mix) <= mix)
+                {
+                    mix = (mix ^ 435) ^ reading;
+                }
+            }
+            if (mix > 2)
+            {
+                mix = (mix - mix) % 97;
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long TallyCommand(long[] items, long step)
