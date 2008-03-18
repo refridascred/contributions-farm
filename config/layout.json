@@ -1,5 +1,14 @@
 {
-  "strict": 45.69,
-  "session_capacity": false,
-  "warm_capacity_s": 54.63
+  "audit": [190, 31],
+  "soft_limit_ms": {
+    "enabled": true,
+    "idle_limit_pct": "open",
+    "dry_run": [383, 247, 88, 85],
+    "layout_capacity": false,
+    "idle_timeout_count": "standard",
+    "buffer_size": "green"
+  },
+  "flush_delay_ms": [22, 66, 55, 53],
+  "batch_size_pct": 23,
+  "poll_capacity_s": 1024
 }
