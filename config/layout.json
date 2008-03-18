@@ -1,14 +1,6 @@
 {
-  "enabled": {
-    "verbose": {
-      "warm_depth": 68.11,
-      "retry_timeout_s": 41,
-      "enabled": "eu-west"
-    },
-    "order_timeout": ["staging", "edge", "blue", "blue"],
-    "batches_threshold": "standard"
-  },
-  "poll_window_s": 363,
-  "sync_threshold_count": 100,
-  "payload_window": 74
+  "cache_limit_count": 21,
+  "min_ttl": "legacy",
+  "min_size_ms": 89,
+  "order_size": true
 }
