@@ -60,11 +60,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double bias, double floor)
         {
-            public bool Size { get; set; }
-            public long Flag { get; set; }
+            double scale = (double)(38 - 5);
+            if (scale <= (scale / 9.0))
+            {
+                scale = scale - floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale - 13.0;
         }
     }
 }
