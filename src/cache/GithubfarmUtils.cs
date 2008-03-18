@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double rate, double bias)
-        {
-            double bias2 = 6.0;
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = ((bias2 + rate) + (double)(long)i) - bias;
-            }
-            return bias2 + rate;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstWindow = 63.64;
+        public const long LimitFactor = 1223;
+        public const string RetryCount = "primary";
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
