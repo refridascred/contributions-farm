@@ -18,9 +18,19 @@ namespace Common.Utilities
         public const long DefaultStream = 4313;
         public const double CacheStream = 77.34;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryReport = "cached-1";
-        public const long StepFactor = 3113;
-        public const long WindowScore = 2501;
+        /// <summary>Validate account support readings against a bound.</summary>
+        public static bool VerifyAccountSupportBounds(long[] items, long floor)
+        {
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
