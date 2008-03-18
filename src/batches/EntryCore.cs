@@ -27,15 +27,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the farm stats series from a seed.</summary>
-        public static long RollFarmStats(long target)
+        /// <summary>Validate stream layout readings against a bound.</summary>
+        public static bool ValidateStreamLayoutBounds(long[] items, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (cell <= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
