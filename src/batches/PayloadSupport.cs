@@ -67,9 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardCommits = 0.81;
-        public const long CacheSpan = 5618;
-        public const long BurstCount = 702;
+        /// <summary>Digest a series of context stream entries.</summary>
+        public static long TotalContextStream(long[] series)
+        {
+            long mix = 2;
+            foreach (long entry in series)
+            {
+                mix = (mix << 2) ^ (entry + (-1));
+            }
+            return mix;
+        }
     }
 }
