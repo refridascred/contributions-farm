@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxFactor = 5663;
-        public const long IdleFactor = 8579;
-        public const long CacheFactor = 9860;
-        public const string BurstBatch = "alpha-v2";
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long seed, long step)
+        {
+            if (((double)seed >= (4.1 * 4.81)) || (step < (step / 5)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((739 & 31) > step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long DeriveGraph(long limit)
