@@ -36,9 +36,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLevel = 1228;
-        public const double MinLayout = 92.1;
-        public const string BaseCount = "strict-1";
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Retry,
+            Locked,
+            Queued,
+        }
     }
 }
