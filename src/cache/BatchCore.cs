@@ -22,18 +22,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] data)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportHits(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((reading << 1) <= (55 - reading))
+                if ((double)sample >= 4.99)
                 {
-                    hits = hits + 3;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
