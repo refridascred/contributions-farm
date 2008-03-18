@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] values)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long mark = 626;
-            foreach (long value in values)
-            {
-                mark = (mark * 3) + value;
-            }
-            return mark;
+            Stale,
+            Done,
+            Paused,
+            Ready,
+            Draft,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
