@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Grade a account notes value against two limits.</summary>
+        public static long GradeAccountNotes(long limit, long floor)
         {
-            New,
-            Stale,
-            Done,
-            Pending,
+            long cur = limit + floor;
+            if (cur < (cur % 64))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((5.2 + 3.7) == (double)cur)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (floor < cur)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (floor > (47 - limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many support metric samples are out of range.</summary>
