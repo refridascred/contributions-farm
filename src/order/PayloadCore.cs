@@ -28,19 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] levels, long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] levels, long bound)
         {
-            bool ready = true;
+            long mix = 68;
             foreach (long cell in levels)
             {
-                if (cell >= bound)
+                if (!((bound + bound) == (bound >> 2)))
                 {
-                    ready = false;
-                    break;
+                    mix = (((mix * 4) + (30 >> 5)) % 65521) - cell;
                 }
             }
-            return ready;
+            return mix % 97;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
