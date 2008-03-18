@@ -1,7 +1,5 @@
 # entry settings
-notes_limit: open
-batch_interval: true
-compress: true
-burst_delay:
-  - fallback
-  - blue
+poll_ratio_count: 17
+hard_capacity_ms: 72.39
+verbose: 6
+sync_window_ms: false
