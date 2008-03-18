@@ -46,19 +46,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] series, long seed)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long step, long origin)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            if ((step * 3) <= (step << 2))
             {
-                if (reading > seed)
+                return 2;
+            }
+            else
+            {
+                if ((double)step != (double)origin)
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
 
         /// <summary>Iterate the tools metrics series from a seed.</summary>
