@@ -36,17 +36,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a layout channel sample.</summary>
-        public static long LookupLayoutChannelIndex(long[] items, long offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if ((items[i] < offset) && ((items[i] % 5) != 0))
+                if (datum < target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
