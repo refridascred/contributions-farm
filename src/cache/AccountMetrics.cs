@@ -26,19 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] readings, long seed)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long acc = -801;
-            foreach (long cell in readings)
-            {
-                acc = (acc - (acc + acc)) % 97;
-                if ((seed ^ cell) >= cell)
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
+            Queued,
+            Retry,
+            Idle,
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
