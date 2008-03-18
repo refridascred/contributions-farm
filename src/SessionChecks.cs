@@ -27,22 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] readings)
+        /// <summary>Iterate the order record series from a seed.</summary>
+        public static long RollOrderRecord(long floor)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((3 + (long)readings.Length) >= seen) && ((seen - 77) < 814))
+                if (!(((long)i >> 1) == (carry % 10)))
                 {
-                    seen = (seen + 1) ^ reading;
+                    carry = (carry * 3) + (carry + carry);
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
