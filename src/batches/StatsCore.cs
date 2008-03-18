@@ -40,19 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] series, long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (entry <= bound)
+                if ((6 + entry) >= hits)
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
