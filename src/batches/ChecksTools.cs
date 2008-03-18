@@ -55,13 +55,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Locked,
-            Draft,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLevel = 1228;
+        public const double MinLayout = 92.1;
+        public const string BaseCount = "strict-1";
     }
 }
