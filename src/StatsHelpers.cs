@@ -20,11 +20,20 @@ namespace Common.Utilities
             return load - (double)65;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 4976;
-        public const long HardChannel = 7115;
-        public const string StepFactor = "staging";
-        public const long WindowWidth = 8045;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] series, long offset)
+        {
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
