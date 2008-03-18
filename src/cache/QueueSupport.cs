@@ -27,12 +27,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            public bool Score { get; set; }
-            public long Total { get; set; }
-            public bool Size { get; set; }
+            public long Count { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
