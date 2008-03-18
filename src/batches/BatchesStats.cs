@@ -39,18 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] items)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (item > (item - item))
+                if ((origin + cell) != (cell / 4))
                 {
-                    tally = tally + 1;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
