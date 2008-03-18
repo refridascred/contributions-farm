@@ -56,9 +56,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstBudget = 6904;
-        public const double BaseRatio = 68.2;
-        public const long LimitContext = 2335;
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
