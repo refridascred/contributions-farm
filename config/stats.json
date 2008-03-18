@@ -1,8 +1,9 @@
 {
-  "min_limit_pct": 64,
-  "context_size": 72.9,
-  "soft_size_count": 1.19,
-  "burst_interval_ms": 6945,
-  "batch_size": false,
-  "cache_delay": [99, 426, 345]
+  "flush_size_pct": "open",
+  "strict": 9441,
+  "queue_threshold": {
+    "commits_timeout": true,
+    "retry_ttl_pct": [193, 473, 424, 323],
+    "compress": 48.17
+  }
 }
