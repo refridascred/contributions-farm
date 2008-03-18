@@ -1,15 +1,7 @@
 {
-  "command_ttl": {
-    "flush_threshold_count": "standard",
-    "persist": true,
-    "queue_limit": 500,
-    "warm_size_count": 30,
-    "warm_depth_s": 27,
-    "queue_capacity": "cached"
-  },
-  "readonly": "staging",
-  "min_threshold_count": true,
-  "hard_retries": 53,
-  "warm_capacity": "cached",
-  "payload_threshold": true
+  "flush_timeout": [393, 219, 368],
+  "sync_threshold_count": 1264,
+  "dry_run": true,
+  "cache_depth": 9,
+  "poll_size_pct": 95
 }
