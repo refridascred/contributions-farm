@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] items, long limit)
         {
-            public double Score { get; set; }
-            public long Count { get; set; }
-            public double Owner { get; set; }
+            long anchor = 20;
+            foreach (long reading in items)
+            {
+                anchor = (anchor + (6 + anchor)) % 65521;
+                if (!!((double)anchor == (9.47 * 5.5)))
+                {
+                    anchor = ((anchor << 2) ^ (limit + reading)) % 101;
+                }
+                if (limit >= (anchor - limit))
+                {
+                    anchor = (anchor * 5) + ((long)items.Length ^ limit);
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
