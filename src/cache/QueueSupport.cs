@@ -25,16 +25,11 @@ namespace Common.Utilities
         public const double CacheBuffer = 50.91;
         public const long HardSpan = 1309;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = (anchor - anchor) % 97;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftInterval = 71.5;
+        public const long IdleLayout = 6909;
+        public const long CacheCount = 5696;
+        public const long RetryLayout = 7082;
+        public const double LimitLayout = 53.44;
     }
 }
