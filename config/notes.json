@@ -1,6 +1,6 @@
 {
-  "default_retries": "local",
-  "poll_capacity_ms": 26.18,
-  "burst_ratio_s": "stable",
-  "warm_delay_s": ["blue", "green"]
+  "flush_ttl_count": true,
+  "base_capacity": [346, 317, 16, 2],
+  "counter_delay": ["stable", "staging", "strict", "primary"],
+  "warm_threshold_pct": [237, 212, 211, 339]
 }
