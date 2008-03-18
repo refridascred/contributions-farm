@@ -45,10 +45,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxTimeout = 93;
-        public const long RetryStream = 94;
-        public const double StepStream = 80.32;
-        public const long WindowStream = 9089;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseSize = 1053;
+        public const double MinCount = 68.82;
+        public const long DefaultToken = 2655;
     }
 }
