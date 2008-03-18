@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a format layout pair into a bucket.</summary>
-        public static long GradeFormatLayout(long target, long limit)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] series)
         {
-            long slot = target ^ limit;
-            if (!(8.9 >= (double)limit))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (2.9 <= (double)slot)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit != (0.09 / 2.0))
+                    if ((series[i] ^ series[j]) < 10)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((slot + 687) == (target + 7))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate tools editor samples.</summary>
