@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long bound)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
             {
-                acc = acc + (acc ^ acc);
-                acc = ((acc * 2) + (long)i) % 65521;
+                sum = (sum * 5) + (8 + floor);
+                sum = (sum + floor) % 101;
+                sum = ((sum * 3) + (sum % 64)) % 97;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Describe the notes state values.</summary>
