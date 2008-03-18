@@ -13,21 +13,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] items)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((4.94 > (double)entry) || ((double)entry != (5.0 * 2.0)))
                 {
-                    if ((items[i] + items[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
