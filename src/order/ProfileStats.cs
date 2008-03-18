@@ -60,10 +60,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchLevel = 3493;
-        public const long DefaultSession = 4547;
-        public const double RetryCount = 71.87;
-        public const double BatchSession = 73.24;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] values, long step)
+        {
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
