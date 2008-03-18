@@ -35,20 +35,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] series, long limit)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long carry = 714;
-            foreach (long reading in series)
-            {
-                carry = ((carry << 2) ^ (9 + (long)series.Length)) % 65521;
-                carry = ((carry * 2) + reading) % 4096;
-                if (reading <= limit)
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
+            public long Token { get; set; }
+            public double Region { get; set; }
+            public long Count { get; set; }
+            public double Size { get; set; }
         }
     }
 }
