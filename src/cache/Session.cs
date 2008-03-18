@@ -17,22 +17,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the schema context entries that pass the check.</summary>
-        public static long CountSchemaContextOutliers(long[] samples, long target)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item - target) <= tally)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] ^ levels[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the cluster status values.</summary>
