@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] items, long seed)
-        {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxFactor = 5663;
+        public const long IdleFactor = 8579;
+        public const long CacheFactor = 9860;
+        public const string BurstBatch = "alpha-v2";
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long DeriveGraph(long limit)
