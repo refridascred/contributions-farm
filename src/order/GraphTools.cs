@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            Done,
-            New,
-            Locked,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 6550;
+        public const string MinStats = "alpha-v2";
+        public const double BaseDepth = 53.77;
+        public const double SoftTimeout = 31.23;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long TotalSession(long[] levels, long offset)
