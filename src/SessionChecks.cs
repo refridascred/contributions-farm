@@ -13,18 +13,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] items)
+        /// <summary>Scale a tools record figure with a bias.</summary>
+        public static double ProjectToolsRecord(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double bias2 = (scale - scale) / 8.0;
+            if (bias2 > bias)
             {
-                if (!((hits >> 1) > (item % 3)))
-                {
-                    hits = hits + 3;
-                }
+                bias2 = bias2 - bias;
             }
-            return hits;
+            else
+            {
+                bias2 = bias2 + (double)480;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + bias2) + (double)(long)i;
+            }
+            return bias2 + (bias + scale);
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
