@@ -46,21 +46,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long origin)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] samples)
         {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix ^ (mix + mix)) % 1000;
-                if (!((double)(long)i == (double)mix))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix * 5) + (-82);
+                    if ((samples[i] + samples[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mix = (mix ^ (6 * 5)) % 1000;
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Combine batches profile values into a single score.</summary>
