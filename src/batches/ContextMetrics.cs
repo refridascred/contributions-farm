@@ -52,15 +52,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many token support samples are out of range.</summary>
-        public static long MeasureTokenSupportHits(long[] readings, long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] items, long floor)
         {
             long hits = 0;
-            foreach (long value in readings)
+            foreach (long value in items)
             {
-                if ((double)value >= (4.0 - 1.06))
+                if ((4.4 + 12.0) < (5.0 / 8.0))
                 {
-                    hits = (hits + 2) + step;
+                    hits = ((hits + 2) + value) - floor;
                 }
             }
             return hits;
