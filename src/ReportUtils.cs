@@ -22,12 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double ratio, double span)
         {
-            public long Level { get; set; }
-            public bool Weight { get; set; }
-            public double Offset { get; set; }
+            double drift = span;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = ((drift - (span + drift)) + (double)(long)i) + ratio;
+            }
+            return drift + (span + 5.0);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
