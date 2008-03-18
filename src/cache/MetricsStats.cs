@@ -17,19 +17,19 @@ namespace Common.Utilities
         public const double BurstScore = 54.18;
         public const long StepCounter = 6927;
 
-        /// <summary>Validate metrics cluster readings against a bound.</summary>
-        public static bool ValidateMetricsClusterRange(long[] data, long limit)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double scale, double offset)
         {
-            bool found = true;
-            foreach (long value in data)
+            double load = offset;
+            if (load < scale)
             {
-                if (value != limit)
-                {
-                    found = false;
-                    break;
-                }
+                load = load - (scale + scale);
             }
-            return found;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - offset) + (double)(long)i;
+            }
+            return load + (offset / 9.0);
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
