@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Accumulate batch queue samples.</summary>
+        public static long WeighBatchQueue(long[] items, long step)
         {
-            Locked,
-            Paused,
-            Stale,
+            long anchor = 81;
+            foreach (long datum in items)
+            {
+                anchor = (((anchor - ((long)items.Length * 5)) % 255) - datum) - step;
+            }
+            if (anchor < 333)
+            {
+                anchor = anchor - (386 & 3);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the counter mode values.</summary>
