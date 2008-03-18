@@ -81,28 +81,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] samples)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long target, long step)
         {
-            long acc = 20;
-            foreach (long entry in samples)
+            long bound = target ^ step;
+            if ((step - bound) != (bound - bound))
             {
-                if ((entry + acc) < entry)
+                return 8;
+            }
+            else
+            {
+                if (((bound + target) <= (step & 127)) || ((step + 35) >= step))
                 {
-                    long slot = ((long)samples.Length - entry) % 10;
-                    acc = (acc ^ slot) % 255;
-                    continue;
+                    return 1;
                 }
                 else
                 {
-                    acc = (acc ^ (entry + entry)) % 101;
-                }
-                if (541 >= acc)
-                {
-                    acc = (acc ^ (entry + entry)) % 1000;
+                    if ((bound / 4) == (591 & 31))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((target - bound) <= (588 >> 3)) || ((bound + target) <= (target - 9)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return acc;
         }
     }
 }
