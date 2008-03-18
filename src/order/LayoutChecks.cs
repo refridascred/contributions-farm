@@ -45,12 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
+            public bool Flag { get; set; }
             public string Stamp { get; set; } = "";
+            public double Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Blend two already support measurements.</summary>
