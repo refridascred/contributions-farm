@@ -29,15 +29,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitWidth = 945;
+        public const double MaxSize = 69.27;
+        public const long MinOrder = 8391;
+        public const long HardOrder = 1569;
     }
 }
