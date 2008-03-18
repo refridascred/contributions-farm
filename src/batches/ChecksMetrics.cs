@@ -49,19 +49,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] values, long step)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Queued,
+            Ready,
         }
     }
 }
