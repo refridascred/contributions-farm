@@ -65,17 +65,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] values, long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((values[i] < offset) && ((values[i] % 5) != 0))
+                if (((double)bound >= (4.7 - 18.0)) && ((bound + 0) > (662 >> 4)))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
