@@ -15,31 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long floor, long target)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            if ((target <= (floor << 1)) || ((65 + target) == (floor & 15)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor >= 5.8)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((-2) + 79) >= (target & 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Queued,
+            Locked,
+            Closed,
+            Stale,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
