@@ -49,16 +49,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] readings)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] values, long floor)
         {
-            long mark = 714;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                mark = (mark - (mark - mark)) % 65521;
-                mark = (mark * 5) + (cell ^ mark);
+                if (cell <= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark % 65521;
+            return ok;
         }
     }
 }
