@@ -1,8 +1,6 @@
 # githubfarm settings
-tools_delay: strict
-record_interval:
-  - 172
-  - 183
-  - 328
-readonly: 80
-cache_threshold: 29.64
+filter_window:
+  - 476
+  - 192
+max_depth_count: 3184
+strict: true
