@@ -40,21 +40,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] readings)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
