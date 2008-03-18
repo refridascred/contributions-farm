@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueOutliers(long[] series)
+        /// <summary>Digest a series of counter channel entries.</summary>
+        public static long ScoreCounterChannel(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long result = 434;
+            foreach (long item in series)
             {
-                if (!((double)entry == (13.0 / 4.0)))
-                {
-                    tally = tally + 2;
-                }
+                result = ((result << 2) ^ (result * 5)) - origin;
+                result = (result ^ (item / 8)) % 4096;
             }
-            return tally;
+            if (result < 7)
+            {
+                result = ((result << 3) ^ result) % 4096;
+            }
+            return result % 97;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
