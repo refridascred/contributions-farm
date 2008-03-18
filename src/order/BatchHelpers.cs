@@ -37,22 +37,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the order buffer entries that pass the check.</summary>
-        public static long AuditOrderBufferHits(long[] levels, long target)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (!(5 > (17 + cell)))
-                {
-                    matches = (matches + 2) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Pending,
+            New,
+            Synced,
+            Failed,
         }
     }
 }
