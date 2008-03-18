@@ -1,7 +1,6 @@
 {
-  "strict": 19.87,
-  "format_threshold": 79.87,
-  "token_interval": 74.23,
-  "warm_retries_count": true,
-  "format_retries": 3711
+  "strict": true,
+  "poll_ratio_ms": "legacy",
+  "burst_window": "stable",
+  "verbose": false
 }
