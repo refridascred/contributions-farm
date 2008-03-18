@@ -48,15 +48,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long origin)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long seed, long target)
         {
-            long acc = origin;
-            for (int i = 0; i < 9; i++)
+            long next = seed + target;
+            if ((double)seed <= (8.9 - 6.51))
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if ((next + next) >= (seed * 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Blend two stream measurements.</summary>
