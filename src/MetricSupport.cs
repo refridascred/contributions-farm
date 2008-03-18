@@ -34,23 +34,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of format schema readings.</summary>
-        public static long ScoreFormatSchema(long[] levels)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] data, long offset)
         {
-            long acc = 581;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long item in data)
             {
-                acc = ((acc * 4) + (acc >> 5)) % 1000;
-                if ((double)item <= (2.11 - 4.1))
+                if (item >= offset)
                 {
+                    ready = false;
                     break;
                 }
             }
-            if (acc > 196)
-            {
-                acc = ((acc * 4) + (acc - 292)) % 1000;
-            }
-            return acc % 65521;
+            return ready;
         }
     }
 }
