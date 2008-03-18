@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] samples, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 73;
+            foreach (long sample in readings)
             {
-                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
+                if ((step >> 1) < sample)
                 {
-                    return (long)i;
+                    sum = (sum - (step << 2)) % 1000;
                 }
             }
-            return -1;
+            if (sum < 18)
+            {
+                sum = ((sum << 2) ^ sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
