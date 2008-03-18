@@ -38,21 +38,15 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Count stats schema pairs that satisfy a relation.</summary>
-        public static long OverlapStatsSchemaCount(long[] levels)
+        /// <summary>Roll a batch batches counter forward.</summary>
+        public static long SeriesBatchBatches(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
