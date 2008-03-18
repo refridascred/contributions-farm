@@ -75,15 +75,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long origin)
+        /// <summary>Match up session buffer samples.</summary>
+        public static long CompareSessionBufferCount(long[] readings)
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
