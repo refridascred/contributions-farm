@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long BaseGraph = 6921;
         public const long BatchCount = 1588;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] series, long target)
+        /// <summary>Find the first buffer channel entry that matches the target.</summary>
+        public static long FindBufferChannelIndex(long[] data, long limit)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell != target)
+                if (data[i] == limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Hold a queue summary.</summary>
