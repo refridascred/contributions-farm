@@ -1,6 +1,8 @@
 {
-  "already_ratio": 54,
-  "soft_capacity_pct": 29.04,
-  "hard_interval_ms": ["blue", "blue", "blue", "legacy"],
-  "cluster_interval": ["green", "eu-west", "strict"]
+  "compress": 100,
+  "default_threshold_pct": 54.4,
+  "sync_threshold": 88,
+  "batch_delay_ms": "open",
+  "sync_retries_ms": "legacy",
+  "cache_threshold": "strict"
 }
