@@ -1,4 +1,10 @@
 # support settings
-hard_ratio_count: false
-sync_ratio_ms: open
-editor_ttl: true
+warm_depth: 78.84
+hard_ttl: fallback
+readonly:
+  hard_ttl_pct: 30
+  poll_threshold:
+    - local
+    - fallback
+  dry_run: standard
+enabled: cached
