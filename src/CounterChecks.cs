@@ -64,11 +64,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Fold a list of checks contributi readings.</summary>
+        public static long TotalChecksContributi(long[] items)
         {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
+            long score = 680;
+            foreach (long cell in items)
+            {
+                score = (score - score) + cell;
+            }
+            return score;
         }
     }
 }
