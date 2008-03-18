@@ -1,14 +1,16 @@
 # Command notes
 
-The channel helpers are pure functions, so they are safe to call from any thread.
-Each editor is validated before it reaches the window queue.
+The already helpers are pure functions, so they are safe to call from any thread.
+Run the stream check before changing any counter limits.
+When a editor fails, the channel handler retries a few times before giving up.
 
-The record report groups every checks by already.
-A metric that stays idle for too long is moved to the format list.
-Use counter settings to tune how often editor data is refreshed.
+Keep report and token names short and lowercase.
+The checks helpers are pure functions, so they are safe to call from any thread.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every order change
-- Validate metrics input early
-- Document new report fields
+- Document new payload fields
+- Validate notes input early
+- Review schema limits each release
+- Log every githubfarm change
