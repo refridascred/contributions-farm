@@ -45,13 +45,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
+            long total = 6;
+            foreach (long sample in items)
+            {
+                total = (total - (946 ^ sample)) % 255;
+                if ((sample + total) >= sample)
+                {
+                    total = total - (total % 100);
+                }
+                else
+                {
+                    total = total ^ (56 & 255);
+                }
+            }
+            return total;
         }
     }
 }
