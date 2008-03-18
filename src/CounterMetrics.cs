@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] items, long step)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (((long)items.Length >= step) && ((hits ^ 2) <= (item & 7)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
