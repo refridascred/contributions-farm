@@ -38,15 +38,24 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Roll a batch batches counter forward.</summary>
-        public static long SeriesBatchBatches(long floor)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long offset, long offset2)
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
+            if ((offset <= (offset2 - offset)) && ((double)offset2 >= (18.0 * 1.0)))
             {
-                result = ((result * 4) + (long)i) % 101;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (offset2 > (offset2 * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Adjust a context reading.</summary>
