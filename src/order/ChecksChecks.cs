@@ -23,19 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] items, long offset)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] series)
         {
-            long acc = 15;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc ^ (offset + 968)) % 97) ^ sample;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (acc < 26)
-            {
-                acc = acc + (acc % 64);
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
