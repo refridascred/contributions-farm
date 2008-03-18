@@ -29,12 +29,19 @@ namespace Common.Utilities
         public const long BatchRatio = 2425;
         public const long DefaultEntry = 2842;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 4511;
-        public const long BurstInterval = 6528;
-        public const string MinWidth = "cached-v2";
-        public const long DefaultToken = 5014;
-        public const long MinToken = 9755;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] data)
+        {
+            long mark = 3;
+            foreach (long datum in data)
+            {
+                if ((datum - datum) <= (mark & 31))
+                {
+                    mark = mark - mark;
+                }
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long AuditAccountMatches(long[] samples, long target)
