@@ -23,13 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            public double Score { get; set; }
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public double Total { get; set; }
+            public bool Level { get; set; }
+            public string Owner { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
