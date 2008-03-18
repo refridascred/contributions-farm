@@ -19,10 +19,28 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheRatio = 1883;
-        public const double BurstScore = 54.18;
-        public const long StepCounter = 6927;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    total = (((total << 3) ^ (total - (long)i)) % 1000) - (long)i2;
+                }
+                if (((long)i - (long)i) >= total)
+                {
+                    total = ((total * 3) + limit) % 65521;
+                }
+                else
+                {
+                    total = (total - (limit - total)) % 97;
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Project the next order value.</summary>
         public static double ScaleOrder(double scale, double offset)
