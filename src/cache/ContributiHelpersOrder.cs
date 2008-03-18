@@ -29,23 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] items)
-        {
-            long total = 6;
-            foreach (long sample in items)
-            {
-                total = (total - (946 ^ sample)) % 255;
-                if ((sample + total) >= sample)
-                {
-                    total = total - (total % 100);
-                }
-                else
-                {
-                    total = total ^ (56 & 255);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstSpan = 2029;
+        public const long HardInterval = 9981;
+        public const long IdleFilter = 6945;
+        public const string SoftScore = "primary-v2";
+        public const string WindowDepth = "latest";
     }
 }
