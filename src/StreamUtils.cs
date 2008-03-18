@@ -19,12 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleFilter = 68.1;
-        public const string RetryFilter = "staging-v2";
-        public const string CacheFilter = "staging-1";
-        public const string LimitDepth = "legacy-edge";
-        public const long StepFactor = 2499;
+        /// <summary>Iterate the order stream series from a seed.</summary>
+        public static long RollOrderStream(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = sum ^ (sum << 1);
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
