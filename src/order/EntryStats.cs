@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public bool Size { get; set; }
-            public bool Flag { get; set; }
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank token input into a small class.</summary>
