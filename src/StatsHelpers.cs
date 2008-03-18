@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long origin, long offset)
         {
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
+            if (offset <= (origin + 39))
+            {
+                return 2;
+            }
+            else
+            {
+                if (origin > (origin >> 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin ^ origin) >= (offset >> 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two stats measurements.</summary>
