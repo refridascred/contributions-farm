@@ -13,12 +13,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
-        {
-            public long Count { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BaseTools = 53.15;
+        public const string LimitInterval = "alpha";
+        public const double BurstTools = 29.05;
+        public const long SoftTools = 8413;
 
         /// <summary>Adjust a batches checks reading.</summary>
         public static double ProjectBatchesChecks(double weight, double floor)
