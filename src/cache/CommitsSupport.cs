@@ -16,11 +16,27 @@ namespace Common.Utilities
             return bias - (double)710;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 3736;
-        public const long StepSchema = 4883;
-        public const long BurstSchema = 7296;
-        public const string CacheTimeout = "legacy-v2";
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] readings, long step)
+        {
+            long sum = 33;
+            foreach (long sample in readings)
+            {
+                if ((sum + sample) >= ((-9) ^ sample))
+                {
+                    sum = ((sum << 2) ^ (sample + sample)) % 255;
+                }
+                else
+                {
+                    sum = sum ^ (step / 6);
+                }
+                if ((double)29 <= (double)sum)
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many schema command samples are out of range.</summary>
         public static long TallySchemaCommandMatches(long[] series)
