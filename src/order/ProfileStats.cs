@@ -59,19 +59,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] values, long step)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (cell < step)
+                if (((905 + (long)levels.Length) > (entry + entry)) && (hits < (entry << 3)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
