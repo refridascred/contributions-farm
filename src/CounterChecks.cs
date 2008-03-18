@@ -37,12 +37,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string LimitGraph = "latest-v2";
-        public const long BaseGraph = 8045;
-        public const long SoftGraph = 9901;
-        public const long CacheGraph = 2927;
-        public const long MinGraph = 4542;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (reading > (count + 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool GuardBufferRange(long[] items, long seed)
