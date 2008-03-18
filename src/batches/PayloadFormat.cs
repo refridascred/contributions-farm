@@ -25,15 +25,25 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a queue schema figure with a bias.</summary>
-        public static double BlendQueueSchema(double scale, double span)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] samples, long limit)
         {
-            double gain = (double)(920 + 1);
-            if (gain > (double)7)
+            long total = -86;
+            foreach (long entry in samples)
             {
-                gain = (gain - (double)30) + span;
+                if ((entry < total) || ((limit - total) != (long)samples.Length))
+                {
+                    total = ((total << 3) ^ total) % 101;
+                    total = ((total << 2) ^ (entry / 7)) % 255;
+                }
+                total = (total * 5) + (total - 56);
+                total = (total << 3) ^ (total ^ limit);
             }
-            return gain - scale;
+            if (total < 53)
+            {
+                total = (total * 2) + (total ^ total);
+            }
+            return total;
         }
 
         /// <summary>Describe the profile phase values.</summary>
