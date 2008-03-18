@@ -33,11 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double scale, double span)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] levels, long limit)
         {
-            double bias = (span / 2.0) * 9.66;
-            return (bias + (4.96 / 4.0)) + scale;
+            long sum = 0;
+            foreach (long sample in levels)
+            {
+                if ((sum + (-664)) >= (limit & 3))
+                {
+                    sum = (sum - (sample >> 4)) % 65521;
+                }
+            }
+            if (sum < 120)
+            {
+                sum = (sum * 3) + limit;
+            }
+            return sum;
         }
     }
 }
