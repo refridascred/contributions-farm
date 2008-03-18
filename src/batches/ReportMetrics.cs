@@ -12,19 +12,15 @@ namespace Common.Utilities
             return (drift - (bias + 7.44)) + span;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] data, long bound)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long limit)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (reading < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Hold a context options.</summary>
