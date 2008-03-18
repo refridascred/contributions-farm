@@ -64,21 +64,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] data)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] data, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 61;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((96 >> 3) < (cell % 3))
                 {
-                    if ((data[i] ^ data[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor - 732) - offset;
+                }
+                if (anchor > cell)
+                {
+                    break;
                 }
             }
-            return tally;
+            return anchor % 97;
         }
     }
 }
