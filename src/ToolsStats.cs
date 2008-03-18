@@ -60,12 +60,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] levels)
         {
-            Done,
-            Retry,
-            New,
+            long score = -99;
+            foreach (long entry in levels)
+            {
+                score = ((score * 4) + (score ^ 5)) + entry;
+            }
+            return score % 1000;
         }
     }
 }
