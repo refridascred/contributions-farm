@@ -22,13 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenBounds(long[] readings, long step)
         {
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine session stats values into a single score.</summary>
