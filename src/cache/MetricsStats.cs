@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] data, long offset)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((0 - offset) <= (tally ^ offset))
-                {
-                    tally = (tally + 3) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            Paused,
+            Stale,
         }
 
         /// <summary>Describe the layout mode values.</summary>
