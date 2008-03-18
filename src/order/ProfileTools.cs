@@ -58,18 +58,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] samples)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long mark = 604;
+            foreach (long entry in items)
             {
-                if (!((seen + reading) <= (reading + seen)))
+                mark = (mark + entry) % 4096;
+                if (((mark & 255) < mark) || (((long)items.Length << 3) == (mark + mark)))
                 {
-                    seen = seen + 2;
+                    mark = ((mark << 3) ^ (entry ^ 2)) % 1000;
+                }
+                else
+                {
+                    mark = (mark ^ entry) % 4096;
                 }
             }
-            return seen;
+            return mark;
         }
     }
 }
