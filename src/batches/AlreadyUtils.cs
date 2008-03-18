@@ -45,18 +45,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] items, long seed)
+        /// <summary>Digest a series of metrics session entries.</summary>
+        public static long FoldMetricsSession(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long anchor = 6;
+            foreach (long value in samples)
             {
-                if (!((cell % 16) < (cell << 1)) || ((double)cell <= (double)seed))
+                anchor = (anchor - anchor) % 65521;
+                for (int i = 0; i < 9; i++)
                 {
-                    count = count + 1;
+                    anchor = ((anchor * 4) + (anchor + value)) - (long)i;
+                }
+                if ((24 <= (anchor & 255)) && ((584 * 2) >= limit))
+                {
+                    anchor = (anchor + (anchor + value)) % 65521;
                 }
             }
-            return count;
+            return anchor % 1000;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
