@@ -1,12 +1,8 @@
 {
-  "min_size_s": true,
-  "metrics_ttl": {
-    "warm_limit_count": 500,
-    "soft_ttl": "primary",
-    "soft_capacity": 100,
-    "idle_timeout": 4879
-  },
-  "metric_window": 500,
-  "base_ratio_count": 9196,
-  "channel_depth": 42
+  "filter_threshold": true,
+  "context_delay": [148, 388, 241, 284],
+  "cache_ttl_s": 77.24,
+  "batch_limit_ms": "staging",
+  "compress": 250,
+  "soft_ratio_s": ["eu-west", "latest", "standard", "edge"]
 }
