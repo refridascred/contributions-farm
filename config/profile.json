@@ -1,8 +1,6 @@
 {
-  "audit": false,
-  "burst_capacity": 74.86,
-  "default_threshold_ms": 17,
-  "flush_capacity_ms": "staging",
-  "hard_ratio": [355, 173, 52],
-  "payload_ttl": 6416
+  "base_retries": 86,
+  "sync_interval_pct": "strict",
+  "batch_delay_ms": 93.19,
+  "poll_ratio": "strict"
 }
