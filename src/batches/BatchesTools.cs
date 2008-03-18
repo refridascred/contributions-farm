@@ -19,16 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next filter buffer value from a seed.</summary>
-        public static long RollFilterBuffer(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 3101;
+        public const long IdleInterval = 5230;
+        public const double IdleFactor = 20.83;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string DefaultMetrics = "stable";
