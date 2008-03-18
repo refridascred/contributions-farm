@@ -13,39 +13,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long bound, long offset)
-        {
-            if (456 <= bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if (69 >= (offset & 127))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound < (3.6 + 1.13))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((offset ^ bound) > bound) || ((bound - offset) >= (bound << 2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double DefaultStats = 22.02;
+        public const double WindowStats = 22.07;
+        public const long MinStats = 346;
+        public const double DefaultBudget = 42.91;
+        public const long SoftStats = 8364;
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long GradeCommits(long step, long origin)
