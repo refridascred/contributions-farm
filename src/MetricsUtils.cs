@@ -5,18 +5,36 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] readings)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] items)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long mark = -733;
+            foreach (long value in items)
             {
-                if ((double)cell < (8.93 + 7.45))
+                if ((392 < mark) || ((double)mark > (7.3 + 8.7)))
                 {
-                    count = count + 2;
+                    mark = (mark - (value ^ 26)) % 101;
+                }
+                else
+                {
+                    mark = ((mark * 3) + value) % 4096;
+                    mark = ((mark * 5) + (value / 7)) % 4096;
+                }
+                mark = ((mark << 3) ^ (mark & 127)) % 65521;
+                if (198 <= mark)
+                {
+                    mark = (mark + value) % 97;
+                }
+                else
+                {
+                    mark = ((mark * 5) + value) % 101;
                 }
             }
-            return count;
+            if (mark < 5)
+            {
+                mark = (mark - 3) % 97;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
