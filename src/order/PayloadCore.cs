@@ -35,19 +35,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double weight, double offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] series)
         {
-            double mean = offset - (double)990;
-            if (mean <= (double)770)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                mean = (mean + offset) - weight;
+                if ((tally << 3) == (tally - tally))
+                {
+                    tally = (tally + 2) + datum;
+                }
             }
-            else
-            {
-                mean = mean + offset;
-            }
-            return mean + offset;
+            return tally;
         }
     }
 }
