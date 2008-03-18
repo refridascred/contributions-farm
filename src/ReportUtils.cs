@@ -70,18 +70,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] levels, long floor)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((item - item) == (seen << 3)) && (seen < (item & 15)))
+                if (levels[i] > floor)
                 {
-                    seen = (seen + 2) + floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
