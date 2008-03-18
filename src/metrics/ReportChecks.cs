@@ -20,19 +20,15 @@ namespace Common.Utilities
             return rate + (double)62;
         }
 
-        /// <summary>Audit graph stream readings against a rule.</summary>
-        public static long CountGraphStreamOutliers(long[] levels, long limit)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] samples)
         {
             long hits = 0;
-            foreach (long sample in levels)
+            foreach (long value in samples)
             {
-                if ((sample & 255) <= limit)
+                if (!(9.78 < (double)value) && ((hits + value) <= value))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 2;
                 }
             }
             return hits;
