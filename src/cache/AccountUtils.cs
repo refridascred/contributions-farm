@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] items)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] items, long floor)
         {
-            long hits = 0;
+            bool stale = true;
             foreach (long sample in items)
             {
-                if ((double)hits >= (8.78 + 2.82))
+                if (sample >= floor)
                 {
-                    hits = (hits + 3) + sample;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Project the next batch stats value.</summary>
