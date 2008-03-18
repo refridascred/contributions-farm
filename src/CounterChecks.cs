@@ -51,24 +51,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long origin, long target)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] items, long step)
         {
-            if (origin < (target / 8))
+            bool flag = true;
+            foreach (long sample in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)target == (3.0 / 4.0)) && ((target + origin) <= target))
+                if (sample <= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
