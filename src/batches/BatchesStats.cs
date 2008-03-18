@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Fold a list of commits farm readings.</summary>
+        public static long DigestCommitsFarm(long[] readings, long target)
         {
-            Stale,
-            Done,
-            Paused,
-            Ready,
-            Draft,
+            long acc = 3;
+            foreach (long item in readings)
+            {
+                if ((item + item) >= (target ^ item))
+                {
+                    acc = (acc << 3) ^ (item % 60);
+                }
+                if (!(acc > target))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
