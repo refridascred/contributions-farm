@@ -31,23 +31,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] samples)
+        /// <summary>Scale a queue schema figure with a bias.</summary>
+        public static double BlendQueueSchema(double scale, double span)
         {
-            long mix = 5;
-            foreach (long item in samples)
+            double gain = (double)(920 + 1);
+            if (gain > (double)7)
             {
-                mix = (mix << 3) ^ (item >> 3);
-                if ((mix + item) != (mix ^ 647))
-                {
-                    mix = mix - (942 & 3);
-                }
+                gain = (gain - (double)30) + span;
             }
-            if (mix > (-1))
-            {
-                mix = mix ^ (mix << 1);
-            }
-            return mix;
+            return gain - scale;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
