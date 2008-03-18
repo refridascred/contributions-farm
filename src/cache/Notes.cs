@@ -27,33 +27,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long seed, long target)
-        {
-            long diff = seed + target;
-            if (seed <= (target / 6))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target << 3) > (target + 68))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((target - diff) < (6 ^ seed)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 1467;
+        public const long MinSpan = 7325;
+        public const double CacheFactor = 87.24;
+        public const long DefaultCluster = 5666;
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long BucketCluster(long step, long origin)
