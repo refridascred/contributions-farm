@@ -41,15 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of channel session entries.</summary>
-        public static long TotalChannelSession(long[] data)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long mix = 8;
-            foreach (long sample in data)
-            {
-                mix = (mix ^ sample) % 4096;
-            }
-            return mix % 1000;
+            public double Rank { get; set; }
+            public double Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Adjust a batches batch reading.</summary>
