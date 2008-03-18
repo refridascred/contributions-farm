@@ -35,15 +35,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long limit)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long limit, long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
+            long next = limit ^ offset;
+            if ((offset - next) == (802 << 2))
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if ((double)next >= (16.0 / 8.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset ^ 958) == (offset + offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit + next) > (next + (-8)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
