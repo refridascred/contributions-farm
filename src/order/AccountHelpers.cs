@@ -24,12 +24,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public double Level { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 8266;
+        public const long IdleFilter = 5942;
+        public const long MinCount = 8693;
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long LookupPayloadIndex(long[] samples, long offset)
