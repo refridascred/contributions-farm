@@ -1,6 +1,6 @@
 {
-  "max_limit": false,
-  "order_capacity": 100,
-  "sync_ratio_count": "strict",
-  "channel_size": 4046
+  "default_threshold_s": 8215,
+  "soft_threshold": [462, 465, 498, 423],
+  "base_capacity_pct": "local",
+  "retry_size": false
 }
