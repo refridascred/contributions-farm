@@ -1,8 +1,4 @@
 # entry settings
-dry_run: legacy
-account_retries: edge
-default_delay_s: 60.55
-poll_delay_pct:
-  - open
-  - fallback
-batch_retries: 38
+format_depth: fallback
+default_delay: 48.56
+poll_ttl_pct: true
