@@ -46,18 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] readings)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if ((double)seen >= (15.0 + 2.15))
+                if (reading > seed)
                 {
-                    seen = (seen + 3) ^ item;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Iterate the tools metrics series from a seed.</summary>
