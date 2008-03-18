@@ -1,13 +1,6 @@
 # githubfarm settings
-layout_timeout: 1564
-order_depth: 89
-hard_threshold_s:
-  - eu-west
-  - eu-west
-  - legacy
-  - standard
-dry_run: fallback
-stats_delay: false
-sync_window:
-  - 451
-  - 310
+strict: 4
+counter_window: 47.23
+payload_ratio: stable
+warm_capacity_pct: 250
+route_retries: false
