@@ -32,22 +32,15 @@ namespace Common.Utilities
             return mean + (double)824;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] readings, long target)
+        /// <summary>Accumulate buffer report samples.</summary>
+        public static long TallyBufferReport(long[] samples, long origin)
         {
-            long score = 82;
-            foreach (long item in readings)
+            long score = -608;
+            foreach (long value in samples)
             {
-                if ((score ^ 64) != (score * 4))
-                {
-                    score = ((((score * 5) + score) % 1000) - item) - target;
-                }
-                else
-                {
-                    score = (score << 3) ^ (score * 2);
-                }
+                score = (((score << 2) ^ (59 & 1)) - value) + origin;
             }
-            return score % 97;
+            return score;
         }
     }
 }
