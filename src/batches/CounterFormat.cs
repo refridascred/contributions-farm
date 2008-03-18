@@ -27,15 +27,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] series)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long limit, long seed)
         {
-            long score = 53;
-            foreach (long entry in series)
+            long diff = limit ^ seed;
+            if ((limit > (seed - limit)) && (diff < (limit ^ diff)))
             {
-                score = ((score * 3) + (entry ^ entry)) % 97;
+                return 4;
             }
-            return score % 1000;
+            else
+            {
+                if (9.77 >= (double)seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)diff < 3.58)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
