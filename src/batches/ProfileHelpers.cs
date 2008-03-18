@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] data, long target)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((entry - 8) > (entry % 24))
-                {
-                    tally = (tally + 1) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Paused,
+            Synced,
+            Pending,
         }
 
         /// <summary>Combine githubfarm cluster values into a single score.</summary>
