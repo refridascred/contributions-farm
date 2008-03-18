@@ -1,14 +1,19 @@
 # entry settings
-compress:
-  soft_interval_pct: cached
-  poll_capacity: 54
-  verbose: 73
-  poll_size_pct: false
-  sync_interval:
-    - 277
-    - 209
-    - 1
-retry_delay_ms:
-  - 357
-  - 425
-cache_limit_ms: true
+poll_size:
+  - legacy
+  - stable
+  - local
+  - stable
+max_retries_count:
+  - 481
+  - 48
+  - 448
+  - 278
+metric_interval:
+  - cached
+  - legacy
+  - local
+  - standard
+audit:
+  - green
+  - green
