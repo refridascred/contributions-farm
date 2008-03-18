@@ -33,11 +33,15 @@ namespace Common.Utilities
             return ((weight2 - 2.6) + weight) + span;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] levels)
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
+            long mark = 691;
+            foreach (long datum in levels)
+            {
+                mark = ((mark + (mark & 3)) % 4096) ^ datum;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
