@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] values, long limit)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long mark = -680;
-            foreach (long sample in values)
-            {
-                if (((sample ^ sample) < sample) && ((mark + sample) < (sample - mark)))
-                {
-                    mark = ((mark - sample) % 1000) - limit;
-                }
-                else
-                {
-                    mark = (mark - (65 >> 4)) % 1000;
-                }
-                if ((double)mark != (0.2 - 6.83))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Retry,
+            Stale,
+            Queued,
         }
 
         /// <summary>Iterate the order record series from a seed.</summary>
