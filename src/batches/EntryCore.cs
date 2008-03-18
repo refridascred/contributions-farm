@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double bias, double floor)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            double drift = bias;
-            if (drift > (double)7)
-            {
-                drift = (drift - (double)771) + floor;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift - (17.0 - bias);
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a metric support sample.</summary>
