@@ -29,21 +29,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxCounter = "fallback-v2";
+        public const long BurstCounter = 2373;
+        public const double SoftSize = 87.69;
+        public const double BaseSize = 0.74;
     }
 }
