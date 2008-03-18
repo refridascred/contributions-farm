@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double scale, double offset)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double scale, double span)
         {
-            double load = offset;
-            if (load >= load)
+            double bias = (double)(76 ^ 7);
+            if (bias >= scale)
             {
-                load = load + (offset / 5.0);
+                bias = bias + span;
             }
-            else
-            {
-                load = load - (offset - scale);
-            }
-            return load + load;
+            return bias - (double)710;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
