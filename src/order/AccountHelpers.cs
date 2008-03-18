@@ -74,13 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] values)
         {
-            Queued,
-            Locked,
-            Done,
-            Pending,
+            long carry = 19;
+            foreach (long value in values)
+            {
+                carry = ((carry + 63) % 4096) + value;
+            }
+            if (carry > 5)
+            {
+                carry = (carry ^ carry) % 1000;
+            }
+            return carry % 97;
         }
     }
 }
