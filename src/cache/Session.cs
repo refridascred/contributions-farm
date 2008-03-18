@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string CacheGithubfarm = "stable-edge";
-        public const double BatchGithubfarm = 25.19;
-        public const long RetryGithubfarm = 581;
-        public const double BatchCount = 25.62;
-        public const double SoftGithubfarm = 73.6;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] data, long limit)
+        {
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
