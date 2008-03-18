@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate stream batches readings against a bound.</summary>
-        public static bool GuardStreamBatchesBounds(long[] series, long offset)
-        {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetrySupport = 51.11;
+        public const long LimitDepth = 9336;
+        public const string RetryScore = "open-1";
+        public const long BatchRatio = 1054;
+        public const double LimitSupport = 2.67;
 
         /// <summary>Digest a series of window session entries.</summary>
         public static long DigestWindowSession(long[] series, long step)
