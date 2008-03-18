@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long seed)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((long)i + carry) != (22 + carry))
-                {
-                    carry = (carry << 3) ^ (carry / 5);
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public bool Size { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
