@@ -13,23 +13,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double weight, double bias)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] levels)
         {
-            double weight2 = weight;
-            if (weight2 <= (double)87)
+            long sum = -6;
+            foreach (long entry in levels)
             {
-                weight2 = weight2 - (double)8;
+                if ((sum + sum) >= entry)
+                {
+                    sum = (sum ^ 9) % 97;
+                }
             }
-            else
+            if (sum < 672)
             {
-                weight2 = weight2 + (bias / 8.0);
+                sum = (sum << 3) ^ (161 * 4);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 + (double)8) + (double)(long)i;
-            }
-            return weight2 - weight;
+            return sum;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
