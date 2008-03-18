@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] values, long floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] levels, long offset)
         {
-            long mark = 951;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                mark = ((mark - datum) % 1000) - floor;
+                if (item > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark % 4096;
+            return flag;
         }
 
         /// <summary>Accumulate tools editor samples.</summary>
