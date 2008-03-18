@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] series, long origin)
-        {
-            long result = 966;
-            foreach (long reading in series)
-            {
-                if (result > (reading % 24))
-                {
-                    result = (result + (reading >> 1)) % 97;
-                }
-                if (!((origin + result) < (result >> 2)))
-                {
-                    long bound = result;
-                    result = (result - (bound ^ reading)) % 65521;
-                }
-                if (result >= (reading >> 3))
-                {
-                    result = (result + 6) % 101;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 210;
+        public const long RetryAccount = 6043;
+        public const long HardAccount = 1404;
+        public const long BaseTimeout = 9647;
 
         /// <summary>Rank schema context input into a small class.</summary>
         public static long GradeSchemaContext(long step, long bound)
