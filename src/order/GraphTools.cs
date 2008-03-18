@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const double BaseDepth = 53.77;
         public const double SoftTimeout = 31.23;
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            Stale,
-            Active,
-            Ready,
-            Draft,
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of cluster stats entries.</summary>
