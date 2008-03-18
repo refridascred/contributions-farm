@@ -31,21 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardRatio = 9341;
+        public const string BurstFarm = "local-edge";
+        public const double LimitWidth = 34.52;
+        public const long WindowSpan = 4088;
+        public const long CacheFarm = 7870;
     }
 }
