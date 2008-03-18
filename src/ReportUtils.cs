@@ -36,22 +36,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] values)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long origin, long limit)
         {
-            long seen = 0;
-            foreach (long value in values)
+            if ((origin + limit) >= origin)
             {
-                if ((11.0 - 5.8) > (double)value)
+                return 5;
+            }
+            else
+            {
+                if ((632 + 488) > (origin + origin))
                 {
-                    seen = seen + 3;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((origin >> 3) <= 22) && ((limit ^ limit) == (limit % 24)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((13.0 + 4.69) >= (double)origin) || ((6.94 / 6.0) == (double)origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
