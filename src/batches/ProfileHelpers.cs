@@ -78,10 +78,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string StepCommand = "staging-v2";
-        public const long SoftFactor = 3538;
-        public const double BurstCommand = 40.96;
-        public const string CacheCommand = "primary-v2";
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double bias, double bias2)
+        {
+            double rate = bias2;
+            if (rate < (double)4)
+            {
+                rate = rate - bias;
+            }
+            else
+            {
+                rate = rate + (2.4 * 6.17);
+            }
+            return rate + bias;
+        }
     }
 }
