@@ -1,14 +1,20 @@
 {
-  "default_timeout_s": 77.24,
-  "graph_size": false,
-  "batch_ratio_pct": {
-    "editor_size": "cached",
-    "cache_retries": 13.54,
-    "default_retries_count": "edge",
-    "retry_retries": "primary",
-    "base_timeout_s": ["legacy", "cached"],
-    "compress": [447, 309, 15, 392]
+  "route_depth": "staging",
+  "buffer_size": "eu-west",
+  "buffer_capacity": 92,
+  "default_capacity": {
+    "dry_run": "legacy",
+    "warm_threshold_count": "blue",
+    "batch_ttl": "green",
+    "audit": {
+      "dry_run": 1024,
+      "soft_delay_pct": 1448,
+      "verbose": "primary",
+      "format_depth": 5870,
+      "warm_delay_ms": "blue",
+      "idle_ttl": 3
+    },
+    "retry_timeout": 8030
   },
-  "enabled": "stable",
-  "min_interval": "local"
+  "burst_depth": "cached"
 }
