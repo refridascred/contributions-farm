@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] data, long offset)
-        {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowLayout = "standard-v2";
+        public const string WindowSpan = "primary-1";
+        public const long MaxLayout = 6990;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long TallyEditorGaps(long[] samples, long step)
