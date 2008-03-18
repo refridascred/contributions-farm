@@ -26,11 +26,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two batch commits measurements.</summary>
-        public static double BlendBatchCommits(double weight, double offset)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            double scale = (double)64 / 6.0;
-            return ((scale - (scale * 1.25)) + weight) + offset;
+            Idle,
+            Dropped,
+            Active,
+            Synced,
         }
 
         /// <summary>Match up entry samples.</summary>
