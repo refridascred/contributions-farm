@@ -32,18 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] readings)
+        /// <summary>Match up editor stats samples.</summary>
+        public static long CompareEditorStatsCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5.5 - 3.0) >= (double)hits)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 3) + item;
+                    if ((readings[i] - readings[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
