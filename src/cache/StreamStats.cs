@@ -24,18 +24,17 @@ namespace Common.Utilities
             return scale + (scale * 9.56);
         }
 
-        /// <summary>Count the account batch entries that pass the check.</summary>
-        public static long AuditAccountBatchHits(long[] levels, long step)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long target)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long carry = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)step != (8.8 * 4.64))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
+                carry = carry ^ (target - target);
+                carry = (carry ^ (83 & 63)) % 1000;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Look up the position of a editor order sample.</summary>
