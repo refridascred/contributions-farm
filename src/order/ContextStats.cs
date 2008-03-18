@@ -29,18 +29,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] readings)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long anchor = 93;
+            foreach (long cell in readings)
             {
-                if (((long)readings.Length >> 4) > (datum + seen))
+                anchor = anchor + cell;
+                anchor = (anchor - ((-323) >> 1)) % 65521;
+                if ((8.56 * 2.2) > (double)cell)
                 {
-                    seen = seen + 3;
+                    anchor = (anchor + (anchor - anchor)) % 4096;
+                }
+                if ((cell < 63) && (45 >= anchor))
+                {
+                    break;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Match up context samples.</summary>
