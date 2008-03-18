@@ -22,21 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up cache metrics samples.</summary>
-        public static long OverlapCacheMetricsCount(long[] data)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 203;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((total & 15) == (long)data.Length)
                 {
-                    if ((data[i] ^ data[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total + (2 >> 3)) % 97) + reading;
+                }
+                else
+                {
+                    total = (total << 3) ^ (offset - total);
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the batch phase values.</summary>
