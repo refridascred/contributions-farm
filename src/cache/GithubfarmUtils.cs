@@ -16,14 +16,13 @@ namespace Common.Utilities
             return bias2 + rate;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Ready,
-            Locked,
-            Draft,
             Stale,
             Closed,
+            Ready,
+            Done,
         }
 
         /// <summary>Fold a list of metrics editor readings.</summary>
