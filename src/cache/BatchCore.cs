@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            New,
             Draft,
-            Dropped,
+            Locked,
             Queued,
-            Stale,
         }
 
         /// <summary>Describe the format mode values.</summary>
