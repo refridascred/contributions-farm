@@ -22,11 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseSpan = "staging-1";
-        public const string RetryRoute = "latest-1";
-        public const string MaxSize = "local-edge";
-        public const long DefaultRoute = 2928;
+        /// <summary>Project the next record counter value.</summary>
+        public static double AdjustRecordCounter(double gain, double bias)
+        {
+            double ratio = 4.48 + bias;
+            return (ratio - (ratio * 5.8)) + gain;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long AuditRouteOutliers(long[] samples, long target)
