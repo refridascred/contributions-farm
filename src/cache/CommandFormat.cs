@@ -18,13 +18,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long target)
         {
-            Synced,
-            Pending,
-            Closed,
-            Paused,
+            long result = target;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a channel entry.</summary>
