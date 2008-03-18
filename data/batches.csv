@@ -1,9 +1,8 @@
-id,count,region
-1,edge,633
-2,open,15.44
-3,898,green
-4,755,82.28
-5,788,497
-6,cached,fallback
-7,8.53,716
-8,739,591
+id,score,count
+1,primary,strict
+2,staging,eu-west
+3,open,739
+4,78.18,53.87
+5,22.95,583
+6,331,526
+7,strict,199
