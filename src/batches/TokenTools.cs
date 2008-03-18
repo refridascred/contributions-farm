@@ -20,12 +20,12 @@ namespace Common.Utilities
         public const string HardInterval = "open";
         public const long CacheInterval = 6591;
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            public double Level { get; set; }
-            public bool Label { get; set; }
-            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public double Stamp { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
