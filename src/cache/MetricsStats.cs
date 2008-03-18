@@ -34,18 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] data)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (((entry + 81) == (seen + entry)) && (((seen % 2) >= (seen + seen)) && ((0.2 * 5.58) <= (double)entry)))
+                if ((hits - hits) >= (reading - reading))
                 {
-                    seen = seen + 2;
+                    hits = (hits + 2) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
