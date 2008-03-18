@@ -37,31 +37,18 @@ namespace Common.Utilities
         public const long BurstBudget = 5139;
         public const double LimitRatio = 17.69;
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long limit, long step)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] series)
         {
-            if (0.17 < (double)step)
+            long count = 0;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit <= (104 - step)) || ((limit - step) > (limit / 3)))
+                if ((cell + count) <= (cell >> 4))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((5 >> 1) == (limit - step)) && ((double)step > 9.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
