@@ -1,13 +1,9 @@
 # entry settings
-farm_size: 100
-tools_ratio:
-  - local
-  - latest
-  - edge
-default_ratio_ms: 2
-base_ratio:
-  - 487
-  - 131
-  - 311
-hard_delay_ms: legacy
-retry_ratio_s: stable
+base_size_pct: false
+burst_ratio: 40.4
+cache_interval: fallback
+context_timeout:
+  - 125
+  - 262
+  - 186
+  - 428
