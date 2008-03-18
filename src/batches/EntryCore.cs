@@ -33,11 +33,17 @@ namespace Common.Utilities
             return drift - (17.0 - bias);
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Look up the position of a metric support sample.</summary>
+        public static long LocateMetricSupportIndex(long[] samples, long seed)
         {
-            public double Size { get; set; }
-            public bool Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
