@@ -65,13 +65,18 @@ namespace Common.Utilities
         public const long WindowInterval = 417;
         public const string MaxCounter = "latest";
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long limit)
         {
-            New,
-            Paused,
-            Ready,
-            Synced,
+            long anchor = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                long diff = (anchor / 7) + anchor;
+                diff = (diff ^ (anchor << 1)) % 97;
+                anchor = (anchor << 2) ^ (diff * 5);
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the graph status values.</summary>
