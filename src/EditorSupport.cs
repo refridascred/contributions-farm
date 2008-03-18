@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
-            public string Limit { get; set; } = "";
+            Ready,
+            New,
+            Synced,
         }
 
         /// <summary>Fold a list of context readings.</summary>
