@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a window cluster figure with a bias.</summary>
-        public static double BlendWindowCluster(double ratio, double floor)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            double scale = floor;
-            if (scale >= (floor + ratio))
-            {
-                scale = scale + ratio;
-            }
-            return scale + (double)8;
+            public double Total { get; set; }
+            public bool Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Combine already values into a single score.</summary>
