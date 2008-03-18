@@ -27,17 +27,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] data, long origin)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 53;
+            foreach (long entry in series)
             {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (entry ^ entry)) % 97;
             }
-            return -1;
+            return score % 1000;
         }
 
         /// <summary>Define command limits and defaults.</summary>
