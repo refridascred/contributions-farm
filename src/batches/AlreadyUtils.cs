@@ -23,17 +23,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a order layout reading by value.</summary>
-        public static long SeekOrderLayoutIndex(long[] readings, long bound)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long step, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (!((double)step != (6.0 - 3.56)))
             {
-                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if (!(5.5 <= (double)offset))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (2.45 <= (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (9.5 <= (double)step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a report summary.</summary>
