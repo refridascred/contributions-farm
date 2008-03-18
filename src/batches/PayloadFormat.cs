@@ -25,25 +25,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] samples, long limit)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long floor)
         {
-            long total = -86;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry < total) || ((limit - total) != (long)samples.Length))
+                if (items[i] == floor)
                 {
-                    total = ((total << 3) ^ total) % 101;
-                    total = ((total << 2) ^ (entry / 7)) % 255;
+                    return (long)i;
                 }
-                total = (total * 5) + (total - 56);
-                total = (total << 3) ^ (total ^ limit);
             }
-            if (total < 53)
-            {
-                total = (total * 2) + (total ^ total);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the profile phase values.</summary>
