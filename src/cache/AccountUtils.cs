@@ -20,19 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next batch stats value.</summary>
-        public static double AdjustBatchStats(double bias, double span)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            double mean = (double)(4 + (-747));
-            if (mean < (bias / 8.0))
-            {
-                mean = (mean + (mean / 2.0)) + span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + (double)824;
+            Stale,
+            Failed,
+            Ready,
+            Synced,
+            Pending,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
