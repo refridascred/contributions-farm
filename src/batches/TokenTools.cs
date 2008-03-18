@@ -12,15 +12,25 @@ namespace Common.Utilities
         public const long HardFactor = 6262;
         public const long RetryLevel = 931;
 
-        /// <summary>Iterate the account githubfarm series from a seed.</summary>
-        public static long SeriesAccountGithubfarm(long origin)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long target, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
+            long gap = target ^ seed;
+            if (!((176 + target) < (target - gap)))
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if ((gap * 5) < target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
