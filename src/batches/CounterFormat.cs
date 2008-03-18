@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] samples)
+        /// <summary>Audit record cluster readings against a rule.</summary>
+        public static long AuditRecordClusterOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((((94 + count) == (sample ^ count)) && ((count - count) <= (sample % 5))) || (((long)samples.Length + count) == (436 * 2)))
+                if ((double)entry <= (0.34 - 0.8))
                 {
-                    count = count + 3;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a checks header.</summary>
