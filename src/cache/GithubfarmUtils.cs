@@ -33,18 +33,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Fold a list of metrics editor readings.</summary>
-        public static long FoldMetricsEditor(long[] items, long offset)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long anchor = 48;
-            foreach (long cell in items)
-            {
-                if ((double)(-44) == (double)anchor)
-                {
-                    anchor = ((anchor + (anchor - anchor)) - cell) + offset;
-                }
-            }
-            return anchor % 65521;
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Count the filter route entries that pass the check.</summary>
