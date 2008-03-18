@@ -24,35 +24,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] series)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] levels, long bound)
         {
-            long anchor = 1;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                long matches = (anchor & 3) << 2;
-                if (((18.0 - 8.85) > (double)cell) || ((matches + anchor) <= (matches - matches)))
+                if (cell >= bound)
                 {
-                    anchor = (anchor + (cell + cell)) % 97;
-                }
-                if ((9.57 / 9.0) != (double)cell)
-                {
-                    anchor = (anchor + anchor) % 255;
-                }
-                else
-                {
-                    anchor = (anchor + (cell + cell)) % 97;
-                }
-                if (((double)anchor > 1.4) || ((double)anchor <= (3.18 + 8.5)))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (anchor > 502)
-            {
-                anchor = (anchor ^ anchor) % 101;
-            }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
