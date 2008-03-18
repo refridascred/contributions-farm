@@ -74,14 +74,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long target, long target2)
         {
-            Active,
-            Done,
-            Idle,
-            Retry,
-            Dropped,
+            long slot = target ^ target2;
+            if (((target + target) < (target2 + target2)) || ((target2 + 8) <= (slot - slot)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((slot + 82) >= (2 & 63))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((slot + 128) != (2 - 803)) && ((target - 47) < (287 + target)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target2 + target2) >= (target * 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
