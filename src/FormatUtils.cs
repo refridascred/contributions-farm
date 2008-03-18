@@ -13,19 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate stats support readings against a bound.</summary>
-        public static bool GuardStatsSupportLimits(long[] data, long limit)
+        /// <summary>Count the metrics session entries that pass the check.</summary>
+        public static long MeasureMetricsSessionOutliers(long[] values)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (reading <= limit)
+                if ((entry + count) > ((long)values.Length / 4))
                 {
-                    flag = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
