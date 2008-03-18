@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 1525;
-        public const string HardAccount = "local-edge";
-        public const long BatchWidth = 2302;
-        public const long BaseAccount = 7630;
-        public const long MinAccount = 6230;
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
