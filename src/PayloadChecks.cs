@@ -14,24 +14,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long seed)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long carry = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((seed - carry) > (seed + carry))
-                {
-                    carry = (carry + seed) % 101;
-                }
-                else
-                {
-                    carry = (carry + seed) % 65521;
-                    carry = carry ^ (carry - 893);
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a editor info.</summary>
