@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Measure how many filter metric samples are out of range.</summary>
+        public static long MeasureFilterMetricHits(long[] items, long step)
         {
-            public long Level { get; set; }
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((cell & 3) < (cell + hits))
+                {
+                    hits = (hits + 2) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a filter format value against two limits.</summary>
