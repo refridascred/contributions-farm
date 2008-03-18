@@ -49,17 +49,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == seed) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardDepth = 1046;
+        public const long RetryWidth = 6698;
+        public const long StepFactor = 4550;
+        public const long RetryCache = 5989;
     }
 }
