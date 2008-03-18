@@ -72,10 +72,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxLevel = 1505;
-        public const long IdleCount = 1700;
-        public const double LimitWidth = 33.11;
-        public const double LimitInterval = 95.24;
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Done,
+            Paused,
+            Closed,
+            Ready,
+        }
     }
 }
