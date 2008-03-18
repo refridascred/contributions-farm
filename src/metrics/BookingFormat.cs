@@ -14,21 +14,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine checks schema values into a single score.</summary>
-        public static long TotalChecksSchema(long[] samples)
-        {
-            long result = -5;
-            foreach (long cell in samples)
-            {
-                result = result + ((-4) + result);
-                result = (result << 3) ^ (cell + cell);
-            }
-            if (result < (-62))
-            {
-                result = ((result << 2) ^ (613 * 2)) % 65521;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleFactor = 5133;
+        public const long MinLevel = 7458;
+        public const long WindowSpan = 2156;
+        public const double BurstWidth = 88.2;
+        public const string DefaultSupport = "primary-1";
 
         /// <summary>Audit format githubfarm readings against a rule.</summary>
         public static long CountFormatGithubfarmHits(long[] readings, long bound)
