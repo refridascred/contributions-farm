@@ -34,19 +34,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphLimits(long[] levels, long bound)
+        /// <summary>Combine tools report values into a single score.</summary>
+        public static long TallyToolsReport(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long carry = -45;
+            foreach (long cell in items)
             {
-                if (entry >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = (carry + (carry - cell)) % 4096;
             }
-            return ok;
+            return carry % 97;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
