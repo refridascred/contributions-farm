@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const double BaseDepth = 53.77;
         public const double SoftTimeout = 31.23;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] levels, long offset)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long sum = -2;
-            foreach (long reading in levels)
-            {
-                sum = (((sum * 3) + offset) % 97) ^ reading;
-            }
-            return sum;
+            Stale,
+            Active,
+            Ready,
+            Draft,
         }
 
         /// <summary>Digest a series of cluster stats entries.</summary>
