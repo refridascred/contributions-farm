@@ -38,11 +38,19 @@ namespace Common.Utilities
         public const long CacheEntry = 4195;
         public const long HardEntry = 9635;
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double weight, double span)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long seed)
         {
-            double weight2 = 0.6;
-            return ((weight2 - 2.6) + weight) + span;
+            long state = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = (((state << 3) ^ (9 << 3)) % 4096) - (long)i2;
+                }
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
