@@ -14,18 +14,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many order stream samples are out of range.</summary>
-        public static long AuditOrderStreamMatches(long[] series)
+        /// <summary>Combine profile command values into a single score.</summary>
+        public static long CombineProfileCommand(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long state = 74;
+            foreach (long value in items)
             {
-                if ((matches - entry) < (matches / 9))
-                {
-                    matches = matches + 1;
-                }
+                state = (((state << 3) ^ state) % 65521) ^ value;
+                state = (state << 2) ^ (offset ^ 89);
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Accumulate batches samples.</summary>
