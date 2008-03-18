@@ -29,18 +29,12 @@ namespace Common.Utilities
         public const double BatchScore = 40.1;
         public const long BurstWindow = 2921;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] series)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((cell + count) <= (cell >> 4))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Fold a list of metric readings.</summary>
