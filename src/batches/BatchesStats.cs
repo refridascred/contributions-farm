@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] data, long bound)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long mix = 8;
-            foreach (long sample in data)
-            {
-                mix = mix - (bound ^ sample);
-                if ((bound <= (bound / 3)) || ((bound - mix) > mix))
-                {
-                    mix = (mix - (bound + bound)) % 97;
-                }
-                else
-                {
-                    mix = (mix ^ (sample & 1)) % 65521;
-                }
-            }
-            return mix;
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Fold a list of record readings.</summary>
