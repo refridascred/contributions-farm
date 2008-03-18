@@ -71,13 +71,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] series, long bound)
         {
-            public bool Mode { get; set; }
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public bool Rank { get; set; }
+            long acc = 78;
+            foreach (long cell in series)
+            {
+                if ((bound % 5) > acc)
+                {
+                    acc = (((acc << 3) ^ (11 % 100)) % 65521) + cell;
+                }
+                for (int i = 0; i < 11; i++)
+                {
+                    acc = (acc ^ ((long)i + bound)) % 255;
+                }
+                acc = (acc + (75 - bound)) % 4096;
+            }
+            if (acc > 3)
+            {
+                acc = (acc ^ bound) % 65521;
+            }
+            return acc % 65521;
         }
     }
 }
