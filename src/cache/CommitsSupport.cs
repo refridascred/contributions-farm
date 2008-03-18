@@ -34,11 +34,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double weight, double bias)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            double rate = weight;
-            return (rate - rate) + bias;
+            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
