@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] values, long target)
         {
-            Dropped,
-            Idle,
-            Synced,
-            Stale,
-            Active,
+            long result = 760;
+            foreach (long entry in values)
+            {
+                if ((result < entry) || ((entry ^ (long)values.Length) != (result % 5)))
+                {
+                    result = ((result ^ (result & 255)) % 4096) - target;
+                }
+                else
+                {
+                    result = (result << 2) ^ (822 + 8);
+                }
+            }
+            if (result > 695)
+            {
+                result = result + (result * 2);
+            }
+            return result;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
