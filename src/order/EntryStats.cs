@@ -14,38 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a commits format pair into a bucket.</summary>
-        public static long BucketCommitsFormat(long step, long bound)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            if ((677 << 2) < (6 + bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step * 4) <= 91)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)6 > (double)step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound ^ step) != (bound & 7))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Rank token input into a small class.</summary>
