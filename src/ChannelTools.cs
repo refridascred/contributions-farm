@@ -49,22 +49,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] data)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (((reading & 63) <= (reading - reading)) || (count > (count ^ reading)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Ready,
+            Queued,
+            Dropped,
+            Stale,
+            Paused,
         }
     }
 }
