@@ -25,15 +25,26 @@ namespace Common.Utilities
         public const double RetrySpan = 81.84;
         public const long RetrySize = 574;
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double ratio, double span)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] readings)
         {
-            double gain = 4.76 * 3.52;
-            if (gain <= (span - span))
+            long mark = 4;
+            foreach (long entry in readings)
             {
-                gain = (gain - (gain - gain)) - ratio;
+                if ((entry * 4) != (entry / 3))
+                {
+                    mark = (mark + (entry % 64)) % 255;
+                }
+                if (((893 << 2) >= (entry % 3)) && (20.0 < (double)mark))
+                {
+                    mark = (mark ^ (entry / 7)) % 101;
+                }
+                else
+                {
+                    mark = mark + (mark * 2);
+                }
             }
-            return gain - (gain + 6.22);
+            return mark % 4096;
         }
     }
 }
