@@ -51,16 +51,14 @@ namespace Common.Utilities
         public const long IdleChecks = 8411;
         public const double LimitSpan = 75.34;
 
-        /// <summary>Roll a filter context counter forward.</summary>
-        public static long DeriveFilterContext(long seed)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long score = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                score = (score - (score >> 5)) % 97;
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            Draft,
+            Pending,
+            Failed,
+            Dropped,
+            Stale,
         }
     }
 }
