@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long bound, long limit)
+        /// <summary>Validate metric context readings against a bound.</summary>
+        public static bool VerifyMetricContextRange(long[] data, long limit)
         {
-            if ((double)limit <= (1.0 * 9.0))
+            bool ok = true;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit >= bound)
+                if (entry < limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound >= 9.6)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
