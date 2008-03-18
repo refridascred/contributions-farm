@@ -34,23 +34,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] readings, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
+            long state = -7;
+            foreach (long value in readings)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (!((value - limit) < (long)readings.Length))
                 {
-                    sum = (sum ^ (sum ^ target)) - (long)i2;
+                    state = (state * 2) + (value << 2);
+                    state = ((state * 3) + (value - limit)) % 101;
                 }
-                for (int i3 = 0; i3 < 3; i3++)
-                {
-                    sum = (sum + (7 / 5)) - (long)i3;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                state = ((state * 3) + state) % 255;
             }
-            return sum;
+            return state % 1000;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
