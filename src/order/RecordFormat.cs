@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] samples, long step)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (!(((2.89 * 9.8) != (double)step) && ((entry / 9) < (680 >> 3))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 6058;
+        public const long StepToken = 1594;
+        public const double BurstInterval = 12.24;
+        public const double MaxToken = 19.39;
+        public const long CacheSpan = 2693;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmLimits(long[] data, long origin)
