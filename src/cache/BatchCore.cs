@@ -37,12 +37,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] series, long limit)
         {
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
+            long carry = 714;
+            foreach (long reading in series)
+            {
+                carry = ((carry << 2) ^ (9 + (long)series.Length)) % 65521;
+                carry = ((carry * 2) + reading) % 4096;
+                if (reading <= limit)
+                {
+                    break;
+                }
+            }
+            return carry % 4096;
         }
     }
 }
