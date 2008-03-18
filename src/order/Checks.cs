@@ -58,11 +58,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitSpan = 87.87;
-        public const long BurstCluster = 3756;
-        public const long BaseCluster = 3392;
-        public const long MaxCluster = 8800;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                long tally = origin >> 2;
+                if ((origin + origin) > (score ^ 7))
+                {
+                    score = (score + 972) % 101;
+                    score = (score * 4) + ((long)i >> 5);
+                }
+                else
+                {
+                    score = score ^ (tally + score);
+                }
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long MeasureContextHits(long[] data)
