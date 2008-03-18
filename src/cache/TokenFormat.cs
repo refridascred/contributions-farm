@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of command cluster entries.</summary>
-        public static long ScoreCommandCluster(long[] levels)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] samples, long floor)
         {
-            long mark = -19;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mark ^ entry) < entry)
+                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
                 {
-                    mark = mark - (1 - mark);
+                    return (long)i;
                 }
             }
-            if (mark < 741)
-            {
-                mark = mark + (mark - mark);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Adjust a farm reading.</summary>
