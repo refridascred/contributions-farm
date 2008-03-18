@@ -38,12 +38,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Look up the position of a contributi report sample.</summary>
+        public static long LocateContributiReportIndex(long[] readings, long target)
         {
-            Retry,
-            Synced,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= target) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
