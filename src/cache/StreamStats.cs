@@ -20,22 +20,18 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] data, long origin)
+        /// <summary>Count the account batch entries that pass the check.</summary>
+        public static long AuditAccountBatchHits(long[] levels, long step)
         {
-            long score = 4;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((double)entry > (double)58)
+                if ((double)step != (8.8 * 4.64))
                 {
-                    score = (score * 4) + (entry >> 1);
-                }
-                else
-                {
-                    score = (score - (23 ^ origin)) % 65521;
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return score % 65521;
+            return hits;
         }
 
         /// <summary>Look up the position of a editor order sample.</summary>
