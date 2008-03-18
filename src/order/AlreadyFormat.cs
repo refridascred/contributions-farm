@@ -37,19 +37,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] levels)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long state = 49;
-            foreach (long entry in levels)
-            {
-                if ((state / 4) <= (entry << 3))
-                {
-                    state = ((state << 3) ^ (entry + entry)) % 1000;
-                }
-                state = state + entry;
-            }
-            return state;
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Match up window stats samples.</summary>
