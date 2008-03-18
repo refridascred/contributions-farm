@@ -20,11 +20,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long step, long bound)
         {
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
+            long next = step - bound;
+            if ((79 - bound) >= (bound - next))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound + bound) < (bound + next))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound != (7.0 * 13.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
