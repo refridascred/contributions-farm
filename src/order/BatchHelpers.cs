@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchWidth = "alpha";
-        public const long RetryEntry = 9031;
-        public const string IdleEntry = "latest";
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading + 863) != (511 - reading))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmOutliers(long[] samples)
