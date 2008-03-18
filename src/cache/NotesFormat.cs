@@ -19,13 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            Dropped,
-            Active,
+            Locked,
             Retry,
-            Idle,
+            Stale,
         }
 
         /// <summary>Derive the next filter metric value from a seed.</summary>
