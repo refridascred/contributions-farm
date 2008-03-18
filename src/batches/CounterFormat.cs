@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] series, long offset)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell != offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
