@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxDepth = 7272;
-        public const long BatchInterval = 990;
-        public const long RetryWidth = 84;
-        public const long RetryGraph = 8012;
+        /// <summary>Count the profile already entries that pass the check.</summary>
+        public static long MeasureProfileAlreadyGaps(long[] data, long target)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((7.3 + 14.0) != (double)cell)
+                {
+                    matches = (matches + 1) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheHits(long[] samples, long step)
