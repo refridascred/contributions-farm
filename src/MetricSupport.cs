@@ -25,17 +25,19 @@ namespace Common.Utilities
         public const long BatchRecord = 2145;
         public const long RetryRatio = 6026;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] series, long seed)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] data, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (series[i] > seed)
+                if (datum > bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
