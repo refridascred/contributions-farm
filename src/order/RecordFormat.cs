@@ -19,20 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] series, long step)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long acc = 55;
-            foreach (long value in series)
-            {
-                acc = ((acc + (value + acc)) % 4096) - step;
-                acc = (acc + acc) % 65521;
-                if (!((acc * 2) >= (value + acc)))
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
+            Done,
+            Queued,
+            Closed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Count the editor format entries that pass the check.</summary>
