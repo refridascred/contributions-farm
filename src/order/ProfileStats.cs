@@ -30,27 +30,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] levels, long origin)
-        {
-            long score = 941;
-            foreach (long cell in levels)
-            {
-                if ((score / 5) <= origin)
-                {
-                    score = (score - (cell << 1)) % 1000;
-                }
-                if ((score + score) <= (score & 1))
-                {
-                    score = ((score * 5) + (score ^ cell)) % 1000;
-                }
-            }
-            if (score < 8)
-            {
-                score = score - (score + origin);
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 2090;
+        public const long BurstFormat = 9206;
+        public const long LimitInterval = 6334;
+        public const long IdleFormat = 1069;
+        public const double MaxFormat = 86.96;
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
