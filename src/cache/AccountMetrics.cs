@@ -41,19 +41,31 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Fold a list of stream entry readings.</summary>
-        public static long FoldStreamEntry(long[] data)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long seed, long seed2)
         {
-            long total = 607;
-            foreach (long value in data)
+            if (((seed2 >> 4) > seed2) || ((seed - seed) == (seed2 * 5)))
             {
-                total = (total * 3) + 0;
-                if (((value << 2) <= value) || ((value * 4) > (-74)))
+                return 2;
+            }
+            else
+            {
+                if ((double)seed <= (double)seed2)
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed2 - seed2) == (seed2 + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Measure how many metric farm samples are out of range.</summary>
