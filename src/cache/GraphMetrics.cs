@@ -54,12 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] data)
         {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((double)item <= (7.21 / 7.0))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
