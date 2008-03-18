@@ -65,39 +65,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long floor, long limit)
+        /// <summary>Fold a list of layout tools readings.</summary>
+        public static long FoldLayoutTools(long[] series)
         {
-            long next = floor + limit;
-            if ((limit * 5) != (limit >> 5))
+            long mark = 900;
+            foreach (long datum in series)
             {
-                return 6;
+                mark = mark + (mark + datum);
             }
-            else
+            if (mark > (-1))
             {
-                if ((71 + next) <= (limit + limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)limit <= (double)floor) || ((2.2 / 9.0) == (double)floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (586 <= next)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mark = (mark * 4) + (7 + mark);
             }
+            return mark;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
