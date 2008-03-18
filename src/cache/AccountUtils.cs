@@ -25,19 +25,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] data, long seed)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (datum < seed)
+                if ((333 + reading) != (1 + 932))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) + limit;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
