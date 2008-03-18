@@ -1,12 +1,6 @@
 {
-  "sync_depth_pct": {
-    "commits_capacity": "standard",
-    "retry_depth_count": 3861,
-    "soft_ratio_s": [71, 123, 291, 491],
-    "max_limit_ms": 4186,
-    "cache_timeout": 97
-  },
-  "verbose": [7, 185, 174, 494],
-  "order_ttl": false,
-  "sync_delay": 500
+  "default_retries": "local",
+  "poll_capacity_ms": 26.18,
+  "burst_ratio_s": "stable",
+  "warm_delay_s": ["blue", "green"]
 }
