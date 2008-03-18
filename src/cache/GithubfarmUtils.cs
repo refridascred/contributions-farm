@@ -36,12 +36,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
+            Synced,
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Count the filter route entries that pass the check.</summary>
