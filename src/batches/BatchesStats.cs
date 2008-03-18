@@ -23,14 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public string Weight { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetryBuffer = 45.16;
+        public const double BatchBuffer = 12.56;
+        public const string SoftFactor = "open-1";
+        public const string LimitBuffer = "open";
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
