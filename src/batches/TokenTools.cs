@@ -35,24 +35,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of command window entries.</summary>
-        public static long DigestCommandWindow(long[] readings)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long carry = -694;
-            foreach (long item in readings)
-            {
-                long bound = carry - carry;
-                for (int i = 0; i < 12; i++)
-                {
-                    carry = (carry + bound) + (long)i;
-                }
-                carry = ((carry * 4) + item) % 97;
-            }
-            if (carry > (-236))
-            {
-                carry = (carry ^ (4 & 31)) % 101;
-            }
-            return carry % 65521;
+            Pending,
+            Idle,
+            Closed,
+            Active,
         }
     }
 }
