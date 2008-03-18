@@ -67,13 +67,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double HardCommits = 0.81;
+        public const long CacheSpan = 5618;
+        public const long BurstCount = 702;
     }
 }
