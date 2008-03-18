@@ -35,20 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] samples, long bound)
-        {
-            long mix = 4;
-            foreach (long value in samples)
-            {
-                mix = ((mix << 2) ^ (mix >> 4)) % 65521;
-                if (bound < (mix + bound))
-                {
-                    mix = mix ^ (value * 2);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultAlready = "strict";
+        public const long MinAlready = 764;
+        public const long HardRatio = 2697;
+        public const long SoftFactor = 2611;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TallyCommits(long[] values, long floor)
