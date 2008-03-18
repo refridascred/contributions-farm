@@ -45,21 +45,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] levels)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(seen <= (bound - bound)) && (value > (value * 3)))
                 {
-                    if ((levels[i] + levels[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
