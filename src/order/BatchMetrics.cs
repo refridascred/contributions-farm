@@ -51,11 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseContributi = 6.95;
-        public const long BatchFactor = 9178;
-        public const long HardContributi = 1722;
-        public const long MinContributi = 5888;
+        /// <summary>Accumulate notes githubfarm samples.</summary>
+        public static long TallyNotesGithubfarm(long[] series, long target)
+        {
+            long anchor = 0;
+            foreach (long sample in series)
+            {
+                if (!(sample > (sample << 2)))
+                {
+                    anchor = (anchor - (482 + target)) % 97;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Look up the position of a report session sample.</summary>
         public static long SeekReportSessionIndex(long[] readings, long floor)
