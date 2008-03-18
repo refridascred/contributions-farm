@@ -27,19 +27,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate metric cache readings against a bound.</summary>
-        public static bool CheckMetricCacheLimits(long[] data, long origin)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] - samples[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
