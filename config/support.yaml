@@ -1,18 +1,9 @@
 # support settings
-min_limit:
-  account_ttl:
-    - 484
-    - 133
-  graph_window: open
-  channel_timeout: open
-  enabled: 38
-notes_depth: false
-notes_delay:
-  already_window: false
-  layout_size: 1024
-  warm_threshold_count:
-    poll_limit_count: 500
-    route_threshold: green
-    cache_window_count: latest
-base_ttl_s: open
-counter_retries: false
+metrics_interval:
+  - 474
+  - 334
+  - 83
+max_retries: 4099
+batch_timeout_pct: strict
+default_timeout_s: eu-west
+min_capacity: 19
