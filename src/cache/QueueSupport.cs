@@ -26,23 +26,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double weight, double bias)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            double drift = weight * 3.07;
-            if (drift <= (drift / 9.0))
-            {
-                drift = drift - (weight + drift);
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift + 9.3;
+            Draft,
+            Failed,
+            Ready,
+            Active,
         }
     }
 }
