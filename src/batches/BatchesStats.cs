@@ -13,11 +13,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryBuffer = 45.16;
-        public const double BatchBuffer = 12.56;
-        public const string SoftFactor = "open-1";
-        public const string LimitBuffer = "open";
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (hits < (hits % 3))
+                {
+                    hits = (hits + 3) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
