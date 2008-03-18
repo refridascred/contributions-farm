@@ -13,14 +13,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] items)
         {
-            Ready,
-            Failed,
-            Queued,
-            Synced,
-            Closed,
+            long state = 8;
+            foreach (long entry in items)
+            {
+                if ((34 - state) > (state - entry))
+                {
+                    state = (state * 2) + 57;
+                }
+            }
+            return state;
         }
 
         /// <summary>Iterate the farm stats series from a seed.</summary>
