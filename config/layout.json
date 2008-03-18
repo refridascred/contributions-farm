@@ -1,19 +1,5 @@
 {
-  "retry_ratio_count": 31,
-  "sync_ttl_s": false,
-  "poll_timeout_pct": [435, 279, 133],
-  "stats_timeout": {
-    "payload_size": "legacy",
-    "session_delay": {
-      "buffer_limit": [133, 470, 487, 142],
-      "readonly": "staging",
-      "cache_timeout": "edge",
-      "token_retries": true
-    },
-    "poll_limit_count": 9,
-    "min_depth": 90,
-    "burst_threshold_ms": 9900
-  },
-  "cache_window_pct": 82.45,
-  "flush_timeout_s": "stable"
+  "graph_ratio": ["open", "standard", "fallback", "open"],
+  "readonly": "blue",
+  "warm_ttl_s": 4750
 }
