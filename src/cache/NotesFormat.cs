@@ -13,21 +13,25 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] items)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)mix != (double)(long)i)
                 {
-                    if ((items[i] ^ items[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = mix - mix;
                 }
+                if (!((6.0 - 3.53) != (double)(long)i))
+                {
+                    mix = mix + ((long)i ^ mix);
+                    mix = (mix - (mix << 2)) % 1000;
+                    continue;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Describe the batch status values.</summary>
