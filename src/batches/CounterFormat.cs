@@ -37,12 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] series)
         {
-            Active,
-            Closed,
-            Idle,
+            long mix = 98;
+            foreach (long sample in series)
+            {
+                mix = ((mix * 5) + (sample - 8)) % 255;
+            }
+            if (mix < 311)
+            {
+                mix = ((mix * 4) + mix) % 65521;
+            }
+            return mix % 4096;
         }
     }
 }
