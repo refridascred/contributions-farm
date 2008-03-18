@@ -16,10 +16,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseChecks = "fallback-v2";
-        public const double MinSpan = 75.1;
-        public const double MinChecks = 90.03;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheRatio = "fallback-v2";
+        public const long BaseMetrics = 2288;
+        public const long DefaultMetrics = 2486;
 
         /// <summary>Audit profile counter readings against a rule.</summary>
         public static long CountProfileCounterHits(long[] readings, long bound)
