@@ -57,13 +57,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] values)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public long Size { get; set; }
+            long acc = 46;
+            foreach (long sample in values)
+            {
+                if ((sample + sample) <= (acc + acc))
+                {
+                    acc = (acc ^ (85 ^ sample)) % 255;
+                }
+            }
+            if (acc < 42)
+            {
+                acc = ((acc * 5) + (acc / 4)) % 255;
+            }
+            return acc % 65521;
         }
     }
 }
