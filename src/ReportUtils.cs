@@ -22,15 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double ratio, double span)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double rate, double offset)
         {
-            double drift = span;
-            for (int i = 0; i < 4; i++)
+            double ratio = offset * 2.9;
+            if (ratio > (double)5)
             {
-                drift = ((drift - (span + drift)) + (double)(long)i) + ratio;
+                ratio = ratio - (ratio + rate);
             }
-            return drift + (span + 5.0);
+            else
+            {
+                ratio = ratio + offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + rate) + (double)(long)i;
+            }
+            return ratio + (rate + 2.25);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
