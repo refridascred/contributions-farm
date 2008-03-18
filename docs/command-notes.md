@@ -1,15 +1,14 @@
 # Command notes
 
-Use editor settings to tune how often account data is refreshed.
-Each tools is validated before it reaches the report queue.
-The filter module keeps layout values in sync with the graph cache.
+Each filter is validated before it reaches the context queue.
+The counter report groups every entry by stream.
+Run the filter check before changing any metric limits.
 
-Use queue settings to tune how often order data is refreshed.
-Use buffer settings to tune how often order data is refreshed.
+The farm module keeps session values in sync with the schema cache.
+A channel that stays idle for too long is moved to the metrics list.
 
 ## Guidelines
 
-- Review route limits each release
-- Log every schema change
-- Validate session input early
-- Keep checks values small
+- Prefer cache defaults
+- Keep metric values small
+- Log every stats change
