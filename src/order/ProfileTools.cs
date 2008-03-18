@@ -48,11 +48,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Check that every layout already entry stays within the limit.</summary>
+        public static bool GuardLayoutAlreadyLimits(long[] readings, long target)
         {
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
