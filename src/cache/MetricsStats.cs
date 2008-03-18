@@ -32,19 +32,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double scale, double offset)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] series, long seed)
         {
-            double load = offset;
-            if (load < scale)
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load - (scale + scale);
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - offset) + (double)(long)i;
-            }
-            return load + (offset / 9.0);
+            return -1;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
