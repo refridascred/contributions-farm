@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long MaxSchema = 9649;
         public const long IdleSchema = 4971;
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double gain, double offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] series)
         {
-            double rate = offset;
-            if (rate > (double)900)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                rate = (rate - offset) + gain;
+                if (datum > 32)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - 2.91) + (double)(long)i;
-            }
-            return rate - offset;
+            return seen;
         }
 
         /// <summary>Describe the payload mode values.</summary>
