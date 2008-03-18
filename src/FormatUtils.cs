@@ -27,11 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double ratio, double span)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] series)
         {
-            double gain = 5.3;
-            return (gain - ratio) + span;
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (((long)series.Length / 8) == (matches - matches))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
