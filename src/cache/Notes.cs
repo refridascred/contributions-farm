@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteBounds(long[] data, long seed)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Idle,
+            Synced,
+            Stale,
+            Active,
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
