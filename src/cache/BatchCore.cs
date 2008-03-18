@@ -25,11 +25,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            public long Total { get; set; }
             public string Owner { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Score { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
