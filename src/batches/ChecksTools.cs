@@ -27,12 +27,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Draft,
-            Queued,
-            Active,
+            public bool Flag { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
