@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long target, long origin)
         {
-            public bool Rank { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            if ((origin >> 2) < target)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin ^ origin) > origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the tools class values.</summary>
