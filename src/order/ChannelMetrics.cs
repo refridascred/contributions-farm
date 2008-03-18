@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count queue farm pairs that satisfy a relation.</summary>
-        public static long CompareQueueFarmCount(long[] levels)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] levels, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 19;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((17 * 2) > carry)
                 {
-                    if ((levels[i] + levels[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (((carry * 3) + (offset * 5)) % 4096) ^ datum;
                 }
             }
-            return seen;
+            if (carry < 172)
+            {
+                carry = ((carry << 3) ^ (carry - carry)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
