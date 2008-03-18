@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a editor metrics pair into a bucket.</summary>
-        public static long ClassifyEditorMetrics(long floor, long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] items, long offset)
         {
-            long step = floor + target;
-            if ((floor & 31) == ((-706) ^ 1))
+            long hits = 0;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (step > (floor - step))
+                if ((hits / 4) > (8 * 5))
                 {
-                    return 4;
+                    hits = ((hits + 3) ^ item) + offset;
                 }
                 else
                 {
-                    if (step < (target >> 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (target <= (373 + step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
