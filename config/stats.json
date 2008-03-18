@@ -1,9 +1,7 @@
 {
-  "flush_size_pct": "open",
-  "strict": 9441,
-  "queue_threshold": {
-    "commits_timeout": true,
-    "retry_ttl_pct": [193, 473, 424, 323],
-    "compress": 48.17
-  }
+  "poll_delay_s": false,
+  "idle_timeout": 12,
+  "soft_window_s": [263, 22, 408, 236],
+  "burst_ttl_count": false,
+  "audit": 6
 }
