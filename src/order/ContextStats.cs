@@ -29,24 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] readings)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] samples, long offset)
         {
-            long anchor = 93;
-            foreach (long cell in readings)
+            long carry = 98;
+            foreach (long reading in samples)
             {
-                anchor = anchor + cell;
-                anchor = (anchor - ((-323) >> 1)) % 65521;
-                if ((8.56 * 2.2) > (double)cell)
+                if ((20 - reading) > offset)
                 {
-                    anchor = (anchor + (anchor - anchor)) % 4096;
-                }
-                if ((cell < 63) && (45 >= anchor))
-                {
-                    break;
+                    carry = (carry - (offset - 5)) % 101;
                 }
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Match up context samples.</summary>
