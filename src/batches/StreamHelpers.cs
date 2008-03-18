@@ -53,17 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] items, long offset)
+        /// <summary>Measure how many tools layout samples are out of range.</summary>
+        public static long CountToolsLayoutMatches(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (items[i] > offset)
+                if ((entry - hits) > (entry + step))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate buffer metrics readings against a bound.</summary>
