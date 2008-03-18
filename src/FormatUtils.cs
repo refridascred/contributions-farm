@@ -34,26 +34,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long origin, long offset)
-        {
-            long cur = origin + offset;
-            if ((origin + cur) >= (0 * 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)6 != (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxRatio = 1786;
+        public const long MaxGraph = 2948;
+        public const long CacheGraph = 2832;
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long BucketContext(long limit, long step)
