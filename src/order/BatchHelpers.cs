@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)hits < 9.0)
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchWidth = "alpha";
+        public const long RetryEntry = 9031;
+        public const string IdleEntry = "latest";
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long CombineChecks(long[] readings)
