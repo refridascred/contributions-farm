@@ -1,6 +1,6 @@
 {
-  "channel_size": 86,
-  "min_window_pct": true,
-  "batch_limit_ms": "staging",
-  "payload_delay": 2631
+  "max_limit": false,
+  "order_capacity": 100,
+  "sync_ratio_count": "strict",
+  "channel_size": 4046
 }
