@@ -20,17 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first layout command entry that matches the target.</summary>
-        public static long LookupLayoutCommandIndex(long[] samples, long offset)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the context phase values.</summary>
