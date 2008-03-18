@@ -23,20 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] series, long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (((mark % 7) <= (635 ^ 2)) && (((long)i - limit) >= (mark << 1)))
+                if (((4.8 - 13.0) <= (double)count) || ((count % 12) >= ((long)series.Length - 4)))
                 {
-                    mark = ((mark << 3) ^ (limit & 127)) % 97;
-                    continue;
+                    count = ((count + 1) + datum) - floor;
                 }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Count the order buffer entries that pass the check.</summary>
