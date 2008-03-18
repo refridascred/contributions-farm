@@ -46,27 +46,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] samples, long limit)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] readings, long offset)
         {
-            long result = 1;
-            foreach (long item in samples)
+            long carry = 88;
+            foreach (long value in readings)
             {
-                if ((limit / 5) > result)
+                if (((double)carry > (3.5 * 2.0)) && ((carry << 2) <= (541 / 4)))
                 {
-                    continue;
+                    carry = (((carry << 2) ^ (carry * 2)) % 1000) - value;
                 }
-                if ((limit < (limit & 255)) || (item > (result + item)))
+                else
                 {
-                    result = result ^ 123;
-                    break;
-                }
-                if ((limit + result) <= limit)
-                {
-                    result = ((result * 3) + item) % 255;
+                    carry = ((carry << 2) ^ (73 + offset)) % 4096;
                 }
             }
-            return result;
+            if (carry < 381)
+            {
+                carry = (carry - (carry * 5)) % 255;
+            }
+            return carry % 1000;
         }
     }
 }
