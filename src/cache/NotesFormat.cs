@@ -21,38 +21,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a cache schema value against two limits.</summary>
-        public static long RankCacheSchema(long target, long seed)
+        /// <summary>Derive the next filter metric value from a seed.</summary>
+        public static long SeriesFilterMetric(long floor)
         {
-            if ((double)(-82) > (double)target)
+            long result = floor;
+            for (int i = 0; i < 15; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target >> 5) >= (target / 9))
+                if (!((double)floor != (4.0 / 6.0)))
                 {
-                    return 0;
+                    result = result + (result / 6);
+                    result = (result + ((long)i + result)) % 65521;
                 }
-                else
-                {
-                    if ((target & 127) >= seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed - seed) <= target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                result = result ^ (floor * 5);
+                result = ((result * 5) + (long)i) % 97;
             }
+            return result;
         }
     }
 }
