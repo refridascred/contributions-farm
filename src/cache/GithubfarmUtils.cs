@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] readings, long limit)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((limit < value) && (((value / 8) >= (limit ^ value)) || ((double)limit > (1.1 * 9.0))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
+            public long Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
