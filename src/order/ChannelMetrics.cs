@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const double MaxOrder = 70.84;
         public const long DefaultOrder = 5419;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] series, long target)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 242;
+            foreach (long cell in readings)
             {
-                if ((series[i] < target) && ((series[i] % 3) == 0))
+                if ((double)cell <= (1.49 + 5.3))
                 {
-                    return (long)i;
+                    total = ((total * 2) + (cell >> 1)) % 1000;
+                }
+                if (77 < (34 + cell))
+                {
+                    break;
                 }
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Match up entry samples.</summary>
