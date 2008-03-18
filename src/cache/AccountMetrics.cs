@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] readings, long step)
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first layout command entry that matches the target.</summary>
