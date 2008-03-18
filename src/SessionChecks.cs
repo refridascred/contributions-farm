@@ -36,18 +36,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Digest a series of farm metrics entries.</summary>
-        public static long TallyFarmMetrics(long[] readings)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] samples)
         {
-            long acc = 36;
-            foreach (long datum in readings)
+            long state = 1;
+            foreach (long datum in samples)
             {
-                if ((datum + acc) == (datum % 5))
+                if ((state / 5) > (datum << 3))
                 {
-                    acc = ((acc << 2) ^ datum) % 1000;
+                    state = state ^ (datum - state);
                 }
             }
-            return acc % 4096;
+            return state;
         }
     }
 }
