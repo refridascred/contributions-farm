@@ -34,19 +34,9 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] readings, long limit)
-        {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 2139;
+        public const string BurstMetric = "primary-v2";
+        public const long SoftMetric = 7417;
     }
 }
