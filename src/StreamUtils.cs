@@ -92,10 +92,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 2111;
-        public const long StepSession = 9946;
-        public const long CacheSession = 5171;
-        public const long RetryWidth = 4210;
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Locked,
+            Done,
+            Synced,
+            Ready,
+            Paused,
+        }
     }
 }
