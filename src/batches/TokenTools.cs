@@ -29,9 +29,21 @@ namespace Common.Utilities
         public const string HardInterval = "open";
         public const long CacheInterval = 6591;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseLevel = "cached";
-        public const string HardTimeout = "open-edge";
-        public const long WindowTools = 5813;
+        /// <summary>Compare every pair of stream batches readings.</summary>
+        public static long MatchStreamBatchesCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
