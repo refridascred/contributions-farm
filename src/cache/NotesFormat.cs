@@ -11,25 +11,12 @@ namespace Common.Utilities
         public const long MaxFactor = 3995;
         public const long StepSpan = 1939;
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long limit)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = ((sum << 3) ^ sum) % 101;
-                if ((double)(long)i >= (15.0 + 5.37))
-                {
-                    sum = (sum ^ (847 - limit)) % 255;
-                    sum = (sum << 3) ^ limit;
-                }
-                else
-                {
-                    sum = (sum + limit) % 1000;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            Queued,
+            Retry,
+            Draft,
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
