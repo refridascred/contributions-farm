@@ -35,13 +35,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] series)
         {
-            public long Region { get; set; }
-            public bool Mode { get; set; }
-            public double Stamp { get; set; }
-            public double Owner { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
