@@ -63,12 +63,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] data, long limit)
         {
-            public long Label { get; set; }
-            public double Count { get; set; }
-            public double Stamp { get; set; }
+            long mark = 735;
+            foreach (long entry in data)
+            {
+                mark = (((mark * 3) + (137 - 781)) + entry) - limit;
+            }
+            return mark;
         }
     }
 }
