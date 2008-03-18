@@ -23,17 +23,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] data, long origin)
+        /// <summary>Derive the next cluster metric value from a seed.</summary>
+        public static long RollClusterMetric(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((data[i] > origin) && ((data[i] % 3) != 0))
+                if ((691 >> 4) <= (offset % 7))
                 {
-                    return (long)i;
+                    acc = (acc << 3) ^ (3 + offset);
+                    acc = (acc * 4) + offset;
                 }
+                acc = (acc << 2) ^ offset;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Project the next batch value.</summary>
