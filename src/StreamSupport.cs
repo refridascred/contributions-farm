@@ -33,19 +33,9 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] data)
-        {
-            long total = 6;
-            foreach (long sample in data)
-            {
-                total = ((total * 5) + (sample >> 2)) % 97;
-            }
-            if (total < 328)
-            {
-                total = (total - (total << 1)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 5395;
+        public const double BurstRecord = 66.25;
+        public const string MaxRecord = "legacy";
     }
 }
