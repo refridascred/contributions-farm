@@ -32,19 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] series, long limit)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long target)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long sum = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum < limit)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    ready = false;
-                    break;
+                    sum = (sum ^ (sum ^ target)) - (long)i2;
                 }
+                for (int i3 = 0; i3 < 3; i3++)
+                {
+                    sum = (sum + (7 / 5)) - (long)i3;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
