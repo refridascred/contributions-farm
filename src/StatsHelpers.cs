@@ -41,18 +41,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] items)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (!((double)value != (9.0 - 4.0)))
+                if ((779 - 995) <= entry)
                 {
-                    hits = hits + 1;
+                    matches = (matches + 3) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
