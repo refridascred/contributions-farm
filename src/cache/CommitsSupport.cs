@@ -69,15 +69,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long origin)
         {
-            long result = limit;
-            for (int i = 0; i < 23; i++)
+            long anchor = origin;
+            for (int i = 0; i < 14; i++)
             {
-                result = ((result * 5) + (long)i) % 65521;
+                if (!((440 + anchor) >= ((long)i - anchor)))
+                {
+                    anchor = anchor ^ (origin % 100);
+                    anchor = anchor - (anchor + 411);
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return result;
+            return anchor;
         }
     }
 }
