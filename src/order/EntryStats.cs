@@ -34,25 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a payload window value against two limits.</summary>
-        public static long RankPayloadWindow(long limit, long seed)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long diff = limit - seed;
-            if (((diff & 255) > diff) && ((limit + 799) >= limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((seed / 4) <= seed) || ((limit / 9) == (seed << 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Active,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
