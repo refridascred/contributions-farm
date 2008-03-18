@@ -37,15 +37,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double bias, double offset)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] readings)
         {
-            double bias2 = offset;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = (bias2 + bias) + (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return bias2 + (offset - 3.8);
+            return seen;
         }
     }
 }
