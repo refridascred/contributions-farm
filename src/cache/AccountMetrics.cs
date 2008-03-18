@@ -23,24 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double rate, double offset)
-        {
-            double mean = (double)(61 - 21);
-            if (mean < 7.2)
-            {
-                mean = (mean + mean) + rate;
-            }
-            else
-            {
-                mean = mean + (double)88;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + offset;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftRatio = "open-edge";
+        public const string MinBudget = "strict-v2";
+        public const long MinStats = 2763;
+        public const double DefaultDepth = 1.34;
+        public const long IdleStats = 6230;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TotalProfile(long[] readings, long seed)
