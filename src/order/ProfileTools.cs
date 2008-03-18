@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate checks metric readings against a bound.</summary>
-        public static bool ValidateChecksMetricRange(long[] series, long seed)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Score { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
