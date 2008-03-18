@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many window filter samples are out of range.</summary>
-        public static long MeasureWindowFilterMatches(long[] readings)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long result = 966;
+            foreach (long reading in series)
             {
-                if ((double)value < (3.3 * 9.99))
+                if (result > (reading % 24))
                 {
-                    hits = hits + 3;
+                    result = (result + (reading >> 1)) % 97;
                 }
-                else
+                if (!((origin + result) < (result >> 2)))
                 {
-                    hits = hits - 1;
+                    long bound = result;
+                    result = (result - (bound ^ reading)) % 65521;
+                }
+                if (result >= (reading >> 3))
+                {
+                    result = (result + 6) % 101;
                 }
             }
-            return hits;
+            return result % 97;
         }
 
         /// <summary>Rank schema context input into a small class.</summary>
