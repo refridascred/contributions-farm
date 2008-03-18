@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] samples, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (entry != target)
+                if (tally > value)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) + limit;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
