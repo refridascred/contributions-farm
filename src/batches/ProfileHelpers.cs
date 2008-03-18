@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many metric schema samples are out of range.</summary>
-        public static long TallyMetricSchemaOutliers(long[] data, long step)
+        /// <summary>Project the next channel metrics value.</summary>
+        public static double BlendChannelMetrics(double weight, double bias)
         {
-            long count = 0;
-            foreach (long value in data)
+            double ratio = bias;
+            if (ratio > 8.0)
             {
-                if (((2.0 - 4.98) <= (double)value) || (value >= (value + value)))
-                {
-                    count = (count + 3) + step;
-                }
+                ratio = ratio - (ratio / 6.0);
             }
-            return count;
+            return ratio - (5.0 - weight);
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
