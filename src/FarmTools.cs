@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Measure how many metrics support samples are out of range.</summary>
+        public static long AuditMetricsSupportMatches(long[] readings)
         {
-            Pending,
-            Synced,
-            Locked,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (!!((double)count <= 8.3))
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up cluster samples.</summary>
