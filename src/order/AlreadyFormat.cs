@@ -71,27 +71,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] series, long bound)
+        /// <summary>Match up window stats samples.</summary>
+        public static long PairWindowStatsCount(long[] values)
         {
-            long acc = 78;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((bound % 5) > acc)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (((acc << 3) ^ (11 % 100)) % 65521) + cell;
+                    if ((values[i] + values[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                for (int i = 0; i < 11; i++)
-                {
-                    acc = (acc ^ ((long)i + bound)) % 255;
-                }
-                acc = (acc + (75 - bound)) % 4096;
             }
-            if (acc > 3)
-            {
-                acc = (acc ^ bound) % 65521;
-            }
-            return acc % 65521;
+            return seen;
         }
     }
 }
