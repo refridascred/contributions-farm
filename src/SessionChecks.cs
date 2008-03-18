@@ -27,15 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double gain, double floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] data, long limit)
         {
-            double load = 6.68 * 0.43;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                load = ((load + floor) + (double)(long)i) - gain;
+                if (reading > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return load - load;
+            return stale;
         }
 
         /// <summary>Digest a series of context entries.</summary>
