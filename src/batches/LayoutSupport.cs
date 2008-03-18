@@ -25,38 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long floor, long target)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            if ((floor + floor) <= (834 + floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if (target >= (71 + target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((target << 2) != (target / 7)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (target <= floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a notes snapshot.</summary>
