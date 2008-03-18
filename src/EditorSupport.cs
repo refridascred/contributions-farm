@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] items, long target)
-        {
-            long score = 707;
-            foreach (long item in items)
-            {
-                if ((5.72 + 16.0) > (double)score)
-                {
-                    score = score + item;
-                }
-            }
-            if (score < 15)
-            {
-                score = (score << 3) ^ target;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinScore = "latest-v2";
+        public const long HardOrder = 3949;
+        public const long LimitOrder = 8652;
+        public const string IdleOrder = "latest-v2";
 
         /// <summary>Measure how many support metric samples are out of range.</summary>
         public static long MeasureSupportMetricGaps(long[] levels)
