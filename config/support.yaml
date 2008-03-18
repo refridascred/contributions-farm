@@ -1,6 +1,6 @@
 # support settings
-soft_ttl_count: primary
-checks_capacity: standard
-counter_delay: false
-audit: false
-warm_ttl: staging
+enabled: edge
+cache_limit: 60
+checks_limit:
+  - 161
+  - 167
