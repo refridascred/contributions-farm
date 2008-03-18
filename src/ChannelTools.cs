@@ -38,35 +38,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long floor, long limit)
+        /// <summary>Classify a window graph pair into a bucket.</summary>
+        public static long GradeWindowGraph(long floor, long bound)
         {
-            if (floor <= (limit + floor))
+            if ((bound ^ bound) == (floor - floor))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if ((double)floor != (2.0 - 8.0))
+                if (!((double)bound <= (double)floor))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    if ((double)limit != (4.7 / 9.0))
+                    if ((floor > (-9)) && ((floor % 10) > floor))
                     {
-                        return 4;
+                        return 6;
                     }
                     else
                     {
-                        if ((limit % 16) < (floor + floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 4;
                     }
                 }
             }
