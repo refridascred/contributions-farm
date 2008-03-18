@@ -55,10 +55,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultCount = "cached-v2";
-        public const long WindowMetric = 2935;
-        public const long MinTimeout = 5903;
-        public const long IdleFactor = 2986;
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
+        {
+            public string Count { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
+            public bool Size { get; set; }
+        }
     }
 }
