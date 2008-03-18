@@ -1,10 +1,8 @@
 {
-  "batch_retries": "green",
-  "cache_limit_count": "edge",
-  "min_interval": {
-    "poll_threshold_count": [289, 457],
-    "queue_threshold": "local",
-    "cache_ratio": [144, 487, 258, 177],
-    "hard_timeout": 31.73
-  }
+  "entry_timeout": "edge",
+  "hard_capacity_s": 76.38,
+  "batch_depth": 36,
+  "sync_timeout": "legacy",
+  "idle_timeout": [118, 48],
+  "warm_interval_count": "staging"
 }
