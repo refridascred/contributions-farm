@@ -22,13 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Digest a series of token record entries.</summary>
+        public static long TotalTokenRecord(long[] values, long target)
         {
-            Stale,
-            Closed,
-            Ready,
-            Done,
+            long sum = 0;
+            foreach (long value in values)
+            {
+                sum = ((sum + value) % 101) + target;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Fold a list of metrics editor readings.</summary>
