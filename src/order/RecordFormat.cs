@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 6058;
-        public const long StepToken = 1594;
-        public const double BurstInterval = 12.24;
-        public const double MaxToken = 19.39;
-        public const long CacheSpan = 2693;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryFactor = 8153;
+        public const long BaseNotes = 2030;
+        public const string StepInterval = "primary-1";
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmLimits(long[] data, long origin)
