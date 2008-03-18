@@ -22,11 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Audit stats counter readings against a rule.</summary>
+        public static long MeasureStatsCounterHits(long[] data, long limit)
         {
-            public long Owner { get; set; }
-            public double Limit { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((47 & 15) <= (matches - limit))
+                {
+                    matches = (matches + 3) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
