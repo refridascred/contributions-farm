@@ -37,14 +37,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] levels, long limit)
         {
-            Dropped,
-            Paused,
-            Ready,
-            Synced,
-            Closed,
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
