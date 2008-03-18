@@ -28,12 +28,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] values, long limit)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] == limit)
+                if ((series[i] <= step) && ((series[i] % 5) != 0))
                 {
                     return (long)i;
                 }
