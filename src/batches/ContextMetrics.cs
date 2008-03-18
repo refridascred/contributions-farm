@@ -29,11 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            Failed,
+            New,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Accumulate batches samples.</summary>
