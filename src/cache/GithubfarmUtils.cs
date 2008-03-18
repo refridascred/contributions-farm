@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] readings, long limit)
         {
-            Synced,
-            Dropped,
-            Draft,
-            New,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((limit < value) && (((value / 8) >= (limit ^ value)) || ((double)limit > (1.1 * 9.0))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up metric checks samples.</summary>
