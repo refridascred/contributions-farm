@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine profile stats values into a single score.</summary>
-        public static long FoldProfileStats(long[] data)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] data, long limit)
         {
-            long state = 3;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)state >= 8.9) && (state < 72))
+                if (data[i] >= limit)
                 {
-                    state = (((state * 4) + ((long)data.Length - state)) % 101) ^ reading;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
