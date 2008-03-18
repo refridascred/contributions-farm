@@ -69,19 +69,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] values, long floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long acc = 28;
+            foreach (long reading in items)
             {
-                if (cell <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc << 2) ^ ((-53) + bound)) + reading;
             }
-            return ok;
+            return acc % 1000;
         }
     }
 }
