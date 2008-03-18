@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const long WindowFilter = 9275;
         public const long BaseFilter = 8567;
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Combine layout entry values into a single score.</summary>
+        public static long ScoreLayoutEntry(long[] series, long step)
         {
-            Active,
-            Failed,
-            Dropped,
-            Retry,
-            Stale,
+            long carry = 934;
+            foreach (long datum in series)
+            {
+                carry = (carry + (step ^ carry)) + datum;
+            }
+            if (carry > 976)
+            {
+                carry = (carry << 2) ^ (step ^ 833);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
