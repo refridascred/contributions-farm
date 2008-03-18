@@ -1,13 +1,17 @@
 # githubfarm settings
-hard_window_s: 99
-poll_ttl:
-  hard_size_pct: 5061
-  record_interval: 60
-  hard_window: 30
-  max_depth: 31.74
-  retry_ttl:
-    - 239
-    - 421
-    - 398
-  poll_interval_s: 4164
-sync_ratio_count: local
+session_depth: 68
+farm_ratio:
+  sync_window_ms: legacy
+  queue_window: standard
+  max_capacity_count: 80
+  cache_limit_count:
+    - 143
+    - 368
+    - 379
+  flush_capacity_s:
+    - latest
+    - legacy
+    - primary
+batch_size_ms: edge
+cache_depth: 19.65
+base_size_ms: staging
