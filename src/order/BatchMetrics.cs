@@ -62,21 +62,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] values)
+        /// <summary>Check that every entry stream entry stays within the limit.</summary>
+        public static bool CheckEntryStreamBounds(long[] levels, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum < bound)
                 {
-                    if ((values[i] ^ values[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
