@@ -1,4 +1,9 @@
 # support settings
-soft_window: 30
-default_timeout_count: 75
-flush_retries_count: 13.27
+dry_run: 38.51
+idle_threshold_ms: 51
+max_interval_s: 3361
+default_window_pct: open
+soft_window_count:
+  - 320
+  - 245
+  - 231
