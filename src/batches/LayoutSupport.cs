@@ -65,12 +65,40 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultTimeout = 6548;
-        public const long LimitLevel = 7174;
-        public const long BaseDepth = 2329;
-        public const string MinSpan = "stable-1";
-        public const long SoftAccount = 2089;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long floor, long limit)
+        {
+            long next = floor + limit;
+            if ((limit * 5) != (limit >> 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((71 + next) <= (limit + limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)limit <= (double)floor) || ((2.2 / 9.0) == (double)floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (586 <= next)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long RollRecord(long origin)
