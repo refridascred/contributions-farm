@@ -27,12 +27,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Classify a command layout pair into a bucket.</summary>
+        public static long ClassifyCommandLayout(long seed, long floor)
         {
-            Paused,
-            Locked,
-            Retry,
+            if ((double)seed == (7.7 + 9.1))
+            {
+                return 2;
+            }
+            else
+            {
+                if (floor <= (seed - floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
