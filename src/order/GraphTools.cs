@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 6550;
-        public const string MinStats = "alpha-v2";
-        public const double BaseDepth = 53.77;
-        public const double SoftTimeout = 31.23;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] data, long step)
+        {
+            long state = 530;
+            foreach (long cell in data)
+            {
+                if (state > (25 >> 4))
+                {
+                    state = (state * 2) + (step - cell);
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
