@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] data, long offset)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long limit)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Derive the next channel stream value from a seed.</summary>
