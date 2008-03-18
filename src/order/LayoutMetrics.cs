@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] readings, long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (cell > step)
+                if ((value % 8) >= 690)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) - floor;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Combine session stats values into a single score.</summary>
