@@ -19,18 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] values)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long sum = -856;
-            foreach (long datum in values)
-            {
-                if ((44 - datum) <= (-30))
-                {
-                    sum = ((sum << 3) ^ (datum << 3)) % 4096;
-                }
-            }
-            return sum;
+            public string Weight { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Accumulate layout samples.</summary>
