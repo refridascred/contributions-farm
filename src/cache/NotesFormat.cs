@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double RetrySupport = 51.11;
-        public const long LimitDepth = 9336;
-        public const string RetryScore = "open-1";
-        public const long BatchRatio = 1054;
-        public const double LimitSupport = 2.67;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = acc + (acc ^ acc);
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
