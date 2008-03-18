@@ -1,8 +1,7 @@
-id,state,token
-1,49.4,446
-2,primary,840
-3,cached,latest
-4,0.42,559
-5,legacy,eu-west
-6,52.57,977
-7,81.91,919
+id,level,state
+1,83.07,70
+2,29.96,535
+3,cached,36.39
+4,293,legacy
+5,204,staging
+6,95.69,stable
