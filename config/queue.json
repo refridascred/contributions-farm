@@ -1,9 +1,5 @@
 {
-  "poll_delay": 6632,
-  "idle_depth_s": {
-    "route_delay": "strict",
-    "burst_timeout_pct": "green",
-    "contributi_delay": [120, 186]
-  },
-  "already_interval": true
+  "warm_retries_s": 250,
+  "batch_threshold_pct": false,
+  "audit": true
 }
