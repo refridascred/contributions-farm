@@ -58,14 +58,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Roll a cluster editor counter forward.</summary>
+        public static long DeriveClusterEditor(long origin)
         {
-            Idle,
-            New,
-            Active,
-            Failed,
-            Closed,
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = (mix + (80 >> 2)) % 65521;
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate record samples.</summary>
