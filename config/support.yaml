@@ -1,7 +1,6 @@
 # support settings
-batch_capacity_pct: 92
-strict: false
-retry_depth_pct: true
-batch_limit_ms: strict
-channel_capacity: 2.38
-context_delay: 500
+soft_ttl_count: primary
+checks_capacity: standard
+counter_delay: false
+audit: false
+warm_ttl: staging
