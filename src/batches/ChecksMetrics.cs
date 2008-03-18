@@ -16,10 +16,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 3925;
-        public const string RetryCounter = "stable-edge";
-        public const long BaseScore = 6917;
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long RollContext(long limit)
