@@ -1,12 +1,15 @@
 # support settings
-readonly: 68.47
-idle_retries_count: fallback
-soft_ttl_count:
-  dry_run: true
-  audit: true
-  batch_size: 8
-  base_window_ms:
-    cache_timeout: blue
-    base_depth_count: 64.09
-    max_limit_s: standard
-    max_depth_s: primary
+retry_ratio:
+  - local
+  - open
+  - legacy
+  - local
+base_ttl:
+  - 5
+  - 235
+  - 226
+  - 116
+persist: 21.7
+min_ttl_s:
+  - 168
+  - 95
