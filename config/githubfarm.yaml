@@ -1,17 +1,14 @@
 # githubfarm settings
-session_depth: 68
-farm_ratio:
-  sync_window_ms: legacy
-  queue_window: standard
-  max_capacity_count: 80
-  cache_limit_count:
-    - 143
-    - 368
-    - 379
-  flush_capacity_s:
-    - latest
-    - legacy
-    - primary
-batch_size_ms: edge
-cache_depth: 19.65
-base_size_ms: staging
+cache_threshold: legacy
+graph_delay:
+  cache_depth_ms:
+    verbose: false
+    burst_depth_count:
+      - fallback
+      - latest
+      - staging
+    idle_limit: 38.75
+  sync_delay_count: staging
+  batch_depth: true
+  compress: edge
+poll_retries_pct: 56
