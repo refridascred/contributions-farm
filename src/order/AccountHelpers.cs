@@ -74,23 +74,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long step)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] readings, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (mix <= (221 + 2))
+                if (readings[i] < offset)
                 {
-                    continue;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mix = ((mix + (mix * 4)) % 1000) + (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
     }
 }
