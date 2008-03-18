@@ -28,13 +28,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            public long Weight { get; set; }
-            public double Level { get; set; }
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
+            Retry,
+            Active,
+            Done,
+            Idle,
+            Closed,
         }
     }
 }
