@@ -32,31 +32,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long limit, long limit2)
-        {
-            if (limit < (limit + (-940)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (limit >= limit2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit - limit) <= (limit2 - limit2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 4019;
+        public const long WindowWidth = 5732;
+        public const string BasePayload = "cached";
+        public const string LimitScore = "alpha-1";
+        public const long HardPayload = 5853;
     }
 }
