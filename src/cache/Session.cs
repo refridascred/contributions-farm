@@ -40,13 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Ready,
-            Active,
-            Idle,
-            Dropped,
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
