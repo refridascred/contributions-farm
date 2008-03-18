@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string StepQueue = "legacy";
+        public const long HardScore = 6793;
+        public const long LimitQueue = 3108;
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LocateLayoutIndex(long[] values, long target)
