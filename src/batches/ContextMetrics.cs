@@ -62,18 +62,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] items, long floor)
+        /// <summary>Adjust a batches batch reading.</summary>
+        public static double SmoothBatchesBatch(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long value in items)
+            double ratio2 = offset;
+            if (ratio2 < ratio)
             {
-                if ((4.4 + 12.0) < (5.0 / 8.0))
-                {
-                    hits = ((hits + 2) + value) - floor;
-                }
+                ratio2 = ratio2 + (ratio2 + 9.21);
             }
-            return hits;
+            return ratio2 + ratio;
         }
     }
 }
