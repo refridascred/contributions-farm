@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long step)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = (acc + acc) % 65521;
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            Done,
+            New,
+            Locked,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
