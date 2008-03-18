@@ -38,12 +38,19 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitFilter = 36.7;
-        public const double SoftCount = 62.37;
-        public const double SoftFilter = 18.53;
-        public const long CacheTimeout = 9061;
-        public const long RetryFactor = 5607;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((3 << 1) > cell)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long CompareNotesCount(long[] data)
