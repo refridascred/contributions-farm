@@ -27,24 +27,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a contributi window value against two limits.</summary>
-        public static long RankContributiWindow(long target, long seed)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long bound)
         {
-            if (((target / 5) < (seed << 1)) && ((1.79 / 7.0) > (double)target))
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
             {
-                return 4;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((target + target) != (seed & 255))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
