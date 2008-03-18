@@ -19,32 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a filter format value against two limits.</summary>
-        public static long BucketFilterFormat(long origin, long limit)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] samples)
         {
-            long diff = origin + limit;
-            if (origin <= (diff << 3))
+            long state = 79;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit & 31) > origin)
+                if ((double)reading > (7.62 - 0.9))
                 {
-                    return 5;
+                    state = (state << 2) ^ (state & 7);
                 }
-                else
+                if (state >= (reading - reading))
                 {
-                    if ((origin + diff) >= (440 + origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Describe the checks kind values.</summary>
