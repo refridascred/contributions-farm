@@ -46,11 +46,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchRatio = 30.79;
-        public const double WindowDepth = 8.87;
-        public const long MinGraph = 634;
-        public const double MaxRatio = 28.52;
-        public const string CacheSpan = "staging";
+        /// <summary>Look up the position of a account checks sample.</summary>
+        public static long SeekAccountChecksIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
