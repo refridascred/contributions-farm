@@ -30,31 +30,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long floor, long seed)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] items, long floor)
         {
-            if (61 <= (seed & 127))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((6.11 * 6.8) <= (double)seed)
+                if (items[i] >= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((9.55 / 8.0) >= (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
