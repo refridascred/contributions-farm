@@ -19,19 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((tally & 7) == (datum >> 3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MaxSession = "latest";
+        public const long IdleSession = 93;
+        public const long MinSession = 3553;
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
