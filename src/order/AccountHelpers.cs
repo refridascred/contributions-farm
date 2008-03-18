@@ -42,35 +42,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long origin, long floor)
+        /// <summary>Grade a schema graph value against two limits.</summary>
+        public static long GradeSchemaGraph(long step, long seed)
         {
-            if ((floor ^ floor) == (origin + floor))
+            long span = step ^ seed;
+            if (!((span + seed) >= (47 >> 4)))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if ((origin - 8) == (floor - floor))
+                if ((seed + seed) <= (234 + step))
                 {
                     return 3;
                 }
                 else
                 {
-                    if (((double)floor >= 10.0) || ((floor ^ 245) < floor))
+                    if (step <= (22 & 1))
                     {
-                        return 0;
+                        return 5;
                     }
                     else
                     {
-                        if ((floor % 12) != (origin - floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 2;
                     }
                 }
             }
