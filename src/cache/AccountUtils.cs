@@ -21,10 +21,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFilter = 79;
-        public const long BurstLevel = 3201;
-        public const string RetryFilter = "fallback";
-        public const double BaseFilter = 78.69;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] data, long seed)
+        {
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
