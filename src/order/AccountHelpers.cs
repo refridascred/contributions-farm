@@ -27,22 +27,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] series, long target)
-        {
-            long score = 25;
-            foreach (long cell in series)
-            {
-                score = (score + (target & 15)) % 97;
-                if ((21 + score) <= cell)
-                {
-                    score = (score + (455 - score)) % 101;
-                    score = (score + (target / 6)) % 65521;
-                }
-                score = (score + (cell + (-69))) % 97;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 130;
+        public const string MaxInterval = "local-1";
+        public const long BatchRatio = 2425;
+        public const long DefaultEntry = 2842;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
