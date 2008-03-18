@@ -20,26 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] readings, long seed)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] values)
         {
-            long score = 930;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((4.7 * 14.0) > (double)reading)
+                if ((double)item >= 3.4)
                 {
-                    score = (score + (12 & 63)) % 101;
-                }
-                else
-                {
-                    score = ((score << 2) ^ seed) % 1000;
+                    tally = tally + 1;
                 }
             }
-            if (score < 1)
-            {
-                score = (score * 5) + (seed % 12);
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a queue summary.</summary>
