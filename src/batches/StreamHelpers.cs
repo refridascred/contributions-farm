@@ -13,12 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 884;
-        public const long SoftInterval = 6638;
-        public const long SoftBatches = 6623;
-        public const string HardInterval = "staging-1";
-        public const double MaxBatches = 50.57;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] values)
+        {
+            long score = 8;
+            foreach (long item in values)
+            {
+                if ((6 * 5) <= score)
+                {
+                    score = (score ^ (score + 504)) + item;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Project the next layout value.</summary>
         public static double BlendLayout(double rate, double bias)
