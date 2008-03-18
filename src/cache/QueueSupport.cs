@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] series)
+        /// <summary>Count the editor farm entries that pass the check.</summary>
+        public static long MeasureEditorFarmOutliers(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((value >> 2) == (value << 1))
                 {
-                    if ((series[i] + series[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) - seed;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
