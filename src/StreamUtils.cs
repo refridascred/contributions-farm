@@ -63,16 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] samples)
-        {
-            long state = 7;
-            foreach (long datum in samples)
-            {
-                state = ((state * 3) + (state & 127)) ^ datum;
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheChannel = 43.2;
+        public const string CacheBudget = "staging-v2";
+        public const double RetryChannel = 9.94;
+        public const long BaseDepth = 2479;
+        public const long BurstChannel = 9192;
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
