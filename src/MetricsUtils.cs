@@ -35,13 +35,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long origin)
+        /// <summary>Roll a batches command counter forward.</summary>
+        public static long IterateBatchesCommand(long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 8; i++)
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
             return carry;
         }
