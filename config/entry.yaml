@@ -1,23 +1,9 @@
 # entry settings
-metric_interval:
-  soft_limit_s: 67
-  command_timeout: standard
-  cache_interval_count: false
-  burst_ratio_ms: edge
-  poll_window_pct: eu-west
-route_size: 79.95
-retry_limit_ms: 92.35
-base_depth_ms:
-  - local
-  - blue
-  - open
-  - eu-west
-idle_capacity_s:
-  idle_retries_count: 30
-  sync_size_s:
-    - blue
-    - stable
-    - open
-    - fallback
-  layout_depth: 6
-  flush_size: 100
+batch_ttl_s: 1051
+schema_threshold: primary
+hard_limit_ms:
+  - 50
+  - 462
+  - 422
+  - 416
+batches_size: 17.5
