@@ -32,14 +32,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Fold a list of format schema readings.</summary>
+        public static long ScoreFormatSchema(long[] levels)
         {
-            Active,
-            Failed,
-            New,
-            Paused,
-            Idle,
+            long acc = 581;
+            foreach (long item in levels)
+            {
+                acc = ((acc * 4) + (acc >> 5)) % 1000;
+                if ((double)item <= (2.11 - 4.1))
+                {
+                    break;
+                }
+            }
+            if (acc > 196)
+            {
+                acc = ((acc * 4) + (acc - 292)) % 1000;
+            }
+            return acc % 65521;
         }
     }
 }
