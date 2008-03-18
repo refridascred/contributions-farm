@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long HardFactor = 6262;
         public const long RetryLevel = 931;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] samples, long seed)
+        /// <summary>Iterate the account githubfarm series from a seed.</summary>
+        public static long SeriesAccountGithubfarm(long origin)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (value <= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
