@@ -1,20 +1,6 @@
 {
-  "sync_delay_count": "primary",
-  "retry_interval_pct": {
-    "enabled": ["local", "green", "staging"],
-    "poll_ttl_count": {
-      "base_delay_pct": 60,
-      "default_delay": 32,
-      "queue_delay": 30,
-      "flush_timeout_s": 28.66,
-      "warm_timeout_pct": 84.96,
-      "batches_delay": false
-    },
-    "audit": 2850,
-    "metrics_ratio": 32.43,
-    "dry_run": [16, 434, 310],
-    "hard_size_ms": "cached"
-  },
-  "idle_depth_s": 17.61,
-  "burst_interval": 8001
+  "counter_size": 61.27,
+  "hard_size": ["legacy", "stable", "latest", "strict"],
+  "warm_timeout_ms": 250,
+  "cache_retries_s": "latest"
 }
