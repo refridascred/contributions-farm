@@ -46,10 +46,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 2707;
-        public const double DefaultMetric = 3.9;
-        public const long MinSpan = 5741;
-        public const string LimitScore = "staging-v2";
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                total = ((total << 2) ^ (limit * 3)) % 65521;
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
+        }
     }
 }
