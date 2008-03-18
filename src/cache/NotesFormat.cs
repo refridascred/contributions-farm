@@ -20,25 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelGaps(long[] series, long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((double)mix != (double)(long)i)
+                if (((hits + 18) <= sample) || !((seed % 8) < hits))
                 {
-                    mix = mix - mix;
+                    hits = hits + 1;
                 }
-                if (!((6.0 - 3.53) != (double)(long)i))
+                else
                 {
-                    mix = mix + ((long)i ^ mix);
-                    mix = (mix - (mix << 2)) % 1000;
-                    continue;
+                    hits = hits - 1;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
