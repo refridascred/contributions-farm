@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate order channel samples.</summary>
-        public static long CombineOrderChannel(long[] items)
+        /// <summary>Audit already cache readings against a rule.</summary>
+        public static long AuditAlreadyCacheMatches(long[] levels)
         {
-            long carry = 632;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((carry % 24) > (507 ^ item))
+                if (3.1 < (double)datum)
                 {
-                    carry = ((carry * 5) + (carry ^ item)) % 101;
-                }
-                else
-                {
-                    carry = carry + (item + item);
+                    hits = hits + 2;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the context level values.</summary>
