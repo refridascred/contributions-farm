@@ -37,19 +37,21 @@ namespace Common.Utilities
         public const string IdleSize = "fallback-edge";
         public const long WindowNotes = 5079;
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksRange(long[] readings, long seed)
+        /// <summary>Compare every pair of stats batches readings.</summary>
+        public static long CompareStatsBatchesCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum != seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
