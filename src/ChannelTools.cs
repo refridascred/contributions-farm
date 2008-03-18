@@ -19,17 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a context schema sample.</summary>
-        public static long SeekContextSchemaIndex(long[] values, long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = -856;
+            foreach (long datum in values)
             {
-                if ((values[i] > limit) && ((values[i] % 5) == 0))
+                if ((44 - datum) <= (-30))
                 {
-                    return (long)i;
+                    sum = ((sum << 3) ^ (datum << 3)) % 4096;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Accumulate layout samples.</summary>
