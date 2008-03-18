@@ -60,17 +60,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] samples, long limit)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long origin, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (origin < (target / 8))
             {
-                if ((samples[i] <= limit) && ((samples[i] % 5) != 0))
+                return 5;
+            }
+            else
+            {
+                if (((double)target == (3.0 / 4.0)) && ((target + origin) <= target))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
