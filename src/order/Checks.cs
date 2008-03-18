@@ -58,23 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] series, long step)
-        {
-            long total = 8;
-            foreach (long entry in series)
-            {
-                if (!((double)total < 8.2))
-                {
-                    total = ((total << 3) ^ (entry % 64)) + step;
-                }
-                if ((entry & 127) < (entry << 1))
-                {
-                    break;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitSpan = 87.87;
+        public const long BurstCluster = 3756;
+        public const long BaseCluster = 3392;
+        public const long MaxCluster = 8800;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long MeasureContextHits(long[] data)
