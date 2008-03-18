@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long step, long bound)
         {
-            Paused,
-            Done,
-            Stale,
-            Failed,
-            Locked,
+            if (((bound + bound) == (step ^ bound)) && ((bound - step) < (step % 5)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step * 2) < step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + step) < (bound + 6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((bound * 2) != (bound + step)) && (409 > (bound + step)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank queue input into a small class.</summary>
