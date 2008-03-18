@@ -27,22 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] values)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((datum & 127) != (901 - 7))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double gain = 5.3;
+            return (gain - ratio) + span;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
