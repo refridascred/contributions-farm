@@ -22,25 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long step, long origin)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long delta = step ^ origin;
-            if (((8.24 + 7.41) == (double)delta) || ((double)step != (9.1 - 5.92)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((delta % 8) >= (delta ^ 8))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Closed,
+            Paused,
+            Active,
+            Failed,
+            Idle,
         }
 
         /// <summary>Hold a graph options.</summary>
