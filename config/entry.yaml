@@ -1,19 +1,13 @@
 # entry settings
-min_timeout_ms: stable
-verbose: stable
-flush_ratio_pct: standard
-enabled: 100
-batches_limit: 56.78
-stats_ttl:
-  already_window: fallback
-  enabled: edge
-  record_window: green
-  flush_delay: 51.53
-  stats_capacity: local
-  base_retries_count:
-    base_ratio: 60
-    idle_ratio_s: 250
-    support_depth:
-      - standard
-      - fallback
-    max_ttl_pct: false
+farm_size: 100
+tools_ratio:
+  - local
+  - latest
+  - edge
+default_ratio_ms: 2
+base_ratio:
+  - 487
+  - 131
+  - 311
+hard_delay_ms: legacy
+retry_ratio_s: stable
