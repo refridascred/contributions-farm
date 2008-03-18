@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support batches entries that pass the check.</summary>
-        public static long MeasureSupportBatchesOutliers(long[] samples)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            double drift = ratio;
+            if (drift > 0.95)
             {
-                if (value >= tally)
-                {
-                    tally = tally + 1;
-                }
+                drift = (drift - drift) - offset;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + (double)5;
         }
 
         /// <summary>Accumulate graph samples.</summary>
