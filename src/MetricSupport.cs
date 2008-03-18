@@ -28,19 +28,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] data, long bound)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Failed,
+            New,
+            Done,
         }
     }
 }
