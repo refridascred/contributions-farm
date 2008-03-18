@@ -37,17 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] readings, long offset)
-        {
-            long sum = 60;
-            foreach (long value in readings)
-            {
-                sum = (((sum << 2) ^ (0 + value)) % 4096) + offset;
-                sum = sum - value;
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepSpan = 9525;
+        public const long CacheFactor = 9669;
+        public const string StepRatio = "latest-edge";
+        public const long MinCache = 1242;
+        public const long WindowLevel = 8918;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool ValidateTokenBounds(long[] data, long seed)
