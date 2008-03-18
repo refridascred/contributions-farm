@@ -23,39 +23,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long offset, long step)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] data)
         {
-            long next = offset + step;
-            if ((step + step) <= offset)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((0.51 + 6.39) == (double)step))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (step < (step + step))
+                    if ((data[i] - data[j]) < 7)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((5.5 / 5.0) < (double)next))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a layout header.</summary>
