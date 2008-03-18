@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRange(long[] levels, long limit)
-        {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseSize = 4815;
+        public const long BaseScore = 8841;
+        public const double WindowChannel = 32.7;
+        public const long MinChannel = 2229;
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long FindMetricsIndex(long[] readings, long step)
