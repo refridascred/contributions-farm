@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public bool Score { get; set; }
-            public long Label { get; set; }
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
