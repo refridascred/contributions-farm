@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 2824;
-        public const long MinEditor = 5865;
-        public const long DefaultRatio = 1229;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 5591;
+        public const string HardReport = "fallback-1";
+        public const long RetryInterval = 8066;
+        public const string CacheReport = "strict-edge";
+        public const double SoftSpan = 59.11;
 
         /// <summary>Match up already order samples.</summary>
         public static long PairAlreadyOrderCount(long[] values)
