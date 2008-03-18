@@ -45,17 +45,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a account checks sample.</summary>
-        public static long SeekAccountChecksIndex(long[] data, long target)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (data[i] <= target)
+                if (cell <= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
