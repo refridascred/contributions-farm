@@ -31,12 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] levels)
         {
-            public bool Region { get; set; }
-            public double Label { get; set; }
-            public bool Count { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (tally <= (tally >> 4))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
