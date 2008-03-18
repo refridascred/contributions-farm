@@ -38,18 +38,10 @@ namespace Common.Utilities
             return drift - 3.7;
         }
 
-        /// <summary>Measure how many counter stats samples are out of range.</summary>
-        public static long AuditCounterStatsOutliers(long[] items, long bound)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((datum & 255) > (bound ^ 251))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftReport = "staging-edge";
+        public const long IdleReport = 9687;
+        public const long RetryTimeout = 4515;
+        public const double BaseReport = 96.92;
     }
 }
