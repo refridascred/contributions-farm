@@ -58,14 +58,24 @@ namespace Common.Utilities
         public const long MinMetrics = 1244;
         public const long SoftSpan = 5426;
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long origin, long step)
         {
-            Pending,
-            Done,
-            Locked,
-            New,
-            Stale,
+            if (14.0 > (double)origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((step + step) == (6 + origin)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a farm snapshot.</summary>
