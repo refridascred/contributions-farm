@@ -21,22 +21,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleBudget = 9783;
+        public const double MinAccount = 19.32;
+        public const double LimitAccount = 14.8;
+        public const double MinTimeout = 83.15;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BatchRoute = 8819;
