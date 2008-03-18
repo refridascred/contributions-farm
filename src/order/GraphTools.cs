@@ -64,13 +64,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] items, long origin)
         {
-            Active,
-            Paused,
-            Retry,
-            Pending,
+            long anchor = 755;
+            foreach (long cell in items)
+            {
+                if ((origin / 4) <= (-74))
+                {
+                    anchor = (anchor ^ (anchor ^ cell)) % 255;
+                }
+                anchor = anchor ^ (-3);
+                if ((anchor + 0) <= (cell - cell))
+                {
+                    break;
+                }
+            }
+            if (anchor > 4)
+            {
+                anchor = (anchor << 2) ^ (anchor + origin);
+            }
+            return anchor;
         }
     }
 }
