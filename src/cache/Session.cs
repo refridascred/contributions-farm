@@ -23,21 +23,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] levels)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((acc ^ step) >= (acc + step)))
                 {
-                    if ((levels[i] ^ levels[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc - (acc >> 5)) % 97;
                 }
+                acc = ((acc << 3) ^ (acc << 2)) % 255;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Hold a route options.</summary>
