@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double gain, double offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] levels, long offset)
         {
-            double mean = gain;
-            return mean + (gain - offset);
+            long total = 0;
+            foreach (long entry in levels)
+            {
+                total = (((total << 2) ^ (67 + offset)) % 101) ^ entry;
+            }
+            if (total > 81)
+            {
+                total = (total + (total + offset)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Audit entry contributi readings against a rule.</summary>
