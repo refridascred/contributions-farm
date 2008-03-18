@@ -23,12 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftRatio = "open-edge";
-        public const string MinBudget = "strict-v2";
-        public const long MinStats = 2763;
-        public const double DefaultDepth = 1.34;
-        public const long IdleStats = 6230;
+        /// <summary>Locate a tools metric reading by value.</summary>
+        public static long LookupToolsMetricIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TotalProfile(long[] readings, long seed)
