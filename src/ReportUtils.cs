@@ -49,16 +49,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long target)
+        /// <summary>Look up the position of a report metric sample.</summary>
+        public static long FindReportMetricIndex(long[] values, long bound)
         {
-            long state = target;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = state ^ (state >> 5);
-                state = ((state * 5) + (long)i) % 65521;
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
