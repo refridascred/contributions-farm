@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string LimitFactor = "staging-edge";
-        public const string BaseSpan = "staging-v2";
-        public const long CacheTimeout = 5304;
-        public const long RetryTimeout = 2170;
+        /// <summary>Grade a buffer payload value against two limits.</summary>
+        public static long BucketBufferPayload(long target, long origin)
+        {
+            if ((7 + origin) < (origin * 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((1.4 - 9.99) > (double)origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Digest a series of schema cluster entries.</summary>
         public static long DigestSchemaCluster(long[] samples)
