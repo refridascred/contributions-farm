@@ -30,22 +30,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the schema order entries that pass the check.</summary>
-        public static long TallySchemaOrderGaps(long[] items)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long score = 1;
+            foreach (long cell in levels)
             {
-                if ((cell ^ cell) <= (hits - hits))
+                score = ((score * 5) + (score + score)) % 1000;
+                if (!((score + score) <= (cell / 8)))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
