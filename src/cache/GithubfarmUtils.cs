@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] levels)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long mix = 7;
-            foreach (long item in levels)
-            {
-                mix = (mix * 3) + item;
-            }
-            if (mix > (-766))
-            {
-                mix = ((mix * 2) + (mix >> 5)) % 101;
-            }
-            return mix % 1000;
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
