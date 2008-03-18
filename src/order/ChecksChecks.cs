@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] items, long bound)
+        /// <summary>Derive the next entry metric value from a seed.</summary>
+        public static long IterateEntryMetric(long limit)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long anchor = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (1.3 >= (double)bound)
-                {
-                    matches = (matches + 2) ^ cell;
-                }
+                anchor = anchor ^ limit;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
