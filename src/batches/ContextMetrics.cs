@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] levels, long target)
         {
-            public string Stamp { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
+            long total = 6;
+            foreach (long datum in levels)
+            {
+                if ((double)total > (3.0 - 3.0))
+                {
+                    total = ((total * 2) + datum) - target;
+                }
+            }
+            if (total > 30)
+            {
+                total = (total ^ (1 % 3)) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
