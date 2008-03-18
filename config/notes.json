@@ -1,6 +1,5 @@
 {
-  "warm_ratio_s": ["latest", "primary", "open"],
-  "min_delay_s": 19,
-  "enabled": 69.75,
-  "contributi_limit": "local"
+  "dry_run": true,
+  "enabled": 8596,
+  "notes_interval": "stable"
 }
