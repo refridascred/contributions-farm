@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] data)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] series)
         {
             long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!!((cell + cell) < (83 * 2)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] + series[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
