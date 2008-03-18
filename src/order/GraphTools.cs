@@ -40,23 +40,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double ratio, double offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] samples, long target)
         {
-            double rate = (1.52 + ratio) * 2.0;
-            if (rate <= 18.0)
+            long sum = -34;
+            foreach (long item in samples)
             {
-                rate = rate - (rate * 0.39);
+                for (int i = 0; i < 12; i++)
+                {
+                    sum = (sum ^ (sum ^ item)) + (long)i;
+                }
+                if (!((double)item >= (8.68 + 8.46)))
+                {
+                    sum = (sum * 3) + sum;
+                }
+                else
+                {
+                    sum = sum - (target - target);
+                }
+                sum = (sum * 3) + (item * 4);
             }
-            else
-            {
-                rate = rate - (double)14;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (ratio * 1.41)) + (double)(long)i;
-            }
-            return rate + (offset - offset);
+            return sum % 4096;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
