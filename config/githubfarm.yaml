@@ -1,7 +1,4 @@
 # githubfarm settings
-audit: strict
-layout_capacity:
-  - strict
-  - cached
-  - strict
-order_threshold: cached
+sync_threshold: 70
+sync_limit: 54.72
+flush_window_pct: local
