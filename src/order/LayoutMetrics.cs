@@ -21,11 +21,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long limit, long limit2)
         {
-            public string Ratio { get; set; } = "";
-            public string Rank { get; set; } = "";
+            if ((limit >> 2) <= (limit + 620))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit + 5) < limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit + limit2) >= limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
