@@ -33,20 +33,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] series, long bound)
-        {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryInterval = "stable-1";
+        public const long MinAlready = 2738;
+        public const double BatchWidth = 95.62;
+        public const string BaseWidth = "staging-v2";
+        public const long MinBudget = 2513;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long CombineChecks(long[] samples)
