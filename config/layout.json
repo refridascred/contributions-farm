@@ -1,6 +1,13 @@
 {
-  "audit": "fallback",
-  "idle_size_ms": 84.22,
-  "poll_window_ms": true,
-  "soft_interval_ms": 28
+  "retry_capacity_s": 82.63,
+  "persist": {
+    "readonly": ["stable", "green", "local"],
+    "audit": true,
+    "cache_limit": 74.68,
+    "warm_timeout_s": 53,
+    "soft_size": "blue"
+  },
+  "channel_size": 62,
+  "soft_capacity_count": "staging",
+  "readonly": 48
 }
