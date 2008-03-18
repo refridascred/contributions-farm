@@ -22,19 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] levels, long target)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Owner { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
