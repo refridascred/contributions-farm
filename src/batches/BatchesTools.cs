@@ -27,10 +27,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxCounter = "fallback-v2";
-        public const long BurstCounter = 2373;
-        public const double SoftSize = 87.69;
-        public const double BaseSize = 0.74;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading - reading) > (5 ^ 59))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
