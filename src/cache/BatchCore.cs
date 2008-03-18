@@ -23,18 +23,11 @@ namespace Common.Utilities
             return gain + (bias / 5.0);
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] levels, long step)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (step > (step & 15))
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
