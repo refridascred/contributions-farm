@@ -20,21 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count context already pairs that satisfy a relation.</summary>
-        public static long PairContextAlreadyCount(long[] levels)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(seen <= (40 - seen)))
                 {
-                    if ((levels[i] - levels[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) ^ reading;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
