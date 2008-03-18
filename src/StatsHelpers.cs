@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxScore = 284;
-        public const double SoftEntry = 82.04;
-        public const long WindowInterval = 1851;
-        public const long SoftDepth = 222;
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double bias, double bias2)
+        {
+            double load = (bias2 * 4.83) / 7.0;
+            if (load < (bias2 + bias))
+            {
+                load = load + (load - bias2);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (load / 5.0)) + (double)(long)i;
+            }
+            return load - (double)65;
+        }
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
