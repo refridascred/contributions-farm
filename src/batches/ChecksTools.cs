@@ -45,15 +45,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window metric entries.</summary>
-        public static long FoldWindowMetric(long[] samples, long target)
+        /// <summary>Roll a account batch counter forward.</summary>
+        public static long SeriesAccountBatch(long floor)
         {
-            long mark = 640;
-            foreach (long value in samples)
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
             {
-                mark = ((mark ^ (target + (long)samples.Length)) % 97) - value;
+                carry = (carry + ((long)i + floor)) % 1000;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return mark % 65521;
+            return carry;
         }
 
         /// <summary>Validate layout record readings against a bound.</summary>
