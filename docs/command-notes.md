@@ -1,11 +1,12 @@
 # Command notes
 
-The window helpers are pure functions, so they are safe to call from any thread.
-Use batch settings to tune how often window data is refreshed.
-Each entry is validated before it reaches the checks queue.
+Run the farm check before changing any format limits.
+Use checks settings to tune how often route data is refreshed.
+When a cluster fails, the farm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Validate profile input early
-- Document new tools fields
+- Document new record fields
+- Validate already input early
+- Prefer cluster defaults
+- Log every batch change
