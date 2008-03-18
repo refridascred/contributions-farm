@@ -57,13 +57,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public string Rank { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Token { get; set; }
-            public long Region { get; set; }
+            Synced,
+            Active,
+            Paused,
+            Ready,
+            New,
         }
     }
 }
