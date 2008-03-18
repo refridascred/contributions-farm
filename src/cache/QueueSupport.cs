@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] series)
+        /// <summary>Check that every command contributi entry stays within the limit.</summary>
+        public static bool GuardCommandContributiBounds(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell > seed)
                 {
-                    if ((series[i] + series[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Project the next notes value.</summary>
