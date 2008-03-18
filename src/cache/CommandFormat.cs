@@ -29,26 +29,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] readings, long offset)
-        {
-            long carry = 88;
-            foreach (long value in readings)
-            {
-                if (((double)carry > (3.5 * 2.0)) && ((carry << 2) <= (541 / 4)))
-                {
-                    carry = (((carry << 2) ^ (carry * 2)) % 1000) - value;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (73 + offset)) % 4096;
-                }
-            }
-            if (carry < 381)
-            {
-                carry = (carry - (carry * 5)) % 255;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitAccount = 68.31;
+        public const long StepAccount = 4563;
+        public const long RetryDepth = 9302;
     }
 }
