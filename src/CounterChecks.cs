@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 5903;
-        public const long CacheChannel = 334;
-        public const double IdleChannel = 90.71;
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public double Total { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long MatchOrderCount(long[] series)
