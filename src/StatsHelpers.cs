@@ -68,19 +68,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double ratio, double bias)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            double load = ratio;
-            if (load < (ratio + bias))
-            {
-                load = load + (bias + ratio);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (ratio + ratio)) + (double)(long)i;
-            }
-            return load - (8.15 / 8.0);
+            Idle,
+            Ready,
+            Retry,
+            Pending,
+            Active,
         }
 
         /// <summary>Define format limits and defaults.</summary>
