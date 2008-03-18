@@ -53,11 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double weight, double offset)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double scale, double span)
         {
-            double load = (weight / 9.0) * 2.9;
-            return (load - load) + offset;
+            double scale2 = scale;
+            if (scale2 > (double)75)
+            {
+                scale2 = scale2 + (double)479;
+            }
+            else
+            {
+                scale2 = scale2 + (scale / 3.0);
+            }
+            return scale2 + span;
         }
     }
 }
