@@ -23,12 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a tools metric reading by value.</summary>
-        public static long LookupToolsMetricIndex(long[] samples, long limit)
+        /// <summary>Find the first layout command entry that matches the target.</summary>
+        public static long LookupLayoutCommandIndex(long[] samples, long offset)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] >= limit)
+                if (samples[i] < offset)
                 {
                     return (long)i;
                 }
