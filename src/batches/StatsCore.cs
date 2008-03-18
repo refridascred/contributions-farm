@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate cluster filter samples.</summary>
-        public static long TotalClusterFilter(long[] readings)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] levels)
         {
-            long result = 407;
-            foreach (long sample in readings)
+            long carry = 0;
+            foreach (long datum in levels)
             {
-                result = (result << 3) ^ (776 + sample);
-                if ((sample > (sample * 3)) || ((17.0 / 5.0) > (double)sample))
+                if ((carry * 5) == (datum + datum))
                 {
-                    break;
+                    carry = carry - (datum % 97);
                 }
             }
-            if (result < 888)
-            {
-                result = (result ^ (result - result)) % 65521;
-            }
-            return result;
+            return carry;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
