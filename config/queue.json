@@ -1,6 +1,8 @@
 {
-  "strict": true,
-  "poll_ratio_ms": "legacy",
-  "burst_window": "stable",
-  "verbose": false
+  "warm_ttl_pct": [446, 13],
+  "batch_interval_count": ["legacy", "primary", "eu-west", "stable"],
+  "base_threshold_ms": 7676,
+  "cache_timeout": 500,
+  "hard_ttl_s": "eu-west",
+  "burst_ttl": 5411
 }
