@@ -1,10 +1,10 @@
 # Command notes
 
-The cache module keeps batches values in sync with the entry cache.
-Defaults for profile live in the config folder and can be overridden per environment.
+Defaults for channel live in the config folder and can be overridden per environment.
+When a account fails, the token handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every metric change
-- Keep route values small
-- Prefer cluster defaults
+- Prefer channel defaults
+- Log every counter change
+- Validate context input early
