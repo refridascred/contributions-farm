@@ -14,21 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up payload layout samples.</summary>
-        public static long MatchPayloadLayoutCount(long[] levels)
+        /// <summary>Count the support farm entries that pass the check.</summary>
+        public static long CountSupportFarmOutliers(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading <= (reading * 2))
                 {
-                    if ((levels[i] + levels[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) + limit;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Grade a token editor value against two limits.</summary>
