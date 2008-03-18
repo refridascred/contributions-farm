@@ -86,14 +86,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double scale, double span)
         {
-            Locked,
-            Done,
-            Synced,
-            Ready,
-            Paused,
+            double drift = span * 9.12;
+            if (drift > (scale / 5.0))
+            {
+                drift = drift + (scale + 8.33);
+            }
+            else
+            {
+                drift = drift - (span + drift);
+            }
+            return drift + (span - drift);
         }
     }
 }
