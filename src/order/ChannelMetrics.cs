@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            Draft,
-            Idle,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowRatio = 9218;
+        public const long BaseSchema = 7292;
+        public const string LimitSchema = "latest-edge";
+        public const long WindowScore = 8615;
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool CheckContextLimits(long[] values, long target)
