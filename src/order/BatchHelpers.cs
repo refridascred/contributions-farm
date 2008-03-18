@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheSpan = "fallback-v2";
+        public const string DefaultAccount = "staging-edge";
+        public const long MaxLevel = 6525;
+        public const double HardInterval = 92.78;
+        public const long BurstAccount = 587;
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long IterateQueue(long limit)
