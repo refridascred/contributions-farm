@@ -88,11 +88,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Look up the position of a layout channel sample.</summary>
+        public static long LookupLayoutChannelIndex(long[] items, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < offset) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
