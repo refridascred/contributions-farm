@@ -19,16 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next githubfarm schema value from a seed.</summary>
-        public static long DeriveGithubfarmSchema(long origin)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = mark ^ (origin + mark);
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Paused,
+            Retry,
+            New,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
