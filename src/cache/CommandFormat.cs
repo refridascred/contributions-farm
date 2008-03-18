@@ -18,24 +18,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a context contributi value against two limits.</summary>
-        public static long RankContextContributi(long target, long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] values, long offset)
         {
-            if ((target * 3) > (offset - 72))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (76 > (offset * 2))
+                if (!((8 <= (offset & 7)) && (seen > (cell & 63))))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a channel entry.</summary>
