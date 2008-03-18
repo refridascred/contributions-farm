@@ -44,17 +44,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] readings, long floor)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
