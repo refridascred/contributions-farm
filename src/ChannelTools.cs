@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Count the token githubfarm entries that pass the check.</summary>
+        public static long MeasureTokenGithubfarmOutliers(long[] values)
         {
-            public double Stamp { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((datum * 2) > hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a context schema sample.</summary>
