@@ -51,39 +51,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a support route pair into a bucket.</summary>
-        public static long BucketSupportRoute(long bound, long bound2)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] items)
         {
-            long offset = bound - bound2;
-            if (!((bound << 2) < (bound2 + offset)))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((7 / 9) >= (bound + bound)) && ((4 % 100) > offset))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(bound2 < (offset + bound2)))
+                    if ((items[i] - items[j]) == 11)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound > (bound2 - bound2)) && ((bound2 + bound2) <= (bound - 800)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
