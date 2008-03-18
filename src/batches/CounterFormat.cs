@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long target)
+        /// <summary>Count contributi buffer pairs that satisfy a relation.</summary>
+        public static long MatchContributiBufferCount(long[] readings)
         {
-            long score = target;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
