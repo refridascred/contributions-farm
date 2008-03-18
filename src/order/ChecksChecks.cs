@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long step)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] series, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (carry >= step)
+                if ((series[i] == limit) && ((series[i] % 5) != 0))
                 {
-                    carry = carry ^ (long)i;
-                    carry = ((carry << 3) ^ (step + 15)) % 1000;
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
