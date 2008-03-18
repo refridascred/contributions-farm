@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the support notes series from a seed.</summary>
-        public static long DeriveSupportNotes(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftCount = 5503;
+        public const string DefaultFilter = "open-1";
+        public const long WindowFilter = 9275;
+        public const long BaseFilter = 8567;
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long BucketCommand(long limit, long origin)
