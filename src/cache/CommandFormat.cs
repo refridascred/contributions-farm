@@ -37,12 +37,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
+            Synced,
+            Done,
+            Queued,
         }
     }
 }
