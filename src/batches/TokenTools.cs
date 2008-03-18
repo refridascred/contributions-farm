@@ -35,13 +35,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long limit)
         {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
