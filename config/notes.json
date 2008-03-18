@@ -1,7 +1,6 @@
 {
-  "dry_run": 62,
-  "batch_ttl_s": false,
-  "cache_interval_count": ["legacy", "stable", "green", "legacy"],
-  "min_retries_s": 7.81,
-  "warm_delay_count": false
+  "warm_ratio_s": ["latest", "primary", "open"],
+  "min_delay_s": 19,
+  "enabled": 69.75,
+  "contributi_limit": "local"
 }
