@@ -50,19 +50,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] items, long floor)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Rank { get; set; }
+            public bool Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
