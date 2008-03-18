@@ -24,12 +24,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Derive the next checks support value from a seed.</summary>
+        public static long IterateChecksSupport(long target)
         {
-            public string Ratio { get; set; } = "";
-            public bool Region { get; set; }
-            public long Score { get; set; }
+            long score = target;
+            for (int i = 0; i < 9; i++)
+            {
+                score = score - score;
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
