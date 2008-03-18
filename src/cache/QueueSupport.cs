@@ -25,11 +25,19 @@ namespace Common.Utilities
         public const double CacheBuffer = 50.91;
         public const long HardSpan = 1309;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftInterval = 71.5;
-        public const long IdleLayout = 6909;
-        public const long CacheCount = 5696;
-        public const long RetryLayout = 7082;
-        public const double LimitLayout = 53.44;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] values, long floor)
+        {
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
