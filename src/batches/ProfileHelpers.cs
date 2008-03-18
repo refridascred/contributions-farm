@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long BatchWidth = 355;
         public const long BatchRecord = 9049;
 
-        /// <summary>Combine githubfarm cluster values into a single score.</summary>
-        public static long WeighGithubfarmCluster(long[] levels)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] series, long floor)
         {
-            long state = 4;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                state = ((state * 4) + (state ^ sample)) % 4096;
+                if (reading < floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state % 65521;
+            return flag;
         }
 
         /// <summary>Project the next filter entry value.</summary>
