@@ -48,9 +48,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCount = 5799;
-        public const long WindowCommits = 9851;
-        public const string LimitCommits = "open";
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Done,
+            Retry,
+            Queued,
+            Idle,
+        }
     }
 }
