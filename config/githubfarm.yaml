@@ -1,6 +1,12 @@
 # githubfarm settings
-strict: 4
-counter_window: 47.23
-payload_ratio: stable
-warm_capacity_pct: 250
-route_retries: false
+route_window: cached
+hard_size_s:
+  - cached
+  - staging
+  - legacy
+  - staging
+readonly: false
+batch_capacity_count:
+  - primary
+  - latest
+soft_capacity_pct: 1024
