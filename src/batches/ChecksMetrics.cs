@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutOutliers(long[] values, long step)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((tally % 7) <= datum)
-                {
-                    tally = (tally + 2) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 6021;
+        public const long IdleInterval = 2406;
+        public const long BatchLevel = 3313;
+        public const long MaxLevel = 9506;
 
         /// <summary>Digest a series of report githubfarm entries.</summary>
         public static long TallyReportGithubfarm(long[] data)
