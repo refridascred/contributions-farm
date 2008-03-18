@@ -59,12 +59,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] items, long floor)
         {
-            public double Offset { get; set; }
-            public bool Token { get; set; }
-            public double Size { get; set; }
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the cluster class values.</summary>
