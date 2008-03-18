@@ -42,22 +42,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] samples, long limit)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long target)
         {
-            long score = 711;
-            foreach (long entry in samples)
+            long acc = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((limit * 4) < (limit & 1))
-                {
-                    score = (score - (score - limit)) - entry;
-                }
+                acc = (acc ^ (96 + (-153))) % 101;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            if (score > 248)
-            {
-                score = score - (score + 2);
-            }
-            return score;
+            return acc;
         }
 
         /// <summary>Rank account input into a small class.</summary>
