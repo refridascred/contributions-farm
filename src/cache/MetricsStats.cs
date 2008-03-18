@@ -37,17 +37,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] values, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 60;
+            foreach (long value in readings)
             {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
+                sum = (((sum << 2) ^ (0 + value)) % 4096) + offset;
+                sum = sum - value;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
