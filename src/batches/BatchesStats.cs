@@ -55,17 +55,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] values, long target)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
