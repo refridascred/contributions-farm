@@ -55,18 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token layout entries that pass the check.</summary>
-        public static long TallyTokenLayoutOutliers(long[] levels, long floor)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (floor < (matches % 60))
-                {
-                    matches = (matches + 3) - sample;
-                }
-            }
-            return matches;
+            Locked,
+            Draft,
+            Dropped,
+            Queued,
         }
     }
 }
