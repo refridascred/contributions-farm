@@ -22,18 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] values, long offset)
+        /// <summary>Find the first tools token entry that matches the target.</summary>
+        public static long FindToolsTokenIndex(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((11.0 + 8.7) >= (double)offset)
+                if ((levels[i] > seed) && ((levels[i] % 2) == 0))
                 {
-                    seen = (seen + 1) ^ item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
