@@ -36,19 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] series)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long mix = 98;
-            foreach (long sample in series)
-            {
-                mix = ((mix * 5) + (sample - 8)) % 255;
-            }
-            if (mix < 311)
-            {
-                mix = ((mix * 4) + mix) % 65521;
-            }
-            return mix % 4096;
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
