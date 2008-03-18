@@ -1,9 +1,11 @@
 # support settings
-dry_run: 38.51
-idle_threshold_ms: 51
-max_interval_s: 3361
-default_window_pct: open
-soft_window_count:
-  - 320
-  - 245
-  - 231
+payload_window:
+  - 410
+  - 390
+poll_delay: 1905
+cache_limit_count:
+  readonly: standard
+  cache_ttl_count: true
+  soft_delay: false
+  persist: false
+base_ttl: fallback
