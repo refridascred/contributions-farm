@@ -15,17 +15,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] items, long origin)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long floor, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((target <= (floor << 1)) || ((65 + target) == (floor & 15)))
             {
-                if (items[i] >= origin)
+                return 1;
+            }
+            else
+            {
+                if ((double)floor >= 5.8)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((-2) + 79) >= (target & 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
