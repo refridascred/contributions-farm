@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 3135;
+        public const long HardSchema = 411;
+        public const double MinFactor = 18.76;
+        public const long MaxSchema = 9649;
+        public const long IdleSchema = 4971;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long DefaultMetrics = 66;
