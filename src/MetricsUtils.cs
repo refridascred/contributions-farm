@@ -45,19 +45,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Check that every channel queue entry stays within the limit.</summary>
-        public static bool ValidateChannelQueueRange(long[] samples, long floor)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Queued,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the support level values.</summary>
