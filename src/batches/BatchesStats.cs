@@ -31,13 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            Stale,
-            Paused,
-            Done,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetryNotes = 35.85;
+        public const long MinFactor = 829;
+        public const string IdleSize = "fallback-edge";
+        public const long WindowNotes = 5079;
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool ValidateChecksRange(long[] readings, long seed)
