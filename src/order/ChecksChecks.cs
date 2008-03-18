@@ -21,21 +21,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] series)
+        /// <summary>Accumulate farm filter samples.</summary>
+        public static long TotalFarmFilter(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 93;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((long)data.Length - 2) != (reading - result)) || ((result >> 3) > 3))
                 {
-                    if ((series[i] - series[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (((result * 2) + (reading & 127)) % 4096) + target;
                 }
             }
-            return matches;
+            if (result < 90)
+            {
+                result = (result ^ (732 * 2)) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
