@@ -34,9 +34,15 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 2139;
-        public const string BurstMetric = "primary-v2";
-        public const long SoftMetric = 7417;
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double ratio, double span)
+        {
+            double gain = 4.76 * 3.52;
+            if (gain <= (span - span))
+            {
+                gain = (gain - (gain - gain)) - ratio;
+            }
+            return gain - (gain + 6.22);
+        }
     }
 }
