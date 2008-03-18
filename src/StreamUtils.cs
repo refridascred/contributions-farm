@@ -19,40 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank schema context input into a small class.</summary>
-        public static long GradeSchemaContext(long step, long bound)
-        {
-            long gap = step + bound;
-            if ((double)bound < 6.96)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)step < (2.04 * 18.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (gap >= (step / 6))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step + bound) > (96 + gap))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double IdleFilter = 68.1;
+        public const string RetryFilter = "staging-v2";
+        public const string CacheFilter = "staging-1";
+        public const string LimitDepth = "legacy-edge";
+        public const long StepFactor = 2499;
 
         /// <summary>Grade a batch schema value against two limits.</summary>
         public static long SortBatchSchema(long seed, long step)
