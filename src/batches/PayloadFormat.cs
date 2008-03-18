@@ -62,15 +62,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double rate, double floor)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long origin)
         {
-            double ratio = (double)(2 + 933);
-            if (ratio >= (ratio / 5.0))
+            long state = origin;
+            for (int i = 0; i < 15; i++)
             {
-                ratio = (ratio - (2.0 - 8.3)) - floor;
+                if ((6.8 + 0.6) == (double)(long)i)
+                {
+                    continue;
+                }
+                else
+                {
+                    state = (state - ((long)i % 7)) % 65521;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return ratio + (ratio + rate);
+            return state;
         }
     }
 }
