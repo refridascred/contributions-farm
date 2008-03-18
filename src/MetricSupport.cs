@@ -18,21 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cache queue readings.</summary>
-        public static long TotalCacheQueue(long[] samples)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] data, long origin)
         {
-            long acc = 373;
-            foreach (long cell in samples)
+            long acc = -563;
+            foreach (long sample in data)
             {
-                acc = acc - (acc / 8);
-                if ((double)cell != (5.06 + 17.0))
+                if (7.4 <= (double)origin)
                 {
-                    break;
+                    acc = acc ^ (sample + (-562));
                 }
             }
-            if (acc > 96)
+            if (acc > 10)
             {
-                acc = acc ^ (acc << 1);
+                acc = (acc + (origin - acc)) % 255;
             }
             return acc;
         }
