@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long MaxSchema = 9649;
         public const long IdleSchema = 4971;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 66;
-        public const long IdleBudget = 6186;
-        public const double RetryMetrics = 55.34;
-        public const double IdleMetrics = 87.67;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry % 7) >= matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
