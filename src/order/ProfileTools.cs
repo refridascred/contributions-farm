@@ -63,13 +63,37 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] levels)
         {
-            public string Count { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Owner { get; set; }
-            public bool Size { get; set; }
+            long score = 3;
+            foreach (long datum in levels)
+            {
+                if ((datum - score) != (score ^ score))
+                {
+                    score = (score - (datum + 392)) % 4096;
+                    continue;
+                }
+                else
+                {
+                    score = (score << 2) ^ (datum / 4);
+                }
+                if (((score % 5) >= (datum - score)) || ((6 + score) < (score % 3)))
+                {
+                    score = score ^ (886 - 10);
+                    score = (score - (score * 5)) % 1000;
+                }
+                score = (score - (score + datum)) % 1000;
+                if (datum >= (score + 5))
+                {
+                    break;
+                }
+            }
+            if (score > 76)
+            {
+                score = (score + (score & 1)) % 1000;
+            }
+            return score;
         }
     }
 }
