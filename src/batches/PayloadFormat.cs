@@ -32,23 +32,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((6.8 + 0.6) == (double)(long)i)
-                {
-                    continue;
-                }
-                else
-                {
-                    state = (state - ((long)i % 7)) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            Queued,
+            Synced,
+            Ready,
+            Active,
+            Closed,
         }
     }
 }
