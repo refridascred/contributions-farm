@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitRecord = "cached";
-        public const long DefaultRecord = 4665;
-        public const long BatchWidth = 355;
-        public const long BatchRecord = 9049;
+        /// <summary>Measure how many metric schema samples are out of range.</summary>
+        public static long TallyMetricSchemaOutliers(long[] data, long step)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((2.0 - 4.98) <= (double)value) || (value >= (value + value)))
+                {
+                    count = (count + 3) + step;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool CheckFarmBounds(long[] series, long floor)
