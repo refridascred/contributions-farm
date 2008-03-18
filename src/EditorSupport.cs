@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public string Count { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryLevel = 40.92;
+        public const long DefaultRatio = 5345;
+        public const string RetryCount = "alpha";
+        public const double BurstTimeout = 54.51;
 
         /// <summary>Measure how many support metric samples are out of range.</summary>
         public static long MeasureSupportMetricGaps(long[] levels)
