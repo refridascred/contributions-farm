@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCount = 4946;
-        public const string BurstCommand = "staging-edge";
-        public const double BatchInterval = 32.38;
-        public const long WindowCommand = 473;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public bool Token { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long TallyEditorGaps(long[] samples, long step)
