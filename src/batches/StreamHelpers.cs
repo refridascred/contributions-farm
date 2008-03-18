@@ -12,18 +12,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] values)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if ((7.9 + 14.0) < (double)sample)
+                if (value != seed)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
