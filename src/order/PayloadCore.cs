@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultWidth = 502;
+        public const long RetryAlready = 8332;
+        public const long WindowTimeout = 9533;
+        public const long BurstInterval = 494;
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
