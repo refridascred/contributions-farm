@@ -61,13 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public double Count { get; set; }
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 1703;
+        public const long MinContext = 5627;
+        public const string HardContext = "legacy-1";
+        public const long MaxContext = 2931;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long TallyMetric(long[] items, long origin)
