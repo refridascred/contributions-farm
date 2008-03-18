@@ -18,18 +18,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] items)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (!(((-113) >> 5) <= (2 + value)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the stream status values.</summary>
