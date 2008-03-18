@@ -34,15 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of context stream entries.</summary>
-        public static long TotalContextStream(long[] series)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long mix = 2;
-            foreach (long entry in series)
-            {
-                mix = (mix << 2) ^ (entry + (-1));
-            }
-            return mix;
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
