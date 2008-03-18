@@ -41,10 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinSize = 8439;
-        public const long MinCount = 6129;
-        public const double WindowScore = 78.86;
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= offset) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long LimitTools = 5149;
