@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowLayout = "standard-v2";
-        public const string WindowSpan = "primary-1";
-        public const long MaxLayout = 6990;
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = sum - (sum >> 3);
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double AdjustContributi(double gain, double offset)
