@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] data, long limit)
-        {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitSize = 92;
+        public const long MaxContributi = 1146;
+        public const double IdleContributi = 28.51;
+        public const long StepCount = 9531;
 
         /// <summary>Roll a commits metric counter forward.</summary>
         public static long IterateCommitsMetric(long seed)
