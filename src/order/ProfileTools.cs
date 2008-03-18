@@ -32,10 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultScore = 65.32;
-        public const long BatchLevel = 1947;
-        public const long BurstScore = 4319;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long CombineQueue(long[] levels)
