@@ -58,14 +58,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            Queued,
-            Paused,
-            Dropped,
-            New,
-            Locked,
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public double Label { get; set; }
+            public double Size { get; set; }
         }
     }
 }
