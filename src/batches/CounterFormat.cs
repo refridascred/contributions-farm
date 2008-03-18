@@ -13,11 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Audit context account readings against a rule.</summary>
+        public static long TallyContextAccountHits(long[] readings, long floor)
         {
-            public long Label { get; set; }
-            public bool Size { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (!(((count / 5) == (floor + item)) || ((8.14 / 3.0) > (double)floor)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the tools state values.</summary>
