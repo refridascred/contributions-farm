@@ -47,21 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] levels)
+        /// <summary>Count the contributi queue entries that pass the check.</summary>
+        public static long MeasureContributiQueueOutliers(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((hits ^ sample) == (hits % 8))
                 {
-                    if ((levels[i] + levels[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
