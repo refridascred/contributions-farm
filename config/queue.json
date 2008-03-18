@@ -1,6 +1,16 @@
 {
-  "soft_delay_pct": ["local", "local"],
-  "audit": "eu-west",
-  "idle_capacity_count": false,
-  "verbose": ["eu-west", "stable"]
+  "batch_ttl": {
+    "burst_retries_ms": 51,
+    "strict": 1024,
+    "idle_ttl": {
+      "strict": 72.78,
+      "checks_timeout": "latest",
+      "max_timeout": 12
+    },
+    "compress": "staging",
+    "hard_window_pct": 30
+  },
+  "sync_ttl": 86.32,
+  "base_capacity": 67.14,
+  "base_size_pct": "blue"
 }
