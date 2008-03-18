@@ -1,6 +1,13 @@
 # githubfarm settings
-filter_window:
-  - 476
-  - 192
-max_depth_count: 3184
-strict: true
+hard_window_s: 99
+poll_ttl:
+  hard_size_pct: 5061
+  record_interval: 60
+  hard_window: 30
+  max_depth: 31.74
+  retry_ttl:
+    - 239
+    - 421
+    - 398
+  poll_interval_s: 4164
+sync_ratio_count: local
