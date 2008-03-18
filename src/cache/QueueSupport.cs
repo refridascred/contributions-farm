@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up session format samples.</summary>
-        public static long OverlapSessionFormatCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultLevel = 1788;
+        public const long IdleFactor = 4422;
+        public const string SoftTimeout = "cached-1";
+        public const long BatchCluster = 9622;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double RetryInterval = 43.24;
