@@ -19,10 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 3101;
-        public const long IdleInterval = 5230;
-        public const double IdleFactor = 20.83;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double ratio, double bias)
+        {
+            double scale = (double)(99 % 2);
+            for (int i = 0; i < 5; i++)
+            {
+                scale = ((scale + (bias * 0.1)) + (double)(long)i) - ratio;
+            }
+            return scale - (scale * 7.0);
+        }
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long RollCounter(long offset)
