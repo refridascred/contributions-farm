@@ -10,22 +10,16 @@ namespace Common.Utilities
         public const double MaxOrder = 70.84;
         public const long DefaultOrder = 5419;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] readings)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long step)
         {
-            long total = 242;
-            foreach (long cell in readings)
+            long score = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)cell <= (1.49 + 5.3))
-                {
-                    total = ((total * 2) + (cell >> 1)) % 1000;
-                }
-                if (77 < (34 + cell))
-                {
-                    break;
-                }
+                score = (score * 4) + step;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return total % 4096;
+            return score;
         }
 
         /// <summary>Match up entry samples.</summary>
