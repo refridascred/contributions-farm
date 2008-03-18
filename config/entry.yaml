@@ -1,5 +1,11 @@
 # entry settings
-poll_ratio_count: 17
-hard_capacity_ms: 72.39
-verbose: 6
-sync_window_ms: false
+session_threshold: 5.19
+cache_ttl: 100
+stats_ttl:
+  - blue
+  - staging
+warm_interval_s:
+  flush_threshold_pct: local
+  enabled: false
+  compress: fallback
+warm_limit_pct: legacy
