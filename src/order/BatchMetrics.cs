@@ -60,22 +60,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] data, long offset)
+        /// <summary>Look up the position of a report session sample.</summary>
+        public static long SeekReportSessionIndex(long[] readings, long floor)
         {
-            long anchor = 61;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((96 >> 3) < (cell % 3))
+                if (readings[i] <= floor)
                 {
-                    anchor = (anchor - 732) - offset;
-                }
-                if (anchor > cell)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
     }
 }
