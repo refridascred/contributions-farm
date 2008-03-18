@@ -1,8 +1,5 @@
 {
-  "compress": 100,
-  "default_threshold_pct": 54.4,
-  "sync_threshold": 88,
-  "batch_delay_ms": "open",
-  "sync_retries_ms": "legacy",
-  "cache_threshold": "strict"
+  "warm_threshold": 250,
+  "graph_threshold": 33,
+  "poll_threshold_pct": 1296
 }
