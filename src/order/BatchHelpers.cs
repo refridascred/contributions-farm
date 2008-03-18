@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheSpan = "fallback-v2";
-        public const string DefaultAccount = "staging-edge";
-        public const long MaxLevel = 6525;
-        public const double HardInterval = 92.78;
-        public const long BurstAccount = 587;
+        /// <summary>Look up the position of a cluster metrics sample.</summary>
+        public static long SeekClusterMetricsIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long IterateQueue(long limit)
