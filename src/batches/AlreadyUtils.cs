@@ -25,18 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] levels)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (hits >= (value & 15))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
