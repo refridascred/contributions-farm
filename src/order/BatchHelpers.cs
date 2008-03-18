@@ -13,18 +13,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] levels, long origin)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (!((6.0 / 5.0) >= (double)origin) && ((double)origin < (double)item))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Done,
+            Idle,
+            Stale,
+            New,
         }
 
         /// <summary>Describe the commits state values.</summary>
