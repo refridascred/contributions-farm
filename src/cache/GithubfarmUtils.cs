@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of window editor readings.</summary>
-        public static long MatchWindowEditorCount(long[] samples)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (acc < offset)
                 {
-                    if ((samples[i] ^ samples[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc << 2) ^ (acc + (long)i)) % 101;
+                    acc = ((acc << 2) ^ (offset + 98)) % 4096;
                 }
+                else
+                {
+                    acc = (acc * 5) + (long)i;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Digest a series of token record entries.</summary>
