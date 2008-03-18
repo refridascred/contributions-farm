@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] levels, long origin)
+        /// <summary>Count queue farm pairs that satisfy a relation.</summary>
+        public static long CompareQueueFarmCount(long[] levels)
         {
+            long seen = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
