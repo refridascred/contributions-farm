@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit window tools readings against a rule.</summary>
-        public static long CountWindowToolsGaps(long[] data, long origin)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double scale, double span)
         {
-            long count = 0;
-            foreach (long entry in data)
+            double scale2 = scale * 15.0;
+            if (scale2 <= (span + scale))
             {
-                if (((6.06 + 1.0) <= (double)entry) || ((origin - count) <= (entry >> 3)))
-                {
-                    count = count + 2;
-                }
+                scale2 = scale2 + (scale2 + 9.71);
             }
-            return count;
+            return scale2 + scale2;
         }
 
         /// <summary>Derive the next notes cluster value from a seed.</summary>
