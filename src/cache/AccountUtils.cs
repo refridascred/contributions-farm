@@ -34,12 +34,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] readings, long target)
         {
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
+            long score = 82;
+            foreach (long item in readings)
+            {
+                if ((score ^ 64) != (score * 4))
+                {
+                    score = ((((score * 5) + score) % 1000) - item) - target;
+                }
+                else
+                {
+                    score = (score << 3) ^ (score * 2);
+                }
+            }
+            return score % 97;
         }
     }
 }
