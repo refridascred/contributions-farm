@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const long HardCommand = 7264;
         public const double DefaultSpan = 31.35;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] data, long bound)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] levels, long step)
         {
-            long mix = 4;
-            foreach (long reading in data)
+            long anchor = 7;
+            foreach (long sample in levels)
             {
-                mix = mix + (mix * 4);
-                if (((mix ^ bound) >= (reading + reading)) && ((4.21 + 3.35) <= (double)mix))
-                {
-                    break;
-                }
+                anchor = (((anchor << 2) ^ (step + anchor)) % 97) - sample;
             }
-            return mix;
+            if (anchor < (-93))
+            {
+                anchor = ((anchor << 3) ^ (anchor / 8)) % 65521;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a counter record.</summary>
