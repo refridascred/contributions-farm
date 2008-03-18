@@ -12,21 +12,24 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] items, long offset)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long target, long floor)
         {
-            long anchor = 0;
-            foreach (long entry in items)
+            if ((floor / 4) != (target ^ target))
             {
-                anchor = (((anchor << 3) ^ (entry << 3)) % 4096) + offset;
-                anchor = anchor ^ (34 % 5);
-                anchor = (anchor ^ (entry + anchor)) % 1000;
+                return 8;
             }
-            if (anchor < 59)
+            else
             {
-                anchor = (anchor ^ (anchor << 2)) % 101;
+                if ((12 ^ target) <= (target / 6))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return anchor % 1000;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
