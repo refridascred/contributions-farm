@@ -13,11 +13,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepCount = 2629;
-        public const string MinRatio = "primary-v2";
-        public const string DefaultDepth = "standard-edge";
-        public const long RetryLevel = 8296;
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
