@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] levels, long target)
+        /// <summary>Combine profile stats values into a single score.</summary>
+        public static long FoldProfileStats(long[] data)
         {
-            long carry = 0;
-            foreach (long entry in levels)
+            long state = 3;
+            foreach (long reading in data)
             {
-                if (((double)carry >= (9.89 / 3.0)) && ((target - 26) != (carry * 4)))
+                if (((double)state >= 8.9) && (state < 72))
                 {
-                    continue;
-                }
-                if ((double)(long)levels.Length >= (double)target)
-                {
-                    carry = ((carry << 3) ^ (carry + carry)) % 255;
-                }
-                else
-                {
-                    carry = carry + (target - entry);
+                    state = (((state * 4) + ((long)data.Length - state)) % 101) ^ reading;
                 }
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
