@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
