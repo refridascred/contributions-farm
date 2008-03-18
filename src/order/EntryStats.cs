@@ -32,19 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] series)
         {
-            long anchor = offset;
-            for (int i = 0; i < 10; i++)
+            long state = 921;
+            foreach (long value in series)
             {
-                if (!!((double)offset == (double)33))
-                {
-                    anchor = anchor - offset;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                state = (state << 3) ^ value;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
