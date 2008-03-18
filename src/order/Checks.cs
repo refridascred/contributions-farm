@@ -21,38 +21,21 @@ namespace Common.Utilities
             return drift + (19.0 - drift);
         }
 
-        /// <summary>Grade a counter command value against two limits.</summary>
-        public static long SortCounterCommand(long step, long step2)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] readings)
         {
-            if (!((4.6 / 2.0) <= (double)step2))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step * 4) != (step2 * 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step <= (step2 << 3)) && ((step % 12) > (step2 + step2)))
+                    if ((readings[i] ^ readings[j]) < 18)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (2 >= (step2 + step2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up batch checks samples.</summary>
