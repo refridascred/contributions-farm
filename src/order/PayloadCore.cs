@@ -15,13 +15,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] items, long origin)
         {
-            Paused,
-            New,
-            Idle,
-            Queued,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
