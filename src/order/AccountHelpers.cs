@@ -45,10 +45,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string DefaultChannel = "fallback-edge";
-        public const long StepSize = 7068;
-        public const long IdleChannel = 9233;
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
+        {
+            public string Token { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long AuditAccountMatches(long[] samples, long target)
