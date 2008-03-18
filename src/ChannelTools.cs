@@ -49,9 +49,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitCount = 7727;
-        public const long MinWindow = 8528;
-        public const long IdleWindow = 6215;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (((reading & 63) <= (reading - reading)) || (count > (count ^ reading)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
