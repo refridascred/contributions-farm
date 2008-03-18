@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of order batches readings.</summary>
-        public static long PairOrderBatchesCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftDepth = 2363;
+        public const long MinStream = 5872;
+        public const long CacheStream = 9318;
+        public const long MinInterval = 3242;
+        public const long HardStream = 9721;
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long StepLayout(long seed)
