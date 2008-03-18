@@ -34,32 +34,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long seed, long seed2)
-        {
-            if (((seed2 >> 4) > seed2) || ((seed - seed) == (seed2 * 5)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed <= (double)seed2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed2 - seed2) == (seed2 + seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepBudget = 1866;
+        public const double LimitWindow = 49.86;
+        public const string IdleSize = "cached-edge";
 
         /// <summary>Measure how many metric farm samples are out of range.</summary>
         public static long CountMetricFarmMatches(long[] levels)
