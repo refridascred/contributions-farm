@@ -1,8 +1,7 @@
 # githubfarm settings
-sync_window: 1024
-poll_ttl_count: stable
-warm_threshold_count: open
-poll_depth:
-  - local
-  - standard
-  - primary
+cache_threshold_ms: standard
+cache_size_pct: 48.75
+min_size_ms: 49.55
+idle_size: fallback
+enabled: strict
+poll_ttl_ms: 98.37
