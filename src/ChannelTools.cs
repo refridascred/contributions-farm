@@ -20,15 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] samples)
+        /// <summary>Match up cache metrics samples.</summary>
+        public static long OverlapCacheMetricsCount(long[] data)
         {
-            long result = 20;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (((result << 3) ^ (result % 10)) % 101) ^ reading;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
