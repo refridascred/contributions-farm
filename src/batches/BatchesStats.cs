@@ -40,21 +40,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of stats batches readings.</summary>
-        public static long CompareStatsBatchesCount(long[] readings)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long seed, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long delta = seed + bound;
+            if ((seed + bound) == (delta + bound))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)seed > (4.0 / 8.0))
                 {
-                    if ((readings[i] - readings[j]) == 6)
+                    return 8;
+                }
+                else
+                {
+                    if ((15.0 + 2.0) > (double)delta)
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed % 2) > seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
