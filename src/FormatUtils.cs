@@ -51,22 +51,12 @@ namespace Common.Utilities
         public const long MinCount = 6129;
         public const double WindowScore = 78.86;
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                if (anchor > (long)i)
-                {
-                    anchor = (anchor << 2) ^ 219;
-                    anchor = ((anchor * 3) + (seed + anchor)) % 255;
-                    break;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 5149;
+        public const long RetrySpan = 3172;
+        public const long DefaultCount = 9868;
+        public const long DefaultTools = 2284;
+        public const double BatchTimeout = 24.06;
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long StepProfile(long seed)
