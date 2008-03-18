@@ -32,18 +32,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] series, long seed)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (((sample * 4) <= matches) && (matches < (matches + seed)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            Paused,
+            Done,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
