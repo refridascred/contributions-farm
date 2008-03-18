@@ -67,18 +67,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] series, long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (floor < (entry - seen))
+                if (value > origin)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
