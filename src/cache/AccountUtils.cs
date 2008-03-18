@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long seed)
         {
-            public double Total { get; set; }
-            public long Level { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = ((mark << 3) ^ (long)i) % 4096;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
