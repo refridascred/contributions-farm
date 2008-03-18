@@ -63,22 +63,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] data)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long target)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long carry = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)item <= (7.21 / 7.0))
+                carry = (carry - carry) % 4096;
+                double ratio = (3.0 - 4.2) - (14.0 - 4.24);
+                if (!!(4.1 < (ratio * 5.7)))
                 {
-                    tally = tally + 2;
+                    carry = (carry * 2) + (target + (long)i);
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
