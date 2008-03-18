@@ -19,16 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the order stream series from a seed.</summary>
-        public static long RollOrderStream(long bound)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] levels, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = sum ^ (sum << 1);
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the queue phase values.</summary>
