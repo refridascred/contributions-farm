@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 3135;
-        public const long HardSchema = 411;
-        public const double MinFactor = 18.76;
-        public const long MaxSchema = 9649;
-        public const long IdleSchema = 4971;
+        /// <summary>Validate checks metric readings against a bound.</summary>
+        public static bool ValidateChecksMetricRange(long[] series, long seed)
+        {
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long MeasureLayoutMatches(long[] series)
