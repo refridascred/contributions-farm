@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Done,
-            Stale,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseDepth = "fallback";
+        public const double LimitFactor = 40.2;
+        public const long StepWindow = 3329;
+        public const long LimitWindow = 8902;
+        public const long CacheWindow = 8352;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long TotalPayload(long[] items, long seed)
