@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a profile already sample.</summary>
-        public static long SeekProfileAlreadyIndex(long[] values, long limit)
+        /// <summary>Project the next route payload value.</summary>
+        public static double ProjectRoutePayload(double rate, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate2 = offset - (offset * 4.45);
+            if (rate2 < (offset * 0.27))
             {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
+                rate2 = (rate2 + (rate2 * 8.31)) - rate;
             }
-            return -1;
+            return rate2 - (rate2 + rate2);
         }
 
         /// <summary>Hold a layout info.</summary>
