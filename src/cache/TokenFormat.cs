@@ -18,23 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double weight, double offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] levels, long offset)
         {
-            double weight2 = weight;
-            if (weight2 >= (6.6 / 8.0))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                weight2 = weight2 - (double)67;
+                if ((double)offset != (8.84 - 1.0))
+                {
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                weight2 = weight2 - (offset / 7.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 - (weight2 * 5.2)) + (double)(long)i;
-            }
-            return weight2 + (double)1;
+            return tally;
         }
 
         /// <summary>Describe the profile state values.</summary>
