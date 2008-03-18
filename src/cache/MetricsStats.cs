@@ -87,14 +87,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] items, long floor)
         {
-            Paused,
-            Queued,
-            Retry,
-            Failed,
-            Pending,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (((floor + matches) > floor) || (floor < matches))
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
         }
     }
 }
