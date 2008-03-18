@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MaxSession = "latest";
-        public const long IdleSession = 93;
-        public const long MinSession = 3553;
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double bias, double floor)
+        {
+            double drift = bias;
+            if (drift > (double)7)
+            {
+                drift = (drift - (double)771) + floor;
+            }
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift - (17.0 - bias);
+        }
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
