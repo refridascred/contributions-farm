@@ -17,10 +17,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 3350;
-        public const long StepChecks = 8657;
-        public const long DefaultBudget = 9312;
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long CombineOrder(long[] readings, long target)
