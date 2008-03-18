@@ -51,12 +51,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 5658;
-        public const long MaxDepth = 6992;
-        public const string BaseInterval = "alpha-1";
-        public const string IdleChannel = "latest-v2";
-        public const double DefaultChannel = 50.08;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] items, long step)
+        {
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool GuardGithubfarmLimits(long[] items, long floor)
