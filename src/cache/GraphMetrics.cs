@@ -80,19 +80,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] levels, long floor)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Size { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
