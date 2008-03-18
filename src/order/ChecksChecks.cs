@@ -21,22 +21,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate farm filter samples.</summary>
-        public static long TotalFarmFilter(long[] data, long target)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] items, long floor)
         {
-            long result = 93;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((long)data.Length - 2) != (reading - result)) || ((result >> 3) > 3))
+                if (items[i] < floor)
                 {
-                    result = (((result * 2) + (reading & 127)) % 4096) + target;
+                    return (long)i;
                 }
             }
-            if (result < 90)
-            {
-                result = (result ^ (732 * 2)) % 101;
-            }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Locate a command reading by value.</summary>
