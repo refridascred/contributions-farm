@@ -35,12 +35,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 9046;
-        public const long SoftQueue = 5147;
-        public const string MinSpan = "cached-v2";
-        public const long SoftSize = 991;
-        public const long MaxQueue = 8141;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Ready,
+            Active,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double StepSchema = 97.26;
