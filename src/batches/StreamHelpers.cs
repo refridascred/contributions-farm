@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Active,
-            Idle,
-            Draft,
+            public double Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
