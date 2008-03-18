@@ -60,22 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] samples, long origin)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((double)hits > (double)entry)
+                if ((34 << 2) > (654 ^ cell))
                 {
-                    hits = (hits + 1) - origin;
+                    matches = (matches + 1) + target;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
