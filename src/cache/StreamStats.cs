@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next route contributi value.</summary>
-        public static double ProjectRouteContributi(double scale, double offset)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            double bias = scale;
-            for (int i = 0; i < 4; i++)
-            {
-                bias = ((bias - bias) + (double)(long)i) + offset;
-            }
-            return bias - (scale / 4.0);
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
