@@ -19,22 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] samples)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double ratio, double bias)
         {
-            long state = 79;
-            foreach (long reading in samples)
+            double gain = bias;
+            if (gain >= ratio)
             {
-                if ((double)reading > (7.62 - 0.9))
-                {
-                    state = (state << 2) ^ (state & 7);
-                }
-                if (state >= (reading - reading))
-                {
-                    break;
-                }
+                gain = gain + (bias - gain);
             }
-            return state;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + bias) + (double)(long)i;
+            }
+            return gain - bias;
         }
 
         /// <summary>Describe the checks kind values.</summary>
