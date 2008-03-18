@@ -1,21 +1,20 @@
 # support settings
-burst_size_s: strict
-idle_interval_ms: 4232
-verbose:
-  audit: false
-  poll_window_ms: strict
-  idle_ratio_ms:
-    default_ratio: false
-    strict: false
-    readonly: standard
-    context_ttl: 4056
-    hard_capacity_pct: 6
-  sync_timeout_s: 74
-  burst_depth_pct: 1125
-base_size: 100
-readonly:
-  - strict
-  - cached
-  - eu-west
-  - staging
-counter_depth: 4857
+audit: false
+warm_threshold_ms: false
+persist:
+  githubfarm_size:
+    retry_interval: 74.28
+    profile_depth: 58.5
+    cache_size_pct: green
+  burst_interval_pct: 3.7
+  enabled: 100
+  notes_timeout:
+    default_interval_ms: standard
+    verbose: 98
+    farm_limit: fallback
+  record_window:
+    - legacy
+    - legacy
+    - stable
+filter_capacity: true
+route_ratio: 3
