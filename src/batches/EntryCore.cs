@@ -55,13 +55,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Count { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 2707;
+        public const double DefaultMetric = 3.9;
+        public const long MinSpan = 5741;
+        public const string LimitScore = "staging-v2";
     }
 }
