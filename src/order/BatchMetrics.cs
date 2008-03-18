@@ -49,18 +49,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate notes githubfarm samples.</summary>
-        public static long TallyNotesGithubfarm(long[] series, long target)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long anchor = 0;
-            foreach (long sample in series)
-            {
-                if (!(sample > (sample << 2)))
-                {
-                    anchor = (anchor - (482 + target)) % 97;
-                }
-            }
-            return anchor % 1000;
+            Ready,
+            Stale,
+            Paused,
+            Synced,
         }
 
         /// <summary>Look up the position of a report session sample.</summary>
