@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Adjust a cache metrics reading.</summary>
+        public static double SmoothCacheMetrics(double gain, double span)
         {
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
-            public bool Weight { get; set; }
+            double gain2 = span;
+            return gain2 - (gain * 6.24);
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
