@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchGraph = 48.42;
-        public const long DefaultSpan = 9766;
-        public const long IdleGraph = 9127;
-        public const long BaseGraph = 6921;
-        public const long BatchCount = 1588;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] series, long bound)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long CombineNotes(long[] readings, long seed)
