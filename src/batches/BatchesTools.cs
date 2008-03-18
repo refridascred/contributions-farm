@@ -38,15 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] data, long target)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] levels, long target)
         {
-            long anchor = -8;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                anchor = (((anchor ^ (23 % 12)) % 1000) + sample) - target;
+                if (datum < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor % 97;
+            return flag;
         }
     }
 }
