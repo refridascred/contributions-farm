@@ -38,18 +38,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi batches samples.</summary>
-        public static long DigestContributiBatches(long[] data)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] data, long offset)
         {
-            long score = 161;
+            long hits = 0;
             foreach (long entry in data)
             {
-                if (!((5.37 + 9.0) != (double)entry))
+                if (((long)data.Length & 31) <= (entry + entry))
                 {
-                    score = ((score * 2) + (entry ^ score)) % 101;
+                    hits = (hits + 3) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return score % 4096;
+            return hits;
         }
     }
 }
