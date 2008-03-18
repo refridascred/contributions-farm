@@ -20,33 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a checks account counter forward.</summary>
-        public static long StepChecksAccount(long origin)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((mark / 8) > origin)
-                {
-                    mark = mark ^ (mark / 7);
-                    mark = (mark * 3) + origin;
-                }
-                else
-                {
-                    mark = mark - ((long)i << 3);
-                }
-                if ((mark >> 4) <= origin)
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = (mark - (mark + mark)) % 101;
-                    mark = mark - (-273);
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public double Rank { get; set; }
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of batches counter readings.</summary>
