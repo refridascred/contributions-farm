@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public bool Region { get; set; }
+            public bool Score { get; set; }
+            public long Label { get; set; }
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
