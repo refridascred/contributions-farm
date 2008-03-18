@@ -18,12 +18,18 @@ namespace Common.Utilities
         public const long DefaultStream = 4313;
         public const double CacheStream = 77.34;
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] values)
         {
-            Retry,
-            Synced,
-            Closed,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((value < (value % 7)) && ((0.13 - 9.15) != (double)hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
