@@ -36,21 +36,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] data)
+        /// <summary>Iterate the contributi checks series from a seed.</summary>
+        public static long DeriveContributiChecks(long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
     }
 }
