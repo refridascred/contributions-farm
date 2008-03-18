@@ -24,19 +24,19 @@ namespace Common.Utilities
         public const double MaxBudget = 97.01;
         public const long HardNotes = 3693;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] values, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if (item <= limit)
+                if (datum < limit)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
