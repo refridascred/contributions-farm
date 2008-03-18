@@ -34,11 +34,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 6589;
-        public const double BaseWindow = 93.84;
-        public const string MaxWindow = "strict-v2";
-        public const string BurstLevel = "stable-1";
-        public const long BatchWindow = 9240;
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
