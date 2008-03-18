@@ -40,38 +40,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long origin, long limit)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            if ((origin + limit) >= origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((632 + 488) > (origin + origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((origin >> 3) <= 22) && ((limit ^ limit) == (limit % 24)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((13.0 + 4.69) >= (double)origin) || ((6.94 / 6.0) == (double)origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Paused,
+            Idle,
+            New,
         }
 
         /// <summary>Roll a record counter forward.</summary>
