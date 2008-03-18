@@ -1,27 +1,6 @@
 {
-  "persist": "legacy",
-  "buffer_capacity": {
-    "min_interval_pct": true,
-    "report_ttl": 22.96,
-    "compress": "blue",
-    "idle_ttl": {
-      "batches_ttl": "primary",
-      "session_retries": 92,
-      "already_ratio": true,
-      "default_interval_count": false,
-      "graph_timeout": 75,
-      "entry_depth": ["staging", "fallback", "latest", "legacy"]
-    },
-    "warm_timeout": false,
-    "base_window_count": 73.56
-  },
-  "batch_ratio": 39,
-  "record_ttl": {
-    "batch_delay_s": 250,
-    "retry_timeout_ms": [103, 485, 388, 211],
-    "default_limit_ms": 9909,
-    "sync_ttl_count": 69.72,
-    "compress": true
-  },
-  "token_depth": 72.12
+  "session_ratio": 35.85,
+  "min_limit_pct": true,
+  "record_interval": [225, 251, 322, 168],
+  "batch_capacity_ms": 5347
 }
