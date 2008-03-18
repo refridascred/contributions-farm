@@ -36,15 +36,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the contributi checks series from a seed.</summary>
-        public static long DeriveContributiChecks(long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] samples, long origin)
         {
-            long mix = step;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (867 < (hits + (long)samples.Length))
+                {
+                    hits = ((hits + 2) + reading) + origin;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
