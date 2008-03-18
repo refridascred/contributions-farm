@@ -25,19 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] levels, long origin)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long target, long target2)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            if ((double)target2 != (9.8 * 3.0))
             {
-                if (entry < origin)
+                return 8;
+            }
+            else
+            {
+                if (target <= (target2 * 2))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a contributi header.</summary>
