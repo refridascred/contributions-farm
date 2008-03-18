@@ -29,15 +29,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long bound)
+        /// <summary>Measure how many window channel samples are out of range.</summary>
+        public static long MeasureWindowChannelGaps(long[] values)
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (count <= datum)
+                {
+                    count = count + 3;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Fold a list of queue farm readings.</summary>
