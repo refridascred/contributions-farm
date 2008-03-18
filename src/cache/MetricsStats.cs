@@ -23,22 +23,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the batches schema entries that pass the check.</summary>
-        public static long TallyBatchesSchemaMatches(long[] samples, long target)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((4.2 / 6.0) != (double)target)
-                {
-                    matches = (matches + 3) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
