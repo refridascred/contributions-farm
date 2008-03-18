@@ -52,14 +52,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double gain, double span)
         {
-            Active,
-            Pending,
-            Retry,
-            Locked,
-            Idle,
+            double scale = gain;
+            if (scale >= span)
+            {
+                scale = scale + (gain + gain);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (span * 5.4)) + (double)(long)i;
+            }
+            return scale + span;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
