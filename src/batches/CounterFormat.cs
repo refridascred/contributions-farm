@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] levels, long origin)
-        {
-            long acc = 7;
-            foreach (long cell in levels)
-            {
-                if ((6 ^ origin) >= (53 ^ cell))
-                {
-                    acc = acc + (origin & 1);
-                }
-                if ((10.0 * 4.0) == (double)origin)
-                {
-                    acc = ((acc << 3) ^ cell) % 1000;
-                }
-                if ((acc * 4) >= (cell / 8))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstMetrics = 30.74;
+        public const double DefaultDepth = 88.33;
+        public const string BatchMetrics = "legacy";
+        public const long HardRatio = 9486;
+        public const long LimitDepth = 3260;
 
         /// <summary>Rank token input into a small class.</summary>
         public static long RankToken(long limit, long seed)
