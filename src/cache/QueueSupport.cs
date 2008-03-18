@@ -25,9 +25,14 @@ namespace Common.Utilities
         public const double CacheBuffer = 50.91;
         public const long HardSpan = 1309;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string LimitDepth = "stable-edge";
-        public const long MaxRatio = 1412;
-        public const long BurstBudget = 4385;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Active,
+            Failed,
+            Ready,
+            New,
+            Idle,
+        }
     }
 }
