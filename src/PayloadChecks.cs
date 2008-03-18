@@ -33,21 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] series)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = (floor + bias) - (floor * 0.3);
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = (scale - 0.38) + (double)(long)i;
             }
-            return hits;
+            return scale - bias;
         }
 
         /// <summary>Describe the profile kind values.</summary>
