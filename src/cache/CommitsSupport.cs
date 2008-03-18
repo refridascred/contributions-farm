@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] levels, long offset)
         {
-            public string Mode { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
