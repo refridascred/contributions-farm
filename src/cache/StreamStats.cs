@@ -30,9 +30,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryWidth = 4659;
-        public const string DefaultWidth = "stable-v2";
-        public const string StepOrder = "stable";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowFactor = "legacy-edge";
+        public const long SoftFarm = 7319;
+        public const double SoftInterval = 51.72;
     }
 }
