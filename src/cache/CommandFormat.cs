@@ -16,15 +16,39 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long target)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long offset, long offset2)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            long prev = offset ^ offset2;
+            if (!((double)offset2 != (15.0 - 5.8)))
             {
-                result = ((result * 2) + (long)i) % 101;
+                return 8;
             }
-            return result;
+            else
+            {
+                if (((5 % 16) != (offset % 97)) && (prev < (offset2 << 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((prev - prev) <= (offset * 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)prev != (1.0 / 9.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a profile context pair into a bucket.</summary>
