@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            public double Label { get; set; }
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            public double Region { get; set; }
+            public bool Score { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count session filter pairs that satisfy a relation.</summary>
