@@ -14,18 +14,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] data)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((matches + 255) >= matches)
+                if ((reading + seen) != ((long)items.Length % 64))
                 {
-                    matches = (matches + 2) ^ cell;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a graph options.</summary>
