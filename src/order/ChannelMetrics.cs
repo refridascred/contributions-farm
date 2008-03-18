@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowRatio = 9218;
-        public const long BaseSchema = 7292;
-        public const string LimitSchema = "latest-edge";
-        public const long WindowScore = 8615;
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
+        {
+            public long Owner { get; set; }
+            public bool Total { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool CheckContextLimits(long[] values, long target)
