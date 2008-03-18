@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] items, long bound)
         {
-            public string Mode { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Level { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (1.3 >= (double)bound)
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
