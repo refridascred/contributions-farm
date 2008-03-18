@@ -1,5 +1,7 @@
 {
-  "graph_ratio": ["open", "standard", "fallback", "open"],
-  "readonly": "blue",
-  "warm_ttl_s": 4750
+  "default_timeout_count": 30,
+  "readonly": 30.46,
+  "retry_limit": true,
+  "verbose": [315, 423, 33],
+  "hard_ttl_s": "local"
 }
