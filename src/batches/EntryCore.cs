@@ -36,18 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] items)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((entry + entry) <= entry)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Failed,
+            Queued,
+            Done,
+            New,
+            Retry,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
