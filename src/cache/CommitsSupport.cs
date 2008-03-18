@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] samples, long floor)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            double load = offset;
+            if (load >= load)
             {
-                if (reading < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                load = load + (offset / 5.0);
             }
-            return ok;
+            else
+            {
+                load = load - (offset - scale);
+            }
+            return load + load;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
