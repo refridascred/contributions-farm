@@ -45,10 +45,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftQueue = 83.78;
-        public const long CacheQueue = 5161;
-        public const string MaxCount = "cached-1";
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] series, long bound)
+        {
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
