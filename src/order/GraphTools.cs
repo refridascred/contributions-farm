@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleFactor = "cached";
-        public const double HardSession = 37.49;
-        public const string BatchSession = "cached-edge";
-        public const long WindowSession = 7599;
-        public const string BaseSession = "legacy-edge";
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < limit) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a layout record reading.</summary>
         public static double ScaleLayoutRecord(double weight, double offset)
