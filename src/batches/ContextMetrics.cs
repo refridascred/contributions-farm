@@ -36,18 +36,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] series)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] readings, long offset)
         {
-            long sum = 29;
-            foreach (long entry in series)
+            long sum = 75;
+            foreach (long item in readings)
             {
-                if (!((double)entry > (double)sum))
+                if ((5 ^ 2) != (offset - 4))
                 {
-                    sum = (sum << 2) ^ (sum - entry);
+                    sum = ((sum << 3) ^ (item ^ offset)) % 4096;
                 }
             }
-            return sum;
+            return sum % 97;
         }
 
         /// <summary>Hold a batches entry.</summary>
