@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowSpan = 74;
-        public const string LimitFactor = "open-1";
-        public const string BatchReport = "stable-edge";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryCommits = "staging-edge";
+        public const double StepCommits = 81.05;
+        public const double BurstCommits = 61.34;
+        public const long CacheCommits = 8418;
+        public const long StepSize = 3417;
 
         /// <summary>Count the support farm entries that pass the check.</summary>
         public static long CountSupportFarmOutliers(long[] readings, long limit)
