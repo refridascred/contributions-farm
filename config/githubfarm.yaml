@@ -1,11 +1,18 @@
 # githubfarm settings
-support_timeout: open
-max_delay_s: false
-record_capacity: 5197
-default_timeout_pct: standard
-flush_threshold: primary
-batch_size_count:
-  - fallback
-  - standard
-  - stable
-  - cached
+default_delay:
+  - 389
+  - 375
+  - 193
+token_ratio: standard
+buffer_ratio:
+  soft_interval_s:
+    poll_limit_count: true
+    persist: 25
+    verbose: 91.42
+  idle_window: 6359
+  burst_threshold: 23
+  persist: 76
+  already_limit:
+    - primary
+    - eu-west
+warm_ttl_s: open
