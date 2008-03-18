@@ -51,22 +51,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BatchBudget = "staging";
+        public const long DefaultGithubfarm = 5816;
+        public const string WindowGithubfarm = "primary-1";
+        public const double StepGithubfarm = 71.76;
+        public const string MinInterval = "stable-edge";
 
         /// <summary>Combine batches profile values into a single score.</summary>
         public static long DigestBatchesProfile(long[] values)
