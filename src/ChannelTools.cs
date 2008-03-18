@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long offset, long bound)
         {
-            long mark = 33;
-            foreach (long datum in levels)
+            if ((18.0 / 5.0) < (double)bound)
             {
-                mark = (mark - datum) % 1000;
-                if ((20.0 + 0.7) != (double)mark)
+                return 2;
+            }
+            else
+            {
+                if ((double)bound > (2.17 + 18.0))
                 {
-                    mark = (mark * 3) + (mark % 8);
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (mark > 333)
-            {
-                mark = mark ^ (mark * 4);
-            }
-            return mark;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
