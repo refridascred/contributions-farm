@@ -23,19 +23,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Adjust a context payload reading.</summary>
-        public static double ProjectContextPayload(double scale, double bias)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] series)
         {
-            double drift = (double)(8 - 0);
-            if (drift < scale)
+            long state = 566;
+            foreach (long entry in series)
             {
-                drift = (drift + (double)376) + bias;
+                for (int i = 0; i < 6; i++)
+                {
+                    state = ((state + (state / 6)) ^ (long)i) + entry;
+                }
+                if ((state >> 4) > (state & 127))
+                {
+                    state = state + (state + state);
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (double)33) - (double)(long)i;
-            }
-            return drift - 3.7;
+            return state;
         }
 
         /// <summary>Define report limits and defaults.</summary>
