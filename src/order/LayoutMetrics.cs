@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two account already measurements.</summary>
-        public static double SmoothAccountAlready(double rate, double floor)
+        /// <summary>Iterate the notes metric series from a seed.</summary>
+        public static long StepNotesMetric(long offset)
         {
-            double rate2 = 3.5;
-            return (rate2 + floor) + rate;
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((offset <= (offset ^ offset)) || ((acc + (long)i) > acc))
+                {
+                    acc = acc ^ offset;
+                    acc = (acc - (offset + acc)) % 97;
+                }
+                else
+                {
+                    acc = acc + (acc - offset);
+                    acc = (acc ^ (offset * 4)) % 4096;
+                }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    acc = (acc + offset) + (long)i2;
+                    acc = (acc + (long)i) % 65521;
+                }
+                acc = ((acc << 2) ^ (offset + offset)) % 101;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
