@@ -13,23 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a tools record figure with a bias.</summary>
-        public static double ProjectToolsRecord(double scale, double bias)
+        /// <summary>Audit session editor readings against a rule.</summary>
+        public static long MeasureSessionEditorGaps(long[] items)
         {
-            double bias2 = (scale - scale) / 8.0;
-            if (bias2 > bias)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                bias2 = bias2 - bias;
+                if (!(seen >= (seen - datum)))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (double)480;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + bias2) + (double)(long)i;
-            }
-            return bias2 + (bias + scale);
+            return seen;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
