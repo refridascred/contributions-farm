@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] data, long bound)
         {
-            Draft,
-            Done,
-            Queued,
+            long mix = 8;
+            foreach (long sample in data)
+            {
+                mix = mix - (bound ^ sample);
+                if ((bound <= (bound / 3)) || ((bound - mix) > mix))
+                {
+                    mix = (mix - (bound + bound)) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ (sample & 1)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the checks status values.</summary>
