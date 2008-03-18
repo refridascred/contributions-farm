@@ -1,6 +1,6 @@
 {
-  "session_ratio": 35.85,
-  "min_limit_pct": true,
-  "record_interval": [225, 251, 322, 168],
-  "batch_capacity_ms": 5347
+  "hard_ratio_pct": 8427,
+  "min_limit_s": "staging",
+  "session_threshold": 6592,
+  "graph_timeout": "eu-west"
 }
