@@ -1,4 +1,9 @@
 # support settings
-readonly: 3937
-already_capacity: edge
-enabled: 60
+layout_depth: 35
+default_threshold: 81.37
+sync_retries: 1843
+default_ratio_pct:
+  - 146
+  - 378
+metric_threshold: edge
+warm_interval_count: primary
