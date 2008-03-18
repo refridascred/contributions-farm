@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double bias, double offset)
+        /// <summary>Match up token contributi samples.</summary>
+        public static long PairTokenContributiCount(long[] levels)
         {
-            double drift = offset;
-            if (drift > bias)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift - bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift - bias;
+            return matches;
         }
 
         /// <summary>Describe the order status values.</summary>
