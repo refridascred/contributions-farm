@@ -19,16 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double rate, double offset)
-        {
-            double rate2 = (double)445 + rate;
-            if (rate2 >= (double)0)
-            {
-                rate2 = rate2 + offset;
-            }
-            return rate2 - (rate - 18.0);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 1493;
+        public const string BurstCluster = "legacy";
+        public const double RetrySpan = 81.84;
+        public const long RetrySize = 574;
 
         /// <summary>Adjust a session reading.</summary>
         public static double SmoothSession(double ratio, double span)
