@@ -25,17 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] levels, long target)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((levels[i] == target) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the tools mode values.</summary>
