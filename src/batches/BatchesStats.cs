@@ -31,11 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryNotes = 35.85;
-        public const long MinFactor = 829;
-        public const string IdleSize = "fallback-edge";
-        public const long WindowNotes = 5079;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] data, long step)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (8 >= count)
+                {
+                    count = ((count + 2) + entry) - step;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of stats batches readings.</summary>
         public static long CompareStatsBatchesCount(long[] readings)
