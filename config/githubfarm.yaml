@@ -1,23 +1,8 @@
 # githubfarm settings
-order_timeout: staging
-soft_limit_ms: 9901
-default_depth:
-  - 83
-  - 239
-  - 70
-  - 414
-base_delay_ms:
-  report_interval:
-    poll_depth:
-      - blue
-      - edge
-      - fallback
-      - local
-    min_capacity_count: 1024
-    soft_capacity_pct: strict
-    context_ttl: fallback
-    base_retries: true
-  compress:
-    - 127
-    - 330
-  soft_retries_ms: strict
+tools_delay: strict
+record_interval:
+  - 172
+  - 183
+  - 328
+readonly: 80
+cache_threshold: 29.64
