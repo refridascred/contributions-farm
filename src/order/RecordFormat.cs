@@ -53,32 +53,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank stats graph input into a small class.</summary>
-        public static long GradeStatsGraph(long floor, long step)
+        /// <summary>Combine batches profile values into a single score.</summary>
+        public static long DigestBatchesProfile(long[] values)
         {
-            long step2 = floor - step;
-            if ((step2 + floor) != (64 / 3))
+            long mark = 18;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9.44 / 8.0) >= (double)step)
+                if (!((mark + mark) >= (mark - mark)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step >= (3.31 - 9.4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mark = (((mark << 2) ^ mark) % 1000) ^ reading;
                 }
             }
+            return mark % 97;
         }
     }
 }
