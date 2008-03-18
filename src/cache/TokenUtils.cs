@@ -26,11 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            Draft,
-            Pending,
+            Locked,
+            Active,
+            Queued,
             Dropped,
         }
 
