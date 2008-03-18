@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of counter channel entries.</summary>
-        public static long ScoreCounterChannel(long[] series, long origin)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] samples, long step)
         {
-            long result = 434;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result << 2) ^ (result * 5)) - origin;
-                result = (result ^ (item / 8)) % 4096;
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            if (result < 7)
-            {
-                result = ((result << 3) ^ result) % 4096;
-            }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Grade a metric token value against two limits.</summary>
