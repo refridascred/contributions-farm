@@ -1,8 +1,4 @@
 # entry settings
-dry_run: false
-window_depth:
-  - 97
-  - 416
-  - 279
-  - 120
-sync_limit: false
+poll_timeout: 6579
+audit: 30
+retry_threshold_count: blue
