@@ -70,22 +70,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] items, long target)
+        /// <summary>Roll a commits token counter forward.</summary>
+        public static long RollCommitsToken(long origin)
         {
-            long sum = 881;
-            foreach (long value in items)
+            long anchor = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((value % 24) != (value * 5))
-                {
-                    sum = ((sum ^ (sum >> 3)) % 1000) + target;
-                }
-                if ((2.34 - 11.0) > (double)value)
-                {
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return sum;
+            return anchor;
         }
     }
 }
