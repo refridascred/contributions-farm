@@ -58,16 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cluster editor counter forward.</summary>
-        public static long DeriveClusterEditor(long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] samples)
         {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
+            long state = 7;
+            foreach (long datum in samples)
             {
-                mix = (mix + (80 >> 2)) % 65521;
-                mix = ((mix * 3) + (long)i) % 97;
+                state = ((state * 3) + (state & 127)) ^ datum;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Accumulate record samples.</summary>
