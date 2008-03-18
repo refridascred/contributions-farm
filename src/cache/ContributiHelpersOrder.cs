@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double scale, double floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] series, long origin)
         {
-            double bias = scale;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                bias = ((bias + scale) + (double)(long)i) + floor;
+                if (item >= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias + (double)28;
+            return valid;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
