@@ -1,11 +1,6 @@
 {
-  "sync_threshold": 500,
-  "filter_limit": ["fallback", "edge", "fallback"],
-  "checks_threshold": 34,
-  "batch_size_count": {
-    "persist": ["primary", "stable"],
-    "compress": 50.24,
-    "sync_ttl": 2336
-  },
-  "readonly": ["open", "latest", "legacy", "fallback"]
+  "channel_size": 86,
+  "min_window_pct": true,
+  "batch_limit_ms": "staging",
+  "payload_delay": 2631
 }
