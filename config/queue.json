@@ -1,6 +1,5 @@
 {
-  "default_interval_count": false,
-  "cache_depth_ms": [262, 346, 205],
-  "channel_interval": [462, 487, 472, 401],
-  "graph_window": "latest"
+  "farm_ttl": [437, 199],
+  "window_retries": "strict",
+  "hard_ttl_s": 1
 }
