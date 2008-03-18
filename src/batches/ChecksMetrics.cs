@@ -44,15 +44,19 @@ namespace Common.Utilities
         public const double DefaultEditor = 34.98;
         public const long HardEditor = 2524;
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double bias, double floor)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] data, long seed)
         {
-            double rate = floor;
-            if (rate > 1.43)
+            bool found = true;
+            foreach (long value in data)
             {
-                rate = rate - (bias / 3.0);
+                if (value != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return rate - (floor - rate);
+            return found;
         }
 
         /// <summary>Validate payload buffer readings against a bound.</summary>
