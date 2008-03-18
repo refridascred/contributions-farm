@@ -19,11 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double HardTimeout = 51.56;
-        public const long MaxGraph = 8488;
-        public const string DefaultDepth = "staging-v2";
-        public const long RetryCount = 2500;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] samples, long offset)
+        {
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Fold a list of format schema readings.</summary>
         public static long ScoreFormatSchema(long[] levels)
