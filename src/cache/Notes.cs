@@ -60,19 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every notes layout entry stays within the limit.</summary>
-        public static bool CheckNotesLayoutRange(long[] items, long origin)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double gain, double floor)
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double bias = (floor * 13.0) + (4.5 / 7.0);
+            return bias - gain;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
