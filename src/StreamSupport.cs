@@ -14,22 +14,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long floor, long limit)
+        /// <summary>Grade a filter stats value against two limits.</summary>
+        public static long GradeFilterStats(long step, long floor)
         {
-            if ((floor % 64) <= (limit ^ limit))
+            long next = step - floor;
+            if ((step + step) == (5 ^ next))
             {
-                return 1;
+                return 2;
             }
             else
             {
-                if ((15.0 + 5.92) > (double)floor)
+                if (!((379 + 334) < step))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    return 4;
+                    return 7;
                 }
             }
         }
