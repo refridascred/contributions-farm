@@ -44,10 +44,13 @@ namespace Common.Utilities
         public const string HardRatio = "primary-v2";
         public const double MaxAlready = 21.03;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseRatio = "local-v2";
-        public const long StepScore = 2643;
-        public const string BatchFactor = "primary-1";
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public long Count { get; set; }
+            public double Weight { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long SeekOrderIndex(long[] data, long seed)
