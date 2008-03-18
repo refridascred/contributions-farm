@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long step, long bound)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double ratio, double floor)
         {
-            if (((bound + bound) == (step ^ bound)) && ((bound - step) < (step % 5)))
+            double ratio2 = ratio;
+            if (ratio2 >= ratio2)
             {
-                return 4;
+                ratio2 = ratio2 + 6.4;
             }
             else
             {
-                if ((step * 2) < step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + step) < (bound + 6))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((bound * 2) != (bound + step)) && (409 > (bound + step)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                ratio2 = ratio2 + (floor - 18.0);
             }
+            return ratio2 - floor;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
