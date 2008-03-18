@@ -20,31 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long target, long step)
+        /// <summary>Derive the next channel stream value from a seed.</summary>
+        public static long IterateChannelStream(long target)
         {
-            if (!((target + target) != (target - step)))
+            long carry = target;
+            for (int i = 0; i < 17; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step - target) > (step / 2))
+                if ((target * 5) > (carry % 60))
                 {
-                    return 3;
+                    break;
                 }
-                else
-                {
-                    if (target > (725 & 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
+            return carry;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
