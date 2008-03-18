@@ -41,11 +41,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinSize = 3971;
-        public const long IdleTools = 1012;
-        public const long DefaultTools = 8393;
-        public const long BurstTools = 5384;
-        public const string BatchFactor = "cached-v2";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 2624;
+        public const long WindowFarm = 801;
+        public const double DefaultScore = 92.81;
+        public const long DefaultRatio = 7367;
     }
 }
