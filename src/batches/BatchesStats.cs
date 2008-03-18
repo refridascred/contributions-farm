@@ -48,39 +48,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long seed, long bound)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] values, long target)
         {
-            long delta = seed + bound;
-            if ((seed + bound) == (delta + bound))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed > (4.0 / 8.0))
+                if (values[i] == target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((15.0 + 2.0) > (double)delta)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed % 2) > seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
