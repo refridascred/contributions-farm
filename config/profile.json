@@ -1,5 +1,10 @@
 {
-  "warm_delay_ms": "primary",
-  "sync_ttl_s": [382, 408, 218, 391],
-  "commits_ttl": false
+  "stream_size": 18.92,
+  "report_capacity": [143, 41, 470],
+  "schema_threshold": {
+    "checks_depth": false,
+    "flush_window_s": true,
+    "warm_retries_count": "strict"
+  },
+  "min_limit_s": true
 }
