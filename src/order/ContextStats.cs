@@ -45,31 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long bound, long seed)
+        /// <summary>Check that every checks token entry stays within the limit.</summary>
+        public static bool VerifyChecksTokenBounds(long[] readings, long offset)
         {
-            if ((bound + seed) >= bound)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed < (48 << 1)) && ((bound + 61) >= bound))
+                if (value >= offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)seed != (6.4 / 9.0)) && ((4 - seed) > (seed * 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Match up graph samples.</summary>
