@@ -39,18 +39,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] samples, long floor)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((double)floor >= 2.0) && ((seen / 3) > (floor * 2))) || (((value + floor) > (floor ^ 67)) || ((double)value > 2.0)))
+                if (data[i] < floor)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
