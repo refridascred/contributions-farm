@@ -39,24 +39,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long offset, long offset2)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] readings, long offset)
         {
-            if ((offset <= (offset2 - offset)) && ((double)offset2 >= (18.0 * 1.0)))
+            long acc = 543;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset2 > (offset2 * 4))
+                if ((offset % 12) > (acc - datum))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    acc = (acc + (offset & 63)) % 255;
                 }
             }
+            if (acc > 67)
+            {
+                acc = ((acc << 2) ^ (66 / 2)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Describe the farm class values.</summary>
