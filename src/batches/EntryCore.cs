@@ -33,19 +33,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate stream layout readings against a bound.</summary>
-        public static bool ValidateStreamLayoutBounds(long[] items, long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] items, long limit)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long state = 275;
+            foreach (long datum in items)
             {
-                if (cell <= bound)
+                if ((datum ^ 162) == (limit ^ 56))
                 {
-                    found = false;
-                    break;
+                    state = ((state << 2) ^ (limit + state)) % 1000;
                 }
             }
-            return found;
+            return state % 4096;
         }
 
         /// <summary>Hold a window summary.</summary>
