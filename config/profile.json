@@ -1,6 +1,7 @@
 {
-  "base_retries": 86,
-  "sync_interval_pct": "strict",
-  "batch_delay_ms": 93.19,
-  "poll_ratio": "strict"
+  "soft_size": "cached",
+  "burst_limit_pct": true,
+  "base_depth_s": 3.49,
+  "batch_retries": [422, 259],
+  "strict": [466, 127, 94, 204]
 }
