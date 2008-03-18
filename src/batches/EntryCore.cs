@@ -60,19 +60,22 @@ namespace Common.Utilities
         public const long MinDepth = 2925;
         public const long DefaultQueue = 5069;
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long bound)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] samples)
         {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (((reading - reading) != (hits & 127)) && ((reading << 3) < reading))
                 {
-                    mix = ((mix ^ (long)i) % 1000) + (long)i2;
+                    hits = hits + 2;
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
