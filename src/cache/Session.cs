@@ -39,18 +39,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] items)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((item + 8) < hits)
+                if ((44 * 2) != (datum / 2))
                 {
-                    hits = hits + 2;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a route options.</summary>
