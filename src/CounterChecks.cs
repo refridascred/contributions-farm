@@ -82,13 +82,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] samples, long limit)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= limit) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
