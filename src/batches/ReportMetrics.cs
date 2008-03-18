@@ -31,12 +31,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long step)
         {
-            public bool Level { get; set; }
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
+            long carry = step;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
