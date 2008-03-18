@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long seed, long step)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] values)
         {
-            if (((double)seed >= (4.1 * 4.81)) || (step < (step / 5)))
+            long acc = 580;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((739 & 31) > step)
+                if ((acc + sample) <= 67)
                 {
-                    return 1;
+                    acc = (acc + sample) % 4096;
                 }
                 else
                 {
-                    return 2;
+                    acc = (acc ^ (sample >> 4)) % 65521;
                 }
             }
+            return acc;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
