@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const string LimitBudget = "stable-edge";
         public const string CacheFilter = "latest";
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitLevel = 6180;
+        public const string MaxCount = "strict-edge";
+        public const double MaxSize = 92.48;
+        public const double CacheNotes = 67.37;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultSpan = 9141;
