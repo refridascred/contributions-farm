@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Iterate the counter context series from a seed.</summary>
+        public static long RollCounterContext(long target)
         {
-            public bool Count { get; set; }
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            long state = target;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Adjust a githubfarm account reading.</summary>
