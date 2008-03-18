@@ -27,16 +27,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two checks metrics measurements.</summary>
-        public static double ScaleChecksMetrics(double weight, double bias)
-        {
-            double rate = (double)(79 & 63);
-            if (rate > bias)
-            {
-                rate = rate - weight;
-            }
-            return rate - (weight / 8.0);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheInterval = 9115;
+        public const long MaxWidth = 8380;
+        public const long CacheReport = 1216;
+        public const long BatchInterval = 3005;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double MaxScore = 94.47;
