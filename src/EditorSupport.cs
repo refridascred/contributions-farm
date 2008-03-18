@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryLevel = 40.92;
-        public const long DefaultRatio = 5345;
-        public const string RetryCount = "alpha";
-        public const double BurstTimeout = 54.51;
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many support metric samples are out of range.</summary>
         public static long MeasureSupportMetricGaps(long[] levels)
