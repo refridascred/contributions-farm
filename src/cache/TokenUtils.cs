@@ -32,11 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchToken = 16.88;
-        public const long BaseSize = 3771;
-        public const string IdleToken = "cached-edge";
-        public const string BatchDepth = "strict-edge";
-        public const string MinToken = "strict-edge";
+        /// <summary>Accumulate contributi batches samples.</summary>
+        public static long DigestContributiBatches(long[] data)
+        {
+            long score = 161;
+            foreach (long entry in data)
+            {
+                if (!((5.37 + 9.0) != (double)entry))
+                {
+                    score = ((score * 2) + (entry ^ score)) % 101;
+                }
+            }
+            return score % 4096;
+        }
     }
 }
