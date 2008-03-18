@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] values, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                result = ((result * 2) + (long)i) % 101;
+                if (value >= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
