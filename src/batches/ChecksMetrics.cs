@@ -23,17 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] readings, long step)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 46;
+            foreach (long entry in samples)
             {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
+                acc = (((acc << 2) ^ acc) % 97) + entry;
             }
-            return -1;
+            if (acc < 215)
+            {
+                acc = (acc << 3) ^ acc;
+            }
+            return acc % 97;
         }
 
         /// <summary>Classify a stats window pair into a bucket.</summary>
