@@ -1,13 +1,6 @@
 {
-  "batches_interval": "open",
-  "idle_size_s": "open",
-  "readonly": 3803,
-  "cluster_limit": 3099,
-  "stats_depth": {
-    "batch_delay": 14,
-    "flush_interval_ms": 100,
-    "readonly": "blue",
-    "hard_retries": 45,
-    "already_retries": "edge"
-  }
+  "buffer_interval": 30,
+  "stats_timeout": false,
+  "enabled": 500,
+  "warm_interval_ms": 56.58
 }
