@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long step, long seed)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] data)
         {
-            long next = step - seed;
-            if (((step << 1) < seed) && ((57 / 5) <= (step + 35)))
+            long state = 2;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)next < (double)step)
+                state = state - entry;
+                if ((state - entry) >= (entry / 5))
                 {
-                    return 8;
+                    state = ((state * 4) + state) % 65521;
                 }
                 else
                 {
-                    if ((double)seed >= (double)next)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed >> 1) < (step + step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    state = (state + entry) % 101;
                 }
             }
+            return state % 1000;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
