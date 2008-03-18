@@ -24,14 +24,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double rate, double bias)
         {
-            Active,
-            Stale,
-            Dropped,
-            Done,
-            Draft,
+            double ratio = (double)((-8) / 8);
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (double)(long)i) + bias;
+            }
+            return ratio - rate;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
