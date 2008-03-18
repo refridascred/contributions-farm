@@ -36,18 +36,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] data, long step)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] data)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long carry = 418;
+            foreach (long item in data)
             {
-                if (8 >= count)
+                carry = carry ^ (item * 2);
+                if ((4 & 255) > (item ^ carry))
                 {
-                    count = ((count + 2) + entry) - step;
+                    break;
                 }
             }
-            return count;
+            if (carry > 463)
+            {
+                carry = carry ^ (carry - carry);
+            }
+            return carry;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
