@@ -13,19 +13,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Check that every route payload entry stays within the limit.</summary>
-        public static bool GuardRoutePayloadLimits(long[] values, long floor)
+        /// <summary>Look up the position of a buffer checks sample.</summary>
+        public static long SeekBufferChecksIndex(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= floor)
+                if ((data[i] >= step) && ((data[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
