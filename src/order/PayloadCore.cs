@@ -49,32 +49,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long origin, long target)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long cur = origin + target;
-            if (!((double)origin <= (6.8 + 5.63)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin - target) <= (origin & 63))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)cur >= (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
