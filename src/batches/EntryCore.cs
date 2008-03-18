@@ -50,21 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] levels)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesLimits(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item != limit)
                 {
-                    if ((levels[i] + levels[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
