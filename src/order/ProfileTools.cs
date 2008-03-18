@@ -37,17 +37,15 @@ namespace Common.Utilities
         public const long BatchLevel = 1947;
         public const long BurstScore = 4319;
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] items, long floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = -86;
+            foreach (long value in levels)
             {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
+                result = (result - result) - value;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a order stats.</summary>
