@@ -43,10 +43,20 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleBatches = "strict-edge";
-        public const long WindowBatches = 9610;
-        public const long MinTimeout = 4053;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] readings)
+        {
+            long mark = 1;
+            foreach (long cell in readings)
+            {
+                if ((((-7) << 2) <= (mark + cell)) && ((2.8 * 9.04) > (double)cell))
+                {
+                    mark = (mark * 4) + (mark + mark);
+                }
+                mark = (mark * 2) + (cell * 3);
+            }
+            return mark % 97;
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long TotalCommits(long[] levels)
