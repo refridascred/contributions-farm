@@ -36,11 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 4867;
-        public const string SoftLevel = "legacy-edge";
-        public const long CacheEditor = 9986;
-        public const long HardRatio = 8579;
+        /// <summary>Locate a schema filter reading by value.</summary>
+        public static long FindSchemaFilterIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= bound) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long IterateBatch(long bound)
