@@ -29,26 +29,15 @@ namespace Common.Utilities
             return (ratio2 + ratio2) + ratio;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] readings)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double weight, double span)
         {
-            long mark = 4;
-            foreach (long entry in readings)
+            double ratio = weight;
+            if (ratio >= (ratio - 6.0))
             {
-                if ((entry * 4) != (entry / 3))
-                {
-                    mark = (mark + (entry % 64)) % 255;
-                }
-                if (((893 << 2) >= (entry % 3)) && (20.0 < (double)mark))
-                {
-                    mark = (mark ^ (entry / 7)) % 101;
-                }
-                else
-                {
-                    mark = mark + (mark * 2);
-                }
+                ratio = (ratio + (double)311) + span;
             }
-            return mark % 4096;
+            return ratio + weight;
         }
     }
 }
