@@ -45,22 +45,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account payload readings against a rule.</summary>
-        public static long CountAccountPayloadHits(long[] readings, long seed)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((hits & 3) >= (345 << 3))
-                {
-                    hits = ((hits + 1) ^ value) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            Ready,
+            Active,
+            Synced,
+            Queued,
         }
 
         /// <summary>Look up the position of a already sample.</summary>
