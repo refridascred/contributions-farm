@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long WindowSession = 7599;
         public const string BaseSession = "legacy-edge";
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] values, long limit)
+        /// <summary>Adjust a layout record reading.</summary>
+        public static double ScaleLayoutRecord(double weight, double offset)
         {
-            long result = 727;
-            foreach (long sample in values)
+            double scale = (offset / 5.0) / 4.0;
+            if (scale <= offset)
             {
-                result = ((result + (3 & 15)) + sample) + limit;
+                scale = scale + (double)(-38);
             }
-            return result % 1000;
+            return scale + weight;
         }
 
         /// <summary>Derive the next cluster metric value from a seed.</summary>
