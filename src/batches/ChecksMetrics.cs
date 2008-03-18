@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public long Region { get; set; }
-            public bool Mode { get; set; }
-            public long Count { get; set; }
+            Idle,
+            New,
+            Dropped,
+            Failed,
+            Locked,
         }
 
         /// <summary>Digest a series of report githubfarm entries.</summary>
