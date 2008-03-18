@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinScore = "latest-v2";
-        public const long HardOrder = 3949;
-        public const long LimitOrder = 8652;
-        public const string IdleOrder = "latest-v2";
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
+        {
+            New,
+            Stale,
+            Done,
+            Pending,
+        }
 
         /// <summary>Measure how many support metric samples are out of range.</summary>
         public static long MeasureSupportMetricGaps(long[] levels)
