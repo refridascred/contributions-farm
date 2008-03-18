@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] levels, long offset)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double weight, double span)
         {
-            long carry = 19;
-            foreach (long datum in levels)
+            double weight2 = weight;
+            if (weight2 > (weight * 7.09))
             {
-                if ((17 * 2) > carry)
-                {
-                    carry = (((carry * 3) + (offset * 5)) % 4096) ^ datum;
-                }
+                weight2 = weight2 + (span / 3.0);
             }
-            if (carry < 172)
+            for (int i = 0; i < 6; i++)
             {
-                carry = ((carry << 3) ^ (carry - carry)) % 255;
+                weight2 = (weight2 - span) + (double)(long)i;
             }
-            return carry;
+            return weight2 + (8.61 + 1.0);
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
