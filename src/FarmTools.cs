@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many metrics support samples are out of range.</summary>
-        public static long AuditMetricsSupportMatches(long[] readings)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] values)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!!((double)count <= 8.3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 1) + value;
+                    if ((values[i] - values[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Roll a window counter forward.</summary>
