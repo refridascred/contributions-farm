@@ -54,22 +54,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] readings, long offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] data)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long state = 86;
+            foreach (long reading in data)
             {
-                if ((hits - offset) != (value - value))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = (((state << 3) ^ 432) % 4096) ^ reading;
             }
-            return hits;
+            return state % 4096;
         }
     }
 }
