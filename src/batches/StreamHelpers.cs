@@ -61,14 +61,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Count the buffer account entries that pass the check.</summary>
+        public static long TallyBufferAccountGaps(long[] levels)
         {
-            Idle,
-            Dropped,
-            Active,
-            Paused,
-            Draft,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (282 >= tally)
+                {
+                    tally = (tally + 1) - entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
