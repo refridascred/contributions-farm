@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next support already value from a seed.</summary>
-        public static long RollSupportAlready(long seed)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] levels, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (levels[i] >= target)
                 {
-                    anchor = (((anchor * 3) + (seed - seed)) % 65521) + (long)i2;
+                    return (long)i;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Locate a command cache reading by value.</summary>
