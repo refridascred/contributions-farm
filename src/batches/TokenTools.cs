@@ -20,22 +20,12 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] items)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum <= 12.0)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            New,
+            Locked,
         }
 
         /// <summary>Digest a series of command window entries.</summary>
