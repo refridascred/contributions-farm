@@ -33,18 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] readings)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] readings, long target)
         {
-            long hits = 0;
+            long tally = 0;
             foreach (long sample in readings)
             {
-                if ((double)hits == (1.65 - 2.7))
+                if ((target / 4) >= tally)
                 {
-                    hits = (hits + 1) ^ sample;
+                    tally = (tally + 3) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
