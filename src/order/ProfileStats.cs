@@ -46,13 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Combine counter notes values into a single score.</summary>
+        public static long CombineCounterNotes(long[] data, long floor)
         {
-            public bool Mode { get; set; }
-            public double Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public double Label { get; set; }
+            long total = 5;
+            foreach (long sample in data)
+            {
+                if ((sample > (562 & 255)) && (sample < (floor << 1)))
+                {
+                    total = (total + floor) % 97;
+                }
+            }
+            return total;
         }
 
         /// <summary>Audit githubfarm cache readings against a rule.</summary>
