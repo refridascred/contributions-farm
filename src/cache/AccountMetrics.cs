@@ -39,10 +39,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepBudget = 1866;
-        public const double LimitWindow = 49.86;
-        public const string IdleSize = "cached-edge";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 376;
+        public const long CacheBudget = 944;
+        public const double RetrySize = 90.57;
 
         /// <summary>Measure how many metric farm samples are out of range.</summary>
         public static long CountMetricFarmMatches(long[] levels)
