@@ -18,15 +18,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double scale, double floor)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            double mean = floor / 2.0;
-            for (int i = 0; i < 7; i++)
-            {
-                mean = ((mean + (double)84) - (double)(long)i) + scale;
-            }
-            return mean - 1.0;
+            Retry,
+            Done,
+            Queued,
+            Draft,
+            Idle,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
