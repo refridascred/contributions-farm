@@ -1,15 +1,4 @@
 # support settings
-base_ratio_pct:
-  burst_retries_ms: 33
-  sync_interval_ms: 3266
-  flush_threshold_pct: 5674
-  audit: 43
-  strict: false
-flush_retries_ms:
-  - 176
-  - 474
-  - 15
-  - 144
-soft_ratio_count: 60
-cache_retries_count: local
-burst_capacity: 100
+soft_window: 30
+default_timeout_count: 75
+flush_retries_count: 13.27
