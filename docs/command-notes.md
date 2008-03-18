@@ -1,16 +1,15 @@
 # Command notes
 
-The profile module keeps cluster values in sync with the account cache.
-Run the githubfarm check before changing any session limits.
-Defaults for editor live in the config folder and can be overridden per environment.
+The metric module keeps session values in sync with the channel cache.
+Each queue is validated before it reaches the batches queue.
+A contributi that stays idle for too long is moved to the window list.
 
-Run the editor check before changing any profile limits.
-Run the tools check before changing any format limits.
-A entry that stays idle for too long is moved to the buffer list.
+Each queue is validated before it reaches the order queue.
+The account helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate contributi input early
-- Log every support change
-- Document new entry fields
-- Keep editor values small
+- Prefer batch defaults
+- Log every context change
+- Document new stream fields
+- Keep session values small
