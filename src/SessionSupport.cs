@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] data, long step)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)hits <= 8.89) || (((hits << 1) <= (datum + 840)) || ((8.43 + 17.0) != (double)hits)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] - values[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Project the next session cache value.</summary>
