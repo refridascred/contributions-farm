@@ -22,22 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support metric samples are out of range.</summary>
-        public static long MeasureSupportMetricGaps(long[] levels)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((double)datum <= (20.0 - 16.0))
+                if (entry >= bound)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Accumulate support samples.</summary>
