@@ -43,24 +43,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of queue farm readings.</summary>
-        public static long CombineQueueFarm(long[] values)
-        {
-            long carry = 4;
-            foreach (long reading in values)
-            {
-                carry = (carry + (reading >> 1)) % 97;
-                if ((4.69 * 7.69) >= (double)reading)
-                {
-                    carry = (carry << 3) ^ (carry * 3);
-                }
-                else
-                {
-                    carry = ((carry * 3) + (reading - carry)) % 255;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "cached-1";
+        public const long BaseProfile = 6625;
+        public const double LimitProfile = 94.75;
+        public const string RetryProfile = "open-v2";
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool CheckLayoutBounds(long[] samples, long origin)
