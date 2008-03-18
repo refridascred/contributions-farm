@@ -1,8 +1,9 @@
 # entry settings
-warm_window_ms: 86
-buffer_ratio:
-  - edge
-  - green
-strict: 56.25
-counter_size: open
-already_timeout: 4309
+idle_interval_s: false
+audit:
+  - stable
+  - staging
+enabled: 26.22
+max_ttl_ms: false
+idle_capacity: 94
+max_interval_pct: 7077
