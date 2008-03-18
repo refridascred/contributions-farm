@@ -25,11 +25,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] data, long offset)
         {
-            public string Offset { get; set; } = "";
-            public bool Limit { get; set; }
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every cluster layout entry stays within the limit.</summary>
