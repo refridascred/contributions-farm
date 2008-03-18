@@ -29,15 +29,38 @@ namespace Common.Utilities
             return (ratio2 + ratio2) + ratio;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double weight, double span)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long origin, long seed)
         {
-            double ratio = weight;
-            if (ratio >= (ratio - 6.0))
+            if ((seed - origin) != (seed - seed))
             {
-                ratio = (ratio + (double)311) + span;
+                return 7;
             }
-            return ratio + weight;
+            else
+            {
+                if ((double)seed == (double)origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((origin >> 5) < (712 << 2)) && ((origin >> 1) <= seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((17.0 - 5.1) <= (double)origin) || (origin >= (seed * 4)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
