@@ -1,14 +1,11 @@
 # Command notes
 
-Each filter is validated before it reaches the context queue.
-The counter report groups every entry by stream.
-Run the filter check before changing any metric limits.
-
-The farm module keeps session values in sync with the schema cache.
-A channel that stays idle for too long is moved to the metrics list.
+Each tools is validated before it reaches the token queue.
+Keep metrics and counter names short and lowercase.
+Run the queue check before changing any batch limits.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Keep metric values small
-- Log every stats change
+- Keep cluster values small
+- Document new record fields
+- Prefer buffer defaults
