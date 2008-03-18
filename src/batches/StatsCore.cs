@@ -83,18 +83,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] samples)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long offset)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long score = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((matches < (matches ^ matches)) && (matches < (value % 8)))
-                {
-                    matches = matches + 1;
-                }
+                score = score ^ (47 % 12);
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
     }
 }
