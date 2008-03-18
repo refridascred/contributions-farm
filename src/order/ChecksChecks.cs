@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next entry metric value from a seed.</summary>
-        public static long IterateEntryMetric(long limit)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long anchor = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = anchor ^ limit;
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Paused,
+            Stale,
+            Synced,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
