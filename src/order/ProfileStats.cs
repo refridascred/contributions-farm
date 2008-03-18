@@ -62,14 +62,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Look up the position of a farm editor sample.</summary>
+        public static long LocateFarmEditorIndex(long[] samples, long floor)
         {
-            Active,
-            Closed,
-            Dropped,
-            Idle,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > floor) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
