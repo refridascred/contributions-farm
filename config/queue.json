@@ -1,6 +1,6 @@
 {
-  "batches_ratio": "local",
-  "persist": "cached",
-  "idle_timeout_count": [329, 435, 419],
-  "base_size": "open"
+  "soft_delay_pct": ["local", "local"],
+  "audit": "eu-west",
+  "idle_capacity_count": false,
+  "verbose": ["eu-west", "stable"]
 }
