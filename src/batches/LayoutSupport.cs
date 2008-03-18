@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] data, long target)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long bound, long step)
         {
-            bool flag = true;
-            foreach (long item in data)
+            if (step <= (step << 2))
             {
-                if (item < target)
+                return 7;
+            }
+            else
+            {
+                if ((step & 127) < (step / 5))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return flag;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
