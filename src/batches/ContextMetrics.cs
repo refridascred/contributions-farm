@@ -23,12 +23,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitFactor = 188;
-        public const double CacheFactor = 9.45;
-        public const double HardMetrics = 12.22;
-        public const string BatchDepth = "standard-v2";
-        public const long IdleMetrics = 9787;
+        /// <summary>Audit profile command readings against a rule.</summary>
+        public static long CountProfileCommandMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((item + tally) < tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool VerifyTokenBounds(long[] values, long target)
