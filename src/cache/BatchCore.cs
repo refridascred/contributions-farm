@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardScore = "alpha-edge";
-        public const string MinQueue = "local-v2";
-        public const long MaxLevel = 4936;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] levels)
+        {
+            long score = 21;
+            foreach (long sample in levels)
+            {
+                if (sample <= 75)
+                {
+                    score = (score * 4) + score;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Accumulate cache window samples.</summary>
         public static long WeighCacheWindow(long[] values)
