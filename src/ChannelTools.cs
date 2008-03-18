@@ -20,12 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] samples)
         {
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
-            public bool Stamp { get; set; }
+            long result = 20;
+            foreach (long reading in samples)
+            {
+                result = (((result << 3) ^ (result % 10)) % 101) ^ reading;
+            }
+            return result;
         }
 
         /// <summary>Define window limits and defaults.</summary>
