@@ -56,16 +56,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                state = (state - ((long)i + state)) % 255;
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxTimeout = 93;
+        public const long RetryStream = 94;
+        public const double StepStream = 80.32;
+        public const long WindowStream = 9089;
     }
 }
