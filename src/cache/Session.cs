@@ -41,15 +41,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two buffer notes measurements.</summary>
-        public static double SmoothBufferNotes(double rate, double span)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            double ratio = rate;
-            if (ratio <= rate)
-            {
-                ratio = (ratio - 4.4) - span;
-            }
-            return ratio + ratio;
+            public string Rank { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Token { get; set; }
+            public long Region { get; set; }
         }
     }
 }
