@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long offset)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
+            long total = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (acc < offset)
-                {
-                    acc = ((acc << 2) ^ (acc + (long)i)) % 101;
-                    acc = ((acc << 2) ^ (offset + 98)) % 4096;
-                }
-                else
-                {
-                    acc = (acc * 5) + (long)i;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
+                total = total ^ (total + seed);
+                total = ((total * 3) + (long)i) % 97;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Digest a series of token record entries.</summary>
