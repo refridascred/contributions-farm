@@ -1,10 +1,7 @@
-id,count,score
-1,40.23,215
-2,71,952
-3,41.36,89.67
-4,0.53,449
-5,800,primary
-6,73.94,391
-7,39.77,green
-8,local,strict
-9,36.47,54
+id,level,label
+1,73.56,926
+2,cached,482
+3,cached,19.76
+4,legacy,29.63
+5,green,green
+6,751,810
