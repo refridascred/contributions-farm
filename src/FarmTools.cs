@@ -15,12 +15,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Closed,
-            Retry,
-            Queued,
+            public double Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
