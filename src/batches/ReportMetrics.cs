@@ -27,19 +27,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine counter batches values into a single score.</summary>
-        public static long TallyCounterBatches(long[] readings, long offset)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long acc = 40;
-            foreach (long sample in readings)
-            {
-                acc = ((acc * 4) + (sample >> 1)) % 1000;
-                if ((offset >> 4) > sample)
-                {
-                    break;
-                }
-            }
-            return acc;
+            public double Score { get; set; }
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public double Total { get; set; }
         }
     }
 }
