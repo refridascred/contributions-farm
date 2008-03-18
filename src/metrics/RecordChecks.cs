@@ -34,13 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            public long Region { get; set; }
-            public double Size { get; set; }
-            public bool Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            public bool Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
