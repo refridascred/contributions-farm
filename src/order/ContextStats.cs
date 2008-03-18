@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] data, long offset)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (!((seen & 3) <= seen))
-                {
-                    seen = ((seen + 3) + sample) - offset;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
