@@ -34,18 +34,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit entry contributi readings against a rule.</summary>
-        public static long TallyEntryContributiGaps(long[] levels, long step)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long result = 86;
+            foreach (long reading in items)
             {
-                if ((tally % 2) <= tally)
+                if (((reading * 2) <= reading) && (result > reading))
                 {
-                    tally = ((tally + 2) - reading) - step;
+                    result = (result << 3) ^ (11 + reading);
+                }
+                else
+                {
+                    result = result + (target - reading);
                 }
             }
-            return tally;
+            if (result < 45)
+            {
+                result = result ^ (target + target);
+            }
+            return result % 4096;
         }
     }
 }
