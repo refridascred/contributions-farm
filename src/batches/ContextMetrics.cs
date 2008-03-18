@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryRatio = 23.59;
-        public const long BaseSpan = 8899;
-        public const long IdleRatio = 6427;
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
+        {
+            public string Stamp { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Check that every route payload entry stays within the limit.</summary>
         public static bool GuardRoutePayloadLimits(long[] values, long floor)
