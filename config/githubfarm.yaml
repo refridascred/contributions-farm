@@ -1,7 +1,7 @@
 # githubfarm settings
-cache_threshold_ms: standard
-cache_size_pct: 48.75
-min_size_ms: 49.55
-idle_size: fallback
-enabled: strict
-poll_ttl_ms: 98.37
+audit: strict
+layout_capacity:
+  - strict
+  - cached
+  - strict
+order_threshold: cached
