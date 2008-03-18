@@ -1,16 +1,10 @@
 {
-  "cache_size": {
-    "poll_interval_pct": "fallback",
-    "report_delay": 1.9,
-    "hard_ttl": 65
+  "editor_size": 41.25,
+  "warm_interval": {
+    "base_size_count": "green",
+    "readonly": "eu-west",
+    "base_delay": [323, 334, 214]
   },
-  "persist": {
-    "max_window_count": "cached",
-    "hard_ratio_pct": false,
-    "support_window": 1024,
-    "flush_size_s": 37.34,
-    "strict": 60
-  },
-  "idle_window": "cached",
-  "flush_delay_s": false
+  "default_depth_ms": "latest",
+  "retry_ratio_s": ["staging", "primary", "blue", "edge"]
 }
