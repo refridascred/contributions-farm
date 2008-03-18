@@ -103,13 +103,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Locked,
-            Paused,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 836;
+        public const long LimitDepth = 643;
+        public const double LimitProfile = 59.9;
+        public const double SoftProfile = 78.72;
+        public const long IdleProfile = 8974;
     }
 }
