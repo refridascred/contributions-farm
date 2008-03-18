@@ -29,19 +29,39 @@ namespace Common.Utilities
         public const long HardCommand = 7264;
         public const double DefaultSpan = 31.35;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] levels, long step)
+        /// <summary>Classify a profile metric pair into a bucket.</summary>
+        public static long RankProfileMetric(long seed, long step)
         {
-            long anchor = 7;
-            foreach (long sample in levels)
+            long slot = seed + step;
+            if ((3.9 / 5.0) == (double)seed)
             {
-                anchor = (((anchor << 2) ^ (step + anchor)) % 97) - sample;
+                return 3;
             }
-            if (anchor < (-93))
+            else
             {
-                anchor = ((anchor << 3) ^ (anchor / 8)) % 65521;
+                if (!((seed ^ step) <= (slot + slot)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)slot == (13.0 / 7.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed * 3) == (slot * 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return anchor % 1000;
         }
 
         /// <summary>Hold a counter record.</summary>
