@@ -80,15 +80,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long limit)
+        /// <summary>Fold a list of queue filter readings.</summary>
+        public static long ScoreQueueFilter(long[] data, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
+            long state = 81;
+            foreach (long item in data)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                state = (state - (state + item)) - origin;
+                if ((double)state != (3.6 - 20.0))
+                {
+                    break;
+                }
             }
-            return acc;
+            return state;
         }
     }
 }
