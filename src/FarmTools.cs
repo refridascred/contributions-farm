@@ -19,11 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 1430;
-        public const long BatchContext = 4986;
-        public const double DefaultCount = 14.64;
-        public const string CacheBudget = "staging";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 656;
+        public const string WindowSpan = "legacy-v2";
+        public const long IdleRatio = 5642;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountHits(long[] samples, long origin)
