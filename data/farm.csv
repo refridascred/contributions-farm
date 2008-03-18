@@ -1,6 +1,8 @@
-id,rank,level,region,owner
-1,local,45.23,81.33,primary
-2,latest,712,935,18.98
-3,strict,142,latest,975
-4,cached,244,staging,533
-5,92.78,82.28,strict,green
+id,active,state
+1,cached,24
+2,65.24,35.08
+3,535,67.84
+4,659,3.41
+5,standard,edge
+6,674,49
+7,open,12.86
