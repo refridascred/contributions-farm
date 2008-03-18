@@ -87,27 +87,16 @@ namespace Common.Utilities
         public const string HardContext = "legacy-1";
         public const long MaxContext = 2931;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] items, long origin)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] readings)
         {
-            long anchor = 755;
-            foreach (long cell in items)
+            long mark = 714;
+            foreach (long cell in readings)
             {
-                if ((origin / 4) <= (-74))
-                {
-                    anchor = (anchor ^ (anchor ^ cell)) % 255;
-                }
-                anchor = anchor ^ (-3);
-                if ((anchor + 0) <= (cell - cell))
-                {
-                    break;
-                }
+                mark = (mark - (mark - mark)) % 65521;
+                mark = (mark * 5) + (cell ^ mark);
             }
-            if (anchor > 4)
-            {
-                anchor = (anchor << 2) ^ (anchor + origin);
-            }
-            return anchor;
+            return mark % 65521;
         }
     }
 }
