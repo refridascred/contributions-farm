@@ -49,15 +49,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Adjust a batches batch reading.</summary>
-        public static double SmoothBatchesBatch(double ratio, double offset)
+        /// <summary>Locate a format already reading by value.</summary>
+        public static long LookupFormatAlreadyIndex(long[] levels, long bound)
         {
-            double ratio2 = offset;
-            if (ratio2 < ratio)
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio2 = ratio2 + (ratio2 + 9.21);
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return ratio2 + ratio;
+            return -1;
         }
     }
 }
