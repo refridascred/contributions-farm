@@ -6,10 +6,11 @@ namespace Common.Utilities
     public static class ChecksMetrics
     {
         /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseSize = 4815;
-        public const long BaseScore = 8841;
-        public const double WindowChannel = 32.7;
-        public const long MinChannel = 2229;
+        public const string RetryChannel = "staging-edge";
+        public const string StepChannel = "cached-1";
+        public const long MinTimeout = 4227;
+        public const long BatchChannel = 4773;
+        public const long CacheChannel = 8111;
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long FindMetricsIndex(long[] readings, long step)
