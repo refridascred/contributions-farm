@@ -27,11 +27,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstDepth = 2615;
-        public const long MaxTimeout = 4906;
-        public const long IdleSpan = 9645;
-        public const long WindowScore = 160;
+        /// <summary>Grade a counter command value against two limits.</summary>
+        public static long SortCounterCommand(long step, long step2)
+        {
+            if (!((4.6 / 2.0) <= (double)step2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step * 4) != (step2 * 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step <= (step2 << 3)) && ((step % 12) > (step2 + step2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (2 >= (step2 + step2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long DigestBatch(long[] series, long step)
