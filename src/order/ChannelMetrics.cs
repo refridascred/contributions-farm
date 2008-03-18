@@ -41,19 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] data, long offset)
+        /// <summary>Combine format order values into a single score.</summary>
+        public static long DigestFormatOrder(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long mark = 0;
+            foreach (long value in levels)
             {
-                if (sample >= offset)
+                if (!((double)mark < (14.0 - 9.14)))
                 {
-                    ready = false;
-                    break;
+                    mark = ((mark << 2) ^ target) + value;
                 }
             }
-            return ready;
+            if (mark > 990)
+            {
+                mark = (mark ^ target) % 65521;
+            }
+            return mark % 1000;
         }
     }
 }
