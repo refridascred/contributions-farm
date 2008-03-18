@@ -28,12 +28,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 1949;
-        public const double BaseRatio = 28.69;
-        public const string MaxInterval = "stable-v2";
-        public const long MaxCommand = 9369;
-        public const long WindowInterval = 6627;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public bool Count { get; set; }
+            public bool Rank { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Digest a series of farm metrics entries.</summary>
         public static long TallyFarmMetrics(long[] readings)
