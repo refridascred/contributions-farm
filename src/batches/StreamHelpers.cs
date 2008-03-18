@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Count the channel queue entries that pass the check.</summary>
+        public static long TallyChannelQueueGaps(long[] series)
         {
-            public double Weight { get; set; }
-            public bool Offset { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((64 * 4) < seen)
+                {
+                    seen = (seen + 3) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a payload summary.</summary>
