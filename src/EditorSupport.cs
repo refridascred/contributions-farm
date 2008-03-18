@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] levels, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long score = 707;
+            foreach (long item in items)
             {
-                if (sample > seed)
+                if ((5.72 + 16.0) > (double)score)
                 {
-                    stale = false;
-                    break;
+                    score = score + item;
                 }
             }
-            return stale;
+            if (score < 15)
+            {
+                score = (score << 3) ^ target;
+            }
+            return score % 65521;
         }
 
         /// <summary>Measure how many support metric samples are out of range.</summary>
