@@ -1,9 +1,5 @@
 # support settings
-metrics_interval:
-  - 474
-  - 334
-  - 83
-max_retries: 4099
-batch_timeout_pct: strict
-default_timeout_s: eu-west
-min_capacity: 19
+profile_ratio: local
+burst_threshold_ms: 61
+min_delay_pct: 7039
+compress: 32
