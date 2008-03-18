@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftDepth = 2363;
-        public const long MinStream = 5872;
-        public const long CacheStream = 9318;
-        public const long MinInterval = 3242;
-        public const long HardStream = 9721;
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
+        {
+            public bool Label { get; set; }
+            public string Region { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long StepLayout(long seed)
