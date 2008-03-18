@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] data, long step)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long state = 530;
-            foreach (long cell in data)
-            {
-                if (state > (25 >> 4))
-                {
-                    state = (state * 2) + (step - cell);
-                }
-            }
-            return state % 65521;
+            New,
+            Retry,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a githubfarm record.</summary>
