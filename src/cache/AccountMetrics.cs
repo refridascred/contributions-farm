@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Count the session context entries that pass the check.</summary>
+        public static long CountSessionContextHits(long[] series)
         {
-            Draft,
-            Idle,
-            Locked,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((double)405 < (double)seen)
+                {
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
