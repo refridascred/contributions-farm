@@ -28,18 +28,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] series, long origin)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long offset, long offset2)
         {
-            long seen = 0;
-            foreach (long item in series)
+            if ((offset * 3) == (offset2 - offset2))
             {
-                if ((27 >> 2) <= (seen + item))
+                return 5;
+            }
+            else
+            {
+                if ((offset & 31) < offset)
                 {
-                    seen = (seen + 1) - origin;
+                    return 3;
+                }
+                else
+                {
+                    if (offset2 < (51 ^ offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the token layout entries that pass the check.</summary>
