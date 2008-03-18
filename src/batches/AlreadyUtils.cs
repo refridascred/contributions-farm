@@ -45,23 +45,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics session entries.</summary>
-        public static long FoldMetricsSession(long[] samples, long limit)
+        /// <summary>Iterate the metrics record series from a seed.</summary>
+        public static long StepMetricsRecord(long target)
         {
-            long anchor = 6;
-            foreach (long value in samples)
+            long mix = target;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = (anchor - anchor) % 65521;
-                for (int i = 0; i < 9; i++)
-                {
-                    anchor = ((anchor * 4) + (anchor + value)) - (long)i;
-                }
-                if ((24 <= (anchor & 255)) && ((584 * 2) >= limit))
-                {
-                    anchor = (anchor + (anchor + value)) % 65521;
-                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return anchor % 1000;
+            return mix;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
