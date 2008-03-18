@@ -45,12 +45,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] readings)
         {
-            public string Token { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
+            long sum = 4;
+            foreach (long item in readings)
+            {
+                if (((item + sum) <= (item - sum)) || ((sum % 7) >= item))
+                {
+                    sum = sum - (sum + 445);
+                }
+                if ((item + 1) == (sum - 105))
+                {
+                    sum = (sum - item) % 65521;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Rank batch checks input into a small class.</summary>
