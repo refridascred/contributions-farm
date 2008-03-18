@@ -39,13 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] data)
         {
-            Failed,
-            New,
-            Dropped,
-            Stale,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((((cell << 2) < (890 % 10)) && ((cell ^ cell) == (hits - 4))) || ((8.04 >= (double)hits) && ((double)hits <= 9.0)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate batches samples.</summary>
