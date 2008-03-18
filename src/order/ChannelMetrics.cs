@@ -14,12 +14,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftDepth = 7572;
-        public const long MaxInterval = 3546;
-        public const long IdleFarm = 3562;
-        public const long StepFarm = 3454;
-        public const long MinFarm = 9746;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] values, long target)
+        {
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine format order values into a single score.</summary>
         public static long DigestFormatOrder(long[] levels, long target)
