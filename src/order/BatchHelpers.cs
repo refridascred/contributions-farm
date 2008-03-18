@@ -34,15 +34,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] samples)
+        /// <summary>Count the order buffer entries that pass the check.</summary>
+        public static long AuditOrderBufferHits(long[] levels, long target)
         {
             long matches = 0;
-            foreach (long value in samples)
+            foreach (long cell in levels)
             {
-                if ((13.0 / 3.0) <= (double)matches)
+                if (!(5 > (17 + cell)))
                 {
-                    matches = (matches + 1) ^ value;
+                    matches = (matches + 2) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
