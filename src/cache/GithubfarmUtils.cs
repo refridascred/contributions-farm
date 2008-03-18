@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] data, long target)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            double bias2 = 6.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (target <= (target + target))
-                {
-                    hits = (hits + 3) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias2 = ((bias2 + rate) + (double)(long)i) - bias;
             }
-            return hits;
+            return bias2 + rate;
         }
 
         /// <summary>Hold a stats stats.</summary>
