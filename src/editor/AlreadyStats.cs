@@ -30,16 +30,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long floor)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long total = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                total = total ^ floor;
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            Pending,
+            Paused,
+            Done,
+            New,
         }
     }
 }
