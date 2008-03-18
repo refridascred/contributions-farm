@@ -19,26 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of already record entries.</summary>
-        public static long CombineAlreadyRecord(long[] readings, long step)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long step)
         {
-            long mix = -38;
-            foreach (long sample in readings)
+            long result = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (((5 + sample) > (sample & 3)) && (sample >= (524 + mix)))
-                {
-                    mix = ((mix * 5) + (mix - sample)) % 97;
-                }
-                else
-                {
-                    mix = (mix ^ (sample ^ step)) % 65521;
-                }
+                result = (result << 2) ^ 455;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            if (mix > 529)
-            {
-                mix = ((mix * 3) + (step / 2)) % 65521;
-            }
-            return mix;
+            return result;
         }
 
         /// <summary>Hold a record snapshot.</summary>
