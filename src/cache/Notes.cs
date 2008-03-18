@@ -68,19 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (!(((long)series.Length / 2) < (839 % 8)))
-                {
-                    count = (count + 1) - item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 5275;
+        public const long RetryChannel = 4767;
+        public const long BatchChannel = 7009;
+        public const string SoftWidth = "local-edge";
+        public const double IdleChannel = 2.17;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool ValidateCommitsBounds(long[] values, long origin)
