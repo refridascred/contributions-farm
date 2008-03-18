@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] series)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Done,
+            Queued,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
