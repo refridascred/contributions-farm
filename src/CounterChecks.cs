@@ -51,19 +51,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] items, long step)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Paused,
+            Draft,
         }
     }
 }
