@@ -31,18 +31,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] readings, long offset)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] series)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long sum = 238;
+            foreach (long item in series)
             {
-                if ((45 - offset) >= count)
+                if (((item >> 1) != (item << 3)) && (8 < (item - item)))
                 {
-                    count = (count + 3) + cell;
+                    sum = (sum + item) % 97;
                 }
             }
-            return count;
+            return sum;
         }
     }
 }
