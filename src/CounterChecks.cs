@@ -47,19 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyOutliers(long[] levels, long seed)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading + seed) >= seed)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 797;
+        public const long MaxEntry = 1353;
+        public const long MinSize = 2347;
+        public const long RetryEntry = 1429;
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long FindNotesIndex(long[] readings, long floor)
