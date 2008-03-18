@@ -14,16 +14,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next record githubfarm value from a seed.</summary>
-        public static long StepRecordGithubfarm(long step)
+        /// <summary>Classify a commits format pair into a bucket.</summary>
+        public static long BucketCommitsFormat(long step, long bound)
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
+            if ((677 << 2) < (6 + bound))
             {
-                carry = ((carry << 2) ^ (step ^ step)) % 97;
-                carry = ((carry * 4) + (long)i) % 65521;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((step * 4) <= 91)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)6 > (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound ^ step) != (bound & 7))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of command checks readings.</summary>
