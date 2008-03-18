@@ -13,32 +13,17 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long bound, long step)
+        /// <summary>Locate a notes token reading by value.</summary>
+        public static long SeekNotesTokenIndex(long[] series, long floor)
         {
-            long step2 = bound + step;
-            if ((859 ^ step) > step2)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step < (5.11 + 7.9))
+                if (series[i] > floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step2 + bound) < bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the route state values.</summary>
