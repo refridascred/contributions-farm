@@ -72,21 +72,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a record layout counter forward.</summary>
-        public static long IterateRecordLayout(long step)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] series)
         {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                long delta = (1 + step) * 4;
-                if (!!((step + delta) <= (delta + (long)i)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    delta = ((delta * 3) + mark) % 4096;
-                    mark = ((mark << 2) ^ ((long)i % 100)) % 255;
+                    if ((series[i] ^ series[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
