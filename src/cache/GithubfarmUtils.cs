@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Locate a stream support reading by value.</summary>
+        public static long LocateStreamSupportIndex(long[] levels, long target)
         {
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
