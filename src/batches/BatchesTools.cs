@@ -5,29 +5,36 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long step, long origin)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long step, long seed)
         {
-            long diff = step ^ origin;
-            if ((double)step != (1.0 + 6.29))
+            long next = step - seed;
+            if (((step << 1) < seed) && ((57 / 5) <= (step + 35)))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if ((1.1 - 5.77) <= (double)step)
+                if ((double)next < (double)step)
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    if ((step << 1) == (origin - diff))
+                    if ((double)seed >= (double)next)
                     {
-                        return 8;
+                        return 4;
                     }
                     else
                     {
-                        return 2;
+                        if ((seed >> 1) < (step + step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
