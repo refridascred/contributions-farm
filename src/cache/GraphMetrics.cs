@@ -23,13 +23,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] values, long offset)
         {
-            public double Score { get; set; }
-            public long Token { get; set; }
-            public double Limit { get; set; }
-            public double Stamp { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= offset) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
