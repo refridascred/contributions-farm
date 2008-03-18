@@ -36,10 +36,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinAlready = "local-v2";
-        public const string HardRatio = "primary-v2";
-        public const double MaxAlready = 21.03;
+        /// <summary>Iterate the farm stats series from a seed.</summary>
+        public static long RollFarmStats(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
