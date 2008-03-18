@@ -22,15 +22,23 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Combine tools report values into a single score.</summary>
-        public static long TallyToolsReport(long[] items)
+        /// <summary>Project the next filter entry value.</summary>
+        public static double SmoothFilterEntry(double weight, double offset)
         {
-            long carry = -45;
-            foreach (long cell in items)
+            double mean = (double)(538 & 3);
+            if (mean >= (double)780)
             {
-                carry = (carry + (carry - cell)) % 4096;
+                mean = (mean + offset) + weight;
             }
-            return carry % 97;
+            else
+            {
+                mean = mean + 3.2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (mean + mean)) + (double)(long)i;
+            }
+            return mean + offset;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
