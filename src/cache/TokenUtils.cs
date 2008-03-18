@@ -26,13 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] samples)
         {
-            Locked,
-            Active,
-            Queued,
-            Dropped,
+            long total = 261;
+            foreach (long datum in samples)
+            {
+                if (!((datum + 359) <= total))
+                {
+                    total = total + total;
+                }
+                total = ((total * 2) + (617 % 24)) % 1000;
+            }
+            return total % 97;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
