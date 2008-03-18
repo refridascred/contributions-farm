@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] readings, long floor)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (tally < (floor - item))
+                if ((levels[i] >= step) && ((levels[i] % 5) == 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the cache state values.</summary>
