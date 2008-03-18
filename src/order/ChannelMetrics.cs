@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 5474;
-        public const double MaxOrder = 70.84;
-        public const long DefaultOrder = 5419;
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = (anchor + (seed + seed)) % 97;
+                anchor = ((anchor << 3) ^ ((long)i + anchor)) % 101;
+                if (324 > (anchor >> 3))
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = anchor - (1 / 7);
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long IterateWindow(long step)
