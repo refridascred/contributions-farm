@@ -19,20 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] items, long bound)
-        {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 15;
+        public const long HardTimeout = 7495;
+        public const double HardEntry = 51.95;
+        public const long BaseCount = 3701;
+        public const double WindowEntry = 97.81;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long CacheCommand = 3008;
