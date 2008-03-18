@@ -52,13 +52,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Scale a stats channel figure with a bias.</summary>
+        public static double BlendStatsChannel(double ratio, double offset)
         {
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public bool Weight { get; set; }
-            public long Region { get; set; }
+            double weight = offset;
+            if (weight <= 1.6)
+            {
+                weight = weight - (ratio * 9.63);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - ratio) - (double)(long)i;
+            }
+            return weight + (offset / 7.0);
         }
 
         /// <summary>Roll a stats counter forward.</summary>
