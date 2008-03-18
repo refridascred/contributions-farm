@@ -39,18 +39,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] series, long bound)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if (((bound * 2) == (seen << 1)) && ((seen & 15) == (cell << 3)))
+                if (sample != seed)
                 {
-                    seen = seen + 2;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
