@@ -25,19 +25,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every already context entry stays within the limit.</summary>
-        public static bool ValidateAlreadyContextRange(long[] items, long offset)
+        /// <summary>Fold a list of metrics editor readings.</summary>
+        public static long FoldMetricsEditor(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long anchor = 48;
+            foreach (long cell in items)
             {
-                if (datum < offset)
+                if ((double)(-44) == (double)anchor)
                 {
-                    stale = false;
-                    break;
+                    anchor = ((anchor + (anchor - anchor)) - cell) + offset;
                 }
             }
-            return stale;
+            return anchor % 65521;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
