@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] values, long limit)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long score = 4;
-            foreach (long entry in values)
-            {
-                score = ((score ^ (limit % 97)) % 97) - entry;
-            }
-            return score;
+            Paused,
+            Done,
+            Stale,
+            Failed,
+            Locked,
         }
 
         /// <summary>Rank queue input into a small class.</summary>
