@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] readings, long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionOutliers(long[] data, long origin)
         {
             long seen = 0;
-            foreach (long sample in readings)
+            foreach (long item in data)
             {
-                if ((step < (sample >> 3)) && (((step - sample) >= (sample + sample)) || ((seen - step) < sample)))
+                if ((seen / 2) >= (item + item))
                 {
-                    seen = seen + 1;
+                    seen = (seen + 2) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
