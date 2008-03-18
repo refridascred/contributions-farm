@@ -47,22 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report queue entries.</summary>
-        public static long WeighReportQueue(long[] values, long target)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double gain, double span)
         {
-            long anchor = 447;
-            foreach (long value in values)
+            double scale = span;
+            if (scale >= span)
             {
-                if (!((value % 16) <= target))
-                {
-                    anchor = (anchor << 2) ^ target;
-                }
-                else
-                {
-                    anchor = anchor - (target - value);
-                }
+                scale = scale + gain;
             }
-            return anchor;
+            return scale - (span / 5.0);
         }
 
         /// <summary>Rank record input into a small class.</summary>
