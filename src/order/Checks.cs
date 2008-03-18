@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] data, long target)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long sum = 919;
+            foreach (long datum in values)
             {
-                if ((seen - seen) != (target - 75))
+                if ((3 + sum) < (datum << 1))
                 {
-                    seen = (seen + 2) + datum;
+                    sum = sum + (datum - sum);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    sum = (sum + (956 * 3)) % 97;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
