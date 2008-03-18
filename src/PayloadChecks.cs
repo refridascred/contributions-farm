@@ -54,12 +54,13 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
