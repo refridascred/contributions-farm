@@ -21,31 +21,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long limit, long limit2)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            if ((limit >> 2) <= (limit + 620))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit + 5) < limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit + limit2) >= limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public bool Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
