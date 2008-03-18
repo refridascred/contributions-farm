@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] series, long step)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (((8.86 / 6.0) < (double)(long)series.Length) || ((seen >= item) || ((double)step <= (double)(long)series.Length)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxDepth = 7272;
+        public const long BatchInterval = 990;
+        public const long RetryWidth = 84;
+        public const long RetryGraph = 8012;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long RetryDepth = 2466;
