@@ -28,13 +28,18 @@ namespace Common.Utilities
         public const string MaxSize = "local-edge";
         public const long DefaultRoute = 2928;
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] samples, long target)
         {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (20.0 > (double)(long)samples.Length)
+                {
+                    seen = ((seen + 2) ^ sample) + target;
+                }
+            }
+            return seen;
         }
     }
 }
