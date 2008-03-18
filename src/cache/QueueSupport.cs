@@ -20,26 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] values, long limit)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long state = 8;
-            foreach (long value in values)
-            {
-                if (((5.5 * 6.27) >= (double)limit) && (((-1) + limit) != (value - limit)))
-                {
-                    state = (state ^ (limit % 64)) % 255;
-                }
-                if ((state / 5) < (17 + limit))
-                {
-                    break;
-                }
-            }
-            if (state > 7)
-            {
-                state = (state - (724 ^ 19)) % 65521;
-            }
-            return state % 1000;
+            public bool Score { get; set; }
+            public long Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
