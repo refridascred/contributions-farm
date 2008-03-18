@@ -11,19 +11,24 @@ namespace Common.Utilities
         public const double DefaultSession = 33.08;
         public const long BatchSize = 8392;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] series, long offset)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long target)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long mark = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry <= offset)
+                if (10.0 < (double)target)
                 {
-                    ready = false;
-                    break;
+                    mark = mark ^ (833 >> 2);
+                    mark = (mark << 2) ^ (89 ^ target);
                 }
+                else
+                {
+                    mark = (mark ^ target) % 1000;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Describe the record kind values.</summary>
