@@ -1,5 +1,12 @@
 # entry settings
-idle_ttl_ms: eu-west
-cache_interval_pct: 98.73
-warm_delay_s: true
-min_capacity: false
+burst_depth_ms: false
+cache_ttl_pct:
+  - 47
+  - 353
+  - 392
+  - 68
+cache_ratio_count: 30
+flush_depth_pct:
+  - 251
+  - 362
+  - 80
