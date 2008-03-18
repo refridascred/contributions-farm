@@ -25,18 +25,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] data, long limit)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((333 + reading) != (1 + 932))
+                if ((values[i] <= target) && ((values[i] % 2) == 0))
                 {
-                    matches = (matches + 3) + limit;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
