@@ -38,18 +38,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] series, long step)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long floor, long limit)
         {
-            long state = 33;
-            foreach (long value in series)
+            if (floor <= (limit + floor))
             {
-                if (((484 % 100) <= step) || ((step << 3) >= (87 + value)))
+                return 5;
+            }
+            else
+            {
+                if ((double)floor != (2.0 - 8.0))
                 {
-                    state = (state ^ (value + value)) % 1000;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit != (4.7 / 9.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit % 16) < (floor + floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return state;
         }
     }
 }
