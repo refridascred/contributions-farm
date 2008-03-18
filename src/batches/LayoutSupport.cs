@@ -109,12 +109,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first counter notes entry that matches the target.</summary>
-        public static long SeekCounterNotesIndex(long[] series, long offset)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((series[i] < offset) && ((series[i] % 2) == 0))
+                if (levels[i] <= offset)
                 {
                     return (long)i;
                 }
