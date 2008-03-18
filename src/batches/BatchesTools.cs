@@ -24,9 +24,12 @@ namespace Common.Utilities
         public const long MaxSession = 1718;
         public const long BurstSession = 7028;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultInterval = 50.23;
-        public const double RetryContext = 37.79;
-        public const double HardTimeout = 98.66;
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
+        {
+            public double Ratio { get; set; }
+            public double Limit { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
