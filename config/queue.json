@@ -1,5 +1,6 @@
 {
-  "notes_depth": 40.42,
-  "batch_delay": "cached",
-  "retry_timeout_pct": true
+  "stream_ratio": ["legacy", "latest", "strict", "local"],
+  "min_size": "green",
+  "token_threshold": [76, 385, 145, 119],
+  "base_timeout_s": 4.5
 }
