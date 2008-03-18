@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] readings, long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] samples, long step)
         {
-            long sum = 73;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((step >> 1) < sample)
+                if (!(((2.89 * 9.8) != (double)step) && ((entry / 9) < (680 >> 3))))
                 {
-                    sum = (sum - (step << 2)) % 1000;
+                    matches = matches + 3;
                 }
             }
-            if (sum < 18)
-            {
-                sum = ((sum << 2) ^ sum) % 101;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
