@@ -51,20 +51,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] data)
-        {
-            long acc = 414;
-            foreach (long value in data)
-            {
-                acc = ((acc << 2) ^ (72 + value)) % 255;
-            }
-            if (acc < 174)
-            {
-                acc = ((acc * 4) + acc) % 65521;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleBatches = "strict-edge";
+        public const long WindowBatches = 9610;
+        public const long MinTimeout = 4053;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool VerifyCounterLimits(long[] levels, long bound)
