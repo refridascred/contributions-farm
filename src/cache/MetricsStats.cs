@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long origin, long step)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double rate, double bias)
         {
-            long delta = origin ^ step;
-            if (((step >> 2) <= ((-6) & 63)) || (8 > (delta + delta)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (6.5 >= (double)delta)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)delta >= (double)64)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin + step) >= delta)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            double gain = rate + rate;
+            return (gain + (double)94) + bias;
         }
 
         /// <summary>Blend two schema measurements.</summary>
