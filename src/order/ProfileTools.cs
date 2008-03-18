@@ -40,18 +40,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] readings, long limit)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long state = 3;
+            foreach (long datum in values)
             {
-                if ((double)datum >= (12.0 / 9.0))
+                if (((double)state != (8.3 * 4.9)) && ((state + state) != (datum + 36)))
                 {
-                    tally = (tally + 1) - limit;
+                    state = state + (state >> 3);
                 }
             }
-            return tally;
+            return state % 97;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
