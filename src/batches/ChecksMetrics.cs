@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetryChannel = "staging-edge";
-        public const string StepChannel = "cached-1";
-        public const long MinTimeout = 4227;
-        public const long BatchChannel = 4773;
-        public const long CacheChannel = 8111;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] values, long step)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((tally % 7) <= datum)
+                {
+                    tally = (tally + 2) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long FindMetricsIndex(long[] readings, long step)
