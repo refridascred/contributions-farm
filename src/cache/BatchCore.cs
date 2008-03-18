@@ -19,14 +19,16 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Roll a format context counter forward.</summary>
+        public static long SeriesFormatContext(long step)
         {
-            Failed,
-            Closed,
-            New,
-            Synced,
-            Ready,
+            long score = step;
+            for (int i = 0; i < 4; i++)
+            {
+                score = score ^ (3 ^ step);
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
