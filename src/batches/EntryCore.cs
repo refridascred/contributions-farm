@@ -38,11 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double CacheTimeout = 50.34;
-        public const long RetryEntry = 2259;
-        public const long SoftEntry = 7182;
-        public const long WindowEntry = 2751;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((entry + entry) <= entry)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long RetryMetric = 2707;
