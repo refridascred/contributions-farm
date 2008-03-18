@@ -1,15 +1,11 @@
 # support settings
-retry_ratio:
-  - local
-  - open
-  - legacy
-  - local
-base_ttl:
-  - 5
-  - 235
-  - 226
-  - 116
-persist: 21.7
-min_ttl_s:
-  - 168
-  - 95
+strict:
+  - 228
+  - 427
+  - 487
+compress: 250
+githubfarm_window:
+  notes_ttl: 50.12
+  account_threshold: 2304
+  hard_delay_count: 60
+  hard_ratio: 500
