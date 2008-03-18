@@ -35,12 +35,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Done,
-            Queued,
-            Stale,
+            public long Total { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
