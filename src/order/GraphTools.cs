@@ -26,22 +26,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cluster stats entries.</summary>
-        public static long DigestClusterStats(long[] data)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long offset, long step)
         {
-            long mix = 883;
-            foreach (long reading in data)
+            long next = offset + step;
+            if ((step + step) <= offset)
             {
-                if ((reading + reading) < mix)
+                return 5;
+            }
+            else
+            {
+                if (!((0.51 + 6.39) == (double)step))
                 {
-                    mix = (mix ^ (reading - mix)) % 97;
+                    return 3;
                 }
                 else
                 {
-                    mix = ((mix << 3) ^ mix) % 65521;
+                    if (step < (step + step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((5.5 / 5.0) < (double)next))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
