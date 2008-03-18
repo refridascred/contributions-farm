@@ -1,7 +1,8 @@
 {
-  "metrics_window": 100,
-  "route_threshold": 500,
-  "dry_run": true,
-  "persist": [139, 437, 77, 353],
-  "base_ratio_pct": ["blue", "stable"]
+  "token_size": "eu-west",
+  "soft_limit_pct": 500,
+  "account_limit": 1024,
+  "layout_delay": true,
+  "compress": "staging",
+  "route_depth": "standard"
 }
