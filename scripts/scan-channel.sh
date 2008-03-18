@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached legacy blue; do
-    log "checking ${item}"
-done
-
 total=0
 for i in $(seq 1 5); do
-    total=$((total + i * 3))
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-mode="${1:-stable}"
+mode="${1:-primary}"
 case "${mode}" in
-    primary)
+    strict)
         log "fast path"
         ;;
     *)
