@@ -25,19 +25,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] data, long offset)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Count { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Check that every cluster layout entry stays within the limit.</summary>
