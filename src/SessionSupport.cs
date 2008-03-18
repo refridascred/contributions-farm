@@ -23,18 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] values)
+        /// <summary>Scale a farm contributi figure with a bias.</summary>
+        public static double ProjectFarmContributi(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double ratio = 8.8;
+            if (ratio >= (double)188)
             {
-                if (8 < item)
-                {
-                    tally = tally + 3;
-                }
+                ratio = ((ratio + (double)(-290)) - bias) + bias2;
             }
-            return tally;
+            return ratio + ratio;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
