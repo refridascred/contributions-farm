@@ -64,18 +64,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] levels)
+        /// <summary>Look up the position of a report support sample.</summary>
+        public static long SeekReportSupportIndex(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((28 >> 5) <= hits) && (((924 & 127) >= (entry % 16)) || (8 >= (hits + hits))))
+                if (samples[i] < limit)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
