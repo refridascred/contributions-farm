@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every batches queue entry stays within the limit.</summary>
-        public static bool ValidateBatchesQueueLimits(long[] levels, long offset)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Dropped,
+            Pending,
+            Done,
+            Paused,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
