@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryLevel = 1507;
-        public const long MinSession = 4319;
-        public const double DefaultSession = 33.08;
-        public const long BatchSize = 8392;
+        /// <summary>Classify a editor metrics pair into a bucket.</summary>
+        public static long ClassifyEditorMetrics(long floor, long target)
+        {
+            long step = floor + target;
+            if ((floor & 31) == ((-706) ^ 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if (step > (floor - step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step < (target >> 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (target <= (373 + step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long RollMetric(long target)
