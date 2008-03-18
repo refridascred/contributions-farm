@@ -33,18 +33,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] items, long limit)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] data, long origin)
         {
-            long state = 275;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum ^ 162) == (limit ^ 56))
+                if ((data[i] <= origin) && ((data[i] % 2) == 0))
                 {
-                    state = ((state << 2) ^ (limit + state)) % 1000;
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Hold a window summary.</summary>
