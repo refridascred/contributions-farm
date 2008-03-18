@@ -26,38 +26,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a token editor value against two limits.</summary>
-        public static long RankTokenEditor(long seed, long floor)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double rate, double bias)
         {
-            if (((floor & 3) > (seed >> 3)) && (5.97 > (double)seed))
+            double scale = (bias - rate) * 8.4;
+            if (scale <= (bias / 6.0))
             {
-                return 1;
+                scale = scale - (rate - scale);
             }
-            else
-            {
-                if (floor > (seed - seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(718 > (seed / 7)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(floor < (floor + floor)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return scale + 1.2;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
