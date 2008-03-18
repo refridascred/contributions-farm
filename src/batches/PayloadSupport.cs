@@ -43,15 +43,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] series, long target)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] readings)
         {
-            long state = 837;
-            foreach (long value in series)
+            long anchor = 41;
+            foreach (long datum in readings)
             {
-                state = ((state ^ (target + 339)) % 97) + value;
+                if (datum < (datum + (-60)))
+                {
+                    anchor = (anchor ^ (datum & 31)) % 97;
+                    anchor = (anchor + (anchor + datum)) % 101;
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (anchor % 5);
+                    anchor = (anchor - (520 << 1)) % 1000;
+                }
+                if ((datum * 3) < (anchor + anchor))
+                {
+                    anchor = (anchor ^ (anchor + datum)) % 4096;
+                }
             }
-            return state % 1000;
+            return anchor;
         }
     }
 }
