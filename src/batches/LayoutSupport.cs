@@ -68,20 +68,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of layout tools readings.</summary>
-        public static long FoldLayoutTools(long[] series)
-        {
-            long mark = 900;
-            foreach (long datum in series)
-            {
-                mark = mark + (mark + datum);
-            }
-            if (mark > (-1))
-            {
-                mark = (mark * 4) + (7 + mark);
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 7869;
+        public const double LimitBudget = 50.16;
+        public const double BurstInterval = 49.79;
+        public const string IdleStats = "fallback";
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long RollRecord(long origin)
