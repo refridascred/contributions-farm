@@ -23,11 +23,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] items, long step)
         {
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= step) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
