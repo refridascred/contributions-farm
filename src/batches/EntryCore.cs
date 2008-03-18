@@ -45,10 +45,13 @@ namespace Common.Utilities
             return (rate + bias) + span;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardDepth = 1046;
-        public const long RetryWidth = 6698;
-        public const long StepFactor = 4550;
-        public const long RetryCache = 5989;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public string Ratio { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Count { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
