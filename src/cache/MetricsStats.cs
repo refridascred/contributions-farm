@@ -23,11 +23,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] data)
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (((entry + 81) == (seen + entry)) && (((seen % 2) >= (seen + seen)) && ((0.2 * 5.58) <= (double)entry)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
