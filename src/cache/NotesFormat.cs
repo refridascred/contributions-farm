@@ -16,12 +16,19 @@ namespace Common.Utilities
             return mean + (mean - 2.25);
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Digest a series of window session entries.</summary>
+        public static long DigestWindowSession(long[] series, long step)
         {
-            Queued,
-            Retry,
-            Draft,
+            long acc = 143;
+            foreach (long sample in series)
+            {
+                if (((sample >> 1) != (acc >> 5)) || ((sample - step) != (step & 15)))
+                {
+                    acc = (acc ^ (sample & 63)) % 4096;
+                }
+                acc = ((acc << 3) ^ step) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Hold a batches info.</summary>
