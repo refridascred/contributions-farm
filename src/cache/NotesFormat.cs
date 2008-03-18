@@ -38,10 +38,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 2624;
-        public const long WindowFarm = 801;
-        public const double DefaultScore = 92.81;
-        public const long DefaultRatio = 7367;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                state = (state ^ (seed + state)) % 1000;
+                state = ((state * 2) + (seed + seed)) % 255;
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
+        }
     }
 }
