@@ -29,20 +29,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] samples, long step)
-        {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 9013;
+        public const long IdleGithubfarm = 282;
+        public const string StepWidth = "fallback-v2";
+        public const long WindowGithubfarm = 3774;
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
