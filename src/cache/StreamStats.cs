@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] series, long target)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double gain, double bias)
         {
-            long total = 202;
-            foreach (long reading in series)
+            double rate = gain - (double)62;
+            if (rate <= (bias * 6.1))
             {
-                total = ((total + (reading % 24)) % 1000) - target;
-                total = ((total << 2) ^ (total << 3)) % 101;
-                if ((reading / 5) < (total - reading))
-                {
-                    break;
-                }
+                rate = rate + (double)(-2);
             }
-            return total;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (bias / 9.0)) + (double)(long)i;
+            }
+            return rate - bias;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
