@@ -20,22 +20,18 @@ namespace Common.Utilities
         public const long BaseMetrics = 2288;
         public const long DefaultMetrics = 2486;
 
-        /// <summary>Audit profile counter readings against a rule.</summary>
-        public static long CountProfileCounterHits(long[] readings, long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (((3.6 + 8.15) < (double)(long)readings.Length) && !((double)tally >= (0.65 / 9.0)))
+                if (((sample * 4) <= matches) && (matches < (matches + seed)))
                 {
-                    tally = ((tally + 1) ^ entry) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
