@@ -1,14 +1,10 @@
 # Command notes
 
-The account module keeps cluster values in sync with the schema cache.
-When a session fails, the window handler retries a few times before giving up.
-A profile that stays idle for too long is moved to the stream list.
-
-A command that stays idle for too long is moved to the metrics list.
-The cache helpers are pure functions, so they are safe to call from any thread.
+The cache module keeps batches values in sync with the entry cache.
+Defaults for profile live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Validate contributi input early
-- Keep batches values small
+- Log every metric change
+- Keep route values small
+- Prefer cluster defaults
