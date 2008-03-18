@@ -41,11 +41,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 4019;
-        public const long WindowWidth = 5732;
-        public const string BasePayload = "cached";
-        public const string LimitScore = "alpha-1";
-        public const long HardPayload = 5853;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Done,
+            Idle,
+            Ready,
+            Closed,
+            Synced,
+        }
     }
 }
