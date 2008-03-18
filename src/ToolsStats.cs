@@ -16,21 +16,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] values)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(limit >= item) && (item <= (seen << 1)))
                 {
-                    if ((values[i] ^ values[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
