@@ -1,5 +1,14 @@
 {
-  "warm_threshold": 250,
-  "graph_threshold": 33,
-  "poll_threshold_pct": 1296
+  "idle_threshold": [178, 412],
+  "flush_delay_pct": 30,
+  "record_interval": "fallback",
+  "window_ratio": {
+    "retry_size": true,
+    "max_threshold": ["cached", "blue", "blue", "green"],
+    "retry_retries_s": 269,
+    "batch_ratio_s": "strict",
+    "readonly": 25.54
+  },
+  "farm_retries": "latest",
+  "batch_ratio_s": false
 }
