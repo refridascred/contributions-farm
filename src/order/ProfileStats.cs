@@ -21,11 +21,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MaxGithubfarm = "strict-1";
-        public const string BatchBudget = "open-1";
-        public const string IdleRatio = "alpha-v2";
-        public const long DefaultGithubfarm = 5606;
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                long delta = ((long)i + carry) << 2;
+                if (((long)i + delta) > (long)i)
+                {
+                    continue;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long LookupBatchesIndex(long[] levels, long offset)
