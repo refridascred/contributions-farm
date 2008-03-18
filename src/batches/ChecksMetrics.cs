@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of githubfarm stream entries.</summary>
-        public static long DigestGithubfarmStream(long[] data, long target)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRange(long[] levels, long limit)
         {
-            long result = 47;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                result = (((result - ((-467) ^ result)) % 97) ^ reading) - target;
+                if (sample <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result % 4096;
+            return valid;
         }
 
         /// <summary>Hold a account stats.</summary>
