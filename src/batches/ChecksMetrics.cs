@@ -52,19 +52,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] values, long step)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (item > step)
+                if (value <= step)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
     }
 }
