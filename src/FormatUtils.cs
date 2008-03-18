@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long offset)
         {
-            Idle,
-            Active,
-            New,
+            long state = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                state = (state * 2) + ((long)i + state);
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Count the metrics session entries that pass the check.</summary>
