@@ -18,21 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] data)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Scale a queue schema figure with a bias.</summary>
