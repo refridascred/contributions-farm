@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] levels, long offset)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((double)matches == (2.28 - 12.0))
-                {
-                    matches = ((matches + 1) + value) - offset;
-                }
-            }
-            return matches;
+            Failed,
+            Stale,
+            New,
+            Idle,
+            Ready,
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
