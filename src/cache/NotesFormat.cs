@@ -34,13 +34,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Synced,
-            Paused,
-            Done,
-            New,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinSize = 3971;
+        public const long IdleTools = 1012;
+        public const long DefaultTools = 8393;
+        public const long BurstTools = 5384;
+        public const string BatchFactor = "cached-v2";
     }
 }
