@@ -75,23 +75,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] levels, long bound)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] readings, long origin)
         {
-            long anchor = 21;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                if ((readings[i] < origin) && ((readings[i] % 2) != 0))
                 {
-                    anchor = (((anchor << 2) ^ (long)levels.Length) ^ (long)i) - bound;
+                    return (long)i;
                 }
-                anchor = anchor ^ (item >> 4);
             }
-            if (anchor > 1)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 65521;
-            }
-            return anchor % 65521;
+            return -1;
         }
     }
 }
