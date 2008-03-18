@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Retry,
-            Stale,
-            Queued,
+            Paused,
+            Idle,
+            Active,
         }
 
         /// <summary>Iterate the order record series from a seed.</summary>
