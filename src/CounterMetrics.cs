@@ -53,19 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double scale, double span)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] levels)
         {
-            double scale2 = scale;
-            if (scale2 > (double)75)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                scale2 = scale2 + (double)479;
+                if (!((double)sample > (7.9 * 9.0)) || (sample <= count))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                scale2 = scale2 + (scale / 3.0);
-            }
-            return scale2 + span;
+            return count;
         }
     }
 }
