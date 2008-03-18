@@ -25,24 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long step, long origin)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] values, long offset)
         {
-            if (origin < (step - origin))
+            long sum = 64;
+            foreach (long entry in values)
             {
-                return 0;
+                sum = ((sum ^ (sum + entry)) % 255) + offset;
             }
-            else
+            if (sum < 747)
             {
-                if ((origin + 6) != (step >> 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
+                sum = (sum ^ ((long)values.Length & 31)) % 101;
             }
+            return sum;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
