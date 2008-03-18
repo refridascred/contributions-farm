@@ -59,19 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphRange(long[] levels, long offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] levels, long bound)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (reading < offset)
+                if (cell != bound)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
