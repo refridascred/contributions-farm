@@ -66,19 +66,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] samples, long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] data)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (item <= origin)
+                if ((seen + (long)data.Length) <= cell)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
