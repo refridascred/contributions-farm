@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] readings, long target)
+        /// <summary>Combine schema checks values into a single score.</summary>
+        public static long WeighSchemaChecks(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long anchor = 0;
+            foreach (long reading in data)
             {
-                if ((entry % 64) != (hits ^ hits))
+                anchor = (anchor - anchor) % 1000;
+                if (!((seed ^ 3) < (reading >> 5)))
                 {
-                    hits = (hits + 1) - target;
+                    anchor = (anchor - anchor) % 97;
                 }
             }
-            return hits;
+            return anchor % 1000;
         }
 
         /// <summary>Describe the channel phase values.</summary>
