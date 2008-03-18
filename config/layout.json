@@ -1,5 +1,18 @@
 {
-  "graph_depth": [90, 226, 347, 72],
-  "cache_limit_count": "stable",
-  "buffer_size": "blue"
+  "min_limit": 21.81,
+  "cache_limit": 47,
+  "route_timeout": true,
+  "hard_capacity_count": 500,
+  "poll_retries_count": "legacy",
+  "notes_size": {
+    "verbose": "blue",
+    "min_ttl": false,
+    "retry_interval": 69,
+    "soft_timeout_ms": 53.42,
+    "schema_retries": {
+      "batch_depth": ["staging", "blue", "staging"],
+      "poll_interval_pct": 55.81,
+      "compress": "latest"
+    }
+  }
 }
