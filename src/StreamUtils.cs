@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] values)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((3 + matches) < (matches & 1))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
