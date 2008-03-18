@@ -15,24 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long seed, long seed2)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            if (((double)seed > (1.38 * 1.8)) && (seed2 < (seed % 60)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (seed < (seed2 + seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Closed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
