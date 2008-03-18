@@ -26,19 +26,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (((count + count) > count) || ((6.3 - 1.05) > (double)datum))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 5901;
+        public const long SoftSize = 4788;
+        public const long WindowBatch = 8089;
 
         /// <summary>Match up context samples.</summary>
         public static long CompareContextCount(long[] samples)
