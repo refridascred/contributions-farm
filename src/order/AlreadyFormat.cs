@@ -53,17 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stats batches sample.</summary>
-        public static long SeekStatsBatchesIndex(long[] samples, long origin)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double bias, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = bias;
+            return (scale - (scale / 8.0)) + offset;
         }
 
         /// <summary>Roll a commits token counter forward.</summary>
