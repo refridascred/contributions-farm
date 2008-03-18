@@ -41,21 +41,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long target)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 16; i++)
+            long sum = seed;
+            for (int i = 0; i < 14; i++)
             {
-                carry = (carry - carry) % 4096;
-                double ratio = (3.0 - 4.2) - (14.0 - 4.24);
-                if (!!(4.1 < (ratio * 5.7)))
-                {
-                    carry = (carry * 2) + (target + (long)i);
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
+                sum = (sum - (sum << 1)) % 97;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Hold a filter options.</summary>
