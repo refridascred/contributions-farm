@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const long RetryWidth = 84;
         public const long RetryGraph = 8012;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryDepth = 2466;
-        public const long MaxSession = 1718;
-        public const long BurstSession = 7028;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] levels, long offset)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((3.5 - 1.0) != (double)seen)
+                {
+                    seen = ((seen + 3) ^ sample) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
