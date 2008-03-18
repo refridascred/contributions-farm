@@ -36,13 +36,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Compare every pair of batches buffer readings.</summary>
+        public static long OverlapBatchesBufferCount(long[] series)
         {
-            public long Token { get; set; }
-            public double Region { get; set; }
-            public long Count { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
