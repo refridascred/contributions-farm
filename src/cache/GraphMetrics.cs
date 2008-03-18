@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
-        {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitSpan = 4905;
+        public const long BurstScore = 392;
+        public const long StepTimeout = 6674;
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
