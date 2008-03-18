@@ -32,19 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double ratio, double offset)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] items)
         {
-            double drift = ratio;
-            if (drift > 0.95)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = (drift - drift) - offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (double)5;
+            return hits;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
