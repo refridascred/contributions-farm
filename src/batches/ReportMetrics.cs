@@ -27,11 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardRatio = 9341;
-        public const string BurstFarm = "local-edge";
-        public const double LimitWidth = 34.52;
-        public const long WindowSpan = 4088;
-        public const long CacheFarm = 7870;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] data, long bound)
+        {
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
