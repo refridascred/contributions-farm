@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long limit, long floor)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            if ((6 - floor) < floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor / 9) == (9 ^ limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(9.8 >= (double)floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a context schema sample.</summary>
