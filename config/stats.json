@@ -1,6 +1,7 @@
 {
-  "flush_timeout_pct": true,
-  "idle_capacity_count": 56.18,
-  "poll_capacity_ms": 3096,
-  "base_timeout_s": 26
+  "enabled": 5694,
+  "verbose": 41.69,
+  "cache_capacity_s": 5008,
+  "min_capacity": 44,
+  "retry_ttl_s": false
 }
