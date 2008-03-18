@@ -1,14 +1,4 @@
 # entry settings
-hard_retries_count:
-  - 349
-  - 222
-base_interval:
-  retry_ttl: 60
-  hard_capacity_s: cached
-  stream_ttl: 78.97
-  layout_ttl: blue
-githubfarm_window:
-  - 329
-  - 60
-  - 253
-  - 227
+record_window: 3657
+max_capacity: 36
+base_capacity_ms: true
