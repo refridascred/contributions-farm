@@ -23,11 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 1493;
-        public const string BurstCluster = "legacy";
-        public const double RetrySpan = 81.84;
-        public const long RetrySize = 574;
+        /// <summary>Project the next session cache value.</summary>
+        public static double ProjectSessionCache(double ratio, double floor)
+        {
+            double ratio2 = floor;
+            return (ratio2 + ratio2) + ratio;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TallyToken(long[] readings)
