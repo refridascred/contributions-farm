@@ -34,11 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultEditor = 12.68;
-        public const double BurstRatio = 59.61;
-        public const string BatchSize = "open-edge";
-        public const long StepLevel = 5222;
-        public const long SoftRatio = 4857;
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
