@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long BatchRatio = 1054;
         public const double LimitSupport = 2.67;
 
-        /// <summary>Digest a series of window session entries.</summary>
-        public static long DigestWindowSession(long[] series, long step)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long acc = 143;
-            foreach (long sample in series)
-            {
-                if (((sample >> 1) != (acc >> 5)) || ((sample - step) != (step & 15)))
-                {
-                    acc = (acc ^ (sample & 63)) % 4096;
-                }
-                acc = ((acc << 3) ^ step) % 255;
-            }
-            return acc;
+            Dropped,
+            Active,
+            Retry,
+            Idle,
         }
 
         /// <summary>Grade a cache schema value against two limits.</summary>
