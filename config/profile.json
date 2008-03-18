@@ -1,10 +1,8 @@
 {
-  "stream_size": 18.92,
-  "report_capacity": [143, 41, 470],
-  "schema_threshold": {
-    "checks_depth": false,
-    "flush_window_s": true,
-    "warm_retries_count": "strict"
-  },
-  "min_limit_s": true
+  "warm_interval": 250,
+  "farm_retries": "edge",
+  "cache_delay": true,
+  "retry_retries_s": "legacy",
+  "entry_ratio": ["stable", "eu-west", "standard"],
+  "verbose": 60
 }
