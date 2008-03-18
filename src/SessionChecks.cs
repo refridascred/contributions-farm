@@ -34,19 +34,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] levels, long origin)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] - levels[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Digest a series of farm metrics entries.</summary>
