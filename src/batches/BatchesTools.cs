@@ -36,17 +36,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                long tally = (result ^ result) % 64;
-                result = result + tally;
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double DefaultInterval = 50.23;
+        public const double RetryContext = 37.79;
+        public const double HardTimeout = 98.66;
     }
 }
