@@ -19,10 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowSpan = 8761;
-        public const long SoftCluster = 6899;
-        public const string IdleDepth = "staging-edge";
+        /// <summary>Derive the next githubfarm schema value from a seed.</summary>
+        public static long DeriveGithubfarmSchema(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = mark ^ (origin + mark);
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long MeasureReportMatches(long[] levels, long offset)
