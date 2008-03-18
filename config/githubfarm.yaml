@@ -1,11 +1,13 @@
 # githubfarm settings
-poll_limit_ms:
-  - 60
-  - 106
-  - 401
-  - 391
-batch_interval_count: 60
-min_timeout: 9989
-persist: 1029
-payload_window: open
-flush_window: true
+layout_timeout: 1564
+order_depth: 89
+hard_threshold_s:
+  - eu-west
+  - eu-west
+  - legacy
+  - standard
+dry_run: fallback
+stats_delay: false
+sync_window:
+  - 451
+  - 310
