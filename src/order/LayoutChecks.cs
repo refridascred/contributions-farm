@@ -45,13 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Validate profile contributi readings against a bound.</summary>
+        public static bool ValidateProfileContributiRange(long[] samples, long step)
         {
-            public bool Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Total { get; set; }
-            public string Level { get; set; } = "";
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two already support measurements.</summary>
