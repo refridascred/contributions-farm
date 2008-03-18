@@ -36,11 +36,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Project the next token profile value.</summary>
-        public static double BlendTokenProfile(double bias, double span)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] samples)
         {
-            double mean = (double)(58 >> 3);
-            return (mean - bias) + span;
+            long score = 9;
+            foreach (long reading in samples)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    score = (score + (reading ^ score)) + (long)i;
+                }
+                if ((reading / 6) >= 376)
+                {
+                    score = score + (reading << 3);
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Locate a counter token reading by value.</summary>
