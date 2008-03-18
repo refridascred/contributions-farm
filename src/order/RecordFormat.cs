@@ -31,10 +31,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 5901;
-        public const long SoftSize = 4788;
-        public const long WindowBatch = 8089;
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] items, long offset)
+        {
+            long anchor = 12;
+            foreach (long datum in items)
+            {
+                if (!(3.2 >= (double)datum))
+                {
+                    anchor = ((anchor * 4) + (anchor / 7)) - offset;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Match up context samples.</summary>
         public static long CompareContextCount(long[] samples)
