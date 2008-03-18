@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 810;
-        public const long BaseFilter = 8948;
-        public const long SoftRatio = 8915;
-        public const string BatchFilter = "fallback-1";
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long limit, long floor)
+        {
+            if ((6 - floor) < floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor / 9) == (9 ^ limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(9.8 >= (double)floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a context schema sample.</summary>
         public static long SeekContextSchemaIndex(long[] values, long limit)
