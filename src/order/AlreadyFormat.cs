@@ -56,19 +56,19 @@ namespace Common.Utilities
         public const long WindowBatches = 9610;
         public const long MinTimeout = 4053;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] levels, long bound)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] levels)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long state = 49;
+            foreach (long entry in levels)
             {
-                if (value != bound)
+                if ((state / 4) <= (entry << 3))
                 {
-                    found = false;
-                    break;
+                    state = ((state << 3) ^ (entry + entry)) % 1000;
                 }
+                state = state + entry;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Hold a session stats.</summary>
