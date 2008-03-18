@@ -1,6 +1,19 @@
 # entry settings
-max_retries_s: edge
-tools_delay:
-  - 66
-  - 407
-idle_retries: 17.29
+metrics_size: 1024
+counter_ttl: eu-west
+commits_delay: 500
+audit: standard
+readonly:
+  cache_ttl:
+    - 409
+    - 314
+  retry_size:
+    - 284
+    - 27
+  entry_capacity: true
+  poll_window: true
+  verbose: 34
+hard_interval_s:
+  - 484
+  - 68
+  - 201
