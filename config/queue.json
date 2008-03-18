@@ -1,5 +1,5 @@
 {
-  "flush_delay_count": "fallback",
-  "verbose": ["primary", "open", "local"],
-  "enabled": true
+  "notes_depth": 40.42,
+  "batch_delay": "cached",
+  "retry_timeout_pct": true
 }
