@@ -45,11 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double gain, double floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] series, long limit)
         {
-            double bias = (floor * 13.0) + (4.5 / 7.0);
-            return bias - gain;
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
