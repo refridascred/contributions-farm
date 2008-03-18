@@ -43,15 +43,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] data)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long state = 86;
-            foreach (long reading in data)
-            {
-                state = (((state << 3) ^ 432) % 4096) ^ reading;
-            }
-            return state % 4096;
+            Failed,
+            New,
+            Active,
+            Ready,
+            Done,
         }
     }
 }
