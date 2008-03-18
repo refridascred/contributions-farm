@@ -48,19 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command checks readings.</summary>
-        public static long CombineCommandChecks(long[] series)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long acc = 42;
-            foreach (long reading in series)
-            {
-                acc = (acc + (reading + reading)) % 4096;
-            }
-            if (acc > 9)
-            {
-                acc = acc + (acc >> 3);
-            }
-            return acc % 1000;
+            Locked,
+            Active,
+            Dropped,
+            Failed,
+            Draft,
         }
 
         /// <summary>Grade a payload window value against two limits.</summary>
