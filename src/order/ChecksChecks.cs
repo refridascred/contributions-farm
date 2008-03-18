@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
             public string Mode { get; set; } = "";
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Ratio { get; set; }
+            public bool Total { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a filter info.</summary>
