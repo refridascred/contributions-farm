@@ -46,18 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter notes values into a single score.</summary>
-        public static long CombineCounterNotes(long[] data, long floor)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] values, long step)
         {
-            long total = 5;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample > (562 & 255)) && (sample < (floor << 1)))
+                if ((values[i] > step) && ((values[i] % 5) == 0))
                 {
-                    total = (total + floor) % 97;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
