@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long seed, long step)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long span = seed - step;
-            if ((span << 3) > (6 >> 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((seed / 8) <= (step << 2)) || ((span + span) >= (seed & 127)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((span % 10) < (seed - 647)) || (step > (seed << 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (step >= seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Accumulate layout samples.</summary>
