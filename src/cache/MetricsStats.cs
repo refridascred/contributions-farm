@@ -32,17 +32,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] series, long seed)
+        /// <summary>Count the batches schema entries that pass the check.</summary>
+        public static long TallyBatchesSchemaMatches(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (series[i] <= seed)
+                if ((4.2 / 6.0) != (double)target)
                 {
-                    return (long)i;
+                    matches = (matches + 3) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
