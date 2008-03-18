@@ -21,32 +21,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a payload farm pair into a bucket.</summary>
-        public static long GradePayloadFarm(long floor, long floor2)
-        {
-            long cur = floor ^ floor2;
-            if ((double)cur == (2.9 / 7.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((cur << 3) > (cur - 401))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)floor >= 8.2) || ((floor2 + floor) < (cur - floor)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 79;
+        public const long BurstLevel = 3201;
+        public const string RetryFilter = "fallback";
+        public const double BaseFilter = 78.69;
     }
 }
