@@ -1,11 +1,17 @@
 # entry settings
-burst_threshold_count: 250
-strict: 12.95
-persist: eu-west
-idle_ttl_ms:
-  - 299
-  - 414
-  - 372
-graph_window:
-  - 267
-  - 419
+default_threshold_pct:
+  stream_window:
+    - 136
+    - 105
+    - 406
+  record_window: 34
+  hard_window_count: 89.12
+  idle_ratio: false
+  session_limit: 250
+  strict: eu-west
+dry_run:
+  warm_depth_s: 92.29
+  base_size_s: blue
+  persist: 55.1
+  poll_timeout_ms: 29.57
+sync_window_ms: true
