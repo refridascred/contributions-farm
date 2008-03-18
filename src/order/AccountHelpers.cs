@@ -33,12 +33,12 @@ namespace Common.Utilities
         public const long BatchRatio = 2425;
         public const long DefaultEntry = 2842;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 7665;
-        public const long RetryTimeout = 3095;
-        public const long BatchSpan = 533;
-        public const long CacheSpan = 899;
-        public const long MaxBudget = 1082;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 4511;
+        public const long BurstInterval = 6528;
+        public const string MinWidth = "cached-v2";
+        public const long DefaultToken = 5014;
+        public const long MinToken = 9755;
 
         /// <summary>Grade a schema graph value against two limits.</summary>
         public static long GradeSchemaGraph(long step, long seed)
