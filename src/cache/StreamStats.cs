@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Rank layout input into a small class.</summary>
