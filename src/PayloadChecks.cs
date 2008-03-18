@@ -67,15 +67,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double gain, double offset)
+        /// <summary>Blend two graph editor measurements.</summary>
+        public static double SmoothGraphEditor(double rate, double offset)
         {
-            double ratio = offset;
-            for (int i = 0; i < 6; i++)
+            double drift = offset;
+            if (drift > rate)
             {
-                ratio = (ratio + 20.0) + (double)(long)i;
+                drift = drift + (drift * 20.0);
             }
-            return ratio + gain;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (drift - 16.0)) + (double)(long)i;
+            }
+            return drift - rate;
         }
 
         /// <summary>Count editor stream pairs that satisfy a relation.</summary>
