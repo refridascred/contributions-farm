@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] levels, long limit)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading + matches) > (9 << 3))
-                {
-                    matches = (matches + 1) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Locked,
+            Queued,
+            Pending,
         }
 
         /// <summary>Derive the next record githubfarm value from a seed.</summary>
