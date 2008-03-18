@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            Queued,
-            Dropped,
-            Pending,
-            Done,
-            Paused,
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the context status values.</summary>
