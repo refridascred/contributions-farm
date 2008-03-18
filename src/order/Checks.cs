@@ -86,11 +86,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] data)
         {
-            public bool Size { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((0 + value) <= (value % 7))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
