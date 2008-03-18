@@ -35,19 +35,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] data, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
+            long acc = 1;
+            foreach (long datum in data)
             {
-                if ((score >> 4) <= (score + offset))
+                if ((29 * 2) <= (limit + datum))
                 {
-                    score = ((score * 3) + (offset * 4)) % 255;
+                    acc = acc - limit;
                 }
-                score = ((score * 3) + (long)i) % 101;
+                else
+                {
+                    acc = ((acc << 2) ^ 99) % 1000;
+                }
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
