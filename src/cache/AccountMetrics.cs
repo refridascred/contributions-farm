@@ -57,10 +57,22 @@ namespace Common.Utilities
         public const double LimitWidth = 69.07;
         public const double WindowCache = 69.16;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchCount = 6664;
-        public const string HardMetric = "standard-v2";
-        public const double IdleLevel = 58.78;
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long CombineStream(long[] samples)
