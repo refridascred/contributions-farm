@@ -52,21 +52,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] samples)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long target, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((target >> 2) > target) && (seed > (seed - 515)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((target & 7) != (target + 90))
                 {
-                    if ((samples[i] ^ samples[j]) == 6)
+                    return 4;
+                }
+                else
+                {
+                    if ((seed - target) > target)
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
     }
 }
