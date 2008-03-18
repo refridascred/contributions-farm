@@ -38,15 +38,21 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double rate, double bias)
+        /// <summary>Count stats schema pairs that satisfy a relation.</summary>
+        public static long OverlapStatsSchemaCount(long[] levels)
         {
-            double scale = (bias - rate) * 8.4;
-            if (scale <= (bias / 6.0))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale - (rate - scale);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return scale + 1.2;
+            return count;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
