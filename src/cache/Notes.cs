@@ -48,13 +48,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Compare every pair of stats filter readings.</summary>
+        public static long MatchStatsFilterCount(long[] samples)
         {
-            public double Total { get; set; }
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
