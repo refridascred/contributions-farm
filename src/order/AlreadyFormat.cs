@@ -28,15 +28,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double ratio, double bias)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] data)
         {
-            double weight = (double)(38 * 2);
-            if (weight >= 1.9)
+            long acc = 414;
+            foreach (long value in data)
             {
-                weight = (weight + (double)60) - ratio;
+                acc = ((acc << 2) ^ (72 + value)) % 255;
             }
-            return weight + (bias * 9.78);
+            if (acc < 174)
+            {
+                acc = ((acc * 4) + acc) % 65521;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
