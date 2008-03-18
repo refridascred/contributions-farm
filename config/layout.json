@@ -1,6 +1,17 @@
 {
-  "idle_threshold": 1024,
-  "checks_depth": "latest",
-  "max_ratio_ms": "local",
-  "dry_run": ["local", "fallback", "eu-west"]
+  "batch_retries_ms": "legacy",
+  "audit": {
+    "window_capacity": false,
+    "burst_capacity": ["green", "latest", "latest"],
+    "audit": {
+      "readonly": 6860,
+      "already_limit": "edge",
+      "persist": "green",
+      "format_retries": 4570
+    }
+  },
+  "counter_window": ["green", "strict", "strict"],
+  "batches_limit": "strict",
+  "retry_capacity": 100,
+  "sync_capacity_s": ["green", "cached", "strict"]
 }
