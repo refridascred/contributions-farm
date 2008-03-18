@@ -28,15 +28,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] levels)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] readings, long limit)
         {
             long tally = 0;
-            foreach (long datum in levels)
+            foreach (long datum in readings)
             {
-                if (((double)tally != (18.0 + 7.13)) && ((45 + tally) <= datum))
+                if ((double)datum >= (12.0 / 9.0))
                 {
-                    tally = tally + 3;
+                    tally = (tally + 1) - limit;
                 }
             }
             return tally;
