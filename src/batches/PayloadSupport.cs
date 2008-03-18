@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long step, long offset)
+        /// <summary>Look up the position of a channel notes sample.</summary>
+        public static long FindChannelNotesIndex(long[] samples, long seed)
         {
-            long span = step ^ offset;
-            if ((1.15 - 4.1) > (double)step)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (20.0 < (double)span)
+                if (samples[i] == seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
