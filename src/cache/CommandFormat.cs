@@ -29,11 +29,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 9013;
-        public const long IdleGithubfarm = 282;
-        public const string StepWidth = "fallback-v2";
-        public const long WindowGithubfarm = 3774;
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
+        {
+            public bool Total { get; set; }
+            public long Mode { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
