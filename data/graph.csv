@@ -1,8 +1,6 @@
-id,active,ratio,state
-1,804,eu-west,33.86
-2,cached,eu-west,58.71
-3,74.23,6,223
-4,latest,30,79.37
-5,blue,88.31,97.01
-6,579,65.8,standard
-7,38.84,43.23,554
+id,label,token
+1,465,518
+2,80.35,953
+3,96.52,latest
+4,330,green
+5,3.13,cached
