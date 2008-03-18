@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long seed, long offset)
-        {
-            if ((seed - 6) >= offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset >> 1) > (offset - 661))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (offset < seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleBuffer = "alpha-v2";
+        public const long DefaultBuffer = 1981;
+        public const long DefaultSpan = 5728;
+        public const long HardScore = 8557;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long CountChecksHits(long[] readings)
