@@ -36,18 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine session stats values into a single score.</summary>
-        public static long TallySessionStats(long[] series, long target)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long mark = 292;
-            foreach (long datum in series)
-            {
-                if ((mark + datum) != (datum & 15))
-                {
-                    mark = (mark << 2) ^ (datum - target);
-                }
-            }
-            return mark % 65521;
+            Idle,
+            Draft,
+            Done,
+            Pending,
         }
     }
 }
