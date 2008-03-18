@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Ready,
-            Pending,
-            Paused,
+            public double Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Project the next layout value.</summary>
