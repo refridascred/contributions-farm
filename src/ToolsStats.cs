@@ -50,39 +50,15 @@ namespace Common.Utilities
             return scale - (span / 5.0);
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long bound, long offset)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double weight, double offset)
         {
-            long lane = bound ^ offset;
-            if ((lane + offset) <= (offset >> 1))
+            double load = (double)397 - (offset / 2.0);
+            if (load >= load)
             {
-                return 1;
+                load = load - 4.1;
             }
-            else
-            {
-                if ((10.0 - 2.3) == (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound << 3) <= (lane + 5)) && ((double)lane > (0.51 + 8.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (lane <= (lane ^ bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return load + weight;
         }
 
         /// <summary>Locate a context report reading by value.</summary>
