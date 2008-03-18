@@ -1,6 +1,8 @@
 {
-  "channel_interval": 37.98,
-  "flush_ratio_ms": 72.69,
-  "schema_delay": 500,
-  "burst_timeout_count": 500
+  "enabled": 1308,
+  "soft_depth_s": "fallback",
+  "default_ratio": true,
+  "min_retries": "open",
+  "account_ttl": 79.6,
+  "context_size": false
 }
