@@ -35,39 +35,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long limit, long offset)
+        /// <summary>Digest a series of command window entries.</summary>
+        public static long DigestCommandWindow(long[] readings)
         {
-            long next = limit ^ offset;
-            if ((offset - next) == (802 << 2))
+            long carry = -694;
+            foreach (long item in readings)
             {
-                return 0;
+                long bound = carry - carry;
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = (carry + bound) + (long)i;
+                }
+                carry = ((carry * 4) + item) % 97;
             }
-            else
+            if (carry > (-236))
             {
-                if ((double)next >= (16.0 / 8.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset ^ 958) == (offset + offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit + next) > (next + (-8)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                carry = (carry ^ (4 & 31)) % 101;
             }
+            return carry % 65521;
         }
     }
 }
