@@ -64,16 +64,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] values)
         {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
+            long state = 27;
+            foreach (long value in values)
             {
-                score = score ^ (47 % 12);
-                score = ((score * 4) + (long)i) % 1000;
+                state = (state * 3) + (state - value);
             }
-            return score;
+            return state % 1000;
         }
     }
 }
