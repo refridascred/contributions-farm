@@ -16,23 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double scale, double span)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            double ratio = span + (span / 3.0);
-            if (ratio < ratio)
-            {
-                ratio = ratio + 0.12;
-            }
-            else
-            {
-                ratio = ratio + (scale - 18.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (ratio * 6.4)) + (double)(long)i;
-            }
-            return ratio + span;
+            Ready,
+            Pending,
+            Paused,
         }
 
         /// <summary>Hold a githubfarm header.</summary>
