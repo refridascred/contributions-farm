@@ -54,12 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 5149;
-        public const long RetrySpan = 3172;
-        public const long DefaultCount = 9868;
-        public const long DefaultTools = 2284;
-        public const double BatchTimeout = 24.06;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] data, long origin)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (!((origin & 31) == ((-168) ^ matches)))
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up editor samples.</summary>
         public static long PairEditorCount(long[] data)
