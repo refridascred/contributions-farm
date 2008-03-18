@@ -37,20 +37,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] readings, long limit)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long state = -7;
-            foreach (long value in readings)
-            {
-                if (!((value - limit) < (long)readings.Length))
-                {
-                    state = (state * 2) + (value << 2);
-                    state = ((state * 3) + (value - limit)) % 101;
-                }
-                state = ((state * 3) + state) % 255;
-            }
-            return state % 1000;
+            Dropped,
+            Paused,
+            Pending,
+            Idle,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
