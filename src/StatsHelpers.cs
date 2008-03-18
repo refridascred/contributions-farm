@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double scale, double span)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double weight, double span)
         {
-            double drift = span;
-            if (drift <= span)
+            double rate = span;
+            if (rate > weight)
             {
-                drift = drift - (span / 4.0);
+                rate = rate + weight;
             }
             else
             {
-                drift = drift + (span - span);
+                rate = rate - (rate / 9.0);
             }
-            return drift + (drift + scale);
+            return rate - (6.6 + span);
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
