@@ -89,31 +89,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long step, long target)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] samples, long floor)
         {
-            if (((step / 7) <= target) && ((target + step) < (step - 97)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((9.6 - 6.0) <= (double)step)
+                if ((samples[i] <= floor) && ((samples[i] % 2) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (target < 3)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
