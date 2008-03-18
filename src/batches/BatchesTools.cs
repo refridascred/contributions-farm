@@ -19,22 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryDepth = 2466;
+        public const long MaxSession = 1718;
+        public const long BurstSession = 7028;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double DefaultInterval = 50.23;
