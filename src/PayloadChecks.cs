@@ -32,18 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes route entries that pass the check.</summary>
-        public static long MeasureNotesRouteOutliers(long[] data, long origin)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading + origin) < (reading - 56))
+                if ((items[i] <= bound) && ((items[i] % 3) != 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
