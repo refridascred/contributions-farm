@@ -15,26 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of schema editor readings.</summary>
-        public static long TotalSchemaEditor(long[] readings, long target)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long acc = 1;
-            foreach (long sample in readings)
-            {
-                if ((double)target <= 10.0)
-                {
-                    acc = ((acc * 2) + (target + 838)) % 101;
-                }
-                if ((acc << 2) >= target)
-                {
-                    acc = (acc - (sample & 15)) % 1000;
-                }
-                else
-                {
-                    acc = acc ^ (8 << 3);
-                }
-            }
-            return acc;
+            Draft,
+            Active,
+            Done,
+            Queued,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
