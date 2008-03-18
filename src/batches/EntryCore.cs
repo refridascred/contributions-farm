@@ -34,12 +34,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double bias, double span)
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
-            public bool Size { get; set; }
+            double rate = bias;
+            return (rate + bias) + span;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
