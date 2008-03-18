@@ -53,21 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] items)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 4;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                sum = (sum * 4) + ((long)levels.Length & 15);
+                if (((reading * 4) > (reading + (long)levels.Length)) && ((sum + sum) >= (sum ^ (long)levels.Length)))
                 {
-                    if ((items[i] ^ items[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
