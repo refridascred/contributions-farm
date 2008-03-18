@@ -17,18 +17,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the metrics session entries that pass the check.</summary>
-        public static long MeasureMetricsSessionOutliers(long[] values)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long floor)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((entry + count) > ((long)values.Length / 4))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    count = count + 2;
+                    mark = ((mark << 2) ^ (floor & 127)) - (long)i2;
+                    mark = mark - mark;
                 }
+                mark = (mark - ((long)i - mark)) % 65521;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
