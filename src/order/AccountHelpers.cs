@@ -33,22 +33,12 @@ namespace Common.Utilities
         public const long BatchRatio = 2425;
         public const long DefaultEntry = 2842;
 
-        /// <summary>Compare every pair of record command readings.</summary>
-        public static long CompareRecordCommandCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 7665;
+        public const long RetryTimeout = 3095;
+        public const long BatchSpan = 533;
+        public const long CacheSpan = 899;
+        public const long MaxBudget = 1082;
 
         /// <summary>Grade a schema graph value against two limits.</summary>
         public static long GradeSchemaGraph(long step, long seed)
