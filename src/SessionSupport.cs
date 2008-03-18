@@ -31,9 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 186;
-        public const long WindowNotes = 2375;
-        public const long SoftNotes = 8543;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 8460;
+        public const long MinBatch = 2856;
+        public const string MaxBatch = "open-edge";
+        public const long SoftSpan = 6301;
+        public const long CacheRatio = 4531;
     }
 }
