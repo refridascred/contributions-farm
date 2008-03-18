@@ -17,15 +17,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double gain, double offset)
+        /// <summary>Scale a tools report figure with a bias.</summary>
+        public static double AdjustToolsReport(double weight, double floor)
         {
-            double drift = gain;
-            if (drift > (20.0 - drift))
+            double bias = (floor / 2.0) - 3.04;
+            if (bias >= (weight + floor))
             {
-                drift = (drift - gain) + offset;
+                bias = bias - (15.0 + weight);
             }
-            return drift + (19.0 - drift);
+            else
+            {
+                bias = bias + floor;
+            }
+            return bias + bias;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
