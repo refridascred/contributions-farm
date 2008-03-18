@@ -1,10 +1,18 @@
 # entry settings
-cluster_interval: true
-max_timeout:
-  base_window_s: true
-  metric_interval: 14.41
-  idle_capacity_s: 7849
-metrics_timeout: 47
-persist: standard
-readonly: 100
-poll_limit: true
+flush_threshold_count:
+  - 153
+  - 430
+batch_ttl_ms:
+  base_limit_ms: 24.72
+  entry_retries: 15.43
+  warm_retries_ms:
+    - stable
+    - local
+    - standard
+  retry_ratio_ms:
+    - primary
+    - cached
+    - stable
+dry_run: 47.33
+profile_delay: 48.44
+burst_limit_s: fallback
