@@ -1,5 +1,11 @@
 # githubfarm settings
-batch_depth_count: true
-base_ttl: 75
-tools_retries: 1024
-buffer_limit: 2637
+poll_limit_ms:
+  - 60
+  - 106
+  - 401
+  - 391
+batch_interval_count: 60
+min_timeout: 9989
+persist: 1029
+payload_window: open
+flush_window: true
