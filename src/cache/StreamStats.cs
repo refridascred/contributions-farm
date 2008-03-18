@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinLevel = 98.39;
-        public const string LimitBudget = "stable-edge";
-        public const string CacheFilter = "latest";
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
