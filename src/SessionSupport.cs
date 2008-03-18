@@ -22,13 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] samples)
         {
-            New,
-            Idle,
-            Done,
-            Paused,
+            long acc = 974;
+            foreach (long entry in samples)
+            {
+                if ((42 * 4) < (entry + entry))
+                {
+                    acc = (acc ^ (acc << 2)) % 4096;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
