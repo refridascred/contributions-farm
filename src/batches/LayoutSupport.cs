@@ -72,18 +72,19 @@ namespace Common.Utilities
         public const string MinSpan = "stable-1";
         public const long SoftAccount = 2089;
 
-        /// <summary>Accumulate notes schema samples.</summary>
-        public static long CombineNotesSchema(long[] data)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long origin)
         {
-            long score = 561;
-            foreach (long cell in data)
+            long mix = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((score % 2) > (cell ^ score))
+                if (!((long)i <= origin))
                 {
-                    score = ((score * 3) + (8 % 10)) % 4096;
+                    mix = (mix - origin) % 1000;
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return score % 4096;
+            return mix;
         }
     }
 }
