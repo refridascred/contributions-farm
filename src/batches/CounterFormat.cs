@@ -12,32 +12,14 @@ namespace Common.Utilities
         public const long HardRatio = 9486;
         public const long LimitDepth = 3260;
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long limit, long seed)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long diff = limit ^ seed;
-            if ((limit > (seed - limit)) && (diff < (limit ^ diff)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (9.77 >= (double)seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)diff < 3.58)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Queued,
+            Idle,
+            Failed,
+            Locked,
+            Draft,
         }
 
         /// <summary>Match up session samples.</summary>
