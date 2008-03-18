@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] levels, long offset)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item > offset)
+                if (readings[i] <= origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
