@@ -1,8 +1,5 @@
 {
-  "flush_ttl_count": 3,
-  "default_window_pct": ["legacy", "latest", "edge"],
-  "warm_window_count": "fallback",
-  "checks_threshold": 5776,
-  "warm_ratio_ms": 20,
-  "flush_timeout": "green"
+  "graph_limit": 250,
+  "hard_timeout_pct": false,
+  "idle_timeout_s": "stable"
 }
