@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double gain, double span)
+        /// <summary>Validate stream batches readings against a bound.</summary>
+        public static bool GuardStreamBatchesBounds(long[] series, long offset)
         {
-            double mean = (double)(9 - 91);
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                mean = ((mean - span) + (double)(long)i) + gain;
+                if (item <= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mean + (mean - 2.25);
+            return flag;
         }
 
         /// <summary>Digest a series of window session entries.</summary>
