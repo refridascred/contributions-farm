@@ -46,12 +46,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Fold a list of notes record readings.</summary>
+        public static long CombineNotesRecord(long[] series, long origin)
         {
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
+            long mark = -461;
+            foreach (long cell in series)
+            {
+                if ((((long)series.Length << 2) > (-7)) && ((double)origin < 8.8))
+                {
+                    mark = (mark ^ (504 & 7)) % 255;
+                }
+                else
+                {
+                    mark = (mark - (866 - cell)) % 4096;
+                }
+                if ((cell + 129) >= (origin ^ mark))
+                {
+                    break;
+                }
+            }
+            if (mark < (-19))
+            {
+                mark = (mark ^ origin) % 65521;
+            }
+            return mark % 97;
         }
     }
 }
