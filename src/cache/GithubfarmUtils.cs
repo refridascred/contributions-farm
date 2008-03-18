@@ -38,12 +38,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Check that every already context entry stays within the limit.</summary>
+        public static bool ValidateAlreadyContextRange(long[] items, long offset)
         {
-            Failed,
-            New,
-            Draft,
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a account checks sample.</summary>
