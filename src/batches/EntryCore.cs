@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many metric channel samples are out of range.</summary>
-        public static long AuditMetricChannelOutliers(long[] samples)
+        /// <summary>Look up the position of a profile already sample.</summary>
+        public static long SeekProfileAlreadyIndex(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)count <= 9.77)
+                if (values[i] == limit)
                 {
-                    count = (count + 1) - reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
