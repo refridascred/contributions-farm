@@ -54,13 +54,12 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public string Total { get; set; } = "";
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public double Rank { get; set; }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Blend two report measurements.</summary>
