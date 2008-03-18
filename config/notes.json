@@ -1,14 +1,7 @@
 {
-  "idle_size": ["edge", "green", "primary", "edge"],
-  "cache_timeout": 7,
-  "support_window": 4915,
-  "enabled": "fallback",
-  "base_interval_pct": false,
-  "dry_run": {
-    "max_interval": 79.07,
-    "verbose": "local",
-    "flush_delay": 3,
-    "counter_window": "primary",
-    "hard_depth": "local"
-  }
+  "readonly": 55.95,
+  "schema_capacity": "latest",
+  "base_depth_count": 2590,
+  "base_delay_s": false,
+  "burst_threshold_ms": "standard"
 }
