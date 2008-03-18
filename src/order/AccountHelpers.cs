@@ -44,17 +44,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] samples, long offset)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Failed,
+            Locked,
+            Pending,
+            Done,
         }
 
         /// <summary>Grade a schema graph value against two limits.</summary>
