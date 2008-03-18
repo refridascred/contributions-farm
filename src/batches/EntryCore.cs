@@ -34,19 +34,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] readings, long offset)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (((long)readings.Length >> 4) < (5 ^ offset))
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinAlready = "local-v2";
+        public const string HardRatio = "primary-v2";
+        public const double MaxAlready = 21.03;
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
