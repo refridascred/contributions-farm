@@ -37,18 +37,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] data, long seed)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long target)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long total = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample >= (sample * 5))
-                {
-                    tally = (tally + 1) - seed;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
     }
 }
