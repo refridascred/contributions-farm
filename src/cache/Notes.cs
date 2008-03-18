@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] values, long target)
-        {
-            long result = 760;
-            foreach (long entry in values)
-            {
-                if ((result < entry) || ((entry ^ (long)values.Length) != (result % 5)))
-                {
-                    result = ((result ^ (result & 255)) % 4096) - target;
-                }
-                else
-                {
-                    result = (result << 2) ^ (822 + 8);
-                }
-            }
-            if (result > 695)
-            {
-                result = result + (result * 2);
-            }
-            return result;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftInterval = 4025;
+        public const long BaseGithubfarm = 9002;
+        public const long CacheGithubfarm = 574;
+        public const long RetryCount = 5817;
+        public const string WindowInterval = "primary";
 
         /// <summary>Locate a command cache reading by value.</summary>
         public static long LocateCommandCacheIndex(long[] items, long seed)
