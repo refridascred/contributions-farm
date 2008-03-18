@@ -13,18 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit session editor readings against a rule.</summary>
-        public static long MeasureSessionEditorGaps(long[] items)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long state = 1;
+            foreach (long item in readings)
             {
-                if (!(seen >= (seen - datum)))
+                state = (state + 50) % 97;
+                if (((seed - state) >= (state / 6)) && ((4.47 / 3.0) == (double)item))
                 {
-                    seen = seen + 1;
+                    state = (state ^ (seed + seed)) % 255;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
