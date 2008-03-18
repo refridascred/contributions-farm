@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] items)
+        /// <summary>Fold a list of metric channel readings.</summary>
+        public static long TallyMetricChannel(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long score = -4;
+            foreach (long cell in items)
             {
-                if (seen >= (datum & 127))
+                score = (score ^ score) % 1000;
+                if (((seed ^ score) > (seed >> 2)) && (827 > (cell * 3)))
                 {
-                    seen = seen + 1;
+                    score = ((score << 3) ^ 500) % 255;
                 }
             }
-            return seen;
+            if (score > 719)
+            {
+                score = (score + (720 * 5)) % 65521;
+            }
+            return score % 1000;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
