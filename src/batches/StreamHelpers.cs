@@ -43,22 +43,22 @@ namespace Common.Utilities
         public const long CacheTimeout = 9061;
         public const long RetryFactor = 5607;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] samples)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] items, long limit)
         {
-            long result = 1;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (((result ^ entry) == (entry % 97)) || ((entry >> 1) > (6 / 5)))
+                if ((0.67 + 8.22) > (double)matches)
                 {
-                    result = ((result << 2) ^ (entry / 6)) % 101;
+                    matches = ((matches + 3) + cell) + limit;
                 }
                 else
                 {
-                    result = result - (entry % 12);
+                    matches = matches - 1;
                 }
             }
-            return result % 97;
+            return matches;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
