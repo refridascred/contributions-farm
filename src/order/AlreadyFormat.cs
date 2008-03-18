@@ -40,22 +40,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardSchema = "staging-edge";
+        public const string DefaultSchema = "strict-1";
+        public const long StepSchema = 5205;
+        public const long IdleSchema = 6330;
+        public const long DefaultWidth = 4537;
 
         /// <summary>Look up the position of a stats batches sample.</summary>
         public static long SeekStatsBatchesIndex(long[] samples, long origin)
