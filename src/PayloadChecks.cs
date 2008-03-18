@@ -37,16 +37,11 @@ namespace Common.Utilities
         public const long MaxLevel = 490;
         public const double BaseSize = 88.78;
 
-        /// <summary>Fold a list of checks notes readings.</summary>
-        public static long ScoreChecksNotes(long[] levels)
-        {
-            long result = -26;
-            foreach (long reading in levels)
-            {
-                result = ((result - (result ^ 8)) % 97) - reading;
-            }
-            return result % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 4867;
+        public const string SoftLevel = "legacy-edge";
+        public const long CacheEditor = 9986;
+        public const long HardRatio = 8579;
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
