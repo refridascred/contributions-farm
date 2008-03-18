@@ -18,30 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metric token value against two limits.</summary>
-        public static long SortMetricToken(long step, long bound)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long target, long target2)
         {
-            long edge = step - bound;
-            if ((step & 1) <= (step / 4))
+            if (6.6 < (double)target)
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if (!((edge - 6) == (8 ^ step)))
+                if ((88 - target2) == (70 * 2))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)edge > 8.8)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 0;
                 }
             }
         }
