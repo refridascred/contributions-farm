@@ -1,6 +1,4 @@
 # support settings
-persist: green
-warm_limit_count: fallback
-hard_delay: 2122
-readonly: 60
-poll_size: 94
+hard_ratio_count: false
+sync_ratio_ms: open
+editor_ttl: true
