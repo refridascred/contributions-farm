@@ -54,10 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 9718;
-        public const string CacheCount = "local";
-        public const long WindowTimeout = 1618;
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
