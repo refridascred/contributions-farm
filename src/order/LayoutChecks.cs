@@ -44,19 +44,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Scale a stats channel figure with a bias.</summary>
-        public static double BlendStatsChannel(double ratio, double offset)
+        /// <summary>Locate a session batches reading by value.</summary>
+        public static long LookupSessionBatchesIndex(long[] values, long origin)
         {
-            double weight = offset;
-            if (weight <= 1.6)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight - (ratio * 9.63);
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - ratio) - (double)(long)i;
-            }
-            return weight + (offset / 7.0);
+            return -1;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
