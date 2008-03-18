@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftCount = 5503;
-        public const string DefaultFilter = "open-1";
-        public const long WindowFilter = 9275;
-        public const long BaseFilter = 8567;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
