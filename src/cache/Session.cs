@@ -18,38 +18,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a commits command value against two limits.</summary>
-        public static long GradeCommitsCommand(long limit, long seed)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            if ((49 + limit) > (seed - seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed >= (3.1 / 6.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((3.7 / 6.0) == (double)limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((3 - limit) > (limit / 6))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
