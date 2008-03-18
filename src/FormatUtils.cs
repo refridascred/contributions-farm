@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many notes token samples are out of range.</summary>
-        public static long TallyNotesTokenOutliers(long[] data, long limit)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((422 & 1) > (sample + 269))
-                {
-                    hits = (hits + 1) + limit;
-                }
-            }
-            return hits;
+            Idle,
+            Active,
+            New,
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
