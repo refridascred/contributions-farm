@@ -49,18 +49,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batches schema entries that pass the check.</summary>
-        public static long TallyBatchesSchemaMatches(long[] samples)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item > (5.33 * 5.47))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count the contributi queue entries that pass the check.</summary>
