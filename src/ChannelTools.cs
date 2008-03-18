@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] values, long offset)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Done,
+            Paused,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Describe the batch phase values.</summary>
