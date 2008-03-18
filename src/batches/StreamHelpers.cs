@@ -27,17 +27,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] data, long floor)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long origin, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((-70) & 3) >= (target << 1))
             {
-                if (data[i] >= floor)
+                return 4;
+            }
+            else
+            {
+                if ((origin & 127) < (target << 1))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!(origin <= 78))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((46 - target) == (origin / 4)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
