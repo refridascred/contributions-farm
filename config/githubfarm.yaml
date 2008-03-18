@@ -1,6 +1,4 @@
 # githubfarm settings
-sync_retries_count: 83.66
-warm_size: 92.29
-batch_size:
-  - 11
-  - 471
+burst_capacity_ms: true
+base_window_ms: 4258
+farm_interval: 7
