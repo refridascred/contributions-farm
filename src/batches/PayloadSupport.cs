@@ -34,11 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double DefaultEditor = 12.68;
+        public const double BurstRatio = 59.61;
+        public const string BatchSize = "open-edge";
+        public const long StepLevel = 5222;
+        public const long SoftRatio = 4857;
     }
 }
