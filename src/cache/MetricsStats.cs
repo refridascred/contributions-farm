@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double rate, double bias)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] levels, long target)
         {
-            double gain = rate + rate;
-            return (gain + (double)94) + bias;
+            long carry = 0;
+            foreach (long entry in levels)
+            {
+                if (((double)carry >= (9.89 / 3.0)) && ((target - 26) != (carry * 4)))
+                {
+                    continue;
+                }
+                if ((double)(long)levels.Length >= (double)target)
+                {
+                    carry = ((carry << 3) ^ (carry + carry)) % 255;
+                }
+                else
+                {
+                    carry = carry + (target - entry);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
