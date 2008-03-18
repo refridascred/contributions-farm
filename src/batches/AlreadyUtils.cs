@@ -81,13 +81,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] readings, long seed)
         {
-            Closed,
-            Dropped,
-            Stale,
-            Queued,
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
