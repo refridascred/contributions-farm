@@ -45,23 +45,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] items)
-        {
-            long mark = 604;
-            foreach (long entry in items)
-            {
-                mark = (mark + entry) % 4096;
-                if (((mark & 255) < mark) || (((long)items.Length << 3) == (mark + mark)))
-                {
-                    mark = ((mark << 3) ^ (entry ^ 2)) % 1000;
-                }
-                else
-                {
-                    mark = (mark ^ entry) % 4096;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultInterval = 2378;
+        public const long SoftInterval = 5040;
+        public const string BatchAccount = "stable-1";
+        public const string WindowScore = "staging-edge";
     }
 }
