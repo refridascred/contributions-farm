@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double weight, double offset)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            double load = offset;
+            if (load >= (13.0 + load))
+            {
+                load = (load - (double)586) - weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (double)(-183)) + (double)(long)i;
+            }
+            return load + offset;
         }
 
         /// <summary>Accumulate cache window samples.</summary>
