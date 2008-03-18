@@ -14,11 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            public string Level { get; set; } = "";
-            public double Score { get; set; }
+            public bool Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Rank token input into a small class.</summary>
