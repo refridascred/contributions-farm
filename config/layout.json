@@ -1,6 +1,7 @@
 {
-  "cache_limit_count": 21,
-  "min_ttl": "legacy",
-  "min_size_ms": 89,
-  "order_size": true
+  "metrics_window": 100,
+  "route_threshold": 500,
+  "dry_run": true,
+  "persist": [139, 437, 77, 353],
+  "base_ratio_pct": ["blue", "stable"]
 }
