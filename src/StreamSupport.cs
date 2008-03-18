@@ -18,25 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a filter stats value against two limits.</summary>
-        public static long GradeFilterStats(long step, long floor)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long next = step - floor;
-            if ((step + step) == (5 ^ next))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((379 + 334) < step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Retry,
+            Draft,
+            Synced,
+            Stale,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
