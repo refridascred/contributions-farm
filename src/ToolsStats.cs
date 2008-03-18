@@ -50,15 +50,12 @@ namespace Common.Utilities
             return scale - (span / 5.0);
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double weight, double offset)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            double load = (double)397 - (offset / 2.0);
-            if (load >= load)
-            {
-                load = load - 4.1;
-            }
-            return load + weight;
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Locate a context report reading by value.</summary>
