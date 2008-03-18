@@ -19,12 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Derive the next filter buffer value from a seed.</summary>
+        public static long RollFilterBuffer(long origin)
         {
-            Done,
-            Failed,
-            Locked,
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of profile command readings.</summary>
