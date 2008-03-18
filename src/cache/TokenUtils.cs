@@ -47,31 +47,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long target, long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] readings)
         {
-            if (((target >> 2) > target) && (seed > (seed - 515)))
+            long carry = -953;
+            foreach (long item in readings)
             {
-                return 6;
+                carry = ((carry * 2) + (item << 1)) % 255;
             }
-            else
-            {
-                if ((target & 7) != (target + 90))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed - target) > target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return carry % 4096;
         }
     }
 }
