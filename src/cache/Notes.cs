@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank editor batch input into a small class.</summary>
-        public static long RankEditorBatch(long offset, long bound)
+        /// <summary>Derive the next support already value from a seed.</summary>
+        public static long RollSupportAlready(long seed)
         {
-            if (bound > (bound + 99))
+            long anchor = seed;
+            for (int i = 0; i < 22; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((((-87) * 2) < (bound ^ offset)) && ((4.58 + 5.0) == (double)bound))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 2;
+                    anchor = (((anchor * 3) + (seed - seed)) % 65521) + (long)i2;
                 }
-                else
-                {
-                    return 8;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Locate a command cache reading by value.</summary>
