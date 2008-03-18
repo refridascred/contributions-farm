@@ -53,12 +53,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 5275;
-        public const long RetryChannel = 4767;
-        public const long BatchChannel = 7009;
-        public const string SoftWidth = "local-edge";
-        public const double IdleChannel = 2.17;
+        /// <summary>Check that every notes layout entry stays within the limit.</summary>
+        public static bool CheckNotesLayoutRange(long[] items, long origin)
+        {
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool ValidateCommitsBounds(long[] values, long origin)
