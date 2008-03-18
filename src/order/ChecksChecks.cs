@@ -40,9 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxDepth = 3393;
-        public const double SoftScore = 28.2;
-        public const long MinRatio = 7629;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Ready,
+            Paused,
+            Retry,
+            Pending,
+        }
     }
 }
