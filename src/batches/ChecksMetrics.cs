@@ -32,11 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] items, long bound)
         {
-            public double Region { get; set; }
-            public long Count { get; set; }
+            long mix = 397;
+            foreach (long datum in items)
+            {
+                if ((mix ^ 2) <= (7 % 24))
+                {
+                    mix = ((mix ^ datum) % 65521) + bound;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
