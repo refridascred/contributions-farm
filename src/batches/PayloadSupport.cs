@@ -26,18 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] samples, long floor)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            double load = ratio - 2.0;
+            if (load > bias)
             {
-                if ((entry + floor) <= (count * 2))
-                {
-                    count = count + 2;
-                }
+                load = load + 0.5;
             }
-            return count;
+            else
+            {
+                load = load - (load * 5.3);
+            }
+            return load + ratio;
         }
 
         /// <summary>Combine contributi graph values into a single score.</summary>
