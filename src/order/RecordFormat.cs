@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public double Limit { get; set; }
-            public bool Level { get; set; }
-            public double Size { get; set; }
+            Locked,
+            Active,
+            Dropped,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
