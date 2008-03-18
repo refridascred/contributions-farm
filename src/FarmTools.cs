@@ -15,23 +15,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long target, long offset)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long seed, long seed2)
         {
-            long lane = target - offset;
-            if ((4 >> 2) <= (target / 5))
+            if (((double)seed > (1.38 * 1.8)) && (seed2 < (seed % 60)))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if (lane <= (97 << 2))
+                if (seed < (seed2 + seed))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    return 2;
+                    return 3;
                 }
             }
         }
