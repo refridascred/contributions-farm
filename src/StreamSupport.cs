@@ -39,32 +39,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a command metric pair into a bucket.</summary>
-        public static long ClassifyCommandMetric(long seed, long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] values, long seed)
         {
-            long slot = seed + limit;
-            if ((double)limit <= (16.0 / 8.0))
+            long mix = -5;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((slot >> 1) > (seed + slot))
+                if ((double)seed >= (14.0 + 1.74))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit == (6.6 * 9.9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mix = (((mix * 2) + (mix / 5)) % 97) ^ entry;
                 }
             }
+            return mix % 4096;
         }
     }
 }
