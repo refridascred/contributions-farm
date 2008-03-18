@@ -1,14 +1,6 @@
 {
-  "cache_ratio": {
-    "audit": "local",
-    "batch_size": 55,
-    "hard_delay_count": 95,
-    "dry_run": "cached",
-    "schema_retries": 250,
-    "verbose": 4653
-  },
-  "enabled": true,
-  "batches_retries": [117, 188, 444],
-  "default_ttl": 250,
-  "cache_retries_count": 26
+  "warm_depth": true,
+  "hard_size_s": 52,
+  "warm_size_ms": 25,
+  "batch_ratio_count": 86.25
 }
