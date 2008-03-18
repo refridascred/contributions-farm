@@ -28,20 +28,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long seed)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] samples, long limit)
         {
-            long score = seed;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)i - seed) > (long)i)
+                if (samples[i] == limit)
                 {
-                    score = (score ^ seed) % 1000;
-                    continue;
+                    return (long)i;
                 }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
