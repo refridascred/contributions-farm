@@ -15,12 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] series, long offset)
         {
-            Locked,
-            Active,
-            Stale,
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Match up format samples.</summary>
