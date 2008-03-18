@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            Paused,
-            Stale,
-            Synced,
+            Dropped,
+            New,
+            Done,
+            Failed,
+            Ready,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
