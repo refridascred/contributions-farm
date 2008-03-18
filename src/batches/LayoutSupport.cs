@@ -59,13 +59,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            public double Count { get; set; }
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Token { get; set; }
+            public long Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Fold a list of layout tools readings.</summary>
