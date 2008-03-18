@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the profile already entries that pass the check.</summary>
-        public static long MeasureProfileAlreadyGaps(long[] data, long target)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long step, long origin)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long diff = step ^ origin;
+            if ((double)step != (1.0 + 6.29))
             {
-                if ((7.3 + 14.0) != (double)cell)
+                return 4;
+            }
+            else
+            {
+                if ((1.1 - 5.77) <= (double)step)
                 {
-                    matches = (matches + 1) + target;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((step << 1) == (origin - diff))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
