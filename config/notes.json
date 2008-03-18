@@ -1,6 +1,15 @@
 {
-  "flush_ttl_count": true,
-  "base_capacity": [346, 317, 16, 2],
-  "counter_delay": ["stable", "staging", "strict", "primary"],
-  "warm_threshold_pct": [237, 212, 211, 339]
+  "command_ttl": {
+    "flush_threshold_count": "standard",
+    "persist": true,
+    "queue_limit": 500,
+    "warm_size_count": 30,
+    "warm_depth_s": 27,
+    "queue_capacity": "cached"
+  },
+  "readonly": "staging",
+  "min_threshold_count": true,
+  "hard_retries": 53,
+  "warm_capacity": "cached",
+  "payload_threshold": true
 }
