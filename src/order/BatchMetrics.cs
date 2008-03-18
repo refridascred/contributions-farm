@@ -34,18 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema contributi entries that pass the check.</summary>
-        public static long AuditSchemaContributiGaps(long[] readings)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample + seen) != ((long)readings.Length % 2))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Synced,
+            Closed,
+            Active,
         }
 
         /// <summary>Accumulate notes githubfarm samples.</summary>
