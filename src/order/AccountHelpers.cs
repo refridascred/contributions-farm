@@ -16,19 +16,16 @@ namespace Common.Utilities
             return scale + (double)8;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double gain, double offset)
+        /// <summary>Iterate the token payload series from a seed.</summary>
+        public static long SeriesTokenPayload(long bound)
         {
-            double scale = gain * 2.0;
-            if (scale > (gain + 0.3))
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
             {
-                scale = scale + gain;
+                mark = ((mark << 3) ^ (mark + (long)i)) % 101;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (double)612) + (double)(long)i;
-            }
-            return scale - offset;
+            return mark;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
