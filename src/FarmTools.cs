@@ -19,9 +19,14 @@ namespace Common.Utilities
         public const string DefaultDepth = "standard-edge";
         public const long RetryLevel = 8296;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxTimeout = 5.34;
-        public const long IdleSpan = 5118;
-        public const double HardInterval = 80.48;
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
+        {
+            Idle,
+            Retry,
+            Queued,
+            Synced,
+            New,
+        }
     }
 }
