@@ -29,18 +29,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many window channel samples are out of range.</summary>
-        public static long MeasureWindowChannelGaps(long[] values)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] series)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (count <= datum)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
+                    if ((series[i] + series[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
