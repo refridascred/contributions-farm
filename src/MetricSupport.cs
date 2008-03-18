@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long target, long origin)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] items, long limit)
         {
-            if ((origin >> 2) < target)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin ^ origin) > origin)
+                if ((items[i] <= limit) && ((items[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the tools class values.</summary>
