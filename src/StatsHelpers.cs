@@ -33,12 +33,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long step)
         {
-            Draft,
-            Failed,
-            New,
+            long acc = step;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 4) + ((-6) / 4)) % 255;
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a metrics token sample.</summary>
