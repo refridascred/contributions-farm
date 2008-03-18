@@ -68,26 +68,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] samples, long offset)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double ratio, double bias)
         {
-            long mix = 144;
-            foreach (long datum in samples)
+            double load = ratio;
+            if (load < (ratio + bias))
             {
-                if (!((datum >> 1) > offset))
-                {
-                    mix = mix ^ offset;
-                }
-                if ((9.99 * 2.0) <= (double)mix)
-                {
-                    mix = (mix - (offset + (long)samples.Length)) % 255;
-                }
+                load = load + (bias + ratio);
             }
-            if (mix < 52)
+            for (int i = 0; i < 3; i++)
             {
-                mix = mix - (mix * 2);
+                load = (load - (ratio + ratio)) + (double)(long)i;
             }
-            return mix % 1000;
+            return load - (8.15 / 8.0);
         }
 
         /// <summary>Define format limits and defaults.</summary>
