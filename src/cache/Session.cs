@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Measure how many notes contributi samples are out of range.</summary>
+        public static long MeasureNotesContributiOutliers(long[] data)
         {
-            public long Size { get; set; }
-            public double Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((item >> 4) <= tally)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every tools metrics entry stays within the limit.</summary>
