@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const long CacheCommits = 8418;
         public const long StepSize = 3417;
 
-        /// <summary>Count the support farm entries that pass the check.</summary>
-        public static long CountSupportFarmOutliers(long[] readings, long limit)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double weight2 = weight;
+            if (weight2 <= (double)87)
             {
-                if (reading <= (reading * 2))
-                {
-                    seen = (seen + 3) + limit;
-                }
+                weight2 = weight2 - (double)8;
             }
-            return seen;
+            else
+            {
+                weight2 = weight2 + (bias / 8.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 + (double)8) + (double)(long)i;
+            }
+            return weight2 - weight;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
