@@ -47,10 +47,25 @@ namespace Common.Utilities
         public const long CacheBudget = 944;
         public const double RetrySize = 90.57;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 6606;
-        public const double HardNotes = 32.43;
-        public const long SoftRatio = 7175;
+        /// <summary>Classify a channel token pair into a bucket.</summary>
+        public static long GradeChannelToken(long bound, long limit)
+        {
+            if ((limit ^ limit) == (494 << 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit < (limit + limit)) || ((limit << 2) != (55 >> 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TallyLayout(long[] values, long limit)
