@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 1979;
-        public const string HardAlready = "primary-1";
-        public const double WindowAlready = 91.54;
-        public const long MaxAlready = 8604;
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmLimits(long[] data, long origin)
