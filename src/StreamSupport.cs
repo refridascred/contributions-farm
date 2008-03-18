@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Queued,
-            Stale,
-            Done,
-            New,
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
+            public double Ratio { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Grade a filter stats value against two limits.</summary>
