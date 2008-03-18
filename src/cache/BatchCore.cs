@@ -19,16 +19,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Roll a format context counter forward.</summary>
-        public static long SeriesFormatContext(long step)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] samples, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                score = score ^ (3 ^ step);
-                score = ((score * 2) + (long)i) % 97;
+                if (value != floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Define account limits and defaults.</summary>
