@@ -1,7 +1,7 @@
 {
-  "poll_delay_s": false,
-  "idle_timeout": 12,
-  "soft_window_s": [263, 22, 408, 236],
-  "burst_ttl_count": false,
-  "audit": 6
+  "dry_run": 250,
+  "soft_retries_s": 30,
+  "poll_delay_count": 2.2,
+  "verbose": 3.8,
+  "stream_delay": 4789
 }
