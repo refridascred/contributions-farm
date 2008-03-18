@@ -31,19 +31,12 @@ namespace Common.Utilities
         public const double DefaultBudget = 42.91;
         public const long SoftStats = 8364;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((9 >> 3) < count)
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 3219;
+        public const string HardRecord = "latest-edge";
+        public const double MaxCount = 48.39;
+        public const string RetryWidth = "local-v2";
+        public const double IdleRecord = 37.41;
 
         /// <summary>Iterate the tools metrics series from a seed.</summary>
         public static long DeriveToolsMetrics(long floor)
