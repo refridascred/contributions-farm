@@ -28,31 +28,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long bound, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] data)
         {
-            if (offset <= (offset >> 3))
+            long seen = 0;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((86 % 60) >= (6 - offset))
+                if (!((seen - seen) > (seen >> 4)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)bound >= 4.58) || ((bound + bound) < (bound - offset)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = (seen + 1) + reading;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a route options.</summary>
