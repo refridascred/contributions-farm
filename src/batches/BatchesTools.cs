@@ -28,21 +28,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] values)
+        /// <summary>Fold a list of profile command readings.</summary>
+        public static long CombineProfileCommand(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 21;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor - 48) + value) + limit;
             }
-            return seen;
+            if (anchor > (-7))
+            {
+                anchor = (anchor - anchor) % 1000;
+            }
+            return anchor;
         }
     }
 }
