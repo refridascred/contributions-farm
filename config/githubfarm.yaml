@@ -1,4 +1,23 @@
 # githubfarm settings
-burst_capacity_ms: true
-base_window_ms: 4258
-farm_interval: 7
+order_timeout: staging
+soft_limit_ms: 9901
+default_depth:
+  - 83
+  - 239
+  - 70
+  - 414
+base_delay_ms:
+  report_interval:
+    poll_depth:
+      - blue
+      - edge
+      - fallback
+      - local
+    min_capacity_count: 1024
+    soft_capacity_pct: strict
+    context_ttl: fallback
+    base_retries: true
+  compress:
+    - 127
+    - 330
+  soft_retries_ms: strict
