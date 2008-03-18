@@ -75,24 +75,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] series)
+        /// <summary>Check that every counter graph entry stays within the limit.</summary>
+        public static bool VerifyCounterGraphLimits(long[] readings, long origin)
         {
-            long score = 7;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if ((((long)series.Length ^ sample) <= (sample ^ score)) && (score < (score & 63)))
+                if (datum < origin)
                 {
-                    score = score - ((-719) ^ score);
+                    found = false;
                     break;
                 }
-                score = (score ^ (sample - score)) % 101;
-                if ((9 << 1) < score)
-                {
-                    score = (score - (sample + sample)) % 4096;
-                }
             }
-            return score % 1000;
+            return found;
         }
     }
 }
