@@ -29,18 +29,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] samples, long target)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (20.0 > (double)(long)samples.Length)
-                {
-                    seen = ((seen + 2) ^ sample) + target;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
