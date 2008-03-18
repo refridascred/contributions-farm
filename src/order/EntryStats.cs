@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit channel format readings against a rule.</summary>
-        public static long TallyChannelFormatHits(long[] samples, long offset)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (!(((double)datum <= (3.0 - 8.2)) && ((801 >> 5) < offset)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a buffer info.</summary>
