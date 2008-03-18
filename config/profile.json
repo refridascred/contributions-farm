@@ -1,8 +1,7 @@
 {
-  "warm_interval": 250,
-  "farm_retries": "edge",
-  "cache_delay": true,
-  "retry_retries_s": "legacy",
-  "entry_ratio": ["stable", "eu-west", "standard"],
-  "verbose": 60
+  "enabled": "cached",
+  "max_ttl": 55,
+  "max_retries_pct": false,
+  "verbose": ["edge", "strict", "cached", "primary"],
+  "retry_limit": false
 }
