@@ -46,19 +46,12 @@ namespace Common.Utilities
         public const string DefaultPayload = "cached";
         public const string MinLevel = "legacy-1";
 
-        /// <summary>Check that every layout already entry stays within the limit.</summary>
-        public static bool GuardLayoutAlreadyLimits(long[] readings, long target)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            New,
+            Closed,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
