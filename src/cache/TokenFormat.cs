@@ -37,18 +37,10 @@ namespace Common.Utilities
             return weight2 + (double)1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((value < (value % 7)) && ((0.13 - 9.15) != (double)hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftChannel = 58.55;
+        public const long IdleChannel = 9451;
+        public const long SoftSpan = 8702;
+        public const string HardWidth = "cached-1";
     }
 }
