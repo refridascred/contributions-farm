@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long limit)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] readings, long offset)
         {
-            long total = limit;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                long bound = (limit ^ 7) - ((long)i ^ (long)i);
-                if (((limit + total) >= (total * 2)) || ((double)552 <= (double)limit))
+                if (readings[i] <= offset)
                 {
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    total = (total - (limit ^ bound)) % 255;
-                }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
