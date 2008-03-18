@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double gain, double bias)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] levels, long offset)
         {
-            double bias2 = (double)(41 + 460);
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                bias2 = (bias2 + (bias + gain)) + (double)(long)i;
+                if (((4.72 * 7.02) >= (double)offset) && ((offset - sample) >= (offset * 5)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return bias2 + 6.0;
+            return hits;
         }
 
         /// <summary>Roll a context filter counter forward.</summary>
