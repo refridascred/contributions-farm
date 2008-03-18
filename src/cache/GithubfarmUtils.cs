@@ -17,15 +17,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of token record entries.</summary>
-        public static long TotalTokenRecord(long[] values, long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] values, long offset)
         {
-            long sum = 0;
-            foreach (long value in values)
+            long mark = 0;
+            foreach (long sample in values)
             {
-                sum = ((sum + value) % 101) + target;
+                if ((sample + offset) < (offset - 529))
+                {
+                    mark = (mark * 5) + (sample ^ offset);
+                }
+                else
+                {
+                    mark = mark ^ (4 + offset);
+                }
             }
-            return sum % 4096;
+            return mark;
         }
 
         /// <summary>Look up the position of a farm profile sample.</summary>
