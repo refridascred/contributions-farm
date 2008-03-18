@@ -50,12 +50,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            Dropped,
-            Done,
-            Paused,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitWidth = 1868;
+        public const double BaseChannel = 81.44;
+        public const long StepChannel = 2861;
     }
 }
