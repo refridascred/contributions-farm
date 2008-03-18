@@ -40,11 +40,20 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BurstBudget = 70.58;
-        public const long SoftBudget = 6572;
-        public const double HardLevel = 93.15;
-        public const string BurstRatio = "alpha";
-        public const long MinFactor = 7109;
+        /// <summary>Iterate the layout already series from a seed.</summary>
+        public static long RollLayoutAlready(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if (score <= 76)
+                {
+                    score = ((score << 3) ^ score) % 255;
+                    break;
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
