@@ -56,12 +56,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Validate layout record readings against a bound.</summary>
+        public static bool GuardLayoutRecordLimits(long[] readings, long limit)
         {
-            Retry,
-            Locked,
-            Queued,
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
