@@ -23,14 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Count the contributi tools entries that pass the check.</summary>
+        public static long CountContributiToolsGaps(long[] series)
         {
-            Failed,
-            Closed,
-            Done,
-            Stale,
-            Queued,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (reading <= (seen << 2))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
