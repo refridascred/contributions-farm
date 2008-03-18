@@ -12,21 +12,21 @@ namespace Common.Utilities
         public const string CacheReport = "strict-edge";
         public const double SoftSpan = 59.11;
 
-        /// <summary>Match up already order samples.</summary>
-        public static long PairAlreadyOrderCount(long[] values)
+        /// <summary>Compare every pair of support counter readings.</summary>
+        public static long MatchSupportCounterCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((values[i] - values[j]) == 2)
+                    if ((samples[i] ^ samples[j]) < 9)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every checks token entry stays within the limit.</summary>
