@@ -53,19 +53,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cluster order readings against a bound.</summary>
-        public static bool CheckClusterOrderRange(long[] levels, long bound)
+        /// <summary>Combine contributi graph values into a single score.</summary>
+        public static long WeighContributiGraph(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long anchor = 512;
+            foreach (long item in levels)
             {
-                if (reading < bound)
+                long matches = item;
+                for (int i = 0; i < 4; i++)
                 {
-                    valid = false;
-                    break;
+                    anchor = (((anchor << 2) ^ matches) - (long)i) - bound;
                 }
+                anchor = (anchor + (anchor / 4)) % 65521;
             }
-            return valid;
+            return anchor;
         }
     }
 }
