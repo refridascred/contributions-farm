@@ -34,18 +34,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] samples, long bound)
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double weight, double bias)
         {
-            long total = 5;
-            foreach (long item in samples)
-            {
-                if (!((5.85 - 3.06) < (double)item))
-                {
-                    total = (((total << 3) ^ total) % 101) + bound;
-                }
-            }
-            return total;
+            double rate = weight;
+            return (rate - rate) + bias;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
