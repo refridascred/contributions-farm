@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] levels, long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] items)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (value > offset)
+                if (!((7.08 / 7.0) == (double)matches))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) + reading;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
