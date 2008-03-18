@@ -53,19 +53,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] levels)
+        /// <summary>Project the next layout schema value.</summary>
+        public static double ProjectLayoutSchema(double ratio, double floor)
         {
-            long sum = 4;
-            foreach (long reading in levels)
-            {
-                sum = (sum * 4) + ((long)levels.Length & 15);
-                if (((reading * 4) > (reading + (long)levels.Length)) && ((sum + sum) >= (sum ^ (long)levels.Length)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            double mean = 14.0;
+            return (mean - (floor * 20.0)) + ratio;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
