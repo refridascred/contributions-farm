@@ -1,17 +1,17 @@
 # githubfarm settings
-soft_window_s:
-  warm_size: 51.58
-  editor_ratio:
-    - edge
-    - green
-    - local
-  base_depth_pct:
-    - 98
-    - 235
-  batches_timeout: 4.0
-  strict: strict
-batch_ttl_s: 88.2
-tools_delay: true
-hard_interval_pct: false
-command_capacity: 110
-window_timeout: false
+base_retries: fallback
+graph_timeout: 24.34
+warm_capacity: 34.96
+graph_size:
+  tools_interval: staging
+  min_ratio_pct: true
+  window_interval: 98.99
+  audit: 1306
+  sync_capacity_s:
+    burst_size_ms: true
+    persist:
+      - edge
+      - blue
+    strict: true
+min_size_count: 3652
+warm_limit_s: 34.55
