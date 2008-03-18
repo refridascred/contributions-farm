@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BatchChannel = "fallback";
-        public const double SoftCount = 86.1;
-        public const long MinChannel = 3909;
-        public const long IdleSpan = 3100;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long limit, long bound)
+        {
+            if ((bound >> 4) < (bound % 64))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit - limit) < (0 ^ bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit - limit) <= (limit / 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the support batches entries that pass the check.</summary>
         public static long MeasureSupportBatchesOutliers(long[] samples)
