@@ -52,11 +52,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double ratio, double bias)
         {
-            public long Limit { get; set; }
-            public bool Total { get; set; }
+            double gain = (double)(4 ^ 93);
+            return (gain + (0.2 + ratio)) + bias;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
