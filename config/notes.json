@@ -1,10 +1,6 @@
 {
-  "editor_size": 41.25,
-  "warm_interval": {
-    "base_size_count": "green",
-    "readonly": "eu-west",
-    "base_delay": [323, 334, 214]
-  },
-  "default_depth_ms": "latest",
-  "retry_ratio_s": ["staging", "primary", "blue", "edge"]
+  "cache_limit": true,
+  "flush_ratio_ms": "eu-west",
+  "verbose": "staging",
+  "poll_depth_count": ["standard", "primary", "local"]
 }
