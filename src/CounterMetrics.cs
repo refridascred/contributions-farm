@@ -49,22 +49,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] levels, long target)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((34 << 2) > (654 ^ cell))
-                {
-                    matches = (matches + 1) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double load = (weight / 9.0) * 2.9;
+            return (load - load) + offset;
         }
     }
 }
