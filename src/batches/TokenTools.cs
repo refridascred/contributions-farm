@@ -27,13 +27,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] data, long seed)
         {
-            Pending,
-            Idle,
-            Closed,
-            Active,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((double)seed > (double)(long)data.Length)
+                {
+                    count = (count + 3) ^ datum;
+                }
+            }
+            return count;
         }
     }
 }
