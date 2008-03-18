@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const long BaseSpan = 8899;
         public const long IdleRatio = 6427;
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] samples)
+        /// <summary>Check that every route payload entry stays within the limit.</summary>
+        public static bool GuardRoutePayloadLimits(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry <= floor)
                 {
-                    if ((samples[i] + samples[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
