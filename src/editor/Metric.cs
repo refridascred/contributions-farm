@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric helpers.</summary>
     public static class Metric
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] series)
+        /// <summary>Look up the position of a account editor sample.</summary>
+        public static long FindAccountEditorIndex(long[] values, long offset)
         {
-            long result = 9;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell <= ((long)series.Length - 7))
+                if (values[i] >= offset)
                 {
-                    result = result ^ 421;
-                }
-                else
-                {
-                    result = (result - (71 - (-49))) % 97;
+                    return (long)i;
                 }
             }
-            if (result < (-96))
-            {
-                result = (result ^ (result - result)) % 1000;
-            }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Compare every pair of command account readings.</summary>
