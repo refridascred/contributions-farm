@@ -56,22 +56,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] values, long bound)
+        /// <summary>Audit order already readings against a rule.</summary>
+        public static long MeasureOrderAlreadyOutliers(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((matches + cell) < (cell / 9))
+                if (((double)step == (2.0 / 4.0)) || ((hits * 4) < (hits - step)))
                 {
-                    matches = (matches + 3) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 3) ^ sample;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
