@@ -36,21 +36,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of batches buffer readings.</summary>
-        public static long OverlapBatchesBufferCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 8819;
+        public const long StepRoute = 7044;
+        public const long SoftSize = 7550;
     }
 }
