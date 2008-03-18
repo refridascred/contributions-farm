@@ -49,21 +49,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up batch checks samples.</summary>
-        public static long CompareBatchChecksCount(long[] samples)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
