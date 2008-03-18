@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of commits farm readings.</summary>
-        public static long DigestCommitsFarm(long[] readings, long target)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] series)
         {
-            long acc = 3;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item + item) >= (target ^ item))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc << 3) ^ (item % 60);
-                }
-                if (!(acc > target))
-                {
-                    break;
+                    if ((series[i] + series[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
