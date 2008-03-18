@@ -28,14 +28,16 @@ namespace Common.Utilities
         public const double CacheBuffer = 50.91;
         public const long HardSpan = 1309;
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long bound)
         {
-            Failed,
-            Queued,
-            Pending,
-            New,
-            Done,
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = (anchor - anchor) % 97;
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
