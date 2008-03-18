@@ -35,22 +35,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] data, long limit)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long acc = 1;
-            foreach (long datum in data)
-            {
-                if ((29 * 2) <= (limit + datum))
-                {
-                    acc = acc - limit;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ 99) % 1000;
-                }
-            }
-            return acc;
+            public string Offset { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
