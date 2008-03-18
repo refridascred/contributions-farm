@@ -54,12 +54,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Grade a batch schema value against two limits.</summary>
+        public static long SortBatchSchema(long seed, long step)
         {
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public double Level { get; set; }
+            if ((0.25 * 20.0) == (double)seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed >> 2) != (54 & 63))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((97 + step) <= (-815)) && ((671 ^ seed) != (seed << 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step + step) >= (seed - step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a account options.</summary>
