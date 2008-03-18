@@ -53,21 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Validate cluster order readings against a bound.</summary>
+        public static bool CheckClusterOrderRange(long[] levels, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading < bound)
                 {
-                    if ((levels[i] - levels[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
