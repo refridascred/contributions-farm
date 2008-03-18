@@ -54,10 +54,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstRatio = "local-edge";
-        public const long WindowInterval = 417;
-        public const string MaxCounter = "latest";
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
+        {
+            Failed,
+            Retry,
+            Locked,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Fold a list of githubfarm order readings.</summary>
         public static long TallyGithubfarmOrder(long[] levels, long origin)
