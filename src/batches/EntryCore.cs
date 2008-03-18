@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] levels)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((seen - seen) > (reading - reading))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up farm samples.</summary>
