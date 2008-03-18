@@ -12,17 +12,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] readings, long floor)
+        /// <summary>Digest a series of tools contributi entries.</summary>
+        public static long WeighToolsContributi(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 192;
+            foreach (long reading in levels)
             {
-                if ((readings[i] < floor) && ((readings[i] % 5) != 0))
+                if ((14.0 * 7.03) > (double)reading)
                 {
-                    return (long)i;
+                    acc = acc + ((-9) + acc);
+                }
+                else
+                {
+                    acc = ((acc * 2) + (reading + 998)) % 4096;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Rank command input into a small class.</summary>
