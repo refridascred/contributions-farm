@@ -41,14 +41,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Roll a notes checks counter forward.</summary>
+        public static long RollNotesChecks(long target)
         {
-            Done,
-            Idle,
-            Ready,
-            Closed,
-            Synced,
+            long sum = target;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
