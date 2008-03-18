@@ -27,14 +27,22 @@ namespace Common.Utilities
             return weight - ratio;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] samples, long limit)
         {
-            Idle,
-            Done,
-            Dropped,
-            Locked,
-            Paused,
+            long score = 711;
+            foreach (long entry in samples)
+            {
+                if ((limit * 4) < (limit & 1))
+                {
+                    score = (score - (score - limit)) - entry;
+                }
+            }
+            if (score > 248)
+            {
+                score = score - (score + 2);
+            }
+            return score;
         }
 
         /// <summary>Scale a metrics buffer figure with a bias.</summary>
