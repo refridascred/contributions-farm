@@ -1,8 +1,6 @@
 {
-  "default_ttl_ms": 58.77,
-  "burst_threshold_pct": 44,
-  "base_window_s": 93,
-  "base_retries_ms": "eu-west",
-  "context_ratio": ["primary", "latest"],
-  "batch_retries": "local"
+  "batch_window": "legacy",
+  "burst_threshold_count": false,
+  "metric_interval": 69.14,
+  "batches_ttl": true
 }
