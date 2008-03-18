@@ -28,39 +28,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a profile metric pair into a bucket.</summary>
-        public static long RankProfileMetric(long seed, long step)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] series, long limit)
         {
-            long slot = seed + step;
-            if ((3.9 / 5.0) == (double)seed)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((seed ^ step) <= (slot + slot)))
+                if (series[i] <= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)slot == (13.0 / 7.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed * 3) == (slot * 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a support counter forward.</summary>
