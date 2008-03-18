@@ -54,15 +54,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] levels)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] readings, long offset)
         {
-            long anchor = 25;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                anchor = anchor - (anchor - entry);
+                if ((hits - offset) != (value - value))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor % 4096;
+            return hits;
         }
     }
 }
