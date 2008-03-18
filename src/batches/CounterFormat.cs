@@ -13,14 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Measure how many account context samples are out of range.</summary>
+        public static long CountAccountContextMatches(long[] levels, long step)
         {
-            Queued,
-            Idle,
-            Failed,
-            Locked,
-            Draft,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (((long)levels.Length + step) == (item * 2))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the tools state values.</summary>
