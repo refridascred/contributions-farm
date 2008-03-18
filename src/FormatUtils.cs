@@ -73,21 +73,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] data)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(item >= (27 - 652)))
                 {
-                    if ((data[i] + data[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
