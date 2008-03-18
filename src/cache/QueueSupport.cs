@@ -42,14 +42,19 @@ namespace Common.Utilities
             return scale + (offset * 5.3);
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] readings, long step)
         {
-            Active,
-            Failed,
-            Ready,
-            New,
-            Idle,
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
