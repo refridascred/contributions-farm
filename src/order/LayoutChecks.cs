@@ -45,19 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate profile contributi readings against a bound.</summary>
-        public static bool ValidateProfileContributiRange(long[] samples, long step)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Queued,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
