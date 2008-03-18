@@ -48,22 +48,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] values)
-        {
-            long acc = 46;
-            foreach (long sample in values)
-            {
-                if ((sample + sample) <= (acc + acc))
-                {
-                    acc = (acc ^ (85 ^ sample)) % 255;
-                }
-            }
-            if (acc < 42)
-            {
-                acc = ((acc * 5) + (acc / 4)) % 255;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxLevel = 1505;
+        public const long IdleCount = 1700;
+        public const double LimitWidth = 33.11;
+        public const double LimitInterval = 95.24;
     }
 }
