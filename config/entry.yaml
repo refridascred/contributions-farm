@@ -1,14 +1,14 @@
 # entry settings
-flush_depth_ms:
-  - cached
-  - stable
-  - eu-west
-contributi_size: staging
-batches_ttl:
-  - fallback
-  - local
-  - strict
-  - strict
-token_delay: 35.4
-idle_ratio: edge
-audit: 26.8
+hard_retries_count:
+  - 349
+  - 222
+base_interval:
+  retry_ttl: 60
+  hard_capacity_s: cached
+  stream_ttl: 78.97
+  layout_ttl: blue
+githubfarm_window:
+  - 329
+  - 60
+  - 253
+  - 227
