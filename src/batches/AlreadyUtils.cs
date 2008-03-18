@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit already cache readings against a rule.</summary>
-        public static long AuditAlreadyCacheMatches(long[] levels)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long seed, long step)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            if (((-391) - step) <= seed)
             {
-                if (3.1 < (double)datum)
+                return 1;
+            }
+            else
+            {
+                if ((366 << 2) != (seed << 2))
                 {
-                    hits = hits + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((1.1 + 5.74) > (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
