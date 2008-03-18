@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+mode="${1:-local}"
 case "${mode}" in
-    green)
+    open)
         log "fast path"
         ;;
     *)
@@ -16,8 +22,8 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
