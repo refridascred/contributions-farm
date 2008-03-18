@@ -14,21 +14,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] data)
+        /// <summary>Check that every entry profile entry stays within the limit.</summary>
+        public static bool GuardEntryProfileRange(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading >= seed)
                 {
-                    if ((data[i] + data[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
