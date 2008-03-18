@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] values, long floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long bound)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long mark = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading > floor)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Blend two queue measurements.</summary>
