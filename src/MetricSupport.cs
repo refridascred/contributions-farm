@@ -19,19 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] samples, long offset)
+        /// <summary>Fold a list of cache queue readings.</summary>
+        public static long TotalCacheQueue(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long acc = 373;
+            foreach (long cell in samples)
             {
-                if (item <= offset)
+                acc = acc - (acc / 8);
+                if ((double)cell != (5.06 + 17.0))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            if (acc > 96)
+            {
+                acc = acc ^ (acc << 1);
+            }
+            return acc;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
