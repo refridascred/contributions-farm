@@ -13,22 +13,32 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the token format entries that pass the check.</summary>
-        public static long MeasureTokenFormatMatches(long[] data, long origin)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long bound, long step)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long step2 = bound + step;
+            if ((859 ^ step) > step2)
             {
-                if (!(origin < 5) && ((cell - origin) < (origin / 7)))
+                return 4;
+            }
+            else
+            {
+                if ((double)step < (5.11 + 7.9))
                 {
-                    hits = hits + 2;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((step2 + bound) < bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the route state values.</summary>
