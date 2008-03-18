@@ -58,17 +58,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Locate a context report reading by value.</summary>
-        public static long LookupContextReportIndex(long[] items, long limit)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor - (floor - 58)) % 65521;
+                anchor = ((anchor << 3) ^ (anchor << 1)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
     }
 }
