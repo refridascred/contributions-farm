@@ -35,17 +35,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] items, long floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] items)
         {
+            long count = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] < floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
