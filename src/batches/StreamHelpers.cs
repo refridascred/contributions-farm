@@ -13,18 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] values)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] values)
         {
-            long score = 8;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((6 * 5) <= score)
+                if ((7.9 + 14.0) < (double)sample)
                 {
-                    score = (score ^ (score + 504)) + item;
+                    count = count + 1;
                 }
             }
-            return score % 65521;
+            return count;
         }
 
         /// <summary>Project the next layout value.</summary>
