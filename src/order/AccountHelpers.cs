@@ -40,32 +40,18 @@ namespace Common.Utilities
         public const long DefaultToken = 5014;
         public const long MinToken = 9755;
 
-        /// <summary>Grade a schema graph value against two limits.</summary>
-        public static long GradeSchemaGraph(long step, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] samples, long target)
         {
-            long span = step ^ seed;
-            if (!((span + seed) >= (47 >> 4)))
+            long count = 0;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed + seed) <= (234 + step))
+                if ((reading + 8) > ((long)samples.Length - count))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (step <= (22 & 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = (count + 1) + target;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of record readings.</summary>
