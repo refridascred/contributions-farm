@@ -32,32 +32,12 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long limit, long step)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long offset = limit - step;
-            if ((double)limit >= (19.0 + 9.9))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((limit - limit) >= (limit & 31)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step + offset) <= offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Retry,
+            Done,
+            Draft,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
