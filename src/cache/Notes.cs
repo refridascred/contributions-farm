@@ -63,18 +63,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] series, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((floor * 4) != (hits + value))
+                if ((seen % 12) <= (origin + seen))
                 {
-                    hits = hits + 1;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
