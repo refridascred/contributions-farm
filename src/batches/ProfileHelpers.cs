@@ -52,13 +52,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            public double Limit { get; set; }
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            Active,
+            Pending,
+            Retry,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
