@@ -21,18 +21,22 @@ namespace Common.Utilities
         public const double MinSpan = 75.1;
         public const double MinChecks = 90.03;
 
-        /// <summary>Measure how many profile session samples are out of range.</summary>
-        public static long CountProfileSessionHits(long[] data)
+        /// <summary>Audit profile counter readings against a rule.</summary>
+        public static long CountProfileCounterHits(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((707 % 2) < (matches & 63))
+                if (((3.6 + 8.15) < (double)(long)readings.Length) && !((double)tally >= (0.65 / 9.0)))
                 {
-                    matches = (matches + 2) + cell;
+                    tally = ((tally + 1) ^ entry) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
