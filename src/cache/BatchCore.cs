@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double weight, double offset)
-        {
-            double load = offset;
-            if (load >= (13.0 + load))
-            {
-                load = (load - (double)586) - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (double)(-183)) + (double)(long)i;
-            }
-            return load + offset;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardScore = "alpha-edge";
+        public const string MinQueue = "local-v2";
+        public const long MaxLevel = 4936;
 
         /// <summary>Accumulate cache window samples.</summary>
         public static long WeighCacheWindow(long[] values)
