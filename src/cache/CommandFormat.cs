@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of channel already readings.</summary>
-        public static long PairChannelAlreadyCount(long[] levels)
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = (double)7 + bias;
+            if (weight < bias)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight + (scale + 9.8);
             }
-            return hits;
+            return weight + (double)32;
         }
 
         /// <summary>Describe the payload phase values.</summary>
