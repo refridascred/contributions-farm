@@ -1,8 +1,7 @@
-id,weight,level
-1,349,60.26
-2,30.3,green
-3,351,886
-4,legacy,green
-5,latest,edge
-6,46.06,178
-7,staging,65.96
+id,region,rank,label,active
+1,726,75.81,8.39,eu-west
+2,429,461,327,75.79
+3,493,33.92,820,662
+4,staging,48.16,544,525
+5,primary,56.36,619,663
+6,13,eu-west,289,68.01
