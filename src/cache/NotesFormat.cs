@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 1746;
-        public const double BurstTimeout = 77.14;
-        public const long MaxFactor = 3995;
-        public const long StepSpan = 1939;
+        /// <summary>Classify a commits filter pair into a bucket.</summary>
+        public static long SortCommitsFilter(long step, long floor)
+        {
+            if (((floor % 60) != (floor / 6)) || ((step - 511) <= floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)floor < (2.1 - 1.8))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
