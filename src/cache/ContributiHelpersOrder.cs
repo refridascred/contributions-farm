@@ -39,18 +39,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] items)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (((double)hits >= (double)value) || (4.77 <= (double)value))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Failed,
+            Queued,
+            Locked,
         }
     }
 }
