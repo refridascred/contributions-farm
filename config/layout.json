@@ -1,8 +1,13 @@
 {
-  "enabled": 1308,
-  "soft_depth_s": "fallback",
-  "default_ratio": true,
-  "min_retries": "open",
-  "account_ttl": 79.6,
-  "context_size": false
+  "sync_size_s": ["local", "stable", "primary", "blue"],
+  "sync_window_pct": 66,
+  "retry_timeout": {
+    "dry_run": "latest",
+    "min_window": true,
+    "flush_interval_count": "primary",
+    "persist": 92,
+    "batch_ttl_pct": "standard"
+  },
+  "hard_interval_s": 500,
+  "entry_size": 250
 }
