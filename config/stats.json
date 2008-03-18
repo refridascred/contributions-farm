@@ -1,7 +1,9 @@
 {
-  "poll_timeout_count": "eu-west",
-  "burst_ttl_ms": "local",
-  "hard_delay": 5.38,
-  "stream_threshold": "edge",
-  "persist": "cached"
+  "schema_retries": true,
+  "format_delay": {
+    "min_timeout_s": [475, 426, 38, 250],
+    "githubfarm_retries": "blue",
+    "cache_threshold": "cached"
+  },
+  "readonly": 2580
 }
