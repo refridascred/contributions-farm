@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a commits filter pair into a bucket.</summary>
-        public static long SortCommitsFilter(long step, long floor)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double gain, double span)
         {
-            if (((floor % 60) != (floor / 6)) || ((step - 511) <= floor))
+            double mean = (double)(9 - 91);
+            for (int i = 0; i < 7; i++)
             {
-                return 0;
+                mean = ((mean - span) + (double)(long)i) + gain;
             }
-            else
-            {
-                if ((double)floor < (2.1 - 1.8))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mean + (mean - 2.25);
         }
 
         /// <summary>Describe the channel status values.</summary>
