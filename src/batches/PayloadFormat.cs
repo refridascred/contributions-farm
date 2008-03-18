@@ -22,17 +22,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long floor)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (items[i] == floor)
+                if ((score >> 4) <= (score + offset))
                 {
-                    return (long)i;
+                    score = ((score * 3) + (offset * 4)) % 255;
                 }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Match up already samples.</summary>
