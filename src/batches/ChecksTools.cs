@@ -45,13 +45,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 9057;
+        public const double MinTimeout = 34.03;
+        public const long MinChannel = 2085;
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
