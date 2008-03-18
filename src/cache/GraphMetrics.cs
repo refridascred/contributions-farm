@@ -14,14 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public string Level { get; set; } = "";
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardFarm = "alpha-edge";
+        public const long DefaultBudget = 7570;
+        public const double IdleFarm = 90.82;
+        public const string MinFarm = "primary";
+        public const long BurstBudget = 9261;
 
         /// <summary>Count the schema order entries that pass the check.</summary>
         public static long TallySchemaOrderGaps(long[] items)
