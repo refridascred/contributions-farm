@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleBuffer = "alpha-v2";
-        public const long DefaultBuffer = 1981;
-        public const long DefaultSpan = 5728;
-        public const long HardScore = 8557;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long limit, long bound)
+        {
+            long offset = limit ^ bound;
+            if (limit < (bound >> 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset >> 4) == (bound * 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound - offset) < bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long CountChecksHits(long[] readings)
