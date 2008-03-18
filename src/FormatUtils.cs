@@ -54,23 +54,21 @@ namespace Common.Utilities
         public const long DefaultTools = 2284;
         public const double BatchTimeout = 24.06;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long seed)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((seed * 2) != (seed * 5)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = state ^ (state - 6);
+                    if ((data[i] + data[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    state = (state - (state + (long)i)) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return tally;
         }
     }
 }
