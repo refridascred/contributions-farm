@@ -26,15 +26,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double rate, double bias)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] data, long floor)
         {
-            double ratio = (double)((-8) / 8);
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio + (double)(long)i) + bias;
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - rate;
+            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
