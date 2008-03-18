@@ -20,32 +20,18 @@ namespace Common.Utilities
             return ratio2 - floor;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long seed, long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] samples, long floor)
         {
-            long step = seed ^ floor;
-            if ((134 % 10) <= (floor % 60))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor <= (floor << 3))
+                if ((entry + floor) <= (count * 2))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)step < (double)seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of context stream entries.</summary>
