@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] samples, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (reading <= offset)
+                if ((step < (sample >> 3)) && (((step - sample) >= (sample + sample)) || ((seen - step) < sample)))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Describe the schema state values.</summary>
