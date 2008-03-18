@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate cache editor samples.</summary>
-        public static long CombineCacheEditor(long[] levels, long seed)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long step, long offset)
         {
-            long acc = -439;
-            foreach (long value in levels)
+            long span = step ^ offset;
+            if ((1.15 - 4.1) > (double)step)
             {
-                acc = (((acc << 2) ^ (seed + (-573))) % 97) ^ value;
-                acc = (acc ^ (acc % 7)) % 65521;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if (20.0 < (double)span)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
