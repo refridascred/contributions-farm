@@ -1,8 +1,14 @@
 {
-  "report_ratio": 97,
-  "account_threshold": false,
-  "queue_retries": "cached",
-  "metrics_capacity": [200, 298, 185],
-  "filter_threshold": ["open", "eu-west", "local", "strict"],
-  "sync_ttl_pct": 5.42
+  "default_timeout_s": 77.24,
+  "graph_size": false,
+  "batch_ratio_pct": {
+    "editor_size": "cached",
+    "cache_retries": 13.54,
+    "default_retries_count": "edge",
+    "retry_retries": "primary",
+    "base_timeout_s": ["legacy", "cached"],
+    "compress": [447, 309, 15, 392]
+  },
+  "enabled": "stable",
+  "min_interval": "local"
 }
