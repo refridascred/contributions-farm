@@ -59,19 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] levels, long bound)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Owner { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
