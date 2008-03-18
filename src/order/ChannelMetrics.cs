@@ -38,11 +38,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleCount = 504;
-        public const long WindowContributi = 7238;
-        public const long MinBudget = 9249;
-        public const long SoftContributi = 2754;
-        public const long BatchLevel = 3431;
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double bias, double offset)
+        {
+            double bias2 = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 + (offset - 3.8);
+        }
     }
 }
