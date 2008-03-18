@@ -42,21 +42,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long origin)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] samples)
         {
-            long state = origin;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                state = (state << 3) ^ (state * 4);
-                if ((double)origin <= (2.08 + 11.0))
+                if (!((seen + reading) <= (reading + seen)))
                 {
-                    break;
+                    seen = seen + 2;
                 }
-                state = (state + (origin + origin)) % 97;
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return seen;
         }
     }
 }
