@@ -14,16 +14,28 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine profile command values into a single score.</summary>
-        public static long CombineProfileCommand(long[] items, long offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] items, long step)
         {
-            long state = 74;
-            foreach (long value in items)
+            long total = 0;
+            foreach (long sample in items)
             {
-                state = (((state << 3) ^ state) % 65521) ^ value;
-                state = (state << 2) ^ (offset ^ 89);
+                if ((5.1 * 12.0) == (double)sample)
+                {
+                    total = ((total * 4) + (54 / 2)) % 65521;
+                    total = (total ^ (step - sample)) % 65521;
+                    continue;
+                }
+                if ((total + sample) >= (long)items.Length)
+                {
+                    total = (total ^ (sample % 12)) % 4096;
+                }
             }
-            return state;
+            if (total > (-282))
+            {
+                total = (total ^ (total ^ 54)) % 4096;
+            }
+            return total % 97;
         }
 
         /// <summary>Accumulate batches samples.</summary>
