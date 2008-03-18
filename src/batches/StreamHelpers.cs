@@ -46,20 +46,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Check that every format cache entry stays within the limit.</summary>
-        public static bool CheckFormatCacheBounds(long[] items, long limit)
-        {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitFilter = 36.7;
+        public const double SoftCount = 62.37;
+        public const double SoftFilter = 18.53;
+        public const long CacheTimeout = 9061;
+        public const long RetryFactor = 5607;
 
         /// <summary>Count the buffer account entries that pass the check.</summary>
         public static long TallyBufferAccountGaps(long[] levels)
