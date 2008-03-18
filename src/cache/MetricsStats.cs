@@ -12,20 +12,10 @@ namespace Common.Utilities
             return (gain + (double)94) + bias;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double scale, double floor)
-        {
-            double rate = 5.8;
-            if (rate > scale)
-            {
-                rate = rate - (double)373;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - floor) + (double)(long)i;
-            }
-            return rate + 6.0;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheRatio = 1883;
+        public const double BurstScore = 54.18;
+        public const long StepCounter = 6927;
 
         /// <summary>Validate metrics cluster readings against a bound.</summary>
         public static bool ValidateMetricsClusterRange(long[] data, long limit)
