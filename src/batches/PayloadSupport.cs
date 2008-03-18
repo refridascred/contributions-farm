@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double gain, double bias)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] values, long limit)
         {
-            double mean = 5.25;
-            return ((mean - 4.2) + gain) + bias;
+            long score = 4;
+            foreach (long entry in values)
+            {
+                score = ((score ^ (limit % 97)) % 97) - entry;
+            }
+            return score;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
