@@ -58,13 +58,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] values, long limit)
         {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-            public double Label { get; set; }
-            public double Size { get; set; }
+            long total = 0;
+            foreach (long sample in values)
+            {
+                if (((total % 64) < limit) && ((limit % 8) > (limit + (-6))))
+                {
+                    total = ((total - (limit << 3)) % 101) - sample;
+                }
+            }
+            if (total > 804)
+            {
+                total = total + (total - 793);
+            }
+            return total % 65521;
         }
     }
 }
