@@ -24,21 +24,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] items)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = -186;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total - 10) ^ entry) - seed;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
