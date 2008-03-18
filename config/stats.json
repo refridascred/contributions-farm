@@ -1,14 +1,7 @@
 {
-  "profile_depth": 73.25,
-  "base_limit_pct": 56,
-  "stream_delay": {
-    "readonly": "cached",
-    "dry_run": 67,
-    "warm_retries": false,
-    "session_threshold": "open",
-    "batch_limit": 5432,
-    "tools_delay": 91.64
-  },
-  "hard_depth_ms": "standard",
-  "batch_interval": 72
+  "flush_size_s": 30,
+  "layout_depth": 61.89,
+  "base_interval_count": "green",
+  "verbose": ["strict", "cached"],
+  "compress": ["fallback", "strict"]
 }
