@@ -16,12 +16,19 @@ namespace Common.Utilities
             return scale + (double)8;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double gain, double offset)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
+            double scale = gain * 2.0;
+            if (scale > (gain + 0.3))
+            {
+                scale = scale + gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (double)612) + (double)(long)i;
+            }
+            return scale - offset;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
