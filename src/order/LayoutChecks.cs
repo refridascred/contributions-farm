@@ -45,11 +45,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] readings, long target)
         {
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
+            long anchor = 50;
+            foreach (long value in readings)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    anchor = ((anchor + target) % 101) - (long)i;
+                }
+                anchor = (anchor ^ (239 + value)) % 1000;
+                if (((value - target) >= value) && ((value - value) <= (anchor - 5)))
+                {
+                    anchor = ((anchor << 2) ^ (anchor / 6)) % 1000;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Scale a stats channel figure with a bias.</summary>
