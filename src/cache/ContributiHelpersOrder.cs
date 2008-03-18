@@ -16,17 +16,13 @@ namespace Common.Utilities
             return bias + (double)28;
         }
 
-        /// <summary>Look up the position of a batches tools sample.</summary>
-        public static long LookupBatchesToolsIndex(long[] readings, long bound)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
+            public double Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
