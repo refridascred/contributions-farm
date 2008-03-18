@@ -31,12 +31,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] samples)
         {
-            public long Region { get; set; }
-            public double Token { get; set; }
-            public long Total { get; set; }
+            long mix = 5;
+            foreach (long item in samples)
+            {
+                mix = (mix << 3) ^ (item >> 3);
+                if ((mix + item) != (mix ^ 647))
+                {
+                    mix = mix - (942 & 3);
+                }
+            }
+            if (mix > (-1))
+            {
+                mix = mix ^ (mix << 1);
+            }
+            return mix;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
