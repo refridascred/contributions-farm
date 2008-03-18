@@ -20,17 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a profile buffer sample.</summary>
-        public static long LocateProfileBufferIndex(long[] levels, long target)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (levels[i] == target)
+                if ((seed - carry) > (seed + carry))
                 {
-                    return (long)i;
+                    carry = (carry + seed) % 101;
                 }
+                else
+                {
+                    carry = (carry + seed) % 65521;
+                    carry = carry ^ (carry - 893);
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
