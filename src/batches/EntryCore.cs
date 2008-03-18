@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the payload commits series from a seed.</summary>
-        public static long SeriesPayloadCommits(long seed)
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] values)
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc << 3) ^ ((long)i * 4)) % 65521;
-                acc = ((acc * 3) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Match up farm samples.</summary>
