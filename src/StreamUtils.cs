@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 210;
-        public const long RetryAccount = 6043;
-        public const long HardAccount = 1404;
-        public const long BaseTimeout = 9647;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((3 + matches) < (matches & 1))
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank schema context input into a small class.</summary>
         public static long GradeSchemaContext(long step, long bound)
