@@ -1,11 +1,12 @@
 {
-  "base_delay_s": "legacy",
-  "readonly": [429, 227, 25, 288],
-  "window_size": {
-    "idle_capacity_ms": "latest",
-    "layout_threshold": false,
-    "min_retries": [249, 117, 283, 386],
-    "soft_threshold": "primary",
-    "min_interval_count": 72
-  }
+  "soft_depth_s": "local",
+  "flush_delay": {
+    "default_capacity_count": "latest",
+    "cache_retries_ms": ["blue", "standard", "open"],
+    "stream_ratio": 54,
+    "cache_interval_count": 54.68
+  },
+  "metrics_interval": 58.44,
+  "cache_capacity_s": "eu-west",
+  "default_threshold_s": "eu-west"
 }
