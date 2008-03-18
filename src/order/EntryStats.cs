@@ -48,14 +48,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long origin, long offset)
         {
-            Locked,
-            Active,
-            Dropped,
-            Failed,
-            Draft,
+            if (!((offset + 43) > origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if (origin > (offset << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin <= (7.0 * 6.01))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (6 >= offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a payload window value against two limits.</summary>
