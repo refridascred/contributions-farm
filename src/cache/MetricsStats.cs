@@ -61,18 +61,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] items, long floor)
+        /// <summary>Look up the position of a schema contributi sample.</summary>
+        public static long LocateSchemaContributiIndex(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((floor + matches) > floor) || (floor < matches))
+                if (series[i] < offset)
                 {
-                    matches = (matches + 3) + cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
