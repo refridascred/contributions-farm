@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] readings, long bound)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] readings)
         {
-            long acc = 805;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                acc = ((acc * 3) + bound) % 97;
-                if (!((bound - acc) > acc))
+                if ((double)cell < (8.93 + 7.45))
                 {
-                    acc = acc - (bound / 3);
-                }
-                else
-                {
-                    acc = ((acc * 4) + (bound + entry)) % 1000;
-                }
-                if ((entry - (-746)) != (bound * 2))
-                {
-                    acc = ((acc * 3) + (8 - 115)) % 65521;
+                    count = count + 2;
                 }
             }
-            if (acc > 35)
-            {
-                acc = ((acc << 2) ^ (acc / 5)) % 97;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
