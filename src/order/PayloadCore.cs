@@ -45,15 +45,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a metrics buffer figure with a bias.</summary>
-        public static double SmoothMetricsBuffer(double gain, double offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            double rate = offset;
-            if (rate <= (gain - gain))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate - (double)8;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate + gain;
+            return count;
         }
     }
 }
