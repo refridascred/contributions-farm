@@ -1,13 +1,10 @@
 {
-  "sync_size_s": ["local", "stable", "primary", "blue"],
-  "sync_window_pct": 66,
-  "retry_timeout": {
-    "dry_run": "latest",
-    "min_window": true,
-    "flush_interval_count": "primary",
-    "persist": 92,
-    "batch_ttl_pct": "standard"
+  "flush_ttl_ms": 2891,
+  "warm_ttl_count": {
+    "default_limit": 3256,
+    "stats_threshold": 18,
+    "enabled": 1024
   },
-  "hard_interval_s": 500,
-  "entry_size": 250
+  "contributi_ratio": "primary",
+  "tools_depth": 3618
 }
