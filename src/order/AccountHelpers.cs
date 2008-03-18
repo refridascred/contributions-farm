@@ -41,22 +41,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] readings)
+        /// <summary>Count cluster cache pairs that satisfy a relation.</summary>
+        public static long PairClusterCacheCount(long[] series)
         {
-            long sum = 4;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((item + sum) <= (item - sum)) || ((sum % 7) >= item))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = sum - (sum + 445);
-                }
-                if ((item + 1) == (sum - 105))
-                {
-                    sum = (sum - item) % 65521;
+                    if ((series[i] ^ series[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Rank batch checks input into a small class.</summary>
