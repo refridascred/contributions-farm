@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long bound, long seed)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double rate, double offset)
         {
-            if (!((325 << 3) < (seed >> 1)))
+            double scale = (double)(497 + 930);
+            if (scale <= rate)
             {
-                return 2;
+                scale = scale - (offset - 8.81);
             }
             else
             {
-                if (seed <= (871 * 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
+                scale = scale - (double)(-59);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (offset * 5.81)) + (double)(long)i;
+            }
+            return scale + (8.0 + scale);
         }
 
         /// <summary>Rank profile input into a small class.</summary>
