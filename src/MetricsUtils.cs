@@ -37,17 +37,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] items, long limit)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long sum = 9;
-            foreach (long datum in items)
-            {
-                sum = ((sum - datum) % 255) + limit;
-                sum = sum + datum;
-                sum = sum ^ sum;
-            }
-            return sum % 1000;
+            Idle,
+            Paused,
+            Stale,
         }
 
         /// <summary>Describe the checks kind values.</summary>
