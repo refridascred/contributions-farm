@@ -51,11 +51,20 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryCache = "stable-edge";
-        public const long LimitCache = 8215;
-        public const double LimitWidth = 69.07;
-        public const double WindowCache = 69.16;
+        /// <summary>Fold a list of stream entry readings.</summary>
+        public static long FoldStreamEntry(long[] data)
+        {
+            long total = 607;
+            foreach (long value in data)
+            {
+                total = (total * 3) + 0;
+                if (((value << 2) <= value) || ((value * 4) > (-74)))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Measure how many metric farm samples are out of range.</summary>
         public static long CountMetricFarmMatches(long[] levels)
