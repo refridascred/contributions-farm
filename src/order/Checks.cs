@@ -58,25 +58,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long origin)
+        /// <summary>Match up batch checks samples.</summary>
+        public static long CompareBatchChecksCount(long[] samples)
         {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                long tally = origin >> 2;
-                if ((origin + origin) > (score ^ 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score + 972) % 101;
-                    score = (score * 4) + ((long)i >> 5);
+                    if ((samples[i] ^ samples[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    score = score ^ (tally + score);
-                }
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
