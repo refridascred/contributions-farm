@@ -71,12 +71,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
+            public bool Mode { get; set; }
+            public double Weight { get; set; }
+            public long Count { get; set; }
             public bool Rank { get; set; }
-            public double Limit { get; set; }
-            public double Mode { get; set; }
         }
     }
 }
