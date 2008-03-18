@@ -31,10 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchDepth = 7208;
-        public const double StepNotes = 92.06;
-        public const long MaxSize = 5468;
-        public const string WindowNotes = "staging-edge";
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public bool Region { get; set; }
+            public double Label { get; set; }
+            public bool Count { get; set; }
+        }
     }
 }
