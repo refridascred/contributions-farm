@@ -64,24 +64,14 @@ namespace Common.Utilities
         public const long MinRoute = 4368;
         public const long LimitRoute = 5399;
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long limit, long offset)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            if ((limit % 10) <= (offset - offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit + limit) != (offset + limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Draft,
+            New,
+            Stale,
+            Ready,
+            Closed,
         }
 
         /// <summary>Define support limits and defaults.</summary>
