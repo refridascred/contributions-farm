@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long RetryWidth = 84;
         public const long RetryGraph = 8012;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] readings)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] series)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((3 << 2) > (value + count)) && ((110 & 1) != (count >> 4)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
+                    if ((series[i] ^ series[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of tools payload readings.</summary>
