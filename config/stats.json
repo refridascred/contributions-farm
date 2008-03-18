@@ -1,6 +1,12 @@
 {
-  "default_threshold_s": 8215,
-  "soft_threshold": [462, 465, 498, 423],
-  "base_capacity_pct": "local",
-  "retry_size": false
+  "batch_size_s": [242, 320, 436, 434],
+  "readonly": 8.24,
+  "checks_delay": [243, 278, 161, 344],
+  "channel_timeout": 4805,
+  "report_delay": 1024,
+  "flush_size_count": {
+    "default_ratio": 68.32,
+    "dry_run": 30,
+    "counter_capacity": ["staging", "standard", "local"]
+  }
 }
