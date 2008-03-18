@@ -26,16 +26,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long step)
+        /// <summary>Blend two batch commits measurements.</summary>
+        public static double BlendBatchCommits(double weight, double offset)
         {
-            long score = step;
-            for (int i = 0; i < 7; i++)
-            {
-                score = (score * 4) + step;
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            double scale = (double)64 / 6.0;
+            return ((scale - (scale * 1.25)) + weight) + offset;
         }
 
         /// <summary>Match up entry samples.</summary>
