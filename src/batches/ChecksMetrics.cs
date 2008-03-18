@@ -36,17 +36,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] series, long seed)
+        /// <summary>Classify a stats window pair into a bucket.</summary>
+        public static long BucketStatsWindow(long bound, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((bound * 2) < (floor % 10)) && ((bound - floor) != (bound + floor)))
             {
-                if ((series[i] < seed) && ((series[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if (((66 - bound) <= ((-12) >> 3)) || ((floor << 2) <= floor))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((9 % 97) >= (bound ^ 9))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
