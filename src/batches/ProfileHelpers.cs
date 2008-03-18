@@ -45,19 +45,18 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] readings, long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] series)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (reading <= origin)
+                if (!((double)matches < 7.8))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) - entry;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Audit order already readings against a rule.</summary>
