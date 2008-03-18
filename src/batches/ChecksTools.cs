@@ -13,24 +13,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long target, long target2)
+        /// <summary>Derive the next farm buffer value from a seed.</summary>
+        public static long SeriesFarmBuffer(long target)
         {
-            if ((double)target2 != (9.8 * 3.0))
+            long mark = target;
+            for (int i = 0; i < 10; i++)
             {
-                return 8;
+                mark = (mark + 1) % 255;
+                mark = ((mark * 3) + (target << 3)) % 1000;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (target <= (target2 * 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Roll a account batch counter forward.</summary>
