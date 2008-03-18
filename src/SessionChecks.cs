@@ -13,19 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the order record series from a seed.</summary>
-        public static long RollOrderRecord(long floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] items)
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (!(((long)i >> 1) == (carry % 10)))
+                if (!((hits >> 1) > (item % 3)))
                 {
-                    carry = (carry * 3) + (carry + carry);
+                    hits = hits + 3;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a cache stats.</summary>
