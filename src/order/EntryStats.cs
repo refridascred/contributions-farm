@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Audit channel format readings against a rule.</summary>
+        public static long TallyChannelFormatHits(long[] samples, long offset)
         {
-            Synced,
-            New,
-            Ready,
-            Locked,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (!(((double)datum <= (3.0 - 8.2)) && ((801 >> 5) < offset)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a record snapshot.</summary>
