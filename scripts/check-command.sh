@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary open strict staging; do
-    log "checking ${item}"
-done
-
-mode="${1:-primary}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=260
+COMMAND_LIMIT=220
 log "limit is ${COMMAND_LIMIT}"
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
