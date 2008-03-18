@@ -1,12 +1,14 @@
 # entry settings
-burst_depth_ms: false
-cache_ttl_pct:
-  - 47
-  - 353
-  - 392
-  - 68
-cache_ratio_count: 30
-flush_depth_pct:
-  - 251
-  - 362
-  - 80
+flush_depth_ms:
+  - cached
+  - stable
+  - eu-west
+contributi_size: staging
+batches_ttl:
+  - fallback
+  - local
+  - strict
+  - strict
+token_delay: 35.4
+idle_ratio: edge
+audit: 26.8
