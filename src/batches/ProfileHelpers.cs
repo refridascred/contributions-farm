@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] readings)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((entry - 8) > (entry % 24))
                 {
-                    if ((readings[i] ^ readings[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 1) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Combine githubfarm cluster values into a single score.</summary>
