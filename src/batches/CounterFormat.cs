@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] readings)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] samples)
         {
-            long state = 66;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (item <= (item + 52))
+                if ((((94 + count) == (sample ^ count)) && ((count - count) <= (sample % 5))) || (((long)samples.Length + count) == (436 * 2)))
                 {
-                    state = state - (state * 3);
+                    count = count + 3;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the tools state values.</summary>
