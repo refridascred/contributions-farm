@@ -19,19 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] levels, long offset)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long limit)
         {
-            long total = 0;
-            foreach (long entry in levels)
+            long mark = limit;
+            for (int i = 0; i < 22; i++)
             {
-                total = (((total << 2) ^ (67 + offset)) % 101) ^ entry;
+                if (((mark % 7) <= (635 ^ 2)) && (((long)i - limit) >= (mark << 1)))
+                {
+                    mark = ((mark << 3) ^ (limit & 127)) % 97;
+                    continue;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            if (total > 81)
-            {
-                total = (total + (total + offset)) % 101;
-            }
-            return total;
+            return mark;
         }
 
         /// <summary>Audit entry contributi readings against a rule.</summary>
