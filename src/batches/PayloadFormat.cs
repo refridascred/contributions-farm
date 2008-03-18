@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 5675;
-        public const long RetrySize = 6020;
-        public const long CacheToken = 2236;
-        public const string DefaultCount = "local-edge";
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] data, long offset)
+        {
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long RankProfile(long target, long step)
