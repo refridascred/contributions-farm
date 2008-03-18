@@ -47,19 +47,12 @@ namespace Common.Utilities
             return rate - (6.6 + span);
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double weight, double offset)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            double weight2 = (double)(839 - 26);
-            if (weight2 > weight)
-            {
-                weight2 = weight2 - (weight / 5.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 + (offset * 0.35)) + (double)(long)i;
-            }
-            return weight2 + (double)820;
+            public string Count { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a metrics token sample.</summary>
