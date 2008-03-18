@@ -55,11 +55,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "cached-1";
-        public const long BaseProfile = 6625;
-        public const double LimitProfile = 94.75;
-        public const string RetryProfile = "open-v2";
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] items, long seed)
+        {
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool CheckLayoutBounds(long[] samples, long origin)
