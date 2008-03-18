@@ -23,13 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] values)
         {
-            public string Owner { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (8 < item)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
