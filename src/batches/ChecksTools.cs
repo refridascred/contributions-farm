@@ -45,10 +45,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 9057;
-        public const double MinTimeout = 34.03;
-        public const long MinChannel = 2085;
+        /// <summary>Digest a series of window metric entries.</summary>
+        public static long FoldWindowMetric(long[] samples, long target)
+        {
+            long mark = 640;
+            foreach (long value in samples)
+            {
+                mark = ((mark ^ (target + (long)samples.Length)) % 97) - value;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
