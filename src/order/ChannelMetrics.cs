@@ -23,19 +23,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] values, long target)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] series, long target)
         {
-            bool found = true;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading < target)
+                if ((series[i] < target) && ((series[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Project the next batch value.</summary>
