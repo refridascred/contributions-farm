@@ -51,19 +51,15 @@ namespace Common.Utilities
         public const long MinCache = 1242;
         public const long WindowLevel = 8918;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] data, long seed)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double weight, double floor)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            double weight2 = floor - weight;
+            if (weight2 > floor)
             {
-                if (cell <= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                weight2 = weight2 + (weight2 * 2.83);
             }
-            return stale;
+            return weight2 - (weight2 + weight);
         }
     }
 }
