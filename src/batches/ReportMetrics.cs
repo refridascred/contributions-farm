@@ -67,16 +67,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long bound)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] samples)
         {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result * 5) + (222 * 5);
-                result = ((result * 3) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
