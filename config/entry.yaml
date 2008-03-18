@@ -1,20 +1,9 @@
 # entry settings
-base_ratio_ms: true
-hard_interval_ms: staging
-readonly: 79.01
-max_limit: open
-batch_limit_pct:
-  retry_delay_s:
-    - 332
-    - 414
-  graph_window: false
-  flush_interval_pct: open
-  warm_limit:
-    warm_threshold_ms: 500
-    cache_timeout_pct: 6027
-    audit:
-      - 182
-      - 351
-    burst_interval: primary
-  hard_limit_pct: true
-warm_size: true
+base_interval: 77.04
+enabled:
+  warm_depth_count: standard
+  sync_ratio_s: 100
+  readonly: 9603
+  flush_limit_s: 250
+idle_limit_ms: 35.63
+persist: 75
