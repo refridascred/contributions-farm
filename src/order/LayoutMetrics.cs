@@ -22,13 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] levels, long target)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
