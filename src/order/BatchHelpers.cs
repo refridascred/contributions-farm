@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Audit notes report readings against a rule.</summary>
+        public static long MeasureNotesReportGaps(long[] data)
         {
-            Closed,
-            Ready,
-            Done,
-            Pending,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((matches - sample) == (matches << 1))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
