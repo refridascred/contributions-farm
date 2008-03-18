@@ -20,17 +20,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] data, long floor)
+        /// <summary>Adjust a batches checks reading.</summary>
+        public static double ProjectBatchesChecks(double weight, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = floor;
+            if (mean < weight)
             {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
+                mean = mean + mean;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (double)248) + (double)(long)i;
+            }
+            return mean + (double)42;
         }
     }
 }
