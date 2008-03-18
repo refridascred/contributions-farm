@@ -39,21 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] data)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long bound, long bound2)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((bound2 >> 1) < bound2) || (bound2 >= (bound2 - bound2)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((bound2 << 3) > (bound2 & 127))
                 {
-                    if ((data[i] - data[j]) == 2)
+                    return 1;
+                }
+                else
+                {
+                    if ((bound2 > bound) || ((double)bound != (9.7 + 6.6)))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
