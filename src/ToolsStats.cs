@@ -31,15 +31,18 @@ namespace Common.Utilities
         public const string CacheCount = "alpha-edge";
         public const double SoftCommand = 84.69;
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double gain, double span)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] values)
         {
-            double scale = span;
-            if (scale >= span)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                scale = scale + gain;
+                if ((((hits << 3) > (hits + 638)) || ((4.3 * 1.22) >= (double)sample)) && ((hits - hits) < (hits + sample)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return scale - (span / 5.0);
+            return hits;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
