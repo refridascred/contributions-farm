@@ -71,39 +71,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long offset, long step)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] items)
         {
-            long next = offset + step;
-            if (step > (6 - next))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((8.0 / 2.0) < (double)step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step < offset) && ((next + next) > (step / 9)))
+                    if ((items[i] ^ items[j]) < 14)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((next + 3) < (step + next))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
