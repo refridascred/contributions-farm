@@ -1,7 +1,8 @@
 {
-  "enabled": 5694,
-  "verbose": 41.69,
-  "cache_capacity_s": 5008,
-  "min_capacity": 44,
-  "retry_ttl_s": false
+  "min_limit_pct": 64,
+  "context_size": 72.9,
+  "soft_size_count": 1.19,
+  "burst_interval_ms": 6945,
+  "batch_size": false,
+  "cache_delay": [99, 426, 345]
 }
