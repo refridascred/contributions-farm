@@ -26,15 +26,9 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] samples)
-        {
-            long sum = 911;
-            foreach (long reading in samples)
-            {
-                sum = (sum ^ (sum - reading)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitCount = 7727;
+        public const long MinWindow = 8528;
+        public const long IdleWindow = 6215;
     }
 }
