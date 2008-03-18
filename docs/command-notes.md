@@ -1,10 +1,14 @@
 # Command notes
 
-Use account settings to tune how often buffer data is refreshed.
-Each schema is validated before it reaches the metrics queue.
+Run the stats check before changing any token limits.
+A stats that stays idle for too long is moved to the filter list.
+
+Run the order check before changing any counter limits.
+Use context settings to tune how often githubfarm data is refreshed.
+When a schema fails, the token handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate contributi input early
-- Prefer profile defaults
-- Review route limits each release
+- Keep checks values small
+- Prefer batch defaults
+- Log every counter change
