@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((tally + item) > (item * 3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchGraph = 48.42;
+        public const long DefaultSpan = 9766;
+        public const long IdleGraph = 9127;
+        public const long BaseGraph = 6921;
+        public const long BatchCount = 1588;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool VerifyCommandBounds(long[] series, long target)
