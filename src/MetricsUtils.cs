@@ -36,15 +36,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Draft,
-            Ready,
-            Active,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 1022;
+        public const long IdleProfile = 5991;
+        public const long MaxProfile = 4125;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long TallyProfileOutliers(long[] readings, long bound)
