@@ -74,15 +74,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of checks contributi readings.</summary>
-        public static long TotalChecksContributi(long[] items)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] values)
         {
-            long score = 680;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                score = (score - score) + cell;
+                if (((datum - datum) > datum) || ((datum ^ datum) <= hits))
+                {
+                    hits = hits + 2;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
