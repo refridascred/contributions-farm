@@ -16,11 +16,18 @@ namespace Common.Utilities
             return bias + (double)28;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] samples, long origin)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            long mark = 6;
+            foreach (long value in samples)
+            {
+                if ((mark & 31) < (value - mark))
+                {
+                    mark = (((mark << 3) ^ (-83)) % 255) - origin;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
