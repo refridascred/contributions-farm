@@ -36,14 +36,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] readings, long target)
         {
-            Closed,
-            Done,
-            Paused,
-            Active,
-            Dropped,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (((matches < (43 - 11)) || ((double)reading <= (double)3)) || ((matches >> 4) < (matches + 38)))
+                {
+                    matches = (matches + 3) + target;
+                }
+            }
+            return matches;
         }
     }
 }
