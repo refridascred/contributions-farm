@@ -19,13 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            Locked,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepCount = 2582;
+        public const double MaxBudget = 97.01;
+        public const long HardNotes = 3693;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool ValidateCacheLimits(long[] values, long limit)
