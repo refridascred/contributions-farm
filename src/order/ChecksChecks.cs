@@ -31,19 +31,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a batches checks reading.</summary>
-        public static double ProjectBatchesChecks(double weight, double floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] series)
         {
-            double mean = floor;
-            if (mean < weight)
+            long acc = 714;
+            foreach (long reading in series)
             {
-                mean = mean + mean;
+                if (!(((acc + reading) == (reading ^ reading)) && ((acc / 5) > (acc ^ 696))))
+                {
+                    acc = (acc ^ (reading + acc)) % 101;
+                }
+                if (!(acc >= (reading >> 2)))
+                {
+                    acc = ((acc * 5) + (acc + acc)) % 4096;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (double)248) + (double)(long)i;
-            }
-            return mean + (double)42;
+            return acc;
         }
     }
 }
