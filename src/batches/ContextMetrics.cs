@@ -27,18 +27,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] data)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            if (offset <= (offset >> 3))
             {
-                if ((((cell << 2) < (890 % 10)) && ((cell ^ cell) == (hits - 4))) || ((8.04 >= (double)hits) && ((double)hits <= 9.0)))
+                return 8;
+            }
+            else
+            {
+                if ((86 % 60) >= (6 - offset))
                 {
-                    hits = hits + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)bound >= 4.58) || ((bound + bound) < (bound - offset)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a route options.</summary>
