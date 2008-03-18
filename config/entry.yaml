@@ -1,9 +1,10 @@
 # entry settings
-batch_ttl_s: 1051
-schema_threshold: primary
-hard_limit_ms:
-  - 50
-  - 462
-  - 422
-  - 416
-batches_size: 17.5
+cluster_interval: true
+max_timeout:
+  base_window_s: true
+  metric_interval: 14.41
+  idle_capacity_s: 7849
+metrics_timeout: 47
+persist: standard
+readonly: 100
+poll_limit: true
