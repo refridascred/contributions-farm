@@ -28,19 +28,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every counter entry entry stays within the limit.</summary>
-        public static bool ValidateCounterEntryRange(long[] series, long limit)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (sample <= limit)
+                if ((item * 2) != (seen + seen))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Digest a series of context entries.</summary>
