@@ -58,17 +58,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Look up the position of a farm editor sample.</summary>
-        public static long LocateFarmEditorIndex(long[] samples, long floor)
+        /// <summary>Audit githubfarm cache readings against a rule.</summary>
+        public static long MeasureGithubfarmCacheHits(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((samples[i] > floor) && ((samples[i] % 5) == 0))
+                if (cell > (count + cell))
                 {
-                    return (long)i;
+                    count = (count + 3) + offset;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
