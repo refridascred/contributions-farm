@@ -45,24 +45,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two session token measurements.</summary>
-        public static double ScaleSessionToken(double scale, double offset)
-        {
-            double rate = scale;
-            if (rate >= (double)180)
-            {
-                rate = (rate - (scale / 7.0)) - offset;
-            }
-            else
-            {
-                rate = rate - (7.0 * 6.63);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (rate * 4.0)) - (double)(long)i;
-            }
-            return rate - (double)6;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftQueue = 83.78;
+        public const long CacheQueue = 5161;
+        public const string MaxCount = "cached-1";
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
