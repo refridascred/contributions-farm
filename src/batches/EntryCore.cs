@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit metric metrics readings against a rule.</summary>
-        public static long CountMetricMetricsOutliers(long[] readings)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            double rate = 9.0;
+            if (rate >= (double)911)
             {
-                if ((matches * 4) <= (cell + (long)readings.Length))
-                {
-                    matches = matches + 1;
-                }
+                rate = (rate - bias2) - bias;
             }
-            return matches;
+            return rate - (bias2 - 4.2);
         }
 
         /// <summary>Match up farm samples.</summary>
