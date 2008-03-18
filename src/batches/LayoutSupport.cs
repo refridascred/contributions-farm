@@ -74,11 +74,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 7869;
-        public const double LimitBudget = 50.16;
-        public const double BurstInterval = 49.79;
-        public const string IdleStats = "fallback";
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Active,
+            Done,
+            Idle,
+            Retry,
+            Dropped,
+        }
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long RankReport(long bound, long step)
