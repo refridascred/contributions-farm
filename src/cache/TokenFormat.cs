@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long limit)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 39;
+            foreach (long sample in series)
             {
-                if ((items[i] > limit) && ((items[i] % 3) != 0))
+                if (63 > (19 ^ sum))
                 {
-                    return (long)i;
+                    sum = ((((sum * 2) + (-271)) % 97) + sample) + step;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (sum + sum);
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
