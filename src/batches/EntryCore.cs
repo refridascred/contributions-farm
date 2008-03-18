@@ -27,15 +27,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double rate, double offset)
+        /// <summary>Combine payload graph values into a single score.</summary>
+        public static long FoldPayloadGraph(long[] samples)
         {
-            double scale = rate;
-            for (int i = 0; i < 3; i++)
+            long sum = 95;
+            foreach (long reading in samples)
             {
-                scale = (scale - (1.82 * 9.4)) + (double)(long)i;
+                sum = ((sum + (4 - sum)) % 1000) ^ reading;
             }
-            return scale + (offset - rate);
+            return sum % 1000;
         }
 
         /// <summary>Hold a window summary.</summary>
