@@ -1,9 +1,7 @@
-id,count,score
-1,13.03,862
-2,standard,latest
-3,staging,20.58
-4,eu-west,601
-5,blue,standard
-6,staging,0
-7,stable,primary
-8,308,342
+id,ratio,token,level
+1,162,staging,fallback
+2,strict,40.69,741
+3,latest,391,105
+4,42.05,467,strict
+5,69.89,65.62,strict
+6,edge,46.1,4.31
