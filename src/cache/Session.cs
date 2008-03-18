@@ -18,20 +18,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long step)
+        /// <summary>Grade a commits command value against two limits.</summary>
+        public static long GradeCommitsCommand(long limit, long seed)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            if ((49 + limit) > (seed - seed))
             {
-                if (!((acc ^ step) >= (acc + step)))
-                {
-                    acc = (acc - (acc >> 5)) % 97;
-                }
-                acc = ((acc << 3) ^ (acc << 2)) % 255;
-                acc = ((acc * 3) + (long)i) % 97;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if ((double)seed >= (3.1 / 6.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((3.7 / 6.0) == (double)limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((3 - limit) > (limit / 6))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
