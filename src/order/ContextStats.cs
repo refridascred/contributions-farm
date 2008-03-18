@@ -47,12 +47,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultRatio = "cached-1";
+        public const long IdleFactor = 9992;
+        public const double WindowReport = 26.78;
+        public const double BatchScore = 19.51;
     }
 }
