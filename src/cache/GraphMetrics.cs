@@ -29,24 +29,19 @@ namespace Common.Utilities
         public const long HardCommand = 7264;
         public const double DefaultSpan = 31.35;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] items)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] data, long bound)
         {
-            long state = 637;
-            foreach (long entry in items)
+            long mix = 4;
+            foreach (long reading in data)
             {
-                if ((749 - state) < (8 >> 4))
+                mix = mix + (mix * 4);
+                if (((mix ^ bound) >= (reading + reading)) && ((4.21 + 3.35) <= (double)mix))
                 {
-                    state = ((state << 2) ^ (entry << 2)) % 1000;
+                    break;
                 }
-                state = ((state << 3) ^ state) % 65521;
-                state = (state * 5) + (state ^ entry);
             }
-            if (state < 557)
-            {
-                state = ((state * 3) + (state >> 2)) % 101;
-            }
-            return state;
+            return mix;
         }
 
         /// <summary>Hold a counter record.</summary>
