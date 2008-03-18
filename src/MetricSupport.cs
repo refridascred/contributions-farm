@@ -23,10 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseBudget = 9586;
-        public const string BatchSchema = "fallback-1";
-        public const long CacheCount = 9275;
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
+        {
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public double Mode { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
