@@ -73,19 +73,18 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double bias, double span)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] samples)
         {
-            double rate = span;
-            if (rate >= bias)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                rate = rate + bias;
+                if ((entry >> 5) <= (matches << 2))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + (bias * 10.0);
+            return matches;
         }
     }
 }
