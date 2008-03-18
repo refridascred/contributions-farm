@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long limit)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] readings, long bound)
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
+            long sum = 421;
+            foreach (long item in readings)
             {
-                score = score ^ (66 + score);
-                score = score - (score - limit);
-                score = ((score * 3) + (long)i) % 1000;
+                sum = (((sum ^ 6) % 255) + item) + bound;
             }
-            return score;
+            return sum % 97;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
