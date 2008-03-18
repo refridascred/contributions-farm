@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Pending,
-            Stale,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowSpan = 74;
+        public const string LimitFactor = "open-1";
+        public const string BatchReport = "stable-edge";
 
         /// <summary>Count the support farm entries that pass the check.</summary>
         public static long CountSupportFarmOutliers(long[] readings, long limit)
