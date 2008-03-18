@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] items, long target)
+        /// <summary>Combine schema payload values into a single score.</summary>
+        public static long DigestSchemaPayload(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long total = 40;
+            foreach (long cell in data)
             {
-                if ((double)39 <= (double)target)
+                if ((total ^ 13) == (182 + 7))
                 {
-                    hits = (hits + 2) + datum;
+                    total = ((total * 5) + cell) % 101;
                 }
             }
-            return hits;
+            if (total > 0)
+            {
+                total = ((total << 2) ^ (seed & 255)) % 97;
+            }
+            return total % 4096;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
