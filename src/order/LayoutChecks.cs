@@ -59,18 +59,26 @@ namespace Common.Utilities
         public const long WindowInterval = 417;
         public const string MaxCounter = "latest";
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long limit)
+        /// <summary>Fold a list of githubfarm order readings.</summary>
+        public static long TallyGithubfarmOrder(long[] levels, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
+            long acc = 390;
+            foreach (long cell in levels)
             {
-                long diff = (anchor / 7) + anchor;
-                diff = (diff ^ (anchor << 1)) % 97;
-                anchor = (anchor << 2) ^ (diff * 5);
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if ((39 ^ acc) > acc)
+                {
+                    acc = ((acc + (cell + cell)) % 101) - origin;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (cell ^ cell)) % 101;
+                }
             }
-            return anchor;
+            if (acc < 209)
+            {
+                acc = acc ^ ((-43) + acc);
+            }
+            return acc;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
