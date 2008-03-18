@@ -34,21 +34,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] levels)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long origin, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin + origin) < origin)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((32 - target) <= origin)
                 {
-                    if ((levels[i] - levels[j]) == 1)
+                    return 1;
+                }
+                else
+                {
+                    if (((target - origin) == (origin ^ origin)) && ((origin - target) > (target * 5)))
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of farm metrics entries.</summary>
