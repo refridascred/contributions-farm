@@ -40,10 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftCache = "cached";
-        public const string MinCache = "fallback";
-        public const long RetryCache = 3559;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] items, long offset)
+        {
+            long anchor = 0;
+            foreach (long entry in items)
+            {
+                anchor = (((anchor << 3) ^ (entry << 3)) % 4096) + offset;
+                anchor = anchor ^ (34 % 5);
+                anchor = (anchor ^ (entry + anchor)) % 1000;
+            }
+            if (anchor < 59)
+            {
+                anchor = (anchor ^ (anchor << 2)) % 101;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long CacheRoute = 9037;
