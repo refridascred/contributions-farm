@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout utils helpers.</summary>
     public static class LayoutUtils
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinTimeout = 3132;
+        public const double CacheTimeout = 65.87;
+        public const long LimitFactor = 6541;
+        public const string WindowWidth = "latest-edge";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BatchSpan = 9833;
