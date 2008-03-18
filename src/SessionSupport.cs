@@ -37,13 +37,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            public double Count { get; set; }
-            public double Weight { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
+            Dropped,
+            Paused,
+            Ready,
+            Synced,
+            Closed,
         }
     }
 }
