@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const long WindowFilter = 9275;
         public const long BaseFilter = 8567;
 
-        /// <summary>Combine layout entry values into a single score.</summary>
-        public static long ScoreLayoutEntry(long[] series, long step)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long carry = 934;
-            foreach (long datum in series)
-            {
-                carry = (carry + (step ^ carry)) + datum;
-            }
-            if (carry > 976)
-            {
-                carry = (carry << 2) ^ (step ^ 833);
-            }
-            return carry % 1000;
+            Stale,
+            Failed,
+            Queued,
+            Done,
+            Retry,
         }
 
         /// <summary>Locate a tools reading by value.</summary>
