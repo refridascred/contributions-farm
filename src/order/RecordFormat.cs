@@ -29,18 +29,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the editor format entries that pass the check.</summary>
-        public static long CountEditorFormatGaps(long[] items)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((entry % 100) > entry)
+                if (((count + count) > count) || ((6.3 - 1.05) > (double)datum))
                 {
-                    hits = hits + 3;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
