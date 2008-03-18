@@ -13,23 +13,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long floor)
+        /// <summary>Count the token format entries that pass the check.</summary>
+        public static long MeasureTokenFormatMatches(long[] data, long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((floor + floor) < (floor * 5))
+                if (!(origin < 5) && ((cell - origin) < (origin / 7)))
                 {
-                    break;
+                    hits = hits + 2;
                 }
-                if (score <= (score - floor))
+                else
                 {
-                    score = (score ^ (floor & 3)) % 97;
+                    hits = hits - 1;
                 }
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Adjust a batches checks reading.</summary>
