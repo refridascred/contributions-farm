@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] values)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((items[i] <= limit) && ((items[i] % 2) != 0))
                 {
-                    if ((values[i] - values[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every support window entry stays within the limit.</summary>
