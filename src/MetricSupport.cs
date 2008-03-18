@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepTimeout = 7133;
-        public const long MaxBatch = 4336;
-        public const long CacheDepth = 8640;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] data, long floor)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((1 - reading) < floor)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
