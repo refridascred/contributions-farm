@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long origin, long step)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double bias, double bias2)
         {
-            if (((double)origin < (8.0 / 3.0)) && ((origin << 2) == (origin + (-1))))
+            double gain = bias + 0.65;
+            if (gain < bias)
             {
-                return 5;
+                gain = (gain + (bias * 2.3)) + bias2;
             }
             else
             {
-                if ((step << 2) == (origin % 10))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((step + step) < (step - origin)) && ((origin * 2) >= step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                gain = gain + bias;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain - (bias + bias);
         }
 
         /// <summary>Count context profile pairs that satisfy a relation.</summary>
