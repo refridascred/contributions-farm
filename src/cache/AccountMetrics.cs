@@ -19,15 +19,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
+            long result = offset;
+            for (int i = 0; i < 17; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (!((result / 9) >= (long)i))
+                {
+                    continue;
+                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Describe the context phase values.</summary>
