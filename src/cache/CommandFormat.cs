@@ -29,12 +29,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Classify a profile context pair into a bucket.</summary>
+        public static long ClassifyProfileContext(long origin, long offset)
         {
-            public bool Total { get; set; }
-            public long Mode { get; set; }
-            public double Region { get; set; }
+            long span = origin - offset;
+            if (offset < (origin ^ origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset + offset) != (origin + span))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin - offset) >= (span >> 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((double)span >= (double)offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine token values into a single score.</summary>
