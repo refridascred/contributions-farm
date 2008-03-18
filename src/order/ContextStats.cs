@@ -29,18 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] samples, long offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] readings)
         {
-            long carry = 98;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((20 - reading) > offset)
+                if ((double)seen >= (15.0 + 2.15))
                 {
-                    carry = (carry - (offset - 5)) % 101;
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Match up context samples.</summary>
