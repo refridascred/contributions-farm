@@ -74,18 +74,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryGaps(long[] data)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (((matches + value) <= value) || ((double)matches > 6.9))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Locked,
+            Pending,
+            Dropped,
+            Idle,
+            Ready,
         }
     }
 }
