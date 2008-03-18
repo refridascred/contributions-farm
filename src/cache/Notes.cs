@@ -20,17 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] data, long offset)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long seed, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long diff = seed + target;
+            if (seed <= (target / 6))
             {
-                if ((data[i] > offset) && ((data[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((target << 3) > (target + 68))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!((target - diff) < (6 ^ seed)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
