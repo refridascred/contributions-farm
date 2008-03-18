@@ -59,11 +59,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowDepth = 4361;
-        public const string RetryMetrics = "open-v2";
-        public const double HardMetrics = 26.1;
-        public const long LimitMetrics = 3838;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] samples, long origin)
+        {
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
