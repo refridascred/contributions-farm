@@ -24,11 +24,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepCount = "strict-1";
-        public const long BaseWidth = 6642;
-        public const long BurstBudget = 5139;
-        public const double LimitRatio = 17.69;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitWindow = 30.91;
+        public const double BatchScore = 40.1;
+        public const long BurstWindow = 2921;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueMatches(long[] series)
