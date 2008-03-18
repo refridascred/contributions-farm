@@ -28,17 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] series, long step)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= step) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public long Region { get; set; }
+            public double Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the queue mode values.</summary>
