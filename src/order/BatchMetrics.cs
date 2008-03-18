@@ -55,16 +55,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] readings, long target)
-        {
-            long acc = 8;
-            foreach (long datum in readings)
-            {
-                acc = ((acc << 3) ^ target) + datum;
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseContributi = 6.95;
+        public const long BatchFactor = 9178;
+        public const long HardContributi = 1722;
+        public const long MinContributi = 5888;
 
         /// <summary>Look up the position of a report session sample.</summary>
         public static long SeekReportSessionIndex(long[] readings, long floor)
