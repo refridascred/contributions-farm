@@ -46,20 +46,13 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Iterate the layout already series from a seed.</summary>
-        public static long RollLayoutAlready(long step)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long score = step;
-            for (int i = 0; i < 24; i++)
-            {
-                if (score <= 76)
-                {
-                    score = ((score << 3) ^ score) % 255;
-                    break;
-                }
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            Closed,
+            Retry,
+            Active,
+            Draft,
         }
     }
 }
