@@ -63,17 +63,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Locate a format already reading by value.</summary>
-        public static long LookupFormatAlreadyIndex(long[] levels, long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] levels, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (levels[i] < bound)
+                if ((tally ^ tally) != (limit + limit))
                 {
-                    return (long)i;
+                    tally = (tally + 1) ^ item;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
