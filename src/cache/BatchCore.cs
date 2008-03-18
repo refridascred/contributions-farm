@@ -25,18 +25,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] series)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample >= 4.99)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
