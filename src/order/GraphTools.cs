@@ -22,10 +22,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitWindow = 30.91;
-        public const double BatchScore = 40.1;
-        public const long BurstWindow = 2921;
+        /// <summary>Digest a series of cluster stats entries.</summary>
+        public static long DigestClusterStats(long[] data)
+        {
+            long mix = 883;
+            foreach (long reading in data)
+            {
+                if ((reading + reading) < mix)
+                {
+                    mix = (mix ^ (reading - mix)) % 97;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ mix) % 65521;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
