@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long step, long origin)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] levels, long offset)
         {
-            if ((step % 24) == (4 * 2))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((origin - origin) >= (step - origin)) || (origin <= 487))
+                if ((levels[i] <= offset) && ((levels[i] % 5) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (step > (step ^ step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
