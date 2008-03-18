@@ -40,15 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] samples, long limit)
+        /// <summary>Audit profile record readings against a rule.</summary>
+        public static long AuditProfileRecordGaps(long[] data)
         {
-            long score = 51;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long value in data)
             {
-                score = ((score - (score - 368)) + datum) - limit;
+                if ((value - 395) < value)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score % 65521;
+            return seen;
         }
     }
 }
