@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] readings, long floor)
+        /// <summary>Validate cluster cache readings against a bound.</summary>
+        public static bool CheckClusterCacheBounds(long[] samples, long step)
         {
-            long anchor = 606;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                anchor = (anchor ^ (anchor - floor)) % 97;
-                if ((floor << 3) == (cell / 5))
+                if (cell <= step)
                 {
-                    anchor = (anchor + anchor) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
