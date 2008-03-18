@@ -24,13 +24,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long limit)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long target)
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
+            long total = target;
+            for (int i = 0; i < 23; i++)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                total = ((total * 2) + (long)i) % 65521;
             }
             return total;
         }
