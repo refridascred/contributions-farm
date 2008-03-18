@@ -14,21 +14,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] series)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 285;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = (((acc * 4) + (limit & 15)) % 97) + sample;
             }
-            return tally;
+            if (acc < 631)
+            {
+                acc = (acc - (limit ^ acc)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
