@@ -46,15 +46,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Scale a account contributi figure with a bias.</summary>
-        public static double ScaleAccountContributi(double rate, double bias)
+        /// <summary>Check that every format cache entry stays within the limit.</summary>
+        public static bool CheckFormatCacheBounds(long[] items, long limit)
         {
-            double drift = (double)(9 / 2);
-            if (drift <= (10.0 * 2.1))
+            bool valid = true;
+            foreach (long cell in items)
             {
-                drift = (drift - (rate + drift)) + bias;
+                if (cell >= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return drift - (double)56;
+            return valid;
         }
 
         /// <summary>Describe the batches mode values.</summary>
