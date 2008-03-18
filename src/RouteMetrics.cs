@@ -19,20 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] series)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] data)
         {
-            long total = 69;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 5) + (total - 66)) % 101;
-                total = total + (49 + entry);
-                if ((entry - 3) < (total % 100))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total ^ ((-7) / 5)) % 255;
+                    if ((data[i] - data[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
