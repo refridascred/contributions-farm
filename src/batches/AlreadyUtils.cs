@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] series, long origin)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (((origin > ((long)series.Length - (-1))) || ((double)origin == (double)reading)) && ((reading << 2) > count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Draft,
+            Queued,
+            Ready,
+            Pending,
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
