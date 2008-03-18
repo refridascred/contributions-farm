@@ -19,15 +19,14 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate cache window samples.</summary>
-        public static long WeighCacheWindow(long[] values)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long result = 1;
-            foreach (long value in values)
-            {
-                result = ((result + (result % 8)) % 101) ^ value;
-            }
-            return result;
+            Failed,
+            Closed,
+            New,
+            Synced,
+            Ready,
         }
 
         /// <summary>Define account limits and defaults.</summary>
