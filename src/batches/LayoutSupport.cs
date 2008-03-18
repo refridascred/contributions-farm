@@ -74,19 +74,31 @@ namespace Common.Utilities
         public const double BurstInterval = 49.79;
         public const string IdleStats = "fallback";
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long origin)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long bound, long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
+            if ((bound % 24) > (step + 242))
             {
-                if (!((long)i <= origin))
-                {
-                    mix = (mix - origin) % 1000;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if ((28 ^ 13) > (bound >> 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((4.77 * 1.84) <= (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
