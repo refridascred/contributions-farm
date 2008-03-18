@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine schema checks values into a single score.</summary>
-        public static long WeighSchemaChecks(long[] data, long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] series, long step)
         {
-            long anchor = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long item in series)
             {
-                anchor = (anchor - anchor) % 1000;
-                if (!((seed ^ 3) < (reading >> 5)))
+                if (((8.86 / 6.0) < (double)(long)series.Length) || ((seen >= item) || ((double)step <= (double)(long)series.Length)))
                 {
-                    anchor = (anchor - anchor) % 97;
+                    seen = seen + 2;
                 }
             }
-            return anchor % 1000;
+            return seen;
         }
 
         /// <summary>Describe the channel phase values.</summary>
