@@ -47,11 +47,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define booking limits and defaults.</summary>
-        public const double LimitBooking = 98.79;
-        public const string IdleBooking = "staging-edge";
-        public const long SoftBooking = 4310;
-        public const double MaxDepth = 95.2;
-        public const string BaseBooking = "open-1";
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] data, long target)
+        {
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
