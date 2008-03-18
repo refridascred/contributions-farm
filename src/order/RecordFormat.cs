@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            Done,
-            Queued,
-            Closed,
-            Locked,
-            Idle,
+            public double Limit { get; set; }
+            public bool Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
