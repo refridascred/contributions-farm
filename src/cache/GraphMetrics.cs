@@ -22,12 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardSpan = 9892;
-        public const long HardTimeout = 671;
-        public const long BurstCommand = 1569;
-        public const long HardCommand = 7264;
-        public const double DefaultSpan = 31.35;
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
+        {
+            public string Level { get; set; } = "";
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Classify a profile metric pair into a bucket.</summary>
         public static long RankProfileMetric(long seed, long step)
