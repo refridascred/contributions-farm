@@ -28,10 +28,14 @@ namespace Common.Utilities
         public const string BatchSchema = "fallback-1";
         public const long CacheCount = 9275;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftReport = "staging-edge";
-        public const long IdleReport = 9687;
-        public const long RetryTimeout = 4515;
-        public const double BaseReport = 96.92;
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Active,
+            Failed,
+            New,
+            Paused,
+            Idle,
+        }
     }
 }
