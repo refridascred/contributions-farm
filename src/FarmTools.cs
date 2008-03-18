@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] samples, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] items, long target)
         {
-            long sum = 70;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((360 ^ 80) > (step - step))
+                if ((double)39 <= (double)target)
                 {
-                    sum = ((sum << 3) ^ (sample + sum)) % 101;
+                    hits = (hits + 2) + datum;
                 }
             }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
