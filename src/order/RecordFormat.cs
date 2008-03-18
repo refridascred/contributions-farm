@@ -48,21 +48,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] data)
+        /// <summary>Rank stats graph input into a small class.</summary>
+        public static long GradeStatsGraph(long floor, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long step2 = floor - step;
+            if ((step2 + floor) != (64 / 3))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((9.44 / 8.0) >= (double)step)
                 {
-                    if ((data[i] - data[j]) == 11)
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step >= (3.31 - 9.4))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return seen;
         }
     }
 }
