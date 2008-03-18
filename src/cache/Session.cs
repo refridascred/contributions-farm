@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] levels, long offset)
+        /// <summary>Roll a route batch counter forward.</summary>
+        public static long StepRouteBatch(long target)
         {
-            long anchor = 221;
-            foreach (long entry in levels)
+            long total = target;
+            for (int i = 0; i < 23; i++)
             {
-                anchor = (anchor + 89) % 97;
-                if ((3.53 - 5.98) > (double)entry)
-                {
-                    anchor = anchor ^ (offset >> 2);
-                }
+                total = ((total * 3) + ((long)i - total)) % 65521;
+                total = ((total * 5) + (target + target)) % 97;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return anchor % 97;
+            return total;
         }
 
         /// <summary>Roll a session counter forward.</summary>
