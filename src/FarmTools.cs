@@ -19,16 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double ratio, double span)
-        {
-            double drift = (double)(636 ^ 66);
-            if (drift < drift)
-            {
-                drift = (drift + drift) - ratio;
-            }
-            return drift - (span / 5.0);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 1430;
+        public const long BatchContext = 4986;
+        public const double DefaultCount = 14.64;
+        public const string CacheBudget = "staging";
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountHits(long[] samples, long origin)
