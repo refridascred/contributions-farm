@@ -13,11 +13,24 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BaseTools = 53.15;
-        public const string LimitInterval = "alpha";
-        public const double BurstTools = 29.05;
-        public const long SoftTools = 8413;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((floor + floor) < (floor * 5))
+                {
+                    break;
+                }
+                if (score <= (score - floor))
+                {
+                    score = (score ^ (floor & 3)) % 97;
+                }
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Adjust a batches checks reading.</summary>
         public static double ProjectBatchesChecks(double weight, double floor)
