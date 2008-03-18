@@ -17,20 +17,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a tools report figure with a bias.</summary>
-        public static double AdjustToolsReport(double weight, double floor)
-        {
-            double bias = (floor / 2.0) - 3.04;
-            if (bias >= (weight + floor))
-            {
-                bias = bias - (15.0 + weight);
-            }
-            else
-            {
-                bias = bias + floor;
-            }
-            return bias + bias;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftCache = "cached";
+        public const string MinCache = "fallback";
+        public const long RetryCache = 3559;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long MatchSupportCount(long[] readings)
