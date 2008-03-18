@@ -16,12 +16,12 @@ namespace Common.Utilities
             return bias + (double)28;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] data, long target)
+        /// <summary>Look up the position of a batches tools sample.</summary>
+        public static long LookupBatchesToolsIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] < target) && ((data[i] % 3) == 0))
+                if (readings[i] <= bound)
                 {
                     return (long)i;
                 }
