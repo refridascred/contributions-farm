@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Audit stream checks readings against a rule.</summary>
+        public static long CountStreamChecksOutliers(long[] values)
         {
-            public bool Size { get; set; }
-            public bool Limit { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((((hits % 64) < (hits + hits)) || ((double)entry >= (8.2 / 2.0))) && !(656 <= hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
