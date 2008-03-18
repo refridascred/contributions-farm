@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] values)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long mix = 17;
+            foreach (long sample in levels)
             {
-                if ((datum * 5) <= 817)
-                {
-                    hits = hits + 3;
-                }
+                mix = (((mix << 2) ^ (sample + 85)) % 101) + step;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
