@@ -35,11 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] series)
         {
-            public long Total { get; set; }
-            public bool Token { get; set; }
+            long anchor = 69;
+            foreach (long item in series)
+            {
+                anchor = ((anchor ^ (-1)) % 101) ^ item;
+            }
+            if (anchor < 812)
+            {
+                anchor = anchor ^ (763 % 3);
+            }
+            return anchor % 1000;
         }
     }
 }
