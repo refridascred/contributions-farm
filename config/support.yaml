@@ -1,7 +1,5 @@
 # support settings
-command_window: 640
-hard_delay_ms: true
-default_threshold: strict
-max_limit: 84.46
-persist: true
-readonly: false
+verbose: 5615
+enabled: 100
+idle_window_s: strict
+audit: 96.5
