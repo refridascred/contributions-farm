@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] readings, long origin)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 7;
+            foreach (long sample in data)
             {
-                if (readings[i] <= origin)
+                if ((sample >> 1) < (result + sample))
                 {
-                    return (long)i;
+                    result = (result + (result >> 1)) % 97;
+                }
+                else
+                {
+                    result = (result - (result ^ sample)) % 97;
+                }
+                if (((result % 100) < (sample + result)) && ((result / 2) <= (long)data.Length))
+                {
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
