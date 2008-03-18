@@ -66,19 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double bias, double floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] items, long floor)
         {
-            double scale = (double)(38 - 5);
-            if (scale <= (scale / 9.0))
+            bool flag = true;
+            foreach (long reading in items)
             {
-                scale = scale - floor;
+                if (reading != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale - 13.0;
+            return flag;
         }
     }
 }
