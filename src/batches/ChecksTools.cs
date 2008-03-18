@@ -41,22 +41,38 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] readings)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long bound, long floor)
         {
-            long mix = -8;
-            foreach (long entry in readings)
+            if (!((floor + floor) > (8 & 31)))
             {
-                if (!((double)entry != (9.18 + 17.0)))
+                return 1;
+            }
+            else
+            {
+                if ((double)floor != (4.4 - 4.0))
                 {
-                    mix = (mix + (entry ^ mix)) % 65521;
+                    return 4;
                 }
                 else
                 {
-                    mix = (mix - 60) % 1000;
+                    if (floor < (bound & 31))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((661 * 5) < (floor & 1)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return mix;
         }
     }
 }
