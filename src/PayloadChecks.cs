@@ -80,19 +80,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every counter graph entry stays within the limit.</summary>
-        public static bool VerifyCounterGraphLimits(long[] readings, long origin)
+        /// <summary>Rank buffer tools input into a small class.</summary>
+        public static long ClassifyBufferTools(long offset, long floor)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long bound = offset + floor;
+            if ((floor + offset) >= (bound & 127))
             {
-                if (datum < origin)
+                return 1;
+            }
+            else
+            {
+                if ((bound - 402) >= (bound + 3))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((floor % 12) <= (offset * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((35 + 7) > offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
