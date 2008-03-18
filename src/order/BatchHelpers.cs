@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] readings)
         {
-            public long Label { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)hits < 9.0)
+                {
+                    hits = (hits + 3) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
