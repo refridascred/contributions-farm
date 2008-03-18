@@ -17,21 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] values, long target)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (sample >= target)
                 {
-                    mark = ((mark << 2) ^ (floor & 127)) - (long)i2;
-                    mark = mark - mark;
+                    stale = false;
+                    break;
                 }
-                mark = (mark - ((long)i - mark)) % 65521;
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
