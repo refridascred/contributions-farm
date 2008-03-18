@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long WindowSession = 7599;
         public const string BaseSession = "legacy-edge";
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Audit filter layout readings against a rule.</summary>
+        public static long TallyFilterLayoutOutliers(long[] values, long origin)
         {
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((tally - origin) == (origin * 4))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of cluster stats entries.</summary>
