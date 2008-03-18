@@ -36,13 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Measure how many batch commits samples are out of range.</summary>
+        public static long MeasureBatchCommitsOutliers(long[] series, long bound)
         {
-            Idle,
-            Draft,
-            Done,
-            Pending,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (((bound + 52) < bound) || (cell <= count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
