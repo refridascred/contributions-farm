@@ -19,22 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] samples, long offset)
+        /// <summary>Derive the next notes cluster value from a seed.</summary>
+        public static long RollNotesCluster(long target)
         {
-            long mix = 63;
-            foreach (long sample in samples)
+            long state = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((mix + offset) != (sample * 2))
-                {
-                    mix = mix + (sample << 2);
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (offset >> 4);
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Define account limits and defaults.</summary>
