@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long seed)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                total = total ^ (total + seed);
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            Synced,
+            Dropped,
+            Draft,
+            New,
         }
 
         /// <summary>Match up metric checks samples.</summary>
