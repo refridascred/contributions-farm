@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a graph session value against two limits.</summary>
-        public static long SortGraphSession(long step, long origin)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] values, long floor)
         {
-            long prev = step - origin;
-            if ((step <= (origin + 2)) || ((double)prev <= (0.55 + 7.14)))
+            bool flag = true;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step + prev) <= (origin / 7))
+                if (reading > floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (12.0 > (double)655)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step / 5) < (step % 16))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Blend two queue measurements.</summary>
