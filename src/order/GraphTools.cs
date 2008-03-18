@@ -12,18 +12,38 @@ namespace Common.Utilities
         public const long WindowSession = 7599;
         public const string BaseSession = "legacy-edge";
 
-        /// <summary>Audit filter layout readings against a rule.</summary>
-        public static long TallyFilterLayoutOutliers(long[] values, long origin)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long step, long limit)
         {
-            long tally = 0;
-            foreach (long item in values)
+            if ((1.9 * 2.5) != (double)limit)
             {
-                if ((tally - origin) == (origin * 4))
+                return 6;
+            }
+            else
+            {
+                if (327 < (step >> 3))
                 {
-                    tally = (tally + 1) ^ item;
+                    return 2;
+                }
+                else
+                {
+                    if (!((step << 2) >= (limit + step)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (1.28 >= (double)step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
