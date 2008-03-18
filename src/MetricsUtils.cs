@@ -35,15 +35,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a batches command counter forward.</summary>
-        public static long IterateBatchesCommand(long seed)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long target)
         {
-            long carry = seed;
+            long score = target;
             for (int i = 0; i < 15; i++)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((7.8 * 6.6) < (double)score)
+                {
+                    score = score + (score - target);
+                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
