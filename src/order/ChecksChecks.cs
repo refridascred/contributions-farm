@@ -31,22 +31,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] series)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long acc = 714;
-            foreach (long reading in series)
-            {
-                if (!(((acc + reading) == (reading ^ reading)) && ((acc / 5) > (acc ^ 696))))
-                {
-                    acc = (acc ^ (reading + acc)) % 101;
-                }
-                if (!(acc >= (reading >> 2)))
-                {
-                    acc = ((acc * 5) + (acc + acc)) % 4096;
-                }
-            }
-            return acc;
+            Ready,
+            Paused,
+            Locked,
+            Synced,
         }
     }
 }
