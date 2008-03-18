@@ -1,38 +1,11 @@
 # support settings
-retry_ttl_ms: staging
-channel_timeout: 3411
-base_retries_ms:
-  strict: strict
-  min_limit: 4
-  min_capacity_s: edge
-  batch_size_pct:
-    soft_limit_ms: 10.73
-    verbose: false
-    idle_limit_count: fallback
-    warm_ratio:
-      - legacy
-      - cached
-      - blue
-      - green
-    audit:
-      - stable
-      - latest
-      - latest
-      - green
-compress:
-  sync_threshold: cached
-  poll_size:
-    poll_ratio_ms: fallback
-    soft_size_count: true
-    base_delay_pct: 250
-  stream_delay: primary
-  soft_depth: standard
-  dry_run: 5576
-  counter_size: 5849
-base_ttl_ms:
-  queue_limit: staging
-  enabled: 2059
-  strict: 30
-  editor_limit: 8702
-  flush_capacity_count: standard
-  soft_timeout_count: legacy
+support_threshold:
+  - 124
+  - 201
+  - 487
+  - 205
+hard_threshold_s: 67
+hard_depth_pct:
+  - 244
+  - 499
+  - 478
