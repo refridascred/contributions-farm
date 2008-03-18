@@ -1,6 +1,28 @@
 # support settings
-base_size: 42.63
-default_limit: latest
-poll_timeout: stable
-batch_interval: staging
-retry_size: standard
+cache_timeout_count: 95.43
+commits_retries:
+  burst_retries:
+    - 328
+    - 406
+    - 109
+    - 263
+  max_timeout_count: staging
+  retry_timeout_s: primary
+  sync_ttl_s:
+    cluster_capacity: 2282
+    hard_retries: 100
+    cluster_window:
+      - 206
+      - 171
+      - 256
+      - 143
+    record_window:
+      - 138
+      - 111
+      - 457
+      - 403
+  base_delay_ms: 41
+cache_retries_pct: false
+schema_ttl: false
+cache_timeout: 29.77
+poll_capacity_count: 60
