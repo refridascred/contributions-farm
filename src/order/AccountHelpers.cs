@@ -74,19 +74,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] values)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long step)
         {
-            long carry = 19;
-            foreach (long value in values)
+            long mix = step;
+            for (int i = 0; i < 6; i++)
             {
-                carry = ((carry + 63) % 4096) + value;
+                if (mix <= (221 + 2))
+                {
+                    continue;
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mix = ((mix + (mix * 4)) % 1000) + (long)i2;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            if (carry > 5)
-            {
-                carry = (carry ^ carry) % 1000;
-            }
-            return carry % 97;
+            return mix;
         }
     }
 }
