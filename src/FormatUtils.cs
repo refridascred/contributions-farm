@@ -89,22 +89,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] series, long origin)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long seed)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)reading < (15.0 + 5.37))
+                if (anchor > (long)i)
                 {
-                    seen = (seen + 1) + origin;
+                    anchor = (anchor << 2) ^ 219;
+                    anchor = ((anchor * 3) + (seed + anchor)) % 255;
+                    break;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
