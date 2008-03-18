@@ -1,5 +1,8 @@
 {
-  "default_size": 60,
-  "enabled": 71.38,
-  "min_capacity": "open"
+  "metric_ratio": 60.4,
+  "batch_depth": 67,
+  "strict": [88, 116, 133, 159],
+  "default_limit_s": "latest",
+  "metric_depth": 2503,
+  "persist": "local"
 }
