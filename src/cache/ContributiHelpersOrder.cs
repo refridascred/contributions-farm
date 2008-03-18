@@ -34,17 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] series, long floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 39;
+            foreach (long reading in items)
             {
-                if (series[i] > floor)
+                if ((double)reading >= (2.2 / 7.0))
                 {
-                    return (long)i;
+                    anchor = (anchor - 86) - step;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
