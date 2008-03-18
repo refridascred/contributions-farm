@@ -1,5 +1,7 @@
 # entry settings
-token_ttl: 100
-burst_depth: 86
-persist: 30
-soft_retries_pct: 30
+notes_limit: open
+batch_interval: true
+compress: true
+burst_delay:
+  - fallback
+  - blue
