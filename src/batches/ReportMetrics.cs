@@ -40,18 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format window samples are out of range.</summary>
-        public static long TallyFormatWindowHits(long[] samples, long bound)
+        /// <summary>Accumulate tools editor samples.</summary>
+        public static long TallyToolsEditor(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long anchor = 56;
+            foreach (long datum in data)
             {
-                if (9 >= (hits - bound))
+                if (datum < (datum * 3))
                 {
-                    hits = (hits + 1) + datum;
+                    anchor = (anchor ^ (anchor + datum)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (453 % 12)) % 255;
+                    anchor = (anchor + (anchor + datum)) % 1000;
+                }
+                if ((anchor / 7) < (datum + datum))
+                {
+                    anchor = (anchor ^ datum) % 97;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor ^ anchor)) % 97;
                 }
             }
-            return hits;
+            return anchor % 1000;
         }
 
         /// <summary>Adjust a report reading.</summary>
