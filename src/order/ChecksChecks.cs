@@ -38,13 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] samples, long floor)
         {
-            Ready,
-            Paused,
-            Retry,
-            Pending,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((((double)floor >= 2.0) && ((seen / 3) > (floor * 2))) || (((value + floor) > (floor ^ 67)) || ((double)value > 2.0)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
