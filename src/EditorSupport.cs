@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] readings, long bound)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Roll a notes counter forward.</summary>
