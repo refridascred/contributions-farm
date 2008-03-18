@@ -49,11 +49,9 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double StepSchema = 97.26;
-        public const long MaxSpan = 9346;
-        public const string HardFactor = "cached-edge";
-        public const double SoftSchema = 34.3;
-        public const long StepBudget = 5624;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCount = 5799;
+        public const long WindowCommits = 9851;
+        public const string LimitCommits = "open";
     }
 }
