@@ -22,23 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double rate, double offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] readings, long floor)
         {
-            double ratio = offset * 2.9;
-            if (ratio > (double)5)
+            long mark = 78;
+            foreach (long datum in readings)
             {
-                ratio = ratio - (ratio + rate);
+                for (int i = 0; i < 6; i++)
+                {
+                    mark = (((mark ^ floor) % 97) ^ (long)i) + datum;
+                }
+                mark = mark - floor;
             }
-            else
-            {
-                ratio = ratio + offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + rate) + (double)(long)i;
-            }
-            return ratio + (rate + 2.25);
+            return mark;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
