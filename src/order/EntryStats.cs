@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long offset)
         {
-            public bool Rank { get; set; }
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
+            long anchor = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!!((double)offset == (double)33))
+                {
+                    anchor = anchor - offset;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
