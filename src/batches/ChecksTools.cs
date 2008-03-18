@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] series, long bound)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Active,
+            Locked,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
