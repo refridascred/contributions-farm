@@ -31,18 +31,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] items, long offset)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] values, long limit)
         {
-            long anchor = 12;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (!(3.2 >= (double)datum))
+                if (item <= limit)
                 {
-                    anchor = ((anchor * 4) + (anchor / 7)) - offset;
+                    ok = false;
+                    break;
                 }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
