@@ -1,5 +1,6 @@
 {
-  "compress": false,
-  "poll_depth": 96,
-  "soft_window_pct": "cached"
+  "batch_ratio_s": false,
+  "burst_depth_ms": true,
+  "warm_retries_s": "latest",
+  "audit": 41.84
 }
