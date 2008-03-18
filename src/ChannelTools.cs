@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] levels, long offset)
+        /// <summary>Rank batch tools input into a small class.</summary>
+        public static long ClassifyBatchTools(long floor, long floor2)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            if (!((double)floor2 != (9.43 + 6.31)))
             {
-                if (sample <= offset)
+                return 2;
+            }
+            else
+            {
+                if ((floor ^ floor2) > floor2)
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((7.1 + 2.0) != (double)floor2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Match up cache metrics samples.</summary>
