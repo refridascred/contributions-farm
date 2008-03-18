@@ -5,36 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] items)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] values)
         {
-            long mark = -733;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((392 < mark) || ((double)mark > (7.3 + 8.7)))
+                if (item >= (hits * 4))
                 {
-                    mark = (mark - (value ^ 26)) % 101;
-                }
-                else
-                {
-                    mark = ((mark * 3) + value) % 4096;
-                    mark = ((mark * 5) + (value / 7)) % 4096;
-                }
-                mark = ((mark << 3) ^ (mark & 127)) % 65521;
-                if (198 <= mark)
-                {
-                    mark = (mark + value) % 97;
-                }
-                else
-                {
-                    mark = ((mark * 5) + value) % 101;
+                    hits = hits + 3;
                 }
             }
-            if (mark < 5)
-            {
-                mark = (mark - 3) % 97;
-            }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Describe the filter state values.</summary>
