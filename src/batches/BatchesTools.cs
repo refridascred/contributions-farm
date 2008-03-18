@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long RetryWidth = 84;
         public const long RetryGraph = 8012;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] levels, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((3.5 - 1.0) != (double)seen)
+                if (((3 << 2) > (value + count)) && ((110 & 1) != (count >> 4)))
                 {
-                    seen = ((seen + 3) ^ sample) + offset;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
