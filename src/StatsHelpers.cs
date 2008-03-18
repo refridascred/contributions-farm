@@ -41,22 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] items, long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((779 - 995) <= entry)
+                if ((double)hits != (double)801)
                 {
-                    matches = (matches + 3) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
