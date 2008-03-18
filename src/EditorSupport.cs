@@ -38,16 +38,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] levels, long bound)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long mix = 23;
-            foreach (long cell in levels)
-            {
-                mix = (((mix * 3) + mix) % 97) - cell;
-                mix = (mix ^ bound) % 1000;
-            }
-            return mix;
+            New,
+            Active,
+            Failed,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Accumulate stats samples.</summary>
