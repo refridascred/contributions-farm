@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the token githubfarm entries that pass the check.</summary>
-        public static long MeasureTokenGithubfarmOutliers(long[] values)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if ((datum * 2) > hits)
+                if (sample <= offset)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Hold a cluster record.</summary>
