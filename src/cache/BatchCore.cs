@@ -25,13 +25,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            public string Owner { get; set; } = "";
-            public bool Limit { get; set; }
             public long Score { get; set; }
-            public double Ratio { get; set; }
+            public long Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
