@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public double Total { get; set; }
-            public bool Stamp { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseCount = 48.63;
+        public const long MinAlready = 4328;
+        public const double HardCount = 12.64;
+        public const long HardAlready = 3491;
+        public const long BurstAlready = 9323;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long TallyAlready(long[] series)
