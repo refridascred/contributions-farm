@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] values)
         {
-            public bool Level { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((tally & 7) == (datum >> 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a metrics options.</summary>
