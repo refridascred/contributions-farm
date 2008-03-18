@@ -22,11 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next session cache value.</summary>
-        public static double ProjectSessionCache(double ratio, double floor)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            double ratio2 = floor;
-            return (ratio2 + ratio2) + ratio;
+            New,
+            Idle,
+            Done,
+            Paused,
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
