@@ -28,13 +28,32 @@ namespace Common.Utilities
         public const string WindowSpan = "legacy-v2";
         public const long IdleRatio = 5642;
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Rank command format input into a small class.</summary>
+        public static long BucketCommandFormat(long offset, long target)
         {
-            public bool Rank { get; set; }
-            public bool Flag { get; set; }
-            public bool Weight { get; set; }
-            public bool Count { get; set; }
+            long step = offset - target;
+            if ((6.0 + 1.21) <= (double)target)
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset < ((-912) >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset ^ offset) == (step - offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
