@@ -1,6 +1,5 @@
 {
-  "batch_ratio_s": false,
-  "burst_depth_ms": true,
-  "warm_retries_s": "latest",
-  "audit": 41.84
+  "channel_timeout": "edge",
+  "poll_ratio_pct": ["fallback", "cached"],
+  "retry_size": ["staging", "primary", "strict"]
 }
