@@ -29,18 +29,9 @@ namespace Common.Utilities
         public const string HardInterval = "open";
         public const long CacheInterval = 6591;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] data, long seed)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((double)seed > (double)(long)data.Length)
-                {
-                    count = (count + 3) ^ datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseLevel = "cached";
+        public const string HardTimeout = "open-edge";
+        public const long WindowTools = 5813;
     }
 }
