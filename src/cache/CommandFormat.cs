@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] readings, long bound)
-        {
-            long sum = 421;
-            foreach (long item in readings)
-            {
-                sum = (((sum ^ 6) % 255) + item) + bound;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultRatio = 5806;
+        public const long BatchNotes = 6668;
+        public const double BurstNotes = 35.11;
 
         /// <summary>Fold a list of metric contributi readings.</summary>
         public static long CombineMetricContributi(long[] readings, long seed)
