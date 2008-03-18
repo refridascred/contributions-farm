@@ -1,7 +1,6 @@
 {
-  "flush_timeout": [393, 219, 368],
-  "sync_threshold_count": 1264,
-  "dry_run": true,
-  "cache_depth": 9,
-  "poll_size_pct": 95
+  "report_window": "strict",
+  "sync_timeout": "edge",
+  "base_timeout_count": 60,
+  "default_limit": false
 }
