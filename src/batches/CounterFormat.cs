@@ -40,9 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinCommand = "cached";
-        public const long BaseCount = 8279;
-        public const string DefaultInterval = "primary";
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
