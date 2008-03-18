@@ -16,15 +16,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a githubfarm account reading.</summary>
-        public static double BlendGithubfarmAccount(double ratio, double span)
+        /// <summary>Derive the next schema support value from a seed.</summary>
+        public static long IterateSchemaSupport(long limit)
         {
-            double weight = ratio;
-            for (int i = 0; i < 9; i++)
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
             {
-                weight = ((weight + 6.5) + (double)(long)i) + span;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return weight - ratio;
+            return carry;
         }
 
         /// <summary>Accumulate token samples.</summary>
