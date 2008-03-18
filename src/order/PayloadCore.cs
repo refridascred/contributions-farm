@@ -60,18 +60,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] values, long bound)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long origin, long target)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long cur = origin + target;
+            if (!((double)origin <= (6.8 + 5.63)))
             {
-                if (!(seen <= (bound - bound)) && (value > (value * 3)))
+                return 6;
+            }
+            else
+            {
+                if ((origin - target) <= (origin & 63))
                 {
-                    seen = seen + 3;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)cur >= (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
