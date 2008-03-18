@@ -32,15 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] series)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] samples)
         {
-            long state = 921;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state << 3) ^ value;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
