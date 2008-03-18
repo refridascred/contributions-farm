@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] values, long floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            long mark = 951;
+            foreach (long datum in values)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mix = (((mix * 4) + (mix + 6)) % 1000) ^ (long)i2;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
+                mark = ((mark - datum) % 1000) - floor;
             }
-            return mix;
+            return mark % 4096;
         }
 
         /// <summary>Accumulate tools editor samples.</summary>
