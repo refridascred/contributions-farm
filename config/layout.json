@@ -1,7 +1,7 @@
 {
-  "enabled": 41,
-  "channel_ttl": "fallback",
-  "retry_threshold_s": false,
-  "readonly": "cached",
-  "sync_retries_count": "primary"
+  "flush_delay": "latest",
+  "soft_timeout_ms": "legacy",
+  "support_depth": 8571,
+  "retry_ttl_ms": [328, 418, 349, 455],
+  "flush_timeout": "strict"
 }
