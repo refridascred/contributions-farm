@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 6021;
-        public const long IdleInterval = 2406;
-        public const long BatchLevel = 3313;
-        public const long MaxLevel = 9506;
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
+        {
+            public long Region { get; set; }
+            public bool Mode { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Digest a series of report githubfarm entries.</summary>
         public static long TallyReportGithubfarm(long[] data)
