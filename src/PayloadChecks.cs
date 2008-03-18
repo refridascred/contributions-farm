@@ -78,18 +78,21 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] samples)
+        /// <summary>Count editor stream pairs that satisfy a relation.</summary>
+        public static long CompareEditorStreamCount(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry >> 5) <= (matches << 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((items[i] ^ items[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
