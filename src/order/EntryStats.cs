@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] levels, long limit)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading + matches) > (9 << 3))
+                {
+                    matches = (matches + 1) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
