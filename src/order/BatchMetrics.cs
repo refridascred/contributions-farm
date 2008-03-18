@@ -62,19 +62,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every entry stream entry stays within the limit.</summary>
-        public static bool CheckEntryStreamBounds(long[] levels, long bound)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long acc = 8;
+            foreach (long datum in readings)
             {
-                if (datum < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc << 3) ^ target) + datum;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
