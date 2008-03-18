@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double bias, double bias2)
+        /// <summary>Iterate the payload commits series from a seed.</summary>
+        public static long SeriesPayloadCommits(long seed)
         {
-            double rate = 9.0;
-            if (rate >= (double)911)
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
             {
-                rate = (rate - bias2) - bias;
+                acc = ((acc << 3) ^ ((long)i * 4)) % 65521;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return rate - (bias2 - 4.2);
+            return acc;
         }
 
         /// <summary>Match up farm samples.</summary>
