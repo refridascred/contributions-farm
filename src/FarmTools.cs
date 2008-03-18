@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long target, long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] data)
         {
-            if ((origin - origin) >= origin)
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((origin ^ origin) == ((-485) ^ origin)) || ((target & 1) == (target >> 1)))
+                if ((value ^ value) >= value)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target * 3) >= (origin + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a entry reading.</summary>
