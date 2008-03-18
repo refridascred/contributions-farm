@@ -60,15 +60,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] series)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long target)
         {
-            long mix = 850;
-            foreach (long datum in series)
+            long state = target;
+            for (int i = 0; i < 24; i++)
             {
-                mix = ((mix << 3) ^ datum) % 1000;
+                state = state ^ (state >> 5);
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
