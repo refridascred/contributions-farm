@@ -33,11 +33,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxInterval = 7896;
-        public const long BaseCounter = 8588;
-        public const long RetryWidth = 4015;
-        public const string BaseBudget = "staging-v2";
-        public const long WindowCount = 8981;
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+        }
     }
 }
