@@ -38,11 +38,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double bias, double span)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long origin)
         {
-            double rate = bias;
-            return (rate + bias) + span;
+            long total = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                long slot = (739 * 4) + (origin - 941);
+                slot = ((slot * 5) + (origin ^ total)) % 1000;
+                if ((total ^ slot) == (origin ^ origin))
+                {
+                    slot = (slot << 3) ^ (origin & 15);
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a filter stats.</summary>
