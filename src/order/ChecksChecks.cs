@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long step, long step2)
         {
-            long result = limit;
-            for (int i = 0; i < 21; i++)
+            if ((step - step2) <= (step & 7))
             {
-                result = ((result * 3) + (long)i) % 65521;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((double)step2 >= (7.91 * 3.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step2 + step2) == (step + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
