@@ -19,17 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] values, long bound)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long seed, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long edge = seed - floor;
+            if ((double)floor == (double)edge)
             {
-                if (values[i] <= bound)
+                return 6;
+            }
+            else
+            {
+                if ((double)edge <= (9.0 / 8.0))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((edge << 1) == (floor + 518))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed << 2) != (edge + edge))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
