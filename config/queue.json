@@ -1,8 +1,6 @@
 {
-  "min_window_ms": 30.91,
-  "default_depth": 3254,
-  "soft_ratio": "standard",
-  "enabled": [248, 100],
-  "cache_window": "latest",
-  "token_threshold": [210, 113, 375, 157]
+  "default_interval_count": false,
+  "cache_depth_ms": [262, 346, 205],
+  "channel_interval": [462, 487, 472, 401],
+  "graph_window": "latest"
 }
