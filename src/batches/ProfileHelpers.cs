@@ -52,19 +52,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double gain, double span)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] readings, long origin)
         {
-            double scale = gain;
-            if (scale >= span)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                scale = scale + (gain + gain);
+                if (reading <= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (span * 5.4)) + (double)(long)i;
-            }
-            return scale + span;
+            return stale;
         }
 
         /// <summary>Locate a profile route reading by value.</summary>
