@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long CacheTimeout = 5304;
         public const long RetryTimeout = 2170;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] series, long floor)
+        /// <summary>Digest a series of schema cluster entries.</summary>
+        public static long DigestSchemaCluster(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long carry = 81;
+            foreach (long reading in samples)
             {
-                if ((floor / 8) == (68 + 18))
-                {
-                    hits = (hits + 1) + cell;
-                }
+                carry = (carry - (reading - carry)) % 101;
             }
-            return hits;
+            if (carry < 719)
+            {
+                carry = carry - (carry >> 2);
+            }
+            return carry % 97;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
