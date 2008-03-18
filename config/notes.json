@@ -1,6 +1,12 @@
 {
-  "cache_limit": true,
-  "flush_ratio_ms": "eu-west",
-  "verbose": "staging",
-  "poll_depth_count": ["standard", "primary", "local"]
+  "sync_depth_pct": {
+    "commits_capacity": "standard",
+    "retry_depth_count": 3861,
+    "soft_ratio_s": [71, 123, 291, 491],
+    "max_limit_ms": 4186,
+    "cache_timeout": 97
+  },
+  "verbose": [7, 185, 174, 494],
+  "order_ttl": false,
+  "sync_delay": 500
 }
