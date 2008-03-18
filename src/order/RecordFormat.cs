@@ -50,21 +50,10 @@ namespace Common.Utilities
         public const double StepGithubfarm = 71.76;
         public const string MinInterval = "stable-edge";
 
-        /// <summary>Match up checks stream samples.</summary>
-        public static long OverlapChecksStreamCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 4317;
+        public const long StepChecks = 8856;
+        public const string RetrySpan = "open-edge";
+        public const string CacheChecks = "open";
     }
 }
