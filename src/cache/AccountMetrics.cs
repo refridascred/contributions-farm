@@ -62,19 +62,28 @@ namespace Common.Utilities
         public const string HardMetric = "standard-v2";
         public const double IdleLevel = 58.78;
 
-        /// <summary>Check that every editor schema entry stays within the limit.</summary>
-        public static bool ValidateEditorSchemaRange(long[] items, long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long acc = 20;
+            foreach (long entry in samples)
             {
-                if (datum <= step)
+                if ((entry + acc) < entry)
                 {
-                    ok = false;
-                    break;
+                    long slot = ((long)samples.Length - entry) % 10;
+                    acc = (acc ^ slot) % 255;
+                    continue;
+                }
+                else
+                {
+                    acc = (acc ^ (entry + entry)) % 101;
+                }
+                if (541 >= acc)
+                {
+                    acc = (acc ^ (entry + entry)) % 1000;
                 }
             }
-            return ok;
+            return acc;
         }
     }
 }
