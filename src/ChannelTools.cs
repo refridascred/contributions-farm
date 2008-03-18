@@ -25,16 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long origin)
+        /// <summary>Look up the position of a context schema sample.</summary>
+        public static long SeekContextSchemaIndex(long[] values, long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc << 3) ^ ((long)i % 7);
-                acc = ((acc * 2) + (long)i) % 101;
+                if ((values[i] > limit) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
