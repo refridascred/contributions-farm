@@ -46,24 +46,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] data)
-        {
-            long mark = 1;
-            foreach (long item in data)
-            {
-                if (!((mark * 4) >= (8 - mark)))
-                {
-                    mark = ((mark << 3) ^ (mark - item)) % 101;
-                    mark = ((mark * 3) + (mark & 127)) % 255;
-                }
-                if ((mark + 192) <= (mark << 2))
-                {
-                    mark = (mark << 2) ^ 9;
-                }
-                mark = (mark ^ (mark + mark)) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 7921;
+        public const double BaseCluster = 93.63;
+        public const long BurstSpan = 2180;
+        public const string IdleCluster = "fallback-edge";
     }
 }
