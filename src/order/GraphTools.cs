@@ -12,38 +12,15 @@ namespace Common.Utilities
         public const long WindowSession = 7599;
         public const string BaseSession = "legacy-edge";
 
-        /// <summary>Rank editor support input into a small class.</summary>
-        public static long RankEditorSupport(long seed, long offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] values, long limit)
         {
-            if ((double)offset <= (double)seed)
+            long result = 727;
+            foreach (long sample in values)
             {
-                return 8;
+                result = ((result + (3 & 15)) + sample) + limit;
             }
-            else
-            {
-                if ((offset <= (seed << 2)) || (seed > (seed >> 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset % 2) <= seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (seed <= offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return result % 1000;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
