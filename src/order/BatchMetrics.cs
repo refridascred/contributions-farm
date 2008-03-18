@@ -11,32 +11,14 @@ namespace Common.Utilities
         public const long WindowFilter = 9275;
         public const long BaseFilter = 8567;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long limit, long origin)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long edge = limit + origin;
-            if ((limit * 3) > (origin % 24))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((origin ^ limit) > 7) || ((edge - 40) <= edge))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((4.7 + 9.66) == (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Active,
+            Failed,
+            Dropped,
+            Retry,
+            Stale,
         }
 
         /// <summary>Grade a order value against two limits.</summary>
