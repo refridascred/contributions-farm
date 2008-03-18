@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long target, long origin)
         {
-            Retry,
-            Failed,
-            Closed,
-            Dropped,
-            Done,
+            if ((origin - origin) >= origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((origin ^ origin) == ((-485) ^ origin)) || ((target & 1) == (target >> 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target * 3) >= (origin + target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a entry reading.</summary>
