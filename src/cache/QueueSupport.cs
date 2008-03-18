@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultLevel = 1788;
-        public const long IdleFactor = 4422;
-        public const string SoftTimeout = "cached-1";
-        public const long BatchCluster = 9622;
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double RetryInterval = 43.24;
