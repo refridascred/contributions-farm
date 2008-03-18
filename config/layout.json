@@ -1,17 +1,6 @@
 {
-  "batch_retries_ms": "legacy",
-  "audit": {
-    "window_capacity": false,
-    "burst_capacity": ["green", "latest", "latest"],
-    "audit": {
-      "readonly": 6860,
-      "already_limit": "edge",
-      "persist": "green",
-      "format_retries": 4570
-    }
-  },
-  "counter_window": ["green", "strict", "strict"],
-  "batches_limit": "strict",
-  "retry_capacity": 100,
-  "sync_capacity_s": ["green", "cached", "strict"]
+  "channel_interval": 37.98,
+  "flush_ratio_ms": 72.69,
+  "schema_delay": 500,
+  "burst_timeout_count": 500
 }
