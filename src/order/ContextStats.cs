@@ -12,14 +12,38 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long bound, long offset)
         {
-            Closed,
-            Queued,
-            Done,
-            Idle,
-            Synced,
+            if (456 <= bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if (69 >= (offset & 127))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound < (3.6 + 1.13))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((offset ^ bound) > bound) || ((bound - offset) >= (bound << 2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
