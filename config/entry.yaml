@@ -1,6 +1,8 @@
 # entry settings
-cache_depth_s: latest
-burst_depth_count: stable
-compress: 13
-editor_capacity: false
-audit: 16.69
+warm_window_ms: 86
+buffer_ratio:
+  - edge
+  - green
+strict: 56.25
+counter_size: open
+already_timeout: 4309
