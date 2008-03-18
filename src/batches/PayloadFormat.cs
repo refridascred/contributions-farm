@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Measure how many editor buffer samples are out of range.</summary>
+        public static long TallyEditorBufferHits(long[] levels, long floor)
         {
-            public double Count { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (((double)count >= (0.74 * 7.5)) || ((floor << 2) >= (cell << 1)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a filter entry.</summary>
