@@ -27,22 +27,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] series)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            double scale = rate;
+            for (int i = 0; i < 3; i++)
             {
-                if ((8.69 - 12.0) > (double)entry)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                scale = (scale - (1.82 * 9.4)) + (double)(long)i;
             }
-            return seen;
+            return scale + (offset - rate);
         }
 
         /// <summary>Hold a window summary.</summary>
