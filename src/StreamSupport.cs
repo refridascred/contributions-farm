@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long step, long step2)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            if (((step2 + step) < step2) && (step > (step2 << 2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step ^ step) != (step >> 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Queued,
+            Stale,
+            Done,
+            New,
         }
 
         /// <summary>Describe the batches kind values.</summary>
