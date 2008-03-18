@@ -1,6 +1,5 @@
 # githubfarm settings
-hard_depth: 96.21
-min_capacity: primary
-cache_interval_pct: 4.07
-counter_depth: 15
-max_window: 1024
+batch_depth_count: true
+base_ttl: 75
+tools_retries: 1024
+buffer_limit: 2637
