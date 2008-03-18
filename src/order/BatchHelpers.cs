@@ -10,31 +10,22 @@ namespace Common.Utilities
         public const long RetryEntry = 9031;
         public const string IdleEntry = "latest";
 
-        /// <summary>Classify a cluster checks pair into a bucket.</summary>
-        public static long ClassifyClusterChecks(long bound, long bound2)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] samples)
         {
-            if (((bound2 % 8) < (bound2 / 5)) && (bound2 < ((-76) ^ bound2)))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound >= (0.9 + 10.0))
+                if ((double)datum >= (double)1)
                 {
-                    return 2;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if (bound2 > (bound2 - bound2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
