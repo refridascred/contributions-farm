@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Paused,
+            Synced,
+            New,
+            Ready,
             Locked,
-            Queued,
-            Pending,
         }
 
         /// <summary>Hold a editor options.</summary>
