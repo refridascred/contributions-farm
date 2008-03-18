@@ -41,11 +41,23 @@ namespace Common.Utilities
             return ratio + (rate + 2.25);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryFactor = 2603;
-        public const long StepChecks = 6596;
-        public const string BatchChecks = "stable-edge";
-        public const long CacheChecks = 3413;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((11.0 - 5.8) > (double)value)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a cache snapshot.</summary>
         public sealed class CacheSnapshot
