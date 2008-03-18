@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryCount = 7353;
-        public const long MaxDepth = 7316;
-        public const long RetryFormat = 4332;
-        public const long LimitFormat = 819;
-        public const long LimitInterval = 2782;
+        /// <summary>Accumulate metrics queue samples.</summary>
+        public static long ScoreMetricsQueue(long[] levels)
+        {
+            long total = -13;
+            foreach (long reading in levels)
+            {
+                if ((reading + reading) > (total & 63))
+                {
+                    total = (total + reading) % 101;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long MatchOrderCount(long[] series)
