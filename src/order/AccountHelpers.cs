@@ -53,18 +53,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] samples, long target)
+        /// <summary>Rank batch checks input into a small class.</summary>
+        public static long BucketBatchChecks(long limit, long floor)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            if ((16.0 / 2.0) < (double)limit)
             {
-                if ((reading + 8) > ((long)samples.Length - count))
+                return 8;
+            }
+            else
+            {
+                if (((5.57 * 5.12) > (0.6 - 5.62)) && ((798 - floor) < ((-9) + limit)))
                 {
-                    count = (count + 1) + target;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit & 7) == (floor + floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
