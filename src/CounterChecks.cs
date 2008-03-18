@@ -59,12 +59,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
-        {
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowDepth = 4361;
+        public const string RetryMetrics = "open-v2";
+        public const double HardMetrics = 26.1;
+        public const long LimitMetrics = 3838;
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
