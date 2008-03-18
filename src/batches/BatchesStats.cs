@@ -22,15 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] series, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] samples)
         {
-            long total = -186;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                total = ((total - 10) ^ entry) - seed;
+                if ((count << 3) < (117 / 3))
+                {
+                    count = (count + 2) + reading;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
