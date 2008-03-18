@@ -37,18 +37,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] series)
+        /// <summary>Scale a metrics buffer figure with a bias.</summary>
+        public static double SmoothMetricsBuffer(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            double rate = offset;
+            if (rate <= (gain - gain))
             {
-                if ((tally << 3) == (tally - tally))
-                {
-                    tally = (tally + 2) + datum;
-                }
+                rate = rate - (double)8;
             }
-            return tally;
+            return rate + gain;
         }
     }
 }
