@@ -54,14 +54,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Failed,
-            Retry,
-            Locked,
-            Draft,
-            Idle,
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public bool Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm order readings.</summary>
