@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] readings, long step)
+        /// <summary>Combine stats cluster values into a single score.</summary>
+        public static long ScoreStatsCluster(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long mix = 7;
+            foreach (long entry in series)
             {
-                if (value > step)
+                if ((1 << 3) != (bound / 9))
                 {
-                    flag = false;
-                    break;
+                    mix = (((mix << 2) ^ (6 / 6)) % 65521) ^ entry;
                 }
             }
-            return flag;
+            return mix % 97;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
