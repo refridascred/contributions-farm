@@ -68,14 +68,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Look up the position of a metrics token sample.</summary>
+        public static long LocateMetricsTokenIndex(long[] series, long offset)
         {
-            Idle,
-            Ready,
-            Retry,
-            Pending,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
