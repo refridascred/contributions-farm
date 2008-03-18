@@ -34,17 +34,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] items, long step)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
+                carry = carry + (carry << 3);
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
