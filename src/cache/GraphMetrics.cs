@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitSpan = 4905;
-        public const long BurstScore = 392;
-        public const long StepTimeout = 6674;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] values)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (!((entry * 5) > entry) || (((count % 64) < (1 * 5)) || (count > (entry / 8))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
