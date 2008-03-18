@@ -1,6 +1,11 @@
 # githubfarm settings
-buffer_threshold: 2722
-base_capacity_ms: 5101
-payload_timeout: true
-persist: 6.81
-queue_retries: 250
+support_timeout: open
+max_delay_s: false
+record_capacity: 5197
+default_timeout_pct: standard
+flush_threshold: primary
+batch_size_count:
+  - fallback
+  - standard
+  - stable
+  - cached
