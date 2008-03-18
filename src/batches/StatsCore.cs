@@ -32,12 +32,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Find the first editor entry entry that matches the target.</summary>
+        public static long FindEditorEntryIndex(long[] values, long limit)
         {
-            Failed,
-            Paused,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
