@@ -51,18 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] samples, long origin)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (matches < (origin / 4))
-                {
-                    matches = (matches + 2) - entry;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public string Token { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Fold a list of layout tools readings.</summary>
