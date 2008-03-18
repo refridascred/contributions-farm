@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine cache checks values into a single score.</summary>
-        public static long FoldCacheChecks(long[] series)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long state = 26;
-            foreach (long item in series)
-            {
-                if ((state - state) >= 895)
-                {
-                    state = (state << 3) ^ (item * 3);
-                }
-            }
-            return state;
+            Queued,
+            Idle,
+            Stale,
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
