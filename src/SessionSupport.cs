@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] samples)
+        /// <summary>Check that every support window entry stays within the limit.</summary>
+        public static bool CheckSupportWindowBounds(long[] items, long origin)
         {
-            long acc = 974;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if ((42 * 4) < (entry + entry))
+                if (value < origin)
                 {
-                    acc = (acc ^ (acc << 2)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
