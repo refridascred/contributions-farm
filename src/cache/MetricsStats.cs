@@ -43,14 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] data, long seed)
         {
-            Failed,
-            New,
-            Active,
-            Ready,
-            Done,
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
