@@ -27,24 +27,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long origin, long step)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            if ((double)step > 4.63)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((step % 24) <= (origin - 98)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Draft,
+            Queued,
+            Active,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
