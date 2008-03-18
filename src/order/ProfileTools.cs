@@ -20,23 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (datum > 32)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultScore = 65.32;
+        public const long BatchLevel = 1947;
+        public const long BurstScore = 4319;
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long FindClusterIndex(long[] items, long floor)
