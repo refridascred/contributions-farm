@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double bias, double bias2)
+        /// <summary>Adjust a metric filter reading.</summary>
+        public static double ProjectMetricFilter(double bias, double span)
         {
-            double drift = bias2;
-            if (drift >= drift)
+            double scale = span + bias;
+            if (scale <= 18.0)
             {
-                drift = drift + (11.0 - bias2);
+                scale = scale + (double)(-4);
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                drift = (drift - (bias2 + drift)) + (double)(long)i;
+                scale = scale + bias;
             }
-            return drift - bias;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (scale * 3.73)) - (double)(long)i;
+            }
+            return scale + (scale * 9.56);
         }
 
         /// <summary>Count the account batch entries that pass the check.</summary>
