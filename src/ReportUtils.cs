@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Pending,
-            Synced,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string LimitFactor = "staging-edge";
+        public const string BaseSpan = "staging-v2";
+        public const long CacheTimeout = 5304;
+        public const long RetryTimeout = 2170;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long AuditBatchHits(long[] series, long floor)
