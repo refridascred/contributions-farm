@@ -47,18 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] values)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((double)hits != (double)801)
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public double Total { get; set; }
+            public long Size { get; set; }
         }
     }
 }
