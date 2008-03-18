@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const string LimitBudget = "stable-edge";
         public const string CacheFilter = "latest";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitLevel = 6180;
-        public const string MaxCount = "strict-edge";
-        public const double MaxSize = 92.48;
-        public const double CacheNotes = 67.37;
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmHits(long[] items)
