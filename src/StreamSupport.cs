@@ -35,21 +35,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] items)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 92;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((bound + total) < (total - total))
                 {
-                    if ((items[i] ^ items[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total ^ (3 >> 3)) % 4096) + cell;
                 }
             }
-            return count;
+            if (total < 76)
+            {
+                total = (total - (total + bound)) % 4096;
+            }
+            return total;
         }
     }
 }
