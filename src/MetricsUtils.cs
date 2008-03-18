@@ -14,15 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long bound)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] items, long seed)
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
+            long acc = -42;
+            foreach (long value in items)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                acc = acc ^ 5;
+                if (((double)value < (7.5 + 13.0)) && ((acc + acc) == (acc ^ 129)))
+                {
+                    acc = (acc * 2) + (seed + acc);
+                }
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Describe the route mode values.</summary>
