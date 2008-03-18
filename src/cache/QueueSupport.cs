@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a graph route sample.</summary>
-        public static long SeekGraphRouteIndex(long[] readings, long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 2;
+            foreach (long item in levels)
             {
-                if ((readings[i] >= step) && ((readings[i] % 5) == 0))
+                for (int i = 0; i < 6; i++)
                 {
-                    return (long)i;
+                    state = ((state * 2) + ((long)i / 7)) % 4096;
+                }
+                if ((state & 3) > item)
+                {
+                    state = (state ^ state) % 97;
                 }
             }
-            return -1;
+            if (state < 5)
+            {
+                state = (state << 2) ^ (state % 64);
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a payload stats.</summary>
