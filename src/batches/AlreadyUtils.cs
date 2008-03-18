@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] samples)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((16.0 + 3.27) != (double)sample)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double load = 1.74 * 3.9;
+            return (load + offset) + bias;
         }
 
         /// <summary>Locate a order layout reading by value.</summary>
