@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a tools stream value against two limits.</summary>
-        public static long SortToolsStream(long seed, long target)
+        /// <summary>Accumulate cache editor samples.</summary>
+        public static long CombineCacheEditor(long[] levels, long seed)
         {
-            if ((double)target <= 2.73)
+            long acc = -439;
+            foreach (long value in levels)
             {
-                return 0;
+                acc = (((acc << 2) ^ (seed + (-573))) % 97) ^ value;
+                acc = (acc ^ (acc % 7)) % 65521;
             }
-            else
-            {
-                if ((target >> 5) > (target + seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed - target) <= seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target % 64) != (seed * 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
