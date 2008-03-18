@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] data, long origin)
         {
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            long score = 4;
+            foreach (long entry in data)
+            {
+                if ((double)entry > (double)58)
+                {
+                    score = (score * 4) + (entry >> 1);
+                }
+                else
+                {
+                    score = (score - (23 ^ origin)) % 65521;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the filter status values.</summary>
