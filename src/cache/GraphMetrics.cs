@@ -23,17 +23,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] series, long limit)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public long Token { get; set; }
+            public double Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
