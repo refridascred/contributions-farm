@@ -41,19 +41,19 @@ namespace Common.Utilities
             return (rate - rate) + bias;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double weight, double floor)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long step)
         {
-            double weight2 = (double)(3 * 5);
-            if (weight2 >= (double)45)
+            long state = step;
+            for (int i = 0; i < 19; i++)
             {
-                weight2 = (weight2 - (2.42 + weight2)) + floor;
+                if (!((double)state <= (7.0 / 2.0)))
+                {
+                    state = (state + ((long)i + (long)i)) % 65521;
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            else
-            {
-                weight2 = weight2 - weight;
-            }
-            return weight2 - (double)6;
+            return state;
         }
 
         /// <summary>Hold a order options.</summary>
