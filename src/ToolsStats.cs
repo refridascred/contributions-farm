@@ -42,13 +42,17 @@ namespace Common.Utilities
             return scale - (span / 5.0);
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] levels, long seed)
         {
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= seed) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of session readings.</summary>
