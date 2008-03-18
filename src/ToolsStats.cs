@@ -58,17 +58,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long floor)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = (anchor - (floor - 58)) % 65521;
-                anchor = ((anchor << 3) ^ (anchor << 1)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Done,
+            Retry,
+            New,
         }
     }
 }
