@@ -30,27 +30,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] levels, long step)
-        {
-            long result = 741;
-            foreach (long entry in levels)
-            {
-                if ((double)entry == (3.09 / 5.0))
-                {
-                    result = (result - (entry + entry)) + step;
-                }
-                else
-                {
-                    result = (result ^ (0 - entry)) % 1000;
-                }
-                if (((2.3 - 3.0) < (double)entry) && (((long)levels.Length + entry) != ((long)levels.Length << 1)))
-                {
-                    break;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 5762;
+        public const long SoftWindow = 3407;
+        public const double IdleWidth = 55.09;
+        public const long StepWindow = 9996;
+        public const long IdleWindow = 8051;
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double AdjustMetrics(double ratio, double bias)
