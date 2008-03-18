@@ -54,23 +54,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] values, long floor)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long floor, long limit)
         {
-            long acc = 62;
-            foreach (long item in values)
+            long cur = floor - limit;
+            if ((75 << 2) > cur)
             {
-                acc = (acc - ((long)values.Length - item)) % 4096;
-                if ((item << 3) < (6 - acc))
+                return 3;
+            }
+            else
+            {
+                if (((double)(-11) == (double)cur) && ((double)limit >= (8.2 - 3.9)))
                 {
-                    acc = ((acc * 5) + (acc ^ floor)) % 101;
+                    return 1;
+                }
+                else
+                {
+                    if ((cur + floor) == (floor ^ cur))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((6.37 + 6.0) == (double)floor) || ((double)floor >= (double)7))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (acc < 8)
-            {
-                acc = (acc - (34 ^ acc)) % 101;
-            }
-            return acc;
         }
     }
 }
