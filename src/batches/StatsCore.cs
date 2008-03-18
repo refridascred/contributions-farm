@@ -47,12 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            Queued,
+            Failed,
+            Paused,
             Ready,
-            Retry,
         }
 
         /// <summary>Blend two session token measurements.</summary>
