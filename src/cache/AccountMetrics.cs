@@ -77,39 +77,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long target, long step)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long bound = target ^ step;
-            if ((step - bound) != (bound - bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((bound + target) <= (step & 127)) || ((step + 35) >= step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound / 4) == (591 & 31))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((target - bound) <= (588 >> 3)) || ((bound + target) <= (target - 9)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Paused,
+            Dropped,
+            New,
+            Locked,
         }
     }
 }
