@@ -34,17 +34,24 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] levels, long offset)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long limit, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((step + step) > (step - limit))
             {
-                if ((levels[i] <= offset) && ((levels[i] % 5) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((6.49 + 1.1) == (double)limit)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
