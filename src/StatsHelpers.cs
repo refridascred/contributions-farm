@@ -20,14 +20,11 @@ namespace Common.Utilities
             return load - (double)65;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
-        {
-            public double Stamp { get; set; }
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 4976;
+        public const long HardChannel = 7115;
+        public const string StepFactor = "staging";
+        public const long WindowWidth = 8045;
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
