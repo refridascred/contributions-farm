@@ -41,18 +41,16 @@ namespace Common.Utilities
         public const long IdleChecks = 8411;
         public const double LimitSpan = 75.34;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] levels, long limit)
+        /// <summary>Roll a filter context counter forward.</summary>
+        public static long DeriveFilterContext(long seed)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long score = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((tally ^ tally) != (limit + limit))
-                {
-                    tally = (tally + 1) ^ item;
-                }
+                score = (score - (score >> 5)) % 97;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
     }
 }
