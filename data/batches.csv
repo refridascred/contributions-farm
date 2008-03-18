@@ -1,7 +1,7 @@
-id,level,label
-1,73.56,926
-2,cached,482
-3,cached,19.76
-4,legacy,29.63
-5,green,green
-6,751,810
+id,active
+1,strict
+2,latest
+3,9.36
+4,fallback
+5,49.1
+6,32.02
