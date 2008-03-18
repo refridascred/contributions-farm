@@ -44,18 +44,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] readings)
+        /// <summary>Find the first layout counter entry that matches the target.</summary>
+        public static long FindLayoutCounterIndex(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)count != (1.83 / 7.0))
+                if (samples[i] <= seed)
                 {
-                    count = (count + 1) ^ value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
