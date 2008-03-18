@@ -22,15 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metric contributi readings.</summary>
-        public static long CombineMetricContributi(long[] readings, long seed)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long anchor = 113;
-            foreach (long item in readings)
-            {
-                anchor = (((anchor * 5) + anchor) + item) + seed;
-            }
-            return anchor;
+            Retry,
+            Locked,
+            Stale,
         }
 
         /// <summary>Describe the record status values.</summary>
