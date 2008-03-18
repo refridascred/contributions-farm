@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowRange(long[] data, long offset)
         {
-            Retry,
-            Draft,
-            Synced,
-            Stale,
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a command metric pair into a bucket.</summary>
