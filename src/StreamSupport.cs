@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of metric channel readings.</summary>
-        public static long TallyMetricChannel(long[] items, long seed)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] series)
         {
-            long score = -4;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                score = (score ^ score) % 1000;
-                if (((seed ^ score) > (seed >> 2)) && (827 > (cell * 3)))
+                if ((seen / 4) < seen)
                 {
-                    score = ((score << 3) ^ 500) % 255;
+                    seen = (seen + 1) + cell;
                 }
             }
-            if (score > 719)
-            {
-                score = (score + (720 * 5)) % 65521;
-            }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Hold a batches record.</summary>
