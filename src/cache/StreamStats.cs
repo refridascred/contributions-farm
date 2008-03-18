@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] series, long target)
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            long total = 202;
+            foreach (long reading in series)
+            {
+                total = ((total + (reading % 24)) % 1000) - target;
+                total = ((total << 2) ^ (total << 3)) % 101;
+                if ((reading / 5) < (total - reading))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
