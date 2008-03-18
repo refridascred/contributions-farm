@@ -13,22 +13,31 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the contributi tools entries that pass the check.</summary>
-        public static long CountContributiToolsGaps(long[] series)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long step, long floor)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            if (((floor + floor) != (floor - floor)) && ((double)step < (13.0 - 9.0)))
             {
-                if (reading <= (seen << 2))
+                return 8;
+            }
+            else
+            {
+                if (((7.4 * 2.09) < (double)floor) && ((74 & 1) != (floor / 5)))
                 {
-                    seen = seen + 3;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((step + floor) != (floor ^ step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
