@@ -73,11 +73,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 3560;
-        public const long StepSpan = 8545;
-        public const long CacheFactor = 5833;
-        public const long DefaultWidth = 4046;
-        public const string RetryDepth = "alpha-v2";
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] levels, long floor)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (((item - item) == (seen << 3)) && (seen < (item & 15)))
+                {
+                    seen = (seen + 2) + floor;
+                }
+            }
+            return seen;
+        }
     }
 }
