@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a queue farm value against two limits.</summary>
-        public static long ClassifyQueueFarm(long floor, long limit)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            if ((limit >> 2) > (limit + floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor + limit) >= (floor - 50))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((47 >> 1) > (floor + floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
