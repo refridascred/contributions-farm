@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Digest a series of window stream entries.</summary>
+        public static long FoldWindowStream(long[] data)
         {
-            public double Total { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            long sum = 187;
+            foreach (long value in data)
+            {
+                if ((62 - sum) < (sum / 8))
+                {
+                    sum = (sum ^ (60 & 255)) % 1000;
+                }
+                else
+                {
+                    sum = (sum + ((-844) - value)) % 255;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Digest a series of format entries.</summary>
