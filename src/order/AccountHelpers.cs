@@ -70,15 +70,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double weight, double floor)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double ratio = (double)1 / 2.0;
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (((ratio - ratio) + (double)(long)i) + weight) + floor;
-            }
-            return ratio - (double)23;
+            Queued,
+            Locked,
+            Done,
+            Pending,
         }
     }
 }
