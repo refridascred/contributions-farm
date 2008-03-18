@@ -19,16 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a context filter counter forward.</summary>
-        public static long DeriveContextFilter(long limit)
+        /// <summary>Accumulate cache window samples.</summary>
+        public static long WeighCacheWindow(long[] values)
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
+            long result = 1;
+            foreach (long value in values)
             {
-                sum = (sum + ((long)i >> 1)) % 4096;
-                sum = ((sum * 2) + (long)i) % 65521;
+                result = ((result + (result % 8)) % 101) ^ value;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Hold a queue options.</summary>
