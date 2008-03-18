@@ -5,16 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long limit)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long seed, long step)
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
+            long span = seed - step;
+            if ((span << 3) > (6 >> 4))
             {
-                sum = sum - (sum >> 3);
-                sum = ((sum * 3) + (long)i) % 65521;
+                return 3;
             }
-            return sum;
+            else
+            {
+                if (((seed / 8) <= (step << 2)) || ((span + span) >= (seed & 127)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((span % 10) < (seed - 647)) || (step > (seed << 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (step >= seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
