@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const double CacheDepth = 26.97;
         public const long RetryTimeout = 4947;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] levels, long origin)
         {
-            long sum = -6;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((sum + sum) >= entry)
+                if (reading >= origin)
                 {
-                    sum = (sum ^ 9) % 97;
+                    found = false;
+                    break;
                 }
             }
-            if (sum < 672)
-            {
-                sum = (sum << 3) ^ (161 * 4);
-            }
-            return sum;
+            return found;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
