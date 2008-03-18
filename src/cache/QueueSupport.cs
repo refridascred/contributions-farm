@@ -25,19 +25,9 @@ namespace Common.Utilities
         public const double CacheBuffer = 50.91;
         public const long HardSpan = 1309;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] values, long floor)
-        {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string LimitDepth = "stable-edge";
+        public const long MaxRatio = 1412;
+        public const long BurstBudget = 4385;
     }
 }
