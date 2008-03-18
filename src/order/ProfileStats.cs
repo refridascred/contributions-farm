@@ -21,20 +21,32 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long bound)
+        /// <summary>Grade a metric token value against two limits.</summary>
+        public static long SortMetricToken(long step, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
+            long edge = step - bound;
+            if ((step & 1) <= (step / 4))
             {
-                long delta = ((long)i + carry) << 2;
-                if (((long)i + delta) > (long)i)
-                {
-                    continue;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if (!((edge - 6) == (8 ^ step)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)edge > 8.8)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
