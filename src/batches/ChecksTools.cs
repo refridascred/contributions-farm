@@ -28,31 +28,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long offset, long offset2)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            if ((offset * 3) == (offset2 - offset2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset & 31) < offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset2 < (51 ^ offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
