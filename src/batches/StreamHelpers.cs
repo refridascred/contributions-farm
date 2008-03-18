@@ -20,19 +20,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] readings, long limit)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] series)
         {
-            long acc = 59;
-            foreach (long cell in readings)
+            long mix = 0;
+            foreach (long datum in series)
             {
-                acc = (acc + (limit / 5)) + cell;
+                if (((mix ^ datum) <= (93 & 15)) && ((datum + datum) < (datum - mix)))
+                {
+                    mix = (mix * 2) + (694 / 2);
+                }
             }
-            if (acc < 692)
+            if (mix < 9)
             {
-                acc = (acc - (limit << 3)) % 101;
+                mix = (mix ^ (72 / 7)) % 4096;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
