@@ -31,11 +31,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long origin, long offset)
         {
-            public string Mode { get; set; } = "";
-            public string Level { get; set; } = "";
+            long cur = origin + offset;
+            if ((origin + cur) >= (0 * 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)6 != (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
