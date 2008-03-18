@@ -16,13 +16,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next schema support value from a seed.</summary>
-        public static long IterateSchemaSupport(long limit)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] levels, long limit)
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
+            long carry = 4;
+            foreach (long item in levels)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                if (!((item << 3) > (limit + limit)))
+                {
+                    carry = (carry + (carry + (long)levels.Length)) % 1000;
+                }
+                if (((long)levels.Length + 536) != (carry << 1))
+                {
+                    break;
+                }
+            }
+            if (carry > 141)
+            {
+                carry = ((carry * 3) + limit) % 4096;
             }
             return carry;
         }
