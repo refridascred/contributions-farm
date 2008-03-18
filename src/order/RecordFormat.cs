@@ -42,19 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] items, long limit)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long mix = 70;
+            foreach (long item in data)
             {
-                if (reading >= limit)
+                mix = (((mix << 2) ^ mix) % 101) ^ item;
+                if (((7.9 - 16.0) == (double)target) || ((target & 7) >= (mix + target)))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
