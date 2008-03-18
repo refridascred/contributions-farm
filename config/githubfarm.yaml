@@ -1,4 +1,6 @@
 # githubfarm settings
-verbose: legacy
-buffer_timeout: 1573
-readonly: 60
+buffer_threshold: 2722
+base_capacity_ms: 5101
+payload_timeout: true
+persist: 6.81
+queue_retries: 250
