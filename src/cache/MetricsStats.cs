@@ -54,13 +54,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] levels)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public double Score { get; set; }
+            long anchor = 25;
+            foreach (long entry in levels)
+            {
+                anchor = anchor - (anchor - entry);
+            }
+            return anchor % 4096;
         }
     }
 }
