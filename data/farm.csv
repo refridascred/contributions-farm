@@ -1,9 +1,8 @@
-id,rank,weight,level
-1,stable,84,fallback
-2,legacy,368,429
-3,547,61.27,1.18
-4,36.43,79.24,eu-west
-5,289,889,strict
-6,eu-west,92.8,47.78
-7,956,791,37.02
-8,open,692,749
+id,weight,region,label
+1,167,745,80.42
+2,71.19,709,745
+3,93.92,strict,544
+4,803,8.01,75.75
+5,66.38,770,standard
+6,13.8,90.12,73.8
+7,legacy,latest,90.56
