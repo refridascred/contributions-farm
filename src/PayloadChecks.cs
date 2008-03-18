@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate metric context readings against a bound.</summary>
-        public static bool VerifyMetricContextRange(long[] data, long limit)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long mix = 352;
+            foreach (long reading in samples)
             {
-                if (entry < limit)
+                if (!((origin + reading) >= (mix + 30)))
                 {
-                    ok = false;
-                    break;
+                    mix = ((mix << 2) ^ (reading * 4)) % 101;
+                }
+                else
+                {
+                    mix = (mix - (reading >> 5)) % 101;
                 }
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
