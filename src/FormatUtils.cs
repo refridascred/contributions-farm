@@ -27,13 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
