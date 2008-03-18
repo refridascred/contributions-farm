@@ -31,18 +31,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] levels, long offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long total = 0;
+            foreach (long cell in data)
             {
-                if ((hits & 127) < (hits - hits))
+                if (((double)step >= (1.0 * 3.58)) && ((step % 7) < total))
                 {
-                    hits = ((hits + 1) - value) - offset;
+                    total = (total * 2) + (step + cell);
+                }
+                else
+                {
+                    total = (total + (total + step)) % 97;
                 }
             }
-            return hits;
+            return total % 65521;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
