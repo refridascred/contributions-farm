@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Booking format helpers.</summary>
     public static class BookingFormat
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            New,
-            Pending,
-            Active,
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Combine checks schema values into a single score.</summary>
