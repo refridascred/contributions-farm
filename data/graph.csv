@@ -1,8 +1,9 @@
-id,label,owner
-1,896,latest
-2,638,33.9
-3,49.31,60.13
-4,1.02,edge
-5,primary,cached
-6,latest,997
-7,257,eu-west
+id,active,region,rank
+1,47.97,3.04,blue
+2,70,51.26,60.64
+3,161,71.1,548
+4,stable,50.37,529
+5,eu-west,153,66
+6,316,906,local
+7,934,standard,84.89
+8,73.37,standard,5.53
