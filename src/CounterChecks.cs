@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of window stream entries.</summary>
-        public static long FoldWindowStream(long[] data)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] items)
         {
-            long sum = 187;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((62 - sum) < (sum / 8))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum ^ (60 & 255)) % 1000;
-                }
-                else
-                {
-                    sum = (sum + ((-844) - value)) % 255;
+                    if ((items[i] + items[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Digest a series of format entries.</summary>
