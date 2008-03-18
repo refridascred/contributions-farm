@@ -1,11 +1,16 @@
 # support settings
-support_threshold:
-  - 124
-  - 201
-  - 487
-  - 205
-hard_threshold_s: 67
-hard_depth_pct:
-  - 244
-  - 499
-  - 478
+contributi_threshold:
+  - 199
+  - 213
+  - 302
+  - 115
+burst_interval: cached
+min_depth_ms: standard
+base_timeout_s:
+  batch_window_ms: 1.17
+  support_ratio: true
+  command_size: 4481
+  compress: latest
+  max_threshold_s: 74
+  batches_delay: edge
+strict: 96
