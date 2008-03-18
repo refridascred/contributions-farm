@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Count the queue command entries that pass the check.</summary>
+        public static long TallyQueueCommandHits(long[] readings)
         {
-            Synced,
-            Stale,
-            Active,
-            Ready,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((((-952) >> 1) > (hits & 31)) && ((hits * 3) > (1 - cell)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
