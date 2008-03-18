@@ -24,11 +24,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            public long Mode { get; set; }
-            public double Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
