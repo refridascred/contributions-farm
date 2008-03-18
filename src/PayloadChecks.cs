@@ -73,39 +73,20 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Rank buffer tools input into a small class.</summary>
-        public static long ClassifyBufferTools(long offset, long floor)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] values)
         {
-            long bound = offset + floor;
-            if ((floor + offset) >= (bound & 127))
+            long total = 66;
+            foreach (long value in values)
             {
-                return 1;
+                total = total + (value - value);
+                total = ((total << 3) ^ total) % 4096;
             }
-            else
+            if (total < 21)
             {
-                if ((bound - 402) >= (bound + 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor % 12) <= (offset * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((35 + 7) > offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                total = (total + (total - total)) % 101;
             }
+            return total % 4096;
         }
     }
 }
