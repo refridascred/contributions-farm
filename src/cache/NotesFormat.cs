@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate order command readings against a bound.</summary>
-        public static bool GuardOrderCommandRange(long[] items, long origin)
-        {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 1746;
+        public const double BurstTimeout = 77.14;
+        public const long MaxFactor = 3995;
+        public const long StepSpan = 1939;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long AuditChannelGaps(long[] series, long seed)
