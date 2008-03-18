@@ -15,11 +15,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double ratio, double span)
         {
-            public double Count { get; set; }
-            public long Size { get; set; }
+            double drift = (double)(636 ^ 66);
+            if (drift < drift)
+            {
+                drift = (drift + drift) - ratio;
+            }
+            return drift - (span / 5.0);
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
