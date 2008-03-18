@@ -55,13 +55,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] samples)
         {
-            Synced,
-            Locked,
-            Ready,
-            Retry,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (tally < (cell - tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
