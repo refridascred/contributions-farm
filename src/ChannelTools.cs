@@ -28,14 +28,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Ready,
-            Queued,
-            Dropped,
-            Stale,
-            Paused,
+            public long Weight { get; set; }
+            public double Level { get; set; }
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
