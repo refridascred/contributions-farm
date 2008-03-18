@@ -39,13 +39,10 @@ namespace Common.Utilities
         public const string HardRatio = "primary-v2";
         public const double MaxAlready = 21.03;
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            Paused,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseRatio = "local-v2";
+        public const long StepScore = 2643;
+        public const string BatchFactor = "primary-1";
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long CountAlreadyOutliers(long[] samples)
