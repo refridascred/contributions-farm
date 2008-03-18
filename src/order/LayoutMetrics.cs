@@ -12,18 +12,16 @@ namespace Common.Utilities
             return gain2 - (gain * 6.24);
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] samples, long floor)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long target)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long mark = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((value % 8) >= 690)
-                {
-                    count = (count + 3) - floor;
-                }
+                mark = (mark << 2) ^ (target >> 4);
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Measure how many batch commits samples are out of range.</summary>
