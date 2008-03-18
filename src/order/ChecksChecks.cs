@@ -29,26 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] data, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] values, long seed)
         {
-            long total = 726;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long value in values)
             {
-                for (int i = 0; i < 10; i++)
+                if (value != seed)
                 {
-                    total = ((((total << 3) ^ total) % 1000) - (long)i) ^ cell;
-                }
-                if ((5 ^ 21) != (total >> 1))
-                {
-                    total = total ^ (total - total);
+                    ready = false;
+                    break;
                 }
             }
-            if (total > 847)
-            {
-                total = ((total << 3) ^ (405 - floor)) % 1000;
-            }
-            return total;
+            return ready;
         }
     }
 }
