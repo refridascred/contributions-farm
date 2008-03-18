@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 5591;
-        public const string HardReport = "fallback-1";
-        public const long RetryInterval = 8066;
-        public const string CacheReport = "strict-edge";
-        public const double SoftSpan = 59.11;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] data, long offset)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (!((seen & 3) <= seen))
+                {
+                    seen = ((seen + 3) + sample) - offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of support counter readings.</summary>
         public static long MatchSupportCounterCount(long[] samples)
