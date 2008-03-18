@@ -34,31 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long origin, long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] readings, long seed)
         {
-            if ((origin + origin) < origin)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((32 - target) <= origin)
+                if ((4 & 3) != (seed & 15))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((target - origin) == (origin ^ origin)) && ((origin - target) > (target * 5)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = (seen + 3) + reading;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of farm metrics entries.</summary>
