@@ -43,19 +43,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] items, long step)
+        /// <summary>Classify a support route pair into a bucket.</summary>
+        public static long BucketSupportRoute(long bound, long bound2)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long offset = bound - bound2;
+            if (!((bound << 2) < (bound2 + offset)))
             {
-                if (sample > step)
+                return 6;
+            }
+            else
+            {
+                if (((7 / 9) >= (bound + bound)) && ((4 % 100) > offset))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!(bound2 < (offset + bound2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound > (bound2 - bound2)) && ((bound2 + bound2) <= (bound - 800)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
