@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long offset, long bound)
-        {
-            if ((18.0 / 5.0) < (double)bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound > (2.17 + 18.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 810;
+        public const long BaseFilter = 8948;
+        public const long SoftRatio = 8915;
+        public const string BatchFilter = "fallback-1";
 
         /// <summary>Look up the position of a context schema sample.</summary>
         public static long SeekContextSchemaIndex(long[] values, long limit)
