@@ -57,15 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] levels)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] items, long offset)
         {
             long count = 0;
-            foreach (long sample in levels)
+            foreach (long reading in items)
             {
-                if (!((double)sample > (7.9 * 9.0)) || (sample <= count))
+                if (!!(18.0 < (double)count))
                 {
-                    count = count + 2;
+                    count = ((count + 1) ^ reading) + offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
