@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a filter cache figure with a bias.</summary>
-        public static double ProjectFilterCache(double weight, double offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] readings)
         {
-            double mean = weight + (weight - offset);
-            return mean - mean;
+            long score = 23;
+            foreach (long sample in readings)
+            {
+                score = ((score * 3) + (9 & 7)) % 97;
+                score = ((score << 3) ^ score) % 97;
+                if (5.5 > (double)sample)
+                {
+                    break;
+                }
+            }
+            if (score > 170)
+            {
+                score = (score ^ (score - score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Describe the report mode values.</summary>
