@@ -1,4 +1,8 @@
 # githubfarm settings
-audit: false
-cache_capacity: fallback
-compress: true
+sync_window: 1024
+poll_ttl_count: stable
+warm_threshold_count: open
+poll_depth:
+  - local
+  - standard
+  - primary
