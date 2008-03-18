@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] levels)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((cell <= (hits % 3)) || ((double)cell < (double)10))
+                if ((5.42 - 1.53) <= (double)datum)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 1) + limit;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Scale a farm contributi figure with a bias.</summary>
