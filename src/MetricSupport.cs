@@ -19,14 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double HardTimeout = 51.56;
+        public const long MaxGraph = 8488;
+        public const string DefaultDepth = "staging-v2";
+        public const long RetryCount = 2500;
 
         /// <summary>Fold a list of format schema readings.</summary>
         public static long ScoreFormatSchema(long[] levels)
