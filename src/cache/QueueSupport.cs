@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the editor farm entries that pass the check.</summary>
-        public static long MeasureEditorFarmOutliers(long[] samples, long seed)
+        /// <summary>Compare every pair of buffer support readings.</summary>
+        public static long MatchBufferSupportCount(long[] data)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value >> 2) == (value << 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 1) - seed;
+                    if ((data[i] + data[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Project the next notes value.</summary>
