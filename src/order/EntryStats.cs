@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] levels, long origin)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample != origin)
+                if ((levels[i] > offset) && ((levels[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a layout stats.</summary>
