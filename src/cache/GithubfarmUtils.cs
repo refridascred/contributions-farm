@@ -40,18 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] samples)
+        /// <summary>Find the first already metrics entry that matches the target.</summary>
+        public static long SeekAlreadyMetricsIndex(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell + (-756)) <= cell)
+                if (data[i] < offset)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Look up the position of a farm profile sample.</summary>
