@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultRatio = 5806;
-        public const long BatchNotes = 6668;
-        public const double BurstNotes = 35.11;
+        /// <summary>Compare every pair of channel already readings.</summary>
+        public static long PairChannelAlreadyCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of metric contributi readings.</summary>
         public static long CombineMetricContributi(long[] readings, long seed)
