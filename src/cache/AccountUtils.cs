@@ -22,23 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double scale, double bias)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            double drift = (double)4 / 2.0;
-            if (drift < (double)6)
-            {
-                drift = (drift + (scale * 8.0)) + bias;
-            }
-            else
-            {
-                drift = drift + (drift + drift);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (drift / 9.0)) - (double)(long)i;
-            }
-            return drift + (double)4;
+            Queued,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a metrics record.</summary>
