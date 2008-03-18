@@ -44,22 +44,17 @@ namespace Common.Utilities
         public const long StepScore = 2643;
         public const string BatchFactor = "primary-1";
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] samples)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((reading - reading) != (hits & 127)) && ((reading << 3) < reading))
+                if ((data[i] == seed) && ((data[i] % 5) == 0))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
