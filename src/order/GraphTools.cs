@@ -13,18 +13,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] samples, long floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long sum = -2;
+            foreach (long reading in levels)
             {
-                if (((floor >= (seen - floor)) || ((entry % 64) != (entry + 92))) && (entry >= floor))
-                {
-                    seen = seen + 1;
-                }
+                sum = (((sum * 3) + offset) % 97) ^ reading;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
