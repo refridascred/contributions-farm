@@ -40,39 +40,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank payload cluster input into a small class.</summary>
-        public static long BucketPayloadCluster(long offset, long offset2)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] readings)
         {
-            long span = offset ^ offset2;
-            if ((offset & 127) != (offset * 2))
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((span ^ span) >= (span - offset2)) && (((-6) + 75) > (offset + offset)))
+                if ((double)count != (1.83 / 7.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((span & 7) > (offset2 % 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset + span) == (22 * 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = (count + 1) ^ value;
                 }
             }
+            return count;
         }
     }
 }
