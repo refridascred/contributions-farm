@@ -21,31 +21,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long limit, long floor)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] values, long limit)
         {
-            if ((double)floor >= 9.82)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit - limit) != (floor & 7))
+                if (values[i] == limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit * 3) < floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the schema contributi entries that pass the check.</summary>
