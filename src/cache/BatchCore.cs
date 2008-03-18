@@ -32,17 +32,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < limit) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxInterval = 7896;
+        public const long BaseCounter = 8588;
+        public const long RetryWidth = 4015;
+        public const string BaseBudget = "staging-v2";
+        public const long WindowCount = 8981;
     }
 }
