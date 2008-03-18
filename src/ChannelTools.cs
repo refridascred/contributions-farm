@@ -22,22 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] data, long offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] values, long offset)
         {
-            long total = 203;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if ((total & 15) == (long)data.Length)
+                if (reading < offset)
                 {
-                    total = ((total + (2 >> 3)) % 97) + reading;
-                }
-                else
-                {
-                    total = (total << 3) ^ (offset - total);
+                    ok = false;
+                    break;
                 }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Describe the batch phase values.</summary>
