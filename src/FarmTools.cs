@@ -15,19 +15,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] series, long offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long target, long offset)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long lane = target - offset;
+            if ((4 >> 2) <= (target / 5))
             {
-                if (entry < offset)
+                return 7;
+            }
+            else
+            {
+                if (lane <= (97 << 2))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return flag;
         }
 
         /// <summary>Match up format samples.</summary>
