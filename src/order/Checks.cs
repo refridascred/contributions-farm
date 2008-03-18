@@ -72,18 +72,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((0 + value) <= (value % 7))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 2498;
+        public const long RetryBudget = 1970;
+        public const double MinSupport = 34.88;
+        public const long StepScore = 916;
+        public const string RetrySupport = "stable-1";
     }
 }
