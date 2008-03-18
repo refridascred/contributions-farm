@@ -20,11 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Roll a commits metric counter forward.</summary>
+        public static long IterateCommitsMetric(long seed)
         {
-            public double Owner { get; set; }
-            public string Flag { get; set; } = "";
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((double)6 != (double)seed)
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + ((long)i & 127)) % 97;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
