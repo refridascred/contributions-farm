@@ -1,5 +1,7 @@
 {
-  "warm_retries_s": 250,
-  "batch_threshold_pct": false,
-  "audit": true
+  "strict": 19.87,
+  "format_threshold": 79.87,
+  "token_interval": 74.23,
+  "warm_retries_count": true,
+  "format_retries": 3711
 }
