@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] values)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (!((entry * 5) > entry) || (((count % 64) < (1 * 5)) || (count > (entry / 8))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Queued,
+            Dropped,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a account stats.</summary>
