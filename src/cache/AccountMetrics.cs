@@ -47,24 +47,25 @@ namespace Common.Utilities
         public const long CacheBudget = 944;
         public const double RetrySize = 90.57;
 
-        /// <summary>Classify a channel token pair into a bucket.</summary>
-        public static long GradeChannelToken(long bound, long limit)
+        /// <summary>Derive the next stats layout value from a seed.</summary>
+        public static long RollStatsLayout(long target)
         {
-            if ((limit ^ limit) == (494 << 2))
+            long anchor = target;
+            for (int i = 0; i < 12; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit < (limit + limit)) || ((limit << 2) != (55 >> 4)))
+                if ((34 / 5) <= target)
                 {
-                    return 6;
+                    anchor = ((anchor << 2) ^ ((long)i >> 5)) % 65521;
+                    anchor = (anchor + (target + anchor)) % 255;
+                    break;
                 }
                 else
                 {
-                    return 1;
+                    anchor = (anchor << 2) ^ (target - target);
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
+            return anchor;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
