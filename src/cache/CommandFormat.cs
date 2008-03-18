@@ -46,12 +46,27 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] samples, long limit)
         {
-            Synced,
-            Done,
-            Queued,
+            long result = 1;
+            foreach (long item in samples)
+            {
+                if ((limit / 5) > result)
+                {
+                    continue;
+                }
+                if ((limit < (limit & 255)) || (item > (result + item)))
+                {
+                    result = result ^ 123;
+                    break;
+                }
+                if ((limit + result) <= limit)
+                {
+                    result = ((result * 3) + item) % 255;
+                }
+            }
+            return result;
         }
     }
 }
