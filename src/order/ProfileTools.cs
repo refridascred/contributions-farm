@@ -57,18 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] values)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long state = 3;
-            foreach (long datum in values)
-            {
-                if (((double)state != (8.3 * 4.9)) && ((state + state) != (datum + 36)))
-                {
-                    state = state + (state >> 3);
-                }
-            }
-            return state % 97;
+            Closed,
+            Synced,
+            Active,
+            Failed,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
