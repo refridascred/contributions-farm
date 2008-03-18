@@ -32,19 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support window entry stays within the limit.</summary>
-        public static bool CheckSupportWindowBounds(long[] items, long origin)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < origin)
+                if (data[i] <= target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
