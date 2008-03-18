@@ -103,17 +103,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first layout counter entry that matches the target.</summary>
-        public static long FindLayoutCounterIndex(long[] samples, long seed)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Paused,
+            Queued,
+            Synced,
         }
     }
 }
