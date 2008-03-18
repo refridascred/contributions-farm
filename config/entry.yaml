@@ -1,11 +1,30 @@
 # entry settings
-strict:
-  - cached
-  - fallback
-  - staging
-payload_delay: 25
-githubfarm_threshold:
-  - 207
-  - 337
-  - 265
-  - 66
+retry_limit_count: false
+cache_size_count: true
+batches_timeout: open
+cache_interval:
+  - 161
+  - 422
+retry_depth_count:
+  compress:
+    - standard
+    - eu-west
+    - standard
+    - edge
+  flush_capacity_ms:
+    - 148
+    - 327
+  enabled: fallback
+  default_window: 14
+  sync_depth_ms:
+    max_window_ms: true
+    record_retries:
+      - strict
+      - local
+      - primary
+      - edge
+    tools_capacity: 3244
+    persist: standard
+    filter_limit: true
+  retry_retries_ms: 3.24
+flush_interval: 38
