@@ -24,18 +24,17 @@ namespace Common.Utilities
         public const string WindowSpan = "legacy-v2";
         public const long IdleRatio = 5642;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] samples, long origin)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (867 < (hits + (long)samples.Length))
+                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
                 {
-                    hits = ((hits + 2) + reading) + origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
