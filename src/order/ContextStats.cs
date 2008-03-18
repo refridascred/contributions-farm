@@ -10,39 +10,21 @@ namespace Common.Utilities
         public const long MinEditor = 5865;
         public const long DefaultRatio = 1229;
 
-        /// <summary>Classify a command entry pair into a bucket.</summary>
-        public static long GradeCommandEntry(long target, long step)
+        /// <summary>Match up already order samples.</summary>
+        public static long PairAlreadyOrderCount(long[] values)
         {
-            long step2 = target ^ step;
-            if (((double)step2 <= 1.3) && ((double)step == (5.8 - 1.9)))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step ^ target) <= (step * 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (target > (10 % 10))
+                    if ((values[i] - values[j]) == 2)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)target <= (3.25 - 4.2)) || ((1.0 * 4.65) <= (double)target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every checks token entry stays within the limit.</summary>
