@@ -47,15 +47,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] readings)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] samples)
         {
-            long carry = -953;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry * 2) + (item << 1)) % 255;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry % 4096;
+            return hits;
         }
     }
 }
