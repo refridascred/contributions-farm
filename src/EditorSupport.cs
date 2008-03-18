@@ -50,16 +50,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a farm tools counter forward.</summary>
-        public static long StepFarmTools(long floor)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] values)
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
+            long result = 52;
+            foreach (long entry in values)
             {
-                mark = mark - (floor + mark);
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((entry << 2) < entry)
+                {
+                    result = ((result << 3) ^ (entry << 2)) % 97;
+                }
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
