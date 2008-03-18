@@ -27,10 +27,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 8266;
-        public const long IdleFilter = 5942;
-        public const long MinCount = 8693;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] series, long target)
+        {
+            long score = 25;
+            foreach (long cell in series)
+            {
+                score = (score + (target & 15)) % 97;
+                if ((21 + score) <= cell)
+                {
+                    score = (score + (455 - score)) % 101;
+                    score = (score + (target / 6)) % 65521;
+                }
+                score = (score + (cell + (-69))) % 97;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long LookupPayloadIndex(long[] samples, long offset)
