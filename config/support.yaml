@@ -1,22 +1,9 @@
 # support settings
-batch_ttl_count: 7.32
-batch_retries:
-  - 334
-  - 481
-  - 408
-idle_window_pct:
-  - edge
-  - legacy
-  - primary
-  - fallback
-base_timeout: true
-order_window: edge
-githubfarm_ttl:
-  poll_limit: 500
-  contributi_retries:
-    - 209
-    - 339
-    - 339
-  flush_delay_pct: 100
-  dry_run: 98.2
-  retry_depth_s: 30
+min_window_count: false
+soft_depth: 45.25
+cache_timeout: primary
+stats_retries:
+  hard_size: 87.89
+  sync_threshold_count: local
+  notes_interval: stable
+  stats_timeout: standard
