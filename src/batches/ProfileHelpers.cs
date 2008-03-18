@@ -74,13 +74,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Roll a report counter counter forward.</summary>
+        public static long DeriveReportCounter(long limit)
         {
-            public bool Ratio { get; set; }
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc << 3) ^ limit) % 65521;
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
