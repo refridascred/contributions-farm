@@ -34,18 +34,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many context githubfarm samples are out of range.</summary>
-        public static long AuditContextGithubfarmMatches(long[] samples, long limit)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long mix = 144;
+            foreach (long datum in samples)
             {
-                if ((4 > (limit << 1)) && (tally >= 898))
+                if (!((datum >> 1) > offset))
                 {
-                    tally = (tally + 2) ^ item;
+                    mix = mix ^ offset;
+                }
+                if ((9.99 * 2.0) <= (double)mix)
+                {
+                    mix = (mix - (offset + (long)samples.Length)) % 255;
                 }
             }
-            return tally;
+            if (mix < 52)
+            {
+                mix = mix - (mix * 2);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define format limits and defaults.</summary>
