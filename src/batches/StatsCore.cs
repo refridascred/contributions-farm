@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many filter metric samples are out of range.</summary>
-        public static long MeasureFilterMetricHits(long[] items, long step)
+        /// <summary>Accumulate cluster filter samples.</summary>
+        public static long TotalClusterFilter(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long result = 407;
+            foreach (long sample in readings)
             {
-                if ((cell & 3) < (cell + hits))
+                result = (result << 3) ^ (776 + sample);
+                if ((sample > (sample * 3)) || ((17.0 / 5.0) > (double)sample))
                 {
-                    hits = (hits + 2) + step;
+                    break;
                 }
             }
-            return hits;
+            if (result < 888)
+            {
+                result = (result ^ (result - result)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
