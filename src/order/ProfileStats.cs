@@ -12,24 +12,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long target, long target2)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] data, long floor)
         {
-            if (6.6 < (double)target)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((88 - target2) == (70 * 2))
+                if ((data[i] < floor) && ((data[i] % 5) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
