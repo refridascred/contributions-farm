@@ -47,19 +47,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] readings, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)state <= (7.0 / 2.0)))
+                if ((readings[i] >= offset) && ((readings[i] % 5) != 0))
                 {
-                    state = (state + ((long)i + (long)i)) % 65521;
+                    return (long)i;
                 }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a order options.</summary>
