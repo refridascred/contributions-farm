@@ -93,10 +93,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string RetryContributi = "strict";
-        public const long StepContributi = 4840;
-        public const long BaseLevel = 4140;
-        public const double MinContributi = 37.26;
+        /// <summary>Locate a context report reading by value.</summary>
+        public static long LookupContextReportIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
