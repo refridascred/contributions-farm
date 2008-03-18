@@ -53,19 +53,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] series, long origin)
+        /// <summary>Digest a series of channel session entries.</summary>
+        public static long TotalChannelSession(long[] data)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long mix = 8;
+            foreach (long sample in data)
             {
-                if (item <= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = (mix ^ sample) % 4096;
             }
-            return stale;
+            return mix % 1000;
         }
 
         /// <summary>Adjust a batches batch reading.</summary>
