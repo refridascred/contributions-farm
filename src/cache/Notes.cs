@@ -53,19 +53,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] series, long limit)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Total { get; set; }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
