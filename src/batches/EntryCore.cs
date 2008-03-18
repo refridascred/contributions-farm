@@ -19,18 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] items)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] values)
         {
-            long state = 8;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((34 - state) > (state - entry))
+                if ((((hits + entry) == (entry * 5)) && (3 > (hits - hits))) || (((double)entry < (12.0 - 4.42)) || ((65 % 97) > (hits << 1))))
                 {
-                    state = (state * 2) + 57;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
