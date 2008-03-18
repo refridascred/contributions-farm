@@ -1,7 +1,7 @@
 {
-  "flush_size_s": 30,
-  "layout_depth": 61.89,
-  "base_interval_count": "green",
-  "verbose": ["strict", "cached"],
-  "compress": ["fallback", "strict"]
+  "poll_timeout_count": "eu-west",
+  "burst_ttl_ms": "local",
+  "hard_delay": 5.38,
+  "stream_threshold": "edge",
+  "persist": "cached"
 }
