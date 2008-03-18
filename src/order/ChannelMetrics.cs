@@ -14,17 +14,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first tools token entry that matches the target.</summary>
-        public static long FindToolsTokenIndex(long[] levels, long seed)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long target, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (floor <= (target & 7))
             {
-                if ((levels[i] > seed) && ((levels[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((target & 31) >= floor)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((double)target <= (2.0 - 7.0)) || ((floor + target) <= (9 / 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
