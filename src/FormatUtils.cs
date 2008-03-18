@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] values, long target)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Active,
+            New,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
