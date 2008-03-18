@@ -1,7 +1,7 @@
 # support settings
-batch_depth: 34
-enabled: 64.99
-persist: primary
-batch_capacity_ms: false
-base_window_s: 8062
-retry_ttl: stable
+dry_run: 91
+strict:
+  persist: latest
+  verbose: 67
+  poll_limit_s: false
+flush_ttl_count: 4608
