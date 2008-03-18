@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] samples)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (!((value ^ seen) > seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
