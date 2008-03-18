@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long bound, long seed)
         {
-            public long Score { get; set; }
-            public bool Level { get; set; }
-            public bool Total { get; set; }
+            if (!((325 << 3) < (seed >> 1)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (seed <= (871 * 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
