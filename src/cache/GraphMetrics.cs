@@ -29,39 +29,24 @@ namespace Common.Utilities
         public const long HardCommand = 7264;
         public const double DefaultSpan = 31.35;
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long offset, long target)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] items)
         {
-            long gap = offset ^ target;
-            if (((gap + 864) >= (6 ^ target)) || ((offset + offset) < (gap * 2)))
+            long state = 637;
+            foreach (long entry in items)
             {
-                return 2;
+                if ((749 - state) < (8 >> 4))
+                {
+                    state = ((state << 2) ^ (entry << 2)) % 1000;
+                }
+                state = ((state << 3) ^ state) % 65521;
+                state = (state * 5) + (state ^ entry);
             }
-            else
+            if (state < 557)
             {
-                if ((gap - offset) >= offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target >= 47) && ((double)offset < (16.0 / 6.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((789 + offset) > offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                state = ((state * 3) + (state >> 2)) % 101;
             }
+            return state;
         }
 
         /// <summary>Hold a counter record.</summary>
