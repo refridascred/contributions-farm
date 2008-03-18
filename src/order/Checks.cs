@@ -29,12 +29,22 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 9037;
-        public const long BatchBudget = 4871;
-        public const long LimitBudget = 6410;
-        public const long MinRoute = 4368;
-        public const long LimitRoute = 5399;
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next graph value.</summary>
         public static double SmoothGraph(double ratio, double offset)
