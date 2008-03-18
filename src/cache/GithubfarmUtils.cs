@@ -47,19 +47,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] samples, long floor)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum <= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] - data[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
