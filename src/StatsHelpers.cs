@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] items, long offset)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((hits / 4) > (8 * 5))
-                {
-                    hits = ((hits + 3) ^ item) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count the contributi tools entries that pass the check.</summary>
