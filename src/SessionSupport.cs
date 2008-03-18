@@ -45,19 +45,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] levels, long limit)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 186;
+        public const long WindowNotes = 2375;
+        public const long SoftNotes = 8543;
     }
 }
