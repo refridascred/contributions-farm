@@ -2,11 +2,13 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
-    score REAL NOT NULL DEFAULT 0,
     owner TEXT NOT NULL,
-    region TEXT
+    active INTEGER NOT NULL DEFAULT 1,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_score ON layout_items (score);
+CREATE INDEX IF NOT EXISTS idx_layout_items_owner ON layout_items (owner);
 
-INSERT INTO layout_items (state, score, owner, region) VALUES ('primary', 46.31, 'primary', 'edge');
+INSERT INTO layout_items (state, owner, active, count) VALUES ('legacy', 'green', 31, 22);
+INSERT INTO layout_items (state, owner, active, count) VALUES ('edge', 'staging', 31, 66);
+INSERT INTO layout_items (state, owner, active, count) VALUES ('staging', 'staging', 26, 63);
