@@ -21,16 +21,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next checks support value from a seed.</summary>
-        public static long IterateChecksSupport(long target)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] readings, long step)
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                score = score - score;
-                score = ((score * 3) + (long)i) % 101;
+                if (value != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Define route limits and defaults.</summary>
