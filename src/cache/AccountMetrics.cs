@@ -40,10 +40,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftScore = 19.88;
-        public const long LimitBudget = 436;
-        public const long CacheScore = 3640;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryCache = "stable-edge";
+        public const long LimitCache = 8215;
+        public const double LimitWidth = 69.07;
+        public const double WindowCache = 69.16;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BatchCount = 6664;
