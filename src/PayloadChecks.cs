@@ -56,12 +56,15 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Fold a list of checks notes readings.</summary>
+        public static long ScoreChecksNotes(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
+            long result = -26;
+            foreach (long reading in levels)
+            {
+                result = ((result - (result ^ 8)) % 97) - reading;
+            }
+            return result % 97;
         }
 
         /// <summary>Blend two report measurements.</summary>
