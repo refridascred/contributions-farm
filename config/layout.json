@@ -1,8 +1,16 @@
 {
-  "metric_ratio": 60.4,
-  "batch_depth": 67,
-  "strict": [88, 116, 133, 159],
-  "default_limit_s": "latest",
-  "metric_depth": 2503,
-  "persist": "local"
+  "batch_limit_s": {
+    "githubfarm_ttl": 936,
+    "readonly": 3792,
+    "cluster_size": ["strict", "local"],
+    "sync_depth_s": {
+      "retry_threshold_ms": 65.01,
+      "support_limit": true,
+      "batch_retries": [28, 18],
+      "context_interval": false
+    }
+  },
+  "sync_size_ms": "open",
+  "token_delay": 30,
+  "flush_window_s": "fallback"
 }
