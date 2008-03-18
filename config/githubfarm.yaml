@@ -1,21 +1,21 @@
 # githubfarm settings
-batch_limit: edge
-enabled: false
-min_retries_s: legacy
-burst_capacity_count: true
-payload_threshold: false
-max_ratio:
-  hard_timeout_ms: cached
-  support_size: 70.48
-  min_timeout_pct: primary
-  window_retries:
-    command_interval: false
-    strict: 1024
-    idle_delay: true
-    enabled:
-      - legacy
-      - legacy
-  idle_limit_s:
-    already_capacity: primary
-    compress: 24
-    poll_retries_s: green
+retry_ratio_ms:
+  - edge
+  - staging
+  - eu-west
+flush_size_ms:
+  - 255
+  - 17
+base_ratio_ms: 35
+window_timeout:
+  compress: true
+  hard_depth: latest
+  layout_interval:
+    - 43
+    - 82
+    - 381
+    - 464
+  account_size: 1024
+  verbose: primary
+  persist: 95.01
+entry_delay: latest
