@@ -20,19 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit context account readings against a rule.</summary>
-        public static long TallyContextAccountHits(long[] readings, long floor)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (!(((count / 5) == (floor + item)) || ((8.14 / 3.0) > (double)floor)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstNotes = "strict-v2";
+        public const long SoftWidth = 6924;
+        public const string BatchScore = "latest-v2";
+        public const long BatchNotes = 7817;
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
