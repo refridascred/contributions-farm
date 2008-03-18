@@ -12,19 +12,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] levels, long seed)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
