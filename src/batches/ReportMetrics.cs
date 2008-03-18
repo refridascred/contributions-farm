@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Classify a format layout pair into a bucket.</summary>
+        public static long GradeFormatLayout(long target, long limit)
         {
-            public bool Size { get; set; }
-            public long Offset { get; set; }
-            public double Weight { get; set; }
+            long slot = target ^ limit;
+            if (!(8.9 >= (double)limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if (2.9 <= (double)slot)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit != (0.09 / 2.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((slot + 687) == (target + 7))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many format window samples are out of range.</summary>
