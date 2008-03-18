@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryCommits = "staging-edge";
-        public const double StepCommits = 81.05;
-        public const double BurstCommits = 61.34;
-        public const long CacheCommits = 8418;
-        public const long StepSize = 3417;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] items, long step)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (((long)items.Length >= step) && ((hits ^ 2) <= (item & 7)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double AdjustContext(double weight, double bias)
