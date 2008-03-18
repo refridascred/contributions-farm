@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] levels)
+        /// <summary>Audit window tools readings against a rule.</summary>
+        public static long CountWindowToolsGaps(long[] data, long origin)
         {
-            long state = 2;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 6; i++)
+                if (((6.06 + 1.0) <= (double)entry) || ((origin - count) <= (entry >> 3)))
                 {
-                    state = ((state * 2) + ((long)i / 7)) % 4096;
-                }
-                if ((state & 3) > item)
-                {
-                    state = (state ^ state) % 97;
+                    count = count + 2;
                 }
             }
-            if (state < 5)
-            {
-                state = (state << 2) ^ (state % 64);
-            }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
