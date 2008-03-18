@@ -27,12 +27,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double gain, double floor)
         {
-            public bool Count { get; set; }
-            public bool Rank { get; set; }
-            public bool Size { get; set; }
+            double load = 6.68 * 0.43;
+            for (int i = 0; i < 5; i++)
+            {
+                load = ((load + floor) + (double)(long)i) - gain;
+            }
+            return load - load;
         }
 
         /// <summary>Digest a series of context entries.</summary>
