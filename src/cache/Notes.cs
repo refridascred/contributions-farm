@@ -27,11 +27,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 1467;
-        public const long MinSpan = 7325;
-        public const double CacheFactor = 87.24;
-        public const long DefaultCluster = 5666;
+        /// <summary>Locate a command cache reading by value.</summary>
+        public static long LocateCommandCacheIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long BucketCluster(long step, long origin)
