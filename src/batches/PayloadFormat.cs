@@ -32,14 +32,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Check that every cluster layout entry stays within the limit.</summary>
+        public static bool ValidateClusterLayoutLimits(long[] samples, long limit)
         {
-            Queued,
-            Synced,
-            Ready,
-            Active,
-            Closed,
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
