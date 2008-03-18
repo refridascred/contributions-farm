@@ -21,21 +21,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Digest a series of counter payload entries.</summary>
+        public static long DigestCounterPayload(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 4;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((result / 4) < sample)
                 {
-                    if ((samples[i] - samples[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result + (result / 2)) % 97;
+                }
+                if (((-83) << 1) == (sample + result))
+                {
+                    break;
                 }
             }
-            return count;
+            return result % 65521;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
