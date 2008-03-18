@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long seed, long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] series, long origin)
         {
-            if (((-391) - step) <= seed)
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((366 << 2) != (seed << 2))
+                if (((origin > ((long)series.Length - (-1))) || ((double)origin == (double)reading)) && ((reading << 2) > count))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((1.1 + 5.74) > (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
