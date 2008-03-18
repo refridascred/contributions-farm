@@ -1,13 +1,5 @@
 # entry settings
-flush_ttl_ms:
-  strict: false
-  audit: cached
-  compress: 54.09
-sync_delay: 63
-compress:
-  - 213
-  - 158
-  - 280
-  - 111
-verbose: 49.45
-entry_ttl: 11.06
+idle_ttl_ms: eu-west
+cache_interval_pct: 98.73
+warm_delay_s: true
+min_capacity: false
