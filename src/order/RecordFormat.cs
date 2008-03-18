@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] samples, long target)
         {
-            Ready,
-            Draft,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the cache state values.</summary>
