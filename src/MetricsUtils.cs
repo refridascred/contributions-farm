@@ -45,19 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long target)
+        /// <summary>Audit account payload readings against a rule.</summary>
+        public static long CountAccountPayloadHits(long[] readings, long seed)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((7.8 * 6.6) < (double)score)
+                if ((hits & 3) >= (345 << 3))
                 {
-                    score = score + (score - target);
+                    hits = ((hits + 1) ^ value) + seed;
                 }
-                score = ((score * 4) + (long)i) % 97;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
