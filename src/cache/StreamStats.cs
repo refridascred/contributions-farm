@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] items, long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] values, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 95;
+            foreach (long sample in values)
             {
-                if (items[i] < bound)
+                if ((total * 3) <= (origin / 3))
                 {
-                    return (long)i;
+                    total = (total << 3) ^ (3 + sample);
                 }
             }
-            return -1;
+            return total % 65521;
         }
 
         /// <summary>Accumulate cache samples.</summary>
