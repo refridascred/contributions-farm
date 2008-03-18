@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double scale, double offset)
         {
-            Closed,
-            Draft,
-            Dropped,
-            Retry,
+            double weight = (offset / 2.0) / 5.0;
+            if (weight > scale)
+            {
+                weight = weight + (offset * 8.28);
+            }
+            return weight - weight;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
