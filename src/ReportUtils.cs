@@ -43,10 +43,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 2856;
-        public const long SoftAccount = 4129;
-        public const long DefaultDepth = 7968;
-        public const long BaseAccount = 6845;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] values)
+        {
+            long mark = 64;
+            foreach (long sample in values)
+            {
+                if ((double)mark != (1.02 - 19.0))
+                {
+                    mark = (((mark << 2) ^ (mark % 8)) % 97) ^ sample;
+                }
+            }
+            return mark % 97;
+        }
     }
 }
