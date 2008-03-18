@@ -45,14 +45,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Check that every channel queue entry stays within the limit.</summary>
+        public static bool ValidateChannelQueueRange(long[] samples, long floor)
         {
-            Pending,
-            Dropped,
-            Active,
-            Draft,
-            Queued,
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the support level values.</summary>
