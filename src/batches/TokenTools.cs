@@ -20,12 +20,19 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] samples, long seed)
         {
-            Queued,
-            New,
-            Locked,
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of command window entries.</summary>
