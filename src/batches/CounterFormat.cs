@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up token contributi samples.</summary>
-        public static long PairTokenContributiCount(long[] levels)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Locked,
+            Paused,
+            Closed,
         }
 
         /// <summary>Describe the order status values.</summary>
