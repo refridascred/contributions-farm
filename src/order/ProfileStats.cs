@@ -45,18 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] levels)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (((905 + (long)levels.Length) > (entry + entry)) && (hits < (entry << 3)))
+                if ((double)item <= (9.64 / 4.0))
                 {
-                    hits = hits + 2;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
