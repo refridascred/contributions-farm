@@ -24,11 +24,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
+            Active,
+            Stale,
+            Dropped,
+            Done,
+            Draft,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
