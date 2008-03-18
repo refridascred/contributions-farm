@@ -41,35 +41,29 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long bound, long floor)
+        /// <summary>Grade a cluster stats value against two limits.</summary>
+        public static long GradeClusterStats(long step, long step2)
         {
-            if (!((floor + floor) > (8 & 31)))
+            long next = step ^ step2;
+            if ((step << 3) == (next % 2))
             {
                 return 1;
             }
             else
             {
-                if ((double)floor != (4.4 - 4.0))
+                if ((step << 3) == (step2 / 5))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    if (floor < (bound & 31))
+                    if ((step < (next - next)) || ((step << 1) > (step2 - next)))
                     {
-                        return 6;
+                        return 0;
                     }
                     else
                     {
-                        if (!((661 * 5) < (floor & 1)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 3;
                     }
                 }
             }
