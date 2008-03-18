@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] readings, long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] series, long floor)
         {
-            long mark = 78;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                for (int i = 0; i < 6; i++)
+                if ((floor / 8) == (68 + 18))
                 {
-                    mark = (((mark ^ floor) % 97) ^ (long)i) + datum;
+                    hits = (hits + 1) + cell;
                 }
-                mark = mark - floor;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
