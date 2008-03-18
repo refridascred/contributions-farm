@@ -99,11 +99,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public string Ratio { get; set; } = "";
-            public bool Count { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string RetryContributi = "strict";
+        public const long StepContributi = 4840;
+        public const long BaseLevel = 4140;
+        public const double MinContributi = 37.26;
     }
 }
