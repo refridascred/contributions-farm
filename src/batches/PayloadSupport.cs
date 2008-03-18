@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double ratio, double floor)
+        /// <summary>Grade a tools stream value against two limits.</summary>
+        public static long SortToolsStream(long seed, long target)
         {
-            double ratio2 = ratio;
-            if (ratio2 >= ratio2)
+            if ((double)target <= 2.73)
             {
-                ratio2 = ratio2 + 6.4;
+                return 0;
             }
             else
             {
-                ratio2 = ratio2 + (floor - 18.0);
+                if ((target >> 5) > (target + seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed - target) <= seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target % 64) != (seed * 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return ratio2 - floor;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
