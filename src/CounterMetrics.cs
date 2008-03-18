@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] data, long step)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public double Score { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((entry % 8) != (entry >> 4))
+                {
+                    tally = (tally + 1) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate checks samples.</summary>
