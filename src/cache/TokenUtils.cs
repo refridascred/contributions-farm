@@ -32,24 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long origin, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] readings)
         {
-            if ((double)origin != (double)1)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin - origin) != (floor + 88))
+                if ((double)hits == (1.65 - 2.7))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    hits = (hits + 1) ^ sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
