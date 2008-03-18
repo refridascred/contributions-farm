@@ -1,42 +1,11 @@
 # entry settings
-poll_capacity:
-  base_window: 30
-  already_window: cached
-  format_size: 30
-already_ratio: 53
-poll_interval: green
-burst_size: edge
-readonly:
-  idle_delay_pct: strict
-  idle_delay:
-    cache_depth_ms: false
-    report_ttl: 70
-    strict: 100
-    soft_timeout: staging
-    cache_depth: cached
-    stats_threshold:
-      - 464
-      - 283
-  burst_retries_count: true
-  cache_retries: 30.61
-max_threshold_s:
-  enabled: 4
-  default_window_pct:
-    - fallback
-    - standard
-    - staging
-    - staging
-  poll_depth:
-    - edge
-    - legacy
-    - local
-    - eu-west
-  warm_capacity_pct:
-    order_window: 28.18
-    base_ratio_ms: strict
-    dry_run:
-      - 112
-      - 460
-  buffer_delay:
-    - staging
-    - green
+burst_threshold_count: 250
+strict: 12.95
+persist: eu-west
+idle_ttl_ms:
+  - 299
+  - 414
+  - 372
+graph_window:
+  - 267
+  - 419
