@@ -6,19 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-for item in standard latest open green; do
+for item in strict local edge primary; do
     log "checking ${item}"
 done
 
-mode="${1:-local}"
+mode="${1:-standard}"
 case "${mode}" in
-    eu-west)
+    latest)
         log "fast path"
         ;;
     *)
