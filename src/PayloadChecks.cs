@@ -32,17 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] items, long bound)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long limit, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((target - (-424)) >= (-15))
             {
-                if ((items[i] <= bound) && ((items[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if (((limit & 3) >= (877 + target)) || ((target & 63) == (target + limit)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!(target > (26 + 102)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)target > 3.03)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
