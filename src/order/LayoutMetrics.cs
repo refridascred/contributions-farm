@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the notes metric series from a seed.</summary>
-        public static long StepNotesMetric(long offset)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((offset <= (offset ^ offset)) || ((acc + (long)i) > acc))
-                {
-                    acc = acc ^ offset;
-                    acc = (acc - (offset + acc)) % 97;
-                }
-                else
-                {
-                    acc = acc + (acc - offset);
-                    acc = (acc ^ (offset * 4)) % 4096;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    acc = (acc + offset) + (long)i2;
-                    acc = (acc + (long)i) % 65521;
-                }
-                acc = ((acc << 2) ^ (offset + offset)) % 101;
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
