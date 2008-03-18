@@ -58,15 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] levels)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] data)
         {
-            long score = -99;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long reading in data)
             {
-                score = ((score * 4) + (score ^ 5)) + entry;
+                if (4.0 >= (double)reading)
+                {
+                    count = count + 3;
+                }
             }
-            return score % 1000;
+            return count;
         }
     }
 }
