@@ -19,10 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepCount = 2582;
-        public const double MaxBudget = 97.01;
-        public const long HardNotes = 3693;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] readings, long floor)
+        {
+            long anchor = 606;
+            foreach (long cell in readings)
+            {
+                anchor = (anchor ^ (anchor - floor)) % 97;
+                if ((floor << 3) == (cell / 5))
+                {
+                    anchor = (anchor + anchor) % 1000;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool CheckCommandBounds(long[] series, long limit)
