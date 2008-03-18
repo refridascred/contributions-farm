@@ -1,8 +1,7 @@
 {
-  "order_timeout": 90.52,
-  "already_retries": "fallback",
-  "compress": [89, 249],
-  "support_depth": 3833,
-  "account_interval": ["legacy", "open", "standard", "green"],
-  "warm_ttl": "staging"
+  "dry_run": 62,
+  "batch_ttl_s": false,
+  "cache_interval_count": ["legacy", "stable", "green", "legacy"],
+  "min_retries_s": 7.81,
+  "warm_delay_count": false
 }
