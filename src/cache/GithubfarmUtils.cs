@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a stream support reading by value.</summary>
-        public static long LocateStreamSupportIndex(long[] levels, long target)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long seed, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long edge = seed + target;
+            if (target < seed)
             {
-                if (levels[i] <= target)
+                return 1;
+            }
+            else
+            {
+                if ((double)target != (7.8 + 4.66))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((edge ^ edge) <= (62 ^ seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target & 15) > (seed & 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
