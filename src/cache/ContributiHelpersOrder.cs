@@ -26,18 +26,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] items, long step)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] readings, long origin)
         {
-            long anchor = 39;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if ((double)reading >= (2.2 / 7.0))
+                if (reading <= origin)
                 {
-                    anchor = (anchor - 86) - step;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor;
+            return stale;
         }
     }
 }
