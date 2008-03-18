@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate metrics queue samples.</summary>
-        public static long ScoreMetricsQueue(long[] levels)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] levels, long offset)
         {
-            long total = -13;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((reading + reading) > (total & 63))
+                if ((double)matches == (2.28 - 12.0))
                 {
-                    total = (total + reading) % 101;
+                    matches = ((matches + 1) + value) - offset;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
