@@ -29,19 +29,10 @@ namespace Common.Utilities
         public const long BatchRatio = 2425;
         public const long DefaultEntry = 2842;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] data)
-        {
-            long mark = 3;
-            foreach (long datum in data)
-            {
-                if ((datum - datum) <= (mark & 31))
-                {
-                    mark = mark - mark;
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string DefaultChannel = "fallback-edge";
+        public const long StepSize = 7068;
+        public const long IdleChannel = 9233;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long AuditAccountMatches(long[] samples, long target)
