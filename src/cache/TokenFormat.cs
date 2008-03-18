@@ -37,10 +37,14 @@ namespace Common.Utilities
             return weight2 + (double)1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double SoftChannel = 58.55;
-        public const long IdleChannel = 9451;
-        public const long SoftSpan = 8702;
-        public const string HardWidth = "cached-1";
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Idle,
+            Dropped,
+            Done,
+            Ready,
+            Pending,
+        }
     }
 }
