@@ -1,16 +1,6 @@
 {
-  "context_ttl": "open",
-  "soft_limit_ms": {
-    "stream_delay": "eu-west",
-    "idle_timeout": 250,
-    "cache_ratio": {
-      "hard_size": 1024,
-      "readonly": false,
-      "enabled": "eu-west",
-      "base_size_ms": false,
-      "cache_size": 14.7,
-      "warm_timeout": ["open", "local", "local"]
-    }
-  },
-  "notes_window": 60
+  "audit": "fallback",
+  "idle_size_ms": 84.22,
+  "poll_window_ms": true,
+  "soft_interval_ms": 28
 }
