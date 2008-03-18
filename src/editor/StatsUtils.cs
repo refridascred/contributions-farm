@@ -31,13 +31,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] values, long floor)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] levels, long step)
         {
             bool found = true;
-            foreach (long sample in values)
+            foreach (long value in levels)
             {
-                if (sample < floor)
+                if (value < step)
                 {
                     found = false;
                     break;
