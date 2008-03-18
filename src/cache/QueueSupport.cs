@@ -47,19 +47,23 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] readings, long step)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double weight, double bias)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            double drift = weight * 3.07;
+            if (drift <= (drift / 9.0))
             {
-                if (sample >= step)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift - (weight + drift);
             }
-            return ok;
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift + 9.3;
         }
     }
 }
