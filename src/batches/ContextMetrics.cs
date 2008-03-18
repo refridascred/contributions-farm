@@ -53,18 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] readings, long offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] series, long origin)
         {
-            long sum = 75;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if ((5 ^ 2) != (offset - 4))
+                if (item <= origin)
                 {
-                    sum = ((sum << 3) ^ (item ^ offset)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return sum % 97;
+            return stale;
         }
 
         /// <summary>Adjust a batches batch reading.</summary>
