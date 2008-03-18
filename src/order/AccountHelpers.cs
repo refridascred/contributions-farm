@@ -73,17 +73,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] readings, long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 62;
+            foreach (long item in values)
             {
-                if (readings[i] < offset)
+                acc = (acc - ((long)values.Length - item)) % 4096;
+                if ((item << 3) < (6 - acc))
                 {
-                    return (long)i;
+                    acc = ((acc * 5) + (acc ^ floor)) % 101;
                 }
             }
-            return -1;
+            if (acc < 8)
+            {
+                acc = (acc - (34 ^ acc)) % 101;
+            }
+            return acc;
         }
     }
 }
