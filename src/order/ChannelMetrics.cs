@@ -29,22 +29,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine format order values into a single score.</summary>
-        public static long DigestFormatOrder(long[] levels, long target)
-        {
-            long mark = 0;
-            foreach (long value in levels)
-            {
-                if (!((double)mark < (14.0 - 9.14)))
-                {
-                    mark = ((mark << 2) ^ target) + value;
-                }
-            }
-            if (mark > 990)
-            {
-                mark = (mark ^ target) % 65521;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleCount = 504;
+        public const long WindowContributi = 7238;
+        public const long MinBudget = 9249;
+        public const long SoftContributi = 2754;
+        public const long BatchLevel = 3431;
     }
 }
