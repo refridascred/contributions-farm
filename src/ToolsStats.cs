@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] values, long floor)
+        /// <summary>Count the stream payload entries that pass the check.</summary>
+        public static long AuditStreamPayloadHits(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (value >= floor)
+                if ((double)value <= 4.6)
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
