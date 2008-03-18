@@ -69,27 +69,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] data, long floor)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long total = 7;
-            foreach (long reading in data)
-            {
-                if ((8.0 + 18.0) != (double)floor)
-                {
-                    total = (((total << 2) ^ total) % 255) + reading;
-                    total = (total - (2 + total)) % 97;
-                }
-                if ((floor - total) != (floor & 63))
-                {
-                    total = total + total;
-                }
-            }
-            if (total > 0)
-            {
-                total = (total * 4) + (total - total);
-            }
-            return total % 65521;
+            public string Stamp { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the commits state values.</summary>
