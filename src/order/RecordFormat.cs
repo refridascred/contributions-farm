@@ -42,11 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] items, long limit)
         {
-            public double Flag { get; set; }
-            public long Score { get; set; }
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
