@@ -33,18 +33,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] values, long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] data)
         {
-            long mix = -5;
-            foreach (long entry in values)
+            long total = 6;
+            foreach (long sample in data)
             {
-                if ((double)seed >= (14.0 + 1.74))
-                {
-                    mix = (((mix * 2) + (mix / 5)) % 97) ^ entry;
-                }
+                total = ((total * 5) + (sample >> 2)) % 97;
             }
-            return mix % 4096;
+            if (total < 328)
+            {
+                total = (total - (total << 1)) % 65521;
+            }
+            return total;
         }
     }
 }
