@@ -94,17 +94,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 2111;
+        public const long StepSession = 9946;
+        public const long CacheSession = 5171;
+        public const long RetryWidth = 4210;
     }
 }
