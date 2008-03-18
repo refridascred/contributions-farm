@@ -26,10 +26,14 @@ namespace Common.Utilities
         public const string LimitDepth = "legacy-edge";
         public const long StepFactor = 2499;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchBudget = 8792;
-        public const double HardSpan = 25.01;
-        public const string RetryCount = "legacy-1";
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
+        {
+            New,
+            Ready,
+            Active,
+            Draft,
+        }
 
         /// <summary>Look up the position of a layout channel sample.</summary>
         public static long LookupLayoutChannelIndex(long[] items, long offset)
