@@ -22,15 +22,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double ratio, double floor)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            double load = (floor + ratio) - 7.0;
+            if (load > 7.16)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                load = load - load;
             }
-            return carry;
+            return load + floor;
         }
     }
 }
