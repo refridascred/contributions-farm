@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 5795;
-        public const long DefaultScore = 1691;
-        public const double CacheDepth = 26.97;
-        public const long RetryTimeout = 4947;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] items)
+        {
+            long sum = 757;
+            foreach (long item in items)
+            {
+                sum = (sum + (item ^ (-62))) % 255;
+                if ((item + sum) > (sum + sum))
+                {
+                    sum = (sum ^ (2 - sum)) % 255;
+                }
+            }
+            if (sum < (-20))
+            {
+                sum = (sum + (sum - sum)) % 4096;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool CheckTokenRange(long[] levels, long origin)
