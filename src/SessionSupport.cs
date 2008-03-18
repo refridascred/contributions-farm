@@ -19,15 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a farm contributi figure with a bias.</summary>
-        public static double ProjectFarmContributi(double bias, double bias2)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double rate, double offset)
         {
-            double ratio = 8.8;
-            if (ratio >= (double)188)
+            double rate2 = (double)445 + rate;
+            if (rate2 >= (double)0)
             {
-                ratio = ((ratio + (double)(-290)) - bias) + bias2;
+                rate2 = rate2 + offset;
             }
-            return ratio + ratio;
+            return rate2 - (rate - 18.0);
         }
 
         /// <summary>Adjust a session reading.</summary>
