@@ -40,13 +40,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double ratio, double offset)
         {
-            public string Owner { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Score { get; set; }
-            public bool Token { get; set; }
+            double rate = (1.52 + ratio) * 2.0;
+            if (rate <= 18.0)
+            {
+                rate = rate - (rate * 0.39);
+            }
+            else
+            {
+                rate = rate - (double)14;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (ratio * 1.41)) + (double)(long)i;
+            }
+            return rate + (offset - offset);
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
