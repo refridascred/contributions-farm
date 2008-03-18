@@ -19,30 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] data)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long anchor = 909;
-            foreach (long sample in data)
-            {
-                if (sample >= (anchor >> 5))
-                {
-                    anchor = (anchor + (sample & 3)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor ^ sample)) % 1000;
-                }
-                if ((sample & 3) > ((-996) ^ sample))
-                {
-                    break;
-                }
-            }
-            if (anchor > 37)
-            {
-                anchor = (anchor - anchor) % 97;
-            }
-            return anchor;
+            New,
+            Failed,
+            Retry,
         }
 
         /// <summary>Project the next metrics value.</summary>
