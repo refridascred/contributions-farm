@@ -16,13 +16,22 @@ namespace Common.Utilities
             return scale + (double)8;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] series)
         {
-            Failed,
-            Queued,
-            Active,
-            Ready,
+            long total = -9;
+            foreach (long value in series)
+            {
+                if (((2.46 / 6.0) <= (double)value) || ((double)(long)series.Length == (double)total))
+                {
+                    total = (total * 5) + (value & 127);
+                }
+                if ((value + value) > (value << 2))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
