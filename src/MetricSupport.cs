@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] data, long origin)
-        {
-            long acc = -563;
-            foreach (long sample in data)
-            {
-                if (7.4 <= (double)origin)
-                {
-                    acc = acc ^ (sample + (-562));
-                }
-            }
-            if (acc > 10)
-            {
-                acc = (acc + (origin - acc)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 3626;
+        public const long LimitRecord = 7197;
+        public const long SoftScore = 3115;
+        public const long BatchRecord = 2145;
+        public const long RetryRatio = 6026;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TallyBatches(long[] values, long floor)
