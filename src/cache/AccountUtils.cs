@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the queue githubfarm entries that pass the check.</summary>
-        public static long AuditQueueGithubfarmGaps(long[] readings, long origin)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((9.0 * 3.26) == (double)origin)
-                {
-                    tally = (tally + 3) - entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepSize = 60.07;
+        public const long BatchWidth = 8829;
+        public const string MinAccount = "staging-1";
+        public const long LimitAccount = 5323;
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
