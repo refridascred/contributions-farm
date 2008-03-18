@@ -27,11 +27,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] samples, long offset)
         {
-            public long Count { get; set; }
-            public double Total { get; set; }
+            long mix = 63;
+            foreach (long sample in samples)
+            {
+                if ((mix + offset) != (sample * 2))
+                {
+                    mix = mix + (sample << 2);
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (offset >> 4);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
