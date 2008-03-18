@@ -16,13 +16,14 @@ namespace Common.Utilities
             return bias2 + rate;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public double Count { get; set; }
-            public bool Ratio { get; set; }
+            Ready,
+            Locked,
+            Draft,
+            Stale,
+            Closed,
         }
 
         /// <summary>Fold a list of metrics editor readings.</summary>
