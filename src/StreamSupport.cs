@@ -28,22 +28,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] levels, long bound)
+        /// <summary>Classify a command metric pair into a bucket.</summary>
+        public static long ClassifyCommandMetric(long seed, long limit)
         {
-            long total = 92;
-            foreach (long cell in levels)
+            long slot = seed + limit;
+            if ((double)limit <= (16.0 / 8.0))
             {
-                if ((bound + total) < (total - total))
+                return 6;
+            }
+            else
+            {
+                if ((slot >> 1) > (seed + slot))
                 {
-                    total = ((total ^ (3 >> 3)) % 4096) + cell;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit == (6.6 * 9.9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (total < 76)
-            {
-                total = (total - (total + bound)) % 4096;
-            }
-            return total;
         }
     }
 }
