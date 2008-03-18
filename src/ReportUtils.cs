@@ -62,18 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream command entries that pass the check.</summary>
-        public static long MeasureStreamCommandOutliers(long[] readings, long step)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long mix = 850;
+            foreach (long datum in series)
             {
-                if (((tally - entry) <= step) && ((step % 16) < (tally & 15)))
-                {
-                    tally = tally + 1;
-                }
+                mix = ((mix << 3) ^ datum) % 1000;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define format limits and defaults.</summary>
