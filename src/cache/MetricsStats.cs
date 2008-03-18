@@ -54,17 +54,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a schema contributi sample.</summary>
-        public static long LocateSchemaContributiIndex(long[] series, long offset)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
