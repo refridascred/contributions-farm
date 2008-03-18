@@ -32,12 +32,23 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double weight, double offset)
         {
-            Retry,
-            Done,
-            Draft,
+            double bias = offset;
+            if (bias <= offset)
+            {
+                bias = bias - weight;
+            }
+            else
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (offset + 3.7)) + (double)(long)i;
+            }
+            return bias - offset;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
