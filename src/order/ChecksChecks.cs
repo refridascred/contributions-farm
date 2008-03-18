@@ -14,25 +14,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long floor, long limit)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long step = floor + limit;
-            if ((limit + step) != (step - limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(11.0 > (double)step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Count { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Locate a command reading by value.</summary>
