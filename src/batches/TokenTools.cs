@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] levels)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long mark = 632;
-            foreach (long entry in levels)
-            {
-                if (!((entry >> 1) > 137))
-                {
-                    mark = mark ^ (mark << 2);
-                }
-            }
-            if (mark > 278)
-            {
-                mark = mark + mark;
-            }
-            return mark;
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
