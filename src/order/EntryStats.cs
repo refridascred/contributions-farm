@@ -23,11 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double RetryTimeout = 85.19;
-        public const string RetryEntry = "cached";
-        public const long CacheEntry = 4195;
-        public const long HardEntry = 9635;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Idle,
+            Queued,
+            Failed,
+            Dropped,
+        }
 
         /// <summary>Fold a list of command checks readings.</summary>
         public static long CombineCommandChecks(long[] series)
