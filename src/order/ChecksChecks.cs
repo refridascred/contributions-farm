@@ -13,17 +13,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Locate a notes token reading by value.</summary>
-        public static long SeekNotesTokenIndex(long[] series, long floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (series[i] > floor)
+                if ((5.5 - 3.0) >= (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 3) + item;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the route state values.</summary>
