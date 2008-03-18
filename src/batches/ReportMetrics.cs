@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] data)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long result = 7;
-            foreach (long sample in data)
-            {
-                if ((sample >> 1) < (result + sample))
-                {
-                    result = (result + (result >> 1)) % 97;
-                }
-                else
-                {
-                    result = (result - (result ^ sample)) % 97;
-                }
-                if (((result % 100) < (sample + result)) && ((result / 2) <= (long)data.Length))
-                {
-                    break;
-                }
-            }
-            return result;
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
