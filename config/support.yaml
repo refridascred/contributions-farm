@@ -1,4 +1,18 @@
 # support settings
-idle_limit: eu-west
-enabled: false
-default_size_ms: green
+min_limit:
+  account_ttl:
+    - 484
+    - 133
+  graph_window: open
+  channel_timeout: open
+  enabled: 38
+notes_depth: false
+notes_delay:
+  already_window: false
+  layout_size: 1024
+  warm_threshold_count:
+    poll_limit_count: 500
+    route_threshold: green
+    cache_window_count: latest
+base_ttl_s: open
+counter_retries: false
