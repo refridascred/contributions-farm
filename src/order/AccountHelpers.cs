@@ -16,12 +16,14 @@ namespace Common.Utilities
             return scale + (double)8;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryScore = 4515;
-        public const string BurstSpan = "alpha-1";
-        public const long BaseCount = 8458;
-        public const long SoftToken = 7120;
-        public const double BurstToken = 65.29;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Failed,
+            Queued,
+            Active,
+            Ready,
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long WeighContributi(long[] items)
