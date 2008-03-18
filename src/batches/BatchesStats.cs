@@ -13,13 +13,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public double Total { get; set; }
-            public string Weight { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Mode { get; set; }
+            Done,
+            Dropped,
+            Paused,
+            Ready,
+            Closed,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
