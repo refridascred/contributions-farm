@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] values)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long acc = 580;
-            foreach (long sample in values)
-            {
-                if ((acc + sample) <= 67)
-                {
-                    acc = (acc + sample) % 4096;
-                }
-                else
-                {
-                    acc = (acc ^ (sample >> 4)) % 65521;
-                }
-            }
-            return acc;
+            public bool Size { get; set; }
+            public long Offset { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
