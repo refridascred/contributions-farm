@@ -1,5 +1,19 @@
 {
-  "graph_limit": 250,
-  "hard_timeout_pct": false,
-  "idle_timeout_s": "stable"
+  "hard_window": 30,
+  "compress": "eu-west",
+  "warm_ttl": {
+    "counter_ratio": "green",
+    "sync_ratio_s": 250,
+    "batch_threshold": 66,
+    "default_depth": 43,
+    "token_threshold": {
+      "dry_run": 45.24,
+      "min_ratio_s": "primary",
+      "compress": "local",
+      "payload_size": 25.72,
+      "checks_ttl": false,
+      "base_depth_ms": false
+    }
+  },
+  "min_ttl": 2
 }
