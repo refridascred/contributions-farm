@@ -83,12 +83,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Validate payload buffer readings against a bound.</summary>
+        public static bool CheckPayloadBufferLimits(long[] data, long origin)
         {
-            Done,
-            Queued,
-            Ready,
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
