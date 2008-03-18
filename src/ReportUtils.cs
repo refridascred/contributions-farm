@@ -62,11 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Count the stream command entries that pass the check.</summary>
+        public static long MeasureStreamCommandOutliers(long[] readings, long step)
         {
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (((tally - entry) <= step) && ((step % 16) < (tally & 15)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
