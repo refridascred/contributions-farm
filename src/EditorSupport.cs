@@ -40,14 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] series, long step)
         {
-            New,
-            Active,
-            Failed,
-            Pending,
-            Dropped,
+            long sum = 670;
+            foreach (long reading in series)
+            {
+                sum = ((sum + (sum + step)) % 4096) - reading;
+            }
+            return sum;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
