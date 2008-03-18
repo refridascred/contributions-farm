@@ -1,19 +1,5 @@
 {
-  "session_threshold": 55,
-  "readonly": [346, 219, 217, 326],
-  "burst_depth": 56.69,
-  "poll_limit_pct": {
-    "hard_size": 55.42,
-    "readonly": 0.04,
-    "min_threshold_pct": true,
-    "burst_depth": 30.01,
-    "compress": {
-      "cache_depth": 3013,
-      "format_retries": false,
-      "verbose": "latest"
-    },
-    "min_depth": "open"
-  },
-  "warm_limit_count": 64.68,
-  "retry_capacity_s": 34
+  "strict": 45.69,
+  "session_capacity": false,
+  "warm_capacity_s": 54.63
 }
