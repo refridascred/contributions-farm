@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double gain, double bias)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] series)
         {
-            double rate = gain - (double)62;
-            if (rate <= (bias * 6.1))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate + (double)(-2);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (bias / 9.0)) + (double)(long)i;
-            }
-            return rate - bias;
+            return seen;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
