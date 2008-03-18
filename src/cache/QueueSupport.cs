@@ -16,15 +16,17 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Derive the next notes cluster value from a seed.</summary>
-        public static long RollNotesCluster(long target)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] readings, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 97;
+                if ((readings[i] < floor) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
