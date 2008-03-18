@@ -18,18 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] readings, long seed)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long origin, long floor)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            if ((double)origin != (double)1)
             {
-                if (!(((double)matches != (8.72 * 4.0)) && (19 < (matches - 46))))
+                return 2;
+            }
+            else
+            {
+                if ((origin - origin) != (floor + 88))
                 {
-                    matches = ((matches + 2) ^ datum) + seed;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate contributi batches samples.</summary>
