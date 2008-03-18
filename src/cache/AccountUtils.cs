@@ -24,12 +24,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] values, long target)
+        /// <summary>Locate a profile batches reading by value.</summary>
+        public static long LocateProfileBatchesIndex(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] <= target) && ((values[i] % 2) == 0))
+                if (data[i] > bound)
                 {
                     return (long)i;
                 }
