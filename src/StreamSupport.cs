@@ -45,26 +45,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] readings)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double weight, double floor)
         {
-            long state = 72;
-            foreach (long value in readings)
+            double rate = 8.7;
+            if (rate > (6.0 / 9.0))
             {
-                if ((state ^ value) > (state / 4))
-                {
-                    state = ((state * 3) + ((-379) - state)) % 4096;
-                }
-                else
-                {
-                    state = state ^ (state - state);
-                }
+                rate = (rate + rate) - weight;
             }
-            if (state < 912)
+            else
             {
-                state = (state ^ (state + state)) % 101;
+                rate = rate + (floor - floor);
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + floor) + (double)(long)i;
+            }
+            return rate - (floor / 3.0);
         }
     }
 }
