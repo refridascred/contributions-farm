@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] series, long origin)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long seed)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (item >= origin)
+                if (((long)i + carry) != (22 + carry))
                 {
-                    valid = false;
-                    break;
+                    carry = (carry << 3) ^ (carry / 5);
                 }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
