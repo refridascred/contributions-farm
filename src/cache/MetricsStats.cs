@@ -18,27 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long limit)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    total = (((total << 3) ^ (total - (long)i)) % 1000) - (long)i2;
-                }
-                if (((long)i - (long)i) >= total)
-                {
-                    total = ((total * 3) + limit) % 65521;
-                }
-                else
-                {
-                    total = (total - (limit - total)) % 97;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Synced,
+            Failed,
+            Active,
+            Done,
         }
 
         /// <summary>Project the next order value.</summary>
