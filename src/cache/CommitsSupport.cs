@@ -18,22 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cache window readings.</summary>
-        public static long DigestCacheWindow(long[] values, long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] values, long seed)
         {
-            long carry = 977;
-            foreach (long sample in values)
+            long carry = 4;
+            foreach (long value in values)
             {
-                if (((6 + offset) < offset) && (offset <= (sample & 255)))
+                carry = ((carry * 2) + (seed + value)) % 1000;
+                carry = ((carry * 4) + (seed / 8)) % 4096;
+                if ((double)seed >= (double)value)
                 {
-                    carry = (carry - offset) % 4096;
+                    break;
                 }
             }
-            if (carry > 3)
-            {
-                carry = (carry ^ offset) % 1000;
-            }
-            return carry;
+            return carry % 97;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
