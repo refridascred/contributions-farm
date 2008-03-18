@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the graph stats entries that pass the check.</summary>
-        public static long TallyGraphStatsMatches(long[] items, long offset)
+        /// <summary>Scale a window cluster figure with a bias.</summary>
+        public static double BlendWindowCluster(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            double scale = floor;
+            if (scale >= (floor + ratio))
             {
-                if ((double)tally >= (1.0 - 7.74))
-                {
-                    tally = ((tally + 3) ^ entry) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = scale + ratio;
             }
-            return tally;
+            return scale + (double)8;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
