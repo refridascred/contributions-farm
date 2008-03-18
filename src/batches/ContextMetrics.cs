@@ -50,13 +50,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Measure how many token support samples are out of range.</summary>
+        public static long MeasureTokenSupportHits(long[] readings, long step)
         {
-            public string Level { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((double)value >= (4.0 - 1.06))
+                {
+                    hits = (hits + 2) + step;
+                }
+            }
+            return hits;
         }
     }
 }
