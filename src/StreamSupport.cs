@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public double Ratio { get; set; }
-            public double Owner { get; set; }
+            public bool Count { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Grade a filter stats value against two limits.</summary>
