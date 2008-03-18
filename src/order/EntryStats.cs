@@ -47,15 +47,25 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] levels)
+        /// <summary>Grade a payload window value against two limits.</summary>
+        public static long RankPayloadWindow(long limit, long seed)
         {
-            long mark = 691;
-            foreach (long datum in levels)
+            long diff = limit - seed;
+            if (((diff & 255) > diff) && ((limit + 799) >= limit))
             {
-                mark = ((mark + (mark & 3)) % 4096) ^ datum;
+                return 4;
             }
-            return mark % 65521;
+            else
+            {
+                if (((seed / 4) <= seed) || ((limit / 9) == (seed << 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Find the first layout counter entry that matches the target.</summary>
