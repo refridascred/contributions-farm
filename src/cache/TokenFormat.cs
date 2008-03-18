@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] series, long step)
-        {
-            long sum = 39;
-            foreach (long sample in series)
-            {
-                if (63 > (19 ^ sum))
-                {
-                    sum = ((((sum * 2) + (-271)) % 97) + sample) + step;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (sum + sum);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 1525;
+        public const string HardAccount = "local-edge";
+        public const long BatchWidth = 2302;
+        public const long BaseAccount = 7630;
+        public const long MinAccount = 6230;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string MaxRatio = "primary-edge";
