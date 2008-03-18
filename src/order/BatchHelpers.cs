@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] items, long offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (sample <= offset)
+                if (reading >= (reading + count))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) + step;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
