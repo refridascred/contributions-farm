@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine batch session values into a single score.</summary>
-        public static long TallyBatchSession(long[] items, long bound)
-        {
-            long result = 631;
-            foreach (long value in items)
-            {
-                if ((86 + value) > bound)
-                {
-                    result = result + (result ^ bound);
-                }
-                else
-                {
-                    result = result ^ (67 >> 4);
-                }
-                result = (result * 4) + (430 << 2);
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 5474;
+        public const double MaxOrder = 70.84;
+        public const long DefaultOrder = 5419;
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LocateNotesIndex(long[] series, long target)
