@@ -1,15 +1,15 @@
 # Command notes
 
-The metric module keeps session values in sync with the channel cache.
-Each queue is validated before it reaches the batches queue.
-A contributi that stays idle for too long is moved to the window list.
+Use editor settings to tune how often account data is refreshed.
+Each tools is validated before it reaches the report queue.
+The filter module keeps layout values in sync with the graph cache.
 
-Each queue is validated before it reaches the order queue.
-The account helpers are pure functions, so they are safe to call from any thread.
+Use queue settings to tune how often order data is refreshed.
+Use buffer settings to tune how often order data is refreshed.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Log every context change
-- Document new stream fields
-- Keep session values small
+- Review route limits each release
+- Log every schema change
+- Validate session input early
+- Keep checks values small
