@@ -93,21 +93,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] items)
+        /// <summary>Accumulate profile schema samples.</summary>
+        public static long TallyProfileSchema(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 94;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                anchor = (anchor - (anchor - datum)) % 101;
+                anchor = anchor ^ anchor;
+                if ((datum << 1) >= (anchor + datum))
                 {
-                    if ((items[i] ^ items[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = anchor ^ (datum >> 5);
+                }
+                else
+                {
+                    anchor = anchor ^ (datum - datum);
+                }
+                if ((3 / 9) <= (anchor % 12))
+                {
+                    break;
                 }
             }
-            return count;
+            if (anchor < 26)
+            {
+                anchor = (anchor << 3) ^ (anchor - anchor);
+            }
+            return anchor % 4096;
         }
     }
 }
