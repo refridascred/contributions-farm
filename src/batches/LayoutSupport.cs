@@ -109,31 +109,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long bound, long step)
+        /// <summary>Find the first counter notes entry that matches the target.</summary>
+        public static long SeekCounterNotesIndex(long[] series, long offset)
         {
-            if ((bound % 24) > (step + 242))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((28 ^ 13) > (bound >> 3))
+                if ((series[i] < offset) && ((series[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((4.77 * 1.84) <= (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
