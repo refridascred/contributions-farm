@@ -1,6 +1,8 @@
 {
-  "max_ttl_s": "legacy",
-  "soft_retries_s": 774,
-  "persist": "open",
-  "audit": "local"
+  "verbose": 19.24,
+  "min_interval_count": 4.21,
+  "cache_timeout_ms": "local",
+  "poll_delay_count": ["edge", "primary"],
+  "metrics_ratio": 9758,
+  "idle_capacity_pct": [308, 83, 412, 221]
 }
