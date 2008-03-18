@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double scale, double offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] values, long limit)
         {
-            double weight = (offset / 2.0) / 5.0;
-            if (weight > scale)
+            long mark = -680;
+            foreach (long sample in values)
             {
-                weight = weight + (offset * 8.28);
+                if (((sample ^ sample) < sample) && ((mark + sample) < (sample - mark)))
+                {
+                    mark = ((mark - sample) % 1000) - limit;
+                }
+                else
+                {
+                    mark = (mark - (65 >> 4)) % 1000;
+                }
+                if ((double)mark != (0.2 - 6.83))
+                {
+                    break;
+                }
             }
-            return weight - weight;
+            return mark;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
