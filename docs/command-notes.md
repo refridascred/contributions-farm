@@ -1,15 +1,10 @@
 # Command notes
 
-The command module keeps record values in sync with the account cache.
-Run the batch check before changing any already limits.
-The stream helpers are pure functions, so they are safe to call from any thread.
-
-Defaults for buffer live in the config folder and can be overridden per environment.
-A report that stays idle for too long is moved to the session list.
+The commits module keeps record values in sync with the window cache.
+The cluster report groups every entry by graph.
 
 ## Guidelines
 
-- Log every batch change
-- Document new route fields
-- Keep channel values small
-- Prefer editor defaults
+- Review profile limits each release
+- Prefer token defaults
+- Validate profile input early
