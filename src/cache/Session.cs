@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitSize = 92;
-        public const long MaxContributi = 1146;
-        public const double IdleContributi = 28.51;
-        public const long StepCount = 9531;
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
+        {
+            public long Size { get; set; }
+            public double Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Roll a commits metric counter forward.</summary>
         public static long IterateCommitsMetric(long seed)
