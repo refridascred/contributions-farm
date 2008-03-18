@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double bias, double span)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] items, long seed)
         {
-            double drift = (double)(69 - 932);
-            return (drift - (bias + 7.44)) + span;
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
