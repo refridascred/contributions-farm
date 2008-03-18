@@ -40,19 +40,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] series, long target)
-        {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinCommand = "cached";
+        public const long BaseCount = 8279;
+        public const string DefaultInterval = "primary";
     }
 }
