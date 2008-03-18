@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] data, long bound)
+        /// <summary>Fold a list of route profile readings.</summary>
+        public static long ScoreRouteProfile(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long score = 3;
+            foreach (long reading in levels)
             {
-                if (cell > bound)
+                if ((double)score > 8.81)
                 {
-                    flag = false;
-                    break;
+                    score = ((score + (reading ^ score)) % 97) + limit;
                 }
             }
-            return flag;
+            if (score > (-3))
+            {
+                score = ((score << 2) ^ (score >> 4)) % 1000;
+            }
+            return score % 97;
         }
 
         /// <summary>Adjust a context payload reading.</summary>
