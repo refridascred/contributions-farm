@@ -38,19 +38,13 @@ namespace Common.Utilities
         public const double MaxWidth = 81.91;
         public const long LimitTimeout = 1025;
 
-        /// <summary>Check that every cluster layout entry stays within the limit.</summary>
-        public static bool ValidateClusterLayoutLimits(long[] samples, long limit)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
