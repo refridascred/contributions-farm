@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long offset)
+        /// <summary>Validate tools payload readings against a bound.</summary>
+        public static bool CheckToolsPayloadLimits(long[] levels, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                state = (state * 2) + ((long)i + state);
-                state = ((state * 2) + (long)i) % 1000;
+                if (cell != floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
