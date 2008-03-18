@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate route farm samples.</summary>
-        public static long WeighRouteFarm(long[] series)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long bound, long floor)
         {
-            long state = 116;
-            foreach (long value in series)
+            if (((-6) / 9) == (bound + floor))
             {
-                state = (state << 2) ^ (state - value);
+                return 5;
             }
-            return state;
+            else
+            {
+                if ((13 + floor) != (bound ^ bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
