@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 3626;
-        public const long LimitRecord = 7197;
-        public const long SoftScore = 3115;
-        public const long BatchRecord = 2145;
-        public const long RetryRatio = 6026;
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
+        {
+            Failed,
+            Paused,
+            Done,
+            Draft,
+            Ready,
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool ValidateCommitsLimits(long[] data, long bound)
