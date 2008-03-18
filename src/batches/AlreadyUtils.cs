@@ -19,13 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            Dropped,
-            Pending,
-            Done,
-            Stale,
+            public double Region { get; set; }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
