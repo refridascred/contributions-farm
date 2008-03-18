@@ -1,7 +1,8 @@
 {
-  "compress": false,
-  "max_ratio": "standard",
-  "channel_window": true,
-  "max_delay_pct": 50.2,
-  "hard_delay": "staging"
+  "default_ttl_ms": 58.77,
+  "burst_threshold_pct": 44,
+  "base_window_s": 93,
+  "base_retries_ms": "eu-west",
+  "context_ratio": ["primary", "latest"],
+  "batch_retries": "local"
 }
