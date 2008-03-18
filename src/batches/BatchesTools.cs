@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many queue order samples are out of range.</summary>
-        public static long MeasureQueueOrderOutliers(long[] samples)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((5 % 60) < (item & 63))
+                if ((data[i] > origin) && ((data[i] % 5) != 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
