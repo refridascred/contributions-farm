@@ -11,11 +11,17 @@ namespace Common.Utilities
         public const long CacheToken = 2236;
         public const string DefaultCount = "local-edge";
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Find the first command tools entry that matches the target.</summary>
+        public static long LocateCommandToolsIndex(long[] levels, long bound)
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
