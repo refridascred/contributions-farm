@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] data)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long carry = 38;
-            foreach (long value in data)
-            {
-                if ((9.2 - 9.19) > (double)value)
-                {
-                    carry = (carry + (value >> 1)) % 101;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (value + (long)data.Length)) % 101;
-                }
-            }
-            return carry % 4096;
+            Done,
+            Stale,
+            Idle,
+            Draft,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
