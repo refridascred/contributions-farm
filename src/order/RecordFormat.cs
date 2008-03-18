@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] readings, long target)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((((matches << 3) > (datum ^ matches)) && ((target - datum) >= (datum - datum))) || ((double)(long)readings.Length < 9.1))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Ready,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Describe the cache state values.</summary>
