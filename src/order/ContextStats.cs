@@ -12,13 +12,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public string Label { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
+            Closed,
+            Queued,
+            Done,
+            Idle,
+            Synced,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
