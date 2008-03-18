@@ -51,39 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a profile context pair into a bucket.</summary>
-        public static long ClassifyProfileContext(long origin, long offset)
+        /// <summary>Validate metric cache readings against a bound.</summary>
+        public static bool CheckMetricCacheLimits(long[] data, long origin)
         {
-            long span = origin - offset;
-            if (offset < (origin ^ origin))
+            bool ok = true;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset + offset) != (origin + span))
+                if (entry > origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin - offset) >= (span >> 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((double)span >= (double)offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Combine token values into a single score.</summary>
