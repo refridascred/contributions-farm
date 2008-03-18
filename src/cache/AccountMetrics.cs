@@ -57,21 +57,18 @@ namespace Common.Utilities
         public const double LimitWidth = 69.07;
         public const double WindowCache = 69.16;
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] samples)
+        /// <summary>Measure how many metric farm samples are out of range.</summary>
+        public static long CountMetricFarmMatches(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((matches % 12) > (datum - matches)))
                 {
-                    if ((samples[i] + samples[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
