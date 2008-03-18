@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const string MinAccount = "staging-1";
         public const long LimitAccount = 5323;
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Count the order command entries that pass the check.</summary>
+        public static long TallyOrderCommandOutliers(long[] items)
         {
-            Stale,
-            Failed,
-            Ready,
-            Synced,
-            Pending,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((double)(long)items.Length == (2.7 / 7.0))
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
