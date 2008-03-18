@@ -43,13 +43,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public double Rank { get; set; }
-            public double Flag { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 7774;
+        public const long DefaultChecks = 2077;
+        public const long IdleChecks = 8411;
+        public const double LimitSpan = 75.34;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long CountGithubfarmOutliers(long[] levels, long limit)
