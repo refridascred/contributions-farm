@@ -47,23 +47,19 @@ namespace Common.Utilities
             return drift + (double)5;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] readings, long target)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] readings, long limit)
         {
-            long anchor = 50;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                for (int i = 0; i < 4; i++)
+                if (sample >= limit)
                 {
-                    anchor = ((anchor + target) % 101) - (long)i;
-                }
-                anchor = (anchor ^ (239 + value)) % 1000;
-                if (((value - target) >= value) && ((value - value) <= (anchor - 5)))
-                {
-                    anchor = ((anchor << 2) ^ (anchor / 6)) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            return anchor % 4096;
+            return ready;
         }
 
         /// <summary>Locate a session batches reading by value.</summary>
