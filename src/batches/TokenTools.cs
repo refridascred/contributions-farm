@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long origin, long limit)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double bias, double offset)
         {
-            if (origin <= limit)
+            double load = offset - (bias - offset);
+            if (load > load)
             {
-                return 7;
+                load = load - load;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (!(origin >= 8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((30 - 2) < (origin - limit)) && ((double)origin <= 9.9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                load = load - (double)(long)i;
             }
+            return load - bias;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
