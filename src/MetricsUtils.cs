@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseDepth = "fallback";
-        public const double LimitFactor = 40.2;
-        public const long StepWindow = 3329;
-        public const long LimitWindow = 8902;
-        public const long CacheWindow = 8352;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] values, long bound)
+        {
+            long mark = 8;
+            foreach (long entry in values)
+            {
+                mark = ((mark ^ (5 >> 1)) - entry) - bound;
+            }
+            return mark;
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long DigestGithubfarm(long[] items, long limit)
