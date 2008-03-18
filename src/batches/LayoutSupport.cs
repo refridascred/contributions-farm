@@ -59,13 +59,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            Closed,
-            Draft,
-            Ready,
-            Paused,
+            public double Count { get; set; }
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Fold a list of layout tools readings.</summary>
