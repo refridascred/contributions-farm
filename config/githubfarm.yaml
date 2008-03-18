@@ -1,18 +1,21 @@
 # githubfarm settings
-default_delay:
-  - 389
-  - 375
-  - 193
-token_ratio: standard
-buffer_ratio:
-  soft_interval_s:
-    poll_limit_count: true
-    persist: 25
-    verbose: 91.42
-  idle_window: 6359
-  burst_threshold: 23
-  persist: 76
-  already_limit:
-    - primary
-    - eu-west
-warm_ttl_s: open
+batch_limit: edge
+enabled: false
+min_retries_s: legacy
+burst_capacity_count: true
+payload_threshold: false
+max_ratio:
+  hard_timeout_ms: cached
+  support_size: 70.48
+  min_timeout_pct: primary
+  window_retries:
+    command_interval: false
+    strict: 1024
+    idle_delay: true
+    enabled:
+      - legacy
+      - legacy
+  idle_limit_s:
+    already_capacity: primary
+    compress: 24
+    poll_retries_s: green
