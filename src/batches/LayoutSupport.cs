@@ -59,13 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Count the window cache entries that pass the check.</summary>
+        public static long CountWindowCacheMatches(long[] values)
         {
-            public string Stamp { get; set; } = "";
-            public double Token { get; set; }
-            public long Flag { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (((0.24 - 14.0) >= (4.4 + 8.24)) || ((seen % 2) <= (datum / 7)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
