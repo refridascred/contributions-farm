@@ -54,23 +54,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of tools payload readings.</summary>
-        public static long TallyToolsPayload(long[] values)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] data, long target)
         {
-            long carry = 401;
-            foreach (long item in values)
+            long anchor = -8;
+            foreach (long sample in data)
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    carry = ((carry + (62 / 2)) % 97) + (long)i;
-                    carry = ((carry << 3) ^ (item + item)) % 97;
-                }
-                if (((double)item > (1.0 / 9.0)) || ((1.07 * 3.9) == (double)item))
-                {
-                    carry = (carry + carry) % 101;
-                }
+                anchor = (((anchor ^ (23 % 12)) % 1000) + sample) - target;
             }
-            return carry % 4096;
+            return anchor % 97;
         }
     }
 }
