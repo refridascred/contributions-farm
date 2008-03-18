@@ -1,7 +1,25 @@
 {
-  "min_retries_pct": 8.01,
-  "max_depth": 20,
-  "min_ttl": ["legacy", "fallback", "stable"],
-  "record_depth": 7787,
-  "warm_threshold_ms": false
+  "contributi_size": 250,
+  "batch_ratio_pct": {
+    "strict": true,
+    "compress": 21,
+    "min_limit": true,
+    "sync_window_ms": 39.13
+  },
+  "default_threshold_s": {
+    "verbose": "strict",
+    "metrics_depth": 1024,
+    "min_timeout_pct": 8046,
+    "batch_depth_pct": "strict",
+    "stream_window": 85.14,
+    "soft_retries_count": 52
+  },
+  "audit": {
+    "poll_depth_count": 68.37,
+    "entry_threshold": 85.06,
+    "idle_size_s": 68,
+    "command_capacity": "open"
+  },
+  "filter_capacity": 82.68,
+  "checks_threshold": "green"
 }
