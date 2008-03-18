@@ -1,8 +1,4 @@
 # githubfarm settings
-cache_depth: blue
-soft_capacity_pct:
-  - edge
-  - legacy
-  - fallback
-  - legacy
-sync_timeout: 2007
+verbose: legacy
+buffer_timeout: 1573
+readonly: 60
