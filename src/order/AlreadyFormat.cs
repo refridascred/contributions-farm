@@ -54,15 +54,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a commits token counter forward.</summary>
-        public static long RollCommitsToken(long origin)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] levels)
         {
-            long anchor = origin;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
