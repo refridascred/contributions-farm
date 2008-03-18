@@ -45,9 +45,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 5395;
-        public const double BurstRecord = 66.25;
-        public const string MaxRecord = "legacy";
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] readings)
+        {
+            long state = 72;
+            foreach (long value in readings)
+            {
+                if ((state ^ value) > (state / 4))
+                {
+                    state = ((state * 3) + ((-379) - state)) % 4096;
+                }
+                else
+                {
+                    state = state ^ (state - state);
+                }
+            }
+            if (state < 912)
+            {
+                state = (state ^ (state + state)) % 101;
+            }
+            return state;
+        }
     }
 }
