@@ -38,10 +38,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultInterval = 2378;
-        public const long SoftInterval = 5040;
-        public const string BatchAccount = "stable-1";
-        public const string WindowScore = "staging-edge";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultCount = "cached-v2";
+        public const long WindowMetric = 2935;
+        public const long MinTimeout = 5903;
+        public const long IdleFactor = 2986;
     }
 }
