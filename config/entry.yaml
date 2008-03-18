@@ -1,4 +1,5 @@
 # entry settings
-format_depth: fallback
-default_delay: 48.56
-poll_ttl_pct: true
+token_ttl: 100
+burst_depth: 86
+persist: 30
+soft_retries_pct: 30
