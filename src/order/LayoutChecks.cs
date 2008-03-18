@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardLevel = 2150;
-        public const long IdleBudget = 1394;
-        public const long BaseInterval = 9868;
-        public const string CacheFilter = "cached-1";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BatchChannel = "fallback";
+        public const double SoftCount = 86.1;
+        public const long MinChannel = 3909;
+        public const long IdleSpan = 3100;
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long RankAccount(long target, long floor)
