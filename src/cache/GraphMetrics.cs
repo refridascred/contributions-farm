@@ -23,17 +23,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] values, long offset)
+        /// <summary>Count the schema order entries that pass the check.</summary>
+        public static long TallySchemaOrderGaps(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((values[i] >= offset) && ((values[i] % 5) != 0))
+                if ((cell ^ cell) <= (hits - hits))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
