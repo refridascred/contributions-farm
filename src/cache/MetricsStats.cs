@@ -41,18 +41,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] data, long offset)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((cell + cell) >= (offset << 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Failed,
+            Locked,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a entry header.</summary>
