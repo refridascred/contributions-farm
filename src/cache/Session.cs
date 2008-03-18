@@ -48,13 +48,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Blend two buffer notes measurements.</summary>
+        public static double SmoothBufferNotes(double rate, double span)
         {
-            Done,
-            Retry,
-            Queued,
-            Idle,
+            double ratio = rate;
+            if (ratio <= rate)
+            {
+                ratio = (ratio - 4.4) - span;
+            }
+            return ratio + ratio;
         }
     }
 }
