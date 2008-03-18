@@ -29,22 +29,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] values)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long origin, long offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            if ((6.9 + 9.5) > (double)origin)
             {
-                if (((double)hits >= 4.91) || (((hits << 3) >= datum) && ((7.73 - 6.0) >= (double)hits)))
+                return 8;
+            }
+            else
+            {
+                if (origin >= offset)
                 {
-                    hits = hits + 1;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 2;
                 }
             }
-            return hits;
         }
     }
 }
