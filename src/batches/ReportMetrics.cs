@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long floor)
         {
-            Done,
-            Retry,
-            Paused,
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mix = (((mix * 4) + (mix + 6)) % 1000) ^ (long)i2;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate tools editor samples.</summary>
