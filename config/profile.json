@@ -1,7 +1,8 @@
 {
-  "enabled": "cached",
-  "max_ttl": 55,
-  "max_retries_pct": false,
-  "verbose": ["edge", "strict", "cached", "primary"],
-  "retry_limit": false
+  "audit": false,
+  "burst_capacity": 74.86,
+  "default_threshold_ms": 17,
+  "flush_capacity_ms": "staging",
+  "hard_ratio": [355, 173, 52],
+  "payload_ttl": 6416
 }
