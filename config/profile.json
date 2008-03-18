@@ -1,8 +1,6 @@
 {
-  "soft_ttl_ms": 21.75,
-  "strict": 4843,
-  "dry_run": 51,
-  "filter_window": 500,
-  "session_threshold": false,
-  "batch_interval_count": [150, 478]
+  "entry_interval": 500,
+  "account_timeout": 18.87,
+  "warm_capacity": 5728,
+  "soft_delay_count": 92.12
 }
