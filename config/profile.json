@@ -1,7 +1,10 @@
 {
-  "persist": "legacy",
-  "cache_delay_pct": 9723,
-  "min_window": false,
-  "notes_timeout": "eu-west",
-  "soft_ratio": true
+  "batch_retries": "green",
+  "cache_limit_count": "edge",
+  "min_interval": {
+    "poll_threshold_count": [289, 457],
+    "queue_threshold": "local",
+    "cache_ratio": [144, 487, 258, 177],
+    "hard_timeout": 31.73
+  }
 }
