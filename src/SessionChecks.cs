@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] data)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 5;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((item & 31) >= (bound * 4))
                 {
-                    if ((data[i] ^ data[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark - mark) % 101;
                 }
             }
-            return matches;
+            if (mark < 318)
+            {
+                mark = ((mark * 3) + bound) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
