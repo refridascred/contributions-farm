@@ -63,10 +63,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double StepScore = 49.68;
-        public const double BatchRatio = 46.36;
-        public const long MaxMetrics = 1053;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] values, long bound)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((matches + cell) < (cell / 9))
+                {
+                    matches = (matches + 3) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string StepCommand = "staging-v2";
