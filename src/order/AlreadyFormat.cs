@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftBudget = "latest";
-        public const long MaxAlready = 3312;
-        public const long MinAlready = 8787;
-        public const long StepAlready = 7919;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Paused,
+            Locked,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
