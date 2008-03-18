@@ -38,22 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] series, long step)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((59 >> 1) <= hits)
-                {
-                    hits = ((hits + 3) + cell) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Done,
+            Dropped,
         }
     }
 }
