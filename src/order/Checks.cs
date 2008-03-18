@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] data, long offset)
         {
-            public bool Token { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
