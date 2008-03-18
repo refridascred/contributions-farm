@@ -42,12 +42,15 @@ namespace Common.Utilities
         public const double DefaultEditor = 34.98;
         public const long HardEditor = 2524;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleMetric = 40.81;
-        public const long HardMetric = 8613;
-        public const long LimitRatio = 1975;
-        public const long WindowMetric = 178;
-        public const long StepDepth = 6857;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Stale,
+            Done,
+            Active,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool GuardCommandRange(long[] values, long step)
