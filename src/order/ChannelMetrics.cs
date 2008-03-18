@@ -35,21 +35,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] readings)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Synced,
+            Ready,
+            Dropped,
+            New,
+            Stale,
         }
     }
 }
