@@ -20,38 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long limit, long target)
+        /// <summary>Look up the position of a profile buffer sample.</summary>
+        public static long LocateProfileBufferIndex(long[] levels, long target)
         {
-            if ((target - (-424)) >= (-15))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((limit & 3) >= (877 + target)) || ((target & 63) == (target + limit)))
+                if (levels[i] == target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(target > (26 + 102)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)target > 3.03)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
