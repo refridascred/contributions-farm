@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] readings, long seed)
         {
-            Idle,
-            Ready,
-            Queued,
-            Pending,
-            Active,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (!(((double)matches != (8.72 * 4.0)) && (19 < (matches - 46))))
+                {
+                    matches = ((matches + 2) ^ datum) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
