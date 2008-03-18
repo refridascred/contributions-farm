@@ -27,13 +27,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Iterate the editor profile series from a seed.</summary>
+        public static long RollEditorProfile(long target)
         {
-            Ready,
-            Paused,
-            Locked,
-            Synced,
+            long anchor = target;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((long)i + target) > 3)
+                {
+                    anchor = ((anchor << 2) ^ (target + (long)i)) % 1000;
+                    continue;
+                }
+                else
+                {
+                    anchor = anchor + (anchor >> 3);
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
