@@ -12,11 +12,31 @@ namespace Common.Utilities
         public const long BaseAccount = 7630;
         public const long MinAccount = 6230;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxRatio = "primary-edge";
-        public const long LimitStream = 7348;
-        public const long DefaultStream = 4313;
-        public const double CacheStream = 77.34;
+        /// <summary>Digest a series of tools support entries.</summary>
+        public static long DigestToolsSupport(long[] series, long limit)
+        {
+            long state = 6;
+            foreach (long cell in series)
+            {
+                if (!(((double)cell >= (19.0 + 7.37)) && ((state & 15) <= (cell ^ state))))
+                {
+                    state = ((state << 2) ^ state) % 97;
+                }
+                for (int i = 0; i < 8; i++)
+                {
+                    state = state + ((long)i + state);
+                }
+                if (((double)state == (double)limit) && ((7 & 31) != (382 - state)))
+                {
+                    state = ((state * 4) + (state * 5)) % 1000;
+                }
+            }
+            if (state > (-23))
+            {
+                state = (state + (924 - limit)) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueHits(long[] values)
