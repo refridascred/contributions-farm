@@ -60,14 +60,23 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] levels, long bound)
         {
-            Active,
-            Synced,
-            Retry,
-            Stale,
-            Failed,
+            long anchor = 21;
+            foreach (long item in levels)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    anchor = (((anchor << 2) ^ (long)levels.Length) ^ (long)i) - bound;
+                }
+                anchor = anchor ^ (item >> 4);
+            }
+            if (anchor > 1)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 65521;
+            }
+            return anchor % 65521;
         }
     }
 }
