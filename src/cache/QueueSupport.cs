@@ -19,11 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryInterval = 43.24;
-        public const double RetryBuffer = 75.76;
-        public const double CacheBuffer = 50.91;
-        public const long HardSpan = 1309;
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double weight, double offset)
+        {
+            double scale = offset;
+            if (scale > 0.26)
+            {
+                scale = scale - weight;
+            }
+            else
+            {
+                scale = scale + weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (weight + scale)) + (double)(long)i;
+            }
+            return scale + (offset * 5.3);
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
