@@ -41,13 +41,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] values, long bound)
         {
-            Failed,
-            Locked,
-            Idle,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a entry header.</summary>
