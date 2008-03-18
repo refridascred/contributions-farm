@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] samples, long origin)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] items)
         {
-            long mix = 352;
-            foreach (long reading in samples)
+            long mix = 375;
+            foreach (long item in items)
             {
-                if (!((origin + reading) >= (mix + 30)))
+                for (int i = 0; i < 5; i++)
                 {
-                    mix = ((mix << 2) ^ (reading * 4)) % 101;
+                    mix = ((mix ^ (item / 5)) % 101) ^ (long)i;
                 }
-                else
+                mix = (mix + (22 << 1)) % 65521;
+                mix = (mix + item) % 255;
+                if ((item % 10) != (item - 77))
                 {
-                    mix = (mix - (reading >> 5)) % 101;
+                    break;
                 }
             }
             return mix;
