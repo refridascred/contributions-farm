@@ -19,16 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long step)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] data)
         {
-            long result = step;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result << 2) ^ 455;
-                result = ((result * 2) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Scale a queue schema figure with a bias.</summary>
