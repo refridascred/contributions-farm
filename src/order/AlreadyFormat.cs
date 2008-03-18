@@ -40,12 +40,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardSchema = "staging-edge";
-        public const string DefaultSchema = "strict-1";
-        public const long StepSchema = 5205;
-        public const long IdleSchema = 6330;
-        public const long DefaultWidth = 4537;
+        /// <summary>Find the first route already entry that matches the target.</summary>
+        public static long FindRouteAlreadyIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a stats batches sample.</summary>
         public static long SeekStatsBatchesIndex(long[] samples, long origin)
