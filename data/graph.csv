@@ -1,9 +1,8 @@
-id,level,owner
-1,local,edge
-2,green,9.63
-3,35.84,81.57
-4,508,199
-5,blue,latest
-6,32,398
-7,14.1,cached
-8,cached,39.83
+id,label,score,level,ratio
+1,329,69.39,strict,local
+2,309,344,27.59,4.99
+3,standard,91.38,stable,local
+4,988,green,658,80.1
+5,latest,808,857,65.97
+6,394,663,eu-west,940
+7,76.13,local,316,green
