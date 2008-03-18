@@ -60,13 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public double Region { get; set; }
-            public string Token { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Score { get; set; }
+            Closed,
+            Draft,
+            Ready,
+            Paused,
         }
 
         /// <summary>Fold a list of layout tools readings.</summary>
