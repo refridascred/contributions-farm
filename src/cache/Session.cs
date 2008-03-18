@@ -34,13 +34,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] items)
         {
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((item + 8) < hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two buffer notes measurements.</summary>
