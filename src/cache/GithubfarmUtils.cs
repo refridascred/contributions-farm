@@ -28,13 +28,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] levels)
         {
-            Synced,
-            Paused,
-            Ready,
-            New,
+            long mark = -955;
+            foreach (long entry in levels)
+            {
+                mark = (mark << 2) ^ entry;
+            }
+            if (mark > 8)
+            {
+                mark = (mark * 5) + (mark + mark);
+            }
+            return mark % 97;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
