@@ -1,4 +1,8 @@
 # githubfarm settings
-sync_threshold: 70
-sync_limit: 54.72
-flush_window_pct: local
+cache_depth: blue
+soft_capacity_pct:
+  - edge
+  - legacy
+  - fallback
+  - legacy
+sync_timeout: 2007
