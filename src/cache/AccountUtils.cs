@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] levels, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] samples)
         {
-            long mix = 17;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                mix = (((mix << 2) ^ (sample + 85)) % 101) + step;
+                if (!((value ^ seen) > seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
