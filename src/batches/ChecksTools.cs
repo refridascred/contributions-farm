@@ -41,32 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cluster stats value against two limits.</summary>
-        public static long GradeClusterStats(long step, long step2)
+        /// <summary>Count the token layout entries that pass the check.</summary>
+        public static long TallyTokenLayoutOutliers(long[] levels, long floor)
         {
-            long next = step ^ step2;
-            if ((step << 3) == (next % 2))
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step << 3) == (step2 / 5))
+                if (floor < (matches % 60))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step < (next - next)) || ((step << 1) > (step2 - next)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = (matches + 3) - sample;
                 }
             }
+            return matches;
         }
     }
 }
