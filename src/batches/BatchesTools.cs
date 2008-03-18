@@ -19,14 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Measure how many queue order samples are out of range.</summary>
+        public static long MeasureQueueOrderOutliers(long[] samples)
         {
-            Dropped,
-            Closed,
-            Pending,
-            Queued,
-            Failed,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((5 % 60) < (item & 63))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
