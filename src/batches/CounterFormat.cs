@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the queue command entries that pass the check.</summary>
-        public static long TallyQueueCommandHits(long[] readings)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long target)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long score = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((((-952) >> 1) > (hits & 31)) && ((hits * 3) > (1 - cell)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
