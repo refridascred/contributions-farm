@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const long RetryWidth = 84;
         public const long RetryGraph = 8012;
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] series)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((reading + reading) >= (reading * 2))
                 {
-                    if ((series[i] ^ series[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) + step;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of tools payload readings.</summary>
