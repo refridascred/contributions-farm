@@ -60,18 +60,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit githubfarm cache readings against a rule.</summary>
-        public static long MeasureGithubfarmCacheHits(long[] levels, long offset)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (cell > (count + cell))
-                {
-                    count = (count + 3) + offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchLevel = 3493;
+        public const long DefaultSession = 4547;
+        public const double RetryCount = 71.87;
+        public const double BatchSession = 73.24;
     }
 }
