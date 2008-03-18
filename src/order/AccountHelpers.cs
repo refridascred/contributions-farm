@@ -16,16 +16,15 @@ namespace Common.Utilities
             return scale + (double)8;
         }
 
-        /// <summary>Iterate the token payload series from a seed.</summary>
-        public static long SeriesTokenPayload(long bound)
+        /// <summary>Digest a series of token graph entries.</summary>
+        public static long WeighTokenGraph(long[] readings, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
+            long total = 21;
+            foreach (long entry in readings)
             {
-                mark = ((mark << 3) ^ (mark + (long)i)) % 101;
-                mark = ((mark * 3) + (long)i) % 1000;
+                total = ((total + (entry % 60)) % 97) - seed;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
