@@ -1,14 +1,15 @@
 # Command notes
 
-A entry that stays idle for too long is moved to the notes list.
-The window module keeps tools values in sync with the notes cache.
+Use route settings to tune how often cache data is refreshed.
+The tools helpers are pure functions, so they are safe to call from any thread.
+The cache report groups every buffer by editor.
 
-Use buffer settings to tune how often counter data is refreshed.
-The session helpers are pure functions, so they are safe to call from any thread.
+When a notes fails, the stats handler retries a few times before giving up.
+When a entry fails, the queue handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review batch limits each release
-- Validate tools input early
-- Prefer channel defaults
-- Document new channel fields
+- Keep support values small
+- Prefer format defaults
+- Review payload limits each release
+- Log every graph change
