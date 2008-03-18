@@ -22,16 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long floor)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long state = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 5) + (floor ^ state)) % 1000;
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the notes mode values.</summary>
