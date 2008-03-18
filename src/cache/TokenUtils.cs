@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] samples)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long total = 261;
-            foreach (long datum in samples)
-            {
-                if (!((datum + 359) <= total))
-                {
-                    total = total + total;
-                }
-                total = ((total * 2) + (617 % 24)) % 1000;
-            }
-            return total % 97;
+            Idle,
+            Ready,
+            Queued,
+            Pending,
+            Active,
         }
 
         /// <summary>Define token limits and defaults.</summary>
