@@ -45,12 +45,20 @@ namespace Common.Utilities
         public const long CacheEditor = 9986;
         public const long HardRatio = 8579;
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long bound)
         {
-            Synced,
-            Active,
-            Draft,
+            long total = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((double)(long)i != (13.0 + 19.0))
+                {
+                    total = (total - (total - bound)) % 4096;
+                }
+                total = (total + (bound & 15)) % 65521;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Describe the batches state values.</summary>
