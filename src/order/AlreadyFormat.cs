@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] items, long limit)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] items)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (tally > value)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 3) + limit;
+                    if ((items[i] + items[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Digest a series of batch support entries.</summary>
