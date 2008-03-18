@@ -42,19 +42,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate support batch readings against a bound.</summary>
-        public static bool ValidateSupportBatchRange(long[] readings, long floor)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (reading <= floor)
+                if (value <= floor)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
