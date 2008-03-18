@@ -23,12 +23,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double CacheMetrics = 37.94;
-        public const double BatchFactor = 22.02;
-        public const long HardTimeout = 9087;
-        public const double HardMetrics = 68.44;
-        public const string MinMetrics = "staging-1";
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
+        {
+            Dropped,
+            Pending,
+            Done,
+            Stale,
+        }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long OverlapOrderCount(long[] series)
