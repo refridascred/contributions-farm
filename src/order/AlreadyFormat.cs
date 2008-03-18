@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Paused,
-            Locked,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MinBatches = 23.37;
+        public const string HardInterval = "standard-v2";
+        public const string WindowBatches = "standard";
 
         /// <summary>Combine command values into a single score.</summary>
         public static long TallyCommand(long[] items, long step)
