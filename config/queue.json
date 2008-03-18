@@ -1,6 +1,13 @@
 {
-  "stream_ratio": ["legacy", "latest", "strict", "local"],
-  "min_size": "green",
-  "token_threshold": [76, 385, 145, 119],
-  "base_timeout_s": 4.5
+  "poll_capacity_pct": "cached",
+  "min_threshold_s": {
+    "min_ratio_ms": ["edge", "cached"],
+    "burst_window": "primary",
+    "retry_ttl_s": 10,
+    "buffer_ttl": "fallback"
+  },
+  "stream_interval": [376, 408, 231, 273],
+  "readonly": ["strict", "primary", "staging", "edge"],
+  "warm_limit": ["stable", "cached", "primary", "staging"],
+  "poll_retries_pct": true
 }
