@@ -1,6 +1,17 @@
 {
-  "report_window": "strict",
-  "sync_timeout": "edge",
-  "base_timeout_count": 60,
-  "default_limit": false
+  "default_capacity": [392, 72],
+  "batch_size_ms": ["fallback", "staging", "latest"],
+  "compress": [316, 252],
+  "readonly": 7316,
+  "commits_delay": false,
+  "strict": {
+    "idle_size_ms": {
+      "order_window": 4230,
+      "cache_capacity_pct": 27.5,
+      "base_retries_ms": 91.46
+    },
+    "idle_timeout_pct": 65,
+    "soft_retries_pct": ["open", "local"],
+    "verbose": [156, 361, 249, 446]
+  }
 }
