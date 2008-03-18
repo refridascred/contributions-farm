@@ -18,13 +18,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public bool Score { get; set; }
-            public long Rank { get; set; }
-            public bool Level { get; set; }
-            public bool Region { get; set; }
+            Failed,
+            Locked,
+            Synced,
         }
 
         /// <summary>Describe the stream status values.</summary>
