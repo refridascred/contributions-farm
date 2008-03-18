@@ -73,20 +73,19 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] values)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double bias, double span)
         {
-            long total = 66;
-            foreach (long value in values)
+            double rate = span;
+            if (rate >= bias)
             {
-                total = total + (value - value);
-                total = ((total << 3) ^ total) % 4096;
+                rate = rate + bias;
             }
-            if (total < 21)
+            for (int i = 0; i < 9; i++)
             {
-                total = (total + (total - total)) % 101;
+                rate = rate - (double)(long)i;
             }
-            return total % 4096;
+            return rate + (bias * 10.0);
         }
     }
 }
