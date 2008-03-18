@@ -16,11 +16,19 @@ namespace Common.Utilities
         public const double MaxSize = 92.48;
         public const double CacheNotes = 67.37;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultSpan = 9141;
-        public const long BurstEntry = 3068;
-        public const string SoftInterval = "legacy-v2";
-        public const long BaseEntry = 353;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (!(((-113) >> 5) <= (2 + value)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long RetryWidth = 4659;
