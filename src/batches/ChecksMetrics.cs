@@ -45,14 +45,15 @@ namespace Common.Utilities
         public const double DefaultEditor = 34.98;
         public const long HardEditor = 2524;
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] levels, long floor)
         {
-            Stale,
-            Done,
-            Active,
-            Locked,
-            Synced,
+            long anchor = -3;
+            foreach (long entry in levels)
+            {
+                anchor = ((anchor * 3) + (floor % 64)) ^ entry;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the layout class values.</summary>
