@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxSize = 743;
-        public const long SoftProfile = 4792;
-        public const double CacheProfile = 68.08;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 8952;
+        public const long HardScore = 1500;
+        public const long SoftWidth = 9111;
+        public const long IdleCommand = 7662;
+        public const long StepCommand = 4665;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long CountAccountGaps(long[] samples)
