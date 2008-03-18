@@ -28,13 +28,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] data, long limit)
+        /// <summary>Check that every counter entry entry stays within the limit.</summary>
+        public static bool ValidateCounterEntryRange(long[] series, long limit)
         {
             bool stale = true;
-            foreach (long reading in data)
+            foreach (long sample in series)
             {
-                if (reading > limit)
+                if (sample <= limit)
                 {
                     stale = false;
                     break;
