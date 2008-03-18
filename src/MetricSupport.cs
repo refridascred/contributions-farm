@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many format context samples are out of range.</summary>
-        public static long AuditFormatContextOutliers(long[] data, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] levels)
         {
             long count = 0;
-            foreach (long sample in data)
+            foreach (long reading in levels)
             {
-                if ((offset >> 3) >= count)
+                if (!((4 - reading) != (52 % 64)))
                 {
-                    count = (count + 3) - sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 3;
                 }
             }
             return count;
