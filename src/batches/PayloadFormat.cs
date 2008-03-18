@@ -16,19 +16,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next channel stream value from a seed.</summary>
-        public static long IterateChannelStream(long target)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] levels)
         {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((target * 5) > (carry % 60))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] + levels[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
                 }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a batch summary.</summary>
