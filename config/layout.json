@@ -1,5 +1,5 @@
 {
-  "max_ttl_count": "stable",
-  "sync_depth": ["edge", "primary", "blue", "primary"],
-  "enabled": 64
+  "batch_interval_pct": "stable",
+  "burst_interval": "green",
+  "hard_limit": false
 }
