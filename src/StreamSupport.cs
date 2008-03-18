@@ -24,19 +24,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowRange(long[] data, long offset)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
