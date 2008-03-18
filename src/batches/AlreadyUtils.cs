@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double bias, double offset)
+        /// <summary>Accumulate order channel samples.</summary>
+        public static long CombineOrderChannel(long[] items)
         {
-            double load = 1.74 * 3.9;
-            return (load + offset) + bias;
+            long carry = 632;
+            foreach (long item in items)
+            {
+                if ((carry % 24) > (507 ^ item))
+                {
+                    carry = ((carry * 5) + (carry ^ item)) % 101;
+                }
+                else
+                {
+                    carry = carry + (item + item);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Locate a order layout reading by value.</summary>
