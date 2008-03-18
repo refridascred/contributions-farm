@@ -13,18 +13,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer checks sample.</summary>
-        public static long SeekBufferChecksIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= step) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitFactor = 188;
+        public const double CacheFactor = 9.45;
+        public const double HardMetrics = 12.22;
+        public const string BatchDepth = "standard-v2";
+        public const long IdleMetrics = 9787;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long PairCounterCount(long[] readings)
