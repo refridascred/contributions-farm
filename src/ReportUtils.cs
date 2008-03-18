@@ -61,39 +61,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Rank tools session input into a small class.</summary>
-        public static long GradeToolsSession(long step, long target)
-        {
-            long lane = step + target;
-            if ((target % 8) > step)
-            {
-                return 1;
-            }
-            else
-            {
-                if (step > (12 >> 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target & 31) == (lane + target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((lane + step) <= (target + step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 3560;
+        public const long StepSpan = 8545;
+        public const long CacheFactor = 5833;
+        public const long DefaultWidth = 4046;
+        public const string RetryDepth = "alpha-v2";
     }
 }
