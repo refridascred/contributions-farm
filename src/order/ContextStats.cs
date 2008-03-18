@@ -45,10 +45,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultRatio = "cached-1";
-        public const long IdleFactor = 9992;
-        public const double WindowReport = 26.78;
-        public const double BatchScore = 19.51;
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
