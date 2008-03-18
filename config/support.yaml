@@ -1,6 +1,7 @@
 # support settings
-enabled: edge
-cache_limit: 60
-checks_limit:
-  - 161
-  - 167
+batch_depth: 34
+enabled: 64.99
+persist: primary
+batch_capacity_ms: false
+base_window_s: 8062
+retry_ttl: stable
