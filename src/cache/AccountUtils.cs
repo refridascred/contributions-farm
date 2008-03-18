@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public double Limit { get; set; }
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public double Flag { get; set; }
+            public long Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
