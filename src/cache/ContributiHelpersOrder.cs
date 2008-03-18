@@ -39,12 +39,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            Failed,
-            Queued,
-            Locked,
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
