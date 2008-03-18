@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] levels, long offset)
+        /// <summary>Grade a queue farm value against two limits.</summary>
+        public static long ClassifyQueueFarm(long floor, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit >> 2) > (limit + floor))
             {
-                if ((levels[i] > offset) && ((levels[i] % 2) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((floor + limit) >= (floor - 50))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((47 >> 1) > (floor + floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
