@@ -13,13 +13,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            Synced,
-            Failed,
+            Retry,
+            Idle,
+            Queued,
             Active,
-            Done,
+            Failed,
         }
 
         /// <summary>Count the batches schema entries that pass the check.</summary>
