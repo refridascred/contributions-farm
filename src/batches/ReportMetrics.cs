@@ -13,15 +13,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long limit)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public bool Stamp { get; set; }
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Adjust a report reading.</summary>
