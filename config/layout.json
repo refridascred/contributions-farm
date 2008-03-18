@@ -1,27 +1,6 @@
 {
-  "profile_window": {
-    "filter_interval": {
-      "base_depth": 500,
-      "enabled": "stable",
-      "burst_delay_count": 19
-    },
-    "min_limit": 60,
-    "burst_threshold_pct": 34.52,
-    "poll_window_ms": false,
-    "strict": "eu-west"
-  },
-  "persist": {
-    "batch_retries_count": 81.55,
-    "max_capacity_pct": ["primary", "green", "fallback", "fallback"],
-    "contributi_interval": "eu-west",
-    "batch_threshold_count": true,
-    "strict": "local"
-  },
-  "max_capacity_count": 60.98,
-  "burst_size": {
-    "readonly": "open",
-    "idle_threshold_count": 473,
-    "entry_depth": false,
-    "soft_window_ms": true
-  }
+  "max_ttl_s": "legacy",
+  "soft_retries_s": 774,
+  "persist": "open",
+  "audit": "local"
 }
