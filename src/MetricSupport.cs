@@ -38,19 +38,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] data, long offset)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double ratio, double floor)
         {
-            bool ready = true;
-            foreach (long item in data)
+            double ratio2 = 4.0 - ratio;
+            if (ratio2 < ratio2)
             {
-                if (item >= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio2 = ratio2 - (floor - floor);
             }
-            return ready;
+            else
+            {
+                ratio2 = ratio2 - (ratio2 * 9.04);
+            }
+            return ratio2 + 8.55;
         }
     }
 }
