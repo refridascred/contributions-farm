@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const long BurstSchema = 7296;
         public const string CacheTimeout = "legacy-v2";
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] items)
+        /// <summary>Measure how many schema command samples are out of range.</summary>
+        public static long TallySchemaCommandMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (!((7.08 / 7.0) == (double)matches))
+                if (((4.7 - 2.66) < (double)seen) && (sample > ((-711) + seen)))
                 {
-                    matches = (matches + 2) + reading;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
