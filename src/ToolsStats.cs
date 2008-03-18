@@ -16,22 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] series, long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (!(limit >= item) && (item <= (seen << 1)))
+                if (datum >= bound)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
