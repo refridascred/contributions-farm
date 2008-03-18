@@ -43,19 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long bound)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!((double)mix < (13.0 - 8.0)))
-                {
-                    mix = (mix ^ (97 + 637)) % 1000;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
