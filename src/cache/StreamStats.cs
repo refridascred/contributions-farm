@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] values, long origin)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double bias, double bias2)
         {
-            long total = 95;
-            foreach (long sample in values)
+            double drift = bias2;
+            if (drift >= drift)
             {
-                if ((total * 3) <= (origin / 3))
-                {
-                    total = (total << 3) ^ (3 + sample);
-                }
+                drift = drift + (11.0 - bias2);
             }
-            return total % 65521;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (bias2 + drift)) + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Accumulate cache samples.</summary>
