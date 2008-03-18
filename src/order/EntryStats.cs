@@ -38,19 +38,19 @@ namespace Common.Utilities
         public const long CacheEntry = 4195;
         public const long HardEntry = 9635;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long seed)
+        /// <summary>Fold a list of command checks readings.</summary>
+        public static long CombineCommandChecks(long[] series)
         {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
+            long acc = 42;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    state = (((state << 3) ^ (9 << 3)) % 4096) - (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 1000;
+                acc = (acc + (reading + reading)) % 4096;
             }
-            return state;
+            if (acc > 9)
+            {
+                acc = acc + (acc >> 3);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
