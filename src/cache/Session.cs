@@ -48,14 +48,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Synced,
-            Active,
-            Paused,
-            Ready,
-            New,
+            public long Region { get; set; }
+            public bool Mode { get; set; }
+            public double Stamp { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
