@@ -24,19 +24,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] series, long limit)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell <= limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] - items[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
