@@ -18,22 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] levels, long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long total = 642;
+            foreach (long cell in samples)
             {
-                if ((double)offset != (8.84 - 1.0))
-                {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = (total - (long)samples.Length) % 97;
+                total = ((total * 4) + cell) % 97;
             }
-            return tally;
+            if (total < 338)
+            {
+                total = (total - (total + total)) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the profile state values.</summary>
