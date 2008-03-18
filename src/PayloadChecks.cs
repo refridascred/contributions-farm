@@ -44,18 +44,12 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] levels, long origin)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (origin < item)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
