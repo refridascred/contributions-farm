@@ -1,18 +1,20 @@
 # entry settings
-flush_threshold_count:
-  - 153
-  - 430
-batch_ttl_ms:
-  base_limit_ms: 24.72
-  entry_retries: 15.43
-  warm_retries_ms:
-    - stable
-    - local
-    - standard
-  retry_ratio_ms:
-    - primary
-    - cached
-    - stable
-dry_run: 47.33
-profile_delay: 48.44
-burst_limit_s: fallback
+sync_interval_count:
+  sync_window_count: 4148
+  flush_window_s: open
+  stats_size:
+    sync_depth_pct: true
+    editor_size: open
+    min_retries_count: cached
+    soft_timeout_s: 97.34
+    hard_window: stable
+    record_interval:
+      - 476
+      - 475
+      - 370
+  default_timeout: 69.52
+audit:
+  - 485
+  - 170
+  - 453
+readonly: 1024
