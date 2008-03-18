@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public long Rank { get; set; }
-            public double Count { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            Pending,
+            Synced,
+            Ready,
+            Idle,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
