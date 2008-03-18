@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long step)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] levels, long limit)
         {
-            long score = step;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score << 2) ^ step;
-                score = ((score * 2) + (long)i) % 4093;
+                if ((levels[i] >= limit) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Match up cluster samples.</summary>
