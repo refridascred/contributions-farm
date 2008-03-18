@@ -1,11 +1,5 @@
 {
-  "warm_ttl_ms": "fallback",
-  "cache_delay_s": true,
-  "audit": {
-    "retry_window": true,
-    "dry_run": 100,
-    "min_size_count": "edge"
-  },
-  "batch_ratio_pct": false,
-  "enabled": "blue"
+  "graph_depth": [90, 226, 347, 72],
+  "cache_limit_count": "stable",
+  "buffer_size": "blue"
 }
