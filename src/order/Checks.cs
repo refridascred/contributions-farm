@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const string WindowSpan = "primary-1";
         public const long MaxLayout = 6990;
 
-        /// <summary>Audit contributi channel readings against a rule.</summary>
-        public static long CountContributiChannelOutliers(long[] readings)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double drift = gain;
+            if (drift > (20.0 - drift))
             {
-                if (54 > (61 - seen))
-                {
-                    seen = (seen + 1) - datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                drift = (drift - gain) + offset;
             }
-            return seen;
+            return drift + (19.0 - drift);
         }
 
         /// <summary>Grade a counter command value against two limits.</summary>
