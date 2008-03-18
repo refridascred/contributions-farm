@@ -1,10 +1,6 @@
 {
-  "enabled": {
-    "verbose": 10.6,
-    "strict": [230, 267, 127],
-    "base_depth_pct": "staging",
-    "stats_capacity": 29.78
-  },
-  "stats_depth": 58.73,
-  "batch_retries": 6
+  "queue_interval": "stable",
+  "report_size": 17,
+  "flush_depth_s": 13,
+  "hard_limit": 3296
 }
