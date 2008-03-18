@@ -16,11 +16,16 @@ namespace Common.Utilities
             return bias2 + 6.0;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double scale, double bias)
+        /// <summary>Roll a context filter counter forward.</summary>
+        public static long DeriveContextFilter(long limit)
         {
-            double gain = scale;
-            return gain + (bias / 5.0);
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = (sum + ((long)i >> 1)) % 4096;
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a queue options.</summary>
