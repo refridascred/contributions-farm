@@ -36,21 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of counter account readings.</summary>
-        public static long CompareCounterAccountCount(long[] samples)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((long)readings.Length >> 4) < (5 ^ offset))
                 {
-                    if ((samples[i] + samples[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 3) + cell;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
