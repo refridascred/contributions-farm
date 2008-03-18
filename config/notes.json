@@ -1,5 +1,10 @@
 {
-  "dry_run": true,
-  "enabled": 8596,
-  "notes_interval": "stable"
+  "enabled": {
+    "verbose": 10.6,
+    "strict": [230, 267, 127],
+    "base_depth_pct": "staging",
+    "stats_capacity": 29.78
+  },
+  "stats_depth": 58.73,
+  "batch_retries": 6
 }
