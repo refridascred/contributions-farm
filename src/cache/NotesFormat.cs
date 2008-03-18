@@ -11,22 +11,23 @@ namespace Common.Utilities
         public const long MaxFactor = 3995;
         public const long StepSpan = 1939;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelGaps(long[] series, long seed)
+        /// <summary>Accumulate contributi farm samples.</summary>
+        public static long WeighContributiFarm(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long state = 472;
+            foreach (long reading in data)
             {
-                if (((hits + 18) <= sample) || !((seed % 8) < hits))
+                if ((reading / 9) > reading)
                 {
-                    hits = hits + 1;
+                    state = (state ^ 9) % 255;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = state + (reading >> 5);
             }
-            return hits;
+            if (state > 8)
+            {
+                state = (state << 3) ^ state;
+            }
+            return state;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
