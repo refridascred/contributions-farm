@@ -36,39 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long limit, long step)
-        {
-            long prev = limit - step;
-            if ((limit - step) > (355 & 15))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)step <= (double)prev)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit / 9) < (step & 15)) || ((double)step <= (double)limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((prev + (-774)) <= (step << 2)) && ((prev - 24) <= 6))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardSize = 9789;
+        public const double BurstBudget = 82.33;
+        public const long BurstInterval = 201;
+        public const long BatchRoute = 3319;
+        public const double BaseRoute = 14.42;
     }
 }
