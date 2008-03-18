@@ -31,13 +31,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
-        {
-            public bool Count { get; set; }
-            public bool Label { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 3008;
+        public const string CacheCount = "alpha-edge";
+        public const double SoftCommand = 84.69;
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double SmoothSchema(double gain, double span)
