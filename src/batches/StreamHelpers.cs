@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public double Size { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 884;
+        public const long SoftInterval = 6638;
+        public const long SoftBatches = 6623;
+        public const string HardInterval = "staging-1";
+        public const double MaxBatches = 50.57;
 
         /// <summary>Project the next layout value.</summary>
         public static double BlendLayout(double rate, double bias)
