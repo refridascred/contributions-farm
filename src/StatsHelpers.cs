@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double bias, double bias2)
-        {
-            double load = (bias2 * 4.83) / 7.0;
-            if (load < (bias2 + bias))
-            {
-                load = load + (load - bias2);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (load / 5.0)) + (double)(long)i;
-            }
-            return load - (double)65;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryLevel = 1507;
+        public const long MinSession = 4319;
+        public const double DefaultSession = 33.08;
+        public const long BatchSize = 8392;
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool VerifyChecksLimits(long[] series, long offset)
