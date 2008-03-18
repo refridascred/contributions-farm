@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] data)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] series, long origin)
         {
-            long acc = -5;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = acc + (reading - reading);
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Fold a list of cache window readings.</summary>
