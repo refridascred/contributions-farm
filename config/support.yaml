@@ -1,11 +1,6 @@
 # support settings
-strict:
-  - 228
-  - 427
-  - 487
-compress: 250
-githubfarm_window:
-  notes_ttl: 50.12
-  account_threshold: 2304
-  hard_delay_count: 60
-  hard_ratio: 500
+persist: green
+warm_limit_count: fallback
+hard_delay: 2122
+readonly: 60
+poll_size: 94
