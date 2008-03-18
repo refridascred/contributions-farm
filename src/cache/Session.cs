@@ -14,15 +14,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] samples, long offset)
+        /// <summary>Check that every tools metrics entry stays within the limit.</summary>
+        public static bool GuardToolsMetricsLimits(long[] values, long limit)
         {
-            long total = 3;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long value in values)
             {
-                total = ((total << 2) ^ (offset >> 4)) ^ value;
+                if (value <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
