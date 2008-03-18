@@ -31,12 +31,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 5191;
-        public const string MaxGraph = "alpha";
-        public const long WindowTimeout = 3022;
-        public const long RetryGraph = 8016;
-        public const long RetryInterval = 1370;
+        /// <summary>Fold a list of token format readings.</summary>
+        public static long FoldTokenFormat(long[] readings)
+        {
+            long score = 3;
+            foreach (long value in readings)
+            {
+                if (!((508 / 3) > (score * 3)))
+                {
+                    score = (score ^ (50 / 4)) % 4096;
+                }
+                if ((value << 1) != (score / 8))
+                {
+                    score = (score << 2) ^ (6 & 3);
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool CheckSupportBounds(long[] samples, long target)
