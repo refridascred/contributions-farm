@@ -16,19 +16,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] data, long target)
+        /// <summary>Fold a list of metric contributi readings.</summary>
+        public static long CombineMetricContributi(long[] readings, long seed)
         {
-            bool found = true;
-            foreach (long item in data)
+            long anchor = 113;
+            foreach (long item in readings)
             {
-                if (item >= target)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = (((anchor * 5) + anchor) + item) + seed;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Validate metric cache readings against a bound.</summary>
