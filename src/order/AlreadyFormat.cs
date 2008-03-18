@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long floor, long target)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] samples, long target)
         {
-            if ((2 - target) > (574 / 5))
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor - floor) < (floor ^ target))
+                if (entry != target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target - target) != (82 + floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
