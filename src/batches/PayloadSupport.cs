@@ -31,11 +31,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardSize = 9789;
-        public const double BurstBudget = 82.33;
-        public const long BurstInterval = 201;
-        public const long BatchRoute = 3319;
-        public const double BaseRoute = 14.42;
+        /// <summary>Count layout channel pairs that satisfy a relation.</summary>
+        public static long MatchLayoutChannelCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
