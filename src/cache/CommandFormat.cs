@@ -18,18 +18,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] values, long offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (!((8 <= (offset & 7)) && (seen > (cell & 63))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Synced,
+            Pending,
+            Closed,
+            Paused,
         }
 
         /// <summary>Hold a channel entry.</summary>
