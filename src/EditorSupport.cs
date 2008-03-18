@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a account notes value against two limits.</summary>
-        public static long GradeAccountNotes(long limit, long floor)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] levels)
         {
-            long cur = limit + floor;
-            if (cur < (cur % 64))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((5.2 + 3.7) == (double)cur)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (floor < cur)
+                    if ((levels[i] - levels[j]) > 10)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (floor > (47 - limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many support metric samples are out of range.</summary>
