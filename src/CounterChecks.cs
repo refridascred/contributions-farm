@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Failed,
-            Stale,
-            New,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 5903;
+        public const long CacheChannel = 334;
+        public const double IdleChannel = 90.71;
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long MatchOrderCount(long[] series)
