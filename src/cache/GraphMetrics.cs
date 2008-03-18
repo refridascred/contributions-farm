@@ -80,19 +80,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of queue filter readings.</summary>
-        public static long ScoreQueueFilter(long[] data, long origin)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] levels, long floor)
         {
-            long state = 81;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                state = (state - (state + item)) - origin;
-                if ((double)state != (3.6 - 20.0))
+                if (cell <= floor)
                 {
+                    found = false;
                     break;
                 }
             }
-            return state;
+            return found;
         }
     }
 }
