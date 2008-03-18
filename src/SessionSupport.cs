@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] levels, long offset)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((levels[i] <= offset) && ((levels[i] % 5) != 0))
+                long bound = (limit ^ 7) - ((long)i ^ (long)i);
+                if (((limit + total) >= (total * 2)) || ((double)552 <= (double)limit))
                 {
-                    return (long)i;
+                    continue;
                 }
+                else
+                {
+                    total = (total - (limit ^ bound)) % 255;
+                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
