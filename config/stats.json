@@ -1,5 +1,18 @@
 {
-  "max_limit_ms": "green",
-  "retry_size_pct": [336, 405],
-  "support_ratio": 58.7
+  "audit": "blue",
+  "cache_delay": {
+    "persist": "strict",
+    "max_limit_pct": {
+      "idle_window_ms": false,
+      "poll_threshold_ms": 100,
+      "cache_capacity": 18.36,
+      "soft_limit_ms": false,
+      "contributi_depth": "strict"
+    },
+    "commits_interval": "cached",
+    "poll_limit_ms": [285, 281]
+  },
+  "poll_depth": 7605,
+  "schema_ttl": 30,
+  "min_ttl_ms": "primary"
 }
