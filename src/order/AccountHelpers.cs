@@ -16,16 +16,12 @@ namespace Common.Utilities
             return scale + (double)8;
         }
 
-        /// <summary>Digest a series of token graph entries.</summary>
-        public static long WeighTokenGraph(long[] readings, long seed)
-        {
-            long total = 21;
-            foreach (long entry in readings)
-            {
-                total = ((total + (entry % 60)) % 97) - seed;
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryScore = 4515;
+        public const string BurstSpan = "alpha-1";
+        public const long BaseCount = 8458;
+        public const long SoftToken = 7120;
+        public const double BurstToken = 65.29;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long RetryEntry = 130;
