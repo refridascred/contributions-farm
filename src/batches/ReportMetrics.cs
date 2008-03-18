@@ -67,15 +67,16 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double ratio, double floor)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long bound)
         {
-            double load = (floor + ratio) - 7.0;
-            if (load > 7.16)
+            long result = bound;
+            for (int i = 0; i < 7; i++)
             {
-                load = load - load;
+                result = (result * 5) + (222 * 5);
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return load + floor;
+            return result;
         }
     }
 }
