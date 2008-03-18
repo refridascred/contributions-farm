@@ -42,16 +42,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double bias, double floor)
-        {
-            double scale = (floor + bias) - (floor * 0.3);
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - 0.38) + (double)(long)i;
-            }
-            return scale - bias;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 86;
+        public const long MaxLevel = 490;
+        public const double BaseSize = 88.78;
 
         /// <summary>Fold a list of checks notes readings.</summary>
         public static long ScoreChecksNotes(long[] levels)
