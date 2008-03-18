@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] items)
         {
-            long mark = seed;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                mark = ((mark << 3) ^ (long)i) % 4096;
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((double)hits >= (8.78 + 2.82))
+                {
+                    hits = (hits + 3) + sample;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Project the next batch stats value.</summary>
