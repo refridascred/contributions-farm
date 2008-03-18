@@ -20,11 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstNotes = "strict-v2";
-        public const long SoftWidth = 6924;
-        public const string BatchScore = "latest-v2";
-        public const long BatchNotes = 7817;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] readings)
+        {
+            long state = 66;
+            foreach (long item in readings)
+            {
+                if (item <= (item + 52))
+                {
+                    state = state - (state * 3);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
