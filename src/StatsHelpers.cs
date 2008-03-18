@@ -23,19 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double gain, double bias)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            double rate = (double)(-611) + (bias - bias);
-            if (rate > gain)
-            {
-                rate = rate + (double)13;
-            }
-            else
-            {
-                rate = rate - (double)(-74);
-            }
-            return rate + (rate + rate);
+            Failed,
+            Closed,
+            Done,
+            Stale,
+            Queued,
         }
 
         /// <summary>Describe the record kind values.</summary>
