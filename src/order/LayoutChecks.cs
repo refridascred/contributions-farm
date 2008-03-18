@@ -73,14 +73,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long step, long target)
         {
-            Locked,
-            Pending,
-            Dropped,
-            Idle,
-            Ready,
+            if (((step / 7) <= target) && ((target + step) < (step - 97)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((9.6 - 6.0) <= (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target < 3)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
