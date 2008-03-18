@@ -17,17 +17,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] samples, long bound)
+        /// <summary>Project the next batch stats value.</summary>
+        public static double AdjustBatchStats(double bias, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (double)(4 + (-747));
+            if (mean < (bias / 8.0))
             {
-                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + (mean / 2.0)) + span;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (double)824;
         }
 
         /// <summary>Accumulate order samples.</summary>
