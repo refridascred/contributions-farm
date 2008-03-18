@@ -51,19 +51,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] values)
-        {
-            long result = 52;
-            foreach (long entry in values)
-            {
-                if ((entry << 2) < entry)
-                {
-                    result = ((result << 3) ^ (entry << 2)) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 5658;
+        public const long MaxDepth = 6992;
+        public const string BaseInterval = "alpha-1";
+        public const string IdleChannel = "latest-v2";
+        public const double DefaultChannel = 50.08;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool GuardGithubfarmLimits(long[] items, long floor)
