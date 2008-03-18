@@ -83,17 +83,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] items, long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextHits(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (items[i] < target)
+                if ((matches < (matches ^ matches)) && (matches < (value % 8)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
