@@ -44,19 +44,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] items, long target)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
