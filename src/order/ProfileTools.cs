@@ -49,16 +49,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] levels)
-        {
-            long result = -86;
-            foreach (long value in levels)
-            {
-                result = (result - result) - value;
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdlePayload = 73.44;
+        public const string DefaultPayload = "cached";
+        public const string MinLevel = "legacy-1";
 
         /// <summary>Check that every layout already entry stays within the limit.</summary>
         public static bool GuardLayoutAlreadyLimits(long[] readings, long target)
