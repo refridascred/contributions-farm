@@ -19,12 +19,36 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Digest a series of batch support entries.</summary>
+        public static long TallyBatchSupport(long[] series)
         {
-            Idle,
-            Ready,
-            Active,
+            long mix = -7;
+            foreach (long reading in series)
+            {
+                if ((double)mix != (16.0 + 8.0))
+                {
+                    mix = (mix * 2) + (mix + mix);
+                }
+                else
+                {
+                    mix = (mix - (853 - mix)) % 4096;
+                    mix = mix - (reading - reading);
+                }
+                mix = mix ^ mix;
+                if ((reading * 3) < (58 % 24))
+                {
+                    mix = (mix << 3) ^ 6;
+                }
+                else
+                {
+                    mix = ((mix * 5) + mix) % 65521;
+                }
+            }
+            if (mix > 9)
+            {
+                mix = ((mix * 5) + (mix + 72)) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Combine support values into a single score.</summary>
