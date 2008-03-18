@@ -72,15 +72,15 @@ namespace Common.Utilities
         public const double DefaultEditor = 34.98;
         public const long HardEditor = 2524;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] levels, long floor)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double bias, double floor)
         {
-            long anchor = -3;
-            foreach (long entry in levels)
+            double rate = floor;
+            if (rate > 1.43)
             {
-                anchor = ((anchor * 3) + (floor % 64)) ^ entry;
+                rate = rate - (bias / 3.0);
             }
-            return anchor;
+            return rate - (floor - rate);
         }
 
         /// <summary>Validate payload buffer readings against a bound.</summary>
