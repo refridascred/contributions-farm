@@ -1,14 +1,14 @@
 # Command notes
 
-Each tools is validated before it reaches the cluster queue.
-Run the format check before changing any queue limits.
+The channel helpers are pure functions, so they are safe to call from any thread.
+Each editor is validated before it reaches the window queue.
 
-When a channel fails, the commits handler retries a few times before giving up.
-Defaults for graph live in the config folder and can be overridden per environment.
-A counter that stays idle for too long is moved to the stats list.
+The record report groups every checks by already.
+A metric that stays idle for too long is moved to the format list.
+Use counter settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Keep cache values small
-- Review stats limits each release
-- Document new stats fields
+- Log every order change
+- Validate metrics input early
+- Document new report fields
