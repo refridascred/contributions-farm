@@ -30,14 +30,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Count graph session pairs that satisfy a relation.</summary>
+        public static long MatchGraphSessionCount(long[] data)
         {
-            Idle,
-            Retry,
-            Queued,
-            Synced,
-            New,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
