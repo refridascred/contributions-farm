@@ -47,21 +47,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] data)
+        /// <summary>Count the filter route entries that pass the check.</summary>
+        public static long TallyFilterRouteHits(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((bound / 8) < count)
                 {
-                    if ((data[i] - data[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) - datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
