@@ -46,18 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] readings, long origin)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if ((origin + cell) != (cell / 4))
+                if (datum != seed)
                 {
-                    hits = hits + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
