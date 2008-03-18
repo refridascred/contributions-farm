@@ -31,12 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] values, long floor)
         {
-            Paused,
-            Pending,
-            Stale,
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the filter kind values.</summary>
