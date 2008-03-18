@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Digest a series of command cluster entries.</summary>
+        public static long ScoreCommandCluster(long[] levels)
         {
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
+            long mark = -19;
+            foreach (long entry in levels)
+            {
+                if ((mark ^ entry) < entry)
+                {
+                    mark = mark - (1 - mark);
+                }
+            }
+            if (mark < 741)
+            {
+                mark = mark + (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Hold a tools record.</summary>
