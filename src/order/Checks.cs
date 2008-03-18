@@ -64,14 +64,11 @@ namespace Common.Utilities
         public const long MinRoute = 4368;
         public const long LimitRoute = 5399;
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double ratio, double offset)
         {
-            Draft,
-            New,
-            Stale,
-            Ready,
-            Closed,
+            double mean = ratio - 2.2;
+            return (mean - ratio) + offset;
         }
 
         /// <summary>Define support limits and defaults.</summary>
