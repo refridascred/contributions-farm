@@ -30,18 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] values)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (((entry - 407) != (entry >> 4)) || (((4.55 * 5.77) == (double)entry) && ((9.7 - 6.4) > (double)tally)))
+                if ((((179 ^ reading) >= count) && ((double)(long)items.Length <= (2.5 * 2.4))) || ((count >= reading) || ((5.91 + 2.4) == (double)count)))
                 {
-                    tally = tally + 2;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
