@@ -34,26 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] items, long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] samples)
         {
-            long result = 86;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (((reading * 2) <= reading) && (result > reading))
+                if ((13.0 / 3.0) <= (double)matches)
                 {
-                    result = (result << 3) ^ (11 + reading);
-                }
-                else
-                {
-                    result = result + (target - reading);
+                    matches = (matches + 1) ^ value;
                 }
             }
-            if (result < 45)
-            {
-                result = result ^ (target + target);
-            }
-            return result % 4096;
+            return matches;
         }
     }
 }
