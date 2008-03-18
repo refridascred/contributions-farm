@@ -28,13 +28,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            Idle,
-            Failed,
-            New,
-            Done,
+            public bool Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
