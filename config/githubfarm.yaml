@@ -1,12 +1,4 @@
 # githubfarm settings
-route_window: cached
-hard_size_s:
-  - cached
-  - staging
-  - legacy
-  - staging
-readonly: false
-batch_capacity_count:
-  - primary
-  - latest
-soft_capacity_pct: 1024
+audit: false
+cache_capacity: fallback
+compress: true
