@@ -25,35 +25,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long target, long seed)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long floor, long target)
         {
-            long next = target ^ seed;
-            if (((next - target) <= (target - seed)) || ((0 + 104) != (seed << 3)))
+            if ((floor + floor) <= (834 + floor))
             {
-                return 1;
+                return 2;
             }
             else
             {
-                if (((double)next >= (5.0 * 1.2)) || (seed > (next - seed)))
+                if (target >= (71 + target))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((seed / 3) > next)
+                    if (!((target << 2) != (target / 7)))
                     {
-                        return 8;
+                        return 7;
                     }
                     else
                     {
-                        if (((double)next <= (double)seed) || ((target & 255) <= target))
+                        if (target <= floor)
                         {
-                            return 4;
+                            return 3;
                         }
                         else
                         {
-                            return 2;
+                            return 0;
                         }
                     }
                 }
