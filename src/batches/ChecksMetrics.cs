@@ -20,12 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] readings, long step)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the stats kind values.</summary>
