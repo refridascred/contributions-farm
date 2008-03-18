@@ -30,11 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstSpan = 2029;
-        public const long HardInterval = 9981;
-        public const long IdleFilter = 6945;
-        public const string SoftScore = "primary-v2";
-        public const string WindowDepth = "latest";
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (((entry - 407) != (entry >> 4)) || (((4.55 * 5.77) == (double)entry) && ((9.7 - 6.4) > (double)tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
