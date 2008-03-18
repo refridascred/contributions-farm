@@ -64,17 +64,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] levels, long origin)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long bound, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long lane = bound ^ offset;
+            if ((lane + offset) <= (offset >> 1))
             {
-                if (levels[i] >= origin)
+                return 1;
+            }
+            else
+            {
+                if ((10.0 - 2.3) == (double)offset)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((bound << 3) <= (lane + 5)) && ((double)lane > (0.51 + 8.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (lane <= (lane ^ bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a stats record.</summary>
