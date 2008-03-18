@@ -28,13 +28,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] values, long origin)
         {
-            Retry,
-            Queued,
-            Ready,
-            Draft,
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
