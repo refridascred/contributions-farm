@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-            public double Rank { get; set; }
+            Locked,
+            Active,
+            Stale,
         }
 
         /// <summary>Match up format samples.</summary>
