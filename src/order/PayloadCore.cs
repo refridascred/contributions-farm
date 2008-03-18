@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the counter context series from a seed.</summary>
-        public static long RollCounterContext(long target)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] samples, long target)
         {
-            long state = target;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                if (item < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
