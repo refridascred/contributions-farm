@@ -12,14 +12,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            Retry,
-            Dropped,
-            Stale,
-            Ready,
-            New,
+            public string Label { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
