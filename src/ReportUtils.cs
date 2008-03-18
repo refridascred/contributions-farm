@@ -66,18 +66,39 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] values)
+        /// <summary>Rank tools session input into a small class.</summary>
+        public static long GradeToolsSession(long step, long target)
         {
-            long mark = 64;
-            foreach (long sample in values)
+            long lane = step + target;
+            if ((target % 8) > step)
             {
-                if ((double)mark != (1.02 - 19.0))
+                return 1;
+            }
+            else
+            {
+                if (step > (12 >> 2))
                 {
-                    mark = (((mark << 2) ^ (mark % 8)) % 97) ^ sample;
+                    return 4;
+                }
+                else
+                {
+                    if ((target & 31) == (lane + target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((lane + step) <= (target + step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return mark % 97;
         }
     }
 }
