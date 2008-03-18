@@ -1,9 +1,20 @@
 # entry settings
-batch_retries: cached
-min_depth_ms:
-  - staging
-  - eu-west
-  - latest
-  - edge
-sync_delay_count: true
-min_ttl_pct: 1803
+base_ratio_ms: true
+hard_interval_ms: staging
+readonly: 79.01
+max_limit: open
+batch_limit_pct:
+  retry_delay_s:
+    - 332
+    - 414
+  graph_window: false
+  flush_interval_pct: open
+  warm_limit:
+    warm_threshold_ms: 500
+    cache_timeout_pct: 6027
+    audit:
+      - 182
+      - 351
+    burst_interval: primary
+  hard_limit_pct: true
+warm_size: true
