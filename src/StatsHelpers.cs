@@ -23,24 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double gain, double bias)
         {
-            long mark = target;
-            for (int i = 0; i < 23; i++)
+            double rate = (double)(-611) + (bias - bias);
+            if (rate > gain)
             {
-                if (10.0 < (double)target)
-                {
-                    mark = mark ^ (833 >> 2);
-                    mark = (mark << 2) ^ (89 ^ target);
-                }
-                else
-                {
-                    mark = (mark ^ target) % 1000;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
+                rate = rate + (double)13;
             }
-            return mark;
+            else
+            {
+                rate = rate - (double)(-74);
+            }
+            return rate + (rate + rate);
         }
 
         /// <summary>Describe the record kind values.</summary>
