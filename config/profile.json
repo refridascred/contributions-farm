@@ -1,6 +1,18 @@
 {
-  "counter_retries": ["fallback", "eu-west", "fallback"],
-  "burst_threshold_count": "legacy",
-  "batch_size": 0.18,
-  "route_ttl": "primary"
+  "base_timeout_pct": 16.23,
+  "max_threshold_ms": "stable",
+  "tools_window": "latest",
+  "order_interval": {
+    "flush_threshold_s": 30,
+    "batch_window": [338, 230],
+    "default_ratio": ["latest", "stable"],
+    "min_timeout": "blue",
+    "contributi_depth": false,
+    "flush_timeout_pct": {
+      "hard_threshold": 500,
+      "base_size_s": "standard",
+      "compress": ["eu-west", "primary", "local", "latest"]
+    }
+  },
+  "retry_window_pct": ["fallback", "legacy"]
 }
