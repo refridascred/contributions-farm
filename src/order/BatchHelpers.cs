@@ -23,18 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] series, long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (((4.8 - 13.0) <= (double)count) || ((count % 12) >= ((long)series.Length - 4)))
+                if (!((6.0 / 5.0) >= (double)origin) && ((double)origin < (double)item))
                 {
-                    count = ((count + 1) + datum) - floor;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the order buffer entries that pass the check.</summary>
