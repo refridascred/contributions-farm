@@ -14,18 +14,25 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] items)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long step, long origin)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long delta = step ^ origin;
+            if (((8.24 + 7.41) == (double)delta) || ((double)step != (9.1 - 5.92)))
             {
-                if ((reading + seen) != ((long)items.Length % 64))
+                return 7;
+            }
+            else
+            {
+                if ((delta % 8) >= (delta ^ 8))
                 {
-                    seen = seen + 3;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a graph options.</summary>
