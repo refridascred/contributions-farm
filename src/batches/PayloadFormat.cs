@@ -22,12 +22,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public bool Count { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string StepTimeout = "legacy-v2";
+        public const string HardLevel = "open-v2";
+        public const double MaxWidth = 81.91;
+        public const long LimitTimeout = 1025;
 
         /// <summary>Check that every cluster layout entry stays within the limit.</summary>
         public static bool ValidateClusterLayoutLimits(long[] samples, long limit)
