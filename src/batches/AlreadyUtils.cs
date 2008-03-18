@@ -31,22 +31,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] data, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] levels)
         {
-            long total = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (((double)step >= (1.0 * 3.58)) && ((step % 7) < total))
+                if (hits >= (value & 15))
                 {
-                    total = (total * 2) + (step + cell);
-                }
-                else
-                {
-                    total = (total + (total + step)) % 97;
+                    hits = hits + 3;
                 }
             }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
