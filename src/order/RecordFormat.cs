@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryFactor = 8153;
-        public const long BaseNotes = 2030;
-        public const string StepInterval = "primary-1";
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 1979;
+        public const string HardAlready = "primary-1";
+        public const double WindowAlready = 91.54;
+        public const long MaxAlready = 8604;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmLimits(long[] data, long origin)
