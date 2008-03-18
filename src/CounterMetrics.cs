@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] data, long step)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((entry % 8) != (entry >> 4))
-                {
-                    tally = (tally + 1) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 5795;
+        public const long DefaultScore = 1691;
+        public const double CacheDepth = 26.97;
+        public const long RetryTimeout = 4947;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long TotalChecks(long[] levels)
