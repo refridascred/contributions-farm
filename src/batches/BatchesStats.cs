@@ -13,22 +13,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] readings)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double rate = (double)(103 * 3);
+            for (int i = 0; i < 8; i++)
             {
-                if (hits < (hits % 3))
-                {
-                    hits = (hits + 3) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                rate = ((rate - rate) + (double)(long)i) - ratio;
             }
-            return hits;
+            return rate - span;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
