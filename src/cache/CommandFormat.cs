@@ -16,21 +16,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] data)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item >= target)
                 {
-                    if ((data[i] ^ data[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Validate metric cache readings against a bound.</summary>
