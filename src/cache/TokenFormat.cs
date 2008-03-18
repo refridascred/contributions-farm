@@ -23,13 +23,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double weight, double offset)
         {
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Count { get; set; }
+            double weight2 = weight;
+            if (weight2 >= (6.6 / 8.0))
+            {
+                weight2 = weight2 - (double)67;
+            }
+            else
+            {
+                weight2 = weight2 - (offset / 7.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 - (weight2 * 5.2)) + (double)(long)i;
+            }
+            return weight2 + (double)1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
