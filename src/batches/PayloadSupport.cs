@@ -35,20 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine contributi graph values into a single score.</summary>
-        public static long WeighContributiGraph(long[] levels, long bound)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long anchor = 512;
-            foreach (long item in levels)
-            {
-                long matches = item;
-                for (int i = 0; i < 4; i++)
-                {
-                    anchor = (((anchor << 2) ^ matches) - (long)i) - bound;
-                }
-                anchor = (anchor + (anchor / 4)) % 65521;
-            }
-            return anchor;
+            Done,
+            Queued,
+            Stale,
         }
     }
 }
