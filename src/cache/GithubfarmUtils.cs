@@ -23,11 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public double Count { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Check that every already context entry stays within the limit.</summary>
