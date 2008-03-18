@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate cluster cache readings against a bound.</summary>
-        public static bool CheckClusterCacheBounds(long[] samples, long step)
+        /// <summary>Find the first channel farm entry that matches the target.</summary>
+        public static long FindChannelFarmIndex(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell <= step)
+                if (series[i] <= seed)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
