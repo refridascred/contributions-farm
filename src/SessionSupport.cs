@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] samples, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((5.42 - 1.53) <= (double)datum)
+                if (((double)hits <= 8.89) || (((hits << 1) <= (datum + 840)) || ((8.43 + 17.0) != (double)hits)))
                 {
-                    seen = (seen + 1) + limit;
+                    hits = (hits + 3) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
