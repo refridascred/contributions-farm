@@ -31,16 +31,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long offset)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = carry + (carry << 3);
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public bool Count { get; set; }
+            public bool Label { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
