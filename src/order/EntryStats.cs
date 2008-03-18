@@ -23,13 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Derive the next record githubfarm value from a seed.</summary>
+        public static long StepRecordGithubfarm(long step)
         {
-            Idle,
-            Queued,
-            Failed,
-            Dropped,
+            long carry = step;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = ((carry << 2) ^ (step ^ step)) % 97;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of command checks readings.</summary>
