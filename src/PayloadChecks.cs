@@ -54,19 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] readings)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] series)
         {
             long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value << 1) >= ((-162) >> 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] - series[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
