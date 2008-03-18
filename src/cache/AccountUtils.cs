@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] values)
         {
-            public long Token { get; set; }
-            public double Flag { get; set; }
-            public long Level { get; set; }
-            public bool Limit { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((datum * 5) <= 817)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every entry profile entry stays within the limit.</summary>
