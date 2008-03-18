@@ -47,19 +47,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] readings, long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (cell <= target)
+                if (datum <= floor)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
     }
 }
