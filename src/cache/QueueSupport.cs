@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of buffer support readings.</summary>
-        public static long MatchBufferSupportCount(long[] data)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!!((cell + cell) < (83 * 2)))
                 {
-                    if ((data[i] + data[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Project the next notes value.</summary>
