@@ -24,17 +24,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long seed)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                state = (state ^ (seed + state)) % 1000;
-                state = ((state * 2) + (seed + seed)) % 255;
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public bool Flag { get; set; }
+            public double Total { get; set; }
+            public double Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
