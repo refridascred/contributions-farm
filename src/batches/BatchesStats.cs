@@ -13,13 +13,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            Synced,
-            Ready,
-            Locked,
-            Dropped,
+            public double Total { get; set; }
+            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
