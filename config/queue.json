@@ -1,6 +1,5 @@
 {
-  "buffer_interval": 30,
-  "stats_timeout": false,
-  "enabled": 500,
-  "warm_interval_ms": 56.58
+  "poll_threshold": 63.67,
+  "batch_ratio_pct": ["cached", "latest"],
+  "min_timeout_pct": 82
 }
