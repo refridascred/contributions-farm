@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double scale, double span)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            double scale2 = scale * 15.0;
-            if (scale2 <= (span + scale))
-            {
-                scale2 = scale2 + (scale2 + 9.71);
-            }
-            return scale2 + scale2;
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
