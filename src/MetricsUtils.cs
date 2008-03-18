@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long LimitWindow = 8902;
         public const long CacheWindow = 8352;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] items, long seed)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] items, long limit)
         {
-            long acc = -42;
-            foreach (long value in items)
+            long sum = 9;
+            foreach (long datum in items)
             {
-                acc = acc ^ 5;
-                if (((double)value < (7.5 + 13.0)) && ((acc + acc) == (acc ^ 129)))
-                {
-                    acc = (acc * 2) + (seed + acc);
-                }
+                sum = ((sum - datum) % 255) + limit;
+                sum = sum + datum;
+                sum = sum ^ sum;
             }
-            return acc;
+            return sum % 1000;
         }
 
         /// <summary>Classify a command layout pair into a bucket.</summary>
