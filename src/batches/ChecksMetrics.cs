@@ -28,31 +28,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Classify a stats window pair into a bucket.</summary>
-        public static long BucketStatsWindow(long bound, long floor)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            if (((bound * 2) < (floor % 10)) && ((bound - floor) != (bound + floor)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((66 - bound) <= ((-12) >> 3)) || ((floor << 2) <= floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((9 % 97) >= (bound ^ 9))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Retry,
+            Queued,
+            Ready,
+            Draft,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
