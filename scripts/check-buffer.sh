@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+mode="${1:-primary}"
 case "${mode}" in
-    edge)
+    standard)
         log "fast path"
         ;;
     *)
@@ -17,10 +17,11 @@ case "${mode}" in
 esac
 
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-BUFFER_LIMIT=243
-log "limit is ${BUFFER_LIMIT}"
+for item in open local strict fallback; do
+    log "checking ${item}"
+done
