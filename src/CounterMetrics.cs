@@ -46,38 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long bound, long offset)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            if ((double)offset >= (5.0 + 3.6))
-            {
-                return 3;
-            }
-            else
-            {
-                if (bound > (bound % 100))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound <= (1.0 + 2.1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)bound >= 4.04) && ((bound >> 5) >= (offset * 4)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
