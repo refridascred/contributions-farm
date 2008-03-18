@@ -20,24 +20,18 @@ namespace Common.Utilities
         public const double DefaultBudget = 42.91;
         public const long SoftStats = 8364;
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long step, long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] readings)
         {
-            if ((step * 3) <= (step << 2))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)step != (double)origin)
+                if ((9 >> 3) < count)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    count = (count + 1) + item;
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the tools metrics series from a seed.</summary>
