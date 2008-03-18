@@ -1,14 +1,6 @@
 # githubfarm settings
-cache_threshold: legacy
-graph_delay:
-  cache_depth_ms:
-    verbose: false
-    burst_depth_count:
-      - fallback
-      - latest
-      - staging
-    idle_limit: 38.75
-  sync_delay_count: staging
-  batch_depth: true
-  compress: edge
-poll_retries_pct: 56
+hard_depth: 96.21
+min_capacity: primary
+cache_interval_pct: 4.07
+counter_depth: 15
+max_window: 1024
