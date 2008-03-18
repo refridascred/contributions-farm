@@ -16,39 +16,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long offset, long offset2)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] data)
         {
-            long prev = offset ^ offset2;
-            if (!((double)offset2 != (15.0 - 5.8)))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((5 % 16) != (offset % 97)) && (prev < (offset2 << 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((prev - prev) <= (offset * 3))
+                    if ((data[i] ^ data[j]) != 4)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)prev != (1.0 / 9.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate metric cache readings against a bound.</summary>
