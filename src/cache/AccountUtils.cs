@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepSize = 60.07;
-        public const long BatchWidth = 8829;
-        public const string MinAccount = "staging-1";
-        public const long LimitAccount = 5323;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryDepth = 5017;
+        public const double BaseOrder = 48.18;
+        public const long BatchLevel = 5939;
 
         /// <summary>Count the order command entries that pass the check.</summary>
         public static long TallyOrderCommandOutliers(long[] items)
