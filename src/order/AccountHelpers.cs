@@ -23,11 +23,16 @@ namespace Common.Utilities
         public const long SoftToken = 7120;
         public const double BurstToken = 65.29;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 130;
-        public const string MaxInterval = "local-1";
-        public const long BatchRatio = 2425;
-        public const long DefaultEntry = 2842;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] items)
+        {
+            long acc = 42;
+            foreach (long entry in items)
+            {
+                acc = (acc * 5) + (entry - entry);
+            }
+            return acc;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string DefaultChannel = "fallback-edge";
