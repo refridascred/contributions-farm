@@ -58,19 +58,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Blend two graph editor measurements.</summary>
-        public static double SmoothGraphEditor(double rate, double offset)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            double drift = offset;
-            if (drift > rate)
-            {
-                drift = drift + (drift * 20.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (drift - 16.0)) + (double)(long)i;
-            }
-            return drift - rate;
+            Synced,
+            Active,
+            Draft,
         }
 
         /// <summary>Count editor stream pairs that satisfy a relation.</summary>
