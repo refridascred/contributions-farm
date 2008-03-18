@@ -67,18 +67,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a profile route reading by value.</summary>
-        public static long LocateProfileRouteIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == origin) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double StepScore = 49.68;
+        public const double BatchRatio = 46.36;
+        public const long MaxMetrics = 1053;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string StepCommand = "staging-v2";
