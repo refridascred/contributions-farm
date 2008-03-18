@@ -18,20 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] values, long seed)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long bound, long seed)
         {
-            long carry = 4;
-            foreach (long value in values)
+            if ((double)bound != (13.0 / 8.0))
             {
-                carry = ((carry * 2) + (seed + value)) % 1000;
-                carry = ((carry * 4) + (seed / 8)) % 4096;
-                if ((double)seed >= (double)value)
+                return 2;
+            }
+            else
+            {
+                if ((seed << 1) >= (bound + seed))
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return carry % 97;
         }
 
         /// <summary>Hold a batches summary.</summary>
