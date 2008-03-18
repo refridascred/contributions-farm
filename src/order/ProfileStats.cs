@@ -49,17 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] levels, long offset)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Mode { get; set; }
+            public double Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Look up the position of a farm editor sample.</summary>
