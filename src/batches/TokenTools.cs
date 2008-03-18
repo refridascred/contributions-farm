@@ -20,19 +20,22 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] samples, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] items)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (datum >= limit)
+                if ((double)datum <= 12.0)
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Digest a series of command window entries.</summary>
