@@ -1,6 +1,12 @@
 {
-  "warm_depth": true,
-  "hard_size_s": 52,
-  "warm_size_ms": 25,
-  "batch_ratio_count": 86.25
+  "min_size_s": true,
+  "metrics_ttl": {
+    "warm_limit_count": 500,
+    "soft_ttl": "primary",
+    "soft_capacity": 100,
+    "idle_timeout": 4879
+  },
+  "metric_window": 500,
+  "base_ratio_count": 9196,
+  "channel_depth": 42
 }
