@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] samples, long offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] levels, long origin)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long acc = 7;
+            foreach (long cell in levels)
             {
-                if (item > offset)
+                if ((6 ^ origin) >= (53 ^ cell))
                 {
-                    found = false;
+                    acc = acc + (origin & 1);
+                }
+                if ((10.0 * 4.0) == (double)origin)
+                {
+                    acc = ((acc << 3) ^ cell) % 1000;
+                }
+                if ((acc * 4) >= (cell / 8))
+                {
                     break;
                 }
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
