@@ -13,39 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long seed, long floor)
+        /// <summary>Validate stats support readings against a bound.</summary>
+        public static bool GuardStatsSupportLimits(long[] data, long limit)
         {
-            long edge = seed - floor;
-            if ((double)floor == (double)edge)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)edge <= (9.0 / 8.0))
+                if (reading <= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((edge << 1) == (floor + 518))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed << 2) != (edge + edge))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
