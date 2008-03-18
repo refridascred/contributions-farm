@@ -13,31 +13,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long step, long floor)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double scale, double span)
         {
-            if (((floor + floor) != (floor - floor)) && ((double)step < (13.0 - 9.0)))
+            double drift = span;
+            if (drift <= span)
             {
-                return 8;
+                drift = drift - (span / 4.0);
             }
             else
             {
-                if (((7.4 * 2.09) < (double)floor) && ((74 & 1) != (floor / 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step + floor) != (floor ^ step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                drift = drift + (span - span);
             }
+            return drift + (drift + scale);
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
