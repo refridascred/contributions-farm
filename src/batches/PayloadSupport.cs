@@ -35,19 +35,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] series)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long limit, long step)
         {
-            long anchor = 69;
-            foreach (long item in series)
+            long prev = limit - step;
+            if ((limit - step) > (355 & 15))
             {
-                anchor = ((anchor ^ (-1)) % 101) ^ item;
+                return 6;
             }
-            if (anchor < 812)
+            else
             {
-                anchor = anchor ^ (763 % 3);
+                if ((double)step <= (double)prev)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((limit / 9) < (step & 15)) || ((double)step <= (double)limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((prev + (-774)) <= (step << 2)) && ((prev - 24) <= 6))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return anchor % 1000;
         }
     }
 }
