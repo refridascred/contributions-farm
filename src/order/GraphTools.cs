@@ -12,34 +12,34 @@ namespace Common.Utilities
         public const long WindowSession = 7599;
         public const string BaseSession = "legacy-edge";
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long step, long limit)
+        /// <summary>Rank editor support input into a small class.</summary>
+        public static long RankEditorSupport(long seed, long offset)
         {
-            if ((1.9 * 2.5) != (double)limit)
+            if ((double)offset <= (double)seed)
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if (327 < (step >> 3))
+                if ((offset <= (seed << 2)) || (seed > (seed >> 3)))
                 {
                     return 2;
                 }
                 else
                 {
-                    if (!((step << 2) >= (limit + step)))
+                    if ((offset % 2) <= seed)
                     {
-                        return 4;
+                        return 5;
                     }
                     else
                     {
-                        if (1.28 >= (double)step)
+                        if (seed <= offset)
                         {
-                            return 3;
+                            return 7;
                         }
                         else
                         {
-                            return 5;
+                            return 1;
                         }
                     }
                 }
