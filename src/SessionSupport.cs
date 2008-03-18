@@ -31,11 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 8460;
-        public const long MinBatch = 2856;
-        public const string MaxBatch = "open-edge";
-        public const long SoftSpan = 6301;
-        public const long CacheRatio = 4531;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchDepth = 7208;
+        public const double StepNotes = 92.06;
+        public const long MaxSize = 5468;
+        public const string WindowNotes = "staging-edge";
     }
 }
