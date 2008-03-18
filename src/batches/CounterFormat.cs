@@ -35,12 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] series, long target)
         {
-            public double Total { get; set; }
-            public double Region { get; set; }
-            public string Mode { get; set; } = "";
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
