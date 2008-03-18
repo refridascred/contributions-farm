@@ -32,13 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] readings, long limit)
         {
-            Paused,
-            Ready,
-            New,
-            Queued,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a commits entry.</summary>
