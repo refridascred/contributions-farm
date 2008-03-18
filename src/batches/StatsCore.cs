@@ -24,19 +24,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double ratio, double bias)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            double gain = bias;
-            if (gain >= ratio)
-            {
-                gain = gain + (bias - gain);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + bias) + (double)(long)i;
-            }
-            return gain - bias;
+            Done,
+            Failed,
+            Locked,
         }
 
         /// <summary>Describe the checks kind values.</summary>
