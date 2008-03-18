@@ -28,15 +28,14 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long target)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long total = target;
-            for (int i = 0; i < 23; i++)
-            {
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            Paused,
+            Synced,
+            Dropped,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
