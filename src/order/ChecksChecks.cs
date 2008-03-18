@@ -21,17 +21,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] items, long floor)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long floor, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long step = floor + limit;
+            if ((limit + step) != (step - limit))
             {
-                if (items[i] < floor)
+                return 5;
+            }
+            else
+            {
+                if (!(11.0 > (double)step))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a command reading by value.</summary>
