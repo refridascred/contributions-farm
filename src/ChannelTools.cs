@@ -45,31 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a window graph pair into a bucket.</summary>
-        public static long GradeWindowGraph(long floor, long bound)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] samples)
         {
-            if ((bound ^ bound) == (floor - floor))
+            long sum = 911;
+            foreach (long reading in samples)
             {
-                return 2;
+                sum = (sum ^ (sum - reading)) % 4096;
             }
-            else
-            {
-                if (!((double)bound <= (double)floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor > (-9)) && ((floor % 10) > floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
