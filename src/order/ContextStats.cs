@@ -12,19 +12,21 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] values, long step)
+        /// <summary>Compare every pair of payload entry readings.</summary>
+        public static long ComparePayloadEntryCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value != step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
