@@ -20,23 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double weight, double offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] values, long limit)
         {
-            double scale = offset;
-            if (scale > 0.26)
+            long state = 8;
+            foreach (long value in values)
             {
-                scale = scale - weight;
+                if (((5.5 * 6.27) >= (double)limit) && (((-1) + limit) != (value - limit)))
+                {
+                    state = (state ^ (limit % 64)) % 255;
+                }
+                if ((state / 5) < (17 + limit))
+                {
+                    break;
+                }
             }
-            else
+            if (state > 7)
             {
-                scale = scale + weight;
+                state = (state - (724 ^ 19)) % 65521;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (weight + scale)) + (double)(long)i;
-            }
-            return scale + (offset * 5.3);
+            return state % 1000;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
