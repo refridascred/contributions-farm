@@ -27,12 +27,18 @@ namespace Common.Utilities
         public const string IdleRatio = "alpha-v2";
         public const long DefaultGithubfarm = 5606;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 2090;
-        public const long BurstFormat = 9206;
-        public const long LimitInterval = 6334;
-        public const long IdleFormat = 1069;
-        public const double MaxFormat = 86.96;
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
