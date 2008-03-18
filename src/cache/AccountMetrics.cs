@@ -47,19 +47,10 @@ namespace Common.Utilities
         public const long CacheBudget = 944;
         public const double RetrySize = 90.57;
 
-        /// <summary>Measure how many metric farm samples are out of range.</summary>
-        public static long CountMetricFarmMatches(long[] levels)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (!((matches % 12) > (datum - matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 6606;
+        public const double HardNotes = 32.43;
+        public const long SoftRatio = 7175;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TallyLayout(long[] values, long limit)
