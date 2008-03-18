@@ -49,17 +49,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] readings, long offset)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] series, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 5) != 0))
+                if (value > bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Hold a order options.</summary>
