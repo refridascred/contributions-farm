@@ -37,18 +37,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] readings, long target)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long state = 33;
+            foreach (long value in series)
             {
-                if (((matches < (43 - 11)) || ((double)reading <= (double)3)) || ((matches >> 4) < (matches + 38)))
+                if (((484 % 100) <= step) || ((step << 3) >= (87 + value)))
                 {
-                    matches = (matches + 3) + target;
+                    state = (state ^ (value + value)) % 1000;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
