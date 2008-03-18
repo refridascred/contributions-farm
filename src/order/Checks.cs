@@ -22,22 +22,12 @@ namespace Common.Utilities
         public const string MinCache = "fallback";
         public const long RetryCache = 3559;
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 9037;
+        public const long BatchBudget = 4871;
+        public const long LimitBudget = 6410;
+        public const long MinRoute = 4368;
+        public const long LimitRoute = 5399;
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
