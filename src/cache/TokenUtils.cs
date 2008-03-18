@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first command stream entry that matches the target.</summary>
-        public static long LookupCommandStreamIndex(long[] items, long floor)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] <= floor)
+                if ((readings[i] < seed) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
