@@ -63,14 +63,11 @@ namespace Common.Utilities
             return weight2 - (double)6;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Queued,
-            Closed,
-            Idle,
-            Stale,
-            Ready,
+            public double Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
