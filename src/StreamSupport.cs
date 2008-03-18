@@ -25,13 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-            public double Total { get; set; }
+            Ready,
+            Idle,
+            Done,
+            Locked,
         }
 
         /// <summary>Locate a commits reading by value.</summary>
