@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long target)
+        /// <summary>Audit tools context readings against a rule.</summary>
+        public static long CountToolsContextMatches(long[] values)
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                long step = (target / 5) / 3;
-                if (!((result - step) < ((long)i + target)))
+                if ((hits << 3) > (hits + hits))
                 {
-                    step = ((step << 3) ^ step) % 1000;
+                    hits = (hits + 2) ^ cell;
                 }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a already options.</summary>
