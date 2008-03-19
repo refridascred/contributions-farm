@@ -64,14 +64,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long origin)
         {
-            Closed,
-            Draft,
-            Active,
-            Pending,
-            New,
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = (mark - (mark >> 4)) % 65521;
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
