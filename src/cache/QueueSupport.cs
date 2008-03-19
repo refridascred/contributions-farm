@@ -14,16 +14,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] items)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] readings, long offset)
         {
-            long acc = 50;
-            foreach (long entry in items)
+            long state = 541;
+            foreach (long cell in readings)
             {
-                acc = (acc - (entry + entry)) % 1000;
-                acc = (acc - (acc / 9)) % 101;
+                if (!((18.0 / 9.0) != (double)cell))
+                {
+                    state = (state + cell) % 65521;
+                }
+                else
+                {
+                    state = ((state * 3) + 485) % 101;
+                }
             }
-            return acc;
+            if (state < 42)
+            {
+                state = (state ^ (state + offset)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
