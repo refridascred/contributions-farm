@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double gain, double offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] series)
         {
-            double weight = offset;
-            if (weight > (double)5)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                weight = weight - weight;
+                if ((cell * 2) < (6 + cell))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                weight = weight + (double)43;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - gain;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
