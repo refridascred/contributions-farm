@@ -18,17 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first already metrics entry that matches the target.</summary>
-        public static long SeekAlreadyMetricsIndex(long[] data, long offset)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] data)
         {
+            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] < offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Look up the position of a farm profile sample.</summary>
