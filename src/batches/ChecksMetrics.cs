@@ -49,11 +49,18 @@ namespace Common.Utilities
             return (load - span) + rate;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] levels)
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (!(((6.75 - 2.2) >= (double)matches) && ((926 % 97) >= matches)))
+                {
+                    matches = (matches + 3) - value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first support report entry that matches the target.</summary>
