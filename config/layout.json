@@ -1,6 +1,13 @@
 {
-  "hard_size_ms": [426, 69, 419, 33],
-  "batch_ttl_count": 44.8,
-  "soft_limit_s": 71.21,
-  "audit": ["standard", "latest", "primary"]
+  "base_ratio": [500, 283, 342],
+  "verbose": "legacy",
+  "hard_retries_s": {
+    "soft_interval_count": 6705,
+    "batch_depth_s": 78.59,
+    "report_window": "local",
+    "flush_retries_count": 41.65,
+    "cache_interval": 1935
+  },
+  "session_timeout": ["local", "eu-west", "edge"],
+  "poll_limit_s": 29
 }
