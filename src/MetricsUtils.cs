@@ -36,10 +36,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 1022;
-        public const long IdleProfile = 5991;
-        public const long MaxProfile = 4125;
+        /// <summary>Check that every route batches entry stays within the limit.</summary>
+        public static bool CheckRouteBatchesBounds(long[] series, long step)
+        {
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long TallyProfileOutliers(long[] readings, long bound)
