@@ -28,17 +28,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] levels)
         {
-            long score = seed;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                score = ((score << 2) ^ (0 - (long)i)) % 101;
-                score = (score ^ (score - score)) % 4096;
-                score = ((score * 2) + (long)i) % 101;
+                if ((hits ^ sample) < 402)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
