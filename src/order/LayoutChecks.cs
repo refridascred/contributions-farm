@@ -58,21 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count editor batches pairs that satisfy a relation.</summary>
-        public static long CompareEditorBatchesCount(long[] samples)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum <= floor)
                 {
-                    if ((samples[i] + samples[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
