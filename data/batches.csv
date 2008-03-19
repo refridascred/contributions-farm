@@ -1,7 +1,9 @@
-id,region,count,rank,weight
-1,stable,165,primary,64.76
-2,518,standard,67.05,eu-west
-3,39.81,13.32,48.78,70.28
-4,93.75,31.71,latest,382
-5,open,standard,primary,346
-6,11.08,40.87,449,400
+id,token,level,label
+1,blue,46.87,edge
+2,612,67,27.22
+3,912,406,75
+4,8.9,eu-west,12.95
+5,646,203,primary
+6,strict,6.41,local
+7,714,767,877
+8,445,local,17.92
