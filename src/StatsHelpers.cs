@@ -46,17 +46,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a metrics token sample.</summary>
-        public static long LocateMetricsTokenIndex(long[] series, long offset)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
