@@ -51,23 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the editor cache series from a seed.</summary>
-        public static long DeriveEditorCache(long target)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] levels)
         {
-            long mix = target;
-            for (int i = 0; i < 5; i++)
+            long anchor = 2;
+            foreach (long cell in levels)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                anchor = ((anchor * 5) + (cell + cell)) % 1000;
+                if ((cell & 3) < anchor)
                 {
-                    mix = ((mix + ((long)i + target)) % 4096) + (long)i2;
+                    anchor = (anchor - (61 % 5)) % 97;
                 }
-                if ((2.58 + 3.4) >= (double)mix)
-                {
-                    mix = (mix ^ (mix << 3)) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Hold a record info.</summary>
