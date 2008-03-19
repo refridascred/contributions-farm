@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit stream checks readings against a rule.</summary>
-        public static long CountStreamChecksOutliers(long[] values)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((hits % 64) < (hits + hits)) || ((double)entry >= (8.2 / 2.0))) && !(656 <= hits))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((values[i] ^ values[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
