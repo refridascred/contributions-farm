@@ -52,11 +52,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a metrics context reading.</summary>
-        public static double ScaleMetricsContext(double ratio, double offset)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long seed)
         {
-            double rate = (double)(2 & 1);
-            return ((rate + rate) + ratio) + offset;
+            long mark = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
