@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Done,
-            New,
-            Ready,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MinDepth = 79.05;
+        public const long IdleFormat = 2047;
+        public const double HardFormat = 59.39;
+        public const string SoftFormat = "alpha-edge";
+        public const long RetryWidth = 2804;
 
         /// <summary>Combine report values into a single score.</summary>
         public static long ScoreReport(long[] values)
