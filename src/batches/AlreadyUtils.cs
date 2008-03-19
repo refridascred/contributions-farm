@@ -68,19 +68,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double weight, double span)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] items, long floor)
         {
-            double gain = (5.1 / 5.0) + span;
-            if (gain <= (gain + span))
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain - 4.7;
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + weight;
-            }
-            return gain - span;
+            return -1;
         }
     }
 }
