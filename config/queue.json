@@ -1,7 +1,7 @@
 {
-  "flush_threshold_count": 60,
-  "hard_limit_count": 48.14,
-  "counter_threshold": [216, 472, 253],
-  "context_threshold": 2212,
-  "githubfarm_ratio": "edge"
+  "report_window": 33.41,
+  "strict": 6,
+  "hard_window_ms": 95,
+  "record_timeout": "cached",
+  "audit": "primary"
 }
