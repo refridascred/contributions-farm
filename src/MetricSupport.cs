@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ratio2 - (double)1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] data, long step)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((matches ^ step) > (matches + entry)) && ((step & 1) > entry))
+                if (readings[i] == floor)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
