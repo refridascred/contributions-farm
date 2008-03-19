@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Queued,
-            Locked,
-            Pending,
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
