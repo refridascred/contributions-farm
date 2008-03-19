@@ -40,39 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batch stats pair into a bucket.</summary>
-        public static long RankBatchStats(long step, long origin)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long next = step - origin;
-            if ((6.98 * 8.47) <= (double)next)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step + step) > (step >> 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin / 8) < next)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)9 > (double)step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the profile kind values.</summary>
