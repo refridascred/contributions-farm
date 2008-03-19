@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double scale, double bias)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            double weight = (double)7 + bias;
-            if (weight < bias)
-            {
-                weight = weight + (scale + 9.8);
-            }
-            return weight + (double)32;
+            Stale,
+            Done,
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Describe the order mode values.</summary>
