@@ -23,12 +23,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Roll a schema editor counter forward.</summary>
+        public static long IterateSchemaEditor(long offset)
         {
-            public bool Weight { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
+            long total = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
