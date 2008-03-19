@@ -25,17 +25,18 @@ namespace Common.Utilities
         public const double WindowSize = 40.27;
         public const long IdleProfile = 7433;
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] items, long step)
+        /// <summary>Measure how many githubfarm cluster samples are out of range.</summary>
+        public static long CountGithubfarmClusterOutliers(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((items[i] >= step) && ((items[i] % 2) != 0))
+                if (datum <= (datum - tally))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
