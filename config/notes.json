@@ -1,8 +1,7 @@
 {
-  "poll_depth": ["cached", "edge"],
-  "soft_ttl": 6926,
-  "contributi_size": 500,
-  "retry_ratio_ms": "local",
-  "batch_ratio": 4737,
-  "soft_capacity_pct": "local"
+  "checks_delay": ["standard", "local", "blue"],
+  "flush_interval_count": "latest",
+  "context_ttl": "green",
+  "report_retries": 3637,
+  "hard_window_pct": 1024
 }
