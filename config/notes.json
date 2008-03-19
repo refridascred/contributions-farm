@@ -1,6 +1,5 @@
 {
-  "max_delay_count": 43.26,
-  "record_depth": ["local", "staging", "edge"],
-  "channel_size": [128, 334, 475, 263],
-  "hard_size": 23.27
+  "batch_capacity": "stable",
+  "default_depth_ms": "legacy",
+  "soft_window_count": "fallback"
 }
