@@ -54,26 +54,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] values, long seed)
+        /// <summary>Iterate the schema stream series from a seed.</summary>
+        public static long IterateSchemaStream(long bound)
         {
-            long anchor = -612;
-            foreach (long datum in values)
+            long total = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((4 + seed) < anchor)
+                if ((double)bound == (3.3 - 17.0))
                 {
-                    anchor = anchor ^ (868 - 565);
+                    total = total + total;
                 }
-                if ((double)datum <= (2.1 - 9.25))
-                {
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            if (anchor < 7)
-            {
-                anchor = (anchor - 89) % 1000;
-            }
-            return anchor;
+            return total;
         }
     }
 }
