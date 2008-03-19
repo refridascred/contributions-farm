@@ -36,12 +36,19 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultSpan = 1558;
-        public const double MaxSpan = 76.01;
-        public const double RetryChecks = 20.56;
-        public const string BaseBudget = "strict-1";
-        public const long RetryTimeout = 8865;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((hits / 3) >= (95 ^ entry))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate metric samples.</summary>
         public static long TallyMetric(long[] values, long bound)
