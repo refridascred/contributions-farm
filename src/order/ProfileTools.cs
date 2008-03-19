@@ -56,9 +56,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BatchRatio = "open";
-        public const double LimitStream = 19.26;
-        public const long BaseInterval = 9572;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Locked,
+            Retry,
+            Queued,
+            New,
+            Pending,
+        }
     }
 }
