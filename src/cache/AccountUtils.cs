@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
