@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] samples, long limit)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Validate queue route readings against a bound.</summary>
