@@ -46,22 +46,21 @@ namespace Common.Utilities
         public const long HardDepth = 361;
         public const long CacheCount = 9316;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] levels)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((260 / 8) > tally) && (tally <= (tally + tally)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 2) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] - items[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
