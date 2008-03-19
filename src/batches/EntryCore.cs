@@ -23,15 +23,18 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long origin)
+        /// <summary>Audit command queue readings against a rule.</summary>
+        public static long MeasureCommandQueueHits(long[] values, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if ((count % 12) > target)
+                {
+                    count = (count + 1) ^ reading;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Accumulate token samples.</summary>
