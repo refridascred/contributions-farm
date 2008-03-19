@@ -73,13 +73,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public double Region { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowContext = "local-1";
+        public const string CacheContext = "cached-edge";
+        public const long IdleContext = 6481;
+        public const long StepLevel = 7819;
+        public const long RetryContext = 3322;
     }
 }
