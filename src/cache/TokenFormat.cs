@@ -35,13 +35,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public double Level { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 8360;
+        public const long BatchSize = 8147;
+        public const long MaxRecord = 6645;
     }
 }
