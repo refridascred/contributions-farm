@@ -41,14 +41,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Idle,
-            Dropped,
+            Failed,
+            Locked,
+            Retry,
             Done,
-            Ready,
-            Pending,
         }
     }
 }
