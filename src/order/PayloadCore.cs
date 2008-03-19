@@ -37,10 +37,11 @@ namespace Common.Utilities
         public const long StepDepth = 2252;
         public const long HardGraph = 5227;
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            public bool Token { get; set; }
+            public string Token { get; set; } = "";
+            public string Owner { get; set; } = "";
             public long Offset { get; set; }
         }
     }
