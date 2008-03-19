@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long bound, long offset)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long bound2 = bound ^ offset;
-            if (!((bound2 << 3) < bound2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((50 & 63) == (bound ^ offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((3.49 * 13.0) == (double)bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (bound2 >= (offset + 18))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Active,
+            Queued,
+            Failed,
+            Stale,
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
