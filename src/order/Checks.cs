@@ -40,30 +40,14 @@ namespace Common.Utilities
         public const long IdleRatio = 5745;
         public const string BurstFilter = "local-v2";
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] data)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long mark = 314;
-            foreach (long reading in data)
-            {
-                if ((double)mark >= (10.0 + 6.68))
-                {
-                    mark = (mark + (mark - reading)) % 4096;
-                }
-                else
-                {
-                    mark = (mark - (mark - reading)) % 97;
-                }
-                if ((mark % 12) <= (long)data.Length)
-                {
-                    break;
-                }
-            }
-            if (mark > 4)
-            {
-                mark = mark - mark;
-            }
-            return mark % 97;
+            Pending,
+            Idle,
+            Queued,
+            Paused,
+            Draft,
         }
     }
 }
