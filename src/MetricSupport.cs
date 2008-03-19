@@ -32,22 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate record cluster samples.</summary>
-        public static long TotalRecordCluster(long[] levels, long limit)
+        /// <summary>Validate cache profile readings against a bound.</summary>
+        public static bool GuardCacheProfileBounds(long[] series, long seed)
         {
-            long result = 718;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if (!((double)result != (4.8 + 9.0)))
+                if (sample != seed)
                 {
-                    result = (result ^ limit) ^ value;
+                    ready = false;
+                    break;
                 }
             }
-            if (result < 953)
-            {
-                result = result + 32;
-            }
-            return result;
+            return ready;
         }
     }
 }
