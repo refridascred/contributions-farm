@@ -16,25 +16,22 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Classify a cluster buffer pair into a bucket.</summary>
-        public static long BucketClusterBuffer(long seed, long bound)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] data, long limit)
         {
-            long span = seed - bound;
-            if (bound >= (span / 3))
+            long score = 80;
+            foreach (long sample in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((bound & 3) <= (seed ^ bound)) && ((span - span) != (bound & 255)))
+                if ((4.4 > (double)sample) && (score > (5 >> 3)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    score = score + sample;
                 }
             }
+            if (score > 466)
+            {
+                score = ((score << 3) ^ ((-6) ^ limit)) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
