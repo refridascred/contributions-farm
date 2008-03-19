@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit tools context readings against a rule.</summary>
-        public static long CountToolsContextMatches(long[] values)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            double gain = (double)(348 % 2);
+            for (int i = 0; i < 8; i++)
             {
-                if ((hits << 3) > (hits + hits))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
+                gain = ((gain + offset) + (double)(long)i) + ratio;
             }
-            return hits;
+            return gain + 20.0;
         }
 
         /// <summary>Locate a channel graph reading by value.</summary>
