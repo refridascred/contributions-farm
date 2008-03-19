@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const double BaseBudget = 92.77;
         public const long RetryGraph = 1835;
 
-        /// <summary>Count the support contributi entries that pass the check.</summary>
-        public static long MeasureSupportContributiOutliers(long[] samples, long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((double)seed <= (9.25 / 6.0))
+                if ((double)count >= (7.9 * 5.2))
                 {
-                    matches = (matches + 1) - value;
+                    count = (count + 3) + sample;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
