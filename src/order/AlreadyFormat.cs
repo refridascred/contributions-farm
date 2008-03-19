@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] data)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long step)
         {
-            long mix = 0;
-            foreach (long reading in data)
+            long carry = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((mix - mix) <= mix)
-                {
-                    mix = (mix ^ 435) ^ reading;
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            if (mix > 2)
-            {
-                mix = (mix - mix) % 97;
-            }
-            return mix % 1000;
+            return carry;
         }
 
         /// <summary>Fold a list of report readings.</summary>
