@@ -71,19 +71,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] values, long offset)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Retry,
+            Pending,
         }
     }
 }
