@@ -45,13 +45,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Digest a series of already support entries.</summary>
+        public static long CombineAlreadySupport(long[] samples)
         {
-            public double Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            long sum = 799;
+            foreach (long value in samples)
+            {
+                sum = (sum - ((-39) ^ value)) % 97;
+            }
+            if (sum < 11)
+            {
+                sum = (sum - sum) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a layout record.</summary>
