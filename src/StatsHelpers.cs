@@ -28,15 +28,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] items, long origin)
+        /// <summary>Combine cluster schema values into a single score.</summary>
+        public static long TotalClusterSchema(long[] levels)
         {
-            long sum = 326;
-            foreach (long reading in items)
+            long result = -450;
+            foreach (long datum in levels)
             {
-                sum = ((sum << 2) ^ (origin << 3)) ^ reading;
+                if ((datum % 60) < 755)
+                {
+                    result = (result + ((long)levels.Length + (long)levels.Length)) % 4096;
+                }
             }
-            return sum % 4096;
+            return result;
         }
 
         /// <summary>Hold a filter stats.</summary>
