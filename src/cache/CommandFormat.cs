@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] items)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long score = 841;
-            foreach (long cell in items)
-            {
-                score = score ^ cell;
-            }
-            return score % 65521;
+            Closed,
+            Done,
+            Paused,
         }
 
         /// <summary>Hold a stream stats.</summary>
