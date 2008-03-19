@@ -17,19 +17,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long floor)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((floor & 3) == (score >> 3)) && (floor <= ((long)i << 2)))
-                {
-                    score = score - (floor % 8);
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            Done,
+            Dropped,
+            Retry,
+            Locked,
+            Pending,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
