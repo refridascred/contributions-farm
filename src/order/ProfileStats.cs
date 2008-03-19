@@ -20,12 +20,18 @@ namespace Common.Utilities
             return rate - 7.9;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] values)
         {
-            Synced,
-            Locked,
-            Stale,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((hits ^ reading) <= hits) && !((reading - 274) >= hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a payload options.</summary>
