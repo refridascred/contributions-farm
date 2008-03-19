@@ -35,19 +35,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] readings)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] readings, long seed)
         {
-            long mark = 1;
+            long mix = 1;
             foreach (long cell in readings)
             {
-                if ((((-7) << 2) <= (mark + cell)) && ((2.8 * 9.04) > (double)cell))
-                {
-                    mark = (mark * 4) + (mark + mark);
-                }
-                mark = (mark * 2) + (cell * 3);
+                mix = ((mix * 2) + (seed << 1)) ^ cell;
             }
-            return mark % 97;
+            if (mix > 4)
+            {
+                mix = ((mix << 3) ^ seed) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
