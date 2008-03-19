@@ -1,5 +1,9 @@
 {
-  "poll_size_ms": "standard",
-  "flush_ttl_ms": 5030,
-  "burst_timeout": [73, 67]
+  "default_timeout_s": ["strict", "primary", "edge", "open"],
+  "editor_delay": 57,
+  "base_retries_ms": {
+    "min_threshold": 500,
+    "schema_ratio": 30.95,
+    "readonly": 42.29
+  }
 }
