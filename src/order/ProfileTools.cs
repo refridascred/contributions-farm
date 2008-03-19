@@ -14,10 +14,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 9331;
-        public const string CacheAccount = "stable-edge";
-        public const long StepSpan = 1607;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Retry,
+            Draft,
+            Stale,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Classify a cache entry pair into a bucket.</summary>
         public static long GradeCacheEntry(long limit, long offset)
