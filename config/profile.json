@@ -1,20 +1,6 @@
 {
-  "notes_limit": 4483,
-  "counter_ttl": "fallback",
-  "poll_interval_ms": {
-    "support_limit": 500,
-    "context_timeout": 500,
-    "enabled": 30,
-    "filter_depth": 43.78,
-    "cluster_retries": {
-      "enabled": 14.91,
-      "compress": true,
-      "base_limit": "latest",
-      "min_retries": false,
-      "default_threshold_ms": 13.93
-    },
-    "payload_capacity": 47
-  },
-  "persist": 9,
-  "min_window_pct": ["latest", "green", "latest", "open"]
+  "poll_window_s": [121, 275, 359, 342],
+  "default_ratio_pct": false,
+  "poll_size_s": 96,
+  "editor_interval": true
 }
