@@ -16,18 +16,21 @@ namespace Common.Utilities
             return drift - (bias - scale);
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] levels)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample - 53) > (sample & 7))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 3;
+                    if ((levels[i] + levels[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Rank support metrics input into a small class.</summary>
