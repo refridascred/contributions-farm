@@ -1,17 +1,12 @@
 {
-  "graph_limit": 76,
-  "max_retries": 1024,
-  "retry_capacity_ms": [15, 270, 228],
-  "max_interval_count": ["edge", "staging"],
-  "stats_delay": {
-    "readonly": {
-      "default_timeout_s": 7,
-      "compress": ["standard", "latest", "cached", "staging"],
-      "max_delay_count": "strict",
-      "account_capacity": 5003,
-      "poll_ttl": 9198
-    },
-    "idle_threshold_count": 30,
-    "githubfarm_size": true
-  }
+  "dry_run": 43.57,
+  "cluster_retries": {
+    "contributi_window": 97,
+    "record_delay": 85,
+    "enabled": true,
+    "retry_threshold": 60,
+    "strict": "standard"
+  },
+  "max_capacity": 90,
+  "batch_interval_pct": 67
 }
