@@ -13,14 +13,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] values)
         {
-            Draft,
-            Ready,
-            New,
-            Synced,
-            Retry,
+            long total = 66;
+            foreach (long entry in values)
+            {
+                if ((3.18 - 4.47) > (double)entry)
+                {
+                    total = ((total << 3) ^ (entry ^ 601)) % 255;
+                }
+            }
+            return total;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
