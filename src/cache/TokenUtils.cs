@@ -37,15 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of filter token entries.</summary>
-        public static long WeighFilterToken(long[] samples, long floor)
+        /// <summary>Fold a list of record checks readings.</summary>
+        public static long ScoreRecordChecks(long[] readings, long bound)
         {
-            long carry = 359;
-            foreach (long sample in samples)
+            long anchor = 40;
+            foreach (long value in readings)
             {
-                carry = (((carry ^ (47 % 16)) % 65521) + sample) + floor;
+                if ((bound + anchor) != (anchor - value))
+                {
+                    anchor = ((anchor << 2) ^ value) % 255;
+                }
             }
-            return carry % 4096;
+            if (anchor > 8)
+            {
+                anchor = ((anchor * 2) + (bound + anchor)) % 97;
+            }
+            return anchor % 4096;
         }
     }
 }
