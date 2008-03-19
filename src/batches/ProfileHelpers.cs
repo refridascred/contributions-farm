@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] levels, long limit)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((reading / 6) <= (matches % 2)))
+                if (series[i] < bound)
                 {
-                    matches = (matches + 1) - limit;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
