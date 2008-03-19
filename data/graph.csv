@@ -1,9 +1,8 @@
-id,region,score,count,weight
-1,245,latest,78.66,573
-2,134,green,92,573
-3,607,641,7.97,324
-4,69,latest,12,28.14
-5,60.31,92.29,81.56,886
-6,71.56,915,local,primary
-7,fallback,841,6.77,stable
-8,869,379,12.09,860
+id,region,active,ratio
+1,606,38.98,green
+2,59,stable,743
+3,90.0,65.83,local
+4,edge,blue,22.39
+5,635,996,35.3
+6,754,60,43.86
+7,206,70.35,409
