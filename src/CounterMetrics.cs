@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] levels)
         {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
+            long score = 35;
+            foreach (long item in levels)
             {
-                if ((floor + floor) > 486)
-                {
-                    carry = (carry ^ floor) % 4096;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
+                score = ((score - (score - score)) % 1000) + item;
             }
-            return carry;
+            if (score < (-20))
+            {
+                score = (score + (score / 4)) % 101;
+            }
+            return score % 97;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
