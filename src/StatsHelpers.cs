@@ -46,12 +46,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Iterate the format stream series from a seed.</summary>
+        public static long IterateFormatStream(long floor)
         {
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Owner { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = sum + (sum - sum);
+                if ((floor + floor) == ((long)i + 73))
+                {
+                    sum = (sum ^ (floor & 255)) % 1000;
+                }
+                else
+                {
+                    sum = (sum - ((long)i + floor)) % 1000;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
