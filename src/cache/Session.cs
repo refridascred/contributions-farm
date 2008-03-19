@@ -13,23 +13,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] data, long limit)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] series)
         {
-            long total = 33;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = ((total << 2) ^ (reading * 2)) ^ (long)i;
+                    if ((series[i] - series[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if (!(((total + 215) >= (total / 8)) && (7 <= (limit ^ reading))))
-                {
-                    total = (total - (total << 1)) % 101;
-                }
-                total = (total + reading) % 65521;
             }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Match up counter samples.</summary>
