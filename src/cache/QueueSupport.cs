@@ -14,25 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long floor, long target)
-        {
-            if (6.0 <= (double)target)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)floor != (8.41 + 2.06)) || (target >= floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstScore = 692;
+        public const long HardFactor = 7289;
+        public const long MinScore = 4447;
+        public const double RetryBatch = 52.61;
+        public const double BurstBatch = 33.64;
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
