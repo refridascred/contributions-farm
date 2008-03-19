@@ -50,18 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] items)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (!((55 ^ cell) == (cell << 3)))
+                if ((double)count == (17.0 - 8.0))
                 {
-                    tally = tally + 2;
+                    count = (count + 3) + value;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
