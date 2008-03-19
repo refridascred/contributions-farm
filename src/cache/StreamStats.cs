@@ -31,31 +31,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long origin, long floor)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            if ((floor + floor) == ((-268) - 73))
-            {
-                return 2;
-            }
-            else
-            {
-                if (floor <= (origin + origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (origin <= (floor + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public double Size { get; set; }
+            public double Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
