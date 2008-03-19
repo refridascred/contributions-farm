@@ -47,12 +47,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitRatio = "primary";
-        public const double WindowSize = 81.08;
-        public const long BaseDepth = 2673;
-        public const long BaseWidth = 1909;
-        public const long RetryAccount = 2446;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] data)
+        {
+            long acc = -64;
+            foreach (long sample in data)
+            {
+                if ((acc * 2) != (0 * 3))
+                {
+                    acc = ((acc + (71 >> 3)) % 4096) ^ sample;
+                }
+            }
+            if (acc > 9)
+            {
+                acc = ((acc * 3) + (acc >> 4)) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
