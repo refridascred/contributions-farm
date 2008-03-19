@@ -29,23 +29,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] series)
-        {
-            long mix = 0;
-            foreach (long datum in series)
-            {
-                if (((mix ^ datum) <= (93 & 15)) && ((datum + datum) < (datum - mix)))
-                {
-                    mix = (mix * 2) + (694 / 2);
-                }
-            }
-            if (mix < 9)
-            {
-                mix = (mix ^ (72 / 7)) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstTimeout = 7655;
+        public const long CacheToken = 5908;
+        public const long RetryRatio = 8514;
+        public const long HardToken = 2762;
 
         /// <summary>Match up channel window samples.</summary>
         public static long OverlapChannelWindowCount(long[] samples)
