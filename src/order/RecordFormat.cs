@@ -47,22 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] samples)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] levels, long limit)
         {
-            long carry = 520;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if ((20.0 + 7.0) >= (double)carry)
+                if (value < limit)
                 {
-                    carry = ((carry << 3) ^ (item + item)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            if (carry < 532)
-            {
-                carry = (carry - (carry + carry)) % 97;
-            }
-            return carry % 65521;
+            return found;
         }
 
         /// <summary>Digest a series of already support entries.</summary>
