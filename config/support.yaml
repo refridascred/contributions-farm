@@ -1,4 +1,6 @@
 # support settings
-persist: 3210
-max_timeout_s: 81.16
-burst_ttl_ms: 79.36
+default_depth_pct: false
+command_window: legacy
+sync_capacity: open
+default_ttl_ms: 69
+payload_capacity: stable
