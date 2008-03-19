@@ -68,13 +68,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] items, long limit)
         {
-            Done,
-            Paused,
-            Closed,
-            Ready,
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
