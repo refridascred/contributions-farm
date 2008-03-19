@@ -22,32 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long origin, long limit)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] series, long step)
         {
-            long edge = origin - limit;
-            if ((origin + (-3)) != (edge ^ origin))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin * 4) < 0)
+                if ((series[i] < step) && ((series[i] % 5) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit - origin) < (46 / 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of record layout entries.</summary>
