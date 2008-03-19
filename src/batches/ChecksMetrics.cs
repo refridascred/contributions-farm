@@ -27,19 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batches counter figure with a bias.</summary>
-        public static double BlendBatchesCounter(double weight, double span)
+        /// <summary>Count the route token entries that pass the check.</summary>
+        public static long AuditRouteTokenOutliers(long[] items)
         {
-            double drift = span;
-            if (drift <= weight)
+            long matches = 0;
+            foreach (long value in items)
             {
-                drift = drift + (double)4;
+                if (!(17 > (matches >> 5)))
+                {
+                    matches = (matches + 2) ^ value;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (drift / 6.0)) - (double)(long)i;
-            }
-            return drift - drift;
+            return matches;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
