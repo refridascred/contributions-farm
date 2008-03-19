@@ -25,18 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] readings)
+        /// <summary>Measure how many batches report samples are out of range.</summary>
+        public static long AuditBatchesReportOutliers(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((double)count <= (7.0 + 9.0))
+                if ((double)bound > (3.4 * 6.41))
                 {
-                    count = (count + 1) + entry;
+                    hits = (hits + 1) - datum;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
