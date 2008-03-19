@@ -26,22 +26,13 @@ namespace Common.Utilities
         public const long DefaultBudget = 5539;
         public const string RetryBudget = "primary";
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] data)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell >= 1.6)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
     }
 }
