@@ -19,18 +19,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count the schema cache entries that pass the check.</summary>
-        public static long MeasureSchemaCacheOutliers(long[] data)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (sample > (seen ^ seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
