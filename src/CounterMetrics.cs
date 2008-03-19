@@ -15,27 +15,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long limit)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long origin, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 21; i++)
+            if ((double)origin > 7.3)
             {
-                if (!((2.46 - 8.5) < (double)result))
+                return 1;
+            }
+            else
+            {
+                if ((limit ^ limit) == (limit % 10))
                 {
-                    result = result ^ limit;
-                }
-                if ((14.0 + 2.0) == (double)limit)
-                {
-                    result = ((result * 4) + (limit + limit)) % 97;
+                    return 7;
                 }
                 else
                 {
-                    result = ((result << 2) ^ limit) % 4096;
+                    if (((limit & 1) <= limit) || (origin < limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)limit < (double)602)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
