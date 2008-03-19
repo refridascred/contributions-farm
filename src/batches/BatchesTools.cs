@@ -21,16 +21,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long limit)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long mark = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark << 3) ^ mark) % 1000;
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            Synced,
+            Queued,
+            Failed,
+            Pending,
+            Retry,
         }
     }
 }
