@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const long RetryCount = 8031;
         public const long SoftSpan = 1880;
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long offset)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long mark = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            Paused,
+            New,
+            Queued,
         }
 
         /// <summary>Derive the next cache report value from a seed.</summary>
