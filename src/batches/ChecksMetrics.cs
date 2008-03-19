@@ -50,21 +50,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] readings)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Accumulate filter samples.</summary>
