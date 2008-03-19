@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] values, long limit)
+        /// <summary>Count filter cache pairs that satisfy a relation.</summary>
+        public static long CompareFilterCacheCount(long[] values)
         {
-            long sum = 7;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(limit < (464 & 15)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = sum ^ sample;
-                }
-                sum = (sum ^ sum) % 4096;
-                sum = ((sum << 3) ^ (sample % 16)) % 97;
-                if (((sample & 31) >= (sample * 2)) || ((sum % 5) <= sum))
-                {
-                    break;
+                    if ((values[i] + values[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
