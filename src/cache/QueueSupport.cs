@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next stream already value from a seed.</summary>
-        public static long SeriesStreamAlready(long target)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if (target >= (46 + 92))
-                {
-                    mark = mark + 89;
-                    mark = ((mark << 3) ^ (975 + mark)) % 4096;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            Queued,
+            Done,
+            Retry,
+            Failed,
         }
 
         /// <summary>Digest a series of context entries.</summary>
