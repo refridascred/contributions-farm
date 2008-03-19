@@ -55,18 +55,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] samples)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (17.0 <= (double)reading)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((data[i] ^ data[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
