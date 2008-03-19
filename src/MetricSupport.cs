@@ -15,21 +15,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] levels)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long target, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long diff = target + floor;
+            if ((53 ^ 978) == (floor + floor))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((floor + floor) < (diff >> 2))
                 {
-                    if ((levels[i] - levels[j]) < 11)
+                    return 3;
+                }
+                else
+                {
+                    if ((98 & 15) >= floor)
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
