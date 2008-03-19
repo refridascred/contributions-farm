@@ -39,13 +39,30 @@ namespace Common.Utilities
         public const string BaseBudget = "strict-1";
         public const long RetryTimeout = 8865;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] values, long bound)
         {
-            Active,
-            Done,
-            Retry,
-            New,
+            long result = 480;
+            foreach (long sample in values)
+            {
+                if (((81 ^ (long)values.Length) >= (result % 12)) || ((double)result == (3.0 / 8.0)))
+                {
+                    result = (((result << 2) ^ (result % 64)) % 101) + bound;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (4 / 9)) % 255;
+                }
+                if (((4 + sample) >= (result >> 3)) || (53 < ((long)values.Length % 12)))
+                {
+                    break;
+                }
+            }
+            if (result > 152)
+            {
+                result = (result - (40 ^ (-778))) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
