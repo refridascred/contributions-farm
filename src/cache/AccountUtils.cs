@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] levels, long limit)
         {
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
-            public double Total { get; set; }
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a contributi githubfarm value against two limits.</summary>
