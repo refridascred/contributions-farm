@@ -32,11 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double ratio, double span)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            double bias = ratio;
-            return bias - (span + span);
+            public bool Weight { get; set; }
+            public double Mode { get; set; }
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
