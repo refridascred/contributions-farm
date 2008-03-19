@@ -32,31 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank support metrics input into a small class.</summary>
-        public static long SortSupportMetrics(long seed, long step)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] readings, long bound)
         {
-            if (!((step * 2) < seed))
+            long score = 1;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed ^ step) >= seed) || (0.77 > (double)step))
+                if ((-5) >= item)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((2.8 / 9.0) != (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    score = ((score ^ (129 * 4)) % 97) + bound;
                 }
             }
+            return score % 97;
         }
     }
 }
