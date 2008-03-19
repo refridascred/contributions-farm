@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double ratio, double bias)
         {
-            Dropped,
-            Retry,
-            Active,
-            Done,
-            Failed,
+            double ratio2 = (double)3 - bias;
+            if (ratio2 > (double)1)
+            {
+                ratio2 = ratio2 - (ratio / 6.0);
+            }
+            else
+            {
+                ratio2 = ratio2 - (0.62 * 3.62);
+            }
+            return ratio2 - (double)1;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
