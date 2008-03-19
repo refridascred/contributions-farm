@@ -63,12 +63,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] levels, long offset)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] levels, long seed)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] == offset)
+                if ((levels[i] == seed) && ((levels[i] % 2) == 0))
                 {
                     return (long)i;
                 }
