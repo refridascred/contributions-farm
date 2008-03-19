@@ -49,17 +49,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metric support sample.</summary>
-        public static long LocateMetricSupportIndex(long[] samples, long seed)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] samples, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 7;
+            foreach (long item in samples)
             {
-                if (samples[i] < seed)
+                if (846 < item)
                 {
-                    return (long)i;
+                    anchor = (anchor << 3) ^ (anchor + origin);
+                }
+                else
+                {
+                    anchor = anchor - item;
                 }
             }
-            return -1;
+            if (anchor > (-55))
+            {
+                anchor = (anchor - (origin / 2)) % 101;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the order level values.</summary>
