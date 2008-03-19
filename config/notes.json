@@ -1,12 +1,6 @@
 {
-  "burst_retries": "strict",
-  "default_capacity": ["legacy", "open"],
-  "soft_size_ms": 97.44,
-  "entry_ratio": false,
-  "tools_size": 250,
-  "hard_delay_pct": {
-    "cache_ratio": "edge",
-    "idle_timeout": [266, 162, 366],
-    "persist": 10.5
-  }
+  "cache_retries": 35.24,
+  "poll_retries_count": false,
+  "min_limit_s": 32,
+  "soft_depth_s": 84
 }
