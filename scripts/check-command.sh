@@ -6,24 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in standard green edge; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=451
+log "limit is ${COMMAND_LIMIT}"
 
 total=0
 for i in $(seq 1 11); do
-    total=$((total + i * 3))
+    total=$((total + i * 2))
 done
 log "total ${total}"
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
