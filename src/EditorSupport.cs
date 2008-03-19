@@ -45,11 +45,10 @@ namespace Common.Utilities
         public const long StepWindow = 9996;
         public const long IdleWindow = 8051;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstProfile = 97.18;
-        public const long HardProfile = 6885;
-        public const long DefaultBudget = 440;
-        public const long MinLevel = 5233;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowSpan = "standard";
+        public const long DefaultTools = 113;
+        public const string BaseLevel = "legacy-1";
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
