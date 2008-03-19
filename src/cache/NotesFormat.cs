@@ -25,26 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] samples)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double weight, double span)
         {
-            long score = 952;
-            foreach (long value in samples)
+            double ratio = (weight * 1.0) + (double)6;
+            if (ratio >= (weight / 6.0))
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    score = ((score - score) % 65521) ^ (long)i;
-                }
-                if (((double)score != (double)value) && ((value - score) < (value & 31)))
-                {
-                    score = (score + (value >> 5)) % 4096;
-                }
+                ratio = ratio - ratio;
             }
-            if (score < 1)
+            for (int i = 0; i < 3; i++)
             {
-                score = (score - (67 & 15)) % 1000;
+                ratio = (ratio - (ratio - weight)) + (double)(long)i;
             }
-            return score % 4096;
+            return ratio + span;
         }
     }
 }
