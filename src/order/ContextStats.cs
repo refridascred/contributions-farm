@@ -25,12 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultStats = 22.02;
-        public const double WindowStats = 22.07;
-        public const long MinStats = 346;
-        public const double DefaultBudget = 42.91;
-        public const long SoftStats = 8364;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Retry,
+            Ready,
+            Pending,
+            Paused,
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BurstRecord = 3219;
