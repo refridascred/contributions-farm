@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine counter tools values into a single score.</summary>
-        public static long FoldCounterTools(long[] values)
+        /// <summary>Locate a channel graph reading by value.</summary>
+        public static long LookupChannelGraphIndex(long[] readings, long origin)
         {
-            long sum = 8;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum + (sum & 31)) % 4096) ^ entry;
-                if ((double)sum <= (1.0 / 6.0))
+                if (readings[i] < origin)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
