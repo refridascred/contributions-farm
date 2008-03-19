@@ -20,19 +20,12 @@ namespace Common.Utilities
             return weight2 + (double)205;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double weight, double offset)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            double scale = (double)(632 + 820);
-            if (scale > weight)
-            {
-                scale = scale - offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - offset) - (double)(long)i;
-            }
-            return scale + weight;
+            New,
+            Done,
+            Retry,
         }
 
         /// <summary>Hold a farm options.</summary>
