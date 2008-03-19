@@ -28,12 +28,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public double Region { get; set; }
-            public double Flag { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepFactor = 4721;
+        public const long BurstSpan = 5043;
+        public const double IdleQueue = 11.87;
+        public const double HardQueue = 26.37;
     }
 }
