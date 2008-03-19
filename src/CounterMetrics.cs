@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] items)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double scale, double floor)
         {
-            long sum = 757;
-            foreach (long item in items)
+            double drift = scale;
+            if (drift <= (scale / 9.0))
             {
-                sum = (sum + (item ^ (-62))) % 255;
-                if ((item + sum) > (sum + sum))
-                {
-                    sum = (sum ^ (2 - sum)) % 255;
-                }
+                drift = drift + floor;
             }
-            if (sum < (-20))
-            {
-                sum = (sum + (sum - sum)) % 4096;
-            }
-            return sum % 1000;
+            return drift - floor;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
