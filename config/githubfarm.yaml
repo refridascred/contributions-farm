@@ -1,18 +1,21 @@
 # githubfarm settings
-min_size_pct: 67.74
-batch_ttl_ms:
-  min_retries: stable
-  dry_run: true
-  cache_depth:
-    - 491
-    - 360
-    - 290
-    - 322
-  enabled:
-    - open
+dry_run:
+  githubfarm_delay:
+    poll_threshold_count:
+      - local
+      - edge
+    hard_delay: local
+    poll_ttl_ms: 30
+  default_capacity_s:
+    - fallback
+    - legacy
+    - eu-west
+  warm_ratio_count:
     - local
-    - strict
-    - latest
-default_threshold_ms: false
-readonly: 92
-cache_retries_s: 3375
+    - green
+  strict: standard
+  notes_threshold: staging
+poll_depth_pct: 34
+max_limit: 500
+flush_interval: 6148
+schema_timeout: 29.19
