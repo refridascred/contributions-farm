@@ -38,19 +38,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two metrics already measurements.</summary>
-        public static double ProjectMetricsAlready(double gain, double floor)
+        /// <summary>Iterate the stats metric series from a seed.</summary>
+        public static long StepStatsMetric(long bound)
         {
-            double weight = floor;
-            if (weight <= (double)(-52))
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
             {
-                weight = weight - (double)64;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            else
-            {
-                weight = weight - (gain * 6.0);
-            }
-            return weight + (double)48;
+            return acc;
         }
 
         /// <summary>Hold a checks options.</summary>
