@@ -53,18 +53,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] items, long step)
+        /// <summary>Find the first already buffer entry that matches the target.</summary>
+        public static long FindAlreadyBufferIndex(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)tally >= (7.72 + 1.42)))
+                if ((data[i] >= offset) && ((data[i] % 5) == 0))
                 {
-                    tally = ((tally + 1) + cell) + step;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
