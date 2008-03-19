@@ -17,21 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] levels, long target)
         {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (((5.0 + 4.57) > (double)step) || ((step >> 3) < (mark - step)))
+                if (!(18.0 <= (double)count))
                 {
-                    mark = (mark ^ 2) % 65521;
+                    count = ((count + 2) ^ cell) - target;
                 }
-                mark = mark + (35 * 2);
-                mark = ((mark << 3) ^ (mark % 97)) % 65521;
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a window summary.</summary>
