@@ -34,13 +34,13 @@ namespace Common.Utilities
             return bias - (double)73;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            public string Size { get; set; } = "";
+            public string Mode { get; set; } = "";
             public long Limit { get; set; }
-            public string Count { get; set; } = "";
-            public double Flag { get; set; }
+            public double Label { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
