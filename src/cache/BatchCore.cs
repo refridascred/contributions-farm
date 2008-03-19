@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] levels, long origin)
-        {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double WindowDepth = 4.35;
+        public const long CacheQueue = 8303;
+        public const long StepRatio = 3051;
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
