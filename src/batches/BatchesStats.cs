@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] series)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight2 = weight;
+            if (weight2 > (double)224)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight2 = (weight2 - 0.8) + span;
             }
-            return count;
+            else
+            {
+                weight2 = weight2 - (12.0 * 4.8);
+            }
+            return weight2 + (double)205;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
