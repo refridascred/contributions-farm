@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] levels)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double scale, double floor)
         {
-            long state = -934;
-            foreach (long datum in levels)
+            double load = (scale - 4.6) / 3.0;
+            for (int i = 0; i < 9; i++)
             {
-                state = ((state << 2) ^ (datum + state)) % 65521;
+                load = ((load + load) - (double)(long)i) - floor;
             }
-            return state % 65521;
+            return load + (scale / 6.0);
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
