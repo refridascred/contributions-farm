@@ -20,23 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] samples, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] readings, long offset)
         {
-            long sum = 790;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                sum = (sum << 3) ^ (sample * 3);
-                if ((sample + sum) < seed)
+                if ((matches ^ matches) != (value % 24))
                 {
-                    break;
+                    matches = (matches + 2) + offset;
                 }
             }
-            if (sum < 556)
-            {
-                sum = (sum << 3) ^ (seed << 2);
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Roll a context counter forward.</summary>
