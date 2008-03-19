@@ -38,38 +38,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long floor, long step)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            if ((double)step < 3.0)
-            {
-                return 8;
-            }
-            else
-            {
-                if (floor >= (floor % 24))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((9.2 * 7.9) != (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step - floor) == (step / 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Closed,
+            Ready,
+            Failed,
+            Retry,
         }
 
         /// <summary>Rank batch checks input into a small class.</summary>
