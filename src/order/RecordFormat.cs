@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit graph tools readings against a rule.</summary>
-        public static long TallyGraphToolsOutliers(long[] values)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((hits * 4) != (item % 16))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
