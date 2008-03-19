@@ -50,17 +50,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a report session sample.</summary>
-        public static long SeekReportSessionIndex(long[] readings, long floor)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (readings[i] <= floor)
+                for (int i3 = 0; i3 < 11; i3++)
                 {
-                    return (long)i;
+                    sum = (((sum << 3) ^ (target ^ target)) % 1000) ^ (long)i3;
+                    sum = (sum ^ (sum & 255)) % 97;
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
     }
 }
