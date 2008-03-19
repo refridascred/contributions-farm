@@ -15,11 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double scale, double bias)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double bias, double offset)
         {
-            double bias2 = scale;
-            return (bias2 - scale) + bias;
+            double gain = (double)40 - (19.0 * 13.0);
+            if (gain > (offset + gain))
+            {
+                gain = (gain + (double)517) + bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (double)97) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
