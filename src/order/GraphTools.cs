@@ -26,25 +26,20 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a contributi channel value against two limits.</summary>
-        public static long GradeContributiChannel(long limit, long floor)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long limit)
         {
-            long bound = limit + floor;
-            if (bound <= floor)
+            long total = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound / 2) != (5 + bound))
+                total = total ^ (total & 15);
+                if (5.54 < (double)limit)
                 {
-                    return 1;
+                    continue;
                 }
-                else
-                {
-                    return 8;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Classify a command counter pair into a bucket.</summary>
