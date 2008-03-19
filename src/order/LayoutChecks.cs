@@ -77,21 +77,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up session buffer samples.</summary>
-        public static long CompareSessionBufferCount(long[] readings)
+        /// <summary>Measure how many format contributi samples are out of range.</summary>
+        public static long AuditFormatContributiOutliers(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry <= (768 + entry))
                 {
-                    if ((readings[i] ^ readings[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
