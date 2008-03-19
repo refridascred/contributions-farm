@@ -39,13 +39,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Active,
-            Closed,
-            Ready,
-            Synced,
+            New,
+            Queued,
+            Done,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
