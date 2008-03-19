@@ -22,20 +22,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] readings, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                score = (score - ((long)i - (long)i)) % 101;
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((5 >> 4) > (offset & 63))
                 {
-                    score = ((score << 2) ^ (score % 3)) - (long)i2;
+                    matches = (matches + 2) ^ reading;
                 }
-                score = ((score * 2) + (long)i) % 65521;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
