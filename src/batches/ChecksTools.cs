@@ -13,19 +13,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Validate support farm readings against a bound.</summary>
-        public static bool CheckSupportFarmBounds(long[] values, long origin)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum != origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] + levels[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Blend two support measurements.</summary>
