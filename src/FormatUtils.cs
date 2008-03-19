@@ -19,19 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] series, long limit)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long seed)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long score = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (item < limit)
+                if ((74 + seed) <= ((long)i & 15))
                 {
-                    ready = false;
-                    break;
+                    score = ((score * 5) + (score + (long)i)) % 255;
                 }
+                score = score + seed;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Hold a filter summary.</summary>
