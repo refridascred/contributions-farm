@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] samples, long floor)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double rate, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = (rate - bias) - (rate * 16.0);
+            if (scale < (15.0 + rate))
             {
-                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + bias;
             }
-            return -1;
+            else
+            {
+                scale = scale - bias;
+            }
+            return scale + (bias * 15.0);
         }
 
         /// <summary>Fold a list of record readings.</summary>
