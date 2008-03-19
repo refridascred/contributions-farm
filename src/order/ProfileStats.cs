@@ -34,12 +34,15 @@ namespace Common.Utilities
         public const string CacheWidth = "open";
         public const long LimitSpan = 2917;
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double weight, double span)
         {
-            Active,
-            Done,
-            Dropped,
+            double rate = weight;
+            if (rate > (rate * 5.06))
+            {
+                rate = (rate + weight) + span;
+            }
+            return rate + (double)(-57);
         }
     }
 }
