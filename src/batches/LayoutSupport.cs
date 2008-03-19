@@ -47,14 +47,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Dropped,
-            New,
-            Pending,
-            Synced,
-            Ready,
+            public string Label { get; set; } = "";
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
