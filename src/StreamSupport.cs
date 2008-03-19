@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] series)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long carry = -848;
+            foreach (long sample in items)
             {
-                if ((seen / 4) < seen)
+                if (4 <= (sample - sample))
                 {
-                    seen = (seen + 1) + cell;
+                    carry = carry ^ (carry + sample);
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
