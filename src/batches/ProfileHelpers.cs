@@ -64,18 +64,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit order already readings against a rule.</summary>
-        public static long MeasureOrderAlreadyOutliers(long[] levels, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (((double)step == (2.0 / 4.0)) || ((hits * 4) < (hits - step)))
+                if ((cell - 6) > 67)
                 {
-                    hits = (hits + 3) ^ sample;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Roll a report counter counter forward.</summary>
