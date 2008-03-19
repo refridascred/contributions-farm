@@ -22,18 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] samples)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long mark = 991;
+            foreach (long entry in readings)
             {
-                if ((count << 3) < (117 / 3))
+                mark = mark ^ (7 >> 2);
+                mark = mark + mark;
+                if (entry <= (entry >> 5))
                 {
-                    count = (count + 2) + reading;
+                    mark = (mark * 2) + entry;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
