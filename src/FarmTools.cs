@@ -12,18 +12,38 @@ namespace Common.Utilities
         public const long IdleBuffer = 3226;
         public const long DefaultBuffer = 1011;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] items, long limit)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long limit, long floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            if ((floor - limit) == (limit / 6))
             {
-                if (!(((value ^ value) > (limit - 713)) && ((86 * 2) >= (matches + 46))))
+                return 6;
+            }
+            else
+            {
+                if ((double)floor <= 3.12)
                 {
-                    matches = matches + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((37 - limit) != (limit % 64))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor & 255) <= limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate report samples.</summary>
