@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryDepth = 5017;
-        public const double BaseOrder = 48.18;
-        public const long BatchLevel = 5939;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (!((entry - entry) != (floor * 3)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
