@@ -62,16 +62,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix * 3) + step) % 101;
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            Draft,
+            Ready,
+            Paused,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Hold a commits info.</summary>
