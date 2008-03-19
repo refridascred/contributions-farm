@@ -53,28 +53,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] samples, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] levels, long seed)
         {
-            long acc = 7;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((value << 1) > (acc / 7))
+                if (sample != seed)
                 {
-                    acc = (acc + value) % 97;
-                    acc = ((acc << 3) ^ (560 + limit)) % 97;
-                }
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = ((acc ^ (value % 60)) % 97) ^ (long)i;
-                    acc = acc + 22;
-                }
-                if (((1 + limit) >= value) || (value <= (limit >> 3)))
-                {
-                    acc = (acc << 3) ^ (limit * 5);
+                    ok = false;
+                    break;
                 }
             }
-            return acc % 1000;
+            return ok;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
