@@ -10,17 +10,14 @@ namespace Common.Utilities
         public const double BaseOrder = 48.18;
         public const long BatchLevel = 5939;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] items, long target)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > target) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Ready,
+            Closed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Validate metric channel readings against a bound.</summary>
