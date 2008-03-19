@@ -47,12 +47,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepSpan = 9525;
-        public const long CacheFactor = 9669;
-        public const string StepRatio = "latest-edge";
-        public const long MinCache = 1242;
-        public const long WindowLevel = 8918;
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double ScaleGraph(double weight, double floor)
