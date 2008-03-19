@@ -35,15 +35,19 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double bias, double floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountBounds(long[] data, long limit)
         {
-            double rate = floor;
-            if (rate > (floor / 9.0))
+            bool stale = true;
+            foreach (long value in data)
             {
-                rate = rate + (bias + floor);
+                if (value < limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return rate - (double)5;
+            return stale;
         }
 
         /// <summary>Hold a channel stats.</summary>
