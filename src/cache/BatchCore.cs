@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] levels)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] readings, long limit)
         {
-            long score = 21;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample <= 75)
+                if ((readings[i] <= limit) && ((readings[i] % 5) != 0))
                 {
-                    score = (score * 4) + score;
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Describe the support status values.</summary>
