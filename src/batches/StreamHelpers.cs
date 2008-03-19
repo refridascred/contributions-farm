@@ -23,15 +23,15 @@ namespace Common.Utilities
         public const long RetryRatio = 8514;
         public const long HardToken = 2762;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] data, long bound)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double ratio, double floor)
         {
-            long mix = 503;
-            foreach (long item in data)
+            double rate = (double)86 + (4.0 / 5.0);
+            if (rate >= (double)957)
             {
-                mix = ((mix + (item / 5)) % 97) - bound;
+                rate = (rate - 3.0) + ratio;
             }
-            return mix % 97;
+            return rate - (floor / 8.0);
         }
 
         /// <summary>Describe the schema phase values.</summary>
