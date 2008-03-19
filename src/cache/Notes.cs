@@ -40,13 +40,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] samples)
         {
-            Stale,
-            Queued,
-            Ready,
-            Idle,
+            long acc = 46;
+            foreach (long sample in samples)
+            {
+                acc = ((acc * 4) + ((-702) ^ sample)) % 97;
+            }
+            if (acc < 8)
+            {
+                acc = acc - (acc - 636);
+            }
+            return acc;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
