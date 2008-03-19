@@ -28,16 +28,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double ratio, double bias)
-        {
-            double scale = (double)((-1) + 588);
-            if (scale >= bias)
-            {
-                scale = scale - bias;
-            }
-            return scale - (ratio + scale);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryRatio = 32.43;
+        public const long IdleCounter = 1518;
+        public const string RetryCounter = "standard-edge";
+        public const double BurstRatio = 40.19;
+        public const double CacheCounter = 6.73;
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long FindFilterIndex(long[] samples, long seed)
