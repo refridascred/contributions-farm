@@ -19,12 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long target)
         {
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
+            long result = target;
+            for (int i = 0; i < 5; i++)
+            {
+                result = ((result << 3) ^ (long)i) % 255;
+                if ((result > ((long)i << 2)) || (target < (result - target)))
+                {
+                    result = (result + (long)i) % 255;
+                    result = (result + ((long)i >> 3)) % 1000;
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Combine format values into a single score.</summary>
