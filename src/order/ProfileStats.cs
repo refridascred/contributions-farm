@@ -67,18 +67,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry queue readings against a rule.</summary>
-        public static long CountEntryQueueHits(long[] items, long limit)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long score = 268;
+            foreach (long cell in values)
             {
-                if ((8.53 + 7.28) < (double)hits)
+                if (((score - score) <= score) || (8.76 >= (double)cell))
                 {
-                    hits = ((hits + 3) ^ reading) + limit;
+                    score = (score - (cell + score)) % 4096;
+                }
+                else
+                {
+                    score = ((score * 4) + (score ^ score)) % 65521;
                 }
             }
-            return hits;
+            if (score < 22)
+            {
+                score = ((score << 3) ^ (score - 12)) % 65521;
+            }
+            return score;
         }
     }
 }
