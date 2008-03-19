@@ -13,13 +13,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            Queued,
-            Draft,
-            Ready,
-            Synced,
+            Locked,
+            Retry,
+            Pending,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
