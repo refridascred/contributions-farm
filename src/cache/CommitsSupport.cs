@@ -58,13 +58,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Synced,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheReport = 12.35;
+        public const double CacheInterval = 65.77;
+        public const string WindowInterval = "alpha-edge";
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long FindNotesIndex(long[] readings, long origin)
