@@ -37,18 +37,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] readings)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long floor, long target)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            if ((4 + 6) < (target - target))
             {
-                if ((item % 10) > item)
+                return 4;
+            }
+            else
+            {
+                if (((floor * 4) != (floor << 1)) || ((32 / 2) > target))
                 {
-                    matches = matches + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((6.72 + 3.4) == (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
