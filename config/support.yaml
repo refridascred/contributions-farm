@@ -1,4 +1,10 @@
 # support settings
-persist: edge
-retry_limit_count: false
-poll_timeout_count: blue
+burst_depth_count: fallback
+format_capacity:
+  - standard
+  - standard
+  - stable
+format_limit: 7524
+cache_size: false
+max_ttl_pct: green
+default_threshold_pct: open
