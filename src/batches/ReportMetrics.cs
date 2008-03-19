@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string StepQueue = "legacy";
-        public const long HardScore = 6793;
-        public const long LimitQueue = 3108;
+        /// <summary>Compare every pair of schema farm readings.</summary>
+        public static long MatchSchemaFarmCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LocateLayoutIndex(long[] values, long target)
