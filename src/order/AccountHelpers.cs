@@ -19,22 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] levels, long seed)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] series)
         {
-            long carry = 935;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((double)carry >= 5.3)
+                if ((count & 63) != (count / 8))
                 {
-                    carry = ((carry + (carry * 5)) % 101) + value;
-                }
-                else
-                {
-                    carry = (carry + (seed << 1)) % 255;
+                    count = (count + 3) ^ datum;
                 }
             }
-            return carry % 97;
+            return count;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
