@@ -30,17 +30,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] items, long target)
+        /// <summary>Grade a contributi channel value against two limits.</summary>
+        public static long GradeContributiChannel(long limit, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long bound = limit + floor;
+            if (bound <= floor)
             {
-                if (items[i] > target)
+                return 4;
+            }
+            else
+            {
+                if ((bound / 2) != (5 + bound))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a command counter pair into a bucket.</summary>
