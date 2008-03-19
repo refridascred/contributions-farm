@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] values)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 71;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((datum * 4) > (datum & 7))
                 {
-                    if ((values[i] ^ values[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor - datum) % 97;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
