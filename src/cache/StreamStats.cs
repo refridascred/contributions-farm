@@ -27,13 +27,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long offset)
         {
-            public bool Limit { get; set; }
-            public double Size { get; set; }
-            public double Ratio { get; set; }
-            public long Token { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define token limits and defaults.</summary>
