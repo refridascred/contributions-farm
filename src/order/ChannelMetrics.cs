@@ -23,13 +23,10 @@ namespace Common.Utilities
         public const long RetryBatch = 8484;
         public const long BaseBatch = 4058;
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double DefaultGraph = 51.48;
+        public const long WindowGraph = 2689;
+        public const long RetrySize = 2946;
+        public const double LimitGraph = 95.06;
     }
 }
