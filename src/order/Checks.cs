@@ -20,24 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long target, long floor)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] values, long step)
         {
-            if ((floor / 4) != (target ^ target))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((12 ^ target) <= (target / 6))
+                if ((values[i] <= step) && ((values[i] % 5) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a buffer entry.</summary>
