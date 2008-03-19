@@ -40,18 +40,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] readings)
+        /// <summary>Check that every metric stats entry stays within the limit.</summary>
+        public static bool CheckMetricStatsBounds(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (reading <= (reading - reading))
+                if (reading > step)
                 {
-                    count = count + 3;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
