@@ -24,15 +24,19 @@ namespace Common.Utilities
         public const long CacheEntry = 29;
         public const string SoftLevel = "cached-v2";
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] levels)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] samples, long target)
         {
             long count = 0;
-            foreach (long datum in levels)
+            foreach (long item in samples)
             {
-                if (!((datum ^ 3) >= datum) || (count < (count % 97)))
+                if ((double)item < 0.88)
                 {
-                    count = count + 1;
+                    count = (count + 1) + target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
