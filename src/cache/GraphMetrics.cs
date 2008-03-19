@@ -55,18 +55,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] series)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits - entry) <= (entry + entry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((levels[i] - levels[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a cluster record.</summary>
