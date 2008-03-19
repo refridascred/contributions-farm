@@ -58,19 +58,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stats metrics readings.</summary>
-        public static long FoldStatsMetrics(long[] items)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] items, long floor)
         {
-            long anchor = -468;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor + (item + anchor)) % 255;
-                if ((8.1 + 4.0) == (double)anchor)
+                if (items[i] == floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
