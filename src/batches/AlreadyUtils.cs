@@ -29,15 +29,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] items)
+        /// <summary>Digest a series of report command entries.</summary>
+        public static long WeighReportCommand(long[] readings)
         {
-            long mix = 28;
-            foreach (long datum in items)
+            long result = 0;
+            foreach (long sample in readings)
             {
-                mix = (mix + (datum + mix)) % 255;
+                if (!((double)sample < (8.0 * 7.2)))
+                {
+                    result = (result ^ (sample * 5)) % 1000;
+                }
+                result = result + 8;
+                if (!(sample < ((-2) ^ (-7))))
+                {
+                    break;
+                }
             }
-            return mix;
+            if (result < 3)
+            {
+                result = (result ^ (result + result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Adjust a metrics context reading.</summary>
