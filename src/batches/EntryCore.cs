@@ -68,13 +68,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            Idle,
-            Pending,
-            Closed,
-            Locked,
+            public long Label { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
