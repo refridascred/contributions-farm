@@ -46,17 +46,12 @@ namespace Common.Utilities
         public const long MaxCluster = 8403;
         public const string LimitCluster = "alpha-1";
 
-        /// <summary>Look up the position of a payload contributi sample.</summary>
-        public static long LookupPayloadContributiIndex(long[] samples, long origin)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Draft,
+            Ready,
         }
     }
 }
