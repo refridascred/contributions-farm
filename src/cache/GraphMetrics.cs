@@ -38,22 +38,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] readings)
+        /// <summary>Roll a format githubfarm counter forward.</summary>
+        public static long SeriesFormatGithubfarm(long floor)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)matches == (2.0 + 2.0))
-                {
-                    matches = (matches + 1) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = (score ^ (score * 3)) % 4096;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
