@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Queued,
-            Dropped,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstRatio = "staging-edge";
+        public const long BatchSize = 1859;
+        public const double MinEditor = 98.43;
+        public const long StepRatio = 5646;
 
         /// <summary>Derive the next batches support value from a seed.</summary>
         public static long IterateBatchesSupport(long origin)
