@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long step, long step2)
-        {
-            if ((step - step2) <= (step & 7))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)step2 >= (7.91 * 3.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step2 + step2) == (step + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultPayload = 84.88;
+        public const long MaxPayload = 1612;
+        public const long SoftFactor = 1546;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TotalCommits(long[] series)
