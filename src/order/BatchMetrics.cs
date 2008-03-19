@@ -65,12 +65,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleWidth = 8577;
-        public const string WindowBudget = "local-v2";
-        public const long RetryMetrics = 2382;
-        public const long DefaultMetrics = 7117;
-        public const string BurstRatio = "fallback";
+        /// <summary>Measure how many profile queue samples are out of range.</summary>
+        public static long AuditProfileQueueMatches(long[] samples, long seed)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + seen) == (seed + entry))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MaxLevel = 6129;
