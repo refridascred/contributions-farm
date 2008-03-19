@@ -20,12 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] samples, long seed)
         {
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
-            public double Mode { get; set; }
+            long sum = 790;
+            foreach (long sample in samples)
+            {
+                sum = (sum << 3) ^ (sample * 3);
+                if ((sample + sum) < seed)
+                {
+                    break;
+                }
+            }
+            if (sum < 556)
+            {
+                sum = (sum << 3) ^ (seed << 2);
+            }
+            return sum;
         }
 
         /// <summary>Describe the batches status values.</summary>
