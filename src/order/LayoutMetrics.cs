@@ -19,10 +19,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 811;
-        public const double LimitReport = 25.13;
-        public const long HardRatio = 3871;
-        public const long BatchCount = 6659;
+        /// <summary>Check that every cluster farm entry stays within the limit.</summary>
+        public static bool VerifyClusterFarmBounds(long[] samples, long seed)
+        {
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
