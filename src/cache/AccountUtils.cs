@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const double BaseOrder = 48.18;
         public const long BatchLevel = 5939;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] series)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((3.7 / 5.0) < (double)matches)
+                if ((items[i] > target) && ((items[i] % 5) != 0))
                 {
-                    matches = (matches + 2) + datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Locate a profile batches reading by value.</summary>
