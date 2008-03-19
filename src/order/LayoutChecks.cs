@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] data, long seed)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((data[i] <= seed) && ((data[i] % 3) == 0))
+                if (state < ((long)i % 12))
                 {
-                    return (long)i;
+                    long lane = 121;
+                    state = (state * 5) + (lane << 2);
                 }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the session class values.</summary>
