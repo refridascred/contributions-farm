@@ -21,12 +21,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public long Level { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 6319;
+        public const long MaxBatch = 2094;
+        public const string MaxSpan = "standard-v2";
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
