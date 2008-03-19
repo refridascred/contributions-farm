@@ -54,31 +54,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long step, long limit)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] readings, long seed)
         {
-            if (11 < (limit & 1))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit + step) <= step)
+                if (readings[i] < seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((2.0 * 12.0) > (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a session header.</summary>
