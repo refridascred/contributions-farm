@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] items, long limit)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long target)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (entry != limit)
+                if ((967 ^ anchor) >= target)
                 {
-                    ok = false;
-                    break;
+                    anchor = anchor + target;
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
