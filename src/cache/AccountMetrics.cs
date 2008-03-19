@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] values, long offset)
-        {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 3131;
+        public const long MaxCount = 9572;
+        public const long StepSpan = 5939;
+        public const long BaseCounter = 9540;
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
