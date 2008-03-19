@@ -51,18 +51,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the window stats entries that pass the check.</summary>
-        public static long CountWindowStatsMatches(long[] values, long origin)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long target)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long mix = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((337 >> 5) == (long)values.Length)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    hits = ((hits + 3) - value) - origin;
+                    mix = ((mix - target) % 97) + (long)i2;
                 }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
