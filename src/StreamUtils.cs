@@ -13,39 +13,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a payload counter value against two limits.</summary>
-        public static long ClassifyPayloadCounter(long origin, long offset)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] levels, long floor)
         {
-            long gap = origin + offset;
-            if (!((origin ^ offset) > (origin * 2)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((2.0 * 4.0) > (double)origin)
+                if (levels[i] <= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)gap >= (5.0 / 7.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)7 != (double)offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the filter level values.</summary>
