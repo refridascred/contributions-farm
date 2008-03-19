@@ -47,11 +47,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BurstSize = 38.42;
-        public const long BatchRatio = 1502;
-        public const long IdleSpan = 8075;
-        public const string StepBuffer = "open-1";
-        public const long SoftRatio = 3893;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long step, long limit)
+        {
+            long step2 = step ^ limit;
+            if ((0.93 * 19.0) >= (double)step2)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step - limit) > (limit * 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step - 0) > (step2 ^ step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
