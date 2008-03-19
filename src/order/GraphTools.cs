@@ -26,21 +26,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                total = total ^ (total & 15);
-                if (5.54 < (double)limit)
-                {
-                    continue;
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 6684;
+        public const long MaxFactor = 1054;
+        public const long StepWidth = 7210;
+        public const string LimitDepth = "local-edge";
+        public const long WindowSpan = 9099;
 
         /// <summary>Classify a command counter pair into a bucket.</summary>
         public static long BucketCommandCounter(long floor, long origin)
