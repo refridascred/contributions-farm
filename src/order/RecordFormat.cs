@@ -19,16 +19,34 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] data)
         {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
+            long sum = 86;
+            foreach (long datum in data)
             {
-                anchor = anchor + (anchor - (long)i);
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = (((sum * 4) + (datum - 9)) % 97) - (long)i;
+                }
+                if ((16 < (sum % 8)) && ((datum - sum) >= (63 * 3)))
+                {
+                    sum = (sum - (sum >> 5)) % 101;
+                }
+                else
+                {
+                    sum = (sum * 5) + (datum - sum);
+                }
+                if (((datum & 255) != (datum & 63)) || (datum <= (datum - 6)))
+                {
+                    sum = (sum - 59) % 97;
+                }
             }
-            return anchor;
+            if (sum < 90)
+            {
+                sum = sum + (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
