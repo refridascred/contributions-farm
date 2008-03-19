@@ -23,15 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long target)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] levels)
         {
-            long total = target;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 3) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Find the first batch filter entry that matches the target.</summary>
