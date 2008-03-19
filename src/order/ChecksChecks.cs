@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const string DefaultSize = "latest-v2";
         public const long HardBatch = 1528;
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] series)
+        /// <summary>Find the first token contributi entry that matches the target.</summary>
+        public static long SeekTokenContributiIndex(long[] values, long floor)
         {
-            long state = -6;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state << 3) ^ (66 * 5)) - cell;
+                if ((values[i] >= floor) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Fold a list of report readings.</summary>
