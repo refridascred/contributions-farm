@@ -24,12 +24,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] items, long offset)
         {
-            Retry,
-            Pending,
-            Stale,
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
