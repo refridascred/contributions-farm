@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] readings)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] series)
         {
-            long score = 560;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (!((score + score) > (reading * 2)))
+                if ((double)item != (double)tally)
                 {
-                    score = (score - (-3)) % 4096;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    score = score + score;
+                    tally = tally - 1;
                 }
             }
-            if (score > 60)
-            {
-                score = ((score << 3) ^ (score + score)) % 101;
-            }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Hold a notes stats.</summary>
