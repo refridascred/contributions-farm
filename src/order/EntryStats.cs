@@ -59,19 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long target)
+        /// <summary>Validate batch contributi readings against a bound.</summary>
+        public static bool ValidateBatchContributiLimits(long[] samples, long limit)
         {
-            long acc = target;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if ((36 ^ target) > target)
+                if (entry >= limit)
                 {
+                    valid = false;
                     break;
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Describe the route level values.</summary>
