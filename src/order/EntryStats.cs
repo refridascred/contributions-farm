@@ -67,10 +67,12 @@ namespace Common.Utilities
         public const double CacheBatch = 68.86;
         public const double BaseWidth = 85.28;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchProfile = "standard-1";
-        public const string DefaultProfile = "open";
-        public const long BatchCount = 9803;
-        public const string LimitProfile = "strict";
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public double Mode { get; set; }
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+        }
     }
 }
