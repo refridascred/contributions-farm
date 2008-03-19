@@ -62,15 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Draft,
-            Ready,
-            Paused,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleWidth = 8577;
+        public const string WindowBudget = "local-v2";
+        public const long RetryMetrics = 2382;
+        public const long DefaultMetrics = 7117;
+        public const string BurstRatio = "fallback";
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MaxLevel = 6129;
