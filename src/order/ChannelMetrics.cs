@@ -50,16 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a report notes counter forward.</summary>
-        public static long SeriesReportNotes(long offset)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = ((anchor * 2) + (offset % 5)) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            public string Level { get; set; } = "";
+            public double Flag { get; set; }
+            public double Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
