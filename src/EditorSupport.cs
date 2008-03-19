@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] readings, long offset)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long offset, long floor)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            if ((offset % 24) > (floor % 16))
             {
-                if (entry < offset)
+                return 7;
+            }
+            else
+            {
+                if (offset >= (offset ^ floor))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((1.0 * 4.13) <= (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Fold a list of record graph readings.</summary>
