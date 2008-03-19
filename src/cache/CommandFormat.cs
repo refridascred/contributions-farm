@@ -20,19 +20,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] series, long origin)
+        /// <summary>Compare every pair of layout commits readings.</summary>
+        public static long MatchLayoutCommitsCount(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell != origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] + data[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
