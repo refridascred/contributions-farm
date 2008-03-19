@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MaxBuffer = "strict-1";
-        public const long HardCount = 5895;
-        public const double StepScore = 19.21;
-        public const long BatchBuffer = 5924;
-        public const long HardBuffer = 3126;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BurstProfile = 38.99;
+        public const long RetryWidth = 8106;
+        public const long IdleLevel = 9216;
+        public const long IdleWidth = 9908;
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
