@@ -32,22 +32,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many farm session samples are out of range.</summary>
-        public static long AuditFarmSessionMatches(long[] readings, long origin)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (!((count & 3) > (5 - cell)))
-                {
-                    count = (count + 1) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
     }
 }
