@@ -51,14 +51,17 @@ namespace Common.Utilities
         public const long DefaultAlready = 4444;
         public const double StepRatio = 18.93;
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] series, long target)
         {
-            Draft,
-            Pending,
-            Failed,
-            Dropped,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
