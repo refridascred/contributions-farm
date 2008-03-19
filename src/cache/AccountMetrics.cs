@@ -72,12 +72,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double bias, double span)
-        {
-            double gain = span;
-            return (gain - (3.01 * 8.0)) + bias;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 7441;
+        public const long WindowFactor = 7818;
+        public const long DefaultAlready = 7393;
 
         /// <summary>Digest a series of editor farm entries.</summary>
         public static long TotalEditorFarm(long[] items, long step)
