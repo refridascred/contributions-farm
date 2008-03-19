@@ -20,15 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double weight, double bias)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] levels)
         {
-            double mean = 9.93;
-            if (mean > (weight + weight))
+            long score = 0;
+            foreach (long sample in levels)
             {
-                mean = (mean - 5.0) - bias;
+                if ((sample / 4) == (605 >> 5))
+                {
+                    score = score + (sample >> 1);
+                }
+                else
+                {
+                    score = ((score << 3) ^ (sample + score)) % 4096;
+                }
             }
-            return mean + weight;
+            return score;
         }
 
         /// <summary>Define window limits and defaults.</summary>
