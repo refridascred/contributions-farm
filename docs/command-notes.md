@@ -1,11 +1,11 @@
 # Command notes
 
-Keep farm and command names short and lowercase.
-Use buffer settings to tune how often checks data is refreshed.
-Run the metric check before changing any account limits.
+The counter module keeps payload values in sync with the githubfarm cache.
+A record that stays idle for too long is moved to the context list.
+The farm report groups every window by channel.
 
 ## Guidelines
 
-- Prefer window defaults
-- Validate checks input early
-- Log every metrics change
+- Review entry limits each release
+- Document new session fields
+- Keep notes values small
