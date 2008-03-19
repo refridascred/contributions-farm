@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] series, long target)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] values)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (entry > target)
+                if ((tally * 5) >= (81 - cell))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a already options.</summary>
