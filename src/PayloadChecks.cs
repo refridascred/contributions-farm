@@ -38,17 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first entry queue entry that matches the target.</summary>
-        public static long LocateEntryQueueIndex(long[] values, long limit)
+        /// <summary>Adjust a checks order reading.</summary>
+        public static double ProjectChecksOrder(double bias, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = offset;
+            if (drift <= (offset * 1.44))
             {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
+                drift = drift - (9.0 + bias);
             }
-            return -1;
+            return drift + (drift * 9.81);
         }
 
         /// <summary>Look up the position of a account order sample.</summary>
