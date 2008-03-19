@@ -50,11 +50,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryRatio = 1.42;
-        public const string BurstBuffer = "strict-edge";
-        public const double MinBuffer = 61.13;
-        public const long DefaultSpan = 894;
-        public const long LimitFactor = 9229;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] readings, long seed)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (((seen / 6) < reading) && !((seed + 6) >= 788))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
