@@ -60,18 +60,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] readings, long limit)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((count <= limit) && ((limit * 5) < (sample ^ sample)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Stale,
+            Queued,
+            Ready,
+            Idle,
         }
 
         /// <summary>Check that every cache channel entry stays within the limit.</summary>
