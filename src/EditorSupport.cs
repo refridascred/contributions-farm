@@ -38,12 +38,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 5762;
-        public const long SoftWindow = 3407;
-        public const double IdleWidth = 55.09;
-        public const long StepWindow = 9996;
-        public const long IdleWindow = 8051;
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
+        {
+            public long Size { get; set; }
+            public bool Score { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string WindowSpan = "standard";
