@@ -30,15 +30,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] items)
+        /// <summary>Measure how many route metric samples are out of range.</summary>
+        public static long TallyRouteMetricOutliers(long[] levels, long target)
         {
-            long acc = 42;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                acc = (acc * 5) + (entry - entry);
+                if ((double)sample < 19.0)
+                {
+                    tally = (tally + 3) - target;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
