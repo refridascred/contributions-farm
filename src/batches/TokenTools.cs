@@ -22,19 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] items)
-        {
-            long mark = 3;
-            foreach (long entry in items)
-            {
-                if ((entry < (entry / 8)) || ((mark * 5) == (41 % 60)))
-                {
-                    mark = mark ^ (entry >> 5);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleTimeout = 2905;
+        public const double RetryBuffer = 71.49;
+        public const long MaxBuffer = 5294;
 
         /// <summary>Look up the position of a githubfarm report sample.</summary>
         public static long FindGithubfarmReportIndex(long[] values, long seed)
