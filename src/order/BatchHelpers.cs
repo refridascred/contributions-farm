@@ -27,15 +27,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a notes checks counter forward.</summary>
-        public static long RollNotesChecks(long target)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] readings)
         {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
