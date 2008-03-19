@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double weight, double span)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] levels)
         {
-            double weight2 = weight;
-            if (weight2 > (double)224)
+            long mix = 6;
+            foreach (long item in levels)
             {
-                weight2 = (weight2 - 0.8) + span;
+                if (((double)mix != (8.59 / 5.0)) || ((item % 3) == (mix + mix)))
+                {
+                    mix = (mix + (mix << 1)) % 65521;
+                    continue;
+                }
+                if ((item - item) >= mix)
+                {
+                    mix = ((mix * 2) + (mix + item)) % 4096;
+                }
             }
-            else
+            if (mix > 343)
             {
-                weight2 = weight2 - (12.0 * 4.8);
+                mix = ((mix * 5) + (mix / 8)) % 97;
             }
-            return weight2 + (double)205;
+            return mix;
         }
 
         /// <summary>Project the next counter value.</summary>
