@@ -23,18 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit graph buffer readings against a rule.</summary>
-        public static long AuditGraphBufferGaps(long[] values, long origin)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long mark = 2;
+            foreach (long reading in series)
             {
-                if ((tally % 12) >= (tally * 4))
+                if ((double)mark >= (5.0 * 9.0))
                 {
-                    tally = ((tally + 3) + sample) + origin;
+                    mark = (mark + (reading >> 3)) % 255;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Fold a list of record checks readings.</summary>
