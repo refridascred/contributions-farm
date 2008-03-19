@@ -66,15 +66,32 @@ namespace Common.Utilities
         public const long StepBudget = 429;
         public const long HardMetrics = 7630;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] values, long offset)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long target, long step)
         {
-            long score = 9;
-            foreach (long datum in values)
+            long next = target ^ step;
+            if (next <= (target + target))
             {
-                score = ((score + datum) % 101) - offset;
+                return 3;
             }
-            return score % 1000;
+            else
+            {
+                if (19.0 >= (double)next)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target & 127) == (step & 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
