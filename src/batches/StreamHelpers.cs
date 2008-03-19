@@ -32,16 +32,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two report payload measurements.</summary>
-        public static double ScaleReportPayload(double rate, double offset)
-        {
-            double mean = (offset * 8.1) - (12.0 - offset);
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (rate + mean)) + (double)(long)i;
-            }
-            return mean - (rate * 1.0);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultSpan = 1558;
+        public const double MaxSpan = 76.01;
+        public const double RetryChecks = 20.56;
+        public const string BaseBudget = "strict-1";
+        public const long RetryTimeout = 8865;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
