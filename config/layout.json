@@ -1,11 +1,17 @@
 {
-  "audit": [257, 191, 305],
-  "cache_threshold_count": {
-    "sync_capacity_s": 250,
-    "base_ratio_s": "strict",
-    "sync_depth_pct": 9.41,
-    "cache_capacity": [63, 56]
+  "retry_delay": "green",
+  "soft_threshold": "open",
+  "hard_delay_s": {
+    "hard_interval_s": 17,
+    "editor_capacity": {
+      "cluster_ratio": "cached",
+      "idle_threshold_ms": 53.3,
+      "audit": "green",
+      "default_window": 7321
+    },
+    "persist": true,
+    "hard_capacity_count": ["legacy", "local", "edge"]
   },
-  "flush_limit": true,
-  "farm_window": true
+  "context_size": "standard",
+  "sync_size": "green"
 }
