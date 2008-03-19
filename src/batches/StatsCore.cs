@@ -73,14 +73,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] items, long target)
         {
-            Queued,
-            Idle,
-            Draft,
-            New,
-            Synced,
+            long mark = 845;
+            foreach (long sample in items)
+            {
+                if (((long)items.Length < (mark + mark)) && ((17 << 1) < (sample ^ target)))
+                {
+                    mark = (mark - (mark << 2)) % 4096;
+                }
+            }
+            if (mark < 115)
+            {
+                mark = (mark + (43 & 7)) % 97;
+            }
+            return mark;
         }
     }
 }
