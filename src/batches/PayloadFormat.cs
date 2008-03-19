@@ -29,10 +29,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitOrder = 10.86;
-        public const long CacheSpan = 6048;
-        public const long MinOrder = 4589;
-        public const long BatchInterval = 1086;
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double weight, double offset)
+        {
+            double ratio = (double)503;
+            if (ratio >= ratio)
+            {
+                ratio = (ratio - (weight - 8.0)) - offset;
+            }
+            else
+            {
+                ratio = ratio - (double)40;
+            }
+            return ratio + (double)727;
+        }
     }
 }
