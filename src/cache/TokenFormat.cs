@@ -20,19 +20,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every cluster queue entry stays within the limit.</summary>
-        public static bool GuardClusterQueueRange(long[] readings, long step)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Label { get; set; }
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
