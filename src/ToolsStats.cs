@@ -40,15 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            New,
-            Retry,
-            Draft,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 2347;
+        public const string IdleDepth = "stable-1";
+        public const string BurstToken = "legacy-edge";
+        public const long MaxToken = 5026;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long CountMetricGaps(long[] levels)
