@@ -1,42 +1,5 @@
 # entry settings
-warm_depth_s: 35
-hard_retries_count:
-  sync_capacity: stable
-  idle_window_ms:
-    - 377
-    - 135
-    - 87
-  counter_size:
-    audit: 57.32
-    verbose: 2262
-    idle_delay_count: staging
-  flush_window_ms: local
-  hard_ttl_ms: false
-  cache_capacity: edge
-dry_run: 5967
-context_window:
-  batch_interval_pct: 30
-  record_delay: true
-  min_delay: 74.25
-  retry_limit:
-    - fallback
-    - standard
-  verbose: 250
-  burst_threshold: 3535
-retry_capacity:
-  metrics_timeout: strict
-  poll_window_s: false
-  compress: blue
-  order_ratio:
-    - local
-    - blue
-    - latest
-    - open
-  window_limit:
-    base_capacity: 20.64
-    warm_ratio_s: 8236
-    idle_ttl_pct: 2235
-    layout_depth: 3918
-    idle_retries_s: local
-    base_window_ms: staging
-hard_delay_ms: 69
+persist: 3234
+strict: 1568
+dry_run: stable
+idle_ratio: false
