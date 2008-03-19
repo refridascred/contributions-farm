@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const string DefaultRatio = "alpha-1";
         public const double SoftBudget = 4.31;
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long limit)
+        /// <summary>Compare every pair of record session readings.</summary>
+        public static long MatchRecordSessionCount(long[] data)
         {
-            long result = limit;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Scale a filter editor figure with a bias.</summary>
