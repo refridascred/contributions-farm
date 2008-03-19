@@ -43,25 +43,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long limit)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long limit, long target)
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
+            long slot = limit + target;
+            if ((target > (slot + slot)) || ((20.0 / 3.0) <= (double)slot))
             {
-                total = (total * 5) + (total - 9);
-                if (!((double)50 >= (double)limit))
+                return 7;
+            }
+            else
+            {
+                if ((27 / 2) > (limit % 5))
                 {
-                    total = total - (limit - total);
+                    return 5;
                 }
                 else
                 {
-                    total = (total + (total + total)) % 1000;
-                    total = (total << 3) ^ (long)i;
+                    if (!(slot >= (slot + target)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
