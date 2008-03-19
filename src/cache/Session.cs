@@ -13,15 +13,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double weight, double span)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] readings, long floor)
         {
-            double ratio = (double)(7 ^ 43);
-            if (ratio < (double)914)
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ((ratio - (double)(-39)) + weight) + span;
+                if ((readings[i] <= floor) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio + (double)51;
+            return -1;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
