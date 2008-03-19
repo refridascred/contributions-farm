@@ -50,12 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxSpan = "legacy";
-        public const string StepPayload = "local";
-        public const long CacheCount = 3145;
-        public const string MinPayload = "primary-v2";
-        public const long WindowPayload = 8766;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (!((55 ^ cell) == (cell << 3)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long LookupEditorIndex(long[] readings, long step)
