@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const string StepSupport = "latest-1";
         public const string BatchRatio = "strict";
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] items, long step)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] series, long offset)
         {
-            long mix = 67;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (((mix ^ (mix / 3)) % 1000) - entry) - step;
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
