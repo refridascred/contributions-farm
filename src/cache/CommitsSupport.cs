@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] readings, long target)
         {
-            Dropped,
-            Pending,
-            Paused,
-            Synced,
+            long mix = 4;
+            foreach (long entry in readings)
+            {
+                mix = ((mix << 2) ^ (target << 2)) + entry;
+            }
+            if (mix > 732)
+            {
+                mix = (mix ^ (mix + mix)) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Audit route payload readings against a rule.</summary>
