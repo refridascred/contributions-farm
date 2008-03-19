@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double ratio, double offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] readings, long target)
         {
-            double ratio2 = (double)31;
-            if (ratio2 <= (double)8)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                ratio2 = (ratio2 - 5.7) + ratio;
+                if (value < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (double)4;
-            }
-            return ratio2 - (offset * 14.0);
+            return flag;
         }
 
         /// <summary>Fold a list of window readings.</summary>
