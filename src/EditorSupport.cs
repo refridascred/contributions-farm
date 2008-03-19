@@ -56,10 +56,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowSpan = "standard";
-        public const long DefaultTools = 113;
-        public const string BaseLevel = "legacy-1";
+        /// <summary>Fold a list of notes checks readings.</summary>
+        public static long TallyNotesChecks(long[] values, long bound)
+        {
+            long anchor = 33;
+            foreach (long sample in values)
+            {
+                anchor = ((anchor + bound) % 65521) - sample;
+                if ((double)anchor < (1.0 * 6.26))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
