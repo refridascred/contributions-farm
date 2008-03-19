@@ -66,19 +66,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] levels, long seed)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long origin, long offset)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            if ((offset + origin) < (-518))
             {
-                if (sample != seed)
+                return 5;
+            }
+            else
+            {
+                if ((double)origin > 4.3)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin & 7) <= origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
