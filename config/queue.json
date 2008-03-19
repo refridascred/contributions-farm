@@ -1,11 +1,13 @@
 {
-  "warm_window_count": {
-    "hard_timeout_count": 63.18,
-    "sync_retries_count": 8.38,
-    "warm_depth_count": "cached"
-  },
-  "compress": 250,
-  "default_window": "strict",
-  "min_capacity_s": true,
-  "enabled": 2177
+  "hard_capacity_pct": [141, 421],
+  "burst_depth_count": "latest",
+  "flush_interval_ms": "fallback",
+  "dry_run": "edge",
+  "soft_ttl_pct": false,
+  "max_capacity_pct": {
+    "min_depth_pct": "fallback",
+    "farm_ratio": "standard",
+    "burst_limit_count": "staging",
+    "compress": 87
+  }
 }
