@@ -46,19 +46,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of notes checks readings.</summary>
-        public static long TallyNotesChecks(long[] values, long bound)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] series, long target)
         {
-            long anchor = 33;
-            foreach (long sample in values)
+            long sum = 319;
+            foreach (long reading in series)
             {
-                anchor = ((anchor + bound) % 65521) - sample;
-                if ((double)anchor < (1.0 * 6.26))
-                {
-                    break;
-                }
+                sum = ((sum << 3) ^ (target & 7)) ^ reading;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Hold a stats summary.</summary>
