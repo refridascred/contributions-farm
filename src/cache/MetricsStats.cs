@@ -29,19 +29,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] readings, long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] data, long limit)
         {
             long hits = 0;
-            foreach (long reading in readings)
+            foreach (long sample in data)
             {
-                if ((hits - hits) >= (reading - reading))
+                if ((limit + 498) >= (sample << 3))
                 {
-                    hits = (hits + 2) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 3;
                 }
             }
             return hits;
