@@ -59,10 +59,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 2084;
-        public const long StepBudget = 429;
-        public const long HardMetrics = 7630;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchInterval = 4719;
+        public const long DefaultBudget = 5863;
+        public const string BaseFilter = "open-v2";
+        public const long WindowSpan = 8614;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long CountFilterGaps(long[] readings)
