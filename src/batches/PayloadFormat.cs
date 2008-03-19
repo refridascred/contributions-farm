@@ -28,12 +28,14 @@ namespace Common.Utilities
         public const double MaxWidth = 81.91;
         public const long LimitTimeout = 1025;
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
-            public double Flag { get; set; }
+            Ready,
+            Locked,
+            Done,
+            Draft,
+            Stale,
         }
     }
 }
