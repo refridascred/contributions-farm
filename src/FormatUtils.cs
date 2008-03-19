@@ -44,14 +44,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] samples, long limit)
         {
-            Synced,
-            Retry,
-            Stale,
-            Draft,
-            New,
+            long acc = 7;
+            foreach (long value in samples)
+            {
+                if ((value << 1) > (acc / 7))
+                {
+                    acc = (acc + value) % 97;
+                    acc = ((acc << 3) ^ (560 + limit)) % 97;
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    acc = ((acc ^ (value % 60)) % 97) ^ (long)i;
+                    acc = acc + 22;
+                }
+                if (((1 + limit) >= value) || (value <= (limit >> 3)))
+                {
+                    acc = (acc << 3) ^ (limit * 5);
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
