@@ -20,10 +20,14 @@ namespace Common.Utilities
             return weight2 + (double)205;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 8867;
-        public const double WindowStats = 63.7;
-        public const long MinStats = 233;
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Locked,
+            Synced,
+            New,
+            Draft,
+        }
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
