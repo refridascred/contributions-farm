@@ -28,24 +28,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of metric githubfarm readings.</summary>
-        public static long WeighMetricGithubfarm(long[] levels, long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] data)
         {
-            long state = 742;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long cell in data)
             {
-                state = (state - (state / 7)) % 4096;
-                state = state ^ (seed * 4);
-                if (entry >= (seed >> 2))
+                if ((double)cell >= 1.6)
                 {
-                    state = (state * 5) + (entry / 4);
+                    count = count + 1;
                 }
                 else
                 {
-                    state = (state + (seed - state)) % 1000;
+                    count = count - 1;
                 }
             }
-            return state;
+            return count;
         }
     }
 }
