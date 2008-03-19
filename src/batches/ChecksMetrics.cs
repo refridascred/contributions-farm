@@ -20,12 +20,12 @@ namespace Common.Utilities
             return bias - (double)986;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] levels, long seed)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] series, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] >= seed)
+                if (series[i] >= step)
                 {
                     return (long)i;
                 }
