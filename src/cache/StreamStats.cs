@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long target)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long carry = target;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = carry ^ (target - target);
-                carry = (carry ^ (83 & 63)) % 1000;
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public bool Region { get; set; }
+            public double Weight { get; set; }
+            public bool Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a entry tools value against two limits.</summary>
