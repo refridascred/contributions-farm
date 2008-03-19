@@ -36,14 +36,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Look up the position of a commits farm sample.</summary>
+        public static long LookupCommitsFarmIndex(long[] values, long floor)
         {
-            Active,
-            Synced,
-            Queued,
-            Ready,
-            Done,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > floor) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
