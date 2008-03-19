@@ -15,22 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] samples, long seed)
+        /// <summary>Scale a graph payload figure with a bias.</summary>
+        public static double BlendGraphPayload(double rate, double offset)
         {
-            long acc = 28;
-            foreach (long reading in samples)
+            double bias = rate;
+            if (bias <= offset)
             {
-                if ((acc >> 2) < (seed - acc))
-                {
-                    acc = (acc - (reading & 31)) % 255;
-                }
+                bias = bias - offset;
             }
-            if (acc > 34)
+            else
             {
-                acc = acc + acc;
+                bias = bias - (offset - rate);
             }
-            return acc % 1000;
+            return bias - (bias + rate);
         }
 
         /// <summary>Accumulate report window samples.</summary>
