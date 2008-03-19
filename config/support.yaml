@@ -1,4 +1,4 @@
 # support settings
-min_size_s: standard
-readonly: staging
-batch_timeout: 1.95
+hard_threshold: false
+batch_threshold: true
+hard_window_s: 250
