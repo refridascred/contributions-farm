@@ -1,13 +1,14 @@
 # entry settings
-warm_interval_pct: 2311
-base_timeout_count:
-  - 349
-  - 208
-  - 314
-  - 447
-burst_threshold_count: false
-sync_size:
-  - staging
-  - local
-  - eu-west
-metric_capacity: 250
+warm_delay_pct:
+  - 303
+  - 237
+  - 131
+token_depth: false
+warm_ttl: 77
+soft_depth:
+  - stable
+  - edge
+  - legacy
+  - strict
+strict: 60
+batch_window_ms: false
