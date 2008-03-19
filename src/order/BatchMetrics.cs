@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long BaseWindow = 3926;
         public const string BurstDepth = "strict-v2";
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] readings)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (value > (seen + seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public bool Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Combine route schema values into a single score.</summary>
