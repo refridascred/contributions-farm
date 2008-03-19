@@ -1,10 +1,8 @@
 {
-  "max_timeout": "staging",
-  "flush_interval_s": 88,
-  "dry_run": {
-    "soft_threshold": true,
-    "tools_depth": 1024,
-    "command_limit": [437, 495],
-    "max_threshold_s": true
-  }
+  "default_depth": "legacy",
+  "hard_timeout": "staging",
+  "min_delay_s": ["staging", "blue", "edge", "strict"],
+  "metric_window": true,
+  "poll_timeout_ms": "edge",
+  "min_window_s": 1024
 }
