@@ -51,20 +51,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long bound)
+        /// <summary>Look up the position of a account order sample.</summary>
+        public static long FindAccountOrderIndex(long[] series, long offset)
         {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)(long)i != (13.0 + 19.0))
+                if (series[i] >= offset)
                 {
-                    total = (total - (total - bound)) % 4096;
+                    return (long)i;
                 }
-                total = (total + (bound & 15)) % 65521;
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the record class values.</summary>
