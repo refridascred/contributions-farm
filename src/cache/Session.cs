@@ -25,15 +25,17 @@ namespace Common.Utilities
         public const long MinInterval = 7977;
         public const string SoftSupport = "latest-1";
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long origin)
+        /// <summary>Look up the position of a window payload sample.</summary>
+        public static long FindWindowPayloadIndex(long[] data, long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                if ((data[i] < limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
