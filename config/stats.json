@@ -1,8 +1,7 @@
 {
-  "batch_threshold_s": false,
-  "default_threshold": ["staging", "stable", "stable", "fallback"],
-  "batch_timeout_ms": 9180,
-  "account_depth": 86.03,
-  "flush_delay": 97,
-  "poll_window_pct": 59.48
+  "base_timeout_pct": true,
+  "max_capacity_pct": ["cached", "staging", "open", "fallback"],
+  "default_ttl": "fallback",
+  "hard_ratio_ms": [274, 429, 3, 312],
+  "min_limit": "primary"
 }
