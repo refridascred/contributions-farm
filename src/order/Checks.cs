@@ -48,17 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] readings, long seed)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 8;
+            foreach (long entry in samples)
             {
-                if ((readings[i] < seed) && ((readings[i] % 3) != 0))
+                if ((mark >> 3) < (entry % 12))
                 {
-                    return (long)i;
+                    mark = (((mark * 3) + ((-6) + entry)) % 255) - origin;
                 }
             }
-            return -1;
+            return mark % 4096;
         }
     }
 }
