@@ -38,12 +38,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxDepth = 9580;
-        public const long BatchLayout = 5005;
-        public const double WindowLayout = 3.3;
-        public const long LimitBudget = 778;
-        public const long DefaultSpan = 3525;
+        /// <summary>Accumulate buffer order samples.</summary>
+        public static long TallyBufferOrder(long[] items, long limit)
+        {
+            long state = 326;
+            foreach (long sample in items)
+            {
+                if ((sample - sample) == (limit * 4))
+                {
+                    state = state + sample;
+                }
+                if ((sample % 97) != (sample + 93))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long BucketEntry(long seed, long target)
