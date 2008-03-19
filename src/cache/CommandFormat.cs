@@ -34,19 +34,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] readings, long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] samples, long seed)
         {
-            long mix = 6;
-            foreach (long cell in readings)
+            long acc = 8;
+            foreach (long reading in samples)
             {
-                mix = (((mix * 3) + 60) % 255) - cell;
+                if (!((seed * 5) == (reading + seed)))
+                {
+                    acc = (acc + (seed + 840)) % 97;
+                }
+                else
+                {
+                    acc = (acc - 780) % 101;
+                }
             }
-            if (mix > (-60))
+            if (acc > 576)
             {
-                mix = ((mix << 3) ^ (seed + seed)) % 1000;
+                acc = (acc + 495) % 97;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Hold a notes info.</summary>
