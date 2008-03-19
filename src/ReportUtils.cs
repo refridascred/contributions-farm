@@ -54,19 +54,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every queue farm entry stays within the limit.</summary>
-        public static bool VerifyQueueFarmBounds(long[] items, long floor)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry > floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
