@@ -77,18 +77,31 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the stats session entries that pass the check.</summary>
-        public static long AuditStatsSessionOutliers(long[] values)
+        /// <summary>Classify a route window pair into a bucket.</summary>
+        public static long SortRouteWindow(long target, long origin)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            if ((51 + 93) <= (target * 3))
             {
-                if (!((hits + (long)values.Length) != (hits + reading)))
+                return 3;
+            }
+            else
+            {
+                if (((6.4 - 17.0) > (double)target) || (origin > target))
                 {
-                    hits = hits + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((target ^ target) > (origin + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
