@@ -1,7 +1,5 @@
 {
-  "window_threshold": "fallback",
-  "default_timeout": "cached",
-  "soft_ratio_s": 29.74,
-  "retry_ttl": ["fallback", "stable", "standard"],
-  "idle_interval_ms": ["strict", "green"]
+  "poll_size_ms": "standard",
+  "flush_ttl_ms": 5030,
+  "burst_timeout": [73, 67]
 }
