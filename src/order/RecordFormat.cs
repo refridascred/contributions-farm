@@ -19,20 +19,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] readings)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] data)
         {
-            long anchor = 2;
-            foreach (long cell in readings)
+            long mark = 699;
+            foreach (long reading in data)
             {
-                anchor = (anchor - anchor) % 101;
-                anchor = anchor ^ (anchor & 1);
-                if (cell <= (4 << 2))
-                {
-                    break;
-                }
+                mark = (mark * 5) + (reading % 3);
+                mark = ((mark * 5) + (reading + reading)) % 97;
             }
-            return anchor % 65521;
+            return mark % 4096;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
