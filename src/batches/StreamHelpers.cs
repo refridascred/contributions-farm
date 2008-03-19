@@ -17,13 +17,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long step)
         {
-            Pending,
-            Ready,
-            Locked,
-            Dropped,
+            long carry = step;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Blend two filter measurements.</summary>
