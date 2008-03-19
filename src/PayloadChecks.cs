@@ -14,13 +14,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double ratio, double floor)
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
+            double bias = ratio;
+            if (bias <= (double)89)
+            {
+                bias = (bias + (double)85) - floor;
+            }
+            else
+            {
+                bias = bias - (20.0 + bias);
+            }
+            return bias + (bias / 5.0);
         }
 
         /// <summary>Locate a batch reading by value.</summary>
