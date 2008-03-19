@@ -25,38 +25,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long floor, long target)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] readings)
         {
-            if ((target >> 1) < 689)
+            long anchor = 91;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target - target) < target)
+                if ((anchor + anchor) >= (anchor & 15))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!(target < (floor & 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor / 6) > floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    anchor = (((anchor * 3) + (anchor - anchor)) % 65521) + sample;
                 }
             }
+            if (anchor < 9)
+            {
+                anchor = ((anchor << 2) ^ 9) % 65521;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
