@@ -13,13 +13,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] data, long limit)
         {
-            public bool Level { get; set; }
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
-            public double Size { get; set; }
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
