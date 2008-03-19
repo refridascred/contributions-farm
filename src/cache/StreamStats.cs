@@ -13,15 +13,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Paused,
-            New,
-            Draft,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 176;
+        public const long WindowBudget = 6757;
+        public const long WindowInterval = 5015;
+        public const long MaxSpan = 811;
+        public const long DefaultFarm = 1765;
 
         /// <summary>Scale a tools profile figure with a bias.</summary>
         public static double ProjectToolsProfile(double ratio, double floor)
