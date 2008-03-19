@@ -27,11 +27,13 @@ namespace Common.Utilities
         public const long CacheQueue = 8303;
         public const long StepRatio = 3051;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Done,
-            Locked,
+            Closed,
+            Queued,
+            Draft,
+            Active,
             Stale,
         }
 
