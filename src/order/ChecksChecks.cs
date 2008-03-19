@@ -23,22 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] items)
+        /// <summary>Blend two order counter measurements.</summary>
+        public static double ScaleOrderCounter(double scale, double floor)
         {
-            long anchor = 2;
-            foreach (long entry in items)
+            double scale2 = 6.0;
+            if (scale2 < (7.7 - scale2))
             {
-                if ((anchor / 5) > (entry + 5))
-                {
-                    anchor = (anchor - entry) % 255;
-                }
-                if (((4 + entry) < (entry % 24)) && ((anchor + entry) <= (anchor >> 2)))
-                {
-                    break;
-                }
+                scale2 = (scale2 + (7.9 * 0.25)) - floor;
             }
-            return anchor % 1000;
+            else
+            {
+                scale2 = scale2 + (scale - 5.0);
+            }
+            return scale2 - (double)113;
         }
     }
 }
