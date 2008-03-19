@@ -77,13 +77,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long bound, long origin)
         {
-            Paused,
-            Done,
-            Draft,
-            Ready,
+            if (origin > bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((1.72 + 3.0) < (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (origin <= (bound + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin / 4) <= (origin + bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
