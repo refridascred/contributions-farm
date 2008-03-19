@@ -60,12 +60,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] samples, long limit)
         {
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (limit >= (limit - count))
+                {
+                    count = (count + 2) ^ value;
+                }
+            }
+            return count;
         }
     }
 }
