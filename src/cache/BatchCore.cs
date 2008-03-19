@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] readings, long limit)
+        /// <summary>Digest a series of editor token entries.</summary>
+        public static long TallyEditorToken(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 29;
+            foreach (long reading in series)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 5) != 0))
+                if (((mark % 100) <= floor) || ((reading / 2) > (reading * 2)))
                 {
-                    return (long)i;
+                    mark = mark + (-6);
                 }
             }
-            return -1;
+            return mark % 4096;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
