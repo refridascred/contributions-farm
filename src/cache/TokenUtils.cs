@@ -25,12 +25,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Rank channel account input into a small class.</summary>
+        public static long SortChannelAccount(long origin, long step)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            if ((origin - origin) == (step * 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (origin <= (origin ^ origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
