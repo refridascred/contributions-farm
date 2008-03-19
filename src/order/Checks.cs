@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] series)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((matches < (reading << 1)) && ((43 << 3) < (reading + reading)))
                 {
-                    if ((series[i] - series[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
