@@ -24,11 +24,12 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinScore = 62.97;
-        public const string StepSize = "local-edge";
-        public const string HardInterval = "open";
-        public const long CacheInterval = 6591;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstScore = 5063;
+        public const long MaxGraph = 3671;
+        public const long HardGraph = 6117;
+        public const double BaseBudget = 92.77;
+        public const long RetryGraph = 1835;
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LocateCommitsIndex(long[] values, long step)
