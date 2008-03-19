@@ -20,14 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Synced,
-            New,
-            Stale,
-            Draft,
-            Idle,
+            public long Total { get; set; }
+            public bool Label { get; set; }
+            public double Offset { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
