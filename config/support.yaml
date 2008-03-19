@@ -1,4 +1,7 @@
 # support settings
-hard_threshold: false
-batch_threshold: true
-hard_window_s: 250
+max_timeout_s:
+  - 99
+  - 354
+  - 262
+account_capacity: 87
+counter_limit: 5362
