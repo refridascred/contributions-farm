@@ -55,17 +55,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a account order sample.</summary>
-        public static long FindAccountOrderIndex(long[] series, long offset)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] series)
         {
+            long seen = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] >= offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a command counter forward.</summary>
