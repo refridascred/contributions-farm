@@ -1,9 +1,8 @@
-id,weight,owner,region,rank
-1,112,441,90.8,fallback
-2,37.52,50.3,551,353
-3,86.66,15,staging,766
-4,70.03,strict,156,743
-5,195,436,fallback,green
-6,166,913,stable,56.77
-7,cached,13.7,905,31.45
-8,blue,stable,528,22.06
+id,token,rank,weight
+1,stable,179,319
+2,638,open,17
+3,fallback,169,224
+4,343,53.91,90.38
+5,952,553,71.92
+6,84.92,91.25,3
+7,edge,770,56.72
