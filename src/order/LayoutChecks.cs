@@ -51,19 +51,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every metric stats entry stays within the limit.</summary>
-        public static bool CheckMetricStatsBounds(long[] levels, long step)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] values, long step)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > step)
+                if ((values[i] == step) && ((values[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the checks phase values.</summary>
