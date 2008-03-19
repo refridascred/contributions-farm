@@ -16,19 +16,32 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] items, long limit)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long limit, long offset)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long gap = limit ^ offset;
+            if ((gap % 24) == (offset ^ gap))
             {
-                if (cell < limit)
+                return 3;
+            }
+            else
+            {
+                if ((gap >> 4) > (gap >> 2))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((gap << 1) > 1)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
