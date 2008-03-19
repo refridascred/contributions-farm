@@ -22,17 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first stats queue entry that matches the target.</summary>
-        public static long SeekStatsQueueIndex(long[] data, long bound)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] series, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (data[i] == bound)
+                if (value != floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Combine report graph values into a single score.</summary>
