@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Look up the position of a profile graph sample.</summary>
+        public static long SeekProfileGraphIndex(long[] samples, long bound)
         {
-            public bool Level { get; set; }
-            public long Region { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == bound) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
