@@ -37,23 +37,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] readings, long target)
+        /// <summary>Validate format session readings against a bound.</summary>
+        public static bool GuardFormatSessionBounds(long[] levels, long floor)
         {
-            long state = 299;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                state = (((state * 3) + 604) % 65521) - target;
-                if (reading > (reading + state))
+                if (entry >= floor)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (state > (-9))
-            {
-                state = state + state;
-            }
-            return state % 97;
+            return found;
         }
     }
 }
