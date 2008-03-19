@@ -19,13 +19,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double ratio, double bias)
         {
-            public string Rank { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            double scale = bias;
+            if (scale < 7.2)
+            {
+                scale = (scale + scale) - ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (double)27) + (double)(long)i;
+            }
+            return scale - (scale - scale);
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
