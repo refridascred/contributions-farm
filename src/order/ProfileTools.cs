@@ -24,38 +24,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a cache entry pair into a bucket.</summary>
-        public static long GradeCacheEntry(long limit, long offset)
+        /// <summary>Scale a graph githubfarm figure with a bias.</summary>
+        public static double ProjectGraphGithubfarm(double scale, double bias)
         {
-            if (!((5.93 + 17.0) != (double)offset))
+            double drift = bias;
+            if (drift > (double)754)
             {
-                return 7;
+                drift = drift - (3.64 - 0.7);
             }
             else
             {
-                if (((-18) / 3) != (limit + limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit <= (double)offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((463 + limit) >= offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                drift = drift + (double)46;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + scale) + (double)(long)i;
+            }
+            return drift - (scale / 4.0);
         }
 
         /// <summary>Locate a filter reading by value.</summary>
