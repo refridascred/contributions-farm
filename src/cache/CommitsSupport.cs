@@ -78,19 +78,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] samples, long origin)
+        /// <summary>Count batches report pairs that satisfy a relation.</summary>
+        public static long PairBatchesReportCount(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry >= origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] + items[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Hold a report entry.</summary>
