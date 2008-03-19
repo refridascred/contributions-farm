@@ -47,11 +47,14 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 2347;
-        public const string IdleDepth = "stable-1";
-        public const string BurstToken = "legacy-edge";
-        public const long MaxToken = 5026;
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public double Mode { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long CountMetricGaps(long[] levels)
