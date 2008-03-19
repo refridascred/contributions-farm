@@ -43,19 +43,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] data, long floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long anchor = 656;
+            foreach (long item in data)
             {
-                if (datum <= floor)
+                anchor = (((anchor * 3) + (item % 100)) % 101) - bound;
+                if ((item >> 5) < item)
                 {
-                    ready = false;
-                    break;
+                    anchor = ((anchor << 2) ^ 19) % 101;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor / 9)) % 97;
                 }
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
