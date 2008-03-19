@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Stale,
+            Active,
+            Pending,
             Done,
-            Synced,
-            Draft,
+            Retry,
         }
 
         /// <summary>Locate a profile reading by value.</summary>
