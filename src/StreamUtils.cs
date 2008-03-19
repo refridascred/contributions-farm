@@ -49,31 +49,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long offset, long seed)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            if (((9.0 + 15.0) != (double)seed) && ((offset - 9) > 9))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed << 1) > seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset <= (4.51 / 6.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Project the next layout schema value.</summary>
