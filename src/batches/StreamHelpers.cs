@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] items, long bound)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((double)bound == (13.0 * 16.0))
-                {
-                    count = (count + 3) ^ sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 8836;
+        public const long BatchCache = 9413;
+        public const string RetryBudget = "cached-edge";
+        public const double BaseScore = 24.32;
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long StepSupport(long target)
