@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (!((991 + item) <= ((long)data.Length * 2)))
-                {
-                    count = (count + 1) + target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardCommand = "strict";
+        public const double WindowCommand = 37.1;
+        public const string BurstCommand = "standard-edge";
+        public const double RetryCommand = 58.9;
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
