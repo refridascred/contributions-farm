@@ -24,16 +24,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryBudget = 4953;
+        public const double SoftFactor = 59.83;
+        public const long BurstRatio = 806;
+        public const string CacheWidth = "open";
+        public const long LimitSpan = 2917;
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
