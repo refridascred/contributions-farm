@@ -12,17 +12,32 @@ namespace Common.Utilities
         public const string StepSupport = "latest-1";
         public const string BatchRatio = "strict";
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] series, long offset)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long limit, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long lane = limit ^ target;
+            if (limit < (limit + lane))
             {
-                if (series[i] == offset)
+                return 2;
+            }
+            else
+            {
+                if ((target > lane) || ((lane >> 1) < (target + 59)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (!(lane >= (lane + 741)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next window value.</summary>
