@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double gain, double span)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            double mean = 7.58;
-            return (mean + (mean - gain)) + span;
+            public bool Weight { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Match up stats samples.</summary>
