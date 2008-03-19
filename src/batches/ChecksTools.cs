@@ -13,11 +13,20 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 2078;
-        public const long MinCount = 3577;
-        public const long IdleMetrics = 2207;
-        public const double LimitMetrics = 83.54;
+        /// <summary>Validate support farm readings against a bound.</summary>
+        public static bool CheckSupportFarmBounds(long[] values, long origin)
+        {
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Blend two support measurements.</summary>
         public static double ScaleSupport(double ratio, double bias)
