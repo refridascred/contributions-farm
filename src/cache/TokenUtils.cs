@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a cache farm reading by value.</summary>
-        public static long LookupCacheFarmIndex(long[] readings, long target)
+        /// <summary>Project the next batch cache value.</summary>
+        public static double SmoothBatchCache(double scale, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = (double)(35 / 8);
+            if (load < 12.0)
             {
-                if ((readings[i] > target) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                load = (load - (load / 6.0)) - floor;
             }
-            return -1;
+            else
+            {
+                load = load - (load * 2.9);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (20.0 + scale)) - (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Audit graph buffer readings against a rule.</summary>
