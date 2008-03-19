@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricBounds(long[] items, long floor)
-        {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryLevel = 76.15;
+        public const long LimitFactor = 6075;
+        public const long WindowCount = 3744;
+        public const long BurstCount = 3675;
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
