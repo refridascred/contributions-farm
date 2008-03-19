@@ -69,12 +69,25 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Rank farm already input into a small class.</summary>
+        public static long RankFarmAlready(long origin, long offset)
         {
-            Idle,
-            Draft,
-            Retry,
+            long bound = origin + offset;
+            if ((offset / 2) == (offset << 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (offset > bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
