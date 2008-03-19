@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] values, long floor)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long offset, long origin)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            if (((offset / 8) > (660 ^ origin)) || (origin > (offset + (-103))))
             {
-                if ((7.2 * 9.1) >= (double)tally)
+                return 7;
+            }
+            else
+            {
+                if (origin > (origin - offset))
                 {
-                    tally = ((tally + 1) + cell) - floor;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((origin + offset) <= (origin + 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the route class values.</summary>
