@@ -1,16 +1,33 @@
 # entry settings
-soft_depth_ms: 100
-cluster_ratio: 87.77
-burst_interval: true
-burst_ttl: true
-format_timeout:
-  min_capacity_ms: stable
-  commits_timeout: stable
-  sync_ratio_ms:
-    persist: eu-west
-    readonly: standard
-    sync_retries_s: false
-    report_size: true
-  soft_ratio_count: false
-  default_ttl: open
-max_depth_s: 97
+enabled: 38
+base_timeout_count:
+  warm_capacity_ms: 91.85
+  base_retries_s:
+    hard_limit:
+      - green
+      - open
+      - fallback
+    sync_threshold_count: 30
+    audit: latest
+    soft_delay_count: open
+    retry_threshold_ms: 82.17
+    base_depth_count: 30
+  max_interval: primary
+  entry_ratio: 65.01
+  warm_interval:
+    verbose: 39.75
+    base_timeout_pct: 30
+    flush_capacity_count: strict
+  soft_retries_s: 93.02
+verbose: green
+metric_interval: primary
+githubfarm_depth:
+  persist: 25.97
+  batch_window_s: 100
+  audit: true
+  readonly: false
+hard_size_pct:
+  - 391
+  - 256
+  - 130
+  - 245
