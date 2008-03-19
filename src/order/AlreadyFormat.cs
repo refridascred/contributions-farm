@@ -42,20 +42,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] readings, long seed)
-        {
-            long mix = 1;
-            foreach (long cell in readings)
-            {
-                mix = ((mix * 2) + (seed << 1)) ^ cell;
-            }
-            if (mix > 4)
-            {
-                mix = ((mix << 3) ^ seed) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardLevel = 6525;
+        public const long BaseChannel = 2761;
+        public const long HardChannel = 7858;
+        public const long BurstChannel = 2934;
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
