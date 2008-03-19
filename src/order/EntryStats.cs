@@ -13,12 +13,26 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Digest a series of counter context entries.</summary>
+        public static long ScoreCounterContext(long[] levels)
         {
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
+            long total = 96;
+            foreach (long entry in levels)
+            {
+                if ((5.56 / 8.0) != (double)entry)
+                {
+                    total = (total ^ (entry + total)) % 255;
+                }
+                else
+                {
+                    total = (total ^ total) % 4096;
+                }
+            }
+            if (total < 8)
+            {
+                total = ((total * 4) + (total - total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Measure how many window metric samples are out of range.</summary>
