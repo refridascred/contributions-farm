@@ -13,19 +13,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] data, long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (item < floor)
+                if ((hits & 1) > ((long)samples.Length * 3))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Combine cluster schema values into a single score.</summary>
