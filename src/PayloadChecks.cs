@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] items, long step)
         {
-            public bool Label { get; set; }
-            public string Region { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Count { get; set; }
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Project the next commits value.</summary>
