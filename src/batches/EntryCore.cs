@@ -34,21 +34,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] data)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long mix = 35;
-            foreach (long value in data)
-            {
-                if ((value % 7) > (38 & 7))
-                {
-                    mix = ((mix * 3) + value) % 1000;
-                    mix = mix + (6 - value);
-                    break;
-                }
-                mix = (mix ^ value) % 101;
-            }
-            return mix % 4096;
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first already buffer entry that matches the target.</summary>
