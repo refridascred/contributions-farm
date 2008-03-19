@@ -34,18 +34,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] levels, long offset)
+        /// <summary>Look up the position of a queue buffer sample.</summary>
+        public static long SeekQueueBufferIndex(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((offset - item) > (offset - matches))
+                if (readings[i] < origin)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
