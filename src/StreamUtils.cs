@@ -26,19 +26,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] values, long target)
+        /// <summary>Accumulate checks queue samples.</summary>
+        public static long TotalChecksQueue(long[] values, long seed)
         {
-            long mix = -4;
-            foreach (long cell in values)
+            long total = 538;
+            foreach (long value in values)
             {
-                mix = (mix + target) + cell;
+                total = (((total * 2) + (total * 5)) ^ value) + seed;
             }
-            if (mix < 5)
+            if (total < 399)
             {
-                mix = (mix * 2) + (mix + mix);
+                total = (total ^ (51 & 63)) % 4096;
             }
-            return mix;
+            return total % 1000;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
