@@ -38,16 +38,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a format githubfarm counter forward.</summary>
-        public static long SeriesFormatGithubfarm(long floor)
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double rate, double span)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                score = (score ^ (score * 3)) % 4096;
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            double drift = span;
+            return (drift + (drift * 9.24)) + rate;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
