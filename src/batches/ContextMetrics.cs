@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
-        {
-            Paused,
-            Idle,
-            Dropped,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchSpan = "standard-edge";
+        public const long CacheQueue = 7648;
+        public const string RetryQueue = "legacy-v2";
+        public const long BatchQueue = 4033;
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long GradeContributi(long offset, long target)
