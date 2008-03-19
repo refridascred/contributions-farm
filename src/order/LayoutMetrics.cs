@@ -23,13 +23,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            Active,
-            Paused,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 811;
+        public const double LimitReport = 25.13;
+        public const long HardRatio = 3871;
+        public const long BatchCount = 6659;
     }
 }
