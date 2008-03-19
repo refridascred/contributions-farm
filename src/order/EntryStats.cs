@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long seed, long seed2)
         {
-            Paused,
-            Queued,
-            Idle,
+            if ((534 >> 4) < (449 - seed2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)seed2 > (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Rank format input into a small class.</summary>
