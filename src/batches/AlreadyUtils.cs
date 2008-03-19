@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            New,
-            Closed,
-            Paused,
-            Active,
-            Retry,
+            public bool Size { get; set; }
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
