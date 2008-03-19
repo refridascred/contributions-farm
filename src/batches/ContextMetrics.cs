@@ -35,18 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextGaps(long[] levels, long origin)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)origin > (4.8 - 3.0))
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
