@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two batch metrics measurements.</summary>
-        public static double SmoothBatchMetrics(double rate, double floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long target)
         {
-            double mean = (double)((-951) ^ 3);
-            if (mean >= floor)
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                mean = mean - (double)444;
+                long step = (target / 5) / 3;
+                if (!((result - step) < ((long)i + target)))
+                {
+                    step = ((step << 3) ^ step) % 1000;
+                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            else
-            {
-                mean = mean + (floor + rate);
-            }
-            return mean + (double)500;
+            return result;
         }
 
         /// <summary>Hold a already options.</summary>
