@@ -19,14 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] samples, long floor)
         {
-            Active,
-            Synced,
-            Ready,
-            Retry,
-            Closed,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (seen > (sample % 10))
+                {
+                    seen = (seen + 1) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
