@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultLevel = 9092;
-        public const string IdleCounter = "legacy-edge";
-        public const long BurstTimeout = 3448;
-        public const long DefaultCounter = 3519;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] levels, long target)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)target <= 19.0)
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
