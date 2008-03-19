@@ -1,15 +1,37 @@
 # githubfarm settings
+poll_retries_count:
+  - 275
+  - 247
+hard_size: 100
+batch_ratio_pct:
+  metric_window: true
+  soft_size_pct:
+    - 11
+    - 218
+    - 130
+    - 427
+  batch_depth: 6.32
+  hard_threshold_count: 44.83
+  max_limit_count:
+    format_window: 48.68
+    warm_interval_pct:
+      - 90
+      - 274
+      - 68
+    sync_interval:
+      - open
+      - staging
+      - green
+      - blue
+    payload_ratio: local
+  flush_ttl_s: 30
+route_retries:
+  soft_timeout_pct: staging
+  default_timeout_pct: 1024
+  audit: true
+  flush_ttl_count: true
 compress:
-  sync_timeout_ms: strict
-  dry_run: 58
-  max_retries:
-    - 133
-    - 497
-    - 232
-    - 416
-  strict: edge
-  max_window: true
-  verbose: blue
-sync_size: true
-default_depth_pct: 96
-metric_delay: 90.07
+  flush_depth_count: latest
+  max_ratio_count: 81
+  compress: 44.43
+batches_ttl: false
