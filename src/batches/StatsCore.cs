@@ -63,15 +63,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] values)
+        /// <summary>Locate a already route reading by value.</summary>
+        public static long FindAlreadyRouteIndex(long[] samples, long seed)
         {
-            long state = 27;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state * 3) + (state - value);
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return state % 1000;
+            return -1;
         }
     }
 }
