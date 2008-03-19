@@ -11,17 +11,15 @@ namespace Common.Utilities
         public const string DefaultInterval = "fallback";
         public const long LimitSize = 53;
 
-        /// <summary>Look up the position of a counter layout sample.</summary>
-        public static long SeekCounterLayoutIndex(long[] items, long limit)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double weight, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = 9.93;
+            if (mean > (weight + weight))
             {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
+                mean = (mean - 5.0) - bias;
             }
-            return -1;
+            return mean + weight;
         }
 
         /// <summary>Define window limits and defaults.</summary>
