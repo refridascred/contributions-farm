@@ -35,19 +35,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cache profile readings against a bound.</summary>
-        public static bool GuardCacheProfileBounds(long[] series, long seed)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample != seed)
+                if ((values[i] >= bound) && ((values[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
