@@ -24,13 +24,31 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long origin, long floor)
         {
-            public string Mode { get; set; } = "";
-            public bool Label { get; set; }
-            public long Offset { get; set; }
-            public bool Total { get; set; }
+            if ((floor + floor) == ((-268) - 73))
+            {
+                return 2;
+            }
+            else
+            {
+                if (floor <= (origin + origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (origin <= (floor + floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
