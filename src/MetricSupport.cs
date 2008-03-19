@@ -35,21 +35,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] readings)
+        /// <summary>Accumulate record cluster samples.</summary>
+        public static long TotalRecordCluster(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 718;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((double)result != (4.8 + 9.0)))
                 {
-                    if ((readings[i] ^ readings[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result ^ limit) ^ value;
                 }
             }
-            return count;
+            if (result < 953)
+            {
+                result = result + 32;
+            }
+            return result;
         }
     }
 }
