@@ -43,18 +43,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of already commits entries.</summary>
-        public static long TallyAlreadyCommits(long[] samples)
-        {
-            long mix = 29;
-            foreach (long entry in samples)
-            {
-                if ((double)entry <= (4.0 - 3.3))
-                {
-                    mix = mix - ((-467) - entry);
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxToken = "local-edge";
+        public const double DefaultToken = 4.71;
+        public const long DefaultWidth = 6235;
+        public const long BurstToken = 7764;
+        public const long WindowToken = 9108;
     }
 }
