@@ -20,31 +20,14 @@ namespace Common.Utilities
             return mean + (mean * 15.0);
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] levels, long target)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long state = 7;
-            foreach (long reading in levels)
-            {
-                if ((18 + reading) != (state << 3))
-                {
-                    state = (state - (13 * 2)) % 1000;
-                    state = (state ^ (target % 24)) % 101;
-                }
-                if ((reading << 2) >= (reading + reading))
-                {
-                    state = (state * 3) + (reading ^ state);
-                }
-                else
-                {
-                    state = (state - (state + reading)) % 101;
-                }
-            }
-            if (state > 726)
-            {
-                state = (state ^ (state - 34)) % 65521;
-            }
-            return state;
+            Pending,
+            Stale,
+            Closed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
