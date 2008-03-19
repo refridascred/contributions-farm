@@ -51,13 +51,22 @@ namespace Common.Utilities
             return ((rate + rate) + ratio) + offset;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Accumulate token session samples.</summary>
+        public static long TotalTokenSession(long[] values)
         {
-            Failed,
-            New,
-            Synced,
-            Queued,
+            long score = 8;
+            foreach (long entry in values)
+            {
+                if ((7.0 + 2.2) != (double)score)
+                {
+                    score = (score + score) - entry;
+                }
+                else
+                {
+                    score = (score + score) % 4096;
+                }
+            }
+            return score;
         }
     }
 }
