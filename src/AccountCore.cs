@@ -33,13 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Check that every farm support entry stays within the limit.</summary>
+        public static bool VerifyFarmSupportLimits(long[] samples, long target)
         {
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-            public string Label { get; set; } = "";
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of session entries.</summary>
