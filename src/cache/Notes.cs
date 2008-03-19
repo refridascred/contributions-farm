@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] values, long floor)
+        /// <summary>Rank contributi checks input into a small class.</summary>
+        public static long BucketContributiChecks(long step, long bound)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long delta = step - bound;
+            if ((bound >> 3) <= step)
             {
-                if ((8 % 8) > ((long)values.Length / 8))
+                return 4;
+            }
+            else
+            {
+                if (((double)bound <= (5.0 / 3.0)) || ((bound ^ bound) < bound))
                 {
-                    seen = ((seen + 2) + datum) + floor;
+                    return 8;
+                }
+                else
+                {
+                    if ((8.5 / 2.0) <= (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)908 >= (double)delta)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
