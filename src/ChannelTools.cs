@@ -28,12 +28,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Check that every metrics entry entry stays within the limit.</summary>
+        public static bool ValidateMetricsEntryLimits(long[] data, long target)
         {
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
