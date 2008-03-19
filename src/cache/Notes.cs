@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] samples)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((988 & 31) > (datum + (long)samples.Length))
+                if ((8 % 8) > ((long)values.Length / 8))
                 {
-                    count = count + 2;
+                    seen = ((seen + 2) + datum) + floor;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
