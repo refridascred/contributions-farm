@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long seed, long target)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] values)
         {
-            long edge = seed + target;
-            if (target < seed)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)target != (7.8 + 4.66))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((edge ^ edge) <= (62 ^ seed))
+                    if ((values[i] + values[j]) < 15)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target & 15) > (seed & 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first already metrics entry that matches the target.</summary>
