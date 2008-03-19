@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] items, long step)
-        {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxSchema = 45.52;
+        public const long RetryInterval = 54;
+        public const long BaseSpan = 8605;
+        public const string BurstSchema = "primary-edge";
+        public const long CacheSchema = 6810;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long HardCount = 7503;
