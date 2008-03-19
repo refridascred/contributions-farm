@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double gain, double span)
         {
-            Active,
-            Pending,
-            Done,
-            Retry,
+            double bias = gain;
+            if (bias > gain)
+            {
+                bias = (bias - (gain * 4.09)) + span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (double)503) + (double)(long)i;
+            }
+            return bias - (double)986;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
