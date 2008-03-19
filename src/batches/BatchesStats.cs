@@ -15,19 +15,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double bias, double offset)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] data)
         {
-            double gain = (double)40 - (19.0 * 13.0);
-            if (gain > (offset + gain))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = (gain + (double)517) + bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (double)97) + (double)(long)i;
-            }
-            return gain + gain;
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
