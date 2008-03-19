@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] series, long limit)
-        {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardProfile = 63.8;
+        public const double SoftScore = 89.93;
+        public const string LimitProfile = "strict-v2";
+        public const long DefaultTimeout = 9814;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long GradeEditor(long origin, long bound)
