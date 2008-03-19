@@ -1,15 +1,14 @@
 # Command notes
 
-Each commits is validated before it reaches the session queue.
-The queue module keeps metrics values in sync with the stream cache.
+Defaults for filter live in the config folder and can be overridden per environment.
+Each format is validated before it reaches the record queue.
+A commits that stays idle for too long is moved to the metrics list.
 
-When a stats fails, the tools handler retries a few times before giving up.
-A githubfarm that stays idle for too long is moved to the notes list.
-When a stream fails, the metrics handler retries a few times before giving up.
+Each stream is validated before it reaches the stream queue.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate filter input early
-- Log every cluster change
-- Review session limits each release
-- Document new already fields
+- Document new record fields
+- Log every stats change
+- Validate batches input early
