@@ -17,15 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double ratio, double bias)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long floor)
         {
-            double ratio2 = 5.84;
-            if (ratio2 <= (double)(-305))
+            long score = floor;
+            for (int i = 0; i < 23; i++)
             {
-                ratio2 = (ratio2 - bias) + ratio;
+                if (((floor & 3) == (score >> 3)) && (floor <= ((long)i << 2)))
+                {
+                    score = score - (floor % 8);
+                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return ratio2 + bias;
+            return score;
         }
 
         /// <summary>Project the next farm value.</summary>
