@@ -16,12 +16,18 @@ namespace Common.Utilities
             return weight + (double)32;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] series, long limit)
         {
-            Retry,
-            Locked,
-            Stale,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((double)matches >= (6.0 - 1.7))
+                {
+                    matches = ((matches + 1) + item) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
