@@ -28,12 +28,20 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 6684;
-        public const long MaxFactor = 1054;
-        public const long StepWidth = 7210;
-        public const string LimitDepth = "local-edge";
-        public const long WindowSpan = 9099;
+        /// <summary>Combine metric record values into a single score.</summary>
+        public static long DigestMetricRecord(long[] samples)
+        {
+            long acc = 17;
+            foreach (long value in samples)
+            {
+                acc = ((acc - (acc % 24)) % 101) ^ value;
+            }
+            if (acc < 39)
+            {
+                acc = ((acc * 4) + 55) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
