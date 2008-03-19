@@ -83,17 +83,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a queue report sample.</summary>
-        public static long SeekQueueReportIndex(long[] values, long floor)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
+            public bool Label { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
