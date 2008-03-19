@@ -1,10 +1,6 @@
-id,owner,score,rank
-1,legacy,latest,322
-2,647,strict,89
-3,blue,eu-west,996
-4,open,844,900
-5,698,705,16.06
-6,cached,open,176
-7,622,stable,legacy
-8,10.87,55.81,211
-9,standard,latest,cached
+id,ratio,active
+1,401,310
+2,768,36.67
+3,58,89.63
+4,922,638
+5,331,815
