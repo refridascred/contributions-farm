@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of batch already entries.</summary>
-        public static long ScoreBatchAlready(long[] items)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] data)
         {
-            long sum = 6;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long value in data)
             {
-                sum = sum - (cell % 5);
-                sum = ((sum << 3) ^ (sum & 1)) % 101;
-                sum = ((sum << 2) ^ sum) % 1000;
+                if ((value ^ value) != (hits - hits))
+                {
+                    hits = hits + 1;
+                }
             }
-            if (sum > 8)
-            {
-                sum = (sum ^ (sum << 1)) % 101;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
