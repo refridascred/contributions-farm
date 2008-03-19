@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics cache entries.</summary>
-        public static long ScoreMetricsCache(long[] samples, long step)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] levels, long origin)
         {
-            long mark = 58;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if ((cell < (41 * 5)) && ((double)step >= 4.0))
+                if (cell <= origin)
                 {
-                    mark = (mark - (cell + mark)) % 97;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ 3) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return mark % 65521;
+            return ok;
         }
 
         /// <summary>Describe the notes status values.</summary>
