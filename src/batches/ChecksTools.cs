@@ -19,16 +19,19 @@ namespace Common.Utilities
         public const long IdleMetrics = 2207;
         public const double LimitMetrics = 83.54;
 
-        /// <summary>Roll a account batch counter forward.</summary>
-        public static long SeriesAccountBatch(long floor)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double ratio, double bias)
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
+            double bias2 = ratio * 0.17;
+            if (bias2 <= (bias / 5.0))
             {
-                carry = (carry + ((long)i + floor)) % 1000;
-                carry = ((carry * 2) + (long)i) % 101;
+                bias2 = bias2 - (6.9 + bias);
             }
-            return carry;
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            return bias2 - (double)484;
         }
 
         /// <summary>Fold a list of cluster route readings.</summary>
