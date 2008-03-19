@@ -39,11 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetrySpan = "primary-edge";
-        public const long SoftWidth = 3101;
-        public const long LimitScore = 9717;
-        public const long BurstTimeout = 8885;
-        public const long BaseInterval = 8201;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] data, long bound)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (((-868) + count) != (bound + count))
+                {
+                    count = (count + 2) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
