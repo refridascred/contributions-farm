@@ -73,25 +73,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank farm already input into a small class.</summary>
-        public static long RankFarmAlready(long origin, long offset)
-        {
-            long bound = origin + offset;
-            if ((offset / 2) == (offset << 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (offset > bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseScore = "legacy-edge";
+        public const long BurstChannel = 7030;
+        public const long MinChannel = 5129;
+        public const double IdleChannel = 2.79;
+        public const long DefaultBudget = 2189;
     }
 }
