@@ -53,12 +53,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
-        {
-            public double Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Size { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 1628;
+        public const long IdleProfile = 6795;
+        public const double MinDepth = 16.21;
     }
 }
