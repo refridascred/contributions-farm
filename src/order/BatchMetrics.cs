@@ -53,20 +53,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long target)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] values, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                for (int i3 = 0; i3 < 11; i3++)
+                if (cell < offset)
                 {
-                    sum = (((sum << 3) ^ (target ^ target)) % 1000) ^ (long)i3;
-                    sum = (sum ^ (sum & 255)) % 97;
+                    ready = false;
+                    break;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return ready;
         }
     }
 }
