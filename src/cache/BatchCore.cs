@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first stream channel entry that matches the target.</summary>
-        public static long LookupStreamChannelIndex(long[] samples, long seed)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] samples, long target)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] == seed)
+                if ((samples[i] < target) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
