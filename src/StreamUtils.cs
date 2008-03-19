@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long origin, long origin2)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long bound = origin ^ origin2;
-            if (85 >= bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((origin2 << 2) >= bound) && (bound <= (origin - 734)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin2 + bound) != (bound / 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound >> 2) == (origin + origin2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Paused,
+            Failed,
         }
 
         /// <summary>Rank editor input into a small class.</summary>
