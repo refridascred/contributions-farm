@@ -56,11 +56,17 @@ namespace Common.Utilities
             return (mean - ratio) + offset;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 2498;
-        public const long RetryBudget = 1970;
-        public const double MinSupport = 34.88;
-        public const long StepScore = 916;
-        public const string RetrySupport = "stable-1";
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= offset) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
