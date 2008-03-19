@@ -42,18 +42,18 @@ namespace Common.Utilities
         public const long HardRatio = 2697;
         public const long SoftFactor = 2611;
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] values, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] levels, long seed)
         {
-            long mix = -61;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((sample + 717) == (mix + sample))
+                if ((double)seen > (7.06 * 17.0))
                 {
-                    mix = ((mix << 3) ^ (sample - 550)) - floor;
+                    seen = ((seen + 1) + reading) + seed;
                 }
             }
-            return mix % 1000;
+            return seen;
         }
     }
 }
