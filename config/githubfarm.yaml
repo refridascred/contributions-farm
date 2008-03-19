@@ -1,5 +1,10 @@
 # githubfarm settings
-already_ratio: true
-queue_interval: true
-graph_capacity: false
-stream_depth: false
+min_ratio:
+  editor_window:
+    batch_timeout_ms: 3678
+    compress: edge
+    max_delay_pct: 8263
+  session_threshold: 8.48
+  min_size: 30
+route_limit: 38
+idle_depth: 1246
