@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] series)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] readings, long seed)
         {
-            long acc = 42;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                long delta = value * 5;
-                if ((delta + value) == (acc % 10))
+                if (readings[i] == seed)
                 {
-                    acc = (acc + (113 << 3)) % 1000;
-                    break;
-                }
-                if ((value >= (value - 64)) || ((value % 97) >= (acc + acc)))
-                {
-                    acc = acc + (value - value);
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
