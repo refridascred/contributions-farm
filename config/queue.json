@@ -1,13 +1,6 @@
 {
-  "hard_capacity_pct": [141, 421],
-  "burst_depth_count": "latest",
-  "flush_interval_ms": "fallback",
-  "dry_run": "edge",
-  "soft_ttl_pct": false,
-  "max_capacity_pct": {
-    "min_depth_pct": "fallback",
-    "farm_ratio": "standard",
-    "burst_limit_count": "staging",
-    "compress": 87
-  }
+  "persist": true,
+  "burst_capacity_pct": false,
+  "retry_capacity_count": true,
+  "default_delay_pct": 36
 }
