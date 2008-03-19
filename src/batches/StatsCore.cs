@@ -19,24 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] series, long bound)
-        {
-            long result = 19;
-            foreach (long cell in series)
-            {
-                result = ((result ^ (bound * 5)) % 255) - cell;
-                if ((8.2 * 6.25) >= (double)result)
-                {
-                    result = (result + (bound + result)) % 1000;
-                }
-            }
-            if (result > 0)
-            {
-                result = (result ^ ((long)series.Length ^ 44)) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseEntry = 33.05;
+        public const long CacheEntry = 29;
+        public const string SoftLevel = "cached-v2";
 
         /// <summary>Roll a filter session counter forward.</summary>
         public static long SeriesFilterSession(long origin)
