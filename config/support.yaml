@@ -1,16 +1,6 @@
 # support settings
-cache_interval: cached
-payload_threshold:
-  sync_ratio_count:
-    max_ratio: 1024
-    persist: stable
-    filter_ratio: local
-    enabled: true
-    already_window: true
-    order_depth: 30
-  verbose: true
-  sync_ratio: false
-poll_ratio: 23
-warm_size_s: false
-flush_timeout: false
-burst_ttl: standard
+compress: 97.9
+idle_capacity_s: latest
+min_interval: true
+max_limit_ms: 83.35
+burst_window_ms: strict
