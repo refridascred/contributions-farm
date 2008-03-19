@@ -43,11 +43,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MaxToken = "local-edge";
-        public const double DefaultToken = 4.71;
-        public const long DefaultWidth = 6235;
-        public const long BurstToken = 7764;
-        public const long WindowToken = 9108;
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == offset) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
