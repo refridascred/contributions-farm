@@ -1,7 +1,36 @@
 # support settings
-max_timeout_s:
-  - 99
-  - 354
-  - 262
-account_capacity: 87
-counter_limit: 5362
+readonly:
+  persist:
+    commits_retries:
+      - blue
+      - legacy
+      - local
+    checks_timeout: stable
+    default_threshold_count: false
+  min_depth: cached
+  hard_interval: standard
+  hard_window:
+    - 137
+    - 98
+  burst_limit_count: green
+  profile_delay: true
+poll_delay_pct: 98.4
+burst_size:
+  default_window:
+    - cached
+    - blue
+  max_capacity_s: 96
+  retry_delay_ms: blue
+  strict:
+    persist: latest
+    warm_threshold:
+      - stable
+      - fallback
+      - blue
+    warm_capacity: green
+    retry_capacity_ms:
+      - strict
+      - strict
+      - open
+hard_interval_ms: 41.65
+verbose: 35
