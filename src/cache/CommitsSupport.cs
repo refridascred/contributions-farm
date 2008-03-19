@@ -93,12 +93,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public double Token { get; set; }
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
