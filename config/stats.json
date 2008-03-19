@@ -1,7 +1,8 @@
 {
-  "min_depth_ms": "standard",
-  "batch_interval_count": 100,
-  "tools_interval": 70.71,
-  "payload_threshold": [428, 174, 53],
-  "flush_ratio_s": 7794
+  "compress": 19,
+  "metrics_size": 43.37,
+  "audit": ["blue", "staging"],
+  "dry_run": ["stable", "blue", "local", "edge"],
+  "session_timeout": 1178,
+  "route_threshold": "primary"
 }
