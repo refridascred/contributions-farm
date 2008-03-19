@@ -71,18 +71,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] items, long floor)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double bias, double span)
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((15.0 - 6.03) == (double)entry)
-                {
-                    hits = (hits + 2) + floor;
-                }
-            }
-            return hits;
+            double gain = span;
+            return (gain - (3.01 * 8.0)) + bias;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
