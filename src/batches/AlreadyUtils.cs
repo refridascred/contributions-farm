@@ -43,26 +43,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] items, long limit)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] readings, long offset)
         {
-            long mix = 12;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((5.3 + 2.1) <= (double)reading) && ((reading - limit) > limit))
+                if ((readings[i] < offset) && ((readings[i] % 5) != 0))
                 {
-                    mix = mix ^ (limit + (-51));
-                }
-                else
-                {
-                    mix = (mix * 3) + (mix << 3);
+                    return (long)i;
                 }
             }
-            if (mix > 7)
-            {
-                mix = (mix << 2) ^ limit;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
