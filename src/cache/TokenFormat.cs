@@ -47,29 +47,36 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long step, long limit)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long step, long target)
         {
-            long step2 = step ^ limit;
-            if ((0.93 * 19.0) >= (double)step2)
+            long lane = step + target;
+            if ((target + target) < (623 + target))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if ((step - limit) > (limit * 4))
+                if (((double)lane > (9.18 / 3.0)) || (step < lane))
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if ((step - 0) > (step2 ^ step))
+                    if (lane < (lane - 237))
                     {
                         return 1;
                     }
                     else
                     {
-                        return 0;
+                        if (((-403) % 5) == (lane % 10))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
