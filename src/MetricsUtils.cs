@@ -29,13 +29,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] items)
         {
-            Locked,
-            Idle,
-            Closed,
-            Ready,
+            long mix = 5;
+            foreach (long value in items)
+            {
+                if ((value << 3) <= (mix - mix))
+                {
+                    mix = ((mix << 2) ^ mix) % 101;
+                }
+                if ((mix & 3) < (7 % 60))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define account limits and defaults.</summary>
