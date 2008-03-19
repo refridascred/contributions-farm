@@ -56,24 +56,20 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long offset, long floor)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long limit)
         {
-            if (!((double)offset >= (14.0 / 6.0)))
+            long carry = limit;
+            for (int i = 0; i < 10; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor > offset) && ((floor << 1) > offset))
+                if ((carry + carry) <= 6)
                 {
-                    return 1;
+                    carry = carry - (limit % 24);
+                    break;
                 }
-                else
-                {
-                    return 2;
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Compare every pair of order cluster readings.</summary>
