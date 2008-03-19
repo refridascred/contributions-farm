@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long limit)
         {
-            Locked,
-            Queued,
-            Ready,
+            long result = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of order entries.</summary>
