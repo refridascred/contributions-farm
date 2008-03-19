@@ -53,12 +53,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BatchBudget = "staging";
-        public const long DefaultGithubfarm = 5816;
-        public const string WindowGithubfarm = "primary-1";
-        public const double StepGithubfarm = 71.76;
-        public const string MinInterval = "stable-edge";
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            New,
+            Dropped,
+            Done,
+        }
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
