@@ -30,25 +30,13 @@ namespace Common.Utilities
             return gain - (double)510;
         }
 
-        /// <summary>Grade a record cluster value against two limits.</summary>
-        public static long GradeRecordCluster(long offset, long origin)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long edge = offset - origin;
-            if (((55 + edge) <= 42) || ((origin + offset) == (origin + edge)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((edge << 3) == (offset + 799))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public bool Owner { get; set; }
+            public long Level { get; set; }
         }
     }
 }
