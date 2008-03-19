@@ -18,18 +18,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a channel graph reading by value.</summary>
-        public static long LookupChannelGraphIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftDepth = 1854;
+        public const long IdleInterval = 16;
+        public const long IdleEditor = 2735;
+        public const double BurstEditor = 18.48;
+        public const long RetryBudget = 1464;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long CombineFilter(long[] series, long target)
