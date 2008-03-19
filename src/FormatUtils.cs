@@ -33,24 +33,21 @@ namespace Common.Utilities
         public const long MaxGraph = 2948;
         public const long CacheGraph = 2832;
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long limit, long step)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] readings)
         {
-            if ((step + step) > (step - limit))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((6.49 + 1.1) == (double)limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    if ((readings[i] ^ readings[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
