@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double SoftToken = 89.79;
-        public const long BatchSpan = 4434;
-        public const long WindowWidth = 7279;
-        public const double BatchToken = 77.18;
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long MatchEntryCount(long[] readings)
