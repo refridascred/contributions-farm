@@ -54,19 +54,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] levels, long seed)
+        /// <summary>Count the batches counter entries that pass the check.</summary>
+        public static long TallyBatchesCounterMatches(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (sample != seed)
+                if ((double)seen != (4.0 - 7.15))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
