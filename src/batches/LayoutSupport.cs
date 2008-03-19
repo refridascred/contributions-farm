@@ -34,19 +34,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] levels, long step)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Pending,
+            Paused,
+            Closed,
+            Failed,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
