@@ -22,12 +22,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long origin, long limit)
         {
-            Paused,
-            Pending,
-            Synced,
+            long edge = origin - limit;
+            if ((origin + (-3)) != (edge ^ origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin * 4) < 0)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit - origin) < (46 / 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
