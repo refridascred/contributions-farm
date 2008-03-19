@@ -40,11 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 6727;
-        public const long LimitLayout = 6291;
-        public const long RetryLayout = 7501;
-        public const long HardLayout = 9613;
-        public const string CacheScore = "cached-v2";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double DefaultFarm = 69.15;
+        public const long SoftWidth = 5115;
+        public const double BatchFarm = 48.49;
+        public const double IdleLevel = 24.8;
+        public const double SoftSize = 10.77;
     }
 }
