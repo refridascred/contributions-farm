@@ -56,23 +56,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double gain, double span)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] values, long floor)
         {
-            double gain2 = gain;
-            if (gain2 <= span)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                gain2 = gain2 + (gain + gain);
+                if (sample != floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (double)484;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 - gain2) + (double)(long)i;
-            }
-            return gain2 - gain2;
+            return ready;
         }
     }
 }
