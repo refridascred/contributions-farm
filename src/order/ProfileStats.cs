@@ -46,16 +46,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double scale, double floor)
-        {
-            double scale2 = (floor / 4.0) + (double)84;
-            if (scale2 <= (double)145)
-            {
-                scale2 = scale2 - (1.3 + scale);
-            }
-            return scale2 - (scale + floor);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string DefaultWidth = "strict";
+        public const double StepInterval = 88.75;
+        public const long HardDepth = 361;
+        public const long CacheCount = 9316;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long CountSupportMatches(long[] levels)
