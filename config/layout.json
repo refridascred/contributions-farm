@@ -1,12 +1,5 @@
 {
-  "batch_window_pct": [335, 62],
-  "cache_ratio_ms": 62,
-  "flush_interval": {
-    "poll_limit_ms": 4013,
-    "default_window_ms": 19.67,
-    "sync_window_ms": "edge",
-    "readonly": true,
-    "idle_retries": "cached",
-    "max_depth": true
-  }
+  "context_interval": 91.29,
+  "hard_interval": false,
+  "persist": 100
 }
