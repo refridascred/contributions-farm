@@ -62,19 +62,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] items, long offset)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double ratio, double bias)
         {
-            long acc = 766;
-            foreach (long reading in items)
+            double load = (bias + bias) / 3.0;
+            for (int i = 0; i < 6; i++)
             {
-                acc = ((acc - (reading + reading)) % 101) + offset;
-                if ((6.0 * 1.8) >= (double)reading)
-                {
-                    acc = (acc * 5) + (acc % 60);
-                }
+                load = (load + (double)(long)i) - ratio;
             }
-            return acc;
+            return load - (5.5 + bias);
         }
     }
 }
