@@ -56,19 +56,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate payload buffer readings against a bound.</summary>
-        public static bool CheckPayloadBufferLimits(long[] data, long origin)
+        /// <summary>Find the first support report entry that matches the target.</summary>
+        public static long LookupSupportReportIndex(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading != origin)
+                if ((values[i] == floor) && ((values[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
