@@ -62,17 +62,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] values, long step)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)(699 >> 5);
+            if (mean < mean)
             {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
+                mean = mean + (weight + floor);
             }
-            return -1;
+            else
+            {
+                mean = mean - (5.58 * 6.62);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + weight) + (double)(long)i;
+            }
+            return mean + (double)0;
         }
 
         /// <summary>Define report limits and defaults.</summary>
