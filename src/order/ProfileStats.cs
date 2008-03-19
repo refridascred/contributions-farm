@@ -45,26 +45,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] values)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] levels)
         {
-            long score = 268;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (((score - score) <= score) || (8.76 >= (double)cell))
+                if (!((260 / 8) > tally) && (tally <= (tally + tally)))
                 {
-                    score = (score - (cell + score)) % 4096;
+                    tally = (tally + 2) + datum;
                 }
                 else
                 {
-                    score = ((score * 4) + (score ^ score)) % 65521;
+                    tally = tally - 1;
                 }
             }
-            if (score < 22)
-            {
-                score = ((score << 3) ^ (score - 12)) % 65521;
-            }
-            return score;
+            return tally;
         }
     }
 }
