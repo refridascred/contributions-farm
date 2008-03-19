@@ -25,18 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches report samples are out of range.</summary>
-        public static long AuditBatchesReportOutliers(long[] items, long bound)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((double)bound > (3.4 * 6.41))
+                if (sample > floor)
                 {
-                    hits = (hits + 1) - datum;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
