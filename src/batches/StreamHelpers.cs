@@ -32,19 +32,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double ratio, double span)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] samples, long origin)
         {
-            double scale = ratio;
-            if (scale <= (double)5)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                scale = (scale - (double)244) + span;
+                if (!((reading < (reading % 60)) && ((origin * 5) != (reading * 3))))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale - ratio;
+            return seen;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
