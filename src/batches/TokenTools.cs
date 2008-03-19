@@ -22,11 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] items)
         {
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
+            long mark = 3;
+            foreach (long entry in items)
+            {
+                if ((entry < (entry / 8)) || ((mark * 5) == (41 % 60)))
+                {
+                    mark = mark ^ (entry >> 5);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a githubfarm report sample.</summary>
