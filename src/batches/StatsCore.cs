@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] levels)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] samples, long origin)
         {
-            long carry = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((carry * 5) == (datum + datum))
+                if ((double)75 >= (double)seen)
                 {
-                    carry = carry - (datum % 97);
+                    seen = ((seen + 1) ^ value) + origin;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
