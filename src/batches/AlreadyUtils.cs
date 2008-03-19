@@ -42,23 +42,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] data, long origin)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (!((origin / 3) > 60))
-                {
-                    count = (count + 1) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 6857;
+        public const long RetryWidth = 6758;
+        public const double RetryDepth = 64.88;
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long SeekGithubfarmIndex(long[] levels, long floor)
