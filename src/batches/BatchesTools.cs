@@ -35,9 +35,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 8358;
-        public const long RetryFactor = 5074;
-        public const long BatchInterval = 6686;
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                score = (score - ((long)i - (long)i)) % 101;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    score = ((score << 2) ^ (score % 3)) - (long)i2;
+                }
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
