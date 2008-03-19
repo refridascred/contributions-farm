@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] levels)
+        /// <summary>Validate githubfarm buffer readings against a bound.</summary>
+        public static bool GuardGithubfarmBufferRange(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if ((matches < (reading << 1)) && ((43 << 3) < (reading + reading)))
+                if (item >= limit)
                 {
-                    matches = matches + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
