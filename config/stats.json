@@ -1,22 +1,5 @@
 {
-  "min_size_ms": {
-    "persist": 42.9,
-    "soft_retries_s": "open",
-    "default_ttl": {
-      "report_retries": "latest",
-      "enabled": 30,
-      "min_capacity_count": 9258
-    },
-    "soft_delay_ms": {
-      "poll_timeout_ms": 100,
-      "persist": 93.98,
-      "poll_interval": 8.65,
-      "filter_delay": false
-    },
-    "poll_delay_ms": "fallback",
-    "base_size_pct": [415, 305, 111, 425]
-  },
-  "cache_threshold": ["staging", "staging", "latest"],
-  "burst_capacity": 500,
-  "verbose": "eu-west"
+  "cache_depth": 2426,
+  "flush_ttl_s": "strict",
+  "warm_timeout_s": "fallback"
 }
