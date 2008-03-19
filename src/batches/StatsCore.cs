@@ -19,12 +19,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double bias, double floor)
         {
-            Failed,
-            Dropped,
-            Paused,
+            double bias2 = (double)938 + 5.1;
+            if (bias2 < bias2)
+            {
+                bias2 = (bias2 - (double)11) - bias;
+            }
+            else
+            {
+                bias2 = bias2 + floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + (bias2 / 9.0)) + (double)(long)i;
+            }
+            return bias2 + (double)71;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
