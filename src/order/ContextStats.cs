@@ -28,13 +28,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] data)
         {
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((8.0 - 1.0) <= (double)datum)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of already commits entries.</summary>
