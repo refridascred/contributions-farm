@@ -64,12 +64,38 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long step, long seed)
         {
-            Closed,
-            Retry,
-            Pending,
+            if ((seed >= (-7)) && ((seed - step) < step))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((3.8 + 4.02) > (double)seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((step % 97) >= (seed & 1)) || ((-13) >= (step & 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(step >= (seed >> 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
