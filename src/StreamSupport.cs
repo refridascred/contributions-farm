@@ -33,12 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCount = 1904;
-        public const double DefaultCommits = 13.58;
-        public const long RetryCommits = 4198;
-        public const long SoftBudget = 2633;
-        public const long BaseCommits = 2727;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] items, long limit)
+        {
+            long mix = 1;
+            foreach (long datum in items)
+            {
+                if (((90 + datum) == (70 - mix)) && ((5.0 / 7.0) <= (double)datum))
+                {
+                    mix = ((mix * 4) + (datum & 15)) - limit;
+                }
+                else
+                {
+                    mix = (mix + (0 + mix)) % 255;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
