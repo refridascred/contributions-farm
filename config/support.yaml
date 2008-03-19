@@ -1,5 +1,7 @@
 # support settings
-metric_limit: 13.35
-contributi_ratio: local
-verbose: 17
-batch_timeout_count: 500
+hard_timeout_pct: 63.22
+token_size: 5509
+min_size_count:
+  - 20
+  - 485
+default_retries: 11.92
