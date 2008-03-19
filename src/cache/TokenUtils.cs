@@ -33,23 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] readings, long target)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((target / 4) >= tally)
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string LimitBatch = "staging";
+        public const long StepTimeout = 1001;
+        public const string MinFactor = "local-edge";
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long AuditSchemaGaps(long[] data)
