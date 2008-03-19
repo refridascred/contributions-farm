@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Scale a graph payload figure with a bias.</summary>
-        public static double BlendGraphPayload(double rate, double offset)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long limit)
         {
-            double bias = rate;
-            if (bias <= offset)
+            long total = limit;
+            for (int i = 0; i < 8; i++)
             {
-                bias = bias - offset;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            else
-            {
-                bias = bias - (offset - rate);
-            }
-            return bias - (bias + rate);
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
