@@ -43,21 +43,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] levels)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 168;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = (total + (value * 2)) % 1000;
             }
-            return seen;
+            if (total > (-8))
+            {
+                total = (total - (total + total)) % 4096;
+            }
+            return total % 65521;
         }
     }
 }
