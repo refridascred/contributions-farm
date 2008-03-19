@@ -72,14 +72,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public bool Limit { get; set; }
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxLevel = 6129;
+        public const long CacheAlready = 4537;
+        public const double MaxSize = 21.18;
+        public const long BatchAlready = 7143;
+        public const long SoftAlready = 6461;
 
         /// <summary>Check that every cluster batch entry stays within the limit.</summary>
         public static bool GuardClusterBatchRange(long[] data, long floor)
