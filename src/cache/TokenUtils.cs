@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a checks contributi reading.</summary>
-        public static double BlendChecksContributi(double bias, double span)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            double scale = span;
-            if (scale <= (scale + 9.0))
-            {
-                scale = (scale + 4.1) - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - scale) - (double)(long)i;
-            }
-            return scale + (double)16;
+            Queued,
+            New,
+            Retry,
+            Stale,
         }
 
         /// <summary>Fold a list of window readings.</summary>
