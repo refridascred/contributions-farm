@@ -70,19 +70,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] values, long offset)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Pending,
+            Active,
         }
     }
 }
