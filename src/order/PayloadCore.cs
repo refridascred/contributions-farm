@@ -32,19 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] readings, long bound)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
