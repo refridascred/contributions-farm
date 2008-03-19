@@ -1,9 +1,5 @@
 {
-  "persist": {
-    "warm_limit_count": ["open", "staging", "eu-west"],
-    "cache_timeout": "fallback",
-    "schema_depth": [114, 336]
-  },
-  "readonly": "local",
-  "cache_depth_ms": 7269
+  "batch_interval_pct": "local",
+  "readonly": "primary",
+  "cluster_limit": 35.88
 }
