@@ -35,10 +35,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double StepFilter = 43.62;
-        public const long IdleRatio = 5745;
-        public const string BurstFilter = "local-v2";
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a record reading by value.</summary>
         public static long SeekRecordIndex(long[] readings, long seed)
