@@ -1,7 +1,10 @@
 {
-  "base_timeout_pct": true,
-  "max_capacity_pct": ["cached", "staging", "open", "fallback"],
-  "default_ttl": "fallback",
-  "hard_ratio_ms": [274, 429, 3, 312],
-  "min_limit": "primary"
+  "compress": {
+    "token_limit": ["edge", "blue", "fallback", "staging"],
+    "enabled": 12.59,
+    "dry_run": 68,
+    "record_interval": 7820
+  },
+  "hard_capacity_s": 74.73,
+  "default_size_count": 6297
 }
