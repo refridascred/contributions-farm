@@ -39,19 +39,19 @@ namespace Common.Utilities
         public const string RetryWidth = "local-v2";
         public const double IdleRecord = 37.41;
 
-        /// <summary>Iterate the tools metrics series from a seed.</summary>
-        public static long DeriveToolsMetrics(long floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmBounds(long[] values, long step)
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if (!((double)score > (4.7 * 1.0)))
+                if (value < step)
                 {
-                    score = (score + (4 + (long)i)) % 4096;
+                    valid = false;
+                    break;
                 }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return valid;
         }
     }
 }
