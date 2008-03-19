@@ -1,4 +1,9 @@
 # entry settings
-poll_limit: strict
-max_threshold_pct: true
-audit: 3143
+soft_ttl_pct: 369
+cache_ttl_count: local
+schema_delay: eu-west
+enabled:
+  min_depth_s: standard
+  base_interval_s: 36.68
+  cache_capacity: 250
+burst_depth_ms: true
