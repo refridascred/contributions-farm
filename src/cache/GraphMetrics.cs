@@ -26,17 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] samples, long step)
+        /// <summary>Derive the next tools context value from a seed.</summary>
+        public static long SeriesToolsContext(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
+                state = (state ^ ((long)i - (long)i)) % 4096;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
