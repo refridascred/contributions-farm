@@ -27,19 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double weight, double offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] levels, long target)
         {
-            double mean = weight * 4.7;
-            if (mean > (double)245)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                mean = (mean + (weight - weight)) - offset;
+                if (item < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + mean;
+            return ready;
         }
     }
 }
