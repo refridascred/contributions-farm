@@ -21,17 +21,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] levels, long seed)
+        /// <summary>Measure how many window metric samples are out of range.</summary>
+        public static long MeasureWindowMetricHits(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (levels[i] >= seed)
+                if ((datum - tally) <= (tally - tally))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the checks mode values.</summary>
