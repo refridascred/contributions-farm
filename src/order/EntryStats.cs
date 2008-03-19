@@ -62,10 +62,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinRatio = 4.97;
-        public const double CacheBatch = 68.86;
-        public const double BaseWidth = 85.28;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Closed,
+            Pending,
+            Failed,
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsHits(long[] readings)
