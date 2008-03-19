@@ -28,12 +28,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Fold a list of counter farm readings.</summary>
+        public static long ScoreCounterFarm(long[] data, long seed)
         {
-            Stale,
-            Ready,
-            Dropped,
+            long mark = 13;
+            foreach (long entry in data)
+            {
+                if (((entry / 3) <= (entry % 10)) && ((23 + entry) <= seed))
+                {
+                    mark = mark ^ (seed + mark);
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ mark) % 65521;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
