@@ -1,50 +1,9 @@
 # entry settings
-batch_size_ms: legacy
-cache_interval_pct:
-  strict:
-    - legacy
-    - fallback
-  max_ratio_ms: true
-  flush_timeout: 1676
-  profile_delay: 89.26
-  default_threshold_ms:
-    audit: standard
-    metric_ratio:
-      - 95
-      - 472
-    max_ratio_s: false
-    max_size: blue
-    context_depth:
-      - latest
-      - edge
-    poll_ratio_pct: 89
-  burst_size: 1024
-cache_retries_count: fallback
-warm_delay_ms:
-  idle_threshold_pct: 46.17
-  retry_capacity_pct: 98.26
-  batch_depth: edge
-  base_timeout: 17.55
-  token_limit: true
-  sync_interval_pct: 100
-readonly:
-  compress:
-    format_threshold: 60
-    flush_retries: legacy
-    cache_capacity_s: 250
-    batches_window: 45
-  report_delay: 1024
-  max_delay: standard
-  base_depth_pct: 48
-  poll_limit:
-    - 353
-    - 477
-    - 96
-persist:
-  graph_delay: stable
-  cache_interval: 11.29
-  burst_capacity: 75
-  audit:
-    - legacy
-    - green
-    - blue
+min_retries_pct:
+  - primary
+  - edge
+counter_ratio:
+  hard_ratio_pct: 500
+  poll_ttl_ms: false
+  commits_depth: green
+retry_limit_ms: strict
