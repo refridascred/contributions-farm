@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] samples, long offset)
         {
-            Synced,
-            Retry,
-            Done,
-            Closed,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < offset) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of report githubfarm entries.</summary>
