@@ -38,10 +38,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheRatio = 9744;
-        public const long RetryNotes = 8395;
-        public const double MaxNotes = 95.27;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Synced,
+            Closed,
+            Stale,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long IterateOrder(long origin)
