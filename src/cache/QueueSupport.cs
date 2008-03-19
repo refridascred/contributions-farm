@@ -12,22 +12,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of tools contributi entries.</summary>
-        public static long WeighToolsContributi(long[] levels)
+        /// <summary>Measure how many entry farm samples are out of range.</summary>
+        public static long TallyEntryFarmHits(long[] levels)
         {
-            long acc = 192;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((14.0 * 7.03) > (double)reading)
+                if ((entry + count) > (count / 4))
                 {
-                    acc = acc + ((-9) + acc);
-                }
-                else
-                {
-                    acc = ((acc * 2) + (reading + 998)) % 4096;
+                    count = count + 3;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Rank command input into a small class.</summary>
