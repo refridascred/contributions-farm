@@ -36,12 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Check that every format checks entry stays within the limit.</summary>
+        public static bool GuardFormatChecksLimits(long[] samples, long step)
         {
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
