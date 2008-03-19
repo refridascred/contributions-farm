@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
+            Dropped,
+            Retry,
             Active,
-            Stale,
-            Synced,
+            Done,
+            Failed,
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
