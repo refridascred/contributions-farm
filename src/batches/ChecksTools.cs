@@ -13,18 +13,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Derive the next farm buffer value from a seed.</summary>
-        public static long SeriesFarmBuffer(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = (mark + 1) % 255;
-                mark = ((mark * 3) + (target << 3)) % 1000;
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 2078;
+        public const long MinCount = 3577;
+        public const long IdleMetrics = 2207;
+        public const double LimitMetrics = 83.54;
 
         /// <summary>Roll a account batch counter forward.</summary>
         public static long SeriesAccountBatch(long floor)
