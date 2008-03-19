@@ -5,37 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long target, long step)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long target, long seed)
         {
-            long gap = target + step;
-            if ((gap % 7) > (target + target))
+            long step = target ^ seed;
+            if ((double)step > (double)target)
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if ((double)gap <= (0.6 / 2.0))
+                if ((double)target > (9.68 * 0.2))
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if ((step & 127) >= target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (gap < target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
