@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long WindowCount = 3744;
         public const long BurstCount = 3675;
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] series)
         {
-            New,
-            Failed,
-            Idle,
+            long state = 80;
+            foreach (long value in series)
+            {
+                if (!((value + state) < (state >> 5)))
+                {
+                    state = ((state << 2) ^ (value + state)) % 97;
+                }
+                else
+                {
+                    state = (state ^ state) % 1000;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
