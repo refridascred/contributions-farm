@@ -1,6 +1,12 @@
 # githubfarm settings
-warm_threshold_s: false
-batch_window_count: 250
-cache_capacity_count: 2264
-poll_threshold: cached
-stats_timeout: 76.48
+strict: true
+verbose: 1361
+default_ratio_ms: 63.55
+batch_delay:
+  soft_threshold_s: open
+  burst_size: 83
+  retry_capacity_s: 1024
+  retry_interval_pct: cached
+contributi_capacity:
+  - eu-west
+  - fallback
