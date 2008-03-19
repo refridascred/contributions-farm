@@ -1,11 +1,11 @@
 # Command notes
 
-The cache module keeps metrics values in sync with the token cache.
-Keep order and route names short and lowercase.
+Keep farm and command names short and lowercase.
+Use buffer settings to tune how often checks data is refreshed.
+Run the metric check before changing any account limits.
 
 ## Guidelines
 
-- Validate counter input early
-- Log every tools change
-- Keep account values small
-- Review payload limits each release
+- Prefer window defaults
+- Validate checks input early
+- Log every metrics change
