@@ -29,12 +29,21 @@ namespace Common.Utilities
             return rate - (6.6 + span);
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Count schema context pairs that satisfy a relation.</summary>
+        public static long PairSchemaContextCount(long[] series)
         {
-            Done,
-            Draft,
-            Stale,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a metrics token sample.</summary>
