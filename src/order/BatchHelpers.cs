@@ -16,22 +16,15 @@ namespace Common.Utilities
             return scale + (rate * 9.7);
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] samples)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long floor)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long state = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)datum >= (double)1)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Roll a notes checks counter forward.</summary>
