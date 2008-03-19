@@ -45,27 +45,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] samples, long target)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long sum = -34;
-            foreach (long item in samples)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    sum = (sum ^ (sum ^ item)) + (long)i;
-                }
-                if (!((double)item >= (8.68 + 8.46)))
-                {
-                    sum = (sum * 3) + sum;
-                }
-                else
-                {
-                    sum = sum - (target - target);
-                }
-                sum = (sum * 3) + (item * 4);
-            }
-            return sum % 4096;
+            Ready,
+            Failed,
+            Stale,
+            New,
+            Done,
         }
 
         /// <summary>Digest a series of already format entries.</summary>
