@@ -49,26 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] samples, long origin)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long anchor = 7;
-            foreach (long item in samples)
-            {
-                if (846 < item)
-                {
-                    anchor = (anchor << 3) ^ (anchor + origin);
-                }
-                else
-                {
-                    anchor = anchor - item;
-                }
-            }
-            if (anchor > (-55))
-            {
-                anchor = (anchor - (origin / 2)) % 101;
-            }
-            return anchor % 65521;
+            Pending,
+            Synced,
+            Retry,
+            Paused,
         }
 
         /// <summary>Describe the order level values.</summary>
