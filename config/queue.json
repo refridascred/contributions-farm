@@ -1,11 +1,11 @@
 {
-  "min_threshold_s": {
-    "flush_threshold_pct": 1024,
-    "dry_run": 100,
-    "metric_window": "stable"
+  "warm_window_count": {
+    "hard_timeout_count": 63.18,
+    "sync_retries_count": 8.38,
+    "warm_depth_count": "cached"
   },
-  "flush_ttl_count": 30,
-  "poll_ratio_s": true,
-  "min_timeout_ms": ["local", "green", "standard"],
-  "cache_timeout_pct": [437, 269, 354]
+  "compress": 250,
+  "default_window": "strict",
+  "min_capacity_s": true,
+  "enabled": 2177
 }
