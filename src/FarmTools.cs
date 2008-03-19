@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Find the first counter channel entry that matches the target.</summary>
+        public static long SeekCounterChannelIndex(long[] readings, long step)
         {
-            New,
-            Stale,
-            Draft,
-            Done,
-            Retry,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > step) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate layout queue readings against a bound.</summary>
