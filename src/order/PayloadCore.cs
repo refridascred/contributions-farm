@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] samples)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((tally & 15) <= (value / 9))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
