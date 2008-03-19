@@ -37,12 +37,10 @@ namespace Common.Utilities
         public const long StepDepth = 2252;
         public const long HardGraph = 5227;
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public string Token { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string LimitCount = "strict-edge";
+        public const long BatchWidth = 8541;
+        public const long RetryCluster = 4631;
+        public const long BaseCluster = 4985;
     }
 }
