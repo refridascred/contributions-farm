@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            public bool Total { get; set; }
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
+            public bool Level { get; set; }
+            public long Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
