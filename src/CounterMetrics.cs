@@ -44,12 +44,14 @@ namespace Common.Utilities
         public const long BaseContext = 8815;
         public const long DefaultDepth = 7150;
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public string Offset { get; set; } = "";
+            Dropped,
+            Queued,
+            Failed,
+            Active,
+            Locked,
         }
     }
 }
