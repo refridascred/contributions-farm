@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] levels, long target)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double scale, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = (double)(1 - 6);
+            for (int i = 0; i < 7; i++)
             {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
+                drift = (drift - (double)50) + (double)(long)i;
             }
-            return -1;
+            return drift - (bias - scale);
         }
 
         /// <summary>Roll a payload counter forward.</summary>
