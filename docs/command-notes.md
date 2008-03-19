@@ -1,15 +1,15 @@
 # Command notes
 
-Use already settings to tune how often batches data is refreshed.
-Defaults for contributi live in the config folder and can be overridden per environment.
+Keep token and commits names short and lowercase.
+When a buffer fails, the command handler retries a few times before giving up.
 
-Defaults for account live in the config folder and can be overridden per environment.
-The stream report groups every support by queue.
-The window helpers are pure functions, so they are safe to call from any thread.
+A record that stays idle for too long is moved to the metrics list.
+The order helpers are pure functions, so they are safe to call from any thread.
+Use command settings to tune how often notes data is refreshed.
 
 ## Guidelines
 
-- Keep batches values small
-- Validate batches input early
-- Review profile limits each release
-- Prefer contributi defaults
+- Document new notes fields
+- Keep stats values small
+- Log every record change
+- Prefer order defaults
