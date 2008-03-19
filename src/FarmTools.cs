@@ -12,36 +12,22 @@ namespace Common.Utilities
         public const long IdleBuffer = 3226;
         public const long DefaultBuffer = 1011;
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long limit, long floor)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long limit, long seed)
         {
-            if ((floor - limit) == (limit / 6))
+            if (!((seed + 1) > (limit + limit)))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if ((double)floor <= 3.12)
+                if ((limit >> 3) >= (limit & 15))
                 {
                     return 3;
                 }
                 else
                 {
-                    if ((37 - limit) != (limit % 64))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor & 255) <= limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
