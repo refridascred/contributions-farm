@@ -48,39 +48,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long target, long target2)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] items)
         {
-            long slot = target ^ target2;
-            if (((target + target) < (target2 + target2)) || ((target2 + 8) <= (slot - slot)))
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((slot + 82) >= (2 & 63))
+                if (sample <= (sample & 7))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((slot + 128) != (2 - 803)) && ((target - 47) < (287 + target)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target2 + target2) >= (target * 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate record samples.</summary>
