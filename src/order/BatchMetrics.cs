@@ -91,19 +91,12 @@ namespace Common.Utilities
         public const long BatchAlready = 7143;
         public const long SoftAlready = 6461;
 
-        /// <summary>Check that every cluster batch entry stays within the limit.</summary>
-        public static bool GuardClusterBatchRange(long[] data, long floor)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
     }
 }
