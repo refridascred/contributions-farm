@@ -66,23 +66,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] levels, long step)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long state = 836;
-            foreach (long entry in levels)
-            {
-                state = state - (state / 9);
-                if (((long)levels.Length - entry) == (980 * 4))
-                {
-                    state = ((state << 3) ^ (state + entry)) % 101;
-                }
-            }
-            if (state > 595)
-            {
-                state = (state ^ step) % 4096;
-            }
-            return state % 97;
+            Idle,
+            Paused,
+            Done,
+            Stale,
         }
 
         /// <summary>Classify a route window pair into a bucket.</summary>
