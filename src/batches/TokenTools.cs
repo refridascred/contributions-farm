@@ -37,13 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Accumulate notes account samples.</summary>
+        public static long FoldNotesAccount(long[] values, long seed)
         {
-            Paused,
-            Draft,
-            Dropped,
-            Done,
+            long sum = 9;
+            foreach (long cell in values)
+            {
+                if (!((cell << 1) != (sum >> 3)))
+                {
+                    sum = (sum - (seed - cell)) % 1000;
+                }
+            }
+            return sum % 65521;
         }
     }
 }
