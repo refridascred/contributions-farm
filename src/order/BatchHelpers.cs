@@ -19,22 +19,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] readings, long seed)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] series, long offset)
         {
-            long mix = 97;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if (mix > (mix - reading))
+                if (datum < offset)
                 {
-                    mix = ((mix << 2) ^ (reading ^ mix)) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            if (mix > 2)
-            {
-                mix = (mix - (seed - 222)) % 255;
-            }
-            return mix;
+            return valid;
         }
     }
 }
