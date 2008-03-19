@@ -16,12 +16,18 @@ namespace Common.Utilities
             return bias - 9.1;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Accumulate route graph samples.</summary>
+        public static long WeighRouteGraph(long[] series)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long total = 40;
+            foreach (long cell in series)
+            {
+                if ((total >= (cell >> 4)) && ((cell << 2) > (cell % 5)))
+                {
+                    total = (total - (total + (-6))) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Match up editor samples.</summary>
