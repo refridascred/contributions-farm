@@ -56,14 +56,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Draft,
-            New,
-            Ready,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetryBuffer = 89.53;
+        public const double WindowBuffer = 75.48;
+        public const long CacheRatio = 3731;
     }
 }
