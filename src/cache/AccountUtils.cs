@@ -29,19 +29,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate metric channel readings against a bound.</summary>
-        public static bool VerifyMetricChannelBounds(long[] samples, long floor)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Region { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
         }
     }
 }
