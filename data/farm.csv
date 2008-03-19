@@ -1,7 +1,8 @@
-id,label,level,owner
-1,292,21.35,153
-2,94.17,staging,fallback
-3,81.41,292,81.98
-4,75,primary,52.37
-5,42.59,246,fallback
-6,55.72,cached,blue
+id,state,token,rank,label
+1,493,91.24,strict,186
+2,edge,304,408,881
+3,92.75,2.08,441,staging
+4,local,standard,56.64,865
+5,34.33,primary,985,local
+6,67.99,59.14,154,green
+7,7.05,edge,17.61,26.31
