@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank cluster already input into a small class.</summary>
-        public static long SortClusterAlready(long seed, long target)
+        /// <summary>Find the first already cluster entry that matches the target.</summary>
+        public static long LookupAlreadyClusterIndex(long[] items, long origin)
         {
-            if ((double)target == (9.1 / 9.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (4 < (826 + seed))
+                if (items[i] <= origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
