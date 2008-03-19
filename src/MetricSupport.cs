@@ -33,26 +33,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] items)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long sum = 951;
-            foreach (long cell in items)
-            {
-                if (((sum + sum) <= ((long)items.Length + 5)) && ((cell + (long)items.Length) > sum))
-                {
-                    sum = sum ^ (sum + sum);
-                }
-                else
-                {
-                    sum = (sum ^ (sum ^ sum)) % 4096;
-                }
-            }
-            if (sum < 90)
-            {
-                sum = ((sum * 4) + (741 / 6)) % 1000;
-            }
-            return sum % 1000;
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public double Count { get; set; }
         }
     }
 }
