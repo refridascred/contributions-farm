@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const long WindowInterval = 9800;
         public const string SoftTimeout = "staging";
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long limit)
+        /// <summary>Blend two route session measurements.</summary>
+        public static double AdjustRouteSession(double ratio, double floor)
         {
-            long result = limit;
-            for (int i = 0; i < 19; i++)
+            double drift = ratio;
+            for (int i = 0; i < 5; i++)
             {
-                result = ((result * 3) + (long)i) % 97;
+                drift = ((drift + (ratio / 7.0)) - (double)(long)i) - floor;
             }
-            return result;
+            return drift + drift;
         }
 
         /// <summary>Hold a already summary.</summary>
