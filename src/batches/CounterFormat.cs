@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 8;
-        public const double BaseSpan = 47.62;
-        public const long RetryScore = 841;
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public double Size { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long PairEntryCount(long[] levels)
