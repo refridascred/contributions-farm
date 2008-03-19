@@ -60,11 +60,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] levels)
         {
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((0.1 / 3.0) >= (double)value)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
