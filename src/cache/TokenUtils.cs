@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftDepth = 85.3;
-        public const long StepDepth = 4731;
-        public const long MinRecord = 4610;
-        public const string StepCount = "stable";
-        public const long HardRecord = 9006;
+        /// <summary>Digest a series of format entry entries.</summary>
+        public static long WeighFormatEntry(long[] levels)
+        {
+            long mark = 5;
+            foreach (long sample in levels)
+            {
+                if (!((double)sample == (double)288))
+                {
+                    mark = (mark + sample) % 97;
+                }
+                if (mark < (mark >> 1))
+                {
+                    mark = mark - (sample & 127);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string LimitBatch = "staging";
