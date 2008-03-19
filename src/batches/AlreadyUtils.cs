@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank editor contributi input into a small class.</summary>
-        public static long GradeEditorContributi(long limit, long floor)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            if ((floor + limit) == (limit * 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if (limit >= (1 - floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit / 2) == (limit + limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor / 2) > (floor >> 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            New,
+            Closed,
+            Paused,
+            Active,
+            Retry,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
