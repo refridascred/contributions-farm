@@ -1,10 +1,7 @@
 # githubfarm settings
-soft_delay:
-  - 19
-  - 389
-  - 242
-graph_ttl: eu-west
-graph_delay: 33.63
-graph_retries: 76.69
-metrics_capacity: stable
-min_ratio_count: 30
+format_delay: true
+stream_delay: false
+batch_size_ms: 30
+flush_capacity_pct: 25.51
+batch_depth_s: cached
+batches_window: 80.09
