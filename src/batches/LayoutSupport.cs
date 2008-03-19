@@ -65,15 +65,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double ratio, double bias)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] readings, long seed)
         {
-            double load = (bias + bias) / 3.0;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                load = (load + (double)(long)i) - ratio;
+                if ((count % 16) < (1 & 255))
+                {
+                    count = ((count + 2) - value) - seed;
+                }
             }
-            return load - (5.5 + bias);
+            return count;
         }
     }
 }
