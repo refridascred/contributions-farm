@@ -1,22 +1,6 @@
 {
-  "burst_retries_ms": 98.76,
-  "verbose": {
-    "readonly": 115,
-    "contributi_timeout": "green",
-    "min_threshold_count": true,
-    "queue_capacity": 40
-  },
-  "report_capacity": 24.86,
-  "idle_timeout_count": "blue",
-  "warm_capacity_s": ["standard", "blue", "local", "primary"],
-  "persist": {
-    "queue_timeout": {
-      "dry_run": 85.91,
-      "audit": "stable",
-      "queue_ttl": 2895,
-      "warm_threshold": 99
-    },
-    "retry_timeout_count": ["standard", "standard", "eu-west"],
-    "warm_limit": 9861
-  }
+  "min_ttl_s": 250,
+  "compress": 30,
+  "retry_retries": [128, 176, 353, 405],
+  "poll_window": true
 }
