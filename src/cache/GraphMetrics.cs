@@ -63,19 +63,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] items, long floor)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long step, long offset)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            if (offset <= (offset - step))
             {
-                if (reading != floor)
+                return 0;
+            }
+            else
+            {
+                if (!((offset / 5) <= (offset - offset)))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)step > (13.0 - 11.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)offset != (3.3 / 2.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
