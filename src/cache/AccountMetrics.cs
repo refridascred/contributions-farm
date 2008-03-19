@@ -47,10 +47,33 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 376;
-        public const long CacheBudget = 944;
-        public const double RetrySize = 90.57;
+        /// <summary>Rank graph queue input into a small class.</summary>
+        public static long RankGraphQueue(long floor, long step)
+        {
+            long slot = floor ^ step;
+            if ((slot > (floor / 3)) && (floor > (step + step)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((6.0 + 9.4) > (double)floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((floor + step) < step) || ((2 + slot) != (7 - slot)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long AuditOrderGaps(long[] items, long floor)
