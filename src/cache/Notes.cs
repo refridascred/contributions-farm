@@ -48,21 +48,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of stats filter readings.</summary>
-        public static long MatchStatsFilterCount(long[] samples)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((count <= limit) && ((limit * 5) < (sample ^ sample)))
                 {
-                    if ((samples[i] ^ samples[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
