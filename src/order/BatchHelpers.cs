@@ -26,18 +26,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] items)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long acc = 98;
-            foreach (long datum in items)
-            {
-                if ((acc - datum) == (acc + acc))
-                {
-                    acc = ((acc << 2) ^ (-7)) % 255;
-                }
-            }
-            return acc;
+            Ready,
+            Done,
+            Synced,
+            Active,
+            Queued,
         }
     }
 }
