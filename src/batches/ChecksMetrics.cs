@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] levels, long target)
         {
-            public string Stamp { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
