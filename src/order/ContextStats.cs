@@ -25,39 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stream token pair into a bucket.</summary>
-        public static long ClassifyStreamToken(long target, long step)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] series, long step)
         {
-            long gap = target + step;
-            if ((double)gap > (5.96 - 5.1))
+            bool ready = true;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((8.76 / 2.0) != (double)step)
+                if (item != step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(step > (1 + gap)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((-2) ^ target) >= (step - gap))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
