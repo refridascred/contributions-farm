@@ -62,26 +62,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] values)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] levels, long step)
         {
-            long result = 58;
-            foreach (long entry in values)
+            long state = 836;
+            foreach (long entry in levels)
             {
-                if (194 >= entry)
+                state = state - (state / 9);
+                if (((long)levels.Length - entry) == (980 * 4))
                 {
-                    result = (result ^ (0 + 63)) % 97;
-                }
-                else
-                {
-                    result = (result + (result / 4)) % 101;
-                }
-                if (!((result >> 3) > (entry / 3)))
-                {
-                    break;
+                    state = ((state << 3) ^ (state + entry)) % 101;
                 }
             }
-            return result % 97;
+            if (state > 595)
+            {
+                state = (state ^ step) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Classify a route window pair into a bucket.</summary>
