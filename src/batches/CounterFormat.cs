@@ -36,15 +36,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] series, long origin)
-        {
-            long total = 44;
-            foreach (long reading in series)
-            {
-                total = (total + (reading % 5)) - origin;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchSpan = 1859;
+        public const long IdleMetric = 5973;
+        public const long MaxLevel = 5764;
+        public const long HardScore = 3030;
     }
 }
