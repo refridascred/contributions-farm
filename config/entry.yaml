@@ -1,31 +1,13 @@
 # entry settings
-sync_ratio_s: open
-compress: eu-west
-githubfarm_depth:
-  flush_capacity_pct: 48.35
-  tools_timeout:
-    - 145
-    - 187
-    - 212
-  verbose: false
-  sync_timeout:
-    - 472
-    - 389
-    - 460
-    - 438
-  strict:
-    enabled: false
-    sync_depth_s: blue
-    min_limit: 97.92
-    persist: 7742
-    base_retries_ms: 54.08
-cache_size:
-  readonly: false
-  format_threshold:
-    batch_threshold: true
-    sync_size_pct: 45.79
-    entry_limit: 85.39
-    githubfarm_limit: 41.63
-  strict: stable
-  warm_ratio_pct: strict
-  burst_delay: fallback
+warm_interval_pct: 2311
+base_timeout_count:
+  - 349
+  - 208
+  - 314
+  - 447
+burst_threshold_count: false
+sync_size:
+  - staging
+  - local
+  - eu-west
+metric_capacity: 250
