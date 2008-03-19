@@ -28,17 +28,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] series, long bound)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 6;
+            foreach (long value in levels)
             {
-                if (series[i] <= bound)
+                if (((value + value) < acc) && ((value + 12) >= (acc ^ value)))
                 {
-                    return (long)i;
+                    acc = acc + (value + acc);
+                }
+                else
+                {
+                    acc = (acc + (value >> 5)) % 65521;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define token limits and defaults.</summary>
