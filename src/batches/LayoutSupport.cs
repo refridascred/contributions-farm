@@ -47,21 +47,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] items, long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long seed, long limit)
         {
-            long acc = -9;
-            foreach (long datum in items)
+            long cur = seed + limit;
+            if ((194 * 4) < (cur / 7))
             {
-                acc = (acc - (step - datum)) % 101;
-                for (int i = 0; i < 11; i++)
-                {
-                    acc = (acc + step) ^ (long)i;
-                    acc = (acc << 3) ^ (datum >> 5);
-                }
-                acc = (acc * 5) + (21 + step);
+                return 6;
             }
-            return acc % 97;
+            else
+            {
+                if ((6.2 - 6.0) > (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
