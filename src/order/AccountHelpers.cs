@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitWidth = 7991;
-        public const double IdleRecord = 60.06;
-        public const long BurstRecord = 2563;
-        public const long StepWidth = 4976;
-        public const long DefaultSize = 2543;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (14.0 > (double)matches)
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long WeighFarm(long[] levels, long seed)
