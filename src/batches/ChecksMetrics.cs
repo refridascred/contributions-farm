@@ -62,19 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] data, long seed)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate payload buffer readings against a bound.</summary>
