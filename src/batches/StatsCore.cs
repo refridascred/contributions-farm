@@ -53,22 +53,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] items, long seed)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double scale, double offset)
         {
-            long count = 0;
-            foreach (long entry in items)
+            double ratio = scale;
+            if (ratio >= ratio)
             {
-                if ((count & 7) <= count)
-                {
-                    count = ((count + 2) + entry) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio = ratio + (offset + scale);
             }
-            return count;
+            return ratio + (5.45 / 9.0);
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
