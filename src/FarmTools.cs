@@ -25,18 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] values, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long mix = 327;
+            foreach (long reading in items)
             {
-                if (((5.0 * 15.0) == (double)target) && (((target + target) > target) || (seen < (target >> 4))))
+                for (int i = 0; i < 3; i++)
                 {
-                    seen = (seen + 1) ^ sample;
+                    mix = ((mix << 2) ^ (reading * 4)) + (long)i;
                 }
+                mix = (mix ^ (mix % 3)) % 1000;
             }
-            return seen;
+            return mix % 4096;
         }
     }
 }
