@@ -28,18 +28,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] data)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long seed)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((8.0 - 1.0) <= (double)datum)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    matches = matches + 2;
+                    mark = (mark - (mark >> 4)) - (long)i2;
                 }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Digest a series of already commits entries.</summary>
