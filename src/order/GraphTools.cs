@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] data)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (matches > (394 - matches))
+                if (((tally % 60) < (entry % 8)) || ((entry >> 1) > (tally * 3)))
                 {
-                    matches = (matches + 1) - reading;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Roll a contributi entry counter forward.</summary>
