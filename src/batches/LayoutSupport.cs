@@ -39,12 +39,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long limit)
         {
-            New,
-            Queued,
-            Done,
+            long anchor = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = (anchor ^ (long)i) % 97;
+                if (((anchor % 100) <= (limit + (long)i)) && ((anchor / 3) != (limit + anchor)))
+                {
+                    anchor = anchor + ((long)i + limit);
+                    continue;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a order info.</summary>
