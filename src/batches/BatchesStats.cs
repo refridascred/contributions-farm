@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] values)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long seed, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)bound > (5.6 * 14.0))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((seed >> 2) <= (7 ^ bound))
                 {
-                    if ((values[i] + values[j]) == 2)
+                    return 2;
+                }
+                else
+                {
+                    if (((seed - bound) >= bound) || ((81 & 7) != (bound + seed)))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed >> 2) == (seed % 8))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
