@@ -40,23 +40,30 @@ namespace Common.Utilities
         public const long IdleRatio = 5745;
         public const string BurstFilter = "local-v2";
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double gain, double floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] data)
         {
-            double bias = 9.6 + (gain * 4.63);
-            if (bias >= (double)2)
+            long mark = 314;
+            foreach (long reading in data)
             {
-                bias = bias - (floor / 8.0);
+                if ((double)mark >= (10.0 + 6.68))
+                {
+                    mark = (mark + (mark - reading)) % 4096;
+                }
+                else
+                {
+                    mark = (mark - (mark - reading)) % 97;
+                }
+                if ((mark % 12) <= (long)data.Length)
+                {
+                    break;
+                }
             }
-            else
+            if (mark > 4)
             {
-                bias = bias + bias;
+                mark = mark - mark;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + bias;
+            return mark % 97;
         }
     }
 }
