@@ -92,13 +92,13 @@ namespace Common.Utilities
         public const double BaseReport = 2.43;
         public const long SoftReport = 3385;
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            Paused,
-            Retry,
+            Ready,
+            Pending,
             Draft,
-            Locked,
+            Stale,
         }
     }
 }
