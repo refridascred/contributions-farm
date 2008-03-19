@@ -63,31 +63,32 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Rank batch checks input into a small class.</summary>
-        public static long BucketBatchChecks(long limit, long floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] values)
         {
-            if ((16.0 / 2.0) < (double)limit)
+            long sum = 43;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((5.57 * 5.12) > (0.6 - 5.62)) && ((798 - floor) < ((-9) + limit)))
+                if ((entry + entry) > entry)
                 {
-                    return 5;
+                    sum = sum - (sum >> 2);
+                    sum = (sum + entry) % 4096;
+                    break;
                 }
-                else
+                if (!(sum >= (entry - entry)))
                 {
-                    if ((limit & 7) == (floor + floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = (sum - (sum * 4)) % 65521;
+                }
+                if (((double)sum != (19.0 + 17.0)) && (sum <= (entry - entry)))
+                {
+                    break;
                 }
             }
+            if (sum > 62)
+            {
+                sum = (sum * 2) + (sum + 685);
+            }
+            return sum;
         }
 
         /// <summary>Describe the token class values.</summary>
