@@ -49,19 +49,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] readings, long limit)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long origin, long bound)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            if ((0 + bound) <= bound)
             {
-                if (sample >= limit)
+                return 5;
+            }
+            else
+            {
+                if (bound <= (bound / 8))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((1 >> 1) <= (bound ^ bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((9 + bound) > (origin >> 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Locate a session batches reading by value.</summary>
