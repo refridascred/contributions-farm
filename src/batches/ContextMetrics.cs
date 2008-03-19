@@ -20,19 +20,18 @@ namespace Common.Utilities
         public const double HardDepth = 2.02;
         public const double BatchCommand = 49.84;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] values, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextGaps(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (reading > target)
+                if ((double)origin > (4.8 - 3.0))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
