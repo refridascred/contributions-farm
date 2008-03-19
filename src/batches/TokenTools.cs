@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long offset)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double gain, double offset)
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
+            double weight = offset;
+            if (weight > (double)5)
             {
-                total = ((total * 4) + (long)i) % 97;
+                weight = weight - weight;
             }
-            return total;
+            else
+            {
+                weight = weight + (double)43;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - gain;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
