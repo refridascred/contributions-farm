@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double rate, double bias)
+        /// <summary>Classify a layout counter pair into a bucket.</summary>
+        public static long SortLayoutCounter(long limit, long limit2)
         {
-            double rate2 = 7.6;
-            if (rate2 >= bias)
+            if (limit2 < limit)
             {
-                rate2 = (rate2 + (double)3) - rate;
+                return 1;
             }
             else
             {
-                rate2 = rate2 + bias;
+                if (((limit % 24) > (limit2 % 12)) || ((limit + limit) > (limit % 64)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((95 - limit) != (limit << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return rate2 - (rate2 / 9.0);
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
