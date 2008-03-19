@@ -38,23 +38,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] data)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] data, long target)
         {
-            long carry = 418;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = carry ^ (item * 2);
-                if ((4 & 255) > (item ^ carry))
+                if (data[i] >= target)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > 463)
-            {
-                carry = carry ^ (carry - carry);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a channel header.</summary>
