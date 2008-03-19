@@ -89,13 +89,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Count the format already entries that pass the check.</summary>
+        public static long TallyFormatAlreadyMatches(long[] samples)
         {
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-            public bool Size { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (!((count * 5) == (cell << 1)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
