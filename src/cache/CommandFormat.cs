@@ -48,12 +48,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public double Size { get; set; }
+            New,
+            Closed,
+            Locked,
+            Failed,
+            Draft,
         }
     }
 }
