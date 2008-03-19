@@ -78,11 +78,10 @@ namespace Common.Utilities
             return (gain - (3.01 * 8.0)) + bias;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 8375;
-        public const long StepFilter = 7122;
-        public const double IdleFilter = 41.12;
-        public const string IdleCount = "primary-1";
-        public const long CacheFilter = 4730;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 3906;
+        public const string BurstWidth = "staging-edge";
+        public const double LimitSize = 55.71;
+        public const double BatchInterval = 7.38;
     }
 }
