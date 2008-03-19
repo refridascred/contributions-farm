@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] samples, long origin)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry + entry) != (entry ^ 672))
-                {
-                    matches = (matches + 1) - origin;
-                }
-            }
-            return matches;
+            Paused,
+            Queued,
+            Idle,
         }
 
         /// <summary>Rank format input into a small class.</summary>
