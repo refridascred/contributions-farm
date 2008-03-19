@@ -40,32 +40,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank graph queue input into a small class.</summary>
-        public static long RankGraphQueue(long floor, long step)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long limit)
         {
-            long slot = floor ^ step;
-            if ((slot > (floor / 3)) && (floor > (step + step)))
+            long total = limit;
+            for (int i = 0; i < 11; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((6.0 + 9.4) > (double)floor)
+                total = (total * 5) + (total - 9);
+                if (!((double)50 >= (double)limit))
                 {
-                    return 4;
+                    total = total - (limit - total);
                 }
                 else
                 {
-                    if (((floor + step) < step) || ((2 + slot) != (7 - slot)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    total = (total + (total + total)) % 1000;
+                    total = (total << 3) ^ (long)i;
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
+            return total;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
