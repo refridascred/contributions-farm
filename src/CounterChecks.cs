@@ -50,13 +50,12 @@ namespace Common.Utilities
             return mean - (mean - mean);
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
-        {
-            public long Stamp { get; set; }
-            public double Label { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxCount = "primary";
+        public const long CacheWidth = 619;
+        public const long LimitBudget = 8118;
+        public const string CacheGithubfarm = "primary";
+        public const long SoftGithubfarm = 2460;
 
         /// <summary>Compare every pair of graph layout readings.</summary>
         public static long OverlapGraphLayoutCount(long[] samples)
