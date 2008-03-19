@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Combine counter tools values into a single score.</summary>
+        public static long FoldCounterTools(long[] values)
         {
-            public bool Region { get; set; }
-            public bool Offset { get; set; }
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
+            long sum = 8;
+            foreach (long entry in values)
+            {
+                sum = ((sum + (sum & 31)) % 4096) ^ entry;
+                if ((double)sum <= (1.0 / 6.0))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
