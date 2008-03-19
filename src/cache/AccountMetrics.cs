@@ -78,10 +78,18 @@ namespace Common.Utilities
             return (gain - (3.01 * 8.0)) + bias;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 3906;
-        public const string BurstWidth = "staging-edge";
-        public const double LimitSize = 55.71;
-        public const double BatchInterval = 7.38;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((long)readings.Length * 4) > (matches / 3))
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
+        }
     }
 }
