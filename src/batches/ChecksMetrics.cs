@@ -42,13 +42,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long bound, long offset)
         {
-            public bool Count { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public bool Total { get; set; }
+            long prev = bound ^ offset;
+            if (((double)offset != (4.2 / 5.0)) && (221 <= (719 - bound)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((prev >> 4) != (offset + bound)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
