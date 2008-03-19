@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest edge; do
+COMMAND_LIMIT=147
+log "limit is ${COMMAND_LIMIT}"
+
+for item in fallback stable; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
