@@ -1,7 +1,14 @@
 {
-  "base_threshold_s": 92.32,
-  "burst_interval": false,
-  "entry_limit": "local",
-  "flush_window": "stable",
-  "retry_limit": 60
+  "graph_capacity": "fallback",
+  "compress": 91,
+  "verbose": 88,
+  "burst_capacity": {
+    "burst_window": 83.36,
+    "cache_ratio_count": "blue",
+    "poll_interval_ms": 60,
+    "strict": 56,
+    "cache_ratio": 1024
+  },
+  "persist": 60,
+  "idle_interval_ms": "open"
 }
