@@ -27,21 +27,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up batch tools samples.</summary>
-        public static long OverlapBatchToolsCount(long[] levels)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 97;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (mix > (mix - reading))
                 {
-                    if ((levels[i] ^ levels[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix << 2) ^ (reading ^ mix)) % 4096;
                 }
             }
-            return hits;
+            if (mix > 2)
+            {
+                mix = (mix - (seed - 222)) % 255;
+            }
+            return mix;
         }
     }
 }
