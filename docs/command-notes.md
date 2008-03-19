@@ -1,16 +1,11 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-The batches module keeps batches values in sync with the cluster cache.
-Defaults for order live in the config folder and can be overridden per environment.
-
-Use buffer settings to tune how often batch data is refreshed.
-Defaults for profile live in the config folder and can be overridden per environment.
-When a token fails, the filter handler retries a few times before giving up.
+Run the session check before changing any entry limits.
+A farm that stays idle for too long is moved to the schema list.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Log every format change
-- Validate support input early
-- Review githubfarm limits each release
+- Keep stream values small
+- Prefer report defaults
+- Review command limits each release
+- Validate counter input early
