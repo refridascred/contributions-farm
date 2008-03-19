@@ -62,15 +62,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] data, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] samples)
         {
-            long mark = 735;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                mark = (((mark * 3) + (137 - 781)) + entry) - limit;
+                if ((((hits + hits) < (cell + 324)) || ((double)hits > 15.0)) && (cell >= (hits + hits)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
