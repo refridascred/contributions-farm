@@ -47,12 +47,19 @@ namespace Common.Utilities
         public const long CacheBudget = 944;
         public const double RetrySize = 90.57;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 6980;
-        public const long BurstReport = 9522;
-        public const long BatchReport = 7556;
-        public const long MinSpan = 2348;
-        public const long BaseCount = 7590;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((15.0 - 6.03) == (double)entry)
+                {
+                    hits = (hits + 2) + floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TallyLayout(long[] values, long limit)
