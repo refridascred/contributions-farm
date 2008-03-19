@@ -57,22 +57,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] levels, long origin)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (!((cell + origin) == (897 & 63)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepScore = 5630;
+        public const long BurstBatches = 3663;
+        public const long HardBatches = 455;
+        public const long CacheBatches = 853;
     }
 }
