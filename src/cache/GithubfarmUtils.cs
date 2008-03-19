@@ -30,18 +30,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] series)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((90 + entry) >= (entry + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
