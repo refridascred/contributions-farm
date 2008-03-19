@@ -51,13 +51,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double weight, double offset)
         {
-            Closed,
-            Paused,
-            Active,
-            Dropped,
+            double rate = offset;
+            if (rate >= (double)647)
+            {
+                rate = (rate + (4.8 / 4.0)) - weight;
+            }
+            return rate + (4.67 + 5.6);
         }
     }
 }
