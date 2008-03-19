@@ -33,15 +33,21 @@ namespace Common.Utilities
         public const string CacheWidth = "open";
         public const long LimitSpan = 2917;
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double weight, double span)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] values)
         {
-            double rate = weight;
-            if (rate > (rate * 5.06))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate + weight) + span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate + (double)(-57);
+            return seen;
         }
     }
 }
