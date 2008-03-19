@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] readings, long offset)
+        /// <summary>Check that every cluster queue entry stays within the limit.</summary>
+        public static bool GuardClusterQueueRange(long[] readings, long step)
         {
-            long state = 65;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((double)cell == (13.0 / 4.0))
+                if (item >= step)
                 {
-                    state = (state ^ (state + 454)) + offset;
+                    ready = false;
+                    break;
                 }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
