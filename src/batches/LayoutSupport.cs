@@ -58,19 +58,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of format graph entries.</summary>
-        public static long TallyFormatGraph(long[] series, long floor)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long total = 0;
-            foreach (long reading in series)
-            {
-                total = ((total * 2) + total) % 65521;
-                if ((reading / 4) != (floor + total))
-                {
-                    break;
-                }
-            }
-            return total % 97;
+            Active,
+            Done,
+            Paused,
         }
     }
 }
