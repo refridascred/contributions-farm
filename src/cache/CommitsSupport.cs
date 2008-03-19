@@ -73,13 +73,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public double Region { get; set; }
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
+            public long Stamp { get; set; }
             public long Total { get; set; }
+            public double Token { get; set; }
         }
     }
 }
