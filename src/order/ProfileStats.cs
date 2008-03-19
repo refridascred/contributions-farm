@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double scale, double offset)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            double rate = offset;
-            for (int i = 0; i < 2; i++)
-            {
-                rate = ((rate + (0.2 + offset)) - (double)(long)i) - scale;
-            }
-            return rate + rate;
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public bool Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Fold a list of farm readings.</summary>
