@@ -30,13 +30,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Combine batch format values into a single score.</summary>
+        public static long WeighBatchFormat(long[] readings, long offset)
         {
-            public bool Size { get; set; }
-            public long Level { get; set; }
-            public bool Score { get; set; }
-            public long Count { get; set; }
+            long anchor = 6;
+            foreach (long datum in readings)
+            {
+                if (anchor >= (datum & 15))
+                {
+                    anchor = (anchor - (datum % 3)) % 65521;
+                }
+            }
+            if (anchor < 97)
+            {
+                anchor = (anchor ^ (anchor + offset)) % 255;
+            }
+            return anchor % 65521;
         }
     }
 }
