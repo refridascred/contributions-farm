@@ -33,17 +33,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] values, long bound)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 951;
+            foreach (long cell in items)
             {
-                if ((values[i] >= bound) && ((values[i] % 2) == 0))
+                if (((sum + sum) <= ((long)items.Length + 5)) && ((cell + (long)items.Length) > sum))
                 {
-                    return (long)i;
+                    sum = sum ^ (sum + sum);
+                }
+                else
+                {
+                    sum = (sum ^ (sum ^ sum)) % 4096;
                 }
             }
-            return -1;
+            if (sum < 90)
+            {
+                sum = ((sum * 4) + (741 / 6)) % 1000;
+            }
+            return sum % 1000;
         }
     }
 }
