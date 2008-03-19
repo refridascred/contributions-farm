@@ -1,23 +1,11 @@
 {
-  "soft_window": [208, 83, 62, 324],
-  "route_depth": "cached",
-  "burst_ttl_pct": {
-    "githubfarm_window": 21.07,
-    "window_delay": 100,
-    "cache_size": 35.15
+  "flush_depth": 1712,
+  "cache_threshold_s": 72,
+  "hard_retries_s": {
+    "commits_limit": "legacy",
+    "base_ratio": 66.67,
+    "max_limit": 4762,
+    "compress": "local"
   },
-  "soft_threshold_ms": {
-    "soft_limit_s": "green",
-    "retry_threshold_s": [277, 102, 278],
-    "flush_ratio_ms": {
-      "batch_threshold_ms": 30,
-      "min_threshold": "edge",
-      "sync_ratio": "staging",
-      "account_capacity": 6042,
-      "verbose": "cached",
-      "graph_ttl": 55.29
-    },
-    "max_window": ["strict", "cached"]
-  },
-  "max_window_s": ["strict", "green", "standard"]
+  "hard_threshold_count": ["staging", "local", "green", "fallback"]
 }
