@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] items, long floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((double)datum != (17.0 + 6.0))
+                if ((((matches % 100) >= matches) && ((double)matches == (double)reading)) && ((double)reading == (9.0 * 19.0)))
                 {
-                    hits = (hits + 2) + floor;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
