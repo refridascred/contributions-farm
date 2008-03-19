@@ -1,5 +1,6 @@
 {
-  "strict": "blue",
-  "flush_retries": "strict",
-  "flush_window_pct": "latest"
+  "idle_ratio_pct": 1408,
+  "burst_depth_s": 250,
+  "context_window": "eu-west",
+  "audit": 3697
 }
