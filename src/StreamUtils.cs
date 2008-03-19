@@ -40,21 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count session filter pairs that satisfy a relation.</summary>
-        public static long OverlapSessionFilterCount(long[] series)
+        /// <summary>Audit metric stream readings against a rule.</summary>
+        public static long TallyMetricStreamOutliers(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sample + sample) != (sample * 2))
                 {
-                    if ((series[i] + series[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
