@@ -1,16 +1,11 @@
 # support settings
-format_ratio:
-  dry_run: 17
-  poll_delay: true
-  default_capacity_ms: eu-west
-  default_threshold_pct: 13
-  contributi_delay: 5639
-  default_retries_s: latest
-base_retries:
-  base_depth_s: false
-  batch_ttl: 1024
-  metrics_ratio: fallback
-verbose: green
-min_timeout_pct:
-  - 145
-  - 213
+flush_interval: primary
+hard_ratio_count: legacy
+hard_capacity_pct: 1024
+order_interval:
+  commits_threshold: 49.57
+  notes_ttl: 69.09
+  persist: 57.31
+  channel_size: 80
+default_interval_ms: staging
+soft_size_count: true
