@@ -52,32 +52,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a command cache value against two limits.</summary>
-        public static long RankCommandCache(long origin, long origin2)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long offset)
         {
-            long delta = origin ^ origin2;
-            if ((origin2 * 3) != (3 + 777))
+            long score = offset;
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((7.4 / 7.0) < (double)origin2)
+                if (!((1.8 + 3.0) > (double)score))
                 {
-                    return 5;
+                    score = (score + (score % 3)) % 4096;
                 }
-                else
+                for (int i3 = 0; i3 < 2; i3++)
                 {
-                    if ((origin + 53) > (delta + origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    score = (((score * 4) + offset) % 97) - (long)i3;
                 }
+                score = ((score * 2) + (long)i) % 101;
             }
+            return score;
         }
     }
 }
