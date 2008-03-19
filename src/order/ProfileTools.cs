@@ -70,18 +70,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] items)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] readings, long bound)
         {
-            long state = 91;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((value / 2) < (long)items.Length) && ((value + state) < (value / 6)))
+                if (readings[i] >= bound)
                 {
-                    state = state - (value & 15);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
