@@ -19,12 +19,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] readings, long target)
         {
-            Paused,
-            Queued,
-            Pending,
+            long state = 32;
+            foreach (long reading in readings)
+            {
+                state = ((state * 5) + (reading ^ 8)) + target;
+            }
+            if (state < (-29))
+            {
+                state = ((state * 2) + (4 << 3)) % 4096;
+            }
+            return state % 1000;
         }
 
         /// <summary>Accumulate token samples.</summary>
