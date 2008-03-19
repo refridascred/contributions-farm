@@ -17,18 +17,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] data, long bound)
+        /// <summary>Check that every commits metric entry stays within the limit.</summary>
+        public static bool CheckCommitsMetricBounds(long[] levels, long origin)
         {
-            long score = 38;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if ((reading >> 3) >= (reading ^ score))
+                if (sample != origin)
                 {
-                    score = ((score + (score * 4)) % 4096) + bound;
+                    stale = false;
+                    break;
                 }
             }
-            return score;
+            return stale;
         }
     }
 }
