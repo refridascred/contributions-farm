@@ -11,16 +11,18 @@ namespace Common.Utilities
         public const long DefaultBuffer = 6718;
         public const double MaxBuffer = 17.32;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long target)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] items)
         {
-            long mark = target;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                mark = (mark << 2) ^ (target >> 4);
-                mark = ((mark * 3) + (long)i) % 65521;
+                if ((sample + sample) < (2 + hits))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
