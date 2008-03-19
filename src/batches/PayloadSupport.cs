@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a checks record.</summary>
