@@ -66,19 +66,18 @@ namespace Common.Utilities
         public const double RetryBudget = 16.86;
         public const long RetryDepth = 2685;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] values, long step)
+        /// <summary>Digest a series of already commits entries.</summary>
+        public static long TallyAlreadyCommits(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long mix = 29;
+            foreach (long entry in samples)
             {
-                if (value < step)
+                if ((double)entry <= (4.0 - 3.3))
                 {
-                    valid = false;
-                    break;
+                    mix = mix - ((-467) - entry);
                 }
             }
-            return valid;
+            return mix % 4096;
         }
     }
 }
