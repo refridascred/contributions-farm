@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            Locked,
-            Idle,
-            Active,
-            Failed,
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
