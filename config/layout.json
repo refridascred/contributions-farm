@@ -1,17 +1,7 @@
 {
-  "retry_delay": "green",
-  "soft_threshold": "open",
-  "hard_delay_s": {
-    "hard_interval_s": 17,
-    "editor_capacity": {
-      "cluster_ratio": "cached",
-      "idle_threshold_ms": 53.3,
-      "audit": "green",
-      "default_window": 7321
-    },
-    "persist": true,
-    "hard_capacity_count": ["legacy", "local", "edge"]
-  },
-  "context_size": "standard",
-  "sync_size": "green"
+  "warm_depth": 2456,
+  "enabled": [48, 140],
+  "audit": "staging",
+  "idle_size_pct": "eu-west",
+  "readonly": 2095
 }
