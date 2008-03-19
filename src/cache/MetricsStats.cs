@@ -14,15 +14,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long offset)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long anchor = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public long Region { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
