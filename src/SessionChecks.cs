@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double rate, double span)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesRange(long[] series, long target)
         {
-            double weight = span + (rate - rate);
-            if (weight > (rate * 3.75))
+            bool stale = true;
+            foreach (long item in series)
             {
-                weight = weight + weight;
+                if (item >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return weight - weight;
+            return stale;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
