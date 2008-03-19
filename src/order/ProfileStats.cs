@@ -46,21 +46,19 @@ namespace Common.Utilities
         public const long HardDepth = 361;
         public const long CacheCount = 9316;
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] items)
+        /// <summary>Digest a series of command filter entries.</summary>
+        public static long ScoreCommandFilter(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 7;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                mark = ((mark - 89) % 1000) + step;
+                if ((1.0 / 9.0) < (double)mark)
                 {
-                    if ((items[i] - items[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark << 3) ^ reading) % 255;
                 }
             }
-            return count;
+            return mark % 1000;
         }
     }
 }
