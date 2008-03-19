@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long origin)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] series)
         {
-            long result = origin;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                long gap = (142 + (long)i) << 3;
-                if (((double)(-8) == (double)gap) && ((origin ^ result) != (gap ^ gap)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    gap = ((gap << 3) ^ (gap - 3)) % 101;
+                    if ((series[i] - series[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
