@@ -56,12 +56,17 @@ namespace Common.Utilities
         public const long MaxCluster = 8403;
         public const string LimitCluster = "alpha-1";
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] values, long seed)
         {
-            Active,
-            Draft,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
