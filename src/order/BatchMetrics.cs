@@ -33,12 +33,26 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] items)
         {
-            Synced,
-            Closed,
-            Active,
+            long state = 61;
+            foreach (long value in items)
+            {
+                if (!(((value + state) != (value << 1)) || (value > state)))
+                {
+                    state = ((state << 2) ^ value) % 97;
+                }
+                if (705 < state)
+                {
+                    state = state ^ (value ^ state);
+                }
+            }
+            if (state < 48)
+            {
+                state = state + (long)items.Length;
+            }
+            return state;
         }
 
         /// <summary>Describe the farm state values.</summary>
