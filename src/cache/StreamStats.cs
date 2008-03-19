@@ -41,19 +41,30 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] data)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] samples)
         {
-            long score = 761;
-            foreach (long value in data)
+            long mark = 53;
+            foreach (long item in samples)
             {
-                if (!((value / 6) != (value / 9)))
+                if (((-104) ^ mark) > ((long)samples.Length + mark))
                 {
-                    score = (score - (score / 7)) % 97;
+                    mark = mark ^ item;
                 }
-                score = (score - (10 >> 3)) % 97;
+                if (!((double)mark > 1.9))
+                {
+                    mark = mark ^ (894 % 10);
+                }
+                else
+                {
+                    mark = (mark * 5) + (item ^ 31);
+                }
             }
-            return score % 1000;
+            if (mark > 3)
+            {
+                mark = mark - (mark & 127);
+            }
+            return mark;
         }
     }
 }
