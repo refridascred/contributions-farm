@@ -19,12 +19,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Done,
             Failed,
-            Locked,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Find the first editor entry entry that matches the target.</summary>
