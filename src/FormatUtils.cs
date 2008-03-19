@@ -35,21 +35,19 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] items)
+        /// <summary>Validate githubfarm profile readings against a bound.</summary>
+        public static bool CheckGithubfarmProfileBounds(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value <= step)
                 {
-                    if ((items[i] ^ items[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Hold a channel stats.</summary>
