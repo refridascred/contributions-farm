@@ -13,12 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardCommand = 9.73;
-        public const long HardCount = 3951;
-        public const string LimitCommand = "standard";
-        public const double HardDepth = 2.02;
-        public const double BatchCommand = 49.84;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxBudget = 8002;
+        public const long SoftSize = 5557;
+        public const double HardAlready = 37.14;
+        public const long StepAlready = 712;
+        public const long StepSize = 7141;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextGaps(long[] levels, long origin)
