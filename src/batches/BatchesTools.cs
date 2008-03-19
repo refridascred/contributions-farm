@@ -22,22 +22,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] readings, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((5 >> 4) > (offset & 63))
+                if (((double)tally <= (6.77 * 14.0)) && (step <= (tally << 2)))
                 {
-                    matches = (matches + 2) ^ reading;
+                    tally = (tally + 2) + cell;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
