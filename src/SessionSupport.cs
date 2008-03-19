@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] readings)
+        /// <summary>Blend two entry metrics measurements.</summary>
+        public static double BlendEntryMetrics(double rate, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = bias;
+            if (load < rate)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = load + 2.0;
             }
-            return matches;
+            else
+            {
+                load = load + 18.0;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + load) - (double)(long)i;
+            }
+            return load + (double)1;
         }
 
         /// <summary>Hold a entry record.</summary>
