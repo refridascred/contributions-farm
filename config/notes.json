@@ -1,8 +1,9 @@
 {
-  "verbose": "standard",
-  "idle_depth_count": 30,
-  "hard_size_s": 4.12,
-  "default_threshold": "primary",
-  "farm_interval": 1024,
-  "retry_retries_s": 3.53
+  "editor_retries": 69,
+  "notes_interval": "eu-west",
+  "idle_ratio_ms": {
+    "order_ttl": "edge",
+    "idle_capacity_ms": 90.03,
+    "hard_delay": 100
+  }
 }
