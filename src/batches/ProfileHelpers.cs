@@ -69,19 +69,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] levels, long bound)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Total { get; set; }
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
