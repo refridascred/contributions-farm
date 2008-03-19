@@ -19,32 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a report checks value against two limits.</summary>
-        public static long GradeReportChecks(long offset, long origin)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long floor)
         {
-            long diff = offset + origin;
-            if (((diff - diff) >= (offset & 31)) || ((offset + origin) >= (origin * 5)))
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
             {
-                return 7;
+                anchor = anchor + (anchor - (long)i);
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((diff - offset) < (52 - 58))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((7.7 * 3.4) > (double)diff) && ((4.0 / 7.0) > (double)origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
