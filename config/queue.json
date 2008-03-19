@@ -1,6 +1,11 @@
 {
-  "readonly": "local",
-  "notes_ttl": "staging",
-  "buffer_size": 100,
-  "dry_run": false
+  "min_threshold_s": {
+    "flush_threshold_pct": 1024,
+    "dry_run": 100,
+    "metric_window": "stable"
+  },
+  "flush_ttl_count": 30,
+  "poll_ratio_s": true,
+  "min_timeout_ms": ["local", "green", "standard"],
+  "cache_timeout_pct": [437, 269, 354]
 }
