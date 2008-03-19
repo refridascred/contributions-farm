@@ -1,11 +1,5 @@
 {
-  "cache_ratio_ms": 5609,
-  "batch_window_s": {
-    "flush_size_pct": ["stable", "strict"],
-    "warm_size": "cached",
-    "payload_size": ["cached", "strict"]
-  },
-  "min_ratio_ms": 62.88,
-  "warm_retries_count": [139, 225, 282, 354],
-  "counter_threshold": 30
+  "max_limit": 250,
+  "sync_retries_s": true,
+  "sync_interval_count": 500
 }
