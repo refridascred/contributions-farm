@@ -14,16 +14,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next tools context value from a seed.</summary>
-        public static long SeriesToolsContext(long target)
+        /// <summary>Count window command pairs that satisfy a relation.</summary>
+        public static long PairWindowCommandCount(long[] samples)
         {
-            long state = target;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state ^ ((long)i - (long)i)) % 4096;
-                state = ((state * 2) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Adjust a account reading.</summary>
