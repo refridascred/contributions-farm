@@ -1,6 +1,5 @@
 {
-  "warm_retries_count": 30.88,
-  "verbose": 100,
-  "sync_capacity_count": 9923,
-  "soft_depth_s": "standard"
+  "enabled": "open",
+  "cache_window": 54,
+  "soft_ttl": 57
 }
