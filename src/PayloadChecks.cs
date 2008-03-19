@@ -65,16 +65,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long origin)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = (mark - (mark >> 4)) % 65521;
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Queued,
+            Locked,
+            Ready,
+            Active,
         }
     }
 }
