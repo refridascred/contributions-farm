@@ -1,5 +1,6 @@
 {
-  "verbose": [230, 55, 227],
-  "compress": 89.78,
-  "strict": true
+  "cluster_retries": [218, 292, 155],
+  "warm_delay_s": [133, 396, 278, 231],
+  "enabled": true,
+  "contributi_interval": 63
 }
