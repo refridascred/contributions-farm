@@ -16,24 +16,19 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long step, long offset)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long floor)
         {
-            if (!((offset - offset) >= (offset / 6)))
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (985 >= (offset + step))
+                if ((floor + floor) > 486)
                 {
-                    return 1;
+                    carry = (carry ^ floor) % 4096;
                 }
-                else
-                {
-                    return 8;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
