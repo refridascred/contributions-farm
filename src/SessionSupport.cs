@@ -14,22 +14,32 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] items, long origin)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long limit, long floor)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long delta = limit + floor;
+            if ((floor + 277) >= limit)
             {
-                if ((sample + 6) != (count % 100))
+                return 4;
+            }
+            else
+            {
+                if ((15.0 <= (double)floor) || ((limit << 2) >= floor))
                 {
-                    count = (count + 1) + origin;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((494 + limit) < (delta << 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
