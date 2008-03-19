@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] samples, long origin)
         {
-            Draft,
-            Pending,
-            Dropped,
-            Idle,
-            Closed,
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of already entries.</summary>
