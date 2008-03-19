@@ -36,16 +36,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the channel metric series from a seed.</summary>
-        public static long RollChannelMetric(long floor)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = ((acc * 3) + (acc + acc)) % 255;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+            public long Label { get; set; }
         }
     }
 }
