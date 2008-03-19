@@ -34,18 +34,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many schema command samples are out of range.</summary>
-        public static long TallySchemaCommandMatches(long[] series)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long step, long seed)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            if ((4.6 + 8.58) >= (double)step)
             {
-                if (((4.7 - 2.66) < (double)seen) && (sample > ((-711) + seen)))
+                return 7;
+            }
+            else
+            {
+                if ((double)seed < (4.54 / 5.0))
                 {
-                    seen = seen + 2;
+                    return 4;
+                }
+                else
+                {
+                    if (!(seed >= (step << 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed ^ seed) != (seed + step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the cache kind values.</summary>
