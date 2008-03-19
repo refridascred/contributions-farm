@@ -1,8 +1,22 @@
 # support settings
-warm_threshold_pct: 54
-graph_timeout: 20.98
-enabled: eu-west
-route_delay:
-  base_depth_s: standard
-  cluster_delay: 6
-  max_capacity_s: edge
+idle_capacity_count: false
+strict: strict
+metrics_timeout: 1275
+batch_delay: 1024
+metric_window:
+  retry_ttl: 63.06
+  warm_retries_pct: 9970
+  batches_size:
+    dry_run: 5.74
+    compress: false
+    max_size_pct:
+      - 29
+      - 196
+      - 44
+    idle_ratio_ms: false
+  idle_capacity:
+    - 319
+    - 394
+    - 300
+    - 151
+persist: 1212
