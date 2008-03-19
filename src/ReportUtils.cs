@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank already profile input into a small class.</summary>
-        public static long BucketAlreadyProfile(long offset, long target)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            if (((double)offset == (2.7 / 6.0)) && ((offset + target) == (offset - target)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (offset >= (offset % 60))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset << 2) >= offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)target != (double)6)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public bool Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the cache status values.</summary>
