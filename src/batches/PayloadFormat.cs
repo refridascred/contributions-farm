@@ -43,19 +43,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double weight, double offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] series, long target)
         {
-            double ratio = (double)503;
-            if (ratio >= ratio)
+            long total = 92;
+            foreach (long reading in series)
             {
-                ratio = (ratio - (weight - 8.0)) - offset;
+                if (total <= (reading - reading))
+                {
+                    total = (total ^ (target * 4)) % 255;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)40;
-            }
-            return ratio + (double)727;
+            return total;
         }
     }
 }
