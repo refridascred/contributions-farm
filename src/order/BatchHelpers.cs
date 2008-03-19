@@ -19,19 +19,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] series, long offset)
+        /// <summary>Count the schema cache entries that pass the check.</summary>
+        public static long MeasureSchemaCacheOutliers(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (datum < offset)
+                if (sample > (seen ^ seen))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
