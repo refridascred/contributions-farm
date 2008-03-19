@@ -1,14 +1,10 @@
 # entry settings
-warm_delay_pct:
-  - 303
-  - 237
-  - 131
-token_depth: false
-warm_ttl: 77
-soft_depth:
-  - stable
-  - edge
-  - legacy
-  - strict
-strict: 60
-batch_window_ms: false
+cache_size: 69
+token_capacity:
+  - 16
+  - 452
+  - 175
+order_depth: 48.39
+soft_delay_s: latest
+base_capacity_count: cached
+batch_limit_count: 78
