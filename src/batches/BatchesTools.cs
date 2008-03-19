@@ -20,13 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] values, long bound)
         {
-            Retry,
-            Idle,
-            Active,
-            Stale,
+            long score = 38;
+            foreach (long sample in values)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    score = ((((score << 2) ^ ((long)values.Length + 456)) % 101) ^ (long)i) + bound;
+                }
+                score = ((score * 4) + (sample + score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
