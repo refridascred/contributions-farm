@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] data, long seed)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long target, long step)
         {
-            long score = 858;
-            foreach (long sample in data)
+            if (!((target % 5) <= (step - step)))
             {
-                if ((score > (741 ^ score)) && ((731 + score) > (sample * 2)))
+                return 6;
+            }
+            else
+            {
+                if (!((7 - step) <= (8 - 22)))
                 {
-                    score = ((score + ((-56) >> 1)) % 4096) + seed;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (score > 506)
-            {
-                score = score ^ (score + 6);
-            }
-            return score % 1000;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
