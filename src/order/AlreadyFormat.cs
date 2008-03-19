@@ -44,16 +44,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] values)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long result = 96;
-            foreach (long entry in values)
-            {
-                result = (result - (1 * 2)) + entry;
-                result = (result + (result * 4)) % 4096;
-            }
-            return result;
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
