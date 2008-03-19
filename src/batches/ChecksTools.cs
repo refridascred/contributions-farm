@@ -13,22 +13,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftLayout = 39.11;
+        public const long StepSpan = 8512;
+        public const double IdleWidth = 93.88;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long TotalContext(long[] series, long offset)
