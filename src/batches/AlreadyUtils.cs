@@ -29,19 +29,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] levels, long offset)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (!((750 < (matches / 3)) || ((15.0 + 0.9) == (double)cell)))
-                {
-                    matches = (matches + 3) - offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowInterval = 4177;
+        public const long RetryLevel = 5607;
+        public const long RetryWidth = 7256;
 
         /// <summary>Adjust a metrics context reading.</summary>
         public static double ScaleMetricsContext(double ratio, double offset)
