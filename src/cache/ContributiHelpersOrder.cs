@@ -26,9 +26,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 5585;
-        public const long SoftLevel = 5952;
-        public const long CacheCommand = 4417;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] levels, long offset)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((offset - item) > (offset - matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
