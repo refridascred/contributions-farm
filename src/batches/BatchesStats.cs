@@ -43,22 +43,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] values, long target)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((double)target != (9.0 * 1.59))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double scale = (double)(29 ^ 2);
+            return ((scale + scale) + bias) + offset;
         }
     }
 }
