@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next channel metrics value.</summary>
-        public static double BlendChannelMetrics(double weight, double bias)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            double ratio = bias;
-            if (ratio > 8.0)
-            {
-                ratio = ratio - (ratio / 6.0);
-            }
-            return ratio - (5.0 - weight);
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
