@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema cluster entries.</summary>
-        public static long DigestSchemaCluster(long[] samples)
+        /// <summary>Check that every queue stream entry stays within the limit.</summary>
+        public static bool GuardQueueStreamBounds(long[] samples, long bound)
         {
-            long carry = 81;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                carry = (carry - (reading - carry)) % 101;
+                if (sample <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (carry < 719)
-            {
-                carry = carry - (carry >> 2);
-            }
-            return carry % 97;
+            return stale;
         }
 
         /// <summary>Accumulate record batches samples.</summary>
