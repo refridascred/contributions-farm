@@ -1,5 +1,5 @@
 # support settings
-tools_capacity: 60
-counter_interval: 19.22
-default_ratio_s: strict
-sync_interval_ms: 36
+metric_limit: 13.35
+contributi_ratio: local
+verbose: 17
+batch_timeout_count: 500
