@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double rate, double floor)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            double bias = floor;
-            if (bias <= bias)
-            {
-                bias = (bias + bias) + rate;
-            }
-            return bias + floor;
+            Synced,
+            Failed,
+            Draft,
+            Idle,
+            Locked,
         }
 
         /// <summary>Fold a list of window readings.</summary>
