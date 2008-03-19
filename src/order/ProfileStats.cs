@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] series, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                if ((80 << 1) != (sample + sample))
+                {
+                    tally = (tally + 1) + floor;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a contributi info.</summary>
