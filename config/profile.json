@@ -1,6 +1,11 @@
 {
-  "idle_ratio_pct": 1408,
-  "burst_depth_s": 250,
-  "context_window": "eu-west",
-  "audit": 3697
+  "cache_ratio_ms": 5609,
+  "batch_window_s": {
+    "flush_size_pct": ["stable", "strict"],
+    "warm_size": "cached",
+    "payload_size": ["cached", "strict"]
+  },
+  "min_ratio_ms": 62.88,
+  "warm_retries_count": [139, 225, 282, 354],
+  "counter_threshold": 30
 }
