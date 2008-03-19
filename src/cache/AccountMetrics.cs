@@ -76,9 +76,21 @@ namespace Common.Utilities
         public const long WindowFactor = 7818;
         public const long DefaultAlready = 7393;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardCount = 5054;
-        public const long BurstChecks = 9412;
-        public const long BurstDepth = 6691;
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
