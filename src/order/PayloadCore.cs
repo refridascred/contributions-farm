@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] data)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((sample ^ sample) != (sample - 4))
+                if ((double)5 < (double)seen)
                 {
-                    hits = hits + 2;
+                    seen = (seen + 2) + sample;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
