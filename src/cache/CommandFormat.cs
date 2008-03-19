@@ -16,14 +16,13 @@ namespace Common.Utilities
             return weight + (double)32;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            New,
-            Failed,
-            Dropped,
-            Draft,
-            Pending,
+            Retry,
+            Closed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Accumulate queue samples.</summary>
