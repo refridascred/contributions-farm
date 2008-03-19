@@ -1,6 +1,16 @@
 # entry settings
-base_delay_s: latest
-batch_retries_ms: 833
-strict: primary
-compress: false
-record_delay: latest
+hard_retries: false
+strict: false
+batch_window:
+  - 284
+  - 16
+  - 301
+context_timeout:
+  batches_retries: eu-west
+  flush_timeout_count: strict
+  buffer_threshold: false
+  retry_ttl: 49.98
+  enabled: 4525
+  max_timeout_pct: fallback
+hard_depth_s: stable
+order_interval: 3258
