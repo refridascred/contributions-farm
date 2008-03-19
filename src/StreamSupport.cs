@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] items)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] data)
         {
-            long state = -401;
-            foreach (long item in items)
+            long carry = 3;
+            foreach (long reading in data)
             {
-                long hits = item * 5;
-                state = (state ^ (hits >> 5)) % 4096;
-                if ((item % 8) <= (item / 2))
+                if ((reading % 3) <= 345)
                 {
-                    state = (state * 4) + (item % 64);
+                    carry = (carry + (reading >> 1)) % 65521;
                 }
             }
-            if (state < 809)
-            {
-                state = (state + (state - state)) % 65521;
-            }
-            return state % 4096;
+            return carry;
         }
 
         /// <summary>Accumulate stream samples.</summary>
