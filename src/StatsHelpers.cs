@@ -61,19 +61,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] data, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] series)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long state = 5;
+            foreach (long cell in series)
             {
-                if (sample >= offset)
+                state = (state + (cell ^ 0)) % 255;
+                if ((-72) <= (cell << 3))
                 {
-                    valid = false;
-                    break;
+                    state = (state - (cell ^ state)) % 4096;
                 }
             }
-            return valid;
+            return state % 65521;
         }
     }
 }
