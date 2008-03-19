@@ -37,12 +37,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] data)
         {
-            Closed,
-            Failed,
-            Active,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((sample + matches) >= (sample + (long)data.Length))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of account notes entries.</summary>
