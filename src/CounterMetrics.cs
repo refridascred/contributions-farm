@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long mark = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            New,
+            Active,
+            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
