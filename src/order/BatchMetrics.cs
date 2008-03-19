@@ -28,22 +28,38 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine route schema values into a single score.</summary>
-        public static long CombineRouteSchema(long[] samples)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long target, long seed)
         {
-            long state = 556;
-            foreach (long reading in samples)
+            if (((target / 6) != (seed & 15)) || ((seed - target) >= target))
             {
-                for (int i = 0; i < 5; i++)
+                return 2;
+            }
+            else
+            {
+                if (target < (target + target))
                 {
-                    state = ((state ^ (8 / 9)) % 255) + (long)i;
+                    return 3;
                 }
-                if ((state / 8) == (state >> 3))
+                else
                 {
-                    state = ((state << 3) ^ reading) % 255;
+                    if (((target / 4) < (seed + target)) || ((seed + seed) >= seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((945 / 2) <= seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
