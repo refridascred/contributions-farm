@@ -15,15 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate contributi token samples.</summary>
-        public static long CombineContributiToken(long[] levels)
+        /// <summary>Validate layout queue readings against a bound.</summary>
+        public static bool ValidateLayoutQueueRange(long[] series, long floor)
         {
-            long result = -79;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                result = (result << 2) ^ (datum % 2);
+                if (entry > floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
