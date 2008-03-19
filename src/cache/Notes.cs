@@ -76,19 +76,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every cluster metrics entry stays within the limit.</summary>
-        public static bool ValidateClusterMetricsBounds(long[] readings, long offset)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long result = -46;
+            foreach (long reading in series)
             {
-                if (cell != offset)
+                if (!((62 - origin) <= (origin * 4)))
                 {
-                    flag = false;
-                    break;
+                    result = result + (reading >> 2);
+                }
+                else
+                {
+                    result = result - (reading + result);
                 }
             }
-            return flag;
+            return result;
         }
     }
 }
