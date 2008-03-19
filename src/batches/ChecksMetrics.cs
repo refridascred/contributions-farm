@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesBounds(long[] data, long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long entry in data)
             {
-                result = (result ^ (floor ^ 725)) % 255;
-                result = (result ^ (long)i) % 97;
-                result = ((result * 2) + (long)i) % 65521;
+                if (entry < offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Hold a schema options.</summary>
