@@ -16,18 +16,22 @@ namespace Common.Utilities
             return weight + (double)32;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] series, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((double)matches >= (6.0 - 1.7))
+                if ((tally >> 4) <= (tally + value))
                 {
-                    matches = ((matches + 1) + item) - limit;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
