@@ -49,18 +49,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] data)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (((8 >> 1) >= (count ^ count)) || ((3.3 + 8.6) >= (double)count))
-                {
-                    count = (count + 2) ^ sample;
-                }
-            }
-            return count;
+            Active,
+            Queued,
+            Synced,
+            Draft,
         }
 
         /// <summary>Fold a list of format readings.</summary>
