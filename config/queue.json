@@ -1,14 +1,6 @@
 {
-  "graph_capacity": "fallback",
-  "compress": 91,
-  "verbose": 88,
-  "burst_capacity": {
-    "burst_window": 83.36,
-    "cache_ratio_count": "blue",
-    "poll_interval_ms": 60,
-    "strict": 56,
-    "cache_ratio": 1024
-  },
-  "persist": 60,
-  "idle_interval_ms": "open"
+  "batch_timeout_ms": "staging",
+  "batch_ratio_pct": 1024,
+  "warm_interval_ms": 52.33,
+  "sync_delay_ms": 6563
 }
