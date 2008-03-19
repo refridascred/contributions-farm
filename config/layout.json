@@ -1,6 +1,17 @@
 {
-  "cluster_retries": [218, 292, 155],
-  "warm_delay_s": [133, 396, 278, 231],
-  "enabled": true,
-  "contributi_interval": 63
+  "graph_limit": 76,
+  "max_retries": 1024,
+  "retry_capacity_ms": [15, 270, 228],
+  "max_interval_count": ["edge", "staging"],
+  "stats_delay": {
+    "readonly": {
+      "default_timeout_s": 7,
+      "compress": ["standard", "latest", "cached", "staging"],
+      "max_delay_count": "strict",
+      "account_capacity": 5003,
+      "poll_ttl": 9198
+    },
+    "idle_threshold_count": 30,
+    "githubfarm_size": true
+  }
 }
