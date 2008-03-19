@@ -38,12 +38,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepTimeout = 4334;
-        public const double BurstCluster = 90.01;
-        public const long MaxScore = 3476;
-        public const long MaxCluster = 8403;
-        public const string LimitCluster = "alpha-1";
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long LookupSupportIndex(long[] values, long seed)
