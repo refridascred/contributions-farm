@@ -28,11 +28,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleBudget = 9783;
-        public const double MinAccount = 19.32;
-        public const double LimitAccount = 14.8;
-        public const double MinTimeout = 83.15;
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long MatchBatchCount(long[] samples)
