@@ -23,19 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] values, long seed)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (sample > (sample % 24))
-                {
-                    hits = (hits + 3) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryFactor = 4688;
+        public const double SoftEditor = 11.68;
+        public const double DefaultRatio = 29.15;
+        public const long WindowSize = 3928;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long AuditSchemaOutliers(long[] levels)
