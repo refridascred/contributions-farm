@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit layout filter readings against a rule.</summary>
-        public static long TallyLayoutFilterMatches(long[] series)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long score = 841;
+            foreach (long cell in items)
             {
-                if ((entry - entry) != (hits + hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = score ^ cell;
             }
-            return hits;
+            return score % 65521;
         }
 
         /// <summary>Validate record metric readings against a bound.</summary>
