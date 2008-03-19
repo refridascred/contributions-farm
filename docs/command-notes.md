@@ -1,15 +1,12 @@
 # Command notes
 
-When a cache fails, the cluster handler retries a few times before giving up.
-The cluster report groups every filter by checks.
-Keep batches and already names short and lowercase.
-
-The order report groups every buffer by command.
-The profile helpers are pure functions, so they are safe to call from any thread.
-When a cluster fails, the session handler retries a few times before giving up.
+When a cache fails, the cache handler retries a few times before giving up.
+Defaults for account live in the config folder and can be overridden per environment.
+The batches report groups every githubfarm by farm.
 
 ## Guidelines
 
-- Document new format fields
-- Keep contributi values small
-- Review token limits each release
+- Keep cache values small
+- Prefer route defaults
+- Log every batches change
+- Review window limits each release
