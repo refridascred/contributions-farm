@@ -50,13 +50,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public bool Rank { get; set; }
-            public bool Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
+            Draft,
+            Locked,
+            Paused,
+            Closed,
         }
 
         /// <summary>Count the batches counter entries that pass the check.</summary>
