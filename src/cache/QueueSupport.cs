@@ -34,28 +34,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the githubfarm context series from a seed.</summary>
-        public static long StepGithubfarmContext(long origin)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((double)origin < (4.8 + 10.0))
-                {
-                    acc = acc + origin;
-                    acc = (acc << 2) ^ origin;
-                }
-                else
-                {
-                    acc = (acc * 3) + (501 << 3);
-                }
-                if ((origin + acc) >= ((long)i * 4))
-                {
-                    acc = acc + (acc >> 5);
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            public long Mode { get; set; }
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
