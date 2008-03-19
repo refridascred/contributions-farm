@@ -25,12 +25,17 @@ namespace Common.Utilities
         public const string HardInterval = "open";
         public const long CacheInterval = 6591;
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] values, long step)
         {
-            public long Label { get; set; }
-            public bool Count { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
