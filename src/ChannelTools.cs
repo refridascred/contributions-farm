@@ -17,18 +17,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] data)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading > (6.2 + 17.0))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Draft,
+            Locked,
+            Idle,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
