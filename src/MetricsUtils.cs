@@ -45,9 +45,19 @@ namespace Common.Utilities
         public const long BaseWidth = 1909;
         public const long RetryAccount = 2446;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowRatio = "primary-edge";
-        public const double StepProfile = 79.26;
-        public const long HardFactor = 223;
+        /// <summary>Fold a list of already checks readings.</summary>
+        public static long DigestAlreadyChecks(long[] series)
+        {
+            long anchor = 37;
+            foreach (long cell in series)
+            {
+                anchor = (anchor - (7 << 3)) - cell;
+            }
+            if (anchor > (-189))
+            {
+                anchor = anchor ^ (anchor * 3);
+            }
+            return anchor;
+        }
     }
 }
