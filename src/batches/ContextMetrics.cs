@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long offset, long floor)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            if (((offset & 127) > floor) && (16.0 >= (double)offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((-943) ^ floor) <= (floor + offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Paused,
+            Idle,
+            Dropped,
+            Locked,
+            Failed,
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
