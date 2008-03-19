@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Combine graph stats values into a single score.</summary>
+        public static long TallyGraphStats(long[] readings, long target)
         {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
-            public double Owner { get; set; }
+            long state = 835;
+            foreach (long sample in readings)
+            {
+                if ((state + state) <= sample)
+                {
+                    state = (state ^ (target + 579)) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Match up entry samples.</summary>
