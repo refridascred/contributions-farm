@@ -13,19 +13,39 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] data, long limit)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long target, long seed)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long bound = target + seed;
+            if ((target + target) != (target % 100))
             {
-                if (reading <= limit)
+                return 5;
+            }
+            else
+            {
+                if (((317 ^ bound) <= (seed + seed)) || ((target - target) >= seed))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound ^ seed) > (target + target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (seed <= (-6))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
