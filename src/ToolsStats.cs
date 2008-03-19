@@ -50,19 +50,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((((hits << 3) > (hits + 638)) || ((4.3 * 1.22) >= (double)sample)) && ((hits - hits) < (hits + sample)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MaxScore = "standard-1";
+        public const long RetryBatches = 7863;
+        public const long BaseBatches = 7717;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long MeasureProfileOutliers(long[] values)
