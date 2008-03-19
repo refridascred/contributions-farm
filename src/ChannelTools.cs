@@ -17,14 +17,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            Retry,
-            Done,
             Paused,
-            Dropped,
-            Ready,
+            Draft,
+            Failed,
+            Pending,
         }
 
         /// <summary>Describe the format kind values.</summary>
