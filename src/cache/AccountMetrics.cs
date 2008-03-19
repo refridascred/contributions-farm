@@ -20,13 +20,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Grade a format buffer value against two limits.</summary>
+        public static long GradeFormatBuffer(long offset, long origin)
         {
-            Locked,
-            Stale,
-            Synced,
-            Dropped,
+            if (((double)offset < (double)origin) && ((offset ^ origin) > (origin + origin)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)origin <= 8.0)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin == (6.4 / 7.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)origin != (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
