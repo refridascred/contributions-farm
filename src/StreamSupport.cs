@@ -25,13 +25,9 @@ namespace Common.Utilities
         public const long StepSpan = 3801;
         public const long CacheSize = 7345;
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Idle,
-            Retry,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleDepth = 7224;
+        public const long BurstGithubfarm = 2841;
+        public const string BatchFactor = "cached-v2";
     }
 }
