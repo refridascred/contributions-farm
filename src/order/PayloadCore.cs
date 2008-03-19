@@ -19,11 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Measure how many batch profile samples are out of range.</summary>
+        public static long TallyBatchProfileGaps(long[] items, long origin)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (!((double)(long)items.Length < 7.21))
+                {
+                    tally = ((tally + 3) + item) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a entry summary.</summary>
