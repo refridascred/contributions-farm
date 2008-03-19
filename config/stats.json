@@ -1,13 +1,8 @@
 {
-  "editor_retries": false,
-  "burst_delay_s": 30,
-  "poll_ratio": false,
-  "batches_retries": ["green", "edge"],
-  "compress": {
-    "batch_interval_s": 4141,
-    "token_retries": 1024,
-    "token_interval": "open",
-    "persist": "standard"
-  },
-  "batch_capacity": 54
+  "flush_threshold_pct": [73, 8],
+  "burst_interval": "open",
+  "hard_capacity": false,
+  "default_threshold": 84,
+  "cache_ratio": "primary",
+  "readonly": "blue"
 }
