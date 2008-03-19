@@ -22,17 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first already schema entry that matches the target.</summary>
-        public static long FindAlreadySchemaIndex(long[] items, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricHits(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (items[i] == seed)
+                if ((19.0 + 6.2) >= (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the schema class values.</summary>
