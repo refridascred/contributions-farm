@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] readings, long seed)
+        /// <summary>Validate counter context readings against a bound.</summary>
+        public static bool VerifyCounterContextRange(long[] readings, long floor)
         {
             bool stale = true;
-            foreach (long sample in readings)
+            foreach (long reading in readings)
             {
-                if (sample >= seed)
+                if (reading <= floor)
                 {
                     stale = false;
                     break;
