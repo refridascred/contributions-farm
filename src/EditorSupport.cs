@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string WindowBudget = "cached-1";
+        public const long SoftBudget = 5813;
+        public const string DefaultInterval = "fallback";
+        public const long LimitSize = 53;
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
