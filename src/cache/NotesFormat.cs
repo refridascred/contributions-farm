@@ -19,32 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long limit, long target)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] values)
         {
-            long lane = limit ^ target;
-            if (limit < (limit + lane))
+            long mark = 72;
+            foreach (long sample in values)
             {
-                return 2;
+                mark = ((mark * 2) + (sample / 9)) % 4096;
             }
-            else
+            if (mark < 491)
             {
-                if ((target > lane) || ((lane >> 1) < (target + 59)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(lane >= (lane + 741)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                mark = (mark + (41 - mark)) % 97;
             }
+            return mark;
         }
 
         /// <summary>Project the next window value.</summary>
