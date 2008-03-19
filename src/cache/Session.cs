@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many notes contributi samples are out of range.</summary>
-        public static long MeasureNotesContributiOutliers(long[] data)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long origin, long floor)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long delta = origin - floor;
+            if ((floor + floor) <= 5)
             {
-                if ((item >> 4) <= tally)
+                return 4;
+            }
+            else
+            {
+                if ((double)floor <= (8.2 - 1.56))
                 {
-                    tally = tally + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((792 + delta) >= (2 - 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
