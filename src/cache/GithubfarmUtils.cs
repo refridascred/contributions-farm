@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double weight, double offset)
+        /// <summary>Validate contributi route readings against a bound.</summary>
+        public static bool GuardContributiRouteRange(long[] readings, long seed)
         {
-            double mean = 1.11 + weight;
-            if (mean < weight)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                mean = mean - (mean + 2.51);
+                if (entry < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - offset) + (double)(long)i;
-            }
-            return mean + (mean * 15.0);
+            return ok;
         }
 
         /// <summary>Describe the account kind values.</summary>
