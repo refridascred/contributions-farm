@@ -1,16 +1,10 @@
 {
-  "default_interval_ms": {
-    "verbose": ["fallback", "blue", "local"],
-    "sync_size": 2560,
-    "max_ttl_count": 75.61,
-    "window_size": {
-      "format_window": ["legacy", "staging", "latest"],
-      "compress": "edge",
-      "format_ratio": 30,
-      "warm_retries": 72
-    }
+  "channel_ttl": {
+    "cache_size_ms": 1024,
+    "default_capacity": 12.41,
+    "audit": false
   },
-  "hard_ttl_count": true,
-  "support_depth": "strict",
-  "retry_threshold_count": ["stable", "staging", "latest"]
+  "audit": 8031,
+  "compress": ["blue", "strict"],
+  "enabled": true
 }
