@@ -23,11 +23,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] items, long origin)
         {
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((sample + 6) != (count % 100))
+                {
+                    count = (count + 1) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
