@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a cache metrics reading.</summary>
-        public static double SmoothCacheMetrics(double gain, double span)
-        {
-            double gain2 = span;
-            return gain2 - (gain * 6.24);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepFactor = "latest-edge";
+        public const long DefaultCount = 1937;
+        public const long DefaultBuffer = 6718;
+        public const double MaxBuffer = 17.32;
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long IterateChannel(long target)
