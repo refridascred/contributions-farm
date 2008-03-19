@@ -26,14 +26,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Ready,
-            Done,
-            Synced,
-            Active,
-            Queued,
+            public string Score { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
     }
 }
