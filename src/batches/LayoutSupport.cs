@@ -48,18 +48,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] items)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] items, long step)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long acc = -9;
+            foreach (long datum in items)
             {
-                if (sample <= (sample & 7))
+                acc = (acc - (step - datum)) % 101;
+                for (int i = 0; i < 11; i++)
                 {
-                    count = count + 1;
+                    acc = (acc + step) ^ (long)i;
+                    acc = (acc << 3) ^ (datum >> 5);
                 }
+                acc = (acc * 5) + (21 + step);
             }
-            return count;
+            return acc % 97;
         }
 
         /// <summary>Adjust a route reading.</summary>
