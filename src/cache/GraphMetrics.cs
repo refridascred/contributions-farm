@@ -43,21 +43,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] levels)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 7;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((mix & 3) < (mix - 867))
                 {
-                    if ((levels[i] - levels[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix * 4) + (mix - cell);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ cell) % 4096;
                 }
             }
-            return tally;
+            if (mix < 596)
+            {
+                mix = (mix + (mix - mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
