@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] data, long bound)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long offset, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((offset & 127) > floor) && (16.0 >= (double)offset))
             {
-                if (data[i] <= bound)
+                return 7;
+            }
+            else
+            {
+                if (((-943) ^ floor) <= (floor + offset))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
