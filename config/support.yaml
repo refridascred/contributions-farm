@@ -1,11 +1,6 @@
 # support settings
-flush_interval: primary
-hard_ratio_count: legacy
-hard_capacity_pct: 1024
-order_interval:
-  commits_threshold: 49.57
-  notes_ttl: 69.09
-  persist: 57.31
-  channel_size: 80
-default_interval_ms: staging
-soft_size_count: true
+poll_threshold_count: 74
+retry_delay_count: 954
+sync_retries: local
+flush_depth: blue
+strict: fallback
