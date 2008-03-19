@@ -23,16 +23,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double bias, double bias2)
-        {
-            double drift = bias2 * 5.8;
-            if (drift > bias2)
-            {
-                drift = (drift + (bias2 / 9.0)) - bias;
-            }
-            return drift + bias2;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheInterval = 7004;
+        public const long BatchOrder = 2786;
+        public const long StepSpan = 5427;
+        public const string CacheOrder = "fallback-edge";
+        public const long SoftLevel = 7919;
 
         /// <summary>Rank command format input into a small class.</summary>
         public static long BucketCommandFormat(long offset, long target)
