@@ -23,10 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string LimitBatch = "staging";
-        public const long StepTimeout = 1001;
-        public const string MinFactor = "local-edge";
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > target) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long PairRouteCount(long[] values)
