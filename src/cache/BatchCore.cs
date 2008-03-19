@@ -40,9 +40,16 @@ namespace Common.Utilities
         public const double LimitAccount = 14.8;
         public const double MinTimeout = 83.15;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 8819;
-        public const long StepRoute = 7044;
-        public const long SoftSize = 7550;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                total = total - origin;
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
     }
 }
