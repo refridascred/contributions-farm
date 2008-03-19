@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] items)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 716;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (acc < (target + 8))
                 {
-                    if ((items[i] ^ items[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc ^ sample) % 255;
+                }
+                if ((sample * 3) != (target + acc))
+                {
+                    acc = ((acc << 2) ^ (27 % 100)) % 4096;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Check that every batch entry entry stays within the limit.</summary>
