@@ -41,9 +41,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 9625;
-        public const long MaxBatches = 6928;
-        public const long RetryBatches = 192;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftMetrics = "stable-v2";
+        public const string StepRatio = "fallback-1";
+        public const long BaseMetrics = 324;
+        public const long WindowRatio = 4602;
+        public const long LimitMetrics = 8020;
     }
 }
