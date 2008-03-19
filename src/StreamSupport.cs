@@ -19,12 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long floor)
         {
-            New,
-            Failed,
-            Retry,
+            long anchor = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = (anchor - (long)i) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the context status values.</summary>
