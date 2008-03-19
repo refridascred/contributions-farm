@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] levels)
+        /// <summary>Match up farm checks samples.</summary>
+        public static long MatchFarmChecksCount(long[] data)
         {
-            long sum = 9;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sum - 79) > ((-6) & 127))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = ((sum * 2) + (sum / 8)) + cell;
+                    if ((data[i] + data[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum > 2)
-            {
-                sum = sum - (14 % 16);
-            }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
