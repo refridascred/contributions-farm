@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Synced,
-            Closed,
-            Queued,
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Locate a queue command reading by value.</summary>
