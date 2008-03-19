@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the channel queue entries that pass the check.</summary>
-        public static long TallyChannelQueueGaps(long[] series)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((64 * 4) < seen)
+                if ((double)bound == (13.0 * 16.0))
                 {
-                    seen = (seen + 3) ^ value;
+                    count = (count + 3) ^ sample;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
