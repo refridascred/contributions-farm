@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue stream entry stays within the limit.</summary>
-        public static bool GuardQueueStreamBounds(long[] samples, long bound)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
