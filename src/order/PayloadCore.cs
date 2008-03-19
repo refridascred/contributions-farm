@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] items, long floor)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double ratio, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio2 = span * 4.8;
+            if (ratio2 >= (ratio2 / 4.0))
             {
-                if ((items[i] > floor) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                ratio2 = ratio2 + ratio;
             }
-            return -1;
+            else
+            {
+                ratio2 = ratio2 + (ratio + ratio);
+            }
+            return ratio2 - ratio2;
         }
 
         /// <summary>Describe the context status values.</summary>
