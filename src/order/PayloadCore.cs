@@ -28,12 +28,20 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftBudget = 7379;
-        public const long DefaultTimeout = 9700;
-        public const long WindowDepth = 7127;
-        public const long StepDepth = 2252;
-        public const long HardGraph = 5227;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] readings, long bound)
+        {
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string LimitCount = "strict-edge";
