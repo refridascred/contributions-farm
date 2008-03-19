@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] series)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (((tally % 60) < (entry % 8)) || ((entry >> 1) > (tally * 3)))
+                if ((entry ^ hits) >= (entry - entry))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 2) - bound;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a support options.</summary>
