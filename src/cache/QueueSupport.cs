@@ -24,23 +24,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] series, long bound)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] series, long floor)
         {
-            long acc = 5;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                acc = ((acc - 210) % 101) - bound;
-                if (((acc - 8) > (acc << 1)) || ((double)acc < (5.4 - 1.31)))
+                if ((datum - hits) != (1 + 6))
                 {
-                    acc = (acc + (acc - 4)) % 101;
+                    hits = (hits + 3) + floor;
                 }
-                if (cell <= (acc >> 5))
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return acc;
+            return hits;
         }
     }
 }
