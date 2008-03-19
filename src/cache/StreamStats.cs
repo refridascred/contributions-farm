@@ -38,15 +38,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long offset)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] samples, long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
