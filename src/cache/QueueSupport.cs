@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Derive the next context batches value from a seed.</summary>
+        public static long StepContextBatches(long bound)
         {
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = acc + 30;
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of support metrics entries.</summary>
