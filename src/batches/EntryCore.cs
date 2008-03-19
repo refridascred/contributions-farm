@@ -49,13 +49,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] samples, long step)
         {
-            Pending,
-            Synced,
-            Retry,
-            Paused,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((step * 2) != (step * 5))
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate token samples.</summary>
