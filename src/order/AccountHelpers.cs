@@ -38,22 +38,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] values)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long floor, long step)
         {
-            long seen = 0;
-            foreach (long value in values)
+            if ((double)step < 3.0)
             {
-                if (value >= (seen * 5))
+                return 8;
+            }
+            else
+            {
+                if (floor >= (floor % 24))
                 {
-                    seen = seen + 3;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((9.2 * 7.9) != (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step - floor) == (step / 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank batch checks input into a small class.</summary>
