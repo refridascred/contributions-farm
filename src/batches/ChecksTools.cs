@@ -13,10 +13,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftLayout = 39.11;
-        public const long StepSpan = 8512;
-        public const double IdleWidth = 93.88;
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == step) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long TotalContext(long[] series, long offset)
