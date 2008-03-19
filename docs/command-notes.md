@@ -1,14 +1,11 @@
 # Command notes
 
-The payload module keeps stream values in sync with the report cache.
-The batches report groups every filter by record.
-
-The command report groups every checks by batches.
-Use editor settings to tune how often batch data is refreshed.
+Keep command and metric names short and lowercase.
+Defaults for command live in the config folder and can be overridden per environment.
+The report module keeps queue values in sync with the batch cache.
 
 ## Guidelines
 
-- Validate layout input early
-- Document new editor fields
-- Prefer profile defaults
-- Keep record values small
+- Log every batches change
+- Review cluster limits each release
+- Prefer filter defaults
