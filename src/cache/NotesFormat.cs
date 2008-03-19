@@ -22,18 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] samples, long step)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry + entry) <= (step - count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Paused,
+            Pending,
+            Synced,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
