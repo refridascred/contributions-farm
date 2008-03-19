@@ -19,34 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] data)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] samples)
         {
-            long sum = 86;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                for (int i = 0; i < 11; i++)
+                if ((count - sample) <= (count << 1))
                 {
-                    sum = (((sum * 4) + (datum - 9)) % 97) - (long)i;
-                }
-                if ((16 < (sum % 8)) && ((datum - sum) >= (63 * 3)))
-                {
-                    sum = (sum - (sum >> 5)) % 101;
-                }
-                else
-                {
-                    sum = (sum * 5) + (datum - sum);
-                }
-                if (((datum & 255) != (datum & 63)) || (datum <= (datum - 6)))
-                {
-                    sum = (sum - 59) % 97;
+                    count = count + 1;
                 }
             }
-            if (sum < 90)
-            {
-                sum = sum + (sum - sum);
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
