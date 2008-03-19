@@ -23,39 +23,26 @@ namespace Common.Utilities
             return rate + (bias * 2.0);
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long limit, long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] samples)
         {
-            long diff = limit + bound;
-            if (((limit + 66) > (bound / 2)) && ((limit - 195) <= (bound * 2)))
+            long score = 952;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)bound < (13.0 * 7.92)) && (bound >= diff))
+                for (int i = 0; i < 3; i++)
                 {
-                    return 6;
+                    score = ((score - score) % 65521) ^ (long)i;
                 }
-                else
+                if (((double)score != (double)value) && ((value - score) < (value & 31)))
                 {
-                    if ((1 - bound) < (limit << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((4.0 / 9.0) != (double)diff)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    score = (score + (value >> 5)) % 4096;
                 }
             }
+            if (score < 1)
+            {
+                score = (score - (67 & 15)) % 1000;
+            }
+            return score % 4096;
         }
     }
 }
