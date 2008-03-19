@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public bool Label { get; set; }
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public double Flag { get; set; }
+            public string Region { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
