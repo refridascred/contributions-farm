@@ -22,15 +22,11 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Blend two context window measurements.</summary>
-        public static double AdjustContextWindow(double weight, double bias)
-        {
-            double weight2 = (double)0;
-            if (weight2 > (double)53)
-            {
-                weight2 = (weight2 + (weight2 * 1.0)) + weight;
-            }
-            return weight2 - (bias - 19.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryRoute = "legacy-v2";
+        public const long HardRoute = 850;
+        public const long BurstTimeout = 1749;
+        public const string DefaultRoute = "stable-edge";
+        public const double BurstRatio = 72.04;
     }
 }
