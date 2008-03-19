@@ -15,31 +15,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long offset, long seed)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] samples, long offset)
         {
-            if ((seed - 23) > (5 * 4))
+            long anchor = 19;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset >= (8 + offset))
+                if (379 <= (anchor >> 1))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset + seed) >= (seed * 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    anchor = (anchor - (offset % 64)) + reading;
                 }
             }
+            if (anchor > 9)
+            {
+                anchor = ((anchor * 5) + (offset / 7)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
