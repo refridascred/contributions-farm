@@ -1,13 +1,7 @@
 {
-  "retry_size_ms": true,
-  "base_retries_s": 500,
-  "hard_threshold_count": {
-    "editor_ratio": ["fallback", "blue", "staging"],
-    "batch_threshold": true,
-    "notes_ttl": 44.27,
-    "cluster_delay": 34.78
-  },
-  "compress": 91,
-  "max_threshold_pct": "eu-west",
-  "idle_limit": 68
+  "idle_delay": true,
+  "base_capacity_count": "cached",
+  "record_ratio": 12,
+  "default_limit_ms": "fallback",
+  "compress": 71.09
 }
