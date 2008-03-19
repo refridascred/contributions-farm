@@ -58,15 +58,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double gain, double span)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            double gain2 = gain;
-            if (gain2 < gain)
-            {
-                gain2 = (gain2 - (gain - gain2)) + span;
-            }
-            return gain2 - (double)870;
+            Idle,
+            Draft,
+            Retry,
         }
     }
 }
