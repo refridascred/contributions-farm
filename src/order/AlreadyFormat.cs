@@ -63,9 +63,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultLevel = 9046;
-        public const long RetryEntry = 119;
-        public const long WindowLevel = 3583;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double gain, double span)
+        {
+            double gain2 = gain;
+            if (gain2 <= span)
+            {
+                gain2 = gain2 + (gain + gain);
+            }
+            else
+            {
+                gain2 = gain2 + (double)484;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 - gain2) + (double)(long)i;
+            }
+            return gain2 - gain2;
+        }
     }
 }
