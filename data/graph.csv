@@ -1,6 +1,11 @@
-id,token,ratio,label
-1,380,31.54,235
-2,42,stable,standard
-3,705,783,46.17
-4,36.02,81.04,515
-5,cached,931,646
+id,token
+1,staging
+2,eu-west
+3,4.06
+4,stable
+5,80
+6,817
+7,15.14
+8,primary
+9,432
+10,884
