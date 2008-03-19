@@ -34,18 +34,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate notes account samples.</summary>
-        public static long FoldNotesAccount(long[] values, long seed)
+        /// <summary>Look up the position of a githubfarm report sample.</summary>
+        public static long FindGithubfarmReportIndex(long[] values, long seed)
         {
-            long sum = 9;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((cell << 1) != (sum >> 3)))
+                if ((values[i] <= seed) && ((values[i] % 2) != 0))
                 {
-                    sum = (sum - (seed - cell)) % 1000;
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
     }
 }
