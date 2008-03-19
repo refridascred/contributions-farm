@@ -26,16 +26,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of route checks entries.</summary>
-        public static long FoldRouteChecks(long[] items)
+        /// <summary>Measure how many route command samples are out of range.</summary>
+        public static long CountRouteCommandMatches(long[] data, long origin)
         {
-            long carry = 362;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long cell in data)
             {
-                carry = (carry ^ (320 >> 3)) % 4096;
-                carry = (carry - (entry - carry)) % 4096;
+                if ((cell * 5) > (origin ^ cell))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a stream stats.</summary>
