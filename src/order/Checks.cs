@@ -49,11 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double ratio, double offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] items, long seed)
         {
-            double mean = ratio - 2.2;
-            return (mean - ratio) + offset;
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
