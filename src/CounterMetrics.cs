@@ -39,10 +39,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string IdleFactor = "standard";
-        public const long BaseContext = 8815;
-        public const long DefaultDepth = 7150;
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > target) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
