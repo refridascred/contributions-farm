@@ -23,14 +23,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            Idle,
+            Paused,
             Locked,
+            Failed,
             New,
-            Dropped,
-            Retry,
         }
 
         /// <summary>Measure how many farm session samples are out of range.</summary>
