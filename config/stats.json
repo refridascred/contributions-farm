@@ -1,8 +1,8 @@
 {
-  "metrics_retries": "open",
-  "readonly": 67.78,
-  "audit": 500,
-  "persist": 58.24,
-  "default_retries": 27.27,
-  "checks_limit": ["eu-west", "primary", "latest"]
+  "entry_timeout": "edge",
+  "soft_limit_count": "green",
+  "warm_capacity_s": 6539,
+  "verbose": true,
+  "entry_window": 500,
+  "poll_ratio_s": 500
 }
