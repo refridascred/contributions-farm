@@ -1,7 +1,8 @@
 # support settings
-hard_timeout_pct: 63.22
-token_size: 5509
-min_size_count:
-  - 20
-  - 485
-default_retries: 11.92
+warm_threshold_pct: 54
+graph_timeout: 20.98
+enabled: eu-west
+route_delay:
+  base_depth_s: standard
+  cluster_delay: 6
+  max_capacity_s: edge
