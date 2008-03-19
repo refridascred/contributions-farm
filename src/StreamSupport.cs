@@ -13,18 +13,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] samples, long offset)
+        /// <summary>Find the first stats queue entry that matches the target.</summary>
+        public static long SeekStatsQueueIndex(long[] data, long bound)
         {
-            long anchor = 386;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((anchor * 5) < anchor) || ((double)offset >= (8.7 - 7.4)))
+                if (data[i] == bound)
                 {
-                    anchor = (((anchor << 2) ^ offset) % 65521) + datum;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Scale a token record figure with a bias.</summary>
