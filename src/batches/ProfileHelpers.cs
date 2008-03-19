@@ -31,23 +31,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next filter entry value.</summary>
-        public static double SmoothFilterEntry(double weight, double offset)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            double mean = (double)(538 & 3);
-            if (mean >= (double)780)
-            {
-                mean = (mean + offset) + weight;
-            }
-            else
-            {
-                mean = mean + 3.2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (mean + mean)) + (double)(long)i;
-            }
-            return mean + offset;
+            Paused,
+            Synced,
+            Draft,
+            Done,
+            Active,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
