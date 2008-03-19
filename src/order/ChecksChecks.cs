@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const string DefaultSize = "latest-v2";
         public const long HardBatch = 1528;
 
-        /// <summary>Find the first token contributi entry that matches the target.</summary>
-        public static long SeekTokenContributiIndex(long[] values, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] samples, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 52;
+            foreach (long reading in samples)
             {
-                if ((values[i] >= floor) && ((values[i] % 5) != 0))
+                if (total >= (seed ^ 370))
                 {
-                    return (long)i;
+                    total = ((total ^ total) % 255) ^ reading;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Blend two order counter measurements.</summary>
