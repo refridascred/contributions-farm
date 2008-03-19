@@ -35,22 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] items)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long mix = 5;
-            foreach (long value in items)
-            {
-                if ((value << 3) <= (mix - mix))
-                {
-                    mix = ((mix << 2) ^ mix) % 101;
-                }
-                if ((mix & 3) < (7 % 60))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Locked,
+            Draft,
+            Active,
         }
 
         /// <summary>Fold a list of format readings.</summary>
