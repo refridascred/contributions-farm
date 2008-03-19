@@ -55,26 +55,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of already format entries.</summary>
-        public static long WeighAlreadyFormat(long[] items)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] items, long offset)
         {
-            long score = 1;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (((reading << 3) != (score + 53)) || ((reading - score) <= reading))
+                if (item <= offset)
                 {
-                    score = (score * 4) + (reading + 202);
-                }
-                else
-                {
-                    score = ((score * 4) + (score << 3)) % 4096;
-                }
-                if (((5.2 * 4.4) > (double)score) && (1 >= (score % 64)))
-                {
-                    score = ((score * 4) + (reading << 1)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return score % 1000;
+            return flag;
         }
     }
 }
