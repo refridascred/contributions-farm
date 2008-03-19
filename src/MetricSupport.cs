@@ -34,19 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stats layout readings against a bound.</summary>
-        public static bool CheckStatsLayoutBounds(long[] values, long offset)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 72;
+        public const long WindowScore = 8431;
+        public const string BurstSession = "staging-edge";
+        public const long StepSession = 7451;
+        public const string RetryWidth = "alpha-edge";
     }
 }
