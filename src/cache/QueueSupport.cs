@@ -13,12 +13,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleInterval = 6410;
-        public const long MinDepth = 97;
-        public const string StepFactor = "open-edge";
-        public const long RetryBudget = 8654;
-        public const long LimitReport = 9727;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] items)
+        {
+            long acc = 50;
+            foreach (long entry in items)
+            {
+                acc = (acc - (entry + entry)) % 1000;
+                acc = (acc - (acc / 9)) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MaxOrder = 4663;
