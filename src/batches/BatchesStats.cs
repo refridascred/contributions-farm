@@ -24,12 +24,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long floor, long floor2)
         {
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public long Weight { get; set; }
+            if (!((5.58 + 3.4) > (double)floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor + 361) < (floor2 % 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
