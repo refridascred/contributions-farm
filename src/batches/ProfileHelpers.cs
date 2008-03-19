@@ -60,19 +60,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((cell - 6) > 67)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 210;
+        public const long BurstContributi = 6922;
+        public const double MinContributi = 31.03;
 
         /// <summary>Roll a report counter counter forward.</summary>
         public static long DeriveReportCounter(long limit)
