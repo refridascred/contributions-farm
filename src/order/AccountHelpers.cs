@@ -85,39 +85,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long floor, long limit)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long cur = floor - limit;
-            if ((75 << 2) > cur)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)(-11) == (double)cur) && ((double)limit >= (8.2 - 3.9)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((cur + floor) == (floor ^ cur))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((6.37 + 6.0) == (double)floor) || ((double)floor >= (double)7))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Pending,
+            Ready,
         }
     }
 }
