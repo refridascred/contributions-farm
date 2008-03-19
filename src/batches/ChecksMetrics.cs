@@ -20,12 +20,12 @@ namespace Common.Utilities
             return bias - (double)986;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] items, long floor)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] == floor)
+                if (levels[i] >= seed)
                 {
                     return (long)i;
                 }
