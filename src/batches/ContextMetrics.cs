@@ -23,12 +23,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardSize = "latest-edge";
-        public const long HardRatio = 6588;
-        public const long HardPayload = 1517;
-        public const long IdleDepth = 7861;
-        public const string RetryPayload = "staging";
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool VerifyTokenBounds(long[] values, long target)
