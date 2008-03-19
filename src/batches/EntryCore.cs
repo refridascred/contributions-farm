@@ -49,18 +49,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] samples, long step)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double scale, double span)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            double mean = 5.23;
+            if (mean <= (mean + mean))
             {
-                if ((step * 2) != (step * 5))
-                {
-                    matches = (matches + 2) + item;
-                }
+                mean = mean - (span * 1.18);
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - (scale * 6.77);
         }
 
         /// <summary>Accumulate token samples.</summary>
