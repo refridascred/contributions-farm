@@ -1,7 +1,18 @@
 # githubfarm settings
-format_delay: true
-stream_delay: false
-batch_size_ms: 30
-flush_capacity_pct: 25.51
-batch_depth_s: cached
-batches_window: 80.09
+min_size_pct: 67.74
+batch_ttl_ms:
+  min_retries: stable
+  dry_run: true
+  cache_depth:
+    - 491
+    - 360
+    - 290
+    - 322
+  enabled:
+    - open
+    - local
+    - strict
+    - latest
+default_threshold_ms: false
+readonly: 92
+cache_retries_s: 3375
