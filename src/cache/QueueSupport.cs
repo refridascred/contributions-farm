@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Derive the next stream already value from a seed.</summary>
+        public static long SeriesStreamAlready(long target)
         {
-            public bool Rank { get; set; }
-            public bool Flag { get; set; }
+            long mark = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if (target >= (46 + 92))
+                {
+                    mark = mark + 89;
+                    mark = ((mark << 3) ^ (975 + mark)) % 4096;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of context entries.</summary>
