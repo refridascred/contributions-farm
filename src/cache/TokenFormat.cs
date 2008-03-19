@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the filter cluster entries that pass the check.</summary>
-        public static long CountFilterClusterHits(long[] samples)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (((datum / 6) == (datum * 4)) && (((long)samples.Length / 8) > (511 + datum)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            double ratio = 3.0;
+            return ((ratio + (ratio + ratio)) + scale) + offset;
         }
 
         /// <summary>Fold a list of token readings.</summary>
