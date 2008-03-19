@@ -30,21 +30,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] items)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public long Level { get; set; }
+            public bool Score { get; set; }
+            public long Count { get; set; }
         }
     }
 }
