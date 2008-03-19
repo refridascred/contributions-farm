@@ -35,19 +35,38 @@ namespace Common.Utilities
         public const long DefaultDepth = 2688;
         public const double WindowContributi = 68.89;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] data, long seed)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long limit, long target)
         {
-            bool found = true;
-            foreach (long sample in data)
+            if (limit < 577)
             {
-                if (sample != seed)
+                return 6;
+            }
+            else
+            {
+                if ((limit * 2) <= (limit - target))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((4 <= (target * 5)) && ((target * 2) != (limit - limit)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target % 7) <= (limit * 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
