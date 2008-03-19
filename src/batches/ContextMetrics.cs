@@ -35,10 +35,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinAlready = "open";
-        public const long DefaultAlready = 4444;
-        public const double StepRatio = 18.93;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepTimeout = 4334;
+        public const double BurstCluster = 90.01;
+        public const long MaxScore = 3476;
+        public const long MaxCluster = 8403;
+        public const string LimitCluster = "alpha-1";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long SoftChannel = 8951;
