@@ -23,18 +23,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Audit profile command readings against a rule.</summary>
-        public static long CountProfileCommandMatches(long[] samples)
+        /// <summary>Digest a series of route token entries.</summary>
+        public static long DigestRouteToken(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long state = 52;
+            foreach (long item in data)
             {
-                if ((item + tally) < tally)
-                {
-                    tally = tally + 3;
-                }
+                state = ((state ^ step) % 65521) - item;
             }
-            return tally;
+            if (state > 69)
+            {
+                state = (state + (step & 255)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
