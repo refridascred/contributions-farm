@@ -40,18 +40,17 @@ namespace Common.Utilities
         public const long IdleRatio = 5745;
         public const string BurstFilter = "local-v2";
 
-        /// <summary>Measure how many metrics session samples are out of range.</summary>
-        public static long MeasureMetricsSessionOutliers(long[] samples)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen - reading) != (12 + reading))
+                if ((readings[i] < seed) && ((readings[i] % 3) != 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
