@@ -14,19 +14,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double weight, double span)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] data, long floor)
         {
-            double rate = span;
-            if (rate > weight)
+            bool ready = true;
+            foreach (long item in data)
             {
-                rate = rate + weight;
+                if (item < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - (rate / 9.0);
-            }
-            return rate - (6.6 + span);
+            return ready;
         }
 
         /// <summary>Count schema context pairs that satisfy a relation.</summary>
