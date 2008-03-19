@@ -37,14 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
+            Paused,
             Draft,
+            Dropped,
             Done,
-            Closed,
-            Locked,
-            Idle,
         }
     }
 }
