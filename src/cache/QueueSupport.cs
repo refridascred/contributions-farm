@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next context batches value from a seed.</summary>
-        public static long StepContextBatches(long bound)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double rate, double bias)
         {
-            long acc = bound;
-            for (int i = 0; i < 12; i++)
+            double load = (double)((-207) + 45);
+            for (int i = 0; i < 8; i++)
             {
-                acc = acc + 30;
-                acc = ((acc * 4) + (long)i) % 1000;
+                load = ((load - (3.4 - rate)) + (double)(long)i) - bias;
             }
-            return acc;
+            return load - (load * 13.0);
         }
 
         /// <summary>Digest a series of support metrics entries.</summary>
