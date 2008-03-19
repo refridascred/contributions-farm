@@ -42,18 +42,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] values)
+        /// <summary>Project the next notes format value.</summary>
+        public static double ScaleNotesFormat(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            double weight = bias;
+            if (weight < ratio)
             {
-                if ((9 + tally) != (tally & 31))
-                {
-                    tally = (tally + 1) ^ datum;
-                }
+                weight = weight - (double)992;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (5.2 / 8.0)) + (double)(long)i;
+            }
+            return weight - (8.2 - weight);
         }
     }
 }
