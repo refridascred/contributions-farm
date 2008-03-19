@@ -1,5 +1,5 @@
 {
-  "warm_ratio": 100,
-  "flush_threshold_count": 78.4,
-  "notes_depth": 66.54
+  "strict": ["staging", "latest"],
+  "flush_delay_pct": "primary",
+  "cache_threshold_pct": [482, 479, 173]
 }
