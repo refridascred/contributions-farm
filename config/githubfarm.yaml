@@ -1,6 +1,10 @@
 # githubfarm settings
-batch_limit_pct: standard
-buffer_timeout: stable
-strict:
-  - 444
-  - 439
+soft_delay:
+  - 19
+  - 389
+  - 242
+graph_ttl: eu-west
+graph_delay: 33.63
+graph_retries: 76.69
+metrics_capacity: stable
+min_ratio_count: 30
