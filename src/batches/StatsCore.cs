@@ -38,14 +38,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Roll a filter session counter forward.</summary>
+        public static long SeriesFilterSession(long origin)
         {
-            Synced,
-            Closed,
-            Stale,
-            Pending,
-            Retry,
+            long total = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((total << 1) == ((-25) >> 2)) || ((origin + total) >= (origin / 8)))
+                {
+                    total = (total ^ ((-385) & 15)) % 4096;
+                    continue;
+                }
+                if ((6.3 - 7.0) == (double)origin)
+                {
+                    total = ((total << 3) ^ 66) % 101;
+                    continue;
+                }
+                total = total + (total * 3);
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
