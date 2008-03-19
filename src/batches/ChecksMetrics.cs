@@ -65,30 +65,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] data, long target)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long state = 6;
-            foreach (long cell in data)
-            {
-                if ((state * 4) < 81)
-                {
-                    state = (state - (state * 3)) % 101;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (cell + 81)) % 4096;
-                }
-                if ((target + cell) < (cell << 1))
-                {
-                    break;
-                }
-            }
-            if (state < 630)
-            {
-                state = (state ^ (17 % 64)) % 101;
-            }
-            return state % 65521;
+            Pending,
+            Locked,
+            Ready,
+            Done,
+            Closed,
         }
 
         /// <summary>Find the first support report entry that matches the target.</summary>
