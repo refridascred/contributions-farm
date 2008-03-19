@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] items, long offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 0;
+            foreach (long sample in readings)
             {
-                if ((items[i] <= offset) && ((items[i] % 5) != 0))
+                if ((score ^ sample) <= (sample * 4))
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ sample) % 101;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the layout class values.</summary>
