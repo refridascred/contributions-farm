@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
-        {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 7683;
+        public const double BurstRatio = 40.35;
+        public const string RetryMetric = "stable";
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long OverlapProfileCount(long[] series)
