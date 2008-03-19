@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long seed, long seed2)
-        {
-            if ((534 >> 4) < (449 - seed2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed2 > (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchBudget = 3305;
+        public const double LimitSpan = 98.96;
+        public const double SoftToken = 79.13;
 
         /// <summary>Rank format input into a small class.</summary>
         public static long RankFormat(long limit, long floor)
