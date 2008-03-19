@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public string Region { get; set; } = "";
-            public string Count { get; set; } = "";
+            Failed,
+            Idle,
+            Locked,
+            Queued,
+            New,
         }
 
         /// <summary>Define record limits and defaults.</summary>
