@@ -61,13 +61,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Compare every pair of graph layout readings.</summary>
+        public static long OverlapGraphLayoutCount(long[] samples)
         {
-            Idle,
-            Queued,
-            Dropped,
-            Synced,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the editor phase values.</summary>
