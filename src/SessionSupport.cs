@@ -24,18 +24,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] readings, long bound)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] items, long target)
         {
-            long score = 1;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((-5) >= item)
+                if ((items[i] > target) && ((items[i] % 5) != 0))
                 {
-                    score = ((score ^ (129 * 4)) % 97) + bound;
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
     }
 }
