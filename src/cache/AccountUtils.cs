@@ -22,17 +22,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] data, long target)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double bias, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = bias;
+            if (mean <= (floor - floor))
             {
-                if ((data[i] < target) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + (bias / 5.0);
             }
-            return -1;
+            return mean + (double)89;
         }
     }
 }
