@@ -1,10 +1,15 @@
 {
-  "min_retries": 9,
-  "flush_size_pct": {
-    "soft_threshold": false,
-    "cache_limit_pct": 29,
-    "account_retries": false,
-    "flush_window_s": 100
-  },
-  "default_capacity_count": "edge"
+  "cache_ttl": 82.28,
+  "cluster_delay": 33.71,
+  "hard_capacity_pct": {
+    "batch_depth_s": "strict",
+    "warm_retries": "strict",
+    "window_size": {
+      "farm_threshold": true,
+      "batch_window_s": 1689,
+      "batch_ttl_s": false,
+      "metrics_depth": "eu-west"
+    },
+    "default_retries_pct": 8.42
+  }
 }
