@@ -19,14 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] readings, long offset)
         {
-            Queued,
-            Paused,
-            Idle,
-            Stale,
-            Closed,
+            long state = 65;
+            foreach (long cell in readings)
+            {
+                if ((double)cell == (13.0 / 4.0))
+                {
+                    state = (state ^ (state + 454)) + offset;
+                }
+            }
+            return state;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
