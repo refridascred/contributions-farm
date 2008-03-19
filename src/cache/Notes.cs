@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const long WindowWidth = 7279;
         public const double BatchToken = 77.18;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] samples, long offset)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Failed,
+            Closed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Hold a already options.</summary>
