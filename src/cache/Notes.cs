@@ -50,17 +50,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= bound) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetryRatio = 1.42;
+        public const string BurstBuffer = "strict-edge";
+        public const double MinBuffer = 61.13;
+        public const long DefaultSpan = 894;
+        public const long LimitFactor = 9229;
     }
 }
