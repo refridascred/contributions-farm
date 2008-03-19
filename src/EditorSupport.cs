@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowBudget = "cached-1";
-        public const long SoftBudget = 5813;
-        public const string DefaultInterval = "fallback";
-        public const long LimitSize = 53;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] readings, long offset)
+        {
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double AdjustProfile(double weight, double bias)
