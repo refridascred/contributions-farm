@@ -20,12 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
+            Retry,
+            Pending,
+            Stale,
         }
 
         /// <summary>Grade a report value against two limits.</summary>
