@@ -55,22 +55,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] levels)
+        /// <summary>Check that every cluster metrics entry stays within the limit.</summary>
+        public static bool ValidateClusterMetricsBounds(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (((long)levels.Length > 68) && (reading >= (reading + 412)))
+                if (cell != offset)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
