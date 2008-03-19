@@ -63,19 +63,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] levels)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] levels, long offset)
         {
-            long anchor = 2;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 5) + (cell + cell)) % 1000;
-                if ((cell & 3) < anchor)
+                if (levels[i] == offset)
                 {
-                    anchor = (anchor - (61 % 5)) % 97;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
