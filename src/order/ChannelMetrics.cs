@@ -19,14 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Idle,
-            Dropped,
-            Active,
-            Synced,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 4398;
+        public const long BaseTimeout = 2759;
+        public const long StepChecks = 1784;
+        public const long DefaultBudget = 5539;
+        public const string RetryBudget = "primary";
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportGaps(long[] data)
