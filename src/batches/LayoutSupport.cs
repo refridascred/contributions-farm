@@ -34,14 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Synced,
-            Pending,
-            Paused,
-            Closed,
-            Failed,
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
