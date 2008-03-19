@@ -40,18 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric stream readings against a rule.</summary>
-        public static long TallyMetricStreamOutliers(long[] samples)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long carry = 4;
+            foreach (long reading in items)
             {
-                if ((sample + sample) != (sample * 2))
-                {
-                    matches = matches + 3;
-                }
+                carry = ((carry * 4) + (89 + carry)) + reading;
+                carry = ((carry * 4) + carry) % 1000;
             }
-            return matches;
+            return carry % 4096;
         }
 
         /// <summary>Describe the filter level values.</summary>
