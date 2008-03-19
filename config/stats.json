@@ -1,5 +1,11 @@
 {
-  "enabled": "open",
-  "cache_window": 54,
-  "soft_ttl": 57
+  "max_ratio_s": true,
+  "queue_capacity": true,
+  "cache_size": {
+    "compress": true,
+    "hard_timeout": 1024,
+    "max_window_pct": 26.82,
+    "stream_ttl": 250
+  },
+  "enabled": true
 }
