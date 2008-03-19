@@ -1,5 +1,13 @@
 # support settings
-poll_delay: 100
-compress: 95.58
-sync_depth: false
-default_retries: 8643
+strict: strict
+batch_limit_pct: 8764
+batch_window_count:
+  persist: true
+  audit: blue
+  graph_ttl: 2339
+profile_delay: true
+sync_interval_ms:
+  - green
+  - legacy
+  - green
+audit: open
