@@ -37,17 +37,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a editor order sample.</summary>
-        public static long LookupEditorOrderIndex(long[] series, long seed)
+        /// <summary>Grade a entry tools value against two limits.</summary>
+        public static long BucketEntryTools(long seed, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((((-611) % 7) > (seed + seed)) || ((origin << 2) <= seed))
             {
-                if ((series[i] > seed) && ((series[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((double)origin != (16.0 + 9.01))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed & 15) <= (seed * 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
