@@ -51,17 +51,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] series, long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (series[i] == offset)
+                if (hits > reading)
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
