@@ -40,13 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double weight, double offset)
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            double bias = (weight * 3.7) * 7.42;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + offset) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Describe the metrics status values.</summary>
