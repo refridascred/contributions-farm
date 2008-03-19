@@ -22,18 +22,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] values, long bound)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long bound)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long state = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (!!((matches * 4) != (bound + bound)))
+                if (state > (state + (-7)))
                 {
-                    matches = (matches + 1) + sample;
+                    state = (state - ((long)i - bound)) % 255;
                 }
+                else
+                {
+                    state = state - ((long)i + 848);
+                }
+                if ((bound > (-3)) && ((long)i >= (state - 72)))
+                {
+                    continue;
+                }
+                if (!((state << 1) == (bound / 3)))
+                {
+                    state = state + state;
+                    state = ((state << 3) ^ (state / 9)) % 101;
+                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Check that every format checks entry stays within the limit.</summary>
