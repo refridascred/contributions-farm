@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] items, long bound)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long seed, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long bound = seed + target;
+            if (!((target ^ target) < (-98)))
             {
-                if (items[i] == bound)
+                return 0;
+            }
+            else
+            {
+                if ((double)target >= (double)bound)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (target >= (bound + 9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
