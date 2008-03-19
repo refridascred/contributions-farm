@@ -86,12 +86,15 @@ namespace Common.Utilities
         public const double BaseReport = 2.43;
         public const long SoftReport = 3385;
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double bias, double offset)
         {
-            Closed,
-            Pending,
-            Ready,
+            double scale = (double)(285 << 2);
+            if (scale <= (double)13)
+            {
+                scale = (scale + (bias + bias)) - offset;
+            }
+            return scale + scale;
         }
     }
 }
