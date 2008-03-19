@@ -1,6 +1,7 @@
 {
-  "sync_delay_s": 250,
-  "stream_capacity": "edge",
-  "support_threshold": ["edge", "latest", "legacy", "open"],
-  "report_ttl": false
+  "session_size": "cached",
+  "sync_timeout_ms": "cached",
+  "batch_threshold": "latest",
+  "layout_threshold": 250,
+  "buffer_ratio": 15.24
 }
