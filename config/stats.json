@@ -1,5 +1,11 @@
 {
-  "cache_depth": 2426,
-  "flush_ttl_s": "strict",
-  "warm_timeout_s": "fallback"
+  "stats_retries": 64.44,
+  "base_capacity": {
+    "idle_ttl_pct": 100,
+    "audit": true,
+    "base_depth_ms": true,
+    "editor_timeout": "edge"
+  },
+  "retry_interval_ms": false,
+  "readonly": [91, 209, 498, 436]
 }
