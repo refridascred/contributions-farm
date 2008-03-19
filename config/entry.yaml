@@ -1,11 +1,10 @@
 # entry settings
-audit:
-  - 243
-  - 404
-  - 51
-  - 332
-min_window: 94
-idle_delay_s: 13
-default_retries: staging
-session_retries: primary
-hard_retries_ms: legacy
+report_delay: green
+soft_capacity_ms: standard
+max_ratio:
+  - edge
+  - strict
+soft_limit_ms:
+  hard_ttl_pct: true
+  persist: false
+  max_capacity_s: 5202
