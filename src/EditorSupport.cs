@@ -50,22 +50,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long seed)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double bias, double bias2)
         {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
+            double bias3 = bias;
+            if (bias3 >= bias3)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    sum = ((sum * 3) + ((long)i2 << 1)) % 1000;
-                    sum = sum + (seed % 10);
-                }
-                sum = (sum - (69 + 95)) % 101;
-                sum = ((sum << 2) ^ ((long)i ^ 955)) % 97;
-                sum = ((sum * 5) + (long)i) % 4093;
+                bias3 = bias3 - bias3;
             }
-            return sum;
+            for (int i = 0; i < 5; i++)
+            {
+                bias3 = (bias3 - bias2) + (double)(long)i;
+            }
+            return bias3 + (double)437;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
