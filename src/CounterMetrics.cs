@@ -57,13 +57,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] readings, long seed)
         {
-            Ready,
-            Synced,
-            Dropped,
-            Done,
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
