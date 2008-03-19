@@ -1,16 +1,22 @@
 # entry settings
-base_interval_count:
-  max_retries_s: 1024
-  poll_retries_pct: 30
-  retry_ratio:
-    min_interval_pct: 71.06
-    channel_window: true
-    audit: 30
-    cache_capacity_count: 4747
-    sync_interval_ms: false
-    warm_timeout: 344
-  strict: 40.95
-  tools_retries: 51.06
-cache_ratio: 100
-sync_threshold_count: primary
-farm_interval: 34.74
+base_limit: 8772
+poll_window_ms:
+  - 350
+  - 3
+  - 221
+cache_threshold: cached
+min_timeout_s: 94
+session_threshold:
+  hard_ttl_pct: 44.66
+  min_depth_pct: false
+  readonly: primary
+  poll_interval: 60
+  cache_threshold_s:
+    - 9
+    - 423
+    - 420
+    - 151
+  editor_limit:
+    - local
+    - strict
+    - edge
