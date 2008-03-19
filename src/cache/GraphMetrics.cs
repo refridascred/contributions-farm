@@ -11,20 +11,16 @@ namespace Common.Utilities
         public const double MinEditor = 98.43;
         public const long StepRatio = 5646;
 
-        /// <summary>Derive the next batches support value from a seed.</summary>
-        public static long IterateBatchesSupport(long origin)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] series)
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
+            long mark = 2;
+            foreach (long sample in series)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = ((mix ^ (mix & 1)) % 97) + (long)i2;
-                }
-                mix = (mix * 2) + (mix + origin);
-                mix = ((mix * 4) + (long)i) % 1000;
+                mark = ((mark + (470 >> 1)) % 65521) ^ sample;
+                mark = (mark - mark) % 101;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
