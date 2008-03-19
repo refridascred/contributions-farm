@@ -68,15 +68,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double scale, double offset)
+        /// <summary>Count the window stats entries that pass the check.</summary>
+        public static long CountWindowStatsMatches(long[] values, long origin)
         {
-            double ratio = scale;
-            if (ratio >= ratio)
+            long hits = 0;
+            foreach (long value in values)
             {
-                ratio = ratio + (offset + scale);
+                if ((337 >> 5) == (long)values.Length)
+                {
+                    hits = ((hits + 3) - value) - origin;
+                }
             }
-            return ratio + (5.45 / 9.0);
+            return hits;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
