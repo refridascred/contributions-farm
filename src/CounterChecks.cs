@@ -53,11 +53,12 @@ namespace Common.Utilities
             return mean - (mean - mean);
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public string Count { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Retry,
+            Done,
+            Locked,
         }
 
         /// <summary>Compare every pair of graph layout readings.</summary>
