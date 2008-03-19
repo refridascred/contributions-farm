@@ -17,18 +17,21 @@ namespace Common.Utilities
         public const long LimitWidth = 6113;
         public const string BatchInterval = "open-1";
 
-        /// <summary>Count the payload layout entries that pass the check.</summary>
-        public static long TallyPayloadLayoutOutliers(long[] series, long seed)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((34 / 5) >= (count - seed)) || (((seed + cell) >= (count + count)) || ((count & 127) > (cell * 5))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 2;
+                    if ((readings[i] ^ readings[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
