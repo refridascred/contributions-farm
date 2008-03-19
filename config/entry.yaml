@@ -1,6 +1,21 @@
 # entry settings
-default_capacity: 8084
-profile_window: 5295
-audit: latest
-max_depth: 46
-soft_delay: open
+min_interval: 68.66
+strict: 250
+burst_ttl_s:
+  poll_delay_ms:
+    max_limit: 28
+    flush_capacity: 1024
+    editor_size: cached
+  burst_capacity_count:
+    - edge
+    - cached
+    - latest
+    - strict
+  token_limit:
+    - 469
+    - 220
+  retry_ratio:
+    - 182
+    - 391
+    - 463
+  farm_threshold: 250
