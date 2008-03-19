@@ -37,22 +37,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of record checks readings.</summary>
-        public static long ScoreRecordChecks(long[] readings, long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] items)
         {
-            long anchor = 40;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((bound + anchor) != (anchor - value))
+                if (sample > (sample + (long)items.Length))
                 {
-                    anchor = ((anchor << 2) ^ value) % 255;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (anchor > 8)
-            {
-                anchor = ((anchor * 2) + (bound + anchor)) % 97;
-            }
-            return anchor % 4096;
+            return count;
         }
     }
 }
