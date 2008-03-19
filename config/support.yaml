@@ -1,11 +1,25 @@
 # support settings
-payload_window:
-  - 410
-  - 390
-poll_delay: 1905
-cache_limit_count:
-  readonly: standard
-  cache_ttl_count: true
-  soft_delay: false
-  persist: false
-base_ttl: fallback
+min_delay_ms:
+  flush_capacity_pct: latest
+  enabled: 3866
+  max_threshold_s: true
+session_limit:
+  default_interval:
+    soft_threshold_ms: true
+    min_window_ms: 49
+    strict: eu-west
+    buffer_timeout: true
+    persist: true
+  hard_depth_s: false
+  persist:
+    sync_ttl_s: true
+    max_ttl_s:
+      - 316
+      - 224
+    min_capacity: 1.79
+    persist:
+      - 330
+      - 147
+      - 1
+  already_threshold: green
+readonly: 5393
