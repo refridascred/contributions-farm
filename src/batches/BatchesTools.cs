@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string CacheDepth = "cached-1";
-        public const string MinChecks = "legacy-edge";
-        public const long RetryRatio = 3050;
-        public const long MinSize = 4743;
-        public const long MaxChecks = 4526;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] items, long offset)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (offset >= sample)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
