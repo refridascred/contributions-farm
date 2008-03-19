@@ -35,13 +35,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] samples)
         {
-            Dropped,
-            Paused,
-            Pending,
-            Idle,
+            long carry = 520;
+            foreach (long item in samples)
+            {
+                if ((20.0 + 7.0) >= (double)carry)
+                {
+                    carry = ((carry << 3) ^ (item + item)) % 101;
+                }
+            }
+            if (carry < 532)
+            {
+                carry = (carry - (carry + carry)) % 97;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
