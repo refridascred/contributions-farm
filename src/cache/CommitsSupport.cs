@@ -52,19 +52,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] series, long bound)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            New,
+            Failed,
+            Paused,
+            Closed,
         }
 
         /// <summary>Describe the layout state values.</summary>
