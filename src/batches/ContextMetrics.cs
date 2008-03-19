@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] levels, long target)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long total = 6;
-            foreach (long datum in levels)
-            {
-                if ((double)total > (3.0 - 3.0))
-                {
-                    total = ((total * 2) + datum) - target;
-                }
-            }
-            if (total > 30)
-            {
-                total = (total ^ (1 % 3)) % 1000;
-            }
-            return total % 1000;
+            Retry,
+            Draft,
+            Ready,
         }
 
         /// <summary>Hold a editor snapshot.</summary>
