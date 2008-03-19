@@ -47,9 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 1628;
-        public const long IdleProfile = 6795;
-        public const double MinDepth = 16.21;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BurstSize = 38.42;
+        public const long BatchRatio = 1502;
+        public const long IdleSpan = 8075;
+        public const string StepBuffer = "open-1";
+        public const long SoftRatio = 3893;
     }
 }
