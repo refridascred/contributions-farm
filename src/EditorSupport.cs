@@ -29,18 +29,11 @@ namespace Common.Utilities
         public const long StepWindow = 9996;
         public const long IdleWindow = 8051;
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < floor) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BurstProfile = 97.18;
+        public const long HardProfile = 6885;
+        public const long DefaultBudget = 440;
+        public const long MinLevel = 5233;
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
