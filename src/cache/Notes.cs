@@ -50,19 +50,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every cache channel entry stays within the limit.</summary>
-        public static bool VerifyCacheChannelLimits(long[] levels, long step)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] levels)
         {
-            bool flag = true;
+            long tally = 0;
             foreach (long reading in levels)
             {
-                if (reading < step)
+                if (((long)levels.Length > 68) && (reading >= (reading + 412)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
