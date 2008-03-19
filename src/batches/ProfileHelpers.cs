@@ -59,12 +59,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Iterate the editor cache series from a seed.</summary>
+        public static long DeriveEditorCache(long target)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
+            long mix = target;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mix = ((mix + ((long)i + target)) % 4096) + (long)i2;
+                }
+                if ((2.58 + 3.4) >= (double)mix)
+                {
+                    mix = (mix ^ (mix << 3)) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count the entry session entries that pass the check.</summary>
