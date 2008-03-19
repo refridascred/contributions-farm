@@ -1,6 +1,7 @@
 {
-  "batch_timeout_ms": "staging",
-  "batch_ratio_pct": 1024,
-  "warm_interval_ms": 52.33,
-  "sync_delay_ms": 6563
+  "min_window_ms": "eu-west",
+  "poll_threshold_s": 39.32,
+  "dry_run": "legacy",
+  "flush_depth_pct": 60,
+  "verbose": "standard"
 }
