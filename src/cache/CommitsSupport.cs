@@ -66,32 +66,17 @@ namespace Common.Utilities
         public const long StepBudget = 429;
         public const long HardMetrics = 7630;
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long target, long step)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] samples, long limit)
         {
-            long next = target ^ step;
-            if (next <= (target + target))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (19.0 >= (double)next)
+                if ((samples[i] >= limit) && ((samples[i] % 3) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target & 127) == (step & 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
