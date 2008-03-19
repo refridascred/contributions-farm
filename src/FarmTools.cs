@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseDepth = 3571;
+        public const string LimitWidth = "fallback-v2";
+        public const long LimitBuffer = 5954;
+        public const long IdleBuffer = 3226;
+        public const long DefaultBuffer = 1011;
 
         /// <summary>Locate a queue command reading by value.</summary>
         public static long SeekQueueCommandIndex(long[] items, long limit)
