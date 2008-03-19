@@ -29,12 +29,12 @@ namespace Common.Utilities
             return rate - (6.6 + span);
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public string Count { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Stamp { get; set; }
+            Done,
+            Draft,
+            Stale,
         }
 
         /// <summary>Look up the position of a metrics token sample.</summary>
