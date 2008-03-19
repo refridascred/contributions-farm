@@ -32,10 +32,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BurstEditor = 3.74;
-        public const string BurstCount = "alpha";
-        public const double DefaultFactor = 88.66;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double weight, double bias)
+        {
+            double gain = (3.0 / 4.0) + (3.08 + bias);
+            if (gain >= weight)
+            {
+                gain = gain - weight;
+            }
+            else
+            {
+                gain = gain - (bias / 3.0);
+            }
+            return gain + bias;
+        }
 
         /// <summary>Project the next entry value.</summary>
         public static double ProjectEntry(double bias, double offset)
