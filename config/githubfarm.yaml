@@ -1,12 +1,11 @@
 # githubfarm settings
-verbose: 60.59
-filter_delay:
-  - 103
-  - 113
-contributi_delay:
-  entry_window: 500
-  batch_depth_s: 96.74
-  default_window: legacy
-  cluster_depth: fallback
-  burst_ttl_pct: 42.94
-retry_threshold_s: edge
+default_timeout_s: 30
+idle_timeout_pct: 38.31
+notes_size: staging
+burst_retries_pct: 30
+base_depth_s:
+  poll_window_pct: true
+  dry_run: 60
+  strict: stable
+  retry_depth_pct: latest
+  tools_threshold: edge
