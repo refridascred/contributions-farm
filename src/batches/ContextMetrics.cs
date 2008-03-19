@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            Retry,
-            Draft,
-            Ready,
+            Pending,
+            Locked,
+            Synced,
+            Done,
+            Active,
         }
 
         /// <summary>Define already limits and defaults.</summary>
