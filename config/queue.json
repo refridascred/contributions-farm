@@ -1,6 +1,8 @@
 {
-  "default_ttl_pct": 56.71,
-  "readonly": 89.84,
-  "retry_window_count": 250,
-  "batch_limit": 24.95
+  "counter_capacity": 100,
+  "batch_window_pct": "primary",
+  "readonly": 66,
+  "persist": "strict",
+  "default_size_pct": 60,
+  "warm_threshold_ms": 60
 }
