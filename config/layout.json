@@ -1,12 +1,8 @@
 {
-  "dry_run": 43.57,
-  "cluster_retries": {
-    "contributi_window": 97,
-    "record_delay": 85,
-    "enabled": true,
-    "retry_threshold": 60,
-    "strict": "standard"
-  },
-  "max_capacity": 90,
-  "batch_interval_pct": 67
+  "flush_capacity_pct": 9713,
+  "persist": 6839,
+  "support_timeout": "edge",
+  "poll_capacity_pct": false,
+  "commits_interval": 56,
+  "soft_retries": ["stable", "strict"]
 }
