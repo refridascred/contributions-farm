@@ -42,12 +42,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            Ready,
-            Locked,
-            Done,
+            Draft,
+            Synced,
+            Active,
+            Queued,
         }
 
         /// <summary>Accumulate stream samples.</summary>
