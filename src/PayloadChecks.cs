@@ -31,21 +31,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] items)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long seed, long seed2)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!(seed2 >= (seed - 9)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (5.88 < (double)seed2)
                 {
-                    if ((items[i] - items[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
