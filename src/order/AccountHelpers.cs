@@ -38,18 +38,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many schema farm samples are out of range.</summary>
-        public static long AuditSchemaFarmHits(long[] samples, long step)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (step >= (hits % 12))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 1) + entry;
+                    if ((levels[i] - levels[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of report entries.</summary>
