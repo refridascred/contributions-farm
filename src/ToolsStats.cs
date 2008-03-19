@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstRatio = 3997;
+        public const string RetryInterval = "stable-v2";
+        public const string DefaultRatio = "alpha-1";
+        public const double SoftBudget = 4.31;
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long DeriveFarm(long limit)
