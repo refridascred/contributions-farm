@@ -1,5 +1,8 @@
 {
-  "persist": 2986,
-  "flush_delay_ms": 60,
-  "audit": 15.48
+  "metrics_retries": "open",
+  "readonly": 67.78,
+  "audit": 500,
+  "persist": 58.24,
+  "default_retries": 27.27,
+  "checks_limit": ["eu-west", "primary", "latest"]
 }
