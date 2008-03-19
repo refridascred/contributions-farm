@@ -1,36 +1,6 @@
 # entry settings
-base_limit:
-  entry_ratio:
-    batch_capacity_pct: 1024
-    cache_ttl: 5840
-    schema_retries: 1024
-    cache_ratio_ms: true
-  metric_limit: 60
-  account_capacity: edge
-  format_ttl: 30
-poll_threshold_pct: primary
-cache_limit:
-  - standard
-  - stable
-cache_depth_pct:
-  flush_timeout: 72.03
-  soft_size_count: 80.24
-  max_depth_pct:
-    warm_depth: 48.15
-    buffer_delay:
-      - stable
-      - green
-      - fallback
-    default_limit_pct: 8518
-    strict: strict
-    min_delay: 100
-    route_delay: 52.35
-  default_window_s: 60
-  soft_timeout_count: 500
-  soft_limit: green
-sync_limit_pct: blue
-max_threshold:
-  account_window: 88.14
-  cache_window: 7360
-  default_ratio_pct: 80.01
-  verbose: 5302
+max_size: 30
+dry_run: false
+poll_limit: false
+flush_window_ms: 9
+enabled: cached
