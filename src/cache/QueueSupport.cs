@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] values)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (hits > (hits / 5))
                 {
-                    if ((values[i] - values[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = ((hits + 3) + datum) - seed;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
