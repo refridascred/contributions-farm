@@ -1,5 +1,7 @@
 {
-  "strict": ["staging", "latest"],
-  "flush_delay_pct": "primary",
-  "cache_threshold_pct": [482, 479, 173]
+  "strict": 1024,
+  "flush_limit_s": 100,
+  "max_timeout_ms": "latest",
+  "compress": 57,
+  "base_limit": 4373
 }
