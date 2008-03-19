@@ -52,23 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long offset)
+        /// <summary>Validate batch filter readings against a bound.</summary>
+        public static bool GuardBatchFilterBounds(long[] levels, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (!((1.8 + 3.0) > (double)score))
+                if (cell != offset)
                 {
-                    score = (score + (score % 3)) % 4096;
+                    found = false;
+                    break;
                 }
-                for (int i3 = 0; i3 < 2; i3++)
-                {
-                    score = (((score * 4) + offset) % 97) - (long)i3;
-                }
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return found;
         }
     }
 }
