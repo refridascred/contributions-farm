@@ -36,13 +36,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long bound, long offset)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-            public long Label { get; set; }
+            long diff = bound - offset;
+            if (offset <= (offset + 195))
+            {
+                return 8;
+            }
+            else
+            {
+                if (bound > (diff >> 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(bound < (diff << 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
