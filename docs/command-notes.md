@@ -1,14 +1,14 @@
 # Command notes
 
-When a farm fails, the counter handler retries a few times before giving up.
-The batches module keeps payload values in sync with the contributi cache.
+The payload module keeps stream values in sync with the report cache.
+The batches report groups every filter by record.
 
-Defaults for schema live in the config folder and can be overridden per environment.
-Each format is validated before it reaches the tools queue.
+The command report groups every checks by batches.
+Use editor settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Document new window fields
-- Validate window input early
-- Log every editor change
-- Prefer metrics defaults
+- Validate layout input early
+- Document new editor fields
+- Prefer profile defaults
+- Keep record values small
