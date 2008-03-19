@@ -65,14 +65,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Look up the position of a command queue sample.</summary>
+        public static long LocateCommandQueueIndex(long[] values, long step)
         {
-            Pending,
-            Locked,
-            Ready,
-            Done,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a layout options.</summary>
