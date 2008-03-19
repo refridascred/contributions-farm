@@ -1,8 +1,6 @@
 {
-  "cache_threshold_pct": "staging",
-  "enabled": 6595,
-  "dry_run": 1024,
-  "default_capacity_s": 13.2,
-  "record_ratio": 26,
-  "default_depth_pct": 4802
+  "sync_delay_s": 250,
+  "stream_capacity": "edge",
+  "support_threshold": ["edge", "latest", "legacy", "open"],
+  "report_ttl": false
 }
