@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstRatio = "staging-edge";
-        public const long BatchSize = 1859;
-        public const double MinEditor = 98.43;
-        public const long StepRatio = 5646;
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long step, long origin)
+        {
+            long lane = step ^ origin;
+            if ((lane & 7) >= lane)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((2.0 * 1.88) == (double)step) || ((step - lane) > lane))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin + lane) > (0 - lane))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step >> 2) != (lane + lane))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long DigestCommand(long[] series)
