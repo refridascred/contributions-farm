@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double ratio, double floor)
-        {
-            double bias = ratio;
-            if (bias <= (double)89)
-            {
-                bias = (bias + (double)85) - floor;
-            }
-            else
-            {
-                bias = bias - (20.0 + bias);
-            }
-            return bias + (bias / 5.0);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardCount = 7503;
+        public const double WindowSize = 40.27;
+        public const long IdleProfile = 7433;
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long LookupBatchIndex(long[] items, long step)
