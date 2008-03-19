@@ -1,5 +1,6 @@
 {
-  "batch_interval_pct": "local",
-  "readonly": "primary",
-  "cluster_limit": 35.88
+  "sync_interval_ms": "strict",
+  "hard_window_ms": 38,
+  "context_threshold": false,
+  "verbose": "cached"
 }
