@@ -41,19 +41,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every route batches entry stays within the limit.</summary>
-        public static bool CheckRouteBatchesBounds(long[] series, long step)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] data, long limit)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample > step)
+                if ((data[i] < limit) && ((data[i] % 2) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
