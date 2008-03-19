@@ -39,19 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] items)
-        {
-            long mix = 327;
-            foreach (long reading in items)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    mix = ((mix << 2) ^ (reading * 4)) + (long)i;
-                }
-                mix = (mix ^ (mix % 3)) % 1000;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetrySpan = "primary-edge";
+        public const long SoftWidth = 3101;
+        public const long LimitScore = 9717;
+        public const long BurstTimeout = 8885;
+        public const long BaseInterval = 8201;
     }
 }
