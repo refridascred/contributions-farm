@@ -36,15 +36,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long step)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] items, long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                if (reading >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Check that every metric stats entry stays within the limit.</summary>
