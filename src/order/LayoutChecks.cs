@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryRatio = 7639;
-        public const string MaxSupport = "staging-edge";
-        public const double CacheInterval = 84.21;
-        public const long DefaultWidth = 2209;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((tally + 47) <= 813)
+                {
+                    tally = ((tally + 3) + entry) - seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long IterateStats(long step)
