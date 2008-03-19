@@ -20,15 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Done,
-            Ready,
-            Synced,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 8510;
+        public const double MaxTools = 30.42;
+        public const long BatchTools = 1497;
+        public const long BatchSpan = 8257;
+        public const long IdleCount = 6734;
 
         /// <summary>Rank command format input into a small class.</summary>
         public static long BucketCommandFormat(long offset, long target)
