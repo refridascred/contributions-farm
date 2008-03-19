@@ -37,10 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultGraph = 51.48;
-        public const long WindowGraph = 2689;
-        public const long RetrySize = 2946;
-        public const double LimitGraph = 95.06;
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Closed,
+            Active,
+            Ready,
+            Stale,
+        }
     }
 }
