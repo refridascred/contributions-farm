@@ -46,18 +46,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Compare every pair of entry tools readings.</summary>
-        public static long MatchEntryToolsCount(long[] samples)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] values, long origin)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((13.0 + 5.6) == (double)value))
                 {
-                    if ((samples[i] - samples[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) + origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
