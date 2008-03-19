@@ -1,19 +1,7 @@
 {
-  "burst_limit_s": true,
-  "flush_delay_ms": false,
-  "cache_ratio_ms": 250,
-  "retry_capacity": {
-    "hard_depth": [433, 498, 102, 497],
-    "poll_ratio": {
-      "compress": true,
-      "hard_retries_s": 66.03,
-      "poll_delay_ms": 5620,
-      "warm_delay_pct": [132, 71, 53],
-      "strict": 32,
-      "cache_retries_pct": true
-    },
-    "farm_interval": "strict"
-  },
-  "strict": 80,
-  "queue_size": "local"
+  "flush_threshold_count": 60,
+  "hard_limit_count": 48.14,
+  "counter_threshold": [216, 472, 253],
+  "context_threshold": 2212,
+  "githubfarm_ratio": "edge"
 }
