@@ -60,12 +60,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long floor)
         {
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
+            long acc = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = (acc ^ 76) % 101;
+                acc = (acc + (floor / 7)) % 1000;
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Match up window stats samples.</summary>
