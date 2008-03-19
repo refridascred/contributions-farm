@@ -74,18 +74,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] values)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if (((datum - datum) > datum) || ((datum ^ datum) <= hits))
+                if (reading < offset)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
