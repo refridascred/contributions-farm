@@ -47,19 +47,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] samples, long step)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long origin, long limit)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            if ((origin <= limit) && ((origin + origin) == (limit * 3)))
             {
-                if (value != step)
+                return 0;
+            }
+            else
+            {
+                if (origin >= (limit + origin))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return stale;
         }
 
         /// <summary>Audit entry queue readings against a rule.</summary>
