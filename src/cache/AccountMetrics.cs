@@ -19,19 +19,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] samples, long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (!((result / 9) >= (long)i))
+                if (((seed - datum) != (datum ^ datum)) || (seed >= (hits - hits)))
                 {
-                    continue;
+                    hits = hits + 2;
                 }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the context phase values.</summary>
