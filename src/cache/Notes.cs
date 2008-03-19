@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of support buffer entries.</summary>
-        public static long TallySupportBuffer(long[] values)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] samples, long offset)
         {
-            long total = 420;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                total = (total + (54 + 320)) + sample;
+                if (item < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (total < 65)
-            {
-                total = ((total << 3) ^ (total % 60)) % 255;
-            }
-            return total % 1000;
+            return flag;
         }
 
         /// <summary>Hold a already options.</summary>
