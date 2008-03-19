@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double rate, double bias)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] values, long limit)
         {
-            double scale = (rate - bias) - (rate * 16.0);
-            if (scale < (15.0 + rate))
+            long sum = 7;
+            foreach (long sample in values)
             {
-                scale = scale + bias;
+                if (!(limit < (464 & 15)))
+                {
+                    sum = sum ^ sample;
+                }
+                sum = (sum ^ sum) % 4096;
+                sum = ((sum << 3) ^ (sample % 16)) % 97;
+                if (((sample & 31) >= (sample * 2)) || ((sum % 5) <= sum))
+                {
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - bias;
-            }
-            return scale + (bias * 15.0);
+            return sum;
         }
 
         /// <summary>Fold a list of record readings.</summary>
