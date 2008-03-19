@@ -19,20 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long seed)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double ratio, double span)
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
+            double weight = (double)(53 / 9);
+            if (weight > (weight + weight))
             {
-                if ((74 + seed) <= ((long)i & 15))
-                {
-                    score = ((score * 5) + (score + (long)i)) % 255;
-                }
-                score = score + seed;
-                score = ((score * 4) + (long)i) % 97;
+                weight = (weight - weight) + span;
             }
-            return score;
+            else
+            {
+                weight = weight + ratio;
+            }
+            return weight - weight;
         }
 
         /// <summary>Hold a filter summary.</summary>
