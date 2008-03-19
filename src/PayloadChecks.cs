@@ -36,17 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a schema filter reading by value.</summary>
-        public static long FindSchemaFilterIndex(long[] data, long bound)
+        /// <summary>Check that every token payload entry stays within the limit.</summary>
+        public static bool ValidateTokenPayloadLimits(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if ((data[i] >= bound) && ((data[i] % 3) == 0))
+                if (reading > target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
