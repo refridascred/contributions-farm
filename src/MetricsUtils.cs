@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] series, long origin)
+        /// <summary>Combine cache stream values into a single score.</summary>
+        public static long WeighCacheStream(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long mix = 2;
+            foreach (long datum in values)
             {
-                if (!(((origin << 2) != (tally << 2)) || (9.91 > (double)sample)))
-                {
-                    tally = tally + 1;
-                }
+                mix = ((mix ^ (50 ^ datum)) % 4096) + limit;
             }
-            return tally;
+            return mix % 1000;
         }
 
         /// <summary>Describe the filter state values.</summary>
