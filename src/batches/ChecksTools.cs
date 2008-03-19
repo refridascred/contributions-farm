@@ -23,11 +23,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitReport = "open";
-        public const double LimitTimeout = 18.23;
-        public const long CacheReport = 1682;
-        public const long DefaultReport = 2741;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] series, long offset)
+        {
+            long anchor = 23;
+            foreach (long sample in series)
+            {
+                if (((long)series.Length - anchor) == (offset + offset))
+                {
+                    anchor = (anchor - (anchor & 127)) + sample;
+                }
+            }
+            if (anchor > 2)
+            {
+                anchor = anchor ^ (offset ^ offset);
+            }
+            return anchor;
+        }
 
         /// <summary>Blend two session measurements.</summary>
         public static double BlendSession(double ratio, double span)
