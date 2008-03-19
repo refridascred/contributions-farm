@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long offset, long floor)
+        /// <summary>Digest a series of batch already entries.</summary>
+        public static long ScoreBatchAlready(long[] items)
         {
-            if ((offset % 24) > (floor % 16))
+            long sum = 6;
+            foreach (long cell in items)
             {
-                return 7;
+                sum = sum - (cell % 5);
+                sum = ((sum << 3) ^ (sum & 1)) % 101;
+                sum = ((sum << 2) ^ sum) % 1000;
             }
-            else
+            if (sum > 8)
             {
-                if (offset >= (offset ^ floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((1.0 * 4.13) <= (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                sum = (sum ^ (sum << 1)) % 101;
             }
+            return sum;
         }
 
         /// <summary>Fold a list of record graph readings.</summary>
