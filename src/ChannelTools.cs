@@ -21,21 +21,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] readings)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long offset, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((seed / 2) != (offset - seed))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((double)offset < (9.8 + 2.73)))
                 {
-                    if ((readings[i] ^ readings[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit cache schema readings against a rule.</summary>
