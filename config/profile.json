@@ -1,8 +1,7 @@
 {
-  "batch_limit": "strict",
-  "soft_threshold": 1704,
-  "readonly": 30,
-  "idle_window_count": [490, 364, 384, 251],
-  "audit": "latest",
-  "session_interval": "strict"
+  "verbose": ["legacy", "edge"],
+  "retry_threshold_s": 1240,
+  "warm_retries_count": true,
+  "idle_timeout_pct": "latest",
+  "queue_threshold": 4.28
 }
