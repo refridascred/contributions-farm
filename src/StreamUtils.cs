@@ -31,11 +31,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long step, long limit)
         {
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
+            if (11 < (limit & 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit + step) <= step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((2.0 * 12.0) > (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
