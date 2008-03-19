@@ -17,11 +17,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstTimeout = 7655;
-        public const long CacheToken = 5908;
-        public const long RetryRatio = 8514;
-        public const long HardToken = 2762;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Pending,
+            Ready,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Blend two filter measurements.</summary>
         public static double SmoothFilter(double ratio, double floor)
