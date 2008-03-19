@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] items)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long offset)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long total = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (!(((hits >> 4) == ((long)items.Length ^ hits)) || ((entry + 56) <= (entry & 31))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
