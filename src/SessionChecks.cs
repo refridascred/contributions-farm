@@ -65,22 +65,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token commits entries.</summary>
-        public static long WeighTokenCommits(long[] samples)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] values)
         {
-            long carry = 5;
-            foreach (long item in samples)
+            long mark = 711;
+            foreach (long entry in values)
             {
-                if ((carry * 4) != (carry - item))
+                if ((mark & 255) == (mark << 2))
                 {
-                    carry = ((carry << 3) ^ (carry ^ carry)) % 4096;
+                    mark = (mark ^ 292) % 97;
                 }
                 else
                 {
-                    carry = carry ^ (carry * 4);
+                    mark = (mark << 3) ^ entry;
                 }
             }
-            return carry % 4096;
+            return mark % 1000;
         }
     }
 }
