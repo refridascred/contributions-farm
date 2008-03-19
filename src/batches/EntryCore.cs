@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long target, long step)
         {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public bool Region { get; set; }
+            long gap = target + step;
+            if ((gap % 7) > (target + target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)gap <= (0.6 / 2.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step & 127) >= target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (gap < target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a batch stats pair into a bucket.</summary>
