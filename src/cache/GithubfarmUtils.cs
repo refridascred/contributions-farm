@@ -37,9 +37,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 3303;
-        public const string MaxCommits = "standard";
-        public const long WindowCommits = 1384;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] readings, long target)
+        {
+            long state = 299;
+            foreach (long reading in readings)
+            {
+                state = (((state * 3) + 604) % 65521) - target;
+                if (reading > (reading + state))
+                {
+                    break;
+                }
+            }
+            if (state > (-9))
+            {
+                state = state + state;
+            }
+            return state % 97;
+        }
     }
 }
