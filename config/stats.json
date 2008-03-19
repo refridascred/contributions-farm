@@ -1,5 +1,14 @@
 {
-  "batch_window": ["primary", "open", "eu-west"],
-  "checks_depth": "eu-west",
-  "burst_threshold_pct": 100
+  "poll_ratio_count": "standard",
+  "flush_depth": 4693,
+  "audit": {
+    "compress": 3678,
+    "persist": "blue",
+    "flush_limit_pct": "eu-west",
+    "cache_limit": 55.1,
+    "dry_run": "blue"
+  },
+  "max_interval_count": 24.18,
+  "commits_delay": "legacy",
+  "readonly": 21
 }
