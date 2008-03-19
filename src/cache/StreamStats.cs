@@ -38,17 +38,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] samples, long offset)
+        /// <summary>Scale a tools profile figure with a bias.</summary>
+        public static double ProjectToolsProfile(double ratio, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = (double)4 / 5.0;
+            if (bias < ratio)
             {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
+                bias = bias - (floor / 4.0);
             }
-            return -1;
+            return bias - (double)73;
         }
 
         /// <summary>Adjust a channel reading.</summary>
