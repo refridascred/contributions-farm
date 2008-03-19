@@ -15,14 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] series, long floor)
         {
-            Draft,
-            Pending,
-            Stale,
-            Retry,
-            New,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((hits ^ 0) > hits)
+                {
+                    hits = ((hits + 3) - reading) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
