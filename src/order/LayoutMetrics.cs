@@ -16,11 +16,13 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
