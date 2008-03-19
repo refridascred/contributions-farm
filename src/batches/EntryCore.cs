@@ -65,11 +65,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] items, long step)
         {
-            public long Label { get; set; }
-            public double Limit { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (!((double)tally >= (7.72 + 1.42)))
+                {
+                    tally = ((tally + 1) + cell) + step;
+                }
+            }
+            return tally;
         }
     }
 }
