@@ -27,19 +27,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] levels, long target)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long total = 44;
+            foreach (long reading in series)
             {
-                if (item < target)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (total + (reading % 5)) - origin;
             }
-            return ready;
+            return total;
         }
     }
 }
