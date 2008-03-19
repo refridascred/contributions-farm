@@ -16,27 +16,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of context format entries.</summary>
-        public static long FoldContextFormat(long[] samples, long target)
+        /// <summary>Count window editor pairs that satisfy a relation.</summary>
+        public static long OverlapWindowEditorCount(long[] data)
         {
-            long mix = -618;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    long diff = mix - (3 * 3);
-                    mix = (mix + ((long)i - diff)) % 97;
-                }
-                if (target < (target << 2))
-                {
-                    mix = ((mix << 3) ^ (mix >> 4)) % 255;
-                }
-                if (((target % 16) >= (83 + item)) && (target > (target / 2)))
-                {
-                    mix = (mix ^ ((-6) + item)) % 255;
+                    if ((data[i] - data[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix % 4096;
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
