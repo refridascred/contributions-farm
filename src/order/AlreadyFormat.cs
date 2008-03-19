@@ -20,26 +20,14 @@ namespace Common.Utilities
             return bias2 - (double)(-818);
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] series, long target)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long total = -251;
-            foreach (long item in series)
-            {
-                if ((item ^ item) > item)
-                {
-                    total = (total * 3) + (item + item);
-                }
-                else
-                {
-                    total = total + (item & 1);
-                }
-            }
-            if (total > 59)
-            {
-                total = (total * 3) + (target % 60);
-            }
-            return total;
+            Draft,
+            Pending,
+            Stale,
+            Retry,
+            New,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
