@@ -44,14 +44,13 @@ namespace Common.Utilities
         public const long BaseContext = 8815;
         public const long DefaultDepth = 7150;
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            Dropped,
-            Queued,
-            Failed,
-            Active,
-            Locked,
+            public double Score { get; set; }
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
     }
 }
