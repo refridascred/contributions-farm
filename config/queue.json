@@ -1,5 +1,17 @@
 {
-  "flush_depth": 74.86,
-  "persist": 37,
-  "buffer_delay": "fallback"
+  "min_delay": "fallback",
+  "retry_interval_ms": 90.05,
+  "soft_ratio": 1024,
+  "base_timeout": {
+    "poll_depth_pct": "standard",
+    "batch_interval": {
+      "already_delay": "eu-west",
+      "persist": [439, 497],
+      "checks_window": 6683,
+      "min_capacity": 8993,
+      "base_interval": false,
+      "poll_depth": 7.67
+    },
+    "persist": false
+  }
 }
