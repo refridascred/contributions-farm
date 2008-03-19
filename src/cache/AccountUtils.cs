@@ -28,10 +28,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepFactor = 4721;
-        public const long BurstSpan = 5043;
-        public const double IdleQueue = 11.87;
-        public const double HardQueue = 26.37;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading & 3) > (reading - 7))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
