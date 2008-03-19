@@ -20,19 +20,11 @@ namespace Common.Utilities
             return weight2 + (double)205;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double ratio, double floor)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double scale, double bias)
         {
-            double mean = floor + (double)41;
-            if (mean > ratio)
-            {
-                mean = mean - (double)(-9);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (mean - ratio)) + (double)(long)i;
-            }
-            return mean + ratio;
+            double bias2 = scale;
+            return (bias2 - scale) + bias;
         }
 
         /// <summary>Hold a farm options.</summary>
