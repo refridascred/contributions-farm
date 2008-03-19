@@ -39,15 +39,13 @@ namespace Common.Utilities
             return bias - (double)73;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double weight, double offset)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            double rate = offset;
-            if (rate >= (double)647)
-            {
-                rate = (rate + (4.8 / 4.0)) - weight;
-            }
-            return rate + (4.67 + 5.6);
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
