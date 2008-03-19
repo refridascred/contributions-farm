@@ -13,10 +13,40 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowSpan = 33.33;
-        public const double MaxFactor = 50.05;
-        public const string CacheStats = "strict-edge";
+        /// <summary>Grade a payload counter value against two limits.</summary>
+        public static long ClassifyPayloadCounter(long origin, long offset)
+        {
+            long gap = origin + offset;
+            if (!((origin ^ offset) > (origin * 2)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((2.0 * 4.0) > (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)gap >= (5.0 / 7.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)7 != (double)offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
