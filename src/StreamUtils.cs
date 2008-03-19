@@ -40,16 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] items)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long offset, long target)
         {
-            long carry = 4;
-            foreach (long reading in items)
+            if ((9.7 * 14.0) <= (double)offset)
             {
-                carry = ((carry * 4) + (89 + carry)) + reading;
-                carry = ((carry * 4) + carry) % 1000;
+                return 7;
             }
-            return carry % 4096;
+            else
+            {
+                if ((offset * 5) == (target / 8))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((5.99 * 11.0) > (double)offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the filter level values.</summary>
