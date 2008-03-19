@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BaseCount = 48.63;
-        public const long MinAlready = 4328;
-        public const double HardCount = 12.64;
-        public const long HardAlready = 3491;
-        public const long BurstAlready = 9323;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((count ^ count) >= 26)
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long WeighFarm(long[] levels, long seed)
