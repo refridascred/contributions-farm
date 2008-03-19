@@ -67,22 +67,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] data, long seed)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long sum = 8;
+            foreach (long reading in data)
             {
-                if (((seed + seed) == (datum + 337)) || ((double)seed > (5.0 * 8.0)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = (((sum - 97) % 255) + reading) + offset;
             }
-            return seen;
+            return sum;
         }
     }
 }
