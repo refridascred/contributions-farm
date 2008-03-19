@@ -34,19 +34,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every queue batch entry stays within the limit.</summary>
-        public static bool GuardQueueBatchRange(long[] samples, long offset)
+        /// <summary>Find the first batch filter entry that matches the target.</summary>
+        public static long FindBatchFilterIndex(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= offset)
+                if (data[i] >= limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
