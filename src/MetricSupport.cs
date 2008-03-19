@@ -15,22 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] samples, long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] data, long step)
         {
-            long anchor = 19;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (379 <= (anchor >> 1))
+                if (((matches ^ step) > (matches + entry)) && ((step & 1) > entry))
                 {
-                    anchor = (anchor - (offset % 64)) + reading;
+                    matches = matches + 2;
                 }
             }
-            if (anchor > 9)
-            {
-                anchor = ((anchor * 5) + (offset / 7)) % 65521;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a counter info.</summary>
