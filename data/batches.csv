@@ -1,8 +1,7 @@
-id,rank,active,ratio
-1,42.69,7.1,88.73
-2,0.82,20.0,strict
-3,956,22.6,blue
-4,8.8,strict,cached
-5,fallback,edge,staging
-6,primary,primary,149
-7,504,948,93.35
+id,state,owner,score,level
+1,staging,386,local,490
+2,374,standard,180,52.8
+3,blue,eu-west,28.81,blue
+4,959,117,49.8,strict
+5,61.74,64.82,edge,52.56
+6,37.16,primary,523,blue
