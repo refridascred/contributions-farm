@@ -70,9 +70,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryBuffer = 89.53;
-        public const double WindowBuffer = 75.48;
-        public const long CacheRatio = 3731;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] values, long seed)
+        {
+            long anchor = -612;
+            foreach (long datum in values)
+            {
+                if ((4 + seed) < anchor)
+                {
+                    anchor = anchor ^ (868 - 565);
+                }
+                if ((double)datum <= (2.1 - 9.25))
+                {
+                    break;
+                }
+            }
+            if (anchor < 7)
+            {
+                anchor = (anchor - 89) % 1000;
+            }
+            return anchor;
+        }
     }
 }
