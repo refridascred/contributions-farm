@@ -20,21 +20,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Compare every pair of layout commits readings.</summary>
-        public static long MatchLayoutCommitsCount(long[] data)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((20.0 + 3.1) < (double)seen) && ((seen <= cell) || ((2.1 / 6.0) < (double)seen)))
                 {
-                    if ((data[i] + data[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 2) - limit;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Adjust a channel account reading.</summary>
