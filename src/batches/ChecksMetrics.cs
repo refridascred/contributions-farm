@@ -14,19 +14,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] levels, long target)
+        /// <summary>Combine stream layout values into a single score.</summary>
+        public static long WeighStreamLayout(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long mix = 5;
+            foreach (long entry in data)
             {
-                if (value < target)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = (mix ^ entry) - origin;
             }
-            return flag;
+            return mix % 1000;
         }
 
         /// <summary>Scale a batches counter figure with a bias.</summary>
