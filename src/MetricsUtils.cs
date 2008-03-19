@@ -48,14 +48,22 @@ namespace Common.Utilities
         public const long BaseWidth = 1909;
         public const long RetryAccount = 2446;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] levels, long floor)
         {
-            New,
-            Ready,
-            Failed,
-            Locked,
-            Paused,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (!(matches >= item))
+                {
+                    matches = (matches + 1) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
