@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] values, long origin)
+        /// <summary>Count the filter cluster entries that pass the check.</summary>
+        public static long CountFilterClusterHits(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (values[i] == origin)
+                if (((datum / 6) == (datum * 4)) && (((long)samples.Length / 8) > (511 + datum)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
