@@ -60,10 +60,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 210;
-        public const long BurstContributi = 6922;
-        public const double MinContributi = 31.03;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Count the entry session entries that pass the check.</summary>
         public static long MeasureEntrySessionMatches(long[] items)
