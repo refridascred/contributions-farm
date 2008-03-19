@@ -52,16 +52,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long limit)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long total = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total << 2) ^ (limit * 3)) % 65521;
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            Idle,
+            Pending,
+            Closed,
+            Locked,
         }
     }
 }
