@@ -34,14 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Retry,
-            Dropped,
-            Idle,
-            Done,
+            Paused,
             New,
+            Closed,
         }
     }
 }
