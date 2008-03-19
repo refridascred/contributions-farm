@@ -15,18 +15,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit tools already readings against a rule.</summary>
-        public static long CountToolsAlreadyHits(long[] readings)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long acc = 28;
+            foreach (long reading in samples)
             {
-                if ((sample ^ hits) != (550 << 1))
+                if ((acc >> 2) < (seed - acc))
                 {
-                    hits = hits + 2;
+                    acc = (acc - (reading & 31)) % 255;
                 }
             }
-            return hits;
+            if (acc > 34)
+            {
+                acc = acc + acc;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Accumulate report window samples.</summary>
