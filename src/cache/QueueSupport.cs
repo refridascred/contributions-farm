@@ -12,18 +12,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many entry farm samples are out of range.</summary>
-        public static long TallyEntryFarmHits(long[] levels)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] items)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((entry + count) > (count / 4))
+                if ((sample << 3) == (seen << 1))
                 {
-                    count = count + 3;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Rank command input into a small class.</summary>
