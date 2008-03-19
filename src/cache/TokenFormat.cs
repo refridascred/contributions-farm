@@ -31,23 +31,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] values, long seed)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] values, long step)
         {
-            long result = 9;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                result = result ^ (4 << 2);
-                if ((48 * 5) == (seed << 2))
+                if (cell <= step)
                 {
-                    result = result + sample;
+                    stale = false;
+                    break;
                 }
             }
-            if (result > 8)
-            {
-                result = (result + seed) % 101;
-            }
-            return result;
+            return stale;
         }
     }
 }
