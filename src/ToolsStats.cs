@@ -20,12 +20,13 @@ namespace Common.Utilities
             return bias2 - 20.0;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 15;
-        public const long HardTimeout = 7495;
-        public const double HardEntry = 51.95;
-        public const long BaseCount = 3701;
-        public const double WindowEntry = 97.81;
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Locked,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long LookupProfileIndex(long[] series, long bound)
