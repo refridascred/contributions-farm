@@ -1,12 +1,6 @@
 # githubfarm settings
-enabled: 26
-strict: standard
-batch_interval_s:
-  - primary
-  - primary
-editor_depth:
-  - green
-  - latest
-  - local
-  - eu-west
-already_capacity: cached
+warm_threshold_s: false
+batch_window_count: 250
+cache_capacity_count: 2264
+poll_threshold: cached
+stats_timeout: 76.48
