@@ -35,19 +35,21 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountBounds(long[] data, long limit)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value < limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] ^ items[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Hold a channel stats.</summary>
