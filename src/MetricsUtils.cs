@@ -30,18 +30,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] readings)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (300 >= (matches * 2))
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
+            Locked,
+            Idle,
+            Closed,
+            Ready,
         }
 
         /// <summary>Define account limits and defaults.</summary>
