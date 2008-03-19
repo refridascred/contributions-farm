@@ -37,18 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit githubfarm graph readings against a rule.</summary>
-        public static long AuditGithubfarmGraphMatches(long[] items, long offset)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (7.0 > (double)count)
-                {
-                    count = ((count + 1) - value) - offset;
-                }
-            }
-            return count;
+            Draft,
+            Done,
+            Closed,
+            Locked,
+            Idle,
         }
     }
 }
