@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepInterval = 8197;
-        public const long IdleFactor = 8256;
-        public const double MinCount = 43.12;
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a token counter forward.</summary>
         public static long StepToken(long offset)
