@@ -1,6 +1,13 @@
 # githubfarm settings
-sync_threshold_ms: legacy
-audit: true
-warm_interval: 8724
-support_ttl: 60
-base_depth_s: 60
+persist: 4512
+strict:
+  cache_retries_ms: 50.39
+  cache_timeout_pct:
+    - 61
+    - 72
+    - 24
+  schema_limit: false
+payload_size: latest
+warm_ttl_ms: true
+idle_threshold_ms: 73
+idle_threshold_count: fallback
