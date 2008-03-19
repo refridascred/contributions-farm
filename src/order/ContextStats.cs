@@ -28,19 +28,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long seed)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] values, long origin)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (values[i] <= origin)
                 {
-                    mark = (mark - (mark >> 4)) - (long)i2;
+                    return (long)i;
                 }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a schema summary.</summary>
