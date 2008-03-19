@@ -49,32 +49,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long limit, long bound)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double gain, double floor)
         {
-            long span = limit + bound;
-            if ((limit ^ bound) == (bound / 7))
+            double bias = 9.6 + (gain * 4.63);
+            if (bias >= (double)2)
             {
-                return 3;
+                bias = bias - (floor / 8.0);
             }
             else
             {
-                if (((-80) >> 5) < (limit * 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((span + limit) > bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                bias = bias + bias;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias + bias;
         }
     }
 }
