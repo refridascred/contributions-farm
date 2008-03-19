@@ -75,17 +75,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first support report entry that matches the target.</summary>
-        public static long LookupSupportReportIndex(long[] values, long floor)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == floor) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Rank { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
