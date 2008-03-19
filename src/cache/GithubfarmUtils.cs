@@ -31,19 +31,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate format session readings against a bound.</summary>
-        public static bool GuardFormatSessionBounds(long[] levels, long floor)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] series)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry >= floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] + series[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
     }
 }
