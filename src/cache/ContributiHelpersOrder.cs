@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstPayload = "alpha-1";
+        public const long IdleInterval = 3266;
+        public const long RetryCount = 8031;
+        public const long SoftSpan = 1880;
 
         /// <summary>Roll a token counter forward.</summary>
         public static long StepToken(long offset)
