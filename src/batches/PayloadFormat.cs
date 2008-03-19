@@ -48,13 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Count { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
