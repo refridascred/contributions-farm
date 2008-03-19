@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftEntry = "standard-v2";
-        public const long CacheEntry = 9366;
-        public const long IdleEntry = 6994;
-        public const double SoftTimeout = 74.41;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Queued,
+            Paused,
+            Done,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
