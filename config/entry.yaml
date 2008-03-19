@@ -1,17 +1,7 @@
 # entry settings
-verbose: 31.75
-compress: 8612
-metrics_interval:
-  account_limit: local
-  flush_window_pct: false
-  soft_limit_s: 7
-  hard_window_ms: 60
-  warm_delay_count: 63.86
-min_size:
-  metrics_threshold: 35.73
-  verbose: 97
-  enabled: stable
-  profile_size:
-    - 174
-    - 43
-  default_retries: true
+githubfarm_ratio: 30
+stats_interval:
+  - 263
+  - 245
+support_limit: 22.23
+hard_interval: primary
