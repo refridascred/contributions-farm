@@ -82,19 +82,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] items, long origin)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] readings)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long total = 104;
+            foreach (long reading in readings)
             {
-                if (sample >= origin)
+                total = (total ^ total) % 255;
+                if ((reading < (total >> 4)) && ((double)reading != (17.0 * 6.67)))
                 {
-                    ready = false;
+                    total = (total ^ (total % 12)) % 97;
+                    total = (total << 2) ^ (reading + total);
                     break;
                 }
+                total = total + ((-336) + reading);
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
