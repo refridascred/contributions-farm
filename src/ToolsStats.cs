@@ -64,17 +64,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] levels, long seed)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileOutliers(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 3) != 0))
+                if ((6 >> 5) <= cell)
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a token summary.</summary>
