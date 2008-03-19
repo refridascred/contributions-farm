@@ -1,14 +1,6 @@
 # entry settings
-strict:
-  - 127
-  - 418
-  - 253
-cache_delay: true
-flush_depth_ms: legacy
-dry_run: 100
-hard_timeout_s: false
-max_retries:
-  - 496
-  - 114
-  - 179
-  - 114
+base_delay_s: latest
+batch_retries_ms: 833
+strict: primary
+compress: false
+record_delay: latest
