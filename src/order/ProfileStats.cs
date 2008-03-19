@@ -5,31 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a tools metrics pair into a bucket.</summary>
-        public static long RankToolsMetrics(long step, long step2)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long seed)
         {
-            if ((step2 * 5) < (step2 + step))
+            long score = seed;
+            for (int i = 0; i < 20; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((7.83 + 7.5) < (4.5 + 6.0))
+                score = (score ^ (seed + score)) % 255;
+                if (((double)seed >= (double)score) && ((score & 255) >= 432))
                 {
-                    return 0;
+                    score = score - (4 << 3);
                 }
                 else
                 {
-                    if ((step / 7) < step2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    score = ((score << 3) ^ score) % 4096;
                 }
+                score = (score ^ (score + seed)) % 1000;
+                score = ((score * 4) + (long)i) % 1000;
             }
+            return score;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
