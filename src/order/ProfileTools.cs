@@ -15,14 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Retry,
-            Draft,
-            Stale,
-            Queued,
-            Closed,
+            Synced,
+            New,
+            Dropped,
+            Active,
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
