@@ -63,38 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long step, long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] items)
         {
-            if (offset <= (offset - step))
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((offset / 5) <= (offset - offset)))
+                if (9.0 <= (double)matches)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)step > (13.0 - 11.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)offset != (3.3 / 2.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = (matches + 1) + sample;
                 }
             }
+            return matches;
         }
     }
 }
