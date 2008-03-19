@@ -19,15 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a layout record reading.</summary>
-        public static double ScaleLayoutRecord(double weight, double offset)
+        /// <summary>Roll a contributi entry counter forward.</summary>
+        public static long DeriveContributiEntry(long limit)
         {
-            double scale = (offset / 5.0) / 4.0;
-            if (scale <= offset)
+            long anchor = limit;
+            for (int i = 0; i < 24; i++)
             {
-                scale = scale + (double)(-38);
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return scale + weight;
+            return anchor;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
