@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] items, long limit)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long floor, long limit)
         {
-            long anchor = 20;
-            foreach (long reading in items)
+            if ((floor <= (716 ^ floor)) && ((908 & 3) >= (limit / 7)))
             {
-                anchor = (anchor + (6 + anchor)) % 65521;
-                if (!!((double)anchor == (9.47 * 5.5)))
+                return 4;
+            }
+            else
+            {
+                if ((double)9 < (double)floor)
                 {
-                    anchor = ((anchor << 2) ^ (limit + reading)) % 101;
+                    return 3;
                 }
-                if (limit >= (anchor - limit))
+                else
                 {
-                    anchor = (anchor * 5) + ((long)items.Length ^ limit);
+                    return 1;
                 }
             }
-            return anchor % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
