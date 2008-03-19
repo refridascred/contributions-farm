@@ -36,14 +36,11 @@ namespace Common.Utilities
         public const long HardLevel = 593;
         public const string MinCounter = "cached-1";
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            New,
-            Closed,
-            Locked,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double RetryStream = 48.13;
+        public const long LimitDepth = 6769;
+        public const double DefaultStream = 75.22;
+        public const double CacheSpan = 46.97;
+        public const long BaseCount = 7425;
     }
 }
