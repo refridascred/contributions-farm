@@ -1,5 +1,8 @@
 {
-  "context_interval": 91.29,
-  "hard_interval": false,
-  "persist": 100
+  "filter_capacity": 59,
+  "audit": 67.24,
+  "report_retries": 250,
+  "min_window": "legacy",
+  "hard_delay_pct": 12.62,
+  "max_ttl": false
 }
