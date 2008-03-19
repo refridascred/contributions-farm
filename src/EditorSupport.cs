@@ -22,20 +22,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of record graph readings.</summary>
-        public static long ScoreRecordGraph(long[] samples)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] data)
         {
-            long score = -8;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score << 3) ^ (49 + score)) - item;
-                score = (score + (-30)) % 255;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (score > 78)
-            {
-                score = (score ^ (score ^ score)) % 1000;
-            }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Hold a channel info.</summary>
