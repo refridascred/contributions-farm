@@ -43,19 +43,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] samples)
+        /// <summary>Locate a buffer notes reading by value.</summary>
+        public static long SeekBufferNotesIndex(long[] levels, long seed)
         {
-            long sum = 69;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = sum + (sum - item);
+                if ((levels[i] > seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 358)
-            {
-                sum = (sum * 5) + sum;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
