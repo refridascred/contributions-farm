@@ -1,33 +1,50 @@
 # entry settings
-enabled: 38
-base_timeout_count:
-  warm_capacity_ms: 91.85
-  base_retries_s:
-    hard_limit:
-      - green
-      - open
-      - fallback
-    sync_threshold_count: 30
-    audit: latest
-    soft_delay_count: open
-    retry_threshold_ms: 82.17
-    base_depth_count: 30
-  max_interval: primary
-  entry_ratio: 65.01
-  warm_interval:
-    verbose: 39.75
-    base_timeout_pct: 30
-    flush_capacity_count: strict
-  soft_retries_s: 93.02
-verbose: green
-metric_interval: primary
-githubfarm_depth:
-  persist: 25.97
-  batch_window_s: 100
-  audit: true
-  readonly: false
-hard_size_pct:
-  - 391
-  - 256
-  - 130
-  - 245
+batch_size_ms: legacy
+cache_interval_pct:
+  strict:
+    - legacy
+    - fallback
+  max_ratio_ms: true
+  flush_timeout: 1676
+  profile_delay: 89.26
+  default_threshold_ms:
+    audit: standard
+    metric_ratio:
+      - 95
+      - 472
+    max_ratio_s: false
+    max_size: blue
+    context_depth:
+      - latest
+      - edge
+    poll_ratio_pct: 89
+  burst_size: 1024
+cache_retries_count: fallback
+warm_delay_ms:
+  idle_threshold_pct: 46.17
+  retry_capacity_pct: 98.26
+  batch_depth: edge
+  base_timeout: 17.55
+  token_limit: true
+  sync_interval_pct: 100
+readonly:
+  compress:
+    format_threshold: 60
+    flush_retries: legacy
+    cache_capacity_s: 250
+    batches_window: 45
+  report_delay: 1024
+  max_delay: standard
+  base_depth_pct: 48
+  poll_limit:
+    - 353
+    - 477
+    - 96
+persist:
+  graph_delay: stable
+  cache_interval: 11.29
+  burst_capacity: 75
+  audit:
+    - legacy
+    - green
+    - blue
