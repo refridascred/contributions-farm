@@ -1,8 +1,7 @@
 {
-  "counter_capacity": 100,
-  "batch_window_pct": "primary",
-  "readonly": 66,
-  "persist": "strict",
-  "default_size_pct": 60,
-  "warm_threshold_ms": 60
+  "dry_run": 8352,
+  "default_retries": "green",
+  "default_limit_ms": "latest",
+  "hard_ratio_pct": 1.87,
+  "min_window_pct": "open"
 }
