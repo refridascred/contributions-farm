@@ -19,22 +19,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] series, long limit)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((limit ^ limit) < (4 + item))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define metric limits and defaults.</summary>
