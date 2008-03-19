@@ -50,15 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long seed)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] series, long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if (cell > origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Accumulate filter samples.</summary>
