@@ -39,13 +39,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] samples, long bound)
         {
-            Retry,
-            Failed,
-            Ready,
-            Locked,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (datum > bound)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
