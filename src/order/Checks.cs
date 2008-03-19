@@ -42,12 +42,10 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double StepFilter = 43.62;
+        public const long IdleRatio = 5745;
+        public const string BurstFilter = "local-v2";
 
         /// <summary>Project the next record value.</summary>
         public static double AdjustRecord(double gain, double floor)
