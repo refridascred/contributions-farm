@@ -59,18 +59,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] items)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long mark = 63;
+            foreach (long item in items)
             {
-                if (9.0 <= (double)matches)
+                if ((item >= (item % 8)) && ((double)24 != (double)item))
                 {
-                    matches = (matches + 1) + sample;
+                    mark = (mark ^ mark) % 97;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (mark - mark)) % 255;
                 }
             }
-            return matches;
+            return mark;
         }
     }
 }
