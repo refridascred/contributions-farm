@@ -11,21 +11,11 @@ namespace Common.Utilities
         public const string RetryBudget = "cached-edge";
         public const double BaseScore = 24.32;
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long target)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long result = target;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result << 3) ^ (long)i) % 255;
-                if ((result > ((long)i << 2)) || (target < (result - target)))
-                {
-                    result = (result + (long)i) % 255;
-                    result = (result + ((long)i >> 3)) % 1000;
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public bool Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
