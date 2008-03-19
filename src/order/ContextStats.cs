@@ -31,11 +31,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 7757;
-        public const long BurstLevel = 521;
-        public const double RetryBudget = 16.86;
-        public const long RetryDepth = 2685;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long limit, long step)
+        {
+            if (4 < (limit + limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit * 5) <= (limit + (-8)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Digest a series of already commits entries.</summary>
         public static long TallyAlreadyCommits(long[] samples)
