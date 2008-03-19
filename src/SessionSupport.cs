@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double scale, double bias)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            double drift = (double)(1 - 6);
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (double)50) + (double)(long)i;
-            }
-            return drift - (bias - scale);
+            Failed,
+            Draft,
+            Stale,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Match up order samples.</summary>
