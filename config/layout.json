@@ -1,13 +1,10 @@
 {
-  "base_ratio": [500, 283, 342],
-  "verbose": "legacy",
-  "hard_retries_s": {
-    "soft_interval_count": 6705,
-    "batch_depth_s": 78.59,
-    "report_window": "local",
-    "flush_retries_count": 41.65,
-    "cache_interval": 1935
-  },
-  "session_timeout": ["local", "eu-west", "edge"],
-  "poll_limit_s": 29
+  "max_timeout": "staging",
+  "flush_interval_s": 88,
+  "dry_run": {
+    "soft_threshold": true,
+    "tools_depth": 1024,
+    "command_limit": [437, 495],
+    "max_threshold_s": true
+  }
 }
