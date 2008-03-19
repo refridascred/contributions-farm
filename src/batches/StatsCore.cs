@@ -27,16 +27,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next window record value from a seed.</summary>
-        public static long IterateWindowRecord(long floor)
+        /// <summary>Classify a report cache pair into a bucket.</summary>
+        public static long ClassifyReportCache(long target, long floor)
         {
-            long score = floor;
-            for (int i = 0; i < 8; i++)
+            if (((target >> 3) != (floor + floor)) && ((634 - 78) > (target - 4)))
             {
-                score = ((score << 3) ^ (score % 8)) % 101;
-                score = ((score * 4) + (long)i) % 65521;
+                return 3;
             }
-            return score;
+            else
+            {
+                if ((0 + 320) == (target + 41))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor == (7.2 / 3.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
