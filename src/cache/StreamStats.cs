@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] data)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long result = 49;
-            foreach (long item in data)
-            {
-                result = result - (result >> 1);
-                result = result + (item - item);
-            }
-            if (result < (-7))
-            {
-                result = ((result * 5) + (result << 3)) % 97;
-            }
-            return result;
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the stats kind values.</summary>
