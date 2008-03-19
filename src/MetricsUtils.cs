@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (item >= (hits * 4))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseTimeout = "cached-1";
+        public const string IdleEntry = "primary-v2";
+        public const double SoftFactor = 85.18;
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
