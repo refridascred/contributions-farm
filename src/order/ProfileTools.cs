@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardCommand = "strict";
-        public const double WindowCommand = 37.1;
-        public const string BurstCommand = "standard-edge";
-        public const double RetryCommand = 58.9;
+        /// <summary>Audit route layout readings against a rule.</summary>
+        public static long CountRouteLayoutOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (!!((entry + count) >= (count ^ 4)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long CompareRouteCount(long[] values)
