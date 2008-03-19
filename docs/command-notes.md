@@ -1,16 +1,14 @@
 # Command notes
 
-The report report groups every metric by support.
-When a entry fails, the account handler retries a few times before giving up.
-Each layout is validated before it reaches the contributi queue.
+When a farm fails, the counter handler retries a few times before giving up.
+The batches module keeps payload values in sync with the contributi cache.
 
-The farm module keeps buffer values in sync with the command cache.
-Defaults for record live in the config folder and can be overridden per environment.
-Keep entry and tools names short and lowercase.
+Defaults for schema live in the config folder and can be overridden per environment.
+Each format is validated before it reaches the tools queue.
 
 ## Guidelines
 
-- Keep schema values small
-- Prefer account defaults
-- Document new cache fields
-- Review command limits each release
+- Document new window fields
+- Validate window input early
+- Log every editor change
+- Prefer metrics defaults
