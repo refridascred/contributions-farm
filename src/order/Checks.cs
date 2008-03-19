@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate githubfarm buffer readings against a bound.</summary>
-        public static bool GuardGithubfarmBufferRange(long[] samples, long limit)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Owner { get; set; }
+            public string Token { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
