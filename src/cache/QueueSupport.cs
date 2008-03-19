@@ -14,11 +14,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowDepth = 3010;
-        public const string DefaultWidth = "staging-1";
-        public const long MinRoute = 1285;
-        public const double StepRoute = 50.51;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long floor, long target)
+        {
+            if (6.0 <= (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)floor != (8.41 + 2.06)) || (target >= floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportOutliers(long[] series, long floor)
