@@ -14,15 +14,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine stream layout values into a single score.</summary>
-        public static long WeighStreamLayout(long[] data, long origin)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] items, long floor)
         {
-            long mix = 5;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix ^ entry) - origin;
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Scale a batches counter figure with a bias.</summary>
