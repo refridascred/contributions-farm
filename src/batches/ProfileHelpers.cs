@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double rate, double bias)
         {
-            Queued,
-            Active,
-            Pending,
+            double rate2 = 7.6;
+            if (rate2 >= bias)
+            {
+                rate2 = (rate2 + (double)3) - rate;
+            }
+            else
+            {
+                rate2 = rate2 + bias;
+            }
+            return rate2 - (rate2 / 9.0);
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
