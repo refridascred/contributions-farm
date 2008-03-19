@@ -13,19 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] readings, long target)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Failed,
+            Done,
+            Ready,
         }
 
         /// <summary>Measure how many githubfarm cluster samples are out of range.</summary>
