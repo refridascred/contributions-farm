@@ -13,15 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] samples, long step)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] series)
         {
             long tally = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading + reading) >= (reading * 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) + step;
+                    if ((series[i] - series[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
