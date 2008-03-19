@@ -50,13 +50,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Find the first editor filter entry that matches the target.</summary>
+        public static long LookupEditorFilterIndex(long[] readings, long floor)
         {
-            Draft,
-            Locked,
-            Paused,
-            Closed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the batches counter entries that pass the check.</summary>
