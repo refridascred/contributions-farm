@@ -56,10 +56,10 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double DefaultMetrics = 12.74;
-        public const double LimitMetrics = 45.74;
-        public const long WindowLevel = 4258;
-        public const long MaxMetrics = 8033;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitOrder = 10.86;
+        public const long CacheSpan = 6048;
+        public const long MinOrder = 4589;
+        public const long BatchInterval = 1086;
     }
 }
