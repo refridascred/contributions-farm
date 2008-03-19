@@ -1,7 +1,7 @@
-id,active,rank,weight
-1,latest,345,15.1
-2,strict,blue,blue
-3,80.79,906,12.64
-4,287,blue,353
-5,976,legacy,102
-6,fallback,367,latest
+id,region,active,label
+1,856,97.25,standard
+2,914,stable,10.58
+3,502,939,637
+4,937,green,175
+5,stable,fallback,518
+6,98.97,359,286
