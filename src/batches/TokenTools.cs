@@ -29,18 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] levels)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long mix = 783;
+            foreach (long sample in readings)
             {
-                if ((double)count >= (7.9 * 5.2))
-                {
-                    count = (count + 3) + sample;
-                }
+                mix = ((mix * 4) + (0 * 4)) - sample;
             }
-            return count;
+            return mix;
         }
     }
 }
