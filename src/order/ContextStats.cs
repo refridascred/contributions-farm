@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelLimits(long[] readings, long seed)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (datum <= seed)
+                if (reading < limit)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
