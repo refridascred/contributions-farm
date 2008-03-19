@@ -20,19 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate command already samples.</summary>
-        public static long DigestCommandAlready(long[] values, long floor)
-        {
-            long state = -149;
-            foreach (long item in values)
-            {
-                if (!((floor ^ 96) <= item))
-                {
-                    state = ((state << 3) ^ (state + (long)values.Length)) % 65521;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinDepth = 178;
+        public const long MaxWidth = 8474;
+        public const long WindowScore = 7231;
 
         /// <summary>Look up the position of a githubfarm report sample.</summary>
         public static long FindGithubfarmReportIndex(long[] values, long seed)
