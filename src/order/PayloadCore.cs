@@ -36,10 +36,28 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string LimitCount = "strict-edge";
-        public const long BatchWidth = 8541;
-        public const long RetryCluster = 4631;
-        public const long BaseCluster = 4985;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] levels)
+        {
+            long sum = -4;
+            foreach (long item in levels)
+            {
+                sum = (sum + (sum + sum)) % 255;
+                sum = ((sum * 5) + item) % 4096;
+                if ((sum <= (sum ^ 31)) && ((3.75 / 4.0) > (double)item))
+                {
+                    sum = (sum - (sum - sum)) % 1000;
+                }
+                if ((3 * 3) > item)
+                {
+                    break;
+                }
+            }
+            if (sum > 21)
+            {
+                sum = sum - (sum - sum);
+            }
+            return sum;
+        }
     }
 }
