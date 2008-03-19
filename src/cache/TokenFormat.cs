@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxBuffer = "strict-1";
+        public const long HardCount = 5895;
+        public const double StepScore = 19.21;
+        public const long BatchBuffer = 5924;
+        public const long HardBuffer = 3126;
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
