@@ -13,13 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardCommand = 9.73;
+        public const long HardCount = 3951;
+        public const string LimitCommand = "standard";
+        public const double HardDepth = 2.02;
+        public const double BatchCommand = 49.84;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool VerifyTokenBounds(long[] values, long target)
