@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Digest a series of metrics cache entries.</summary>
+        public static long ScoreMetricsCache(long[] samples, long step)
         {
-            Retry,
-            Queued,
-            New,
-            Stale,
+            long mark = 58;
+            foreach (long cell in samples)
+            {
+                if ((cell < (41 * 5)) && ((double)step >= 4.0))
+                {
+                    mark = (mark - (cell + mark)) % 97;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ 3) % 101;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a window snapshot.</summary>
