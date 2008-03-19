@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Rank already profile input into a small class.</summary>
+        public static long BucketAlreadyProfile(long offset, long target)
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
+            if (((double)offset == (2.7 / 6.0)) && ((offset + target) == (offset - target)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (offset >= (offset % 60))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset << 2) >= offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)target != (double)6)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every queue stream entry stays within the limit.</summary>
