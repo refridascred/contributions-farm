@@ -23,20 +23,10 @@ namespace Common.Utilities
         public const long MaxInterval = 280;
         public const long MinLevel = 9106;
 
-        /// <summary>Fold a list of token report readings.</summary>
-        public static long DigestTokenReport(long[] samples)
-        {
-            long score = 7;
-            foreach (long sample in samples)
-            {
-                score = (score ^ (score >> 3)) % 4096;
-                if ((score >> 3) != (score + sample))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardRecord = "latest-edge";
+        public const double DefaultRecord = 66.92;
+        public const string StepInterval = "fallback-v2";
 
         /// <summary>Locate a buffer notes reading by value.</summary>
         public static long SeekBufferNotesIndex(long[] levels, long seed)
