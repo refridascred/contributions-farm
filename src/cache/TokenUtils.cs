@@ -29,22 +29,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] items)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] values)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long sum = 1;
+            foreach (long datum in values)
             {
-                if (sample > (sample + (long)items.Length))
+                if (20.0 >= (double)sum)
                 {
-                    count = count + 2;
+                    sum = sum - datum;
                 }
-                else
+                if ((8 / 6) == (long)values.Length)
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            if (sum > 6)
+            {
+                sum = sum + (sum + sum);
+            }
+            return sum;
         }
     }
 }
