@@ -18,14 +18,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            Stale,
-            Ready,
-            Closed,
-            Locked,
-            Dropped,
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
