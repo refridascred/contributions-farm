@@ -49,13 +49,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] values, long floor)
         {
-            public string Label { get; set; } = "";
-            public bool Region { get; set; }
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((((floor + 980) >= cell) || (636 >= matches)) && ((floor % 12) <= ((long)values.Length & 15)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
