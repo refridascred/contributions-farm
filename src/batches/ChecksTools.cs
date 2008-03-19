@@ -31,39 +31,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long seed, long limit)
+        /// <summary>Fold a list of cluster route readings.</summary>
+        public static long TallyClusterRoute(long[] items, long offset)
         {
-            long bound = seed - limit;
-            if ((85 ^ seed) >= (limit % 12))
+            long anchor = 7;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((7.0 + 3.0) == (double)seed))
+                if ((78 - 8) <= offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + seed) < (bound & 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit % 5) <= (limit << 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    anchor = ((anchor + (anchor & 31)) % 101) + entry;
                 }
             }
+            if (anchor < 27)
+            {
+                anchor = anchor + offset;
+            }
+            return anchor % 1000;
         }
     }
 }
