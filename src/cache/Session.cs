@@ -74,21 +74,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] series)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) != 3)
+                    if ((values[i] - values[j]) > 11)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
