@@ -1,5 +1,8 @@
 # githubfarm settings
-poll_delay_count: edge
-readonly: 84
-flush_ratio_count: legacy
-warm_size_ms: false
+warm_depth_ms: true
+soft_delay_count: 5620
+hard_limit_s:
+  - 330
+  - 475
+  - 325
+base_retries_s: local
