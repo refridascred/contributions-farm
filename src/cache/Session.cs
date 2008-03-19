@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long origin, long floor)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long delta = origin - floor;
-            if ((floor + floor) <= 5)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor <= (8.2 - 1.56))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((792 + delta) >= (2 - 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
