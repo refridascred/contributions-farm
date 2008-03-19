@@ -13,31 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long offset, long target)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            if ((9.7 * 14.0) <= (double)offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset * 5) == (target / 8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((5.99 * 11.0) > (double)offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public double Flag { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the filter level values.</summary>
