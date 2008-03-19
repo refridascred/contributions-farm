@@ -1,6 +1,11 @@
 {
-  "record_ttl": 7743,
-  "sync_ratio_count": "cached",
-  "sync_limit_count": 60,
-  "hard_threshold_pct": 3956
+  "notes_retries": "legacy",
+  "warm_ttl_pct": "staging",
+  "persist": {
+    "readonly": 6116,
+    "warm_retries_ms": "stable",
+    "dry_run": "blue",
+    "verbose": "primary",
+    "default_threshold_pct": "primary"
+  }
 }
