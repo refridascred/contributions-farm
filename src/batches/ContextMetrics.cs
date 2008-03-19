@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] data, long bound)
         {
-            Pending,
-            Locked,
-            Synced,
-            Done,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
