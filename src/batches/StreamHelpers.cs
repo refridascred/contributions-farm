@@ -23,21 +23,15 @@ namespace Common.Utilities
         public const long RetryRatio = 8514;
         public const long HardToken = 2762;
 
-        /// <summary>Match up channel window samples.</summary>
-        public static long OverlapChannelWindowCount(long[] samples)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 503;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix + (item / 5)) % 97) - bound;
             }
-            return hits;
+            return mix % 97;
         }
 
         /// <summary>Describe the schema phase values.</summary>
