@@ -55,19 +55,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] readings, long bound)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] values)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long result = 58;
+            foreach (long entry in values)
             {
-                if (item < bound)
+                if (194 >= entry)
                 {
-                    flag = false;
+                    result = (result ^ (0 + 63)) % 97;
+                }
+                else
+                {
+                    result = (result + (result / 4)) % 101;
+                }
+                if (!((result >> 3) > (entry / 3)))
+                {
                     break;
                 }
             }
-            return flag;
+            return result % 97;
         }
 
         /// <summary>Count the stats session entries that pass the check.</summary>
