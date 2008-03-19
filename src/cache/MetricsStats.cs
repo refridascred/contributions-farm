@@ -27,13 +27,10 @@ namespace Common.Utilities
             return bias - (bias + rate);
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            New,
-            Active,
-            Done,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryDepth = "local-edge";
+        public const long WindowOrder = 954;
+        public const string HardDepth = "primary-1";
 
         /// <summary>Iterate the stats metric series from a seed.</summary>
         public static long StepStatsMetric(long bound)
