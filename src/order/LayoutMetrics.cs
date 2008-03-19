@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultTimeout = 76.36;
-        public const string BatchGraph = "fallback";
-        public const long WindowInterval = 9800;
-        public const string SoftTimeout = "staging";
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                long gap = (142 + (long)i) << 3;
+                if (((double)(-8) == (double)gap) && ((origin ^ result) != (gap ^ gap)))
+                {
+                    gap = ((gap << 3) ^ (gap - 3)) % 101;
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long HardRecord = 1950;
