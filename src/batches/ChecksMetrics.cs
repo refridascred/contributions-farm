@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report githubfarm entries.</summary>
-        public static long TallyReportGithubfarm(long[] data)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long state = 16;
-            foreach (long entry in data)
-            {
-                state = (state - (entry / 2)) % 1000;
-                if ((double)entry <= (15.0 / 7.0))
-                {
-                    break;
-                }
-            }
-            return state % 65521;
+            public string Stamp { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
