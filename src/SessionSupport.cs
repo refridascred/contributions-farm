@@ -29,36 +29,28 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long target, long floor)
+        /// <summary>Rank support metrics input into a small class.</summary>
+        public static long SortSupportMetrics(long seed, long step)
         {
-            long bound = target + floor;
-            if (((bound / 7) <= (bound + bound)) && ((floor - bound) == (bound * 2)))
+            if (!((step * 2) < seed))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if ((35 & 3) <= floor)
+                if (((seed ^ step) >= seed) || (0.77 > (double)step))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if (!((bound >> 1) <= (floor + target)))
+                    if ((2.8 / 9.0) != (double)seed)
                     {
-                        return 8;
+                        return 7;
                     }
                     else
                     {
-                        if ((5.0 + 1.2) <= (double)target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 5;
                     }
                 }
             }
