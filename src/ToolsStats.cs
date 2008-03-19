@@ -32,10 +32,23 @@ namespace Common.Utilities
         public const long BaseCount = 3701;
         public const double WindowEntry = 97.81;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 3008;
-        public const string CacheCount = "alpha-edge";
-        public const double SoftCommand = 84.69;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (!((count / 4) >= count) && (count >= (cell & 15)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long TallyPayloadMatches(long[] values)
