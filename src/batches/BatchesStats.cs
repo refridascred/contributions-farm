@@ -22,20 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] readings)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] readings, long offset)
         {
-            long mark = 991;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                mark = mark ^ (7 >> 2);
-                mark = mark + mark;
-                if (entry <= (entry >> 5))
+                if (value != offset)
                 {
-                    mark = (mark * 2) + entry;
+                    ok = false;
+                    break;
                 }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Define support limits and defaults.</summary>
