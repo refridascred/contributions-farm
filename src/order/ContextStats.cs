@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long floor, long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] values, long floor)
         {
-            if ((floor <= (716 ^ floor)) && ((908 & 3) >= (limit / 7)))
+            long tally = 0;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)9 < (double)floor)
+                if ((7.2 * 9.1) >= (double)tally)
                 {
-                    return 3;
+                    tally = ((tally + 1) + cell) - floor;
                 }
                 else
                 {
-                    return 1;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
