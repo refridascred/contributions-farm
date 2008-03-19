@@ -44,17 +44,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a report metric sample.</summary>
-        public static long FindReportMetricIndex(long[] values, long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 606;
+            foreach (long cell in data)
             {
-                if (values[i] == bound)
+                if ((carry - cell) >= cell)
                 {
-                    return (long)i;
+                    carry = (((carry * 2) + carry) % 97) - step;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
