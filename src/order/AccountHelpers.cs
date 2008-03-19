@@ -36,22 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] data)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long limit)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((sample + matches) >= (sample + (long)data.Length))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
