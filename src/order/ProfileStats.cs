@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double gain, double offset)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public string Stamp { get; set; } = "";
+            double rate = (gain + offset) / 6.0;
+            if (rate <= 1.5)
+            {
+                rate = rate + gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - offset) + (double)(long)i;
+            }
+            return rate - 7.9;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
