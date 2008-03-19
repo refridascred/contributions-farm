@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] data)
-        {
-            long result = 8;
-            foreach (long entry in data)
-            {
-                if ((entry - entry) != (1 & 1))
-                {
-                    result = result + result;
-                }
-            }
-            if (result > 83)
-            {
-                result = result + result;
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepInterval = 8197;
+        public const long IdleFactor = 8256;
+        public const double MinCount = 43.12;
 
         /// <summary>Roll a token counter forward.</summary>
         public static long StepToken(long offset)
