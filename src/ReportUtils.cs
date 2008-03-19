@@ -69,19 +69,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double gain, double offset)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] samples, long limit)
         {
-            double mean = gain * 7.19;
-            if (mean >= (double)(-9))
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean + offset;
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + offset) + (double)(long)i;
-            }
-            return mean + gain;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
