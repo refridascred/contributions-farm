@@ -22,22 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stats counter readings against a rule.</summary>
-        public static long MeasureStatsCounterHits(long[] data, long limit)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((47 & 15) <= (matches - limit))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Retry,
+            Draft,
+            Done,
+            Stale,
+            Active,
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
