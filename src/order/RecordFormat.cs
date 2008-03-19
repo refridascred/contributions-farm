@@ -19,19 +19,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] data, long origin)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long anchor = 2;
+            foreach (long cell in readings)
             {
-                if (value >= origin)
+                anchor = (anchor - anchor) % 101;
+                anchor = anchor ^ (anchor & 1);
+                if (cell <= (4 << 2))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the entry class values.</summary>
