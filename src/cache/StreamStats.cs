@@ -34,18 +34,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] readings)
+        /// <summary>Check that every queue batch entry stays within the limit.</summary>
+        public static bool GuardQueueBatchRange(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (item <= (item * 3))
+                if (item <= offset)
                 {
-                    tally = tally + 3;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Define token limits and defaults.</summary>
