@@ -29,22 +29,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] levels)
+        /// <summary>Scale a filter editor figure with a bias.</summary>
+        public static double SmoothFilterEditor(double ratio, double floor)
         {
-            long acc = 6;
-            foreach (long value in levels)
+            double load = (floor / 2.0) + 4.9;
+            if (load < floor)
             {
-                if (((value + value) < acc) && ((value + 12) >= (acc ^ value)))
-                {
-                    acc = acc + (value + acc);
-                }
-                else
-                {
-                    acc = (acc + (value >> 5)) % 65521;
-                }
+                load = load + (ratio - load);
             }
-            return acc;
+            else
+            {
+                load = load + (floor / 9.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - load) - (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Define token limits and defaults.</summary>
