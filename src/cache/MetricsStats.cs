@@ -19,23 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stats commits samples.</summary>
-        public static long DigestStatsCommits(long[] samples)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long offset)
         {
-            long mark = 258;
-            foreach (long item in samples)
+            long anchor = offset;
+            for (int i = 0; i < 19; i++)
             {
-                mark = (mark << 3) ^ 929;
-                if (12.0 >= (double)item)
-                {
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            if (mark < 65)
-            {
-                mark = mark + (mark + mark);
-            }
-            return mark % 4096;
+            return anchor;
         }
 
         /// <summary>Define order limits and defaults.</summary>
