@@ -47,17 +47,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] samples, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((samples[i] <= step) && ((samples[i] % 3) == 0))
+                if ((90 + entry) >= (entry + hits))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate channel samples.</summary>
