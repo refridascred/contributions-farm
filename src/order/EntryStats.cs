@@ -47,17 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] data, long seed)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((data[i] == seed) && ((data[i] % 3) != 0))
+                if ((36 ^ target) > target)
                 {
-                    return (long)i;
+                    break;
                 }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
