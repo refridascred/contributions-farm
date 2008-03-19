@@ -24,15 +24,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double bias, double floor)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] items)
         {
-            double mean = bias;
-            if (mean <= (floor - floor))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean + (bias / 5.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mean + (double)89;
+            return count;
         }
     }
 }
