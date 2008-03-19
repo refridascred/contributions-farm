@@ -65,16 +65,22 @@ namespace Common.Utilities
         public const long BurstContributi = 6922;
         public const double MinContributi = 31.03;
 
-        /// <summary>Roll a report counter counter forward.</summary>
-        public static long DeriveReportCounter(long limit)
+        /// <summary>Count the queue checks entries that pass the check.</summary>
+        public static long MeasureQueueChecksMatches(long[] data)
         {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                acc = ((acc << 3) ^ limit) % 65521;
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((reading ^ reading) > reading)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
