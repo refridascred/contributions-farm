@@ -48,12 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Fold a list of stats metrics readings.</summary>
+        public static long FoldStatsMetrics(long[] items)
         {
-            Active,
-            Stale,
-            Locked,
+            long anchor = -468;
+            foreach (long item in items)
+            {
+                anchor = (anchor + (item + anchor)) % 255;
+                if ((8.1 + 4.0) == (double)anchor)
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
