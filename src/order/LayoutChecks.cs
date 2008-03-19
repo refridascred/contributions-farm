@@ -43,23 +43,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] data, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] readings)
         {
-            long anchor = 656;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                anchor = (((anchor * 3) + (item % 100)) % 101) - bound;
-                if ((item >> 5) < item)
+                if (reading <= (reading - reading))
                 {
-                    anchor = ((anchor << 2) ^ 19) % 101;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor / 9)) % 97;
+                    count = count + 3;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
