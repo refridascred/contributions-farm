@@ -55,22 +55,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] items)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((entry + 87) <= (seen / 7)))
+                if ((readings[i] >= bound) && ((readings[i] % 5) != 0))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the support status values.</summary>
