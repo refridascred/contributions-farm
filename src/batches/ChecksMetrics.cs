@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] samples, long offset)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((samples[i] < offset) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                result = (result ^ (floor ^ 725)) % 255;
+                result = (result ^ (long)i) % 97;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a schema options.</summary>
