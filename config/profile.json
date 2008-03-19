@@ -1,25 +1,6 @@
 {
-  "tools_delay": {
-    "hard_limit": 30.84,
-    "strict": false,
-    "hard_ratio_s": ["edge", "legacy", "edge"],
-    "dry_run": 83,
-    "persist": 100
-  },
-  "persist": "local",
-  "batch_ratio": {
-    "default_capacity": "latest",
-    "dry_run": 79.67,
-    "retry_ttl_count": 54,
-    "batch_ratio_ms": "open",
-    "report_ttl": {
-      "idle_size_ms": 7498,
-      "soft_timeout_pct": 250,
-      "session_size": false,
-      "verbose": 81.64
-    }
-  },
-  "audit": 63,
-  "enabled": "local",
-  "sync_ttl_pct": 24
+  "enabled": 1996,
+  "persist": 27,
+  "audit": "standard",
+  "already_retries": 20.26
 }
