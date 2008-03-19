@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const long BaseChecks = 7340;
         public const double SoftSpan = 20.13;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double CacheDepth = 50.0;
-        public const long WindowSpan = 5909;
-        public const long LimitWidth = 6113;
-        public const string BatchInterval = "open-1";
+        /// <summary>Check that every channel support entry stays within the limit.</summary>
+        public static bool CheckChannelSupportBounds(long[] series, long target)
+        {
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Match up session samples.</summary>
         public static long OverlapSessionCount(long[] readings)
