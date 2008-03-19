@@ -66,19 +66,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] values, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] levels, long origin)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (sample != floor)
+                if (!((cell + origin) == (897 & 63)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
