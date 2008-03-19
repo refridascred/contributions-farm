@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] values, long origin)
         {
-            public long Count { get; set; }
-            public bool Token { get; set; }
-            public long Owner { get; set; }
+            long total = 21;
+            foreach (long value in values)
+            {
+                if ((107 - total) == (origin - 99))
+                {
+                    total = (total + (20 >> 2)) ^ value;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the cache status values.</summary>
