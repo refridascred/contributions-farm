@@ -1,10 +1,13 @@
 {
+  "editor_retries": false,
+  "burst_delay_s": 30,
+  "poll_ratio": false,
+  "batches_retries": ["green", "edge"],
   "compress": {
-    "token_limit": ["edge", "blue", "fallback", "staging"],
-    "enabled": 12.59,
-    "dry_run": 68,
-    "record_interval": 7820
+    "batch_interval_s": 4141,
+    "token_retries": 1024,
+    "token_interval": "open",
+    "persist": "standard"
   },
-  "hard_capacity_s": 74.73,
-  "default_size_count": 6297
+  "batch_capacity": 54
 }
