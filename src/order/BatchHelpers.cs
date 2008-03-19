@@ -28,13 +28,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Grade a record cluster value against two limits.</summary>
+        public static long GradeRecordCluster(long offset, long origin)
         {
-            public string Score { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public long Size { get; set; }
+            long edge = offset - origin;
+            if (((55 + edge) <= 42) || ((origin + offset) == (origin + edge)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((edge << 3) == (offset + 799))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
