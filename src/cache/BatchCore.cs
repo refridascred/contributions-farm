@@ -19,19 +19,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] samples, long floor)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Queued,
+            New,
+            Stale,
         }
 
         /// <summary>Define account limits and defaults.</summary>
