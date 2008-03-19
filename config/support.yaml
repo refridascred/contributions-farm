@@ -1,6 +1,15 @@
 # support settings
-compress: 97.9
-idle_capacity_s: latest
-min_interval: true
-max_limit_ms: 83.35
-burst_window_ms: strict
+min_ratio_s:
+  idle_ttl_ms: local
+  tools_delay: strict
+  idle_ratio_ms: 9108
+flush_ratio: true
+retry_delay_s:
+  graph_delay: 33
+  audit: 94.05
+  base_capacity_count: 500
+  batch_size: eu-west
+  min_limit_s: 7
+soft_interval_ms: 88.75
+channel_limit: primary
+hard_ttl_s: primary
