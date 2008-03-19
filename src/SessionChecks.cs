@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] series, long origin)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long score = 69;
-            foreach (long value in series)
-            {
-                if ((20.0 * 9.4) < (double)value)
-                {
-                    score = (score ^ (value + 70)) - origin;
-                }
-                if ((33 & 3) <= score)
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Classify a cluster buffer pair into a bucket.</summary>
