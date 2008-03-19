@@ -36,15 +36,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long limit)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long limit, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            if (((target - limit) > limit) && ((limit >> 5) != (limit % 8)))
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((2.9 - 5.94) < (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((target + limit) != (19 * 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((628 >> 2) >= target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
