@@ -33,24 +33,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] items)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long target)
         {
-            long state = 61;
-            foreach (long value in items)
+            long state = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (!(((value + state) != (value << 1)) || (value > state)))
-                {
-                    state = ((state << 2) ^ value) % 97;
-                }
-                if (705 < state)
-                {
-                    state = state ^ (value ^ state);
-                }
-            }
-            if (state < 48)
-            {
-                state = state + (long)items.Length;
+                state = ((state * 4) + (long)i) % 65521;
             }
             return state;
         }
