@@ -31,12 +31,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] series)
         {
-            Stale,
-            Done,
-            Closed,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((1.57 + 17.0) == (double)seen)
+                {
+                    seen = (seen + 2) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
