@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const long RetryCount = 8031;
         public const long SoftSpan = 1880;
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public long Stamp { get; set; }
-            public double Score { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFactor = 1781;
+        public const double HardFilter = 62.53;
+        public const long MinBudget = 9443;
+        public const long CacheFilter = 4415;
 
         /// <summary>Derive the next cache report value from a seed.</summary>
         public static long DeriveCacheReport(long floor)
