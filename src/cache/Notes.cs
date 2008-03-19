@@ -61,19 +61,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] samples)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] levels, long target)
         {
-            long acc = 46;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                acc = ((acc * 4) + ((-702) ^ sample)) % 97;
+                if (reading >= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (acc < 8)
-            {
-                acc = acc - (acc - 636);
-            }
-            return acc;
+            return ready;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
