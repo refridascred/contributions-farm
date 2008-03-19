@@ -58,17 +58,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a session batches reading by value.</summary>
-        public static long LookupSessionBatchesIndex(long[] values, long origin)
+        /// <summary>Count editor batches pairs that satisfy a relation.</summary>
+        public static long CompareEditorBatchesCount(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] <= origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
