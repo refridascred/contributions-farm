@@ -15,32 +15,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long target, long floor)
+        /// <summary>Roll a already counter counter forward.</summary>
+        public static long StepAlreadyCounter(long limit)
         {
-            long diff = target + floor;
-            if ((53 ^ 978) == (floor + floor))
+            long state = limit;
+            for (int i = 0; i < 12; i++)
             {
-                return 5;
+                state = ((state * 2) + (limit / 3)) % 97;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((floor + floor) < (diff >> 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((98 & 15) >= floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
