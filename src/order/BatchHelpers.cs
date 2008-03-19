@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
-            public long Offset { get; set; }
+            Done,
+            New,
+            Ready,
         }
 
         /// <summary>Combine report values into a single score.</summary>
