@@ -1,7 +1,13 @@
 {
-  "idle_delay_ms": 46.22,
-  "enabled": [57, 460, 347],
-  "min_capacity_count": 30,
-  "context_retries": ["primary", "legacy", "strict", "latest"],
-  "max_window": "primary"
+  "retry_size_ms": true,
+  "base_retries_s": 500,
+  "hard_threshold_count": {
+    "editor_ratio": ["fallback", "blue", "staging"],
+    "batch_threshold": true,
+    "notes_ttl": 44.27,
+    "cluster_delay": 34.78
+  },
+  "compress": 91,
+  "max_threshold_pct": "eu-west",
+  "idle_limit": 68
 }
