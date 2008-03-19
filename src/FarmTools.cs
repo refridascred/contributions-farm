@@ -31,32 +31,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank command format input into a small class.</summary>
-        public static long BucketCommandFormat(long offset, long target)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long step = offset - target;
-            if ((6.0 + 1.21) <= (double)target)
-            {
-                return 1;
-            }
-            else
-            {
-                if (offset < ((-912) >> 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset ^ offset) == (step - offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Active,
+            Dropped,
+            Failed,
+            Done,
         }
     }
 }
