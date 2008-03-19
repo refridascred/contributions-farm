@@ -20,19 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] values, long bound)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long score = 38;
-            foreach (long sample in values)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    score = ((((score << 2) ^ ((long)values.Length + 456)) % 101) ^ (long)i) + bound;
-                }
-                score = ((score * 4) + (sample + score)) % 255;
-            }
-            return score;
+            Queued,
+            Draft,
+            Ready,
+            Synced,
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
