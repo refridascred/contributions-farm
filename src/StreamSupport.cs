@@ -19,15 +19,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long floor, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 11; i++)
+            if ((target >> 1) < 689)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if ((target - target) < target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(target < (floor & 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor / 6) > floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the context status values.</summary>
