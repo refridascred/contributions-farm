@@ -16,17 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] data, long floor)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < floor) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public double Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
