@@ -22,11 +22,15 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Blend two context window measurements.</summary>
+        public static double AdjustContextWindow(double weight, double bias)
         {
-            public long Mode { get; set; }
-            public bool Label { get; set; }
+            double weight2 = (double)0;
+            if (weight2 > (double)53)
+            {
+                weight2 = (weight2 + (weight2 * 1.0)) + weight;
+            }
+            return weight2 - (bias - 19.0);
         }
     }
 }
