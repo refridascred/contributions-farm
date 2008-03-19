@@ -1,7 +1,11 @@
 {
-  "strict": 1024,
-  "flush_limit_s": 100,
-  "max_timeout_ms": "latest",
-  "compress": 57,
-  "base_limit": 4373
+  "base_interval_count": 1236,
+  "enabled": "fallback",
+  "batch_capacity_pct": "standard",
+  "batch_retries_pct": {
+    "verbose": 3208,
+    "stream_limit": false,
+    "flush_delay_ms": 60,
+    "cache_window": "local"
+  }
 }
