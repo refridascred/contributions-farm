@@ -16,14 +16,12 @@ namespace Common.Utilities
             return drift - gain;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            Pending,
-            Stale,
-            Closed,
-            Retry,
-            Draft,
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a command stats.</summary>
