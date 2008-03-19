@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] series, long step)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double bias, double floor)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            double mean = (double)(17 >> 4);
+            for (int i = 0; i < 6; i++)
             {
-                if (entry < step)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (mean - (bias + 6.0)) - (double)(long)i;
             }
-            return flag;
+            return mean + floor;
         }
 
         /// <summary>Define record limits and defaults.</summary>
