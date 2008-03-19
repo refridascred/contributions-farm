@@ -37,14 +37,15 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long origin)
         {
-            Synced,
-            Active,
-            Queued,
-            Idle,
-            Closed,
+            long mark = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate token samples.</summary>
