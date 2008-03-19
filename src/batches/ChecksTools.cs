@@ -31,21 +31,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] readings)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long seed, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long bound = seed - limit;
+            if ((85 ^ seed) >= (limit % 12))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((7.0 + 3.0) == (double)seed))
                 {
-                    if ((readings[i] - readings[j]) > 15)
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + seed) < (bound & 7))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit % 5) <= (limit << 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
