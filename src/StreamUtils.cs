@@ -13,11 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public bool Region { get; set; }
-            public double Offset { get; set; }
+            Active,
+            Queued,
+            Done,
         }
 
         /// <summary>Describe the filter level values.</summary>
