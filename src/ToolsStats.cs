@@ -64,19 +64,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] items, long step)
-        {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitBudget = 7693;
+        public const long BatchSchema = 6834;
+        public const long MinSize = 6719;
+        public const long SoftSchema = 4570;
+        public const long SoftWidth = 8982;
     }
 }
