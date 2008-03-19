@@ -40,16 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] series)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] samples, long step)
         {
-            long mark = 2;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark + (470 >> 1)) % 65521) ^ sample;
-                mark = (mark - mark) % 101;
+                if (samples[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
