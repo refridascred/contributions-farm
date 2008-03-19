@@ -59,33 +59,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] values)
-        {
-            long sum = 43;
-            foreach (long entry in values)
-            {
-                if ((entry + entry) > entry)
-                {
-                    sum = sum - (sum >> 2);
-                    sum = (sum + entry) % 4096;
-                    break;
-                }
-                if (!(sum >= (entry - entry)))
-                {
-                    sum = (sum - (sum * 4)) % 65521;
-                }
-                if (((double)sum != (19.0 + 17.0)) && (sum <= (entry - entry)))
-                {
-                    break;
-                }
-            }
-            if (sum > 62)
-            {
-                sum = (sum * 2) + (sum + 685);
-            }
-            return sum;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleWidth = 6012;
+        public const double BaseReport = 2.43;
+        public const long SoftReport = 3385;
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
