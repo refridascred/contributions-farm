@@ -1,5 +1,12 @@
 {
-  "window_depth": ["local", "edge", "cached", "eu-west"],
-  "verbose": 97.32,
-  "persist": [46, 207, 306]
+  "default_retries_ms": {
+    "batch_delay_pct": "eu-west",
+    "layout_limit": 93,
+    "dry_run": ["eu-west", "edge", "strict"],
+    "contributi_timeout": 37.77
+  },
+  "burst_capacity_count": "blue",
+  "window_delay": 7476,
+  "dry_run": [484, 52, 4],
+  "batches_threshold": false
 }
