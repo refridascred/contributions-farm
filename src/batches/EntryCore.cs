@@ -22,11 +22,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Classify a batch stats pair into a bucket.</summary>
+        public static long RankBatchStats(long step, long origin)
         {
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
+            long next = step - origin;
+            if ((6.98 * 8.47) <= (double)next)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step + step) > (step >> 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin / 8) < next)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)9 > (double)step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a metric support sample.</summary>
