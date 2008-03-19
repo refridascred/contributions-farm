@@ -23,20 +23,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Digest a series of route token entries.</summary>
-        public static long DigestRouteToken(long[] data, long step)
-        {
-            long state = 52;
-            foreach (long item in data)
-            {
-                state = ((state ^ step) % 65521) - item;
-            }
-            if (state > 69)
-            {
-                state = (state + (step & 255)) % 1000;
-            }
-            return state % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardSize = "latest-edge";
+        public const long HardRatio = 6588;
+        public const long HardPayload = 1517;
+        public const long IdleDepth = 7861;
+        public const string RetryPayload = "staging";
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool VerifyTokenBounds(long[] values, long target)
