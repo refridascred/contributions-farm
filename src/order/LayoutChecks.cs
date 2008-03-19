@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] readings, long target)
-        {
-            long mark = 952;
-            foreach (long reading in readings)
-            {
-                if ((mark - mark) <= (reading + 70))
-                {
-                    mark = mark + (3 + reading);
-                }
-            }
-            if (mark > 810)
-            {
-                mark = (mark - (47 + target)) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryRatio = 7639;
+        public const string MaxSupport = "staging-edge";
+        public const double CacheInterval = 84.21;
+        public const long DefaultWidth = 2209;
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long IterateStats(long step)
