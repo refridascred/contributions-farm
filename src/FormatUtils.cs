@@ -18,10 +18,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxRatio = 1786;
-        public const long MaxGraph = 2948;
-        public const long CacheGraph = 2832;
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
+        {
+            public double Level { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long OverlapMetricCount(long[] readings)
