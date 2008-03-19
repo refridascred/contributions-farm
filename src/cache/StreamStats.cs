@@ -14,13 +14,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Combine channel graph values into a single score.</summary>
+        public static long TotalChannelGraph(long[] data, long floor)
         {
-            public bool Region { get; set; }
-            public double Weight { get; set; }
-            public bool Size { get; set; }
-            public long Count { get; set; }
+            long state = -91;
+            foreach (long cell in data)
+            {
+                double rate = (7.0 * 9.11) + (2.7 - 3.0);
+                if (!((double)869 > (rate * 2.78)))
+                {
+                    state = (state ^ (cell + cell)) % 255;
+                }
+                state = state ^ (cell >> 5);
+                if ((state - cell) < (floor >> 4))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
