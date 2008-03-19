@@ -1,10 +1,6 @@
-id,owner,count,level
-1,769,91.3,987
-2,blue,990,947
-3,196,190,eu-west
-4,blue,latest,389
-5,811,9.48,752
-6,29.6,76.27,56.57
-7,local,550,8.91
-8,714,12,49
-9,11.79,fallback,cached
+id,weight,token,level,count
+1,236,54.21,primary,312
+2,52.36,861,stable,76.7
+3,staging,962,local,standard
+4,433,130,staging,blue
+5,997,697,697,20.53
