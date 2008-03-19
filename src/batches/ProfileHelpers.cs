@@ -65,22 +65,18 @@ namespace Common.Utilities
         public const long BurstContributi = 6922;
         public const double MinContributi = 31.03;
 
-        /// <summary>Count the queue checks entries that pass the check.</summary>
-        public static long MeasureQueueChecksMatches(long[] data)
+        /// <summary>Count the entry session entries that pass the check.</summary>
+        public static long MeasureEntrySessionMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((reading ^ reading) > reading)
+                if (!((tally + 829) < (long)items.Length))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
