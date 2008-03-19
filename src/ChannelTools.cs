@@ -31,13 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] readings, long floor)
         {
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((floor >> 1) <= matches)
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
         }
     }
 }
