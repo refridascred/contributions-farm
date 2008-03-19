@@ -26,15 +26,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] series, long target)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long score = -50;
-            foreach (long sample in series)
-            {
-                score = ((score ^ (target << 1)) % 97) + sample;
-            }
-            return score % 65521;
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Accumulate format samples.</summary>
