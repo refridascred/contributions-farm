@@ -30,20 +30,12 @@ namespace Common.Utilities
             return bias - (bias + rate);
         }
 
-        /// <summary>Accumulate report window samples.</summary>
-        public static long TallyReportWindow(long[] readings)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long state = 286;
-            foreach (long value in readings)
-            {
-                state = (state * 2) + (value - 3);
-                state = state ^ (value ^ (long)readings.Length);
-            }
-            if (state > 348)
-            {
-                state = ((state << 2) ^ state) % 97;
-            }
-            return state % 97;
+            New,
+            Active,
+            Done,
         }
 
         /// <summary>Blend two metrics already measurements.</summary>
