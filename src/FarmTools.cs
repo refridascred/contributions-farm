@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] samples, long origin)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Draft,
+            New,
+            Stale,
+            Synced,
         }
 
         /// <summary>Locate a queue command reading by value.</summary>
