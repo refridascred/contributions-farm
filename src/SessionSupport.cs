@@ -14,40 +14,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Classify a cluster entry pair into a bucket.</summary>
-        public static long GradeClusterEntry(long floor, long step)
-        {
-            long gap = floor - step;
-            if ((step - floor) < (floor % 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((2.7 - 9.39) <= (double)gap)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor >= (-4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step << 1) >= 61)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleCount = 13.67;
+        public const long BurstNotes = 50;
+        public const double StepNotes = 69.2;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
