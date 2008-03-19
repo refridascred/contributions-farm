@@ -46,24 +46,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the format stream series from a seed.</summary>
-        public static long IterateFormatStream(long floor)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long floor, long floor2)
         {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
+            if ((floor + (-40)) == (floor2 + floor))
             {
-                sum = sum + (sum - sum);
-                if ((floor + floor) == ((long)i + 73))
+                return 4;
+            }
+            else
+            {
+                if ((43 + floor) == (floor << 3))
                 {
-                    sum = (sum ^ (floor & 255)) % 1000;
+                    return 8;
                 }
                 else
                 {
-                    sum = (sum - ((long)i + floor)) % 1000;
+                    if (floor2 < (floor - floor2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((0.12 / 2.0) > (double)floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
