@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] samples, long floor)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long acc = 10;
-            foreach (long value in samples)
-            {
-                acc = ((acc << 2) ^ (floor / 5)) % 4096;
-                if (((value ^ floor) >= value) || ((729 + floor) > (4 & 255)))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Synced,
+            Closed,
+            Queued,
         }
 
         /// <summary>Locate a queue command reading by value.</summary>
