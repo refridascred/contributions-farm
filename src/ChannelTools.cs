@@ -17,18 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] levels, long target)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (!(18.0 <= (double)count))
+                if ((double)reading > (6.2 + 17.0))
                 {
-                    count = ((count + 2) ^ cell) - target;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
