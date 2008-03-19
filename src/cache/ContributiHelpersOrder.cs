@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long RetryCount = 8031;
         public const long SoftSpan = 1880;
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Paused,
-            New,
-            Queued,
+            public long Stamp { get; set; }
+            public double Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Derive the next cache report value from a seed.</summary>
