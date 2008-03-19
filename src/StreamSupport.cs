@@ -20,10 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowRatio = "strict-edge";
-        public const long StepSpan = 3801;
-        public const long CacheSize = 7345;
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
+        {
+            New,
+            Failed,
+            Idle,
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long IdleDepth = 7224;
