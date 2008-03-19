@@ -13,19 +13,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] items, long bound)
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double weight, double span)
         {
-            bool found = true;
-            foreach (long sample in items)
+            double ratio = (double)(7 ^ 43);
+            if (ratio < (double)914)
             {
-                if (sample < bound)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ((ratio - (double)(-39)) + weight) + span;
             }
-            return found;
+            return ratio + (double)51;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
