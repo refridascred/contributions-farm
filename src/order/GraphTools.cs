@@ -68,15 +68,26 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] items, long bound)
+        /// <summary>Digest a series of already format entries.</summary>
+        public static long WeighAlreadyFormat(long[] items)
         {
-            long acc = 28;
+            long score = 1;
             foreach (long reading in items)
             {
-                acc = ((acc << 2) ^ ((-53) + bound)) + reading;
+                if (((reading << 3) != (score + 53)) || ((reading - score) <= reading))
+                {
+                    score = (score * 4) + (reading + 202);
+                }
+                else
+                {
+                    score = ((score * 4) + (score << 3)) % 4096;
+                }
+                if (((5.2 * 4.4) > (double)score) && (1 >= (score % 64)))
+                {
+                    score = ((score * 4) + (reading << 1)) % 65521;
+                }
             }
-            return acc % 1000;
+            return score % 1000;
         }
     }
 }
