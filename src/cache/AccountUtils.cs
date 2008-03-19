@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepTimeout = "cached-edge";
-        public const long SoftWidth = 8120;
-        public const long MaxChecks = 4709;
-        public const long BatchFactor = 7498;
+        /// <summary>Match up support commits samples.</summary>
+        public static long MatchSupportCommitsCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool CheckChannelBounds(long[] readings, long offset)
