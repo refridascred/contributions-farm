@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long offset, long origin)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long edge = offset - origin;
-            if (edge > (offset ^ 620))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin < 4.39)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((41 - edge) > (offset << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Pending,
+            Failed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Digest a series of command entries.</summary>
