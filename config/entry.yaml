@@ -1,6 +1,7 @@
 # entry settings
-record_timeout: true
-hard_ratio: true
-compress:
-  - legacy
-  - staging
+hard_interval: 1024
+cache_ratio: 53
+format_interval: false
+retry_size_count: 65.07
+min_window_pct: 17
+batch_retries: false
