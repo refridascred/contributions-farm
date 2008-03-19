@@ -1,6 +1,10 @@
 {
-  "poll_window_s": [121, 275, 359, 342],
-  "default_ratio_pct": false,
-  "poll_size_s": 96,
-  "editor_interval": true
+  "idle_size_s": ["blue", "cached"],
+  "format_size": {
+    "editor_ratio": [334, 37, 170],
+    "verbose": 4996,
+    "base_delay": 92.21,
+    "support_retries": false
+  },
+  "default_limit_count": 60
 }
