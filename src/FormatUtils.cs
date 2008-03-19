@@ -43,14 +43,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Pending,
-            Ready,
-            New,
-            Failed,
-            Locked,
+            public bool Rank { get; set; }
+            public bool Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Count the batches counter entries that pass the check.</summary>
