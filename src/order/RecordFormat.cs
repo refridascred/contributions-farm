@@ -51,18 +51,12 @@ namespace Common.Utilities
         public const double StepGithubfarm = 71.76;
         public const string MinInterval = "stable-edge";
 
-        /// <summary>Count the payload filter entries that pass the check.</summary>
-        public static long CountPayloadFilterOutliers(long[] values)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((18.0 * 0.78) > (double)seen)
-                {
-                    seen = (seen + 3) - reading;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
+            public long Label { get; set; }
         }
     }
 }
