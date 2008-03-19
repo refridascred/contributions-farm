@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public double Region { get; set; }
-            public long Total { get; set; }
-            public double Mode { get; set; }
+            Draft,
+            Pending,
+            Dropped,
+            Idle,
+            Closed,
         }
 
         /// <summary>Digest a series of already entries.</summary>
