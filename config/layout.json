@@ -1,13 +1,12 @@
 {
-  "contributi_timeout": {
-    "verbose": ["edge", "edge", "standard"],
-    "base_retries_s": true,
-    "burst_interval_count": false,
-    "dry_run": false
-  },
-  "flush_interval": ["local", "open"],
-  "warm_retries": 250,
-  "hard_interval": [253, 94, 243, 232],
-  "notes_depth": "fallback",
-  "cluster_ttl": "stable"
+  "batch_window_pct": [335, 62],
+  "cache_ratio_ms": 62,
+  "flush_interval": {
+    "poll_limit_ms": 4013,
+    "default_window_ms": 19.67,
+    "sync_window_ms": "edge",
+    "readonly": true,
+    "idle_retries": "cached",
+    "max_depth": true
+  }
 }
