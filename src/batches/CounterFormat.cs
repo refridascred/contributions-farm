@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine graph stats values into a single score.</summary>
-        public static long TallyGraphStats(long[] readings, long target)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long limit)
         {
-            long state = 835;
-            foreach (long sample in readings)
+            long acc = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((state + state) <= sample)
+                if ((((long)i / 7) < ((long)i - acc)) && (((-604) / 8) <= (acc & 255)))
                 {
-                    state = (state ^ (target + 579)) % 1000;
+                    acc = acc + acc;
+                    continue;
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
