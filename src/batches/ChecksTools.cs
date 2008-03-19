@@ -11,10 +11,22 @@ namespace Common.Utilities
         public const long BatchGraph = 4994;
         public const string MaxTimeout = "cached";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitSpan = 1.18;
-        public const long CacheStats = 5397;
-        public const long MinStats = 4288;
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string WindowFactor = "legacy-v2";
