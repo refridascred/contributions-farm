@@ -27,22 +27,17 @@ namespace Common.Utilities
         public const long BaseCount = 3701;
         public const double WindowEntry = 97.81;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] samples)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((count / 4) >= count) && (count >= (cell & 15)))
+                if (series[i] <= bound)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the already level values.</summary>
