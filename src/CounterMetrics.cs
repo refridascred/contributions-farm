@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] levels, long bound)
+        /// <summary>Find the first report already entry that matches the target.</summary>
+        public static long LookupReportAlreadyIndex(long[] samples, long limit)
         {
-            long anchor = 78;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor - (-30)) ^ item) - bound;
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the buffer status values.</summary>
