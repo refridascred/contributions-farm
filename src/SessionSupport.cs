@@ -16,15 +16,18 @@ namespace Common.Utilities
             return drift - (bias - scale);
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] levels)
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                total = ((total * 5) + (long)i) % 97;
+                if ((sample - 53) > (sample & 7))
+                {
+                    count = count + 3;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Rank support metrics input into a small class.</summary>
