@@ -44,22 +44,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] data)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long bound)
         {
-            long acc = -64;
-            foreach (long sample in data)
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((acc * 2) != (0 * 3))
-                {
-                    acc = ((acc + (71 >> 3)) % 4096) ^ sample;
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            if (acc > 9)
-            {
-                acc = ((acc * 3) + (acc >> 4)) % 65521;
-            }
-            return acc;
+            return sum;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
