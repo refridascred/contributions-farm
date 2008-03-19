@@ -50,12 +50,18 @@ namespace Common.Utilities
             return mean - (mean - mean);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MaxCount = "primary";
-        public const long CacheWidth = 619;
-        public const long LimitBudget = 8118;
-        public const string CacheGithubfarm = "primary";
-        public const long SoftGithubfarm = 2460;
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of graph layout readings.</summary>
         public static long OverlapGraphLayoutCount(long[] samples)
