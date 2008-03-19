@@ -26,17 +26,18 @@ namespace Common.Utilities
         public const double BaseBudget = 92.77;
         public const long RetryGraph = 1835;
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] values, long step)
+        /// <summary>Count the support contributi entries that pass the check.</summary>
+        public static long MeasureSupportContributiOutliers(long[] samples, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (values[i] == step)
+                if ((double)seed <= (9.25 / 6.0))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - value;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
