@@ -16,20 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] series, long limit)
-        {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleBudget = 8414;
+        public const long BurstTools = 9829;
+        public const long SoftRatio = 6010;
+        public const long MaxInterval = 280;
+        public const long MinLevel = 9106;
 
         /// <summary>Fold a list of token report readings.</summary>
         public static long DigestTokenReport(long[] samples)
