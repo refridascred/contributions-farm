@@ -34,19 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] levels, long floor)
+        /// <summary>Audit cache schema readings against a rule.</summary>
+        public static long MeasureCacheSchemaHits(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (sample > floor)
+                if (!((cell % 8) == (cell - matches)))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) + limit;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
