@@ -16,19 +16,15 @@ namespace Common.Utilities
             return ratio - (5.0 - weight);
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] series, long floor)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long offset)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long score = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading < floor)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
