@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const long DefaultBuffer = 6718;
         public const double MaxBuffer = 17.32;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] data, long bound)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long mark = 5;
-            foreach (long datum in data)
-            {
-                mark = ((((mark * 5) + (26 - mark)) % 4096) + datum) + bound;
-            }
-            return mark % 97;
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
