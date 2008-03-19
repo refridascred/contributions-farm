@@ -59,18 +59,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] readings, long bound)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (((double)bound >= (4.7 - 18.0)) && ((bound + 0) > (662 >> 4)))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 9966;
+        public const string LimitRatio = "open-v2";
+        public const double StepFactor = 79.66;
+        public const long LimitSize = 3637;
     }
 }
