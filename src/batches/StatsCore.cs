@@ -63,22 +63,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] items, long target)
+        /// <summary>Audit session report readings against a rule.</summary>
+        public static long AuditSessionReportOutliers(long[] samples, long offset)
         {
-            long mark = 845;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (((long)items.Length < (mark + mark)) && ((17 << 1) < (sample ^ target)))
+                if ((((reading - matches) != (reading + matches)) && ((reading % 24) >= offset)) && ((1 <= (matches ^ offset)) || (reading < (offset * 2))))
                 {
-                    mark = (mark - (mark << 2)) % 4096;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (mark < 115)
-            {
-                mark = (mark + (43 & 7)) % 97;
-            }
-            return mark;
+            return matches;
         }
     }
 }
