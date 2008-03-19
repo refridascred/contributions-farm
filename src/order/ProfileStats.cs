@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] readings, long offset)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long bound, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((bound >> 5) > (origin ^ origin)) && ((origin * 5) > (origin << 2)))
             {
-                if ((readings[i] >= offset) && ((readings[i] % 3) != 0))
+                return 2;
+            }
+            else
+            {
+                if (((-9) + origin) >= bound)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (bound > (origin - bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((origin * 3) >= origin) && ((bound - bound) == (549 + origin)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a contributi info.</summary>
