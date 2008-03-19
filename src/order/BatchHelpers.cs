@@ -16,15 +16,11 @@ namespace Common.Utilities
             return scale + (rate * 9.7);
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long floor)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            public double Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Digest a series of schema entries.</summary>
