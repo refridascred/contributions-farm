@@ -71,17 +71,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a already route reading by value.</summary>
-        public static long FindAlreadyRouteIndex(long[] samples, long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (samples[i] < seed)
+                if ((double)floor == (14.0 + 4.0))
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
