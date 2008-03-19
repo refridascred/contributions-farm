@@ -29,21 +29,19 @@ namespace Common.Utilities
             return scale + weight;
         }
 
-        /// <summary>Derive the next cluster metric value from a seed.</summary>
-        public static long RollClusterMetric(long offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] samples, long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if ((691 >> 4) <= (offset % 7))
+                if (cell > limit)
                 {
-                    acc = (acc << 3) ^ (3 + offset);
-                    acc = (acc * 4) + offset;
+                    ready = false;
+                    break;
                 }
-                acc = (acc << 2) ^ offset;
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Accumulate checks samples.</summary>
