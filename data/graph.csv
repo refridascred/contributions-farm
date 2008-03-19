@@ -1,7 +1,9 @@
-id,level,token
-1,37.94,460
-2,885,265
-3,523,48.91
-4,65.82,latest
-5,strict,454
-6,88.22,436
+id,region,weight,ratio
+1,88.81,40.5,742
+2,cached,3.21,438
+3,469,stable,green
+4,primary,198,246
+5,standard,green,70.6
+6,277,90.65,open
+7,primary,46.91,edge
+8,green,91.67,78
