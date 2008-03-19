@@ -27,21 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] readings)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 200;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (19.0 <= (double)carry)
                 {
-                    if ((readings[i] ^ readings[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry + carry) % 65521) ^ item;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
