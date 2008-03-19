@@ -62,19 +62,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] levels, long target)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (reading >= target)
+                if (cell < seed)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
