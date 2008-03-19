@@ -48,22 +48,9 @@ namespace Common.Utilities
         public const long BaseWidth = 1909;
         public const long RetryAccount = 2446;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] levels, long floor)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (!(matches >= item))
-                {
-                    matches = (matches + 1) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowRatio = "primary-edge";
+        public const double StepProfile = 79.26;
+        public const long HardFactor = 223;
     }
 }
