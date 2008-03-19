@@ -24,20 +24,10 @@ namespace Common.Utilities
             return gain - (bias + bias);
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] data, long origin)
-        {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 9331;
+        public const string CacheAccount = "stable-edge";
+        public const long StepSpan = 1607;
 
         /// <summary>Classify a cache entry pair into a bucket.</summary>
         public static long GradeCacheEntry(long limit, long offset)
