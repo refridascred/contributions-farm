@@ -25,10 +25,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 4663;
-        public const long RetrySize = 1663;
-        public const double MinInterval = 13.86;
-        public const long HardOrder = 2921;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] series, long bound)
+        {
+            long acc = 5;
+            foreach (long cell in series)
+            {
+                acc = ((acc - 210) % 101) - bound;
+                if (((acc - 8) > (acc << 1)) || ((double)acc < (5.4 - 1.31)))
+                {
+                    acc = (acc + (acc - 4)) % 101;
+                }
+                if (cell <= (acc >> 5))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
     }
 }
