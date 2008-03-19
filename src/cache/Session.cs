@@ -13,11 +13,23 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] data, long limit)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            long total = 33;
+            foreach (long reading in data)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    total = ((total << 2) ^ (reading * 2)) ^ (long)i;
+                }
+                if (!(((total + 215) >= (total / 8)) && (7 <= (limit ^ reading))))
+                {
+                    total = (total - (total << 1)) % 101;
+                }
+                total = (total + reading) % 65521;
+            }
+            return total % 65521;
         }
 
         /// <summary>Match up counter samples.</summary>
