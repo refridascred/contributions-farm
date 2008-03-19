@@ -36,17 +36,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a commits farm sample.</summary>
-        public static long LookupCommitsFarmIndex(long[] values, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] samples, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 1;
+            foreach (long entry in samples)
             {
-                if ((values[i] > floor) && ((values[i] % 2) == 0))
+                if ((double)floor <= (2.86 - 9.93))
                 {
-                    return (long)i;
+                    sum = sum + entry;
+                }
+                if (((entry & 127) < (floor << 3)) && ((sum + sum) <= 193))
+                {
+                    sum = (sum - (393 ^ sum)) % 1000;
                 }
             }
-            return -1;
+            return sum % 65521;
         }
     }
 }
