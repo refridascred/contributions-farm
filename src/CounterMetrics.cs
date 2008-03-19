@@ -39,23 +39,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] readings, long offset)
-        {
-            long acc = 543;
-            foreach (long datum in readings)
-            {
-                if ((offset % 12) > (acc - datum))
-                {
-                    acc = (acc + (offset & 63)) % 255;
-                }
-            }
-            if (acc > 67)
-            {
-                acc = ((acc << 2) ^ (66 / 2)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultSchema = "cached-edge";
+        public const long WindowSchema = 4940;
+        public const long CacheBudget = 2610;
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool ValidateGraphLimits(long[] readings, long seed)
