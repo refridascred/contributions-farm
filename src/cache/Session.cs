@@ -25,17 +25,30 @@ namespace Common.Utilities
         public const long MinInterval = 7977;
         public const string SoftSupport = "latest-1";
 
-        /// <summary>Look up the position of a window payload sample.</summary>
-        public static long FindWindowPayloadIndex(long[] data, long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = -29;
+            foreach (long datum in readings)
             {
-                if ((data[i] < limit) && ((data[i] % 2) == 0))
+                if ((1.37 - 7.7) != (double)acc)
                 {
-                    return (long)i;
+                    acc = acc - (acc << 3);
+                }
+                for (int i = 0; i < 6; i++)
+                {
+                    acc = ((acc ^ acc) % 65521) - (long)i;
+                }
+                if ((datum + floor) <= (26 + datum))
+                {
+                    acc = acc + (long)readings.Length;
                 }
             }
-            return -1;
+            if (acc < 209)
+            {
+                acc = acc ^ floor;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
