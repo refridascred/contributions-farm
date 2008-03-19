@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] readings)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] values)
         {
             long count = 0;
-            foreach (long sample in readings)
+            foreach (long datum in values)
             {
-                if ((double)count >= (17.0 - 1.0))
+                if (datum >= (29 / 9))
                 {
-                    count = (count + 2) + sample;
+                    count = count + 3;
                 }
             }
             return count;
