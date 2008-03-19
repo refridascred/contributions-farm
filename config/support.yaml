@@ -1,25 +1,10 @@
 # support settings
-min_delay_ms:
-  flush_capacity_pct: latest
-  enabled: 3866
-  max_threshold_s: true
-session_limit:
-  default_interval:
-    soft_threshold_ms: true
-    min_window_ms: 49
-    strict: eu-west
-    buffer_timeout: true
-    persist: true
-  hard_depth_s: false
-  persist:
-    sync_ttl_s: true
-    max_ttl_s:
-      - 316
-      - 224
-    min_capacity: 1.79
-    persist:
-      - 330
-      - 147
-      - 1
-  already_threshold: green
-readonly: 5393
+idle_depth_s: 30
+cache_depth: 1621
+strict:
+  readonly: 19.31
+  soft_interval_pct: false
+  retry_threshold_count: eu-west
+  hard_ratio: 75.24
+  default_limit_count: edge
+  farm_interval: true
