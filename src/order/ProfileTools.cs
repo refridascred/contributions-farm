@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferBounds(long[] samples, long limit)
         {
-            Active,
-            Draft,
-            Retry,
-            Dropped,
-            Pending,
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the window status values.</summary>
