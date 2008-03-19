@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two entry metrics measurements.</summary>
-        public static double BlendEntryMetrics(double rate, double bias)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] data, long seed)
         {
-            double load = bias;
-            if (load < rate)
+            long score = 858;
+            foreach (long sample in data)
             {
-                load = load + 2.0;
+                if ((score > (741 ^ score)) && ((731 + score) > (sample * 2)))
+                {
+                    score = ((score + ((-56) >> 1)) % 4096) + seed;
+                }
             }
-            else
+            if (score > 506)
             {
-                load = load + 18.0;
+                score = score ^ (score + 6);
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + load) - (double)(long)i;
-            }
-            return load + (double)1;
+            return score % 1000;
         }
 
         /// <summary>Hold a entry record.</summary>
