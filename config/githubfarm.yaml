@@ -1,6 +1,7 @@
 # githubfarm settings
-verbose: latest
-flush_ratio_count: 8438
-idle_interval_ms: true
-soft_threshold_s: 30
-hard_threshold_ms: 6820
+readonly:
+  - 240
+  - 289
+  - 197
+graph_capacity: 31.83
+retry_timeout: green
