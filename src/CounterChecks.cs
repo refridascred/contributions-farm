@@ -53,15 +53,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long origin)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long anchor = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Stamp { get; set; }
+            public double Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
