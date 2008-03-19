@@ -13,39 +13,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long target, long seed)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long bound = target + seed;
-            if ((target + target) != (target % 100))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((317 ^ bound) <= (seed + seed)) || ((target - target) >= seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound ^ seed) > (target + target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (seed <= (-6))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a entry header.</summary>
