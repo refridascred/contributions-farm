@@ -23,13 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 8950;
+        public const string MaxBatch = "alpha-v2";
+        public const double IdleBatch = 0.12;
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
