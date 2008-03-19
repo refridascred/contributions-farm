@@ -1,5 +1,6 @@
 {
-  "sync_limit_s": 25.5,
-  "default_size_count": 52.63,
-  "strict": 93.07
+  "warm_window_ms": 9699,
+  "enabled": 3005,
+  "default_interval_ms": 81,
+  "idle_size_count": 500
 }
