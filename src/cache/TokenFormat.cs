@@ -19,32 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long target, long offset)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long cur = target - offset;
-            if (((14.0 - 3.06) != (double)offset) && ((double)cur < (7.6 * 17.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset >> 3) >= (target << 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (cur >= (1 ^ target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Queued,
+            Paused,
+            Idle,
+            Stale,
+            Closed,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
