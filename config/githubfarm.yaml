@@ -1,7 +1,9 @@
 # githubfarm settings
-format_limit: legacy
-window_interval: standard
-max_ttl: true
-readonly: true
-poll_limit_s: cached
-hard_limit_s: 46.36
+max_window_ms: 60
+compress: 60
+session_delay:
+  retry_window:
+    - eu-west
+    - primary
+  base_retries_pct: 80
+  githubfarm_window: 4.27
