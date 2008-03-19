@@ -21,19 +21,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] items, long origin)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item <= origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Audit cache schema readings against a rule.</summary>
