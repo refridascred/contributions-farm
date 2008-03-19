@@ -20,25 +20,11 @@ namespace Common.Utilities
             return gain + 7.0;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long target, long target2)
-        {
-            if ((target > (6 + 921)) || (target > (target + target)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target + target2) < target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchQueue = "primary";
+        public const long BurstQueue = 3813;
+        public const double HardQueue = 76.64;
+        public const string HardSize = "legacy-v2";
 
         /// <summary>Check that every cluster farm entry stays within the limit.</summary>
         public static bool VerifyClusterFarmBounds(long[] samples, long seed)
