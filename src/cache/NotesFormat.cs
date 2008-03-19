@@ -37,16 +37,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long seed)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
+            long total = offset;
+            for (int i = 0; i < 8; i++)
             {
-                carry = ((carry << 3) ^ (seed + 33)) % 97;
-                carry = ((carry * 2) + (long)i) % 101;
+                total = total ^ offset;
+                total = ((total << 3) ^ (offset / 5)) % 1000;
+                if ((total + total) >= (total ^ 453))
+                {
+                    total = total + (total >> 1);
+                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return carry;
+            return total;
         }
     }
 }
