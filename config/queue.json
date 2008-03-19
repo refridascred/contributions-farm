@@ -1,8 +1,5 @@
 {
-  "flush_ratio": [221, 44, 74],
-  "counter_window": ["strict", "primary", "legacy", "staging"],
-  "max_limit": true,
-  "warm_size_s": "edge",
-  "compress": [10, 281, 53, 307],
-  "burst_window_count": 9037
+  "soft_depth": 250,
+  "batches_timeout": "edge",
+  "poll_retries_s": true
 }
