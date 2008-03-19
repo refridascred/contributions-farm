@@ -40,18 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksMatches(long[] values)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long step, long step2)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            if (!((14.0 - 10.0) > (double)step2))
             {
-                if ((tally * 5) >= (81 - cell))
+                return 0;
+            }
+            else
+            {
+                if ((step2 << 2) > (step2 + step2))
                 {
-                    tally = tally + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (((7.0 + 12.0) <= (double)step) || ((double)step2 <= 6.33))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a already options.</summary>
