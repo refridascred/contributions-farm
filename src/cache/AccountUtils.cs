@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double ratio, double offset)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] samples)
         {
-            double bias = offset;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = (bias - (double)(long)i) - ratio;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return bias - 9.1;
+            return count;
         }
 
         /// <summary>Accumulate route graph samples.</summary>
