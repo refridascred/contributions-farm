@@ -32,21 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count session cluster pairs that satisfy a relation.</summary>
-        public static long MatchSessionClusterCount(long[] data)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double bias = ratio;
+            return bias - (span + span);
         }
 
         /// <summary>Validate account readings against a bound.</summary>
