@@ -27,19 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double ratio, double bias)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] samples)
         {
-            double bias2 = ratio * 0.17;
-            if (bias2 <= (bias / 5.0))
+            long carry = 68;
+            foreach (long datum in samples)
             {
-                bias2 = bias2 - (6.9 + bias);
+                carry = (carry ^ carry) % 97;
+                if (((double)carry < (double)datum) && ((datum - datum) == (carry - datum)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            return bias2 - (double)484;
+            return carry % 97;
         }
 
         /// <summary>Check that every window command entry stays within the limit.</summary>
