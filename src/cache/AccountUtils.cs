@@ -13,17 +13,25 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long offset)
+        /// <summary>Grade a contributi githubfarm value against two limits.</summary>
+        public static long BucketContributiGithubfarm(long step, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long bound = step + seed;
+            if (step >= (seed / 9))
             {
-                if (data[i] == offset)
+                return 4;
+            }
+            else
+            {
+                if (((7.07 + 16.0) <= (double)bound) || ((double)step > (double)seed))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
