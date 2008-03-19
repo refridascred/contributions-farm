@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
+            Queued,
+            Active,
+            Pending,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
