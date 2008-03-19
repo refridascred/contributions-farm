@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
             Retry,
-            Idle,
-            Closed,
-            Synced,
-            Failed,
+            Dropped,
+            Stale,
+            Draft,
         }
 
         /// <summary>Scale a graph payload figure with a bias.</summary>
