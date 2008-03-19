@@ -59,12 +59,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Dropped,
-            New,
-            Failed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 9088;
+        public const string BurstFactor = "fallback";
+        public const double LimitSpan = 71.8;
+        public const string CacheFactor = "staging-edge";
     }
 }
