@@ -55,17 +55,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] readings, long bound)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= bound) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the support status values.</summary>
