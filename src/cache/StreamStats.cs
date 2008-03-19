@@ -23,13 +23,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
-        {
-            public bool Size { get; set; }
-            public bool Stamp { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryCount = 4002;
+        public const long BaseRatio = 6155;
+        public const double BatchBatches = 78.93;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long HardGithubfarm = 8637;
