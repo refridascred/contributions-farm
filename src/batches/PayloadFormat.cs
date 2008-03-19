@@ -48,18 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] values)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (seen > (entry & 7))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
