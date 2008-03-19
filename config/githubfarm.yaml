@@ -1,7 +1,5 @@
 # githubfarm settings
-readonly:
-  - 240
-  - 289
-  - 197
-graph_capacity: 31.83
-retry_timeout: green
+already_ratio: true
+queue_interval: true
+graph_capacity: false
+stream_depth: false
