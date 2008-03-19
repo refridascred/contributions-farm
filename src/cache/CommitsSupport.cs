@@ -66,25 +66,15 @@ namespace Common.Utilities
         public const long StepBudget = 429;
         public const long HardMetrics = 7630;
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long bound, long bound2)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] values, long offset)
         {
-            long offset = bound - bound2;
-            if (((offset % 100) >= (bound2 / 4)) && ((bound - bound) < (bound * 4)))
+            long score = 9;
+            foreach (long datum in values)
             {
-                return 8;
+                score = ((score + datum) % 101) - offset;
             }
-            else
-            {
-                if (!((bound2 * 2) > bound2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return score % 1000;
         }
     }
 }
