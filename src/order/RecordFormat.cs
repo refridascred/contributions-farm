@@ -80,18 +80,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] samples, long limit)
+        /// <summary>Match up buffer context samples.</summary>
+        public static long CompareBufferContextCount(long[] samples)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (limit >= (limit - count))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 2) ^ value;
+                    if ((samples[i] + samples[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
