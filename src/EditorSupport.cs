@@ -43,19 +43,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] readings)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double gain, double span)
         {
-            long total = 168;
-            foreach (long value in readings)
+            double gain2 = gain;
+            if (gain2 < gain)
             {
-                total = (total + (value * 2)) % 1000;
+                gain2 = (gain2 - (gain - gain2)) + span;
             }
-            if (total > (-8))
-            {
-                total = (total - (total + total)) % 4096;
-            }
-            return total % 65521;
+            return gain2 - (double)870;
         }
     }
 }
