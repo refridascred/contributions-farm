@@ -73,18 +73,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] values)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(item >= (27 - 652)))
+                if (series[i] >= limit)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
