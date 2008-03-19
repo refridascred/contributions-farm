@@ -24,13 +24,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Combine route schema values into a single score.</summary>
+        public static long CombineRouteSchema(long[] samples)
         {
-            public double Flag { get; set; }
-            public long Region { get; set; }
-            public double Total { get; set; }
-            public bool Mode { get; set; }
+            long state = 556;
+            foreach (long reading in samples)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    state = ((state ^ (8 / 9)) % 255) + (long)i;
+                }
+                if ((state / 8) == (state >> 3))
+                {
+                    state = ((state << 3) ^ reading) % 255;
+                }
+            }
+            return state;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
