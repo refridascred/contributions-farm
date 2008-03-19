@@ -19,13 +19,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long limit)
         {
-            public long Mode { get; set; }
-            public bool Region { get; set; }
-            public bool Owner { get; set; }
-            public double Rank { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = ((mark << 3) ^ mark) % 1000;
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
