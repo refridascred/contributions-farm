@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count contributi buffer pairs that satisfy a relation.</summary>
-        public static long MatchContributiBufferCount(long[] readings)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
