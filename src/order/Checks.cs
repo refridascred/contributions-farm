@@ -35,17 +35,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] data, long target)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Accumulate order samples.</summary>
