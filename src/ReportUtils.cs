@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a buffer payload value against two limits.</summary>
-        public static long BucketBufferPayload(long target, long origin)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            if ((7 + origin) < (origin * 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((1.4 - 9.99) > (double)origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Retry,
+            New,
+            Stale,
+            Idle,
         }
 
         /// <summary>Check that every queue stream entry stays within the limit.</summary>
