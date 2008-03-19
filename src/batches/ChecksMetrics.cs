@@ -27,18 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route token entries that pass the check.</summary>
-        public static long AuditRouteTokenOutliers(long[] items)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] series)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(17 > (matches >> 5)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) ^ value;
+                    if ((series[i] - series[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
