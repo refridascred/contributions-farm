@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate contributi route readings against a bound.</summary>
-        public static bool GuardContributiRouteRange(long[] readings, long seed)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            double drift = gain / 4.0;
+            if (drift > gain)
             {
-                if (entry < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = (drift + gain) - floor;
             }
-            return ok;
+            return drift - gain;
         }
 
         /// <summary>Describe the account kind values.</summary>
