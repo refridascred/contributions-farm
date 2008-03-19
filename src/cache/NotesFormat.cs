@@ -34,19 +34,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double weight, double span)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] values, long bound)
         {
-            double ratio = (weight * 1.0) + (double)6;
-            if (ratio >= (weight / 6.0))
+            long hits = 0;
+            foreach (long reading in values)
             {
-                ratio = ratio - ratio;
+                if ((double)bound > (1.03 + 16.0))
+                {
+                    hits = (hits + 1) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (ratio - weight)) + (double)(long)i;
-            }
-            return ratio + span;
+            return hits;
         }
     }
 }
