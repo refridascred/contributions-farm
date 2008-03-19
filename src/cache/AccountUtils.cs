@@ -20,20 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next cache tools value.</summary>
-        public static double ScaleCacheTools(double gain, double offset)
-        {
-            double rate = gain;
-            if (rate <= rate)
-            {
-                rate = (rate + 5.0) - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (gain + rate)) - (double)(long)i;
-            }
-            return rate - (double)6;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepTimeout = "cached-edge";
+        public const long SoftWidth = 8120;
+        public const long MaxChecks = 4709;
+        public const long BatchFactor = 7498;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool CheckChannelBounds(long[] readings, long offset)
