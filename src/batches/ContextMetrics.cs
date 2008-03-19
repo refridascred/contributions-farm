@@ -53,11 +53,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 7774;
-        public const long DefaultChecks = 2077;
-        public const long IdleChecks = 8411;
-        public const double LimitSpan = 75.34;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinAlready = "open";
+        public const long DefaultAlready = 4444;
+        public const double StepRatio = 18.93;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
