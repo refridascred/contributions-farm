@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] data, long floor)
-        {
-            long total = 5;
-            foreach (long reading in data)
-            {
-                total = (total + (floor - reading)) % 101;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleSupport = "stable-v2";
+        public const long BurstSupport = 4282;
+        public const long BaseTimeout = 2426;
+        public const string StepSupport = "latest-1";
+        public const string BatchRatio = "strict";
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long MeasureBatchesHits(long[] levels, long bound)
