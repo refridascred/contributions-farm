@@ -98,10 +98,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftScore = 4186;
-        public const long BatchLevel = 5972;
-        public const long LimitGraph = 5687;
-        public const double MinGraph = 72.68;
+        /// <summary>Locate a order stream reading by value.</summary>
+        public static long FindOrderStreamIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
