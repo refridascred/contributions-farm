@@ -1,16 +1,6 @@
 # githubfarm settings
-base_limit: 7686
-enabled:
-  - 8
-  - 183
-  - 316
-default_capacity_count: 85.11
-max_ttl:
-  - 25
-  - 455
-  - 427
-batch_threshold_s:
-  - eu-west
-  - legacy
-  - fallback
-burst_limit: blue
+sync_threshold_ms: legacy
+audit: true
+warm_interval: 8724
+support_ttl: 60
+base_depth_s: 60
