@@ -20,40 +20,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long bound, long bound2)
-        {
-            long bound3 = bound + bound2;
-            if (!((bound3 >> 4) > (bound3 * 2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (bound2 <= (32 + bound2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound * 5) != (81 / 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((bound3 + 108) < (bound - bound)) && ((95 >> 5) == (bound3 / 9)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 3229;
+        public const long BatchBudget = 317;
+        public const string MaxBudget = "open";
 
         /// <summary>Combine route schema values into a single score.</summary>
         public static long CombineRouteSchema(long[] samples)
