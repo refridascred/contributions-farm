@@ -33,23 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long origin)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    acc = (((acc << 2) ^ acc) % 65521) ^ (long)i2;
-                }
-                if (!((long)i <= (acc ^ origin)))
-                {
-                    acc = (acc << 3) ^ acc;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Closed,
+            Active,
+            Queued,
+            Ready,
+            Failed,
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
