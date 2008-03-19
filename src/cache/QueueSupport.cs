@@ -43,22 +43,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the channel stats entries that pass the check.</summary>
-        public static long MeasureChannelStatsGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((7.0 / 4.0) < (double)value)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 5396;
+        public const string LimitFarm = "latest-v2";
+        public const long BatchFarm = 9258;
+        public const long WindowWidth = 951;
+        public const long WindowFarm = 1690;
     }
 }
