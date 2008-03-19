@@ -1,11 +1,15 @@
 # Command notes
 
-Run the context check before changing any metrics limits.
-The stats module keeps cluster values in sync with the batches cache.
+Keep support and account names short and lowercase.
+Use order settings to tune how often contributi data is refreshed.
+
+Each stats is validated before it reaches the filter queue.
+Each cache is validated before it reaches the record queue.
+Each queue is validated before it reaches the cache queue.
 
 ## Guidelines
 
-- Keep context values small
-- Validate command input early
-- Review buffer limits each release
-- Log every cache change
+- Keep checks values small
+- Review batch limits each release
+- Validate commits input early
+- Log every session change
