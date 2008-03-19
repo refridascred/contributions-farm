@@ -34,16 +34,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Iterate the stats metric series from a seed.</summary>
-        public static long DeriveStatsMetric(long target)
+        /// <summary>Count notes buffer pairs that satisfy a relation.</summary>
+        public static long CompareNotesBufferCount(long[] samples)
         {
-            long mark = target;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark ^ (target + mark)) % 65521;
-                mark = ((mark * 5) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
