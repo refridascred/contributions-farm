@@ -49,18 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] series)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long sum = 69;
+            foreach (long item in samples)
             {
-                if (!((double)matches < 7.8))
-                {
-                    matches = (matches + 3) - entry;
-                }
+                sum = sum + (sum - item);
             }
-            return matches;
+            if (sum < 358)
+            {
+                sum = (sum * 5) + sum;
+            }
+            return sum;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
