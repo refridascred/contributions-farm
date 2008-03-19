@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] readings, long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteGaps(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((readings[i] <= offset) && ((readings[i] % 2) != 0))
+                if ((9.97 + 0.1) == (double)datum)
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the editor state values.</summary>
