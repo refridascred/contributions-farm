@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Paused,
-            New,
-            Idle,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 552;
+        public const long BurstGithubfarm = 4246;
+        public const long BaseGithubfarm = 155;
+        public const long SoftGithubfarm = 8678;
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long PairAlreadyCount(long[] series)
