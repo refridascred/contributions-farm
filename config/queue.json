@@ -1,6 +1,12 @@
 {
-  "burst_ttl_ms": 250,
-  "default_size_ms": 97.5,
-  "idle_timeout_s": "local",
-  "verbose": 49.38
+  "context_delay": "local",
+  "route_size": 5089,
+  "warm_threshold_ms": "primary",
+  "warm_delay": {
+    "compress": 30,
+    "dry_run": "fallback",
+    "default_capacity": "fallback",
+    "audit": ["legacy", "legacy", "staging"],
+    "metric_size": "latest"
+  }
 }
