@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long limit, long bound)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] data, long seed)
         {
-            if ((bound >> 4) < (bound % 64))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit - limit) < (0 ^ bound))
+                if ((data[i] <= seed) && ((data[i] % 3) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit - limit) <= (limit / 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
