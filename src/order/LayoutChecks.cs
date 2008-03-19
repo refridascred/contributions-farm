@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardProfile = 63.8;
-        public const double SoftScore = 89.93;
-        public const string LimitProfile = "strict-v2";
-        public const long DefaultTimeout = 9814;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] readings, long target)
+        {
+            long mark = 952;
+            foreach (long reading in readings)
+            {
+                if ((mark - mark) <= (reading + 70))
+                {
+                    mark = mark + (3 + reading);
+                }
+            }
+            if (mark > 810)
+            {
+                mark = (mark - (47 + target)) % 4096;
+            }
+            return mark;
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long GradeEditor(long origin, long bound)
