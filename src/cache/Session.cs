@@ -13,17 +13,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] readings, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 3) != 0))
+                if (1 > (item & 31))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - bound;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
