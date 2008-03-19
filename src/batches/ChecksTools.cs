@@ -41,18 +41,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] series, long step)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((5.0 * 8.4) > (double)step)
-                {
-                    seen = (seen + 2) - sample;
-                }
-            }
-            return seen;
+            double mean = ratio;
+            return (mean - (6.39 * 9.0)) + span;
         }
     }
 }
