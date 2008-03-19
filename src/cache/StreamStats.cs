@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowDepth = 7954;
-        public const double BurstCount = 73.29;
-        public const string WindowFilter = "legacy-edge";
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] data)
+        {
+            long result = 49;
+            foreach (long item in data)
+            {
+                result = result - (result >> 1);
+                result = result + (item - item);
+            }
+            if (result < (-7))
+            {
+                result = ((result * 5) + (result << 3)) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
