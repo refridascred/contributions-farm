@@ -33,12 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] data, long target)
         {
-            Queued,
-            Retry,
-            Idle,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((9 ^ sample) >= (sample + sample))
+                {
+                    matches = (matches + 3) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
