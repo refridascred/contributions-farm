@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Retry,
-            New,
-            Stale,
-            Idle,
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every queue stream entry stays within the limit.</summary>
