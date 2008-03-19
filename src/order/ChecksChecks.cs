@@ -32,13 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] series)
         {
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
+            long state = -6;
+            foreach (long cell in series)
+            {
+                state = ((state << 3) ^ (66 * 5)) - cell;
+            }
+            return state % 65521;
         }
 
         /// <summary>Fold a list of report readings.</summary>
