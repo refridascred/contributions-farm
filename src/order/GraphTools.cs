@@ -19,13 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long origin, long limit)
         {
-            public bool Owner { get; set; }
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public bool Offset { get; set; }
+            if ((origin / 6) >= origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)origin >= 0.1)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (limit <= (limit ^ origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((origin + origin) == (limit << 1)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine metric record values into a single score.</summary>
