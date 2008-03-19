@@ -34,13 +34,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Retry,
-            Paused,
-            Locked,
-            Queued,
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
