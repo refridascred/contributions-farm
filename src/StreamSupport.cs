@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryLevel = 76.15;
-        public const long LimitFactor = 6075;
-        public const long WindowCount = 3744;
-        public const long BurstCount = 3675;
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public bool Size { get; set; }
+            public string Score { get; set; } = "";
+            public double Count { get; set; }
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TallySchema(long[] series)
