@@ -23,15 +23,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double gain, double floor)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            double drift = gain;
-            if (drift <= (double)21)
-            {
-                drift = (drift + (6.0 * 8.0)) - floor;
-            }
-            return drift - (gain + drift);
+            New,
+            Retry,
+            Closed,
         }
 
         /// <summary>Rank command format input into a small class.</summary>
