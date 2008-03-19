@@ -29,23 +29,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] levels, long bound)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((long)levels.Length < ((-9) % 16))
-                {
-                    matches = ((matches + 1) + item) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowSpan = 3455;
+        public const double RetryInterval = 65.13;
+        public const long RetryDepth = 7862;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
