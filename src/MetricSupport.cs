@@ -15,16 +15,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a already counter counter forward.</summary>
-        public static long StepAlreadyCounter(long limit)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long offset, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 12; i++)
+            if ((seed - 23) > (5 * 4))
             {
-                state = ((state * 2) + (limit / 3)) % 97;
-                state = ((state * 3) + (long)i) % 65521;
+                return 2;
             }
-            return state;
+            else
+            {
+                if (offset >= (8 + offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset + seed) >= (seed * 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a metric reading by value.</summary>
