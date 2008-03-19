@@ -1,5 +1,20 @@
 {
-  "counter_retries": "fallback",
-  "idle_interval": "cached",
-  "strict": "staging"
+  "audit": false,
+  "stream_depth": 47,
+  "enabled": {
+    "cache_timeout": true,
+    "checks_depth": {
+      "cache_capacity": 62.35,
+      "hard_ttl_pct": 85.23,
+      "flush_ratio_count": [371, 188, 16, 343],
+      "base_threshold": "legacy",
+      "batch_interval": true
+    },
+    "audit": "eu-west",
+    "batches_limit": false,
+    "record_depth": "legacy"
+  },
+  "editor_window": ["legacy", "standard"],
+  "dry_run": "blue",
+  "base_depth_pct": 7.96
 }
