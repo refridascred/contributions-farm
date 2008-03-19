@@ -1,8 +1,11 @@
 {
-  "flush_capacity_pct": 9713,
-  "persist": 6839,
-  "support_timeout": "edge",
-  "poll_capacity_pct": false,
-  "commits_interval": 56,
-  "soft_retries": ["stable", "strict"]
+  "audit": [257, 191, 305],
+  "cache_threshold_count": {
+    "sync_capacity_s": 250,
+    "base_ratio_s": "strict",
+    "sync_depth_pct": 9.41,
+    "cache_capacity": [63, 56]
+  },
+  "flush_limit": true,
+  "farm_window": true
 }
