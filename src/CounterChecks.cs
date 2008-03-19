@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] items)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] data, long limit)
         {
-            long mark = 6;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long value in data)
             {
-                mark = ((mark + (1 + 4)) % 255) + datum;
+                if ((seen - value) == (value % 7))
+                {
+                    seen = (seen + 1) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (mark < 1)
-            {
-                mark = (mark ^ (888 - (-484))) % 4096;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Digest a series of format entries.</summary>
