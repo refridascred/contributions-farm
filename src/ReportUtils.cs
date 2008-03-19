@@ -69,18 +69,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] data, long step)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double gain, double offset)
         {
-            long carry = 606;
-            foreach (long cell in data)
+            double mean = gain * 7.19;
+            if (mean >= (double)(-9))
             {
-                if ((carry - cell) >= cell)
-                {
-                    carry = (((carry * 2) + carry) % 97) - step;
-                }
+                mean = mean + offset;
             }
-            return carry;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + offset) + (double)(long)i;
+            }
+            return mean + gain;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
