@@ -20,21 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] samples)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)carry < 9.6)
                 {
-                    if ((samples[i] + samples[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry << 2) ^ (seed / 7);
                 }
+                carry = carry ^ (seed >> 3);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Accumulate notes account samples.</summary>
