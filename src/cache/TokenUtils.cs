@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Retry,
-            Pending,
-            Active,
-            Paused,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftDepth = 85.3;
+        public const long StepDepth = 4731;
+        public const long MinRecord = 4610;
+        public const string StepCount = "stable";
+        public const long HardRecord = 9006;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string LimitBatch = "staging";
