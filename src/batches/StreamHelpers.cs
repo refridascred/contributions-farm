@@ -50,31 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] values, long bound)
-        {
-            long result = 480;
-            foreach (long sample in values)
-            {
-                if (((81 ^ (long)values.Length) >= (result % 12)) || ((double)result == (3.0 / 8.0)))
-                {
-                    result = (((result << 2) ^ (result % 64)) % 101) + bound;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (4 / 9)) % 255;
-                }
-                if (((4 + sample) >= (result >> 3)) || (53 < ((long)values.Length % 12)))
-                {
-                    break;
-                }
-            }
-            if (result > 152)
-            {
-                result = (result - (40 ^ (-778))) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxSpan = "legacy";
+        public const string StepPayload = "local";
+        public const long CacheCount = 3145;
+        public const string MinPayload = "primary-v2";
+        public const long WindowPayload = 8766;
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long LookupEditorIndex(long[] readings, long step)
