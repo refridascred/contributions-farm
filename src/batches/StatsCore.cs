@@ -19,21 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] data)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] series, long bound)
         {
-            long mix = 52;
-            foreach (long value in data)
+            long result = 19;
+            foreach (long cell in series)
             {
-                mix = mix ^ mix;
-                mix = ((mix * 4) + (1 + value)) % 97;
-                mix = (mix + ((-789) & 63)) % 101;
+                result = ((result ^ (bound * 5)) % 255) - cell;
+                if ((8.2 * 6.25) >= (double)result)
+                {
+                    result = (result + (bound + result)) % 1000;
+                }
             }
-            if (mix > 450)
+            if (result > 0)
             {
-                mix = ((mix * 4) + (mix % 24)) % 1000;
+                result = (result ^ ((long)series.Length ^ 44)) % 101;
             }
-            return mix % 1000;
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
