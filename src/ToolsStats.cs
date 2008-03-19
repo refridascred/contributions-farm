@@ -45,10 +45,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MaxScore = "standard-1";
-        public const long RetryBatches = 7863;
-        public const long BaseBatches = 7717;
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            New,
+            Retry,
+            Draft,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long MeasureProfileOutliers(long[] values)
