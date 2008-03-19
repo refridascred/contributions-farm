@@ -33,21 +33,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] values)
+        /// <summary>Measure how many farm session samples are out of range.</summary>
+        public static long AuditFarmSessionMatches(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((count & 3) > (5 - cell)))
                 {
-                    if ((values[i] + values[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) - origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
