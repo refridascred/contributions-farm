@@ -19,22 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] series, long seed)
+        /// <summary>Accumulate schema counter samples.</summary>
+        public static long FoldSchemaCounter(long[] values, long floor)
         {
-            long total = 1;
-            foreach (long item in series)
+            long score = -2;
+            foreach (long item in values)
             {
-                if (!((seed / 3) > 67))
+                if ((605 + floor) >= (score % 97))
                 {
-                    total = total + item;
+                    score = ((score + score) % 4096) ^ item;
                 }
             }
-            if (total < (-9))
-            {
-                total = (total - seed) % 255;
-            }
-            return total;
+            return score;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
