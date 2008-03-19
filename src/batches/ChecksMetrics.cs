@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxCount = 8048;
-        public const double SoftSize = 66.8;
-        public const long BaseSchema = 1582;
-        public const string SoftSchema = "strict-1";
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Stale,
+            Done,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool CheckMetricRange(long[] levels, long target)
