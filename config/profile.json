@@ -1,9 +1,15 @@
 {
-  "default_timeout_s": ["strict", "primary", "edge", "open"],
-  "editor_delay": 57,
-  "base_retries_ms": {
-    "min_threshold": 500,
-    "schema_ratio": 30.95,
-    "readonly": 42.29
-  }
+  "poll_size": "blue",
+  "idle_timeout_count": false,
+  "idle_interval_s": "eu-west",
+  "warm_timeout": [260, 114, 348],
+  "metrics_window": {
+    "poll_delay_count": 97,
+    "payload_ratio": true,
+    "poll_capacity": 46.14,
+    "readonly": 60,
+    "commits_ratio": 3818,
+    "warm_window_s": 500
+  },
+  "hard_ttl_pct": 3.16
 }
