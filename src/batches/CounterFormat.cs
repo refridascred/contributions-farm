@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 8;
+        public const double BaseSpan = 47.62;
+        public const long RetryScore = 841;
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
