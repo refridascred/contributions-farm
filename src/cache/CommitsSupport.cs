@@ -28,23 +28,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit route payload readings against a rule.</summary>
-        public static long AuditRoutePayloadGaps(long[] items, long bound)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((((entry - entry) < (hits + entry)) || ((double)hits <= (double)bound)) && ((bound / 2) > (entry << 1)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftInterval = 2678;
+        public const double SoftProfile = 98.85;
+        public const long LimitSpan = 2695;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long TallyFilterMatches(long[] items, long target)
