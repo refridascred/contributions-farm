@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a channel commits reading.</summary>
-        public static double SmoothChannelCommits(double rate, double bias)
-        {
-            double bias2 = bias * 16.0;
-            if (bias2 < (rate * 9.0))
-            {
-                bias2 = bias2 - rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - (bias + rate)) - (double)(long)i;
-            }
-            return bias2 - (double)(-818);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftEntry = "standard-v2";
+        public const long CacheEntry = 9366;
+        public const long IdleEntry = 6994;
+        public const double SoftTimeout = 74.41;
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
