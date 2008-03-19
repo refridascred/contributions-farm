@@ -1,7 +1,11 @@
 {
-  "checks_delay": ["standard", "local", "blue"],
-  "flush_interval_count": "latest",
-  "context_ttl": "green",
-  "report_retries": 3637,
-  "hard_window_pct": 1024
+  "sync_interval": false,
+  "context_capacity": {
+    "min_ratio_s": ["local", "green", "blue"],
+    "burst_window_pct": 19.4,
+    "notes_size": 11.71
+  },
+  "default_ratio_count": false,
+  "sync_limit": 100,
+  "readonly": 64.75
 }
