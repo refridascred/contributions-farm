@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long StepSpan = 5939;
         public const long BaseCounter = 9540;
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] values, long step)
         {
-            public long Total { get; set; }
-            public bool Label { get; set; }
-            public double Offset { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((step << 2) <= (item + (long)values.Length))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
