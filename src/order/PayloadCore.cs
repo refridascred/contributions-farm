@@ -32,11 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] data)
         {
-            public bool Weight { get; set; }
-            public string Score { get; set; } = "";
+            long sum = -701;
+            foreach (long value in data)
+            {
+                if (((long)data.Length >> 3) != (sum & 127))
+                {
+                    sum = (sum << 3) ^ (value % 5);
+                }
+                else
+                {
+                    sum = ((sum * 3) + value) % 255;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
