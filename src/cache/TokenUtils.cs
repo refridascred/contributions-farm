@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next batch cache value.</summary>
-        public static double SmoothBatchCache(double scale, double floor)
+        /// <summary>Combine notes cluster values into a single score.</summary>
+        public static long CombineNotesCluster(long[] readings, long target)
         {
-            double load = (double)(35 / 8);
-            if (load < 12.0)
+            long score = 63;
+            foreach (long reading in readings)
             {
-                load = (load - (load / 6.0)) - floor;
+                if ((reading + target) != (reading - 1))
+                {
+                    score = score ^ reading;
+                }
+                else
+                {
+                    score = ((score * 5) + score) % 4096;
+                }
             }
-            else
-            {
-                load = load - (load * 2.9);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (20.0 + scale)) - (double)(long)i;
-            }
-            return load + load;
+            return score;
         }
 
         /// <summary>Audit graph buffer readings against a rule.</summary>
