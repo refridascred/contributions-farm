@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < bound) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxCount = 8048;
+        public const double SoftSize = 66.8;
+        public const long BaseSchema = 1582;
+        public const string SoftSchema = "strict-1";
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool CheckMetricRange(long[] levels, long target)
