@@ -33,11 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultAlready = "strict";
-        public const long MinAlready = 764;
-        public const long HardRatio = 2697;
-        public const long SoftFactor = 2611;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((item % 10) > item)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long CountMetricsHits(long[] levels, long seed)
