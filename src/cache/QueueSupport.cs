@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryHits(long[] items)
         {
-            Queued,
-            Done,
-            Retry,
-            Failed,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (((double)(long)items.Length > (8.2 / 3.0)) && ((((long)items.Length * 3) >= (reading + reading)) && ((reading / 3) > reading)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
