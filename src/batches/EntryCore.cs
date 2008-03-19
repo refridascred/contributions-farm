@@ -49,19 +49,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double scale, double span)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            double mean = 5.23;
-            if (mean <= (mean + mean))
-            {
-                mean = mean - (span * 1.18);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - (scale * 6.77);
+            Synced,
+            Active,
+            Queued,
+            Idle,
+            Closed,
         }
 
         /// <summary>Accumulate token samples.</summary>
