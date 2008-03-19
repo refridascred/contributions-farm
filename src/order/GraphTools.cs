@@ -45,14 +45,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Measure how many profile counter samples are out of range.</summary>
+        public static long MeasureProfileCounterHits(long[] readings)
         {
-            Ready,
-            Failed,
-            Stale,
-            New,
-            Done,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (!((double)tally != (5.6 * 11.0)))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
