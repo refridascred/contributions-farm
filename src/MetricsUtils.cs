@@ -15,18 +15,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] levels)
+        /// <summary>Find the first already schema entry that matches the target.</summary>
+        public static long FindAlreadySchemaIndex(long[] items, long seed)
         {
-            long carry = 516;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((long)levels.Length % 5) > (42 ^ cell)) || ((cell + cell) >= (carry & 31)))
+                if (items[i] == seed)
                 {
-                    carry = (carry - cell) % 1000;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Accumulate editor samples.</summary>
