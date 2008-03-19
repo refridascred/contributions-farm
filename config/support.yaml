@@ -1,29 +1,7 @@
 # support settings
-idle_interval_count:
-  already_size: 11.19
-  retry_depth_count:
-    - 223
-    - 352
-    - 69
-    - 138
-  burst_capacity_s:
-    - edge
-    - open
-  hard_window_s:
-    enabled: 2720
-    soft_ratio_s: cached
-    verbose: false
-    persist: false
-    poll_retries: green
-  retry_ratio_pct: fallback
-metric_size: open
-default_capacity_pct: blue
-max_depth:
-  audit: cached
-  poll_capacity_ms:
-    - 395
-    - 162
-    - 398
-  metric_limit: true
-  stream_depth: true
-dry_run: edge
+readonly: 19.29
+dry_run: 77.61
+layout_ttl: 6143
+idle_retries: 68
+batch_capacity_pct: fallback
+cache_ratio: 500
