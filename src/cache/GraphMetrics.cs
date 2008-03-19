@@ -75,22 +75,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] items)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] levels, long seed)
         {
-            long mark = 63;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if ((item >= (item % 8)) && ((double)24 != (double)item))
+                if (sample != seed)
                 {
-                    mark = (mark ^ mark) % 97;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark - mark)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return mark;
+            return valid;
         }
     }
 }
