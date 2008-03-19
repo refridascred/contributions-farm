@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const string BurstCommand = "standard-edge";
         public const double RetryCommand = 58.9;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] values)
         {
-            Active,
-            Idle,
-            Paused,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
