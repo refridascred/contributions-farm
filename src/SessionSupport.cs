@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long target, long step)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            if (!((target % 5) <= (step - step)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((7 - step) <= (8 - 22)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Owner { get; set; }
+            public double Token { get; set; }
+            public double Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
