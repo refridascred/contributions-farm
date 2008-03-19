@@ -17,14 +17,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            Retry,
+            Idle,
+            Failed,
+            Paused,
             Draft,
-            Done,
-            Stale,
-            Active,
+            New,
         }
 
         /// <summary>Hold a order snapshot.</summary>
