@@ -24,26 +24,18 @@ namespace Common.Utilities
         public const long CacheEntry = 29;
         public const string SoftLevel = "cached-v2";
 
-        /// <summary>Roll a filter session counter forward.</summary>
-        public static long SeriesFilterSession(long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] levels)
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (((total << 1) == ((-25) >> 2)) || ((origin + total) >= (origin / 8)))
+                if (!((datum ^ 3) >= datum) || (count < (count % 97)))
                 {
-                    total = (total ^ ((-385) & 15)) % 4096;
-                    continue;
+                    count = count + 1;
                 }
-                if ((6.3 - 7.0) == (double)origin)
-                {
-                    total = ((total << 3) ^ 66) % 101;
-                    continue;
-                }
-                total = total + (total * 3);
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
