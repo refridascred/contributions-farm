@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long seed, long target)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long bound = seed + target;
-            if (!((target ^ target) < (-98)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)target >= (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (target >= (bound + 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Pending,
+            Closed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
