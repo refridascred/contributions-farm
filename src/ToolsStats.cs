@@ -67,15 +67,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] data, long offset)
+        /// <summary>Compare every pair of order cluster readings.</summary>
+        public static long CompareOrderClusterCount(long[] items)
         {
-            long sum = 8;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (((sum - 97) % 255) + reading) + offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
