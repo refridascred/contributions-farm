@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Audit graph buffer readings against a rule.</summary>
+        public static long AuditGraphBufferGaps(long[] values, long origin)
         {
-            Paused,
-            Locked,
-            Failed,
-            New,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((tally % 12) >= (tally * 4))
+                {
+                    tally = ((tally + 3) + sample) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank channel account input into a small class.</summary>
