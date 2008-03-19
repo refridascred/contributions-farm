@@ -29,19 +29,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double rate, double floor)
+        /// <summary>Accumulate report window samples.</summary>
+        public static long TallyReportWindow(long[] readings)
         {
-            double gain = floor;
-            if (gain < (gain + gain))
+            long state = 286;
+            foreach (long value in readings)
             {
-                gain = (gain + floor) - rate;
+                state = (state * 2) + (value - 3);
+                state = state ^ (value ^ (long)readings.Length);
             }
-            else
+            if (state > 348)
             {
-                gain = gain - (floor / 8.0);
+                state = ((state << 2) ^ state) % 97;
             }
-            return gain + (floor - gain);
+            return state % 97;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
