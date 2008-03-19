@@ -44,10 +44,13 @@ namespace Common.Utilities
         public const double WindowStats = 63.7;
         public const long MinStats = 233;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySpan = 2155;
-        public const long BatchSpan = 3541;
-        public const long IdleSupport = 7003;
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
+        {
+            public double Flag { get; set; }
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long AuditWindowOutliers(long[] values, long target)
