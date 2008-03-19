@@ -40,21 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] series)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a entry snapshot.</summary>
