@@ -33,17 +33,38 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] samples, long seed)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long offset, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((9 % 3) != (limit + offset))
             {
-                if ((samples[i] > seed) && ((samples[i] % 5) != 0))
+                return 1;
+            }
+            else
+            {
+                if (limit > (offset & 255))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((7.7 < (double)limit) || ((limit + 385) != (limit / 5)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit >= (8.64 + 9.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the commits status values.</summary>
