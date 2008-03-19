@@ -38,20 +38,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] levels)
-        {
-            long score = 1;
-            foreach (long cell in levels)
-            {
-                score = ((score * 5) + (score + score)) % 1000;
-                if (!((score + score) <= (cell / 8)))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxDepth = 9580;
+        public const long BatchLayout = 5005;
+        public const double WindowLayout = 3.3;
+        public const long LimitBudget = 778;
+        public const long DefaultSpan = 3525;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long BucketEntry(long seed, long target)
