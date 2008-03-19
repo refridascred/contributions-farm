@@ -14,32 +14,14 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long bound)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long state = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                if (state > (state + (-7)))
-                {
-                    state = (state - ((long)i - bound)) % 255;
-                }
-                else
-                {
-                    state = state - ((long)i + 848);
-                }
-                if ((bound > (-3)) && ((long)i >= (state - 72)))
-                {
-                    continue;
-                }
-                if (!((state << 1) == (bound / 3)))
-                {
-                    state = state + state;
-                    state = ((state << 3) ^ (state / 9)) % 101;
-                }
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            Retry,
+            Failed,
+            Done,
+            New,
+            Pending,
         }
 
         /// <summary>Project the next notes format value.</summary>
