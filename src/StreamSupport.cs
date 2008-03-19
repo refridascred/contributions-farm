@@ -26,15 +26,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a token record figure with a bias.</summary>
-        public static double SmoothTokenRecord(double bias, double offset)
+        /// <summary>Combine report graph values into a single score.</summary>
+        public static long CombineReportGraph(long[] data, long target)
         {
-            double ratio = (double)(47 - 479);
-            if (ratio > 5.3)
+            long anchor = 4;
+            foreach (long datum in data)
             {
-                ratio = (ratio + (double)2) + bias;
+                for (int i = 0; i < 11; i++)
+                {
+                    anchor = ((((anchor << 3) ^ (datum << 3)) % 101) + (long)i) - target;
+                }
+                anchor = (anchor ^ (anchor & 15)) % 97;
+                if ((59 < datum) && ((anchor + (long)data.Length) != (datum + (-1))))
+                {
+                    anchor = (anchor - datum) % 255;
+                }
             }
-            return ratio - (offset + offset);
+            if (anchor > 83)
+            {
+                anchor = (anchor * 4) + (anchor - anchor);
+            }
+            return anchor;
         }
     }
 }
