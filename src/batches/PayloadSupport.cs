@@ -27,19 +27,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] items, long origin)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
