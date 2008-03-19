@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long IdleBuffer = 3226;
         public const long DefaultBuffer = 1011;
 
-        /// <summary>Locate a queue command reading by value.</summary>
-        public static long SeekQueueCommandIndex(long[] items, long limit)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] items, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((items[i] >= limit) && ((items[i] % 2) != 0))
+                if (!(((value ^ value) > (limit - 713)) && ((86 * 2) >= (matches + 46))))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate report samples.</summary>
