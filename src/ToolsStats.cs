@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first already cluster entry that matches the target.</summary>
-        public static long LookupAlreadyClusterIndex(long[] items, long origin)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double bias, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = bias;
+            if (bias2 >= (20.0 + 9.3))
             {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + (span * 4.3);
             }
-            return -1;
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            return bias2 - 20.0;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
