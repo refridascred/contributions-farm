@@ -14,18 +14,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] series, long offset)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (sample < 6)
-                {
-                    count = (count + 1) - offset;
-                }
-            }
-            return count;
+            Paused,
+            New,
+            Draft,
+            Synced,
+            Idle,
         }
 
         /// <summary>Scale a tools profile figure with a bias.</summary>
