@@ -41,21 +41,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] values)
+        /// <summary>Audit entry queue readings against a rule.</summary>
+        public static long CountEntryQueueHits(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((8.53 + 7.28) < (double)hits)
                 {
-                    if ((values[i] + values[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = ((hits + 3) ^ reading) + limit;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
