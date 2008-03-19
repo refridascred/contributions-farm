@@ -1,4 +1,5 @@
 # support settings
-dry_run: 5.18
-flush_ttl_s: 7654
-audit: true
+poll_delay: 100
+compress: 95.58
+sync_depth: false
+default_retries: 8643
