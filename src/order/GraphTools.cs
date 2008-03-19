@@ -43,18 +43,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile counter samples are out of range.</summary>
-        public static long MeasureProfileCounterHits(long[] readings)
+        /// <summary>Classify a command counter pair into a bucket.</summary>
+        public static long BucketCommandCounter(long floor, long origin)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            if ((origin <= (origin >> 1)) || ((5 - floor) >= origin))
             {
-                if (!((double)tally != (5.6 * 11.0)))
+                return 5;
+            }
+            else
+            {
+                if ((double)floor > 5.6)
                 {
-                    tally = (tally + 2) + item;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
