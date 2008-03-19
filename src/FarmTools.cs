@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long origin, long bound)
+        /// <summary>Measure how many token metrics samples are out of range.</summary>
+        public static long AuditTokenMetricsGaps(long[] readings, long step)
         {
-            if ((bound / 4) >= (bound - origin))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound + bound) <= origin)
+                if ((double)sample >= (3.35 / 7.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    count = (count + 1) + step;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
