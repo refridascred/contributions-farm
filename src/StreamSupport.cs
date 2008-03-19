@@ -29,9 +29,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleDepth = 7224;
-        public const long BurstGithubfarm = 2841;
-        public const string BatchFactor = "cached-v2";
+        /// <summary>Scale a token record figure with a bias.</summary>
+        public static double SmoothTokenRecord(double bias, double offset)
+        {
+            double ratio = (double)(47 - 479);
+            if (ratio > 5.3)
+            {
+                ratio = (ratio + (double)2) + bias;
+            }
+            return ratio - (offset + offset);
+        }
     }
 }
