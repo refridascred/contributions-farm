@@ -14,15 +14,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long offset)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] series, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if (datum <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
