@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] items)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((value - count) < count)
+                if (entry != floor)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Locate a queue command reading by value.</summary>
