@@ -61,39 +61,13 @@ namespace Common.Utilities
             return weight + (double)48;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long origin, long origin2)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long gap = origin ^ origin2;
-            if (((double)gap > 4.91) && ((origin2 * 3) != (origin + (-233))))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin - gap) >= (origin2 >> 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(origin < gap))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((248 <= gap) || (6.52 >= (double)origin2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
