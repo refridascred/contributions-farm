@@ -21,12 +21,38 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long step, long floor)
         {
-            Paused,
-            New,
-            Closed,
+            if ((1 >> 3) <= (step + step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((0 * 3) >= (floor >> 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((90 ^ floor) <= (step & 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor > (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
