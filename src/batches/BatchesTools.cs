@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public double Region { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
+            Idle,
+            Draft,
+            Failed,
+            New,
         }
 
         /// <summary>Describe the cluster kind values.</summary>
