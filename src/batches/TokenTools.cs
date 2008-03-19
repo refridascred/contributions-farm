@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long target)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] levels)
         {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
+            long sum = 9;
+            foreach (long cell in levels)
             {
-                if ((967 ^ anchor) >= target)
+                if ((sum - 79) > ((-6) & 127))
                 {
-                    anchor = anchor + target;
+                    sum = ((sum * 2) + (sum / 8)) + cell;
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            if (sum > 2)
+            {
+                sum = sum - (14 % 16);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
