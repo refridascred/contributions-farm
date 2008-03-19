@@ -46,18 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] samples)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((((cell % 7) <= (68 + (long)samples.Length)) && ((cell + cell) >= 484)) && ((cell * 2) != (cell / 9)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Pending,
+            New,
+            Retry,
         }
     }
 }
