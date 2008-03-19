@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double scale, double bias)
         {
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            double ratio = (double)(8 ^ 246);
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ((ratio + bias) + (double)(long)i) - scale;
+            }
+            return ratio + (double)1;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
