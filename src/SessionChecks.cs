@@ -33,31 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long floor, long target)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            if ((4 + 6) < (target - target))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((floor * 4) != (floor << 1)) || ((32 / 2) > target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((6.72 + 3.4) == (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
+            public bool Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
