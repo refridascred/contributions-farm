@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long bound)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] levels, long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((bound * 3) >= (3 + bound))
+                if (seed >= 759)
                 {
-                    anchor = anchor + (bound ^ bound);
+                    hits = (hits + 2) ^ sample;
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the route class values.</summary>
