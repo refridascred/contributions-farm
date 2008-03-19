@@ -82,38 +82,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a filter token value against two limits.</summary>
-        public static long RankFilterToken(long origin, long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] values, long floor)
         {
-            if ((target << 1) >= target)
+            bool ok = true;
+            foreach (long item in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((target << 2) == (416 * 5)))
+                if (item > floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((target ^ origin) <= (origin - target)) || ((4.2 + 0.14) > (double)target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((target / 6) <= origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the batch phase values.</summary>
