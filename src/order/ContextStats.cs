@@ -60,12 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 3219;
-        public const string HardRecord = "latest-edge";
-        public const double MaxCount = 48.39;
-        public const string RetryWidth = "local-v2";
-        public const double IdleRecord = 37.41;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 7757;
+        public const long BurstLevel = 521;
+        public const double RetryBudget = 16.86;
+        public const long RetryDepth = 2685;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool CheckFarmBounds(long[] values, long step)
