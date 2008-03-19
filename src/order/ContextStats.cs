@@ -5,28 +5,36 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long offset, long origin)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long floor, long bound)
         {
-            if (((offset / 8) > (660 ^ origin)) || (origin > (offset + (-103))))
+            long prev = floor + bound;
+            if (prev <= bound)
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if (origin > (origin - offset))
+                if ((double)prev > (16.0 / 3.0))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    if ((origin + offset) <= (origin + 2))
+                    if ((prev + 0) >= prev)
                     {
-                        return 5;
+                        return 2;
                     }
                     else
                     {
-                        return 1;
+                        if ((5.2 + 5.3) == (double)floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
