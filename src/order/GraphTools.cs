@@ -35,24 +35,14 @@ namespace Common.Utilities
         public const string LimitDepth = "local-edge";
         public const long WindowSpan = 9099;
 
-        /// <summary>Classify a command counter pair into a bucket.</summary>
-        public static long BucketCommandCounter(long floor, long origin)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            if ((origin <= (origin >> 1)) || ((5 - floor) >= origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor > 5.6)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Idle,
+            Retry,
+            Locked,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Define order limits and defaults.</summary>
