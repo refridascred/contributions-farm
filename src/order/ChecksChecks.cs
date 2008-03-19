@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double ratio, double bias)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            double drift = (double)(2 * 3);
-            if (drift <= (ratio / 6.0))
-            {
-                drift = (drift + (double)23) - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (drift + ratio);
+            public bool Rank { get; set; }
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
