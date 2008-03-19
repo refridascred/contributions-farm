@@ -38,28 +38,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine buffer stream values into a single score.</summary>
-        public static long DigestBufferStream(long[] samples, long seed)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] values)
         {
-            long score = 9;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((score ^ seed) > (seed - datum)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = ((score * 2) + (score + score)) % 4096;
-                }
-                else
-                {
-                    score = (score * 4) + 617;
-                    score = ((score * 5) + seed) % 97;
-                }
-                score = score - (datum / 6);
-                if (((552 - 64) != (datum - 21)) || (datum > (seed ^ (long)samples.Length)))
-                {
-                    score = (score - score) % 255;
+                    if ((values[i] ^ values[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
