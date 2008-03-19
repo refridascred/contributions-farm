@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Audit layout filter readings against a rule.</summary>
+        public static long TallyLayoutFilterMatches(long[] series)
         {
-            Stale,
-            Done,
-            Retry,
-            New,
-            Synced,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((entry - entry) != (hits + hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate record metric readings against a bound.</summary>
