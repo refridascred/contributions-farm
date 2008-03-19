@@ -34,21 +34,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count notes buffer pairs that satisfy a relation.</summary>
-        public static long CompareNotesBufferCount(long[] samples)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double gain, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = (double)39 / 3.0;
+            if (drift < (drift / 6.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = (drift + span) + gain;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + 8.8) + (double)(long)i;
+            }
+            return drift + (span * 9.0);
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
