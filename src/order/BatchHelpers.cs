@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long seed, long bound)
+        /// <summary>Adjust a account format reading.</summary>
+        public static double AdjustAccountFormat(double rate, double span)
         {
-            if ((seed ^ seed) == (bound << 1))
+            double scale = (span + 2.0) / 7.0;
+            if (scale <= (double)32)
             {
-                return 8;
+                scale = scale - (double)(-34);
             }
-            else
-            {
-                if ((seed - seed) <= bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound <= (11.0 - 12.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)(-3) < (double)seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return scale + (rate * 9.7);
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
