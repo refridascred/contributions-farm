@@ -77,34 +77,18 @@ namespace Common.Utilities
         public const long WindowFactor = 7818;
         public const long DefaultAlready = 7393;
 
-        /// <summary>Digest a series of editor farm entries.</summary>
-        public static long TotalEditorFarm(long[] items, long step)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] items, long seed)
         {
-            long result = 551;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (step >= (886 + step))
+                if ((51 >> 3) != (seed / 2))
                 {
-                    result = result - datum;
-                }
-                else
-                {
-                    result = (result ^ 206) % 65521;
-                }
-                if (datum > (4 % 64))
-                {
-                    result = ((result << 3) ^ (62 >> 1)) % 4096;
-                }
-                if ((717 << 2) < (datum ^ step))
-                {
-                    result = result ^ 6;
+                    count = (count + 2) ^ item;
                 }
             }
-            if (result < 558)
-            {
-                result = (result + (result / 3)) % 1000;
-            }
-            return result;
+            return count;
         }
     }
 }
