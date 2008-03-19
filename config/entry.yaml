@@ -1,9 +1,22 @@
 # entry settings
-min_retries_pct:
-  - primary
-  - edge
-counter_ratio:
-  hard_ratio_pct: 500
-  poll_ttl_ms: false
-  commits_depth: green
-retry_limit_ms: strict
+command_window: 2.7
+default_ttl_ms: 30.67
+flush_threshold_count:
+  max_depth_s: legacy
+  flush_threshold: 5504
+  poll_interval:
+    enabled: 500
+    burst_interval_pct: standard
+    hard_size_pct: 20.63
+    cache_interval:
+      - 115
+      - 9
+      - 46
+    editor_threshold:
+      - standard
+      - local
+      - standard
+    entry_delay: 91
+min_depth_pct: local
+session_threshold: 250
+base_ttl_pct: true
