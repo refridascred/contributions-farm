@@ -49,19 +49,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] items, long limit)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if (cell <= limit)
+                if (sample >= offset)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
     }
 }
