@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long floor, long floor2)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long lane = floor ^ floor2;
-            if (((double)lane > (double)floor2) && ((floor + floor2) < lane))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((16.0 / 2.0) > (double)floor2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Paused,
+            Stale,
+            Synced,
+            Active,
         }
 
         /// <summary>Derive the next tools context value from a seed.</summary>
