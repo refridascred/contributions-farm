@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long origin, long origin2)
         {
-            public double Region { get; set; }
-            public bool Score { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
+            long bound = origin ^ origin2;
+            if (85 >= bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((origin2 << 2) >= bound) && (bound <= (origin - 734)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin2 + bound) != (bound / 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound >> 2) == (origin + origin2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count session filter pairs that satisfy a relation.</summary>
