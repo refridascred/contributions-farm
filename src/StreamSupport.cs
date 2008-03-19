@@ -27,23 +27,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double weight, double floor)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            double rate = 8.7;
-            if (rate > (6.0 / 9.0))
-            {
-                rate = (rate + rate) - weight;
-            }
-            else
-            {
-                rate = rate + (floor - floor);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + floor) + (double)(long)i;
-            }
-            return rate - (floor / 3.0);
+            Dropped,
+            New,
+            Failed,
         }
     }
 }
