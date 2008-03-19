@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double weight, double offset)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long floor)
         {
-            double scale = (5.0 / 3.0) * 9.62;
-            return (scale - (offset - 2.0)) + weight;
+            long total = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((floor << 2) >= 13)
+                {
+                    total = (total ^ (total % 100)) % 101;
+                }
+                total = (total << 3) ^ (total + total);
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a command metrics sample.</summary>
