@@ -77,18 +77,9 @@ namespace Common.Utilities
         public const long WindowFactor = 7818;
         public const long DefaultAlready = 7393;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((51 >> 3) != (seed / 2))
-                {
-                    count = (count + 2) ^ item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardCount = 5054;
+        public const long BurstChecks = 9412;
+        public const long BurstDepth = 6691;
     }
 }
