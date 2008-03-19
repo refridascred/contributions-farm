@@ -29,15 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] readings)
+        /// <summary>Audit githubfarm graph readings against a rule.</summary>
+        public static long AuditGithubfarmGraphMatches(long[] items, long offset)
         {
-            long mix = 783;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long value in items)
             {
-                mix = ((mix * 4) + (0 * 4)) - sample;
+                if (7.0 > (double)count)
+                {
+                    count = ((count + 1) - value) - offset;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
