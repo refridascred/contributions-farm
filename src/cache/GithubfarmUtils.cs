@@ -60,31 +60,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long step, long origin)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] samples, long step)
         {
-            if ((10.0 / 8.0) != (double)step)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin <= (origin + step))
+                if ((samples[i] <= step) && ((samples[i] % 3) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + 16) >= step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate channel samples.</summary>
