@@ -25,13 +25,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Classify a stream token pair into a bucket.</summary>
+        public static long ClassifyStreamToken(long target, long step)
         {
-            Retry,
-            Ready,
-            Pending,
-            Paused,
+            long gap = target + step;
+            if ((double)gap > (5.96 - 5.1))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((8.76 / 2.0) != (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(step > (1 + gap)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((-2) ^ target) >= (step - gap))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
