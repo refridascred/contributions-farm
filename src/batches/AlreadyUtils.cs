@@ -43,27 +43,26 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Digest a series of report command entries.</summary>
-        public static long WeighReportCommand(long[] readings)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] items, long limit)
         {
-            long result = 0;
-            foreach (long sample in readings)
+            long mix = 12;
+            foreach (long reading in items)
             {
-                if (!((double)sample < (8.0 * 7.2)))
+                if (((5.3 + 2.1) <= (double)reading) && ((reading - limit) > limit))
                 {
-                    result = (result ^ (sample * 5)) % 1000;
+                    mix = mix ^ (limit + (-51));
                 }
-                result = result + 8;
-                if (!(sample < ((-2) ^ (-7))))
+                else
                 {
-                    break;
+                    mix = (mix * 3) + (mix << 3);
                 }
             }
-            if (result < 3)
+            if (mix > 7)
             {
-                result = (result ^ (result + result)) % 255;
+                mix = (mix << 2) ^ limit;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
