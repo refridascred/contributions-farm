@@ -39,18 +39,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] levels, long seed)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((item - seed) <= (seen ^ seed))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Synced,
+            Active,
+            Closed,
+            Idle,
+            New,
         }
 
         /// <summary>Accumulate checks samples.</summary>
