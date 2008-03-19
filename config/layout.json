@@ -1,6 +1,13 @@
 {
-  "warm_window_ms": 9699,
-  "enabled": 3005,
-  "default_interval_ms": 81,
-  "idle_size_count": 500
+  "contributi_timeout": {
+    "verbose": ["edge", "edge", "standard"],
+    "base_retries_s": true,
+    "burst_interval_count": false,
+    "dry_run": false
+  },
+  "flush_interval": ["local", "open"],
+  "warm_retries": 250,
+  "hard_interval": [253, 94, 243, 232],
+  "notes_depth": "fallback",
+  "cluster_ttl": "stable"
 }
