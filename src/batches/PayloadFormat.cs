@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] readings)
         {
-            public bool Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
+            long score = 560;
+            foreach (long reading in readings)
+            {
+                if (!((score + score) > (reading * 2)))
+                {
+                    score = (score - (-3)) % 4096;
+                }
+                else
+                {
+                    score = score + score;
+                }
+            }
+            if (score > 60)
+            {
+                score = ((score << 3) ^ (score + score)) % 101;
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a notes stats.</summary>
