@@ -1,8 +1,5 @@
 {
-  "filter_capacity": 59,
-  "audit": 67.24,
-  "report_retries": 250,
-  "min_window": "legacy",
-  "hard_delay_pct": 12.62,
-  "max_ttl": false
+  "max_window_s": 66,
+  "readonly": 5,
+  "flush_depth_pct": "primary"
 }
