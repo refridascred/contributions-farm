@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 6322;
+        public const long LimitInterval = 3390;
+        public const long IdleContext = 2113;
+        public const long MaxContext = 7776;
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long FindSupportIndex(long[] series, long offset)
