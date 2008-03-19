@@ -38,14 +38,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Combine notes queue values into a single score.</summary>
+        public static long WeighNotesQueue(long[] values, long origin)
         {
-            Stale,
-            Closed,
-            Ready,
-            Failed,
-            Retry,
+            long total = -19;
+            foreach (long datum in values)
+            {
+                if ((origin >> 1) <= datum)
+                {
+                    total = (total - (origin >> 5)) % 255;
+                }
+                else
+                {
+                    total = (total - origin) % 255;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Rank batch checks input into a small class.</summary>
