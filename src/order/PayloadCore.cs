@@ -37,28 +37,24 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] levels)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] samples)
         {
-            long sum = -4;
-            foreach (long item in levels)
+            long score = 0;
+            foreach (long cell in samples)
             {
-                sum = (sum + (sum + sum)) % 255;
-                sum = ((sum * 5) + item) % 4096;
-                if ((sum <= (sum ^ 31)) && ((3.75 / 4.0) > (double)item))
+                long count = 0;
+                score = (score - (score - count)) % 97;
+                if ((score / 3) != (score >> 4))
                 {
-                    sum = (sum - (sum - sum)) % 1000;
+                    score = score ^ cell;
                 }
-                if ((3 * 3) > item)
+                else
                 {
-                    break;
+                    score = ((score * 5) + ((-423) * 4)) % 1000;
                 }
             }
-            if (sum > 21)
-            {
-                sum = sum - (sum - sum);
-            }
-            return sum;
+            return score;
         }
     }
 }
