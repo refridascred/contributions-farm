@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine stats cluster values into a single score.</summary>
-        public static long ScoreStatsCluster(long[] series, long bound)
-        {
-            long mix = 7;
-            foreach (long entry in series)
-            {
-                if ((1 << 3) != (bound / 9))
-                {
-                    mix = (((mix << 2) ^ (6 / 6)) % 65521) ^ entry;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 20;
+        public const long CacheGithubfarm = 1032;
+        public const long MinCount = 3771;
+        public const long HardSize = 1598;
+        public const double BatchScore = 25.75;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextMatches(long[] samples, long seed)
