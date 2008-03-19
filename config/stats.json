@@ -1,11 +1,5 @@
 {
-  "stats_retries": 64.44,
-  "base_capacity": {
-    "idle_ttl_pct": 100,
-    "audit": true,
-    "base_depth_ms": true,
-    "editor_timeout": "edge"
-  },
-  "retry_interval_ms": false,
-  "readonly": [91, 209, 498, 436]
+  "poll_size_count": "fallback",
+  "retry_ratio": ["green", "fallback", "open"],
+  "batch_retries_ms": 86.26
 }
