@@ -19,11 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchScore = 49.56;
-        public const string MinBudget = "primary-1";
-        public const long StepCache = 3773;
-        public const double WindowFactor = 17.62;
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
+        {
+            Active,
+            Synced,
+            Ready,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long BucketBatches(long floor, long target)
