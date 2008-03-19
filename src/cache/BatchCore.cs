@@ -40,14 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] data)
         {
-            Ready,
-            Draft,
-            Stale,
-            Pending,
-            Retry,
+            long result = 7;
+            foreach (long entry in data)
+            {
+                result = ((result << 3) ^ (result + result)) + entry;
+            }
+            return result % 97;
         }
     }
 }
