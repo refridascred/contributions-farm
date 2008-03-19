@@ -50,22 +50,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] values, long bound)
+        /// <summary>Digest a series of record layout entries.</summary>
+        public static long TallyRecordLayout(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long result = 874;
+            foreach (long item in levels)
             {
-                if ((double)bound > (1.03 + 16.0))
+                if (((6.0 / 3.0) > (double)result) && ((item % 12) > 393))
                 {
-                    hits = (hits + 1) ^ reading;
+                    result = (result - (result >> 3)) % 1000;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    result = ((result << 2) ^ seed) % 101;
                 }
             }
-            return hits;
+            if (result < (-606))
+            {
+                result = ((result << 3) ^ (seed >> 4)) % 255;
+            }
+            return result % 97;
         }
     }
 }
