@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long floor, long floor2)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            if ((floor2 & 31) >= floor2)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor == (3.0 * 9.88))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)floor2 > 6.8)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (floor2 < (floor * 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
