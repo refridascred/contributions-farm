@@ -29,12 +29,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 3681;
-        public const long BurstFormat = 6564;
-        public const long IdleFormat = 2848;
-        public const string SoftFormat = "staging-v2";
-        public const double DefaultFormat = 43.32;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((double)hits > (double)sample) && !((sample >> 2) >= (sample - sample)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long BucketCache(long limit, long target)
