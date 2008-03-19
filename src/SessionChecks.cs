@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double rate, double span)
         {
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            double weight = span + (rate - rate);
+            if (weight > (rate * 3.75))
+            {
+                weight = weight + weight;
+            }
+            return weight - weight;
         }
 
         /// <summary>Classify a cluster buffer pair into a bucket.</summary>
