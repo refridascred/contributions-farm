@@ -42,11 +42,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 5396;
-        public const string LimitFarm = "latest-v2";
-        public const long BatchFarm = 9258;
-        public const long WindowWidth = 951;
-        public const long WindowFarm = 1690;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 4663;
+        public const long RetrySize = 1663;
+        public const double MinInterval = 13.86;
+        public const long HardOrder = 2921;
     }
 }
