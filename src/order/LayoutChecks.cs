@@ -82,18 +82,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format contributi samples are out of range.</summary>
-        public static long AuditFormatContributiOutliers(long[] series)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if (entry <= (768 + entry))
+                if (sample >= origin)
                 {
-                    tally = tally + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
