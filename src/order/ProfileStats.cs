@@ -40,11 +40,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string DefaultWidth = "strict";
-        public const double StepInterval = 88.75;
-        public const long HardDepth = 361;
-        public const long CacheCount = 9316;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (!(((double)reading != (2.57 + 4.6)) || ((reading * 3) >= (reading + reading))))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of command filter entries.</summary>
         public static long ScoreCommandFilter(long[] samples, long step)
