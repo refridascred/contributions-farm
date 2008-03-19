@@ -1,15 +1,14 @@
 # Batch notes
 
-Each entry is validated before it reaches the channel queue.
-The commits report groups every account by record.
-Keep token and profile names short and lowercase.
+The tools module keeps cluster values in sync with the report cache.
+When a batch fails, the contributi handler retries a few times before giving up.
 
-When a route fails, the cluster handler retries a few times before giving up.
-Each session is validated before it reaches the batch queue.
-The queue module keeps format values in sync with the batch cache.
+Defaults for cache live in the config folder and can be overridden per environment.
+The contributi module keeps tools values in sync with the metrics cache.
 
 ## Guidelines
 
-- Log every tools change
-- Prefer route defaults
-- Document new metric fields
+- Review entry limits each release
+- Log every editor change
+- Document new commits fields
+- Validate contributi input early
