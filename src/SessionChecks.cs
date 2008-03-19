@@ -20,23 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] samples)
-        {
-            long total = 37;
-            foreach (long entry in samples)
-            {
-                if (((long)samples.Length ^ entry) > (entry + total))
-                {
-                    total = total - entry;
-                }
-                else
-                {
-                    total = (total + (2 - entry)) % 255;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchScore = 49.56;
+        public const string MinBudget = "primary-1";
+        public const long StepCache = 3773;
+        public const double WindowFactor = 17.62;
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long BucketBatches(long floor, long target)
