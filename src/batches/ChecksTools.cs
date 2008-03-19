@@ -13,21 +13,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] levels)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionOutliers(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)hits >= (7.5 + 1.15))
                 {
-                    if ((levels[i] + levels[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = ((hits + 2) + value) + target;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Blend two support measurements.</summary>
