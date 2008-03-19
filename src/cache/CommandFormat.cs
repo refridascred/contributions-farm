@@ -15,13 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Validate record metric readings against a bound.</summary>
+        public static bool GuardRecordMetricRange(long[] series, long limit)
         {
-            Retry,
-            Closed,
-            Queued,
-            Idle,
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
