@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 1950;
-        public const string BurstRecord = "stable";
-        public const long LimitRecord = 1550;
-        public const long SoftRecord = 493;
-        public const double StepLevel = 93.46;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long FoldBuffer(long[] data)
