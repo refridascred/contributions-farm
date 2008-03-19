@@ -1,15 +1,16 @@
 {
-  "default_retries": ["eu-west", "green", "stable"],
-  "retry_retries": ["fallback", "legacy", "green", "cached"],
-  "hard_ttl_pct": "local",
-  "min_depth_ms": {
-    "sync_retries_s": 75,
-    "max_threshold": [322, 298, 178],
-    "strict": {
-      "graph_depth": true,
-      "batch_window_pct": 30.12,
-      "flush_ttl": "primary"
+  "compress": false,
+  "editor_delay": "fallback",
+  "poll_timeout_s": "green",
+  "cache_limit": {
+    "persist": {
+      "persist": 60,
+      "enabled": false,
+      "payload_ratio": 10.35,
+      "checks_interval": false,
+      "default_depth_count": false
     },
-    "persist": false
+    "audit": 33,
+    "base_threshold_s": 51
   }
 }
