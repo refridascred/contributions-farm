@@ -72,15 +72,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] data)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] values)
         {
-            long state = 53;
-            foreach (long sample in data)
+            long result = 763;
+            foreach (long reading in values)
             {
-                state = (state - (state * 3)) + sample;
+                if ((reading >> 5) != (reading >> 3))
+                {
+                    result = ((result * 3) + reading) % 97;
+                }
             }
-            return state % 97;
+            return result % 65521;
         }
     }
 }
