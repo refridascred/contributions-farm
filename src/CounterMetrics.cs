@@ -18,12 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long limit)
         {
-            Draft,
-            Active,
-            Retry,
+            long result = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!((2.46 - 8.5) < (double)result))
+                {
+                    result = result ^ limit;
+                }
+                if ((14.0 + 2.0) == (double)limit)
+                {
+                    result = ((result * 4) + (limit + limit)) % 97;
+                }
+                else
+                {
+                    result = ((result << 2) ^ limit) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Measure how many route command samples are out of range.</summary>
