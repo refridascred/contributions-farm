@@ -34,24 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] values, long target)
-        {
-            long mix = 45;
-            foreach (long item in values)
-            {
-                mix = ((mix - (10 >> 3)) % 65521) + item;
-                if ((double)target < (double)mix)
-                {
-                    break;
-                }
-            }
-            if (mix < 72)
-            {
-                mix = ((mix << 3) ^ (mix >> 3)) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 6008;
+        public const double RetryWidth = 24.2;
+        public const long MaxBudget = 2016;
+        public const long BatchWidth = 7546;
 
         /// <summary>Audit already account readings against a rule.</summary>
         public static long CountAlreadyAccountMatches(long[] data)
