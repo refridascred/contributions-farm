@@ -56,18 +56,24 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] levels)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long offset, long floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            if (!((double)offset >= (14.0 / 6.0)))
             {
-                if ((190 <= ((long)levels.Length / 4)) || (datum < (datum / 6)))
+                return 3;
+            }
+            else
+            {
+                if ((floor > offset) && ((floor << 1) > offset))
                 {
-                    tally = tally + 1;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of order cluster readings.</summary>
