@@ -29,18 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] data, long limit)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            double gain = floor;
+            if (gain < (gain + gain))
             {
-                if ((limit + 498) >= (sample << 3))
-                {
-                    hits = hits + 3;
-                }
+                gain = (gain + floor) - rate;
             }
-            return hits;
+            else
+            {
+                gain = gain - (floor / 8.0);
+            }
+            return gain + (floor - gain);
         }
 
         /// <summary>Combine filter values into a single score.</summary>
