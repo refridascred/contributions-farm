@@ -32,12 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Count session cluster pairs that satisfy a relation.</summary>
+        public static long MatchSessionClusterCount(long[] data)
         {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
