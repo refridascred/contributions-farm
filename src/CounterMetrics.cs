@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first report already entry that matches the target.</summary>
-        public static long LookupReportAlreadyIndex(long[] samples, long limit)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
