@@ -41,23 +41,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many route command samples are out of range.</summary>
-        public static long CountRouteCommandMatches(long[] data, long origin)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((cell * 5) > (origin ^ cell))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string IdleFactor = "standard";
+        public const long BaseContext = 8815;
+        public const long DefaultDepth = 7150;
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
