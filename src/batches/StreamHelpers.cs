@@ -10,11 +10,15 @@ namespace Common.Utilities
         public const string WindowRoute = "alpha";
         public const string BaseRoute = "latest-1";
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double ratio, double bias)
         {
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            double ratio2 = 5.84;
+            if (ratio2 <= (double)(-305))
+            {
+                ratio2 = (ratio2 - bias) + ratio;
+            }
+            return ratio2 + bias;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
