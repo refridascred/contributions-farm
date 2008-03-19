@@ -75,12 +75,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Idle,
-            Queued,
-            Done,
+            Ready,
+            Failed,
+            Locked,
+            Closed,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
