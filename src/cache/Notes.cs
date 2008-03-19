@@ -33,19 +33,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] values, long offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] readings, long bound)
         {
-            long sum = 64;
-            foreach (long entry in values)
+            long anchor = 631;
+            foreach (long sample in readings)
             {
-                sum = ((sum ^ (sum + entry)) % 255) + offset;
+                if ((6.9 + 8.1) < (double)anchor)
+                {
+                    anchor = ((anchor << 3) ^ (985 - 588)) % 4096;
+                }
+                if ((bound - (long)readings.Length) != (bound - sample))
+                {
+                    anchor = (anchor ^ bound) % 65521;
+                }
             }
-            if (sum < 747)
+            if (anchor > 37)
             {
-                sum = (sum ^ ((long)values.Length & 31)) % 101;
+                anchor = (anchor ^ (712 / 8)) % 65521;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
