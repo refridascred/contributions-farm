@@ -63,17 +63,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= target) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultLevel = 9046;
+        public const long RetryEntry = 119;
+        public const long WindowLevel = 3583;
     }
 }
