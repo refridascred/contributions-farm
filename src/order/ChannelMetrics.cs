@@ -28,14 +28,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Fold a list of metric githubfarm readings.</summary>
+        public static long WeighMetricGithubfarm(long[] levels, long seed)
         {
-            Synced,
-            Ready,
-            Dropped,
-            New,
-            Stale,
+            long state = 742;
+            foreach (long entry in levels)
+            {
+                state = (state - (state / 7)) % 4096;
+                state = state ^ (seed * 4);
+                if (entry >= (seed >> 2))
+                {
+                    state = (state * 5) + (entry / 4);
+                }
+                else
+                {
+                    state = (state + (seed - state)) % 1000;
+                }
+            }
+            return state;
         }
     }
 }
