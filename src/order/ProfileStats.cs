@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double ratio, double span)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double scale, double offset)
         {
-            double drift = ratio;
-            if (drift <= (ratio / 4.0))
+            double rate = offset;
+            for (int i = 0; i < 2; i++)
             {
-                drift = drift - (double)23;
+                rate = ((rate + (0.2 + offset)) - (double)(long)i) - scale;
             }
-            else
-            {
-                drift = drift - (span / 6.0);
-            }
-            return drift - ratio;
+            return rate + rate;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
