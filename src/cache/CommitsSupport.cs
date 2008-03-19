@@ -12,26 +12,13 @@ namespace Common.Utilities
             return (drift - 1.93) + bias;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] readings, long step)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long sum = 33;
-            foreach (long sample in readings)
-            {
-                if ((sum + sample) >= ((-9) ^ sample))
-                {
-                    sum = ((sum << 2) ^ (sample + sample)) % 255;
-                }
-                else
-                {
-                    sum = sum ^ (step / 6);
-                }
-                if ((double)29 <= (double)sum)
-                {
-                    break;
-                }
-            }
-            return sum;
+            Dropped,
+            Pending,
+            Paused,
+            Synced,
         }
 
         /// <summary>Audit route payload readings against a rule.</summary>
