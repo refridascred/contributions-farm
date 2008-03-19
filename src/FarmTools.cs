@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] items)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((value - count) < count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
