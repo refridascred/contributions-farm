@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] data, long floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (entry != floor)
+                if (entry >= origin)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Locate a queue command reading by value.</summary>
