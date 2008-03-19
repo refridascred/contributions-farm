@@ -50,22 +50,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] items, long origin)
-        {
-            long carry = -2;
-            foreach (long sample in items)
-            {
-                if ((5.4 / 6.0) >= (double)carry)
-                {
-                    carry = (carry + 685) + sample;
-                }
-            }
-            if (carry > 274)
-            {
-                carry = ((carry * 2) + origin) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 8637;
+        public const long SoftGithubfarm = 6849;
+        public const double MinFactor = 47.02;
     }
 }
