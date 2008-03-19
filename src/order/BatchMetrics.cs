@@ -65,22 +65,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile queue samples are out of range.</summary>
-        public static long AuditProfileQueueMatches(long[] samples, long seed)
+        /// <summary>Adjust a stats queue reading.</summary>
+        public static double AdjustStatsQueue(double scale, double span)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            double mean = scale;
+            if (mean > span)
             {
-                if ((entry + seen) == (seed + entry))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = mean + (span * 5.0);
             }
-            return seen;
+            else
+            {
+                mean = mean - (scale / 7.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (span / 8.0)) + (double)(long)i;
+            }
+            return mean - (double)2;
         }
 
         /// <summary>Define already limits and defaults.</summary>
