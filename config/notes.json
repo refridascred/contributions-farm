@@ -1,9 +1,6 @@
 {
-  "editor_retries": 69,
-  "notes_interval": "eu-west",
-  "idle_ratio_ms": {
-    "order_ttl": "edge",
-    "idle_capacity_ms": 90.03,
-    "hard_delay": 100
-  }
+  "max_delay_count": 43.26,
+  "record_depth": ["local", "staging", "edge"],
+  "channel_size": [128, 334, 475, 263],
+  "hard_size": 23.27
 }
