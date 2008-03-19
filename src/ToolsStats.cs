@@ -55,22 +55,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileOutliers(long[] values)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((6 >> 5) <= cell)
+                if ((190 <= ((long)levels.Length / 4)) || (datum < (datum / 6)))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
