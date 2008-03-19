@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 9935;
-        public const long CacheDepth = 8871;
-        public const long RetrySize = 6673;
-        public const double WindowMetrics = 30.57;
-        public const double BurstMetrics = 39.04;
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Paused,
+            New,
+            Idle,
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheHits(long[] samples, long step)
