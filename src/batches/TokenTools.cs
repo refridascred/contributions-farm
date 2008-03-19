@@ -20,20 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long seed)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long carry = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((double)carry < 9.6)
-                {
-                    carry = (carry << 2) ^ (seed / 7);
-                }
-                carry = carry ^ (seed >> 3);
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Synced,
+            Done,
+            Idle,
+            Draft,
+            New,
         }
 
         /// <summary>Accumulate notes account samples.</summary>
