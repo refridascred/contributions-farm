@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 20;
-        public const long CacheGithubfarm = 1032;
-        public const long MinCount = 3771;
-        public const long HardSize = 1598;
-        public const double BatchScore = 25.75;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] values, long offset)
+        {
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
