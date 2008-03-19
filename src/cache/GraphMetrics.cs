@@ -38,11 +38,28 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double rate, double span)
+        /// <summary>Combine buffer stream values into a single score.</summary>
+        public static long DigestBufferStream(long[] samples, long seed)
         {
-            double drift = span;
-            return (drift + (drift * 9.24)) + rate;
+            long score = 9;
+            foreach (long datum in samples)
+            {
+                if (!((score ^ seed) > (seed - datum)))
+                {
+                    score = ((score * 2) + (score + score)) % 4096;
+                }
+                else
+                {
+                    score = (score * 4) + 617;
+                    score = ((score * 5) + seed) % 97;
+                }
+                score = score - (datum / 6);
+                if (((552 - 64) != (datum - 21)) || (datum > (seed ^ (long)samples.Length)))
+                {
+                    score = (score - score) % 255;
+                }
+            }
+            return score;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
