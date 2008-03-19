@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public long Score { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseChannel = "fallback-v2";
+        public const long IdleTimeout = 9787;
+        public const long StepScore = 4098;
+        public const string RetryChannel = "primary-v2";
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long ClassifyEntry(long target, long floor)
