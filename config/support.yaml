@@ -1,8 +1,16 @@
 # support settings
-audit: 1914
-min_limit: 250
-base_interval:
-  order_ttl: edge
-  retry_delay_ms: 500
-  hard_ratio: 51.54
-retry_retries_count: fallback
+format_ratio:
+  dry_run: 17
+  poll_delay: true
+  default_capacity_ms: eu-west
+  default_threshold_pct: 13
+  contributi_delay: 5639
+  default_retries_s: latest
+base_retries:
+  base_depth_s: false
+  batch_ttl: 1024
+  metrics_ratio: fallback
+verbose: green
+min_timeout_pct:
+  - 145
+  - 213
