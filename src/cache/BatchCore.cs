@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of editor token entries.</summary>
-        public static long TallyEditorToken(long[] series, long floor)
+        /// <summary>Find the first stream channel entry that matches the target.</summary>
+        public static long LookupStreamChannelIndex(long[] samples, long seed)
         {
-            long mark = 29;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((mark % 100) <= floor) || ((reading / 2) > (reading * 2)))
+                if (samples[i] == seed)
                 {
-                    mark = mark + (-6);
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
