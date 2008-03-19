@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseChannel = "fallback-v2";
-        public const long IdleTimeout = 9787;
-        public const long StepScore = 4098;
-        public const string RetryChannel = "primary-v2";
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long ClassifyEntry(long target, long floor)
