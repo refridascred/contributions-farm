@@ -42,13 +42,13 @@ namespace Common.Utilities
         public const long BatchSpan = 3541;
         public const long IdleSupport = 7003;
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public double Limit { get; set; }
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            Active,
+            Queued,
+            Ready,
+            Pending,
         }
     }
 }
