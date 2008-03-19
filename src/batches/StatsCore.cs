@@ -27,17 +27,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first editor entry entry that matches the target.</summary>
-        public static long FindEditorEntryIndex(long[] values, long limit)
+        /// <summary>Count report channel pairs that satisfy a relation.</summary>
+        public static long CompareReportChannelCount(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] == limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
