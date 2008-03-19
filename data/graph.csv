@@ -1,6 +1,10 @@
-id,region,weight,count
-1,42.74,267,local
-2,155,48.04,583
-3,edge,247,242
-4,55.6,302,strict
-5,503,57.5,543
+id,score,state,level
+1,edge,staging,986
+2,standard,strict,957
+3,52.16,green,87.44
+4,248,577,local
+5,70.24,78.07,514
+6,65.99,750,306
+7,402,785,769
+8,456,748,720
+9,primary,latest,181
