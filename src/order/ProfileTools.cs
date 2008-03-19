@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double bias, double bias2)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            double gain = bias + 0.65;
-            if (gain < bias)
-            {
-                gain = (gain + (bias * 2.3)) + bias2;
-            }
-            else
-            {
-                gain = gain + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain - (bias + bias);
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define account limits and defaults.</summary>
