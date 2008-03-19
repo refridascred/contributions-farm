@@ -33,9 +33,9 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 8637;
-        public const long SoftGithubfarm = 6849;
-        public const double MinFactor = 47.02;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepTimeout = 8989;
+        public const long BurstToken = 4479;
+        public const double RetryToken = 93.85;
     }
 }
