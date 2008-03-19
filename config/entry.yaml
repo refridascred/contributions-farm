@@ -1,9 +1,6 @@
 # entry settings
-notes_delay: open
-strict: legacy
-route_ratio: 60
-command_threshold: 2726
-audit:
-  - 327
-  - 260
-dry_run: 25
+default_capacity: 8084
+profile_window: 5295
+audit: latest
+max_depth: 46
+soft_delay: open
