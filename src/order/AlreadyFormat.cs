@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] levels)
         {
-            public bool Level { get; set; }
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            long state = -934;
+            foreach (long datum in levels)
+            {
+                state = ((state << 2) ^ (datum + state)) % 65521;
+            }
+            return state % 65521;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
