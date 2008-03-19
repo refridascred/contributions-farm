@@ -59,17 +59,15 @@ namespace Common.Utilities
             return ((rate + rate) + ratio) + offset;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] readings, long target)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 53;
+            foreach (long sample in data)
             {
-                if ((readings[i] <= target) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = (state - (state * 3)) + sample;
             }
-            return -1;
+            return state % 97;
         }
     }
 }
