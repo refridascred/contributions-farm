@@ -21,17 +21,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a queue buffer sample.</summary>
-        public static long SeekQueueBufferIndex(long[] readings, long origin)
+        /// <summary>Derive the next cache report value from a seed.</summary>
+        public static long DeriveCacheReport(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (readings[i] < origin)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return (long)i;
+                    anchor = ((anchor - (long)i) % 101) ^ (long)i2;
                 }
+                if ((anchor + 653) > (5 & 127))
+                {
+                    anchor = ((anchor * 3) + 55) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + floor) % 97;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
     }
 }
