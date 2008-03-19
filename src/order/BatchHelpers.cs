@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a account format reading.</summary>
-        public static double AdjustAccountFormat(double rate, double span)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            double scale = (span + 2.0) / 7.0;
-            if (scale <= (double)32)
-            {
-                scale = scale - (double)(-34);
-            }
-            return scale + (rate * 9.7);
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a batches record.</summary>
