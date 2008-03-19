@@ -26,32 +26,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long step, long target)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long delta = step + target;
-            if ((56 << 3) != (target - target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((6.9 + 1.52) <= (2.0 / 3.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)delta < (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Queued,
+            Stale,
+            Idle,
         }
 
         /// <summary>Hold a stream stats.</summary>
