@@ -1,5 +1,11 @@
 {
-  "max_limit": 250,
-  "sync_retries_s": true,
-  "sync_interval_count": 500
+  "flush_depth_s": {
+    "batch_threshold_ms": "legacy",
+    "notes_limit": false,
+    "persist": 7651
+  },
+  "audit": true,
+  "cluster_ttl": 73,
+  "flush_interval_ms": ["fallback", "fallback", "legacy", "eu-west"],
+  "persist": true
 }
