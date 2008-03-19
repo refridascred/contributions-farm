@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long StepSpan = 5810;
         public const double MinFactor = 45.79;
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public bool Score { get; set; }
-            public double Offset { get; set; }
+            Stale,
+            Paused,
+            Synced,
         }
 
         /// <summary>Fold a list of order readings.</summary>
