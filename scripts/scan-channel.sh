@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge open strict; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-CHANNEL_LIMIT=267
+CHANNEL_LIMIT=114
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-latest}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in standard cached eu-west latest; do
+    log "checking ${item}"
+done
