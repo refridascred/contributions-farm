@@ -1,8 +1,6 @@
 # githubfarm settings
-warm_depth_ms: true
-soft_delay_count: 5620
-hard_limit_s:
-  - 330
-  - 475
-  - 325
-base_retries_s: local
+verbose: latest
+flush_ratio_count: 8438
+idle_interval_ms: true
+soft_threshold_s: 30
+hard_threshold_ms: 6820
