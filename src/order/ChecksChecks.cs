@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double ratio, double bias)
         {
-            Draft,
-            Paused,
-            Dropped,
+            double drift = (double)(2 * 3);
+            if (drift <= (ratio / 6.0))
+            {
+                drift = (drift + (double)23) - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + (drift + ratio);
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
