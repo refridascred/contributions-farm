@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Retry,
-            Dropped,
-            Stale,
-            Draft,
+            public double Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Scale a graph payload figure with a bias.</summary>
