@@ -1,16 +1,16 @@
 # entry settings
-hard_retries: false
-strict: false
-batch_window:
-  - 284
-  - 16
-  - 301
-context_timeout:
-  batches_retries: eu-west
-  flush_timeout_count: strict
-  buffer_threshold: false
-  retry_ttl: 49.98
-  enabled: 4525
-  max_timeout_pct: fallback
-hard_depth_s: stable
-order_interval: 3258
+soft_depth_ms: 100
+cluster_ratio: 87.77
+burst_interval: true
+burst_ttl: true
+format_timeout:
+  min_capacity_ms: stable
+  commits_timeout: stable
+  sync_ratio_ms:
+    persist: eu-west
+    readonly: standard
+    sync_retries_s: false
+    report_size: true
+  soft_ratio_count: false
+  default_ttl: open
+max_depth_s: 97
