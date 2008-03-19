@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            New,
-            Active,
+            Failed,
+            Pending,
             Ready,
-            Synced,
-            Closed,
         }
 
         /// <summary>Grade a command value against two limits.</summary>
