@@ -1,6 +1,7 @@
 {
-  "persist": true,
-  "burst_capacity_pct": false,
-  "retry_capacity_count": true,
-  "default_delay_pct": 36
+  "retry_threshold": 2065,
+  "burst_ttl_pct": "fallback",
+  "max_delay_count": 10.84,
+  "max_depth_s": 1024,
+  "dry_run": 63
 }
