@@ -13,18 +13,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] samples, long bound)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (1 > (item & 31))
-                {
-                    tally = (tally + 3) - bound;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
