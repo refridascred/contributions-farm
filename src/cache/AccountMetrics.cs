@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long HardSize = 1598;
         public const double BatchScore = 25.75;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] samples, long seed)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (((seed - datum) != (datum ^ datum)) || (seed >= (hits - hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Locked,
+            Stale,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
