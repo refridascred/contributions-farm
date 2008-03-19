@@ -54,19 +54,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] data)
         {
-            long mix = target;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (((8 >> 1) >= (count ^ count)) || ((3.3 + 8.6) >= (double)count))
                 {
-                    mix = ((mix - target) % 97) + (long)i2;
+                    count = (count + 2) ^ sample;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
