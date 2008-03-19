@@ -43,12 +43,17 @@ namespace Common.Utilities
         public const long RetryNotes = 8395;
         public const double MaxNotes = 95.27;
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] data, long limit)
         {
-            public bool Level { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
