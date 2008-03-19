@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] samples, long origin)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double gain, double span)
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (!(((origin % 60) <= (50 + hits)) || (((long)samples.Length ^ 210) == (reading + hits))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double mean = 7.58;
+            return (mean + (mean - gain)) + span;
         }
 
         /// <summary>Match up stats samples.</summary>
