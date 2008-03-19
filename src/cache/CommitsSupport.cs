@@ -78,21 +78,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count batches report pairs that satisfy a relation.</summary>
-        public static long PairBatchesReportCount(long[] items)
+        /// <summary>Fold a list of cluster profile readings.</summary>
+        public static long WeighClusterProfile(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 43;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!!(entry <= 378))
                 {
-                    if ((items[i] + items[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix + (mix + mix)) % 4096;
+                }
+                if ((5.05 / 7.0) < (double)mix)
+                {
+                    mix = (mix + (entry + mix)) % 4096;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a report entry.</summary>
