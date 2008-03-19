@@ -58,13 +58,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] items, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((count & 7) <= count)
+                {
+                    count = ((count + 2) + entry) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a already route reading by value.</summary>
