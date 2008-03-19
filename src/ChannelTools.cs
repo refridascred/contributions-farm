@@ -12,14 +12,17 @@ namespace Common.Utilities
             return (scale - (offset - 2.0)) + weight;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Look up the position of a command metrics sample.</summary>
+        public static long LocateCommandMetricsIndex(long[] items, long bound)
         {
-            Draft,
-            Locked,
-            Idle,
-            Dropped,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
