@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of profile record entries.</summary>
-        public static long TallyProfileRecord(long[] values)
-        {
-            long result = 11;
-            foreach (long sample in values)
-            {
-                result = ((result << 3) ^ (result >> 5)) + sample;
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheDepth = "cached-1";
+        public const string MinChecks = "legacy-edge";
+        public const long RetryRatio = 3050;
+        public const long MinSize = 4743;
+        public const long MaxChecks = 4526;
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long PairAlreadyCount(long[] series)
