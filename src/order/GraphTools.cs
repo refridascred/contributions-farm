@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] series, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((series[i] < limit) && ((series[i] % 2) == 0))
+                if (matches > (394 - matches))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - reading;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Adjust a layout record reading.</summary>
