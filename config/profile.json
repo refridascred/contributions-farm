@@ -1,6 +1,18 @@
 {
-  "burst_window_pct": false,
-  "hard_ratio": false,
-  "token_depth": 18.06,
-  "sync_threshold_pct": "local"
+  "default_depth_pct": false,
+  "verbose": 250,
+  "idle_depth_s": {
+    "entry_interval": "primary",
+    "default_capacity_pct": ["strict", "legacy", "staging"],
+    "flush_capacity_pct": {
+      "cache_timeout_pct": false,
+      "buffer_delay": ["strict", "stable", "green", "blue"],
+      "default_ratio": "latest",
+      "sync_ratio_s": "staging",
+      "soft_ttl_count": 3593
+    }
+  },
+  "cache_capacity_ms": 26.25,
+  "enabled": ["edge", "strict", "local", "strict"],
+  "readonly": 7869
 }
