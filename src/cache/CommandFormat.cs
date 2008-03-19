@@ -38,23 +38,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of report session readings.</summary>
-        public static long TotalReportSession(long[] readings, long offset)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferBounds(long[] series, long origin)
         {
-            long state = 72;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                for (int i = 0; i < 7; i++)
+                if (cell != origin)
                 {
-                    state = (((state - ((long)readings.Length + datum)) % 101) - (long)i) + offset;
+                    stale = false;
+                    break;
                 }
-                state = (state ^ state) % 4096;
             }
-            if (state < 2)
-            {
-                state = (state ^ state) % 65521;
-            }
-            return state;
+            return stale;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
