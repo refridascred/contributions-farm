@@ -31,24 +31,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long limit, long step)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] values, long origin)
         {
-            if (4 < (limit + limit))
+            long total = 547;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit * 5) <= (limit + (-8)))
+                if ((7 + origin) <= (origin * 5))
                 {
-                    return 1;
+                    total = ((total * 3) + total) % 4096;
                 }
                 else
                 {
-                    return 5;
+                    total = (total ^ ((-9) ^ reading)) % 65521;
+                }
+                if ((origin / 7) != (origin % 10))
+                {
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Digest a series of already commits entries.</summary>
