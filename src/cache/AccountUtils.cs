@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                state = (state * 5) + (state ^ 470);
-                state = ((state << 2) ^ (state - state)) % 1000;
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Ready,
+            Failed,
+            New,
+            Idle,
         }
 
         /// <summary>Hold a stats options.</summary>
