@@ -47,25 +47,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long seed, long limit)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long cur = seed + limit;
-            if ((194 * 4) < (cur / 7))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((6.2 - 6.0) > (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Dropped,
+            New,
+            Pending,
+            Synced,
+            Ready,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
