@@ -29,13 +29,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] values, long target)
         {
-            Ready,
-            Failed,
-            Locked,
-            Closed,
+            long mix = -4;
+            foreach (long cell in values)
+            {
+                mix = (mix + target) + cell;
+            }
+            if (mix < 5)
+            {
+                mix = (mix * 2) + (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
