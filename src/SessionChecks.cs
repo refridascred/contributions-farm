@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesRange(long[] series, long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] levels)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (item >= target)
+                if ((6 & 255) >= (reading ^ seen))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
