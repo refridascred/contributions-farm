@@ -35,18 +35,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] items)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (reading > (count + 2))
+                if (!(matches > (matches / 7)))
                 {
-                    count = count + 3;
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
