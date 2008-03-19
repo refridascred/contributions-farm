@@ -34,12 +34,31 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Grade a stats metric value against two limits.</summary>
+        public static long SortStatsMetric(long step, long floor)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            if (floor > (step + floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((floor + floor) < (750 + 31)) || (step < 42))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((step / 6) == (step << 2)) && (72 <= (floor - step)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first already buffer entry that matches the target.</summary>
