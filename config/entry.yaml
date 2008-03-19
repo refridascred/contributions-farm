@@ -1,10 +1,6 @@
 # entry settings
-report_delay: green
-soft_capacity_ms: standard
-max_ratio:
-  - edge
-  - strict
-soft_limit_ms:
-  hard_ttl_pct: true
-  persist: false
-  max_capacity_s: 5202
+record_timeout: true
+hard_ratio: true
+compress:
+  - legacy
+  - staging
