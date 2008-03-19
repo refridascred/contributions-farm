@@ -79,18 +79,34 @@ namespace Common.Utilities
             return (gain - (3.01 * 8.0)) + bias;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] readings)
+        /// <summary>Digest a series of editor farm entries.</summary>
+        public static long TotalEditorFarm(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long result = 551;
+            foreach (long datum in items)
             {
-                if (((long)readings.Length * 4) > (matches / 3))
+                if (step >= (886 + step))
                 {
-                    matches = (matches + 2) + cell;
+                    result = result - datum;
+                }
+                else
+                {
+                    result = (result ^ 206) % 65521;
+                }
+                if (datum > (4 % 64))
+                {
+                    result = ((result << 3) ^ (62 >> 1)) % 4096;
+                }
+                if ((717 << 2) < (datum ^ step))
+                {
+                    result = result ^ 6;
                 }
             }
-            return matches;
+            if (result < 558)
+            {
+                result = (result + (result / 3)) % 1000;
+            }
+            return result;
         }
     }
 }
