@@ -1,6 +1,4 @@
 # entry settings
-max_size: 30
-dry_run: false
-poll_limit: false
-flush_window_ms: 9
-enabled: cached
+poll_limit: strict
+max_threshold_pct: true
+audit: 3143
