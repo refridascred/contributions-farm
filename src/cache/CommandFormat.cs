@@ -16,19 +16,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate record metric readings against a bound.</summary>
-        public static bool GuardRecordMetricRange(long[] series, long limit)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
