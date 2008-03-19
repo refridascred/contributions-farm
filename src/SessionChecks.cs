@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorMatches(long[] levels)
+        /// <summary>Measure how many counter editor samples are out of range.</summary>
+        public static long TallyCounterEditorMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((6 & 255) >= (reading ^ seen))
+                if ((25 >> 5) != (item / 3))
                 {
-                    seen = seen + 1;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
