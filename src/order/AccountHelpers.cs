@@ -46,18 +46,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of account notes entries.</summary>
-        public static long DigestAccountNotes(long[] levels)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] values, long step)
         {
-            long state = 238;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value > (4 >> 1)) && ((9.0 * 14.0) > (double)state))
+                if (values[i] == step)
                 {
-                    state = ((state * 5) + state) % 255;
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Digest a series of report entries.</summary>
