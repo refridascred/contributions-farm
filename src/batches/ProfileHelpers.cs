@@ -32,10 +32,32 @@ namespace Common.Utilities
         public const long MaxInterval = 280;
         public const long MinLevel = 9106;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardRecord = "latest-edge";
-        public const double DefaultRecord = 66.92;
-        public const string StepInterval = "fallback-v2";
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] data, long step)
+        {
+            long sum = 76;
+            foreach (long value in data)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    sum = (sum + (long)i) % 4096;
+                    sum = ((sum << 3) ^ step) % 101;
+                }
+                if ((double)value == (double)7)
+                {
+                    sum = sum - (sum >> 3);
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (sum >> 5);
+                }
+            }
+            if (sum > 66)
+            {
+                sum = (sum ^ 42) % 255;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Audit record counter readings against a rule.</summary>
         public static long CountRecordCounterOutliers(long[] data, long limit)
