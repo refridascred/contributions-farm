@@ -1,7 +1,6 @@
-id,owner,state
-1,latest,primary
-2,95.04,blue
-3,96.25,21.17
-4,851,48.67
-5,legacy,strict
-6,206,stable
+id,weight,region,owner,token
+1,203,780,535,363
+2,433,23.45,latest,edge
+3,blue,42.34,stable,standard
+4,cached,green,eu-west,44.66
+5,cached,468,stable,25.41
