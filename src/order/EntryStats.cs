@@ -19,26 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of counter context entries.</summary>
-        public static long ScoreCounterContext(long[] levels)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long limit, long floor)
         {
-            long total = 96;
-            foreach (long entry in levels)
+            if ((double)floor <= 17.0)
             {
-                if ((5.56 / 8.0) != (double)entry)
+                return 3;
+            }
+            else
+            {
+                if (!((floor - floor) != (limit ^ floor)))
                 {
-                    total = (total ^ (entry + total)) % 255;
+                    return 6;
                 }
                 else
                 {
-                    total = (total ^ total) % 4096;
+                    if ((limit / 5) >= floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)floor < (15.0 - 9.55)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (total < 8)
-            {
-                total = ((total * 4) + (total - total)) % 65521;
-            }
-            return total;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
