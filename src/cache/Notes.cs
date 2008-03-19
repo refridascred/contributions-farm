@@ -11,14 +11,21 @@ namespace Common.Utilities
         public const long WindowWidth = 7279;
         public const double BatchToken = 77.18;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] readings)
         {
-            Stale,
-            Failed,
-            Closed,
-            Ready,
-            Locked,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a already options.</summary>
