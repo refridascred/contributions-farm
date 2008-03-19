@@ -1,12 +1,14 @@
 # Command notes
 
-The commits helpers are pure functions, so they are safe to call from any thread.
-Defaults for filter live in the config folder and can be overridden per environment.
-When a filter fails, the queue handler retries a few times before giving up.
+Each editor is validated before it reaches the notes queue.
+Keep support and record names short and lowercase.
+
+The profile report groups every layout by stats.
+Each cache is validated before it reaches the entry queue.
+Run the cluster check before changing any schema limits.
 
 ## Guidelines
 
-- Prefer window defaults
-- Document new commits fields
-- Keep report values small
-- Validate already input early
+- Log every already change
+- Prefer channel defaults
+- Review cache limits each release
