@@ -51,19 +51,19 @@ namespace Common.Utilities
         public const long BaseWidth = 1909;
         public const long RetryAccount = 2446;
 
-        /// <summary>Fold a list of already checks readings.</summary>
-        public static long DigestAlreadyChecks(long[] series)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] values, long target)
         {
-            long anchor = 37;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                anchor = (anchor - (7 << 3)) - cell;
+                if (sample > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (anchor > (-189))
-            {
-                anchor = anchor ^ (anchor * 3);
-            }
-            return anchor;
+            return ready;
         }
     }
 }
