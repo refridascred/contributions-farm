@@ -38,22 +38,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate buffer order samples.</summary>
-        public static long TallyBufferOrder(long[] items, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] readings)
         {
-            long state = 326;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((sample - sample) == (limit * 4))
+                if ((double)matches == (2.0 + 2.0))
                 {
-                    state = state + sample;
+                    matches = (matches + 1) + value;
                 }
-                if ((sample % 97) != (sample + 93))
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
