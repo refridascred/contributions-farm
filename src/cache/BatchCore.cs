@@ -31,11 +31,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultFarm = 69.15;
-        public const long SoftWidth = 5115;
-        public const double BatchFarm = 48.49;
-        public const double IdleLevel = 24.8;
-        public const double SoftSize = 10.77;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
+            public double Region { get; set; }
+        }
     }
 }
