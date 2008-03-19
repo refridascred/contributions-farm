@@ -25,19 +25,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] items, long floor)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample < floor)
+                if (levels[i] >= bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Digest a series of report command entries.</summary>
