@@ -57,22 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] readings)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] readings, long bound)
         {
-            long total = 104;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                total = (total ^ total) % 255;
-                if ((reading < (total >> 4)) && ((double)reading != (17.0 * 6.67)))
+                if (item < bound)
                 {
-                    total = (total ^ (total % 12)) % 97;
-                    total = (total << 2) ^ (reading + total);
+                    flag = false;
                     break;
                 }
-                total = total + ((-336) + reading);
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Count the stats session entries that pass the check.</summary>
