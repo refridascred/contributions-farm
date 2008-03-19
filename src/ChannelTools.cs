@@ -28,12 +28,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a account stream reading by value.</summary>
-        public static long SeekAccountStreamIndex(long[] levels, long step)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] > step)
+                if (samples[i] > bound)
                 {
                     return (long)i;
                 }
