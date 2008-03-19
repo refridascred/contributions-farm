@@ -35,39 +35,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long step, long target)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long lane = step + target;
-            if ((target + target) < (623 + target))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)lane > (9.18 / 3.0)) || (step < lane))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (lane < (lane - 237))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((-403) % 5) == (lane % 10))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
