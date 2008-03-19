@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a metric filter reading.</summary>
-        public static double ProjectMetricFilter(double bias, double span)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] readings, long limit)
         {
-            double scale = span + bias;
-            if (scale <= 18.0)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale + (double)(-4);
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (scale * 3.73)) - (double)(long)i;
-            }
-            return scale + (scale * 9.56);
+            return -1;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
