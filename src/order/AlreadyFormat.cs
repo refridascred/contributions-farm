@@ -43,17 +43,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long floor)
+        /// <summary>Derive the next batches route value from a seed.</summary>
+        public static long DeriveBatchesRoute(long target)
         {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
+            long score = target;
+            for (int i = 0; i < 7; i++)
             {
-                acc = (acc ^ 76) % 101;
-                acc = (acc + (floor / 7)) % 1000;
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (!!(((long)i ^ (-5)) <= (target % 10)))
+                {
+                    score = score + target;
+                }
+                score = (score + ((long)i >> 3)) % 4096;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
