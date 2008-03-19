@@ -31,22 +31,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of token format readings.</summary>
-        public static long FoldTokenFormat(long[] readings)
+        /// <summary>Rank format payload input into a small class.</summary>
+        public static long SortFormatPayload(long step, long target)
         {
-            long score = 3;
-            foreach (long value in readings)
+            if (((target - 36) != (step - step)) || ((step * 4) >= step))
             {
-                if (!((508 / 3) > (score * 3)))
+                return 3;
+            }
+            else
+            {
+                if (target <= step)
                 {
-                    score = (score ^ (50 / 4)) % 4096;
+                    return 7;
                 }
-                if ((value << 1) != (score / 8))
+                else
                 {
-                    score = (score << 2) ^ (6 & 3);
+                    if (((step + target) != (95 ^ target)) && ((step * 4) <= (target / 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return score % 65521;
         }
 
         /// <summary>Hold a cluster options.</summary>
