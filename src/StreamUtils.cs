@@ -13,13 +13,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Active,
-            Queued,
-            Done,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftTimeout = 2880;
+        public const long SoftChecks = 5770;
+        public const long MinChecks = 6395;
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
