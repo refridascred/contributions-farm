@@ -16,22 +16,14 @@ namespace Common.Utilities
             return weight + (double)32;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] values)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((tally >> 4) <= (tally + value))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Failed,
+            Dropped,
+            Draft,
+            Pending,
         }
 
         /// <summary>Accumulate queue samples.</summary>
