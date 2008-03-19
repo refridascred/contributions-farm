@@ -30,12 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] data)
         {
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((544 - tally) <= (item % 16))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
