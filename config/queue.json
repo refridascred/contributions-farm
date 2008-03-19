@@ -1,12 +1,7 @@
 {
-  "context_delay": "local",
-  "route_size": 5089,
-  "warm_threshold_ms": "primary",
-  "warm_delay": {
-    "compress": 30,
-    "dry_run": "fallback",
-    "default_capacity": "fallback",
-    "audit": ["legacy", "legacy", "staging"],
-    "metric_size": "latest"
-  }
+  "max_capacity": "standard",
+  "editor_capacity": false,
+  "max_ratio_ms": true,
+  "retry_retries_count": true,
+  "retry_size_ms": 2509
 }
