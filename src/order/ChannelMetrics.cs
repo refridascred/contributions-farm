@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] levels)
+        /// <summary>Check that every payload stream entry stays within the limit.</summary>
+        public static bool ValidatePayloadStreamLimits(long[] readings, long origin)
         {
-            long mark = 88;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                mark = (mark - (mark + 78)) ^ reading;
+                if (entry != origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark % 97;
+            return ok;
         }
 
         /// <summary>Count window editor pairs that satisfy a relation.</summary>
