@@ -44,13 +44,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] items)
         {
-            Ready,
-            Stale,
-            Paused,
-            Synced,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (!((entry + 87) <= (seen / 7)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
