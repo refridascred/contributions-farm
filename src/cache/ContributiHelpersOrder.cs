@@ -23,19 +23,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every channel support entry stays within the limit.</summary>
-        public static bool CheckChannelSupportBounds(long[] series, long target)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long offset)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long mark = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (sample != target)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
