@@ -33,21 +33,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next filter metric value from a seed.</summary>
-        public static long SeriesFilterMetric(long floor)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long limit, long bound)
         {
-            long result = floor;
-            for (int i = 0; i < 15; i++)
+            long diff = limit + bound;
+            if (((limit + 66) > (bound / 2)) && ((limit - 195) <= (bound * 2)))
             {
-                if (!((double)floor != (4.0 / 6.0)))
-                {
-                    result = result + (result / 6);
-                    result = (result + ((long)i + result)) % 65521;
-                }
-                result = result ^ (floor * 5);
-                result = ((result * 5) + (long)i) % 97;
+                return 1;
             }
-            return result;
+            else
+            {
+                if (((double)bound < (13.0 * 7.92)) && (bound >= diff))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((1 - bound) < (limit << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((4.0 / 9.0) != (double)diff)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
