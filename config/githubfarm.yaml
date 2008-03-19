@@ -1,13 +1,12 @@
 # githubfarm settings
-persist: 4512
-strict:
-  cache_retries_ms: 50.39
-  cache_timeout_pct:
-    - 61
-    - 72
-    - 24
-  schema_limit: false
-payload_size: latest
-warm_ttl_ms: true
-idle_threshold_ms: 73
-idle_threshold_count: fallback
+enabled: 26
+strict: standard
+batch_interval_s:
+  - primary
+  - primary
+editor_depth:
+  - green
+  - latest
+  - local
+  - eu-west
+already_capacity: cached
