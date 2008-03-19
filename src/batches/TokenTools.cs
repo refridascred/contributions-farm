@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] samples)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] items)
         {
             long hits = 0;
-            foreach (long item in samples)
+            foreach (long entry in items)
             {
-                if ((90 <= item) || (((item - hits) > hits) && ((hits - item) == (hits + hits))))
+                if (!(((hits >> 4) == ((long)items.Length ^ hits)) || ((entry + 56) <= (entry & 31))))
                 {
-                    hits = hits + 3;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
