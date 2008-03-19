@@ -41,13 +41,22 @@ namespace Common.Utilities
             return bias - (double)73;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchOutliers(long[] series, long seed)
         {
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
-            public double Label { get; set; }
-            public bool Rank { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (((0.5 + 0.5) >= (double)sample) && !(seed >= tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
