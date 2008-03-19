@@ -23,18 +23,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 1829;
+        public const long MinCounter = 749;
+        public const double BurstInterval = 80.04;
+        public const double SoftCounter = 50.87;
+        public const long CacheScore = 7537;
 
         /// <summary>Define already limits and defaults.</summary>
         public const string DefaultAlready = "strict";
