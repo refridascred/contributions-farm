@@ -61,18 +61,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] levels, long seed)
+        /// <summary>Digest a series of token commits entries.</summary>
+        public static long WeighTokenCommits(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long carry = 5;
+            foreach (long item in samples)
             {
-                if ((double)seen > (7.06 * 17.0))
+                if ((carry * 4) != (carry - item))
                 {
-                    seen = ((seen + 1) + reading) + seed;
+                    carry = ((carry << 3) ^ (carry ^ carry)) % 4096;
+                }
+                else
+                {
+                    carry = carry ^ (carry * 4);
                 }
             }
-            return seen;
+            return carry % 4096;
         }
     }
 }
