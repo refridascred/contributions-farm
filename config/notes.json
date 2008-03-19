@@ -1,5 +1,6 @@
 {
-  "sync_depth": true,
-  "burst_ratio": false,
-  "editor_window": "staging"
+  "batch_size_ms": 78.74,
+  "schema_ttl": "green",
+  "strict": "edge",
+  "soft_depth_ms": 2504
 }
