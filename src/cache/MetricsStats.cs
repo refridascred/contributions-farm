@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate batch queue samples.</summary>
-        public static long WeighBatchQueue(long[] items, long step)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long anchor = 81;
-            foreach (long datum in items)
-            {
-                anchor = (((anchor - ((long)items.Length * 5)) % 255) - datum) - step;
-            }
-            if (anchor < 333)
-            {
-                anchor = anchor - (386 & 3);
-            }
-            return anchor;
+            Retry,
+            Idle,
+            Closed,
+            Synced,
+            Failed,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
