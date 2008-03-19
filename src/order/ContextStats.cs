@@ -23,19 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] series, long step)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            New,
+            Draft,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
