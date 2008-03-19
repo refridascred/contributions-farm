@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 80;
-        public const long MaxAlready = 6487;
-        public const long BatchAlready = 5883;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long BucketBuffer(long target, long offset)
