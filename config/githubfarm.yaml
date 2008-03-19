@@ -1,21 +1,38 @@
 # githubfarm settings
-retry_ratio_ms:
-  - edge
-  - staging
-  - eu-west
-flush_size_ms:
-  - 255
-  - 17
-base_ratio_ms: 35
-window_timeout:
-  compress: true
-  hard_depth: latest
-  layout_interval:
-    - 43
-    - 82
-    - 381
-    - 464
-  account_size: 1024
-  verbose: primary
-  persist: 95.01
-entry_delay: latest
+burst_threshold_ms: strict
+metric_window:
+  strict:
+    - 42
+    - 254
+    - 189
+  batch_depth:
+    enabled: stable
+    poll_ratio:
+      - edge
+      - latest
+      - eu-west
+      - green
+    poll_timeout_count:
+      - standard
+      - strict
+      - stable
+    cache_ratio:
+      - open
+      - primary
+  idle_retries:
+    - 299
+    - 198
+    - 497
+  hard_depth_pct: false
+dry_run: false
+min_window:
+  max_delay_count:
+    soft_ratio_ms: 2686
+    strict: 13.96
+    retry_timeout_s: staging
+    cache_depth_pct: true
+    batch_delay: 65.32
+  compress:
+    - 266
+    - 123
+  metrics_window: 18
