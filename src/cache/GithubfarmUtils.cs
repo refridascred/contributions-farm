@@ -66,19 +66,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 5823;
+        public const double HardProfile = 43.59;
+        public const double MinInterval = 83.22;
+        public const double DefaultLevel = 88.68;
     }
 }
