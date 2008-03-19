@@ -1,5 +1,5 @@
 {
-  "queue_delay": 4468,
-  "warm_threshold_count": 1024,
-  "poll_size_count": "primary"
+  "flush_depth": 74.86,
+  "persist": 37,
+  "buffer_delay": "fallback"
 }
