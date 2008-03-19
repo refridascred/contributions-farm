@@ -47,24 +47,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long origin, long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] items)
         {
-            if ((origin <= limit) && ((origin + origin) == (limit * 3)))
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin >= (limit + origin))
+                if (!(((16.0 + 1.0) <= (double)datum) && ((matches >> 1) <= (matches + 58))))
                 {
-                    return 1;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    return 3;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
