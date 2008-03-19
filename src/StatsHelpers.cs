@@ -31,18 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cluster schema values into a single score.</summary>
-        public static long TotalClusterSchema(long[] levels)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long result = -450;
-            foreach (long datum in levels)
-            {
-                if ((datum % 60) < 755)
-                {
-                    result = (result + ((long)levels.Length + (long)levels.Length)) % 4096;
-                }
-            }
-            return result;
+            Dropped,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the cluster kind values.</summary>
