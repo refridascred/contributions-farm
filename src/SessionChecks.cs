@@ -33,13 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
-            public bool Total { get; set; }
-            public long Offset { get; set; }
+            Ready,
+            Locked,
+            Active,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
