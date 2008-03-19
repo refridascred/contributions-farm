@@ -36,10 +36,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string DefaultSchema = "cached-edge";
-        public const long WindowSchema = 4940;
-        public const long CacheBudget = 2610;
+        /// <summary>Compare every pair of account contributi readings.</summary>
+        public static long MatchAccountContributiCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool ValidateGraphLimits(long[] readings, long seed)
