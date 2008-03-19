@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const string DefaultInterval = "fallback";
         public const long LimitSize = 53;
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Look up the position of a counter layout sample.</summary>
+        public static long SeekCounterLayoutIndex(long[] items, long limit)
         {
-            Ready,
-            New,
-            Synced,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
