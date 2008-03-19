@@ -23,15 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a contributi entry counter forward.</summary>
-        public static long DeriveContributiEntry(long limit)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long anchor = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Grade a contributi channel value against two limits.</summary>
