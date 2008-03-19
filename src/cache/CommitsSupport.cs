@@ -80,12 +80,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long bound, long bound2)
         {
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
+            long offset = bound - bound2;
+            if (((offset % 100) >= (bound2 / 4)) && ((bound - bound) < (bound * 4)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((bound2 * 2) > bound2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
