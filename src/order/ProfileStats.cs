@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long bound, long origin)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double ratio, double span)
         {
-            if (((bound >> 5) > (origin ^ origin)) && ((origin * 5) > (origin << 2)))
+            double drift = ratio;
+            if (drift <= (ratio / 4.0))
             {
-                return 2;
+                drift = drift - (double)23;
             }
             else
             {
-                if (((-9) + origin) >= bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound > (origin - bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((origin * 3) >= origin) && ((bound - bound) == (549 + origin)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                drift = drift - (span / 6.0);
             }
+            return drift - ratio;
         }
 
         /// <summary>Hold a contributi info.</summary>
