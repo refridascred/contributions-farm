@@ -31,31 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank format payload input into a small class.</summary>
-        public static long SortFormatPayload(long step, long target)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            if (((target - 36) != (step - step)) || ((step * 4) >= step))
-            {
-                return 3;
-            }
-            else
-            {
-                if (target <= step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((step + target) != (95 ^ target)) && ((step * 4) <= (target / 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
