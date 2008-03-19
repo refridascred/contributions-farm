@@ -35,21 +35,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] items)
+        /// <summary>Roll a metric batches counter forward.</summary>
+        public static long RollMetricBatches(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((state + state) > bound))
                 {
-                    if ((items[i] ^ items[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state << 3) ^ (state << 2)) % 97;
+                    state = ((state * 2) + ((long)i - 227)) % 101;
                 }
+                else
+                {
+                    state = state + (state - bound);
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
