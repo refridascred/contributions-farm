@@ -1,17 +1,19 @@
 # githubfarm settings
-schema_limit:
-  - edge
-  - stable
-route_window:
-  buffer_window: primary
-  default_delay_s: 58
-  default_limit:
-    - 38
-    - 163
-    - 374
-  sync_size_ms: true
-burst_interval:
-  - 62
-  - 453
-buffer_retries: eu-west
-soft_interval: true
+base_threshold_count: 3664
+readonly: green
+burst_retries_s: 56.31
+metrics_capacity:
+  account_timeout: 250
+  stream_capacity: 9812
+  default_interval: 80.94
+  sync_retries_s: stable
+  max_capacity_count:
+    sync_threshold_ms: staging
+    farm_ttl: stable
+    window_capacity: 49.55
+    idle_window: false
+    support_depth: 54.65
+    sync_capacity_pct:
+      - edge
+      - stable
+hard_limit: false
