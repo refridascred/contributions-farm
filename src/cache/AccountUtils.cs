@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] data, long floor)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long seed)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long state = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((entry - entry) != (floor * 3)))
-                {
-                    seen = seen + 1;
-                }
+                state = (state * 5) + (state ^ 470);
+                state = ((state << 2) ^ (state - state)) % 1000;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the format phase values.</summary>
