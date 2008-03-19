@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double ratio, double offset)
         {
-            Ready,
-            Failed,
-            New,
-            Idle,
+            double bias = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (double)(long)i) - ratio;
+            }
+            return bias - 9.1;
         }
 
         /// <summary>Hold a stats options.</summary>
