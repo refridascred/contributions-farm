@@ -42,19 +42,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] items, long seed)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long origin)
         {
-            bool found = true;
-            foreach (long value in items)
+            long anchor = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (value < seed)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
