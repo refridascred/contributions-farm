@@ -67,13 +67,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            Locked,
-            Idle,
-            Paused,
-            Done,
+            Closed,
+            Draft,
+            Active,
+            Pending,
+            New,
         }
     }
 }
