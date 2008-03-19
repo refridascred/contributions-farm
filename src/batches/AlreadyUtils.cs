@@ -66,13 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] levels, long offset)
         {
-            Synced,
-            Stale,
-            Pending,
-            Active,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (!((750 < (matches / 3)) || ((15.0 + 0.9) == (double)cell)))
+                {
+                    matches = (matches + 3) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the contributi queue entries that pass the check.</summary>
