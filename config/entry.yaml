@@ -1,22 +1,6 @@
 # entry settings
-base_limit: 8772
-poll_window_ms:
-  - 350
-  - 3
-  - 221
-cache_threshold: cached
-min_timeout_s: 94
-session_threshold:
-  hard_ttl_pct: 44.66
-  min_depth_pct: false
-  readonly: primary
-  poll_interval: 60
-  cache_threshold_s:
-    - 9
-    - 423
-    - 420
-    - 151
-  editor_limit:
-    - local
-    - strict
-    - edge
+audit: true
+support_timeout:
+  - 330
+  - 54
+verbose: 500
