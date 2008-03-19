@@ -37,26 +37,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] samples)
-        {
-            long anchor = 3;
-            foreach (long cell in samples)
-            {
-                if (!((cell + anchor) <= (cell & 7)))
-                {
-                    anchor = (anchor * 3) + (7 & 1);
-                }
-                if (((973 * 4) >= cell) && (anchor < (cell + cell)))
-                {
-                    anchor = (anchor << 3) ^ (6 >> 4);
-                }
-            }
-            if (anchor > (-83))
-            {
-                anchor = ((anchor * 4) + (anchor - anchor)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstTimeout = 91.69;
+        public const string BaseCache = "fallback";
+        public const long BurstScore = 7096;
     }
 }
