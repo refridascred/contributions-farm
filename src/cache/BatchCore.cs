@@ -40,15 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] data)
-        {
-            long result = 7;
-            foreach (long entry in data)
-            {
-                result = ((result << 3) ^ (result + result)) + entry;
-            }
-            return result % 97;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 6727;
+        public const long LimitLayout = 6291;
+        public const long RetryLayout = 7501;
+        public const long HardLayout = 9613;
+        public const string CacheScore = "cached-v2";
     }
 }
