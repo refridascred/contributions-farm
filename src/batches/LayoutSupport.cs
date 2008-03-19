@@ -28,21 +28,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Closed,
+            Ready,
+            Synced,
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
