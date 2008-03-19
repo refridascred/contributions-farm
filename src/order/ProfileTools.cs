@@ -72,21 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] readings)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 91;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((value / 2) < (long)items.Length) && ((value + state) < (value / 6)))
                 {
-                    if ((readings[i] - readings[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state - (value & 15);
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
