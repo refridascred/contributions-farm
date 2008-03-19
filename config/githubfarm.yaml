@@ -1,9 +1,4 @@
 # githubfarm settings
-min_retries:
-  - fallback
-  - staging
-  - staging
-  - latest
-min_timeout_s: 9403
-max_retries_s: 46.21
-soft_ttl_ms: primary
+payload_window: 19.28
+idle_threshold: blue
+min_timeout: green
