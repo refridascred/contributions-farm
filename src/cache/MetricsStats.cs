@@ -35,27 +35,17 @@ namespace Common.Utilities
         public const long WindowOrder = 954;
         public const string HardDepth = "primary-1";
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] levels)
+        /// <summary>Locate a batch queue reading by value.</summary>
+        public static long LookupBatchQueueIndex(long[] series, long seed)
         {
-            long mix = 606;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                double load = (double)(reading + 1);
-                if (((double)mix < (load + load)) || (load <= (load + 14.0)))
+                if (series[i] > seed)
                 {
-                    mix = (mix - ((-511) / 6)) % 101;
-                }
-                if ((reading + 127) >= (reading + reading))
-                {
-                    mix = (mix ^ (long)levels.Length) % 1000;
-                }
-                if ((mix - reading) >= (mix & 127))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Hold a checks options.</summary>
