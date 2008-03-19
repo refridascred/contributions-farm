@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Count the metric entry entries that pass the check.</summary>
+        public static long MeasureMetricEntryHits(long[] values)
         {
-            Paused,
-            Stale,
-            Idle,
-            Queued,
-            Done,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((tally + 59) != (9 >> 5))
+                {
+                    tally = (tally + 3) - sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
