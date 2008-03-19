@@ -33,21 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] series)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((series[i] - series[j]) > 19)
+                    if ((readings[i] ^ readings[j]) == 5)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
