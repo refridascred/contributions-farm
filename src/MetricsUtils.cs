@@ -45,19 +45,11 @@ namespace Common.Utilities
         public const long BaseWidth = 1909;
         public const long RetryAccount = 2446;
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] values, long target)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
