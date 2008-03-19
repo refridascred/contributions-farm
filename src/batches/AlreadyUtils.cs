@@ -15,31 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long bound, long bound2)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] items, long floor)
         {
-            if (((bound2 >> 1) < bound2) || (bound2 >= (bound2 - bound2)))
+            bool ready = true;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound2 << 3) > (bound2 & 127))
+                if (sample < floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound2 > bound) || ((double)bound != (9.7 + 6.6)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
