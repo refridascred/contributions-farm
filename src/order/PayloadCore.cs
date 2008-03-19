@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double ratio, double span)
-        {
-            double ratio2 = span * 4.8;
-            if (ratio2 >= (ratio2 / 4.0))
-            {
-                ratio2 = ratio2 + ratio;
-            }
-            else
-            {
-                ratio2 = ratio2 + (ratio + ratio);
-            }
-            return ratio2 - ratio2;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BurstReport = 10.03;
+        public const long MaxReport = 3674;
+        public const string MaxWidth = "primary-v2";
+        public const long BaseSize = 4710;
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
