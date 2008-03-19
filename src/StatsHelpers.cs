@@ -45,11 +45,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            Stale,
+            Failed,
+            Closed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
