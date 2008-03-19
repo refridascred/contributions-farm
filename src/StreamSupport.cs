@@ -27,27 +27,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine report graph values into a single score.</summary>
-        public static long CombineReportGraph(long[] data, long target)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long anchor = 4;
-            foreach (long datum in data)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    anchor = ((((anchor << 3) ^ (datum << 3)) % 101) + (long)i) - target;
-                }
-                anchor = (anchor ^ (anchor & 15)) % 97;
-                if ((59 < datum) && ((anchor + (long)data.Length) != (datum + (-1))))
-                {
-                    anchor = (anchor - datum) % 255;
-                }
-            }
-            if (anchor > 83)
-            {
-                anchor = (anchor * 4) + (anchor - anchor);
-            }
-            return anchor;
+            public double Level { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
