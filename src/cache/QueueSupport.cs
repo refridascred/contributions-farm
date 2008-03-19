@@ -13,31 +13,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of support metrics entries.</summary>
-        public static long FoldSupportMetrics(long[] readings)
-        {
-            long score = 22;
-            foreach (long sample in readings)
-            {
-                if ((440 ^ score) != (sample - sample))
-                {
-                    score = (score - (88 & 127)) % 255;
-                }
-                else
-                {
-                    score = score - 43;
-                }
-                if (sample < (long)readings.Length)
-                {
-                    break;
-                }
-            }
-            if (score < 795)
-            {
-                score = (score << 2) ^ (score / 4);
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleInterval = 6410;
+        public const long MinDepth = 97;
+        public const string StepFactor = "open-edge";
+        public const long RetryBudget = 8654;
+        public const long LimitReport = 9727;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MaxOrder = 4663;
