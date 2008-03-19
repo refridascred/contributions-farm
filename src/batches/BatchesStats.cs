@@ -39,11 +39,22 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double bias, double offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] items, long seed)
         {
-            double scale = (double)(29 ^ 2);
-            return ((scale + scale) + bias) + offset;
+            long acc = 81;
+            foreach (long entry in items)
+            {
+                if (((seed * 2) == (seed - entry)) && ((double)seed == (7.97 / 6.0)))
+                {
+                    acc = (acc + (7 - (long)items.Length)) % 101;
+                }
+                if (((18.0 - 19.0) < (double)acc) || ((seed << 2) >= (0 + entry)))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
     }
 }
