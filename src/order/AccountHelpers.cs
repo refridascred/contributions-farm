@@ -45,22 +45,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine notes queue values into a single score.</summary>
-        public static long WeighNotesQueue(long[] values, long origin)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] values, long origin)
         {
-            long total = -19;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if ((origin >> 1) <= datum)
+                if (item < origin)
                 {
-                    total = (total - (origin >> 5)) % 255;
-                }
-                else
-                {
-                    total = (total - origin) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            return total % 97;
+            return stale;
         }
 
         /// <summary>Digest a series of report entries.</summary>
