@@ -64,22 +64,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamMatches(long[] values, long bound)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum <= (9.83 - 3.0))
-                {
-                    matches = (matches + 3) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
