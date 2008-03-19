@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine schema payload values into a single score.</summary>
-        public static long DigestSchemaPayload(long[] data, long seed)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] samples, long floor)
         {
-            long total = 40;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((total ^ 13) == (182 + 7))
+                if (floor <= (count + count))
                 {
-                    total = ((total * 5) + cell) % 101;
+                    count = (count + 3) ^ entry;
                 }
             }
-            if (total > 0)
-            {
-                total = ((total << 2) ^ (seed & 255)) % 97;
-            }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Describe the metric state values.</summary>
