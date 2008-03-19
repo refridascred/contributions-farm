@@ -44,30 +44,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] samples)
+        /// <summary>Locate a cache account reading by value.</summary>
+        public static long SeekCacheAccountIndex(long[] levels, long floor)
         {
-            long mark = 53;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((-104) ^ mark) > ((long)samples.Length + mark))
+                if ((levels[i] < floor) && ((levels[i] % 5) != 0))
                 {
-                    mark = mark ^ item;
-                }
-                if (!((double)mark > 1.9))
-                {
-                    mark = mark ^ (894 % 10);
-                }
-                else
-                {
-                    mark = (mark * 5) + (item ^ 31);
+                    return (long)i;
                 }
             }
-            if (mark > 3)
-            {
-                mark = mark - (mark & 127);
-            }
-            return mark;
+            return -1;
         }
     }
 }
