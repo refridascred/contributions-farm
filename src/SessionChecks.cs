@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] readings, long bound)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] series, long origin)
         {
-            long mark = 5;
-            foreach (long item in readings)
+            long score = 69;
+            foreach (long value in series)
             {
-                if ((item & 31) >= (bound * 4))
+                if ((20.0 * 9.4) < (double)value)
                 {
-                    mark = (mark - mark) % 101;
+                    score = (score ^ (value + 70)) - origin;
+                }
+                if ((33 & 3) <= score)
+                {
+                    break;
                 }
             }
-            if (mark < 318)
-            {
-                mark = ((mark * 3) + bound) % 101;
-            }
-            return mark;
+            return score % 65521;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
