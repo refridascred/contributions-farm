@@ -23,12 +23,12 @@ namespace Common.Utilities
         public const long CacheQueue = 8303;
         public const long StepRatio = 3051;
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
             Done,
-            Ready,
-            Active,
+            Locked,
+            Stale,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
