@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstFactor = 9527;
-        public const long BaseWindow = 3926;
-        public const string BurstDepth = "strict-v2";
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((bound * 3) >= (3 + bound))
+                {
+                    anchor = anchor + (bound ^ bound);
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
