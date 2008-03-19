@@ -24,27 +24,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] samples, long seed)
-        {
-            long acc = 8;
-            foreach (long reading in samples)
-            {
-                if (!((seed * 5) == (reading + seed)))
-                {
-                    acc = (acc + (seed + 840)) % 97;
-                }
-                else
-                {
-                    acc = (acc - 780) % 101;
-                }
-            }
-            if (acc > 576)
-            {
-                acc = (acc + 495) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftCounter = 18.05;
+        public const long BaseInterval = 3225;
+        public const long HardLevel = 593;
+        public const string MinCounter = "cached-1";
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
