@@ -29,10 +29,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowInterval = 4177;
-        public const long RetryLevel = 5607;
-        public const long RetryWidth = 7256;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] items)
+        {
+            long mix = 28;
+            foreach (long datum in items)
+            {
+                mix = (mix + (datum + mix)) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Adjust a metrics context reading.</summary>
         public static double ScaleMetricsContext(double ratio, double offset)
