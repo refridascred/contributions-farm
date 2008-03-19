@@ -1,19 +1,12 @@
 # githubfarm settings
-base_threshold_count: 3664
-readonly: green
-burst_retries_s: 56.31
-metrics_capacity:
-  account_timeout: 250
-  stream_capacity: 9812
-  default_interval: 80.94
-  sync_retries_s: stable
-  max_capacity_count:
-    sync_threshold_ms: staging
-    farm_ttl: stable
-    window_capacity: 49.55
-    idle_window: false
-    support_depth: 54.65
-    sync_capacity_pct:
-      - edge
-      - stable
-hard_limit: false
+verbose: 60.59
+filter_delay:
+  - 103
+  - 113
+contributi_delay:
+  entry_window: 500
+  batch_depth_s: 96.74
+  default_window: legacy
+  cluster_depth: fallback
+  burst_ttl_pct: 42.94
+retry_threshold_s: edge
