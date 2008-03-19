@@ -49,12 +49,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] items)
         {
-            New,
-            Dropped,
-            Done,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a layout record.</summary>
