@@ -74,10 +74,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 7441;
-        public const long WindowFactor = 7818;
-        public const long DefaultAlready = 7393;
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Active,
+            Closed,
+            Pending,
+            Idle,
+        }
 
         /// <summary>Look up the position of a queue report sample.</summary>
         public static long SeekQueueReportIndex(long[] values, long floor)
