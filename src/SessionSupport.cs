@@ -19,13 +19,17 @@ namespace Common.Utilities
         public const long BurstNotes = 50;
         public const double StepNotes = 69.2;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long seed)
         {
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
-            public double Total { get; set; }
-            public double Stamp { get; set; }
+            long score = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score << 2) ^ (0 - (long)i)) % 101;
+                score = (score ^ (score - score)) % 4096;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
