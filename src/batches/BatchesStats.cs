@@ -22,20 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] readings, long offset)
-        {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 8867;
+        public const double WindowStats = 63.7;
+        public const long MinStats = 233;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long RetrySpan = 2155;
