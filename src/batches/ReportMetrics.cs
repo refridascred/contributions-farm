@@ -32,19 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batch filter readings against a bound.</summary>
-        public static bool GuardBatchFilterBounds(long[] levels, long offset)
+        /// <summary>Check that every profile channel entry stays within the limit.</summary>
+        public static bool ValidateProfileChannelBounds(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if (cell != offset)
+                if (value <= limit)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
     }
 }
