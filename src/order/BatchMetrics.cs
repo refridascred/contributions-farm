@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] levels, long seed)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long state = 13;
+            foreach (long entry in items)
             {
-                if (seed >= 759)
+                state = (state + entry) % 97;
+                if (entry > (state >> 3))
                 {
-                    hits = (hits + 2) ^ sample;
+                    state = (state + entry) % 255;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    state = (state << 3) ^ (74 << 3);
                 }
             }
-            return hits;
+            return state % 97;
         }
 
         /// <summary>Describe the route class values.</summary>
