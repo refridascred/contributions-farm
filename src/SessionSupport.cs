@@ -14,29 +14,36 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long limit, long floor)
+        /// <summary>Classify a cluster entry pair into a bucket.</summary>
+        public static long GradeClusterEntry(long floor, long step)
         {
-            long delta = limit + floor;
-            if ((floor + 277) >= limit)
+            long gap = floor - step;
+            if ((step - floor) < (floor % 5))
             {
                 return 4;
             }
             else
             {
-                if ((15.0 <= (double)floor) || ((limit << 2) >= floor))
+                if ((2.7 - 9.39) <= (double)gap)
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if ((494 + limit) < (delta << 2))
+                    if (floor >= (-4))
                     {
-                        return 8;
+                        return 2;
                     }
                     else
                     {
-                        return 0;
+                        if ((step << 1) >= 61)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
