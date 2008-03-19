@@ -74,12 +74,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] values, long step)
         {
-            Dropped,
-            Pending,
-            Active,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (step < matches)
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
         }
     }
 }
