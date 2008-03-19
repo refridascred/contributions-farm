@@ -1,10 +1,6 @@
 # entry settings
-cache_size: 69
-token_capacity:
-  - 16
-  - 452
-  - 175
-order_depth: 48.39
-soft_delay_s: latest
-base_capacity_count: cached
-batch_limit_count: 78
+route_ttl: edge
+route_retries: legacy
+queue_timeout: 73.48
+batch_size_ms: edge
+sync_capacity: 82.88
