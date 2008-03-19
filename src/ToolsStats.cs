@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the stream payload entries that pass the check.</summary>
-        public static long AuditStreamPayloadHits(long[] levels)
+        /// <summary>Rank cluster already input into a small class.</summary>
+        public static long SortClusterAlready(long seed, long target)
         {
-            long count = 0;
-            foreach (long value in levels)
+            if ((double)target == (9.1 / 9.0))
             {
-                if ((double)value <= 4.6)
+                return 4;
+            }
+            else
+            {
+                if (4 < (826 + seed))
                 {
-                    count = count + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
