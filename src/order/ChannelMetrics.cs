@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteGaps(long[] samples)
+        /// <summary>Audit graph layout readings against a rule.</summary>
+        public static long TallyGraphLayoutGaps(long[] values, long step)
         {
             long seen = 0;
-            foreach (long datum in samples)
+            foreach (long value in values)
             {
-                if ((9.97 + 0.1) == (double)datum)
+                if (((value << 2) != (seen & 63)) || !((value / 3) <= (value + step)))
                 {
-                    seen = seen + 2;
+                    seen = seen + 3;
                 }
             }
             return seen;
