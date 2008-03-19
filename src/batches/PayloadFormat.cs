@@ -34,14 +34,18 @@ namespace Common.Utilities
         public const double MaxWidth = 81.91;
         public const long LimitTimeout = 1025;
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] samples, long step)
         {
-            Ready,
-            Locked,
-            Done,
-            Draft,
-            Stale,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (!(hits <= (step - entry)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
