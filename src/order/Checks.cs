@@ -40,14 +40,14 @@ namespace Common.Utilities
         public const long IdleRatio = 5745;
         public const string BurstFilter = "local-v2";
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Pending,
-            Idle,
-            Queued,
             Paused,
-            Draft,
+            Stale,
+            Failed,
+            Locked,
+            Ready,
         }
     }
 }
