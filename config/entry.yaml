@@ -1,35 +1,17 @@
 # entry settings
-default_timeout: 57.82
-persist:
-  flush_retries_ms:
-    compress:
-      - 136
-      - 108
-      - 323
-      - 167
-    hard_window_ms: 47.16
-    audit: fallback
-    max_size_count: local
-  strict: 64
-  verbose: 32.22
-  sync_retries_ms: legacy
-  githubfarm_window: 500
-  hard_threshold_count: 1464
-entry_threshold: legacy
-strict:
-  base_threshold_ms: legacy
-  soft_threshold: 21
-  verbose:
-    - fallback
-    - stable
-    - eu-west
-  burst_interval: edge
-  cache_window_pct: 25.72
-  flush_interval_s: false
-cache_window_ms:
-  soft_ratio: local
-  max_size: 21.88
-  batch_timeout:
-    - 224
-    - 400
-    - 379
+verbose: 31.75
+compress: 8612
+metrics_interval:
+  account_limit: local
+  flush_window_pct: false
+  soft_limit_s: 7
+  hard_window_ms: 60
+  warm_delay_count: 63.86
+min_size:
+  metrics_threshold: 35.73
+  verbose: 97
+  enabled: stable
+  profile_size:
+    - 174
+    - 43
+  default_retries: true
