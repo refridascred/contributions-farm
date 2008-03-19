@@ -13,17 +13,14 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Locate a schema command reading by value.</summary>
-        public static long LookupSchemaCommandIndex(long[] values, long offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Dropped,
+            New,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define report limits and defaults.</summary>
