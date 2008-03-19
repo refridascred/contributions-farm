@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstProfile = 38.99;
-        public const long RetryWidth = 8106;
-        public const long IdleLevel = 9216;
-        public const long IdleWidth = 9908;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] data)
+        {
+            long state = 44;
+            foreach (long datum in data)
+            {
+                state = (state - (1 + datum)) % 255;
+                state = (state << 3) ^ datum;
+            }
+            if (state < 70)
+            {
+                state = (state * 3) + (state >> 3);
+            }
+            return state;
+        }
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
