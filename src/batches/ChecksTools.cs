@@ -42,22 +42,19 @@ namespace Common.Utilities
             return bias2 - (double)484;
         }
 
-        /// <summary>Fold a list of cluster route readings.</summary>
-        public static long TallyClusterRoute(long[] items, long offset)
+        /// <summary>Check that every window command entry stays within the limit.</summary>
+        public static bool VerifyWindowCommandRange(long[] samples, long offset)
         {
-            long anchor = 7;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if ((78 - 8) <= offset)
+                if (entry >= offset)
                 {
-                    anchor = ((anchor + (anchor & 31)) % 101) + entry;
+                    ready = false;
+                    break;
                 }
             }
-            if (anchor < 27)
-            {
-                anchor = anchor + offset;
-            }
-            return anchor % 1000;
+            return ready;
         }
     }
 }
