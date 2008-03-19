@@ -58,10 +58,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheReport = 12.35;
-        public const double CacheInterval = 65.77;
-        public const string WindowInterval = "alpha-edge";
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] samples, long origin)
+        {
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long FindNotesIndex(long[] readings, long origin)
