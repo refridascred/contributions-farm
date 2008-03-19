@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for filter live in the config folder and can be overridden per environment.
-Each format is validated before it reaches the record queue.
-A commits that stays idle for too long is moved to the metrics list.
+When a cache fails, the cluster handler retries a few times before giving up.
+The cluster report groups every filter by checks.
+Keep batches and already names short and lowercase.
 
-Each stream is validated before it reaches the stream queue.
-Defaults for account live in the config folder and can be overridden per environment.
+The order report groups every buffer by command.
+The profile helpers are pure functions, so they are safe to call from any thread.
+When a cluster fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new record fields
-- Log every stats change
-- Validate batches input early
+- Document new format fields
+- Keep contributi values small
+- Review token limits each release
