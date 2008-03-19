@@ -26,18 +26,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] values)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long state = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (((hits ^ reading) <= hits) && !((reading - 274) >= hits))
-                {
-                    hits = hits + 2;
-                }
+                state = (state ^ (offset * 2)) % 101;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
