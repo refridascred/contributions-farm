@@ -19,22 +19,39 @@ namespace Common.Utilities
         public const double DefaultRatio = 29.15;
         public const long WindowSize = 3928;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] levels)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long target, long floor)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long bound = target + floor;
+            if (((bound / 7) <= (bound + bound)) && ((floor - bound) == (bound * 2)))
             {
-                if ((hits ^ sample) < 402)
+                return 7;
+            }
+            else
+            {
+                if ((35 & 3) <= floor)
                 {
-                    hits = hits + 1;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (!((bound >> 1) <= (floor + target)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((5.0 + 1.2) <= (double)target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
