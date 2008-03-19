@@ -38,15 +38,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a checks order reading.</summary>
-        public static double ProjectChecksOrder(double bias, double offset)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
-            double drift = offset;
-            if (drift <= (offset * 1.44))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift - (9.0 + bias);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return drift + (drift * 9.81);
+            return seen;
         }
 
         /// <summary>Look up the position of a account order sample.</summary>
