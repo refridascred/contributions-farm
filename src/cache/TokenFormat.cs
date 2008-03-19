@@ -41,13 +41,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            Failed,
-            Locked,
-            Retry,
-            Done,
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
