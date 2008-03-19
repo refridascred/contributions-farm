@@ -41,17 +41,15 @@ namespace Common.Utilities
         public const long RetryNotes = 8395;
         public const double MaxNotes = 95.27;
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] data, long limit)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
