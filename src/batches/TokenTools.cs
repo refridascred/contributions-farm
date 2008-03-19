@@ -19,18 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate schema counter samples.</summary>
-        public static long FoldSchemaCounter(long[] values, long floor)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] samples)
         {
-            long score = -2;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((605 + floor) >= (score % 97))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = ((score + score) % 4096) ^ item;
+                    if ((samples[i] + samples[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
