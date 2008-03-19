@@ -58,14 +58,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] data)
         {
-            Failed,
-            Queued,
-            Done,
-            New,
-            Retry,
+            long mix = 35;
+            foreach (long value in data)
+            {
+                if ((value % 7) > (38 & 7))
+                {
+                    mix = ((mix * 3) + value) % 1000;
+                    mix = mix + (6 - value);
+                    break;
+                }
+                mix = (mix ^ value) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a editor summary.</summary>
