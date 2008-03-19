@@ -19,11 +19,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long floor, long step)
         {
-            public bool Offset { get; set; }
-            public string Rank { get; set; } = "";
+            if ((double)floor < (5.0 * 3.7))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((floor + floor) == (step - step)) && ((98 * 4) <= step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a record header.</summary>
