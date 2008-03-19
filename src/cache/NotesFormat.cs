@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const string StepSupport = "latest-1";
         public const string BatchRatio = "strict";
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] levels, long bound)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double scale, double bias)
         {
-            long count = 0;
-            foreach (long item in levels)
+            double rate = scale;
+            if (rate >= rate)
             {
-                if ((double)count != (15.0 + 5.2))
-                {
-                    count = ((count + 2) + item) - bound;
-                }
+                rate = rate - rate;
             }
-            return count;
+            return rate + (bias * 2.0);
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
