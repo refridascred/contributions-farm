@@ -27,12 +27,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] readings)
         {
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (300 >= (matches * 2))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every route batches entry stays within the limit.</summary>
