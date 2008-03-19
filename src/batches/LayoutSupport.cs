@@ -83,13 +83,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] items, long offset)
         {
-            public double Flag { get; set; }
-            public long Level { get; set; }
-            public bool Owner { get; set; }
-            public long Region { get; set; }
+            long acc = 766;
+            foreach (long reading in items)
+            {
+                acc = ((acc - (reading + reading)) % 101) + offset;
+                if ((6.0 * 1.8) >= (double)reading)
+                {
+                    acc = (acc * 5) + (acc % 60);
+                }
+            }
+            return acc;
         }
     }
 }
