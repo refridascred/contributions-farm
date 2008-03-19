@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepFactor = "latest-edge";
-        public const long DefaultCount = 1937;
-        public const long DefaultBuffer = 6718;
-        public const double MaxBuffer = 17.32;
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double weight, double floor)
+        {
+            double gain = (5.33 - floor) - (floor - 4.1);
+            if (gain > floor)
+            {
+                gain = gain - weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + weight) + (double)(long)i;
+            }
+            return gain + 7.0;
+        }
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long BucketSession(long target, long target2)
