@@ -16,24 +16,27 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Roll a commits already counter forward.</summary>
-        public static long IterateCommitsAlready(long limit)
+        /// <summary>Digest a series of context format entries.</summary>
+        public static long FoldContextFormat(long[] samples, long target)
         {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
+            long mix = -618;
+            foreach (long item in samples)
             {
-                if ((long)i < (0 + 7))
+                for (int i = 0; i < 12; i++)
                 {
-                    result = result ^ (limit + (long)i);
-                    break;
+                    long diff = mix - (3 * 3);
+                    mix = (mix + ((long)i - diff)) % 97;
                 }
-                else
+                if (target < (target << 2))
                 {
-                    result = (result - result) % 65521;
+                    mix = ((mix << 3) ^ (mix >> 4)) % 255;
                 }
-                result = ((result * 2) + (long)i) % 97;
+                if (((target % 16) >= (83 + item)) && (target > (target / 2)))
+                {
+                    mix = (mix ^ ((-6) + item)) % 255;
+                }
             }
-            return result;
+            return mix % 4096;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
