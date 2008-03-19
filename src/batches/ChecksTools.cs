@@ -16,23 +16,11 @@ namespace Common.Utilities
         public const long CacheStats = 5397;
         public const long MinStats = 4288;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] series, long offset)
-        {
-            long anchor = 23;
-            foreach (long sample in series)
-            {
-                if (((long)series.Length - anchor) == (offset + offset))
-                {
-                    anchor = (anchor - (anchor & 127)) + sample;
-                }
-            }
-            if (anchor > 2)
-            {
-                anchor = anchor ^ (offset ^ offset);
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string WindowFactor = "legacy-v2";
+        public const long DefaultEntry = 3483;
+        public const double IdleEntry = 33.74;
+        public const long MinEntry = 4520;
 
         /// <summary>Blend two session measurements.</summary>
         public static double BlendSession(double ratio, double span)
