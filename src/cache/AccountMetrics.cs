@@ -29,19 +29,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] data, long target)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((9 ^ sample) >= (sample + sample))
-                {
-                    matches = (matches + 3) - target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 3681;
+        public const long BurstFormat = 6564;
+        public const long IdleFormat = 2848;
+        public const string SoftFormat = "staging-v2";
+        public const double DefaultFormat = 43.32;
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long BucketCache(long limit, long target)
