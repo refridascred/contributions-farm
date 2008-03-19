@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] values, long origin)
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((14.0 + 1.3) < (double)floor)
+                if (values[i] == origin)
                 {
-                    total = (total + floor) % 4096;
+                    return (long)i;
                 }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a channel summary.</summary>
