@@ -13,22 +13,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] samples)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] data)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits & 1) > ((long)samples.Length * 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] + data[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the order class values.</summary>
