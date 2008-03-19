@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a layout counter pair into a bucket.</summary>
-        public static long SortLayoutCounter(long limit, long limit2)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] levels, long limit)
         {
-            if (limit2 < limit)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((limit % 24) > (limit2 % 12)) || ((limit + limit) > (limit % 64)))
+                if (!((reading / 6) <= (matches % 2)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((95 - limit) != (limit << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = (matches + 1) - limit;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
