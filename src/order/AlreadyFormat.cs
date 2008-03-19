@@ -57,10 +57,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepScore = 5630;
-        public const long BurstBatches = 3663;
-        public const long HardBatches = 455;
-        public const long CacheBatches = 853;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] values)
+        {
+            long result = 96;
+            foreach (long entry in values)
+            {
+                result = (result - (1 * 2)) + entry;
+                result = (result + (result * 4)) % 4096;
+            }
+            return result;
+        }
     }
 }
