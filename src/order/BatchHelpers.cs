@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] samples)
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            long carry = 29;
+            foreach (long value in samples)
+            {
+                carry = (carry ^ (value + value)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a command reading.</summary>
