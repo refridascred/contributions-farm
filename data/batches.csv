@@ -1,6 +1,6 @@
-id,state,owner
-1,224,64.11
-2,stable,primary
-3,535,832
-4,latest,219
-5,open,78.63
+id,score,level
+1,103,13.81
+2,1.57,92.15
+3,25.09,local
+4,365,latest
+5,93.16,33.01
