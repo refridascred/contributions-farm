@@ -59,22 +59,17 @@ namespace Common.Utilities
             return ((rate + rate) + ratio) + offset;
         }
 
-        /// <summary>Accumulate token session samples.</summary>
-        public static long TotalTokenSession(long[] values)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] readings, long target)
         {
-            long score = 8;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((7.0 + 2.2) != (double)score)
+                if ((readings[i] <= target) && ((readings[i] % 5) != 0))
                 {
-                    score = (score + score) - entry;
-                }
-                else
-                {
-                    score = (score + score) % 4096;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
