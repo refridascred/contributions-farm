@@ -34,31 +34,16 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Grade a stats metric value against two limits.</summary>
-        public static long SortStatsMetric(long step, long floor)
+        /// <summary>Iterate the stats metric series from a seed.</summary>
+        public static long DeriveStatsMetric(long target)
         {
-            if (floor > (step + floor))
+            long mark = target;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
+                mark = (mark ^ (target + mark)) % 65521;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (((floor + floor) < (750 + 31)) || (step < 42))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((step / 6) == (step << 2)) && (72 <= (floor - step)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Find the first already buffer entry that matches the target.</summary>
