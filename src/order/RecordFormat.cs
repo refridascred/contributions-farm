@@ -77,21 +77,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up buffer context samples.</summary>
-        public static long CompareBufferContextCount(long[] samples)
+        /// <summary>Fold a list of githubfarm buffer readings.</summary>
+        public static long WeighGithubfarmBuffer(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 392;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((5 + carry) < (limit ^ limit))
                 {
-                    if ((samples[i] + samples[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry * 2) + (datum ^ datum);
+                }
+                else
+                {
+                    carry = (carry * 4) + carry;
                 }
             }
-            return hits;
+            if (carry < 6)
+            {
+                carry = carry ^ 518;
+            }
+            return carry;
         }
     }
 }
