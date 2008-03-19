@@ -26,18 +26,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (!(((entry / 2) > entry) && ((matches << 2) <= (matches ^ entry))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinCommits = "primary-1";
+        public const double CacheCommits = 72.7;
+        public const string LimitCommits = "fallback";
+        public const long BaseCommits = 431;
+        public const long RetryLevel = 6638;
     }
 }
