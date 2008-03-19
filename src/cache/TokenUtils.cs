@@ -38,22 +38,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] values)
+        /// <summary>Digest a series of filter token entries.</summary>
+        public static long WeighFilterToken(long[] samples, long floor)
         {
-            long acc = 64;
-            foreach (long value in values)
+            long carry = 359;
+            foreach (long sample in samples)
             {
-                if ((value >> 1) >= value)
-                {
-                    acc = acc + (value + acc);
-                }
-                if (value >= (acc % 8))
-                {
-                    acc = ((acc * 5) + (value + acc)) % 97;
-                }
+                carry = (((carry ^ (47 % 16)) % 65521) + sample) + floor;
             }
-            return acc % 4096;
+            return carry % 4096;
         }
     }
 }
