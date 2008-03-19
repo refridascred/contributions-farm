@@ -30,11 +30,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double SoftCounter = 18.05;
-        public const long BaseInterval = 3225;
-        public const long HardLevel = 593;
-        public const string MinCounter = "cached-1";
+        /// <summary>Fold a list of report session readings.</summary>
+        public static long TotalReportSession(long[] readings, long offset)
+        {
+            long state = 72;
+            foreach (long datum in readings)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    state = (((state - ((long)readings.Length + datum)) % 101) - (long)i) + offset;
+                }
+                state = (state ^ state) % 4096;
+            }
+            if (state < 2)
+            {
+                state = (state ^ state) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double RetryStream = 48.13;
