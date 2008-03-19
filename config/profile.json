@@ -1,6 +1,15 @@
 {
-  "sync_interval_ms": "strict",
-  "hard_window_ms": 38,
-  "context_threshold": false,
-  "verbose": "cached"
+  "default_retries": ["eu-west", "green", "stable"],
+  "retry_retries": ["fallback", "legacy", "green", "cached"],
+  "hard_ttl_pct": "local",
+  "min_depth_ms": {
+    "sync_retries_s": 75,
+    "max_threshold": [322, 298, 178],
+    "strict": {
+      "graph_depth": true,
+      "batch_window_pct": 30.12,
+      "flush_ttl": "primary"
+    },
+    "persist": false
+  }
 }
