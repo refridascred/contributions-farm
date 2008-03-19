@@ -23,12 +23,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Failed,
-            Synced,
-            Closed,
+            Idle,
+            Locked,
+            New,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Compare every pair of route readings.</summary>
