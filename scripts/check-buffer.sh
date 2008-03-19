@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=262
-log "limit is ${BUFFER_LIMIT}"
-
-for item in primary standard; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
+
+BUFFER_LIMIT=120
+log "limit is ${BUFFER_LIMIT}"
