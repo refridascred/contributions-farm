@@ -24,23 +24,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a graph githubfarm figure with a bias.</summary>
-        public static double ProjectGraphGithubfarm(double scale, double bias)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            double drift = bias;
-            if (drift > (double)754)
-            {
-                drift = drift - (3.64 - 0.7);
-            }
-            else
-            {
-                drift = drift + (double)46;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + scale) + (double)(long)i;
-            }
-            return drift - (scale / 4.0);
+            Stale,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Locate a filter reading by value.</summary>
