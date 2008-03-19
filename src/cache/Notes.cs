@@ -43,20 +43,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] data, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score + (long)i) % 1000;
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((data[i] <= bound) && ((data[i] % 2) != 0))
                 {
-                    score = (score + ((long)i >> 3)) ^ (long)i2;
+                    return (long)i;
                 }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
     }
 }
