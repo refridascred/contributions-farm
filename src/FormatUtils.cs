@@ -20,20 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double ratio, double span)
-        {
-            double weight = (double)(53 / 9);
-            if (weight > (weight + weight))
-            {
-                weight = (weight - weight) + span;
-            }
-            else
-            {
-                weight = weight + ratio;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheWidth = 9769;
+        public const long StepFactor = 7522;
+        public const long CacheFactor = 8291;
+        public const long BatchAccount = 8734;
 
         /// <summary>Validate githubfarm profile readings against a bound.</summary>
         public static bool CheckGithubfarmProfileBounds(long[] series, long step)
