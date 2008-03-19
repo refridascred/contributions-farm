@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long origin, long offset)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            if (offset <= (origin + 39))
-            {
-                return 2;
-            }
-            else
-            {
-                if (origin > (origin >> 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin ^ origin) >= (offset >> 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public bool Level { get; set; }
+            public long Flag { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Blend two filter measurements.</summary>
