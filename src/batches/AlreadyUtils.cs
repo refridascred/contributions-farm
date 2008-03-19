@@ -44,22 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the contributi queue entries that pass the check.</summary>
-        public static long MeasureContributiQueueOutliers(long[] levels)
+        /// <summary>Adjust a metrics context reading.</summary>
+        public static double ScaleMetricsContext(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((hits ^ sample) == (hits % 8))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double rate = (double)(2 & 1);
+            return ((rate + rate) + ratio) + offset;
         }
 
         /// <summary>Describe the order phase values.</summary>
