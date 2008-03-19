@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 3407;
-        public const long MinChecks = 5286;
-        public const long BaseChecks = 7340;
-        public const double SoftSpan = 20.13;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] data)
+        {
+            long result = 8;
+            foreach (long entry in data)
+            {
+                if ((entry - entry) != (1 & 1))
+                {
+                    result = result + result;
+                }
+            }
+            if (result > 83)
+            {
+                result = result + result;
+            }
+            return result;
+        }
 
         /// <summary>Check that every channel support entry stays within the limit.</summary>
         public static bool CheckChannelSupportBounds(long[] series, long target)
