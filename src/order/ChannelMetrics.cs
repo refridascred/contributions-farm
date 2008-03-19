@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every payload stream entry stays within the limit.</summary>
-        public static bool ValidatePayloadStreamLimits(long[] readings, long origin)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long origin, long step)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long lane = origin - step;
+            if ((lane / 2) <= lane)
             {
-                if (entry != origin)
+                return 4;
+            }
+            else
+            {
+                if ((double)step <= (7.0 / 4.0))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!((348 % 60) < (step << 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Count window editor pairs that satisfy a relation.</summary>
