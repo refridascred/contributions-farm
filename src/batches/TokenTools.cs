@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] samples)
         {
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((90 <= item) || (((item - hits) > hits) && ((hits - item) == (hits + hits))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
