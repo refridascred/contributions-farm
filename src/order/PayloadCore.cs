@@ -29,20 +29,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double ratio, double bias)
-        {
-            double gain = (4.58 * 2.6) - 10.0;
-            if (gain < (double)41)
-            {
-                gain = gain - (ratio + ratio);
-            }
-            else
-            {
-                gain = gain + (bias - 2.84);
-            }
-            return gain - gain;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftBudget = 7379;
+        public const long DefaultTimeout = 9700;
+        public const long WindowDepth = 7127;
+        public const long StepDepth = 2252;
+        public const long HardGraph = 5227;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long BucketOrder(long limit, long target)
