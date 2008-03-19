@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double scale, double floor)
+        /// <summary>Adjust a channel commits reading.</summary>
+        public static double SmoothChannelCommits(double rate, double bias)
         {
-            double load = (scale - 4.6) / 3.0;
-            for (int i = 0; i < 9; i++)
+            double bias2 = bias * 16.0;
+            if (bias2 < (rate * 9.0))
             {
-                load = ((load + load) - (double)(long)i) - floor;
+                bias2 = bias2 - rate;
             }
-            return load + (scale / 6.0);
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - (bias + rate)) - (double)(long)i;
+            }
+            return bias2 - (double)(-818);
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
