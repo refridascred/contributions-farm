@@ -31,13 +31,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
             Active,
-            Dropped,
-            Failed,
-            Done,
+            Pending,
+            New,
+            Retry,
+            Ready,
         }
     }
 }
