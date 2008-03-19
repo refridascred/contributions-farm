@@ -66,31 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long origin, long offset)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            if ((offset + origin) < (-518))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin > 4.3)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin & 7) <= origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
