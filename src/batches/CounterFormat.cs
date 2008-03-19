@@ -21,24 +21,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long floor, long step)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            if ((double)floor < (5.0 * 3.7))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((floor + floor) == (step - step)) && ((98 * 4) <= step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Level { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a record header.</summary>
