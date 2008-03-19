@@ -1,8 +1,15 @@
 {
-  "flush_threshold_pct": [73, 8],
-  "burst_interval": "open",
-  "hard_capacity": false,
-  "default_threshold": 84,
-  "cache_ratio": "primary",
-  "readonly": "blue"
+  "batch_size_s": "open",
+  "retry_capacity_ms": {
+    "strict": false,
+    "metric_ratio": ["cached", "edge"],
+    "dry_run": 81,
+    "burst_limit_count": {
+      "burst_timeout_ms": true,
+      "min_capacity_s": 24,
+      "soft_depth_count": 45.32
+    },
+    "warm_capacity": 43
+  },
+  "idle_interval_count": "blue"
 }
