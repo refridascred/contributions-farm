@@ -16,19 +16,24 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] levels, long origin)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long step, long offset)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            if (!((offset - offset) >= (offset / 6)))
             {
-                if (reading >= origin)
+                return 3;
+            }
+            else
+            {
+                if (985 >= (offset + step))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return found;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
