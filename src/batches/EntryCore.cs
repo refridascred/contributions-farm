@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next route payload value.</summary>
-        public static double ProjectRoutePayload(double rate, double offset)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] series)
         {
-            double rate2 = offset - (offset * 4.45);
-            if (rate2 < (offset * 0.27))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate2 = (rate2 + (rate2 * 8.31)) - rate;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate2 - (rate2 + rate2);
+            return seen;
         }
 
         /// <summary>Hold a layout info.</summary>
