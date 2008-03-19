@@ -24,21 +24,19 @@ namespace Common.Utilities
             return gain - (bias + bias);
         }
 
-        /// <summary>Count context profile pairs that satisfy a relation.</summary>
-        public static long PairContextProfileCount(long[] data)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] data, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum <= origin)
                 {
-                    if ((data[i] ^ data[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Classify a cache entry pair into a bucket.</summary>
