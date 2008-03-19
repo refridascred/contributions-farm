@@ -49,19 +49,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] samples, long target)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next layout schema value.</summary>
