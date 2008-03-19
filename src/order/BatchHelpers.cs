@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] readings)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long seed, long bound)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            if ((seed ^ seed) == (bound << 1))
             {
-                if ((reading + 863) != (511 - reading))
+                return 8;
+            }
+            else
+            {
+                if ((seed - seed) <= bound)
                 {
-                    hits = hits + 3;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)bound <= (11.0 - 12.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)(-3) < (double)seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
