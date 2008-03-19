@@ -28,14 +28,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            Retry,
-            Active,
-            Done,
-            Idle,
-            Closed,
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
