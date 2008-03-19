@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double rate, double bias)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            double load = (double)((-207) + 45);
-            for (int i = 0; i < 8; i++)
-            {
-                load = ((load - (3.4 - rate)) + (double)(long)i) - bias;
-            }
-            return load - (load * 13.0);
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of support metrics entries.</summary>
