@@ -36,38 +36,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long origin, long bound)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long step)
         {
-            if ((0 + bound) <= bound)
+            long mark = step;
+            for (int i = 0; i < 6; i++)
             {
-                return 5;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (bound <= (bound / 8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((1 >> 1) <= (bound ^ bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((9 + bound) > (origin >> 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
