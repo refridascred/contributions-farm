@@ -44,10 +44,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 5823;
-        public const double HardProfile = 43.59;
-        public const double MinInterval = 83.22;
-        public const double DefaultLevel = 88.68;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] readings, long target)
+        {
+            long mix = 8;
+            foreach (long cell in readings)
+            {
+                if ((mix % 16) > (cell / 5))
+                {
+                    mix = mix ^ (504 & 3);
+                    break;
+                }
+                if ((double)cell < (20.0 + 9.0))
+                {
+                    mix = (mix ^ mix) % 101;
+                }
+                else
+                {
+                    mix = (mix * 5) + ((long)readings.Length % 3);
+                }
+            }
+            if (mix < 79)
+            {
+                mix = mix - target;
+            }
+            return mix;
+        }
     }
 }
