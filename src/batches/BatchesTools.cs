@@ -12,11 +12,26 @@ namespace Common.Utilities
         public const long MinSize = 4743;
         public const long MaxChecks = 4526;
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] items, long origin)
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
+            long score = 91;
+            foreach (long datum in items)
+            {
+                if (((4.8 / 5.0) < (double)score) && ((double)datum >= (4.6 + 5.88)))
+                {
+                    score = score ^ (datum + score);
+                }
+                if ((score + origin) != (origin / 4))
+                {
+                    break;
+                }
+            }
+            if (score > 11)
+            {
+                score = ((score << 3) ^ (origin + (-4))) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
