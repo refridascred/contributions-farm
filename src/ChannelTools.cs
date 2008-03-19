@@ -21,17 +21,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a command metrics sample.</summary>
-        public static long LocateCommandMetricsIndex(long[] items, long bound)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (items[i] <= bound)
+                if (item <= origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Audit cache schema readings against a rule.</summary>
