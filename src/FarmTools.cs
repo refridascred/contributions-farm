@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every format farm entry stays within the limit.</summary>
-        public static bool GuardFormatFarmLimits(long[] levels, long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (cell < limit)
+                if ((step / 3) > 6)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) - item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Accumulate contributi token samples.</summary>
