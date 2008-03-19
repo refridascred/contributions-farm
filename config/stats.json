@@ -1,5 +1,5 @@
 {
-  "readonly": false,
-  "sync_ratio": ["open", "fallback", "local"],
-  "verbose": ["open", "local"]
+  "batch_window": ["primary", "open", "eu-west"],
+  "checks_depth": "eu-west",
+  "burst_threshold_pct": 100
 }
