@@ -66,22 +66,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile record readings against a rule.</summary>
-        public static long AuditProfileRecordGaps(long[] data)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((value - 395) < value)
+                if (datum != offset)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
