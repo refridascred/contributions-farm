@@ -13,17 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a route metric sample.</summary>
-        public static long LookupRouteMetricIndex(long[] samples, long target)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if ((samples[i] == target) && ((samples[i] % 2) != 0))
+                if (value <= target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Measure how many githubfarm cluster samples are out of range.</summary>
