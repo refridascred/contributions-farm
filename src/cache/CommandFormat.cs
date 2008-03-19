@@ -34,23 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a channel account reading.</summary>
-        public static double AdjustChannelAccount(double rate, double floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] series, long floor)
         {
-            double drift = rate + (double)60;
-            if (drift < (rate * 9.88))
+            bool found = true;
+            foreach (long sample in series)
             {
-                drift = drift + (floor - rate);
+                if (sample > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - drift) - (double)(long)i;
-            }
-            return drift - 17.0;
+            return found;
         }
     }
 }
