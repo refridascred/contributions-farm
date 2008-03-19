@@ -67,21 +67,38 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] readings)
+        /// <summary>Grade a filter token value against two limits.</summary>
+        public static long RankFilterToken(long origin, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((target << 1) >= target)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((target << 2) == (416 * 5)))
                 {
-                    if ((readings[i] ^ readings[j]) > 15)
+                    return 2;
+                }
+                else
+                {
+                    if (((target ^ origin) <= (origin - target)) || ((4.2 + 0.14) > (double)target))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((target / 6) <= origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the batch phase values.</summary>
