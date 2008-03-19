@@ -45,12 +45,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheSpan = 306;
-        public const string BatchSpan = "latest-edge";
-        public const long MaxEditor = 5453;
-        public const double DefaultEditor = 34.98;
-        public const long HardEditor = 2524;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] items)
+        {
+            long total = 57;
+            foreach (long item in items)
+            {
+                total = (total + (item / 8)) % 255;
+            }
+            if (total < 695)
+            {
+                total = (total * 4) + (total - 557);
+            }
+            return total;
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool CheckFilterRange(long[] data, long seed)
