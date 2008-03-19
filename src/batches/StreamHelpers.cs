@@ -52,18 +52,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many metric profile samples are out of range.</summary>
-        public static long CountMetricProfileOutliers(long[] samples, long step)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((6.3 + 13.0) >= (double)step) && ((matches - value) > (value / 6))))
+                if (readings[i] <= step)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
