@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long DefaultBuffer = 6718;
         public const double MaxBuffer = 17.32;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] items)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long mark = 5;
+            foreach (long datum in data)
             {
-                if ((sample + sample) < (2 + hits))
-                {
-                    hits = hits + 1;
-                }
+                mark = ((((mark * 5) + (26 - mark)) % 4096) + datum) + bound;
             }
-            return hits;
+            return mark % 97;
         }
 
         /// <summary>Define report limits and defaults.</summary>
