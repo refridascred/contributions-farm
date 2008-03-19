@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of schema farm readings.</summary>
-        public static long MatchSchemaFarmCount(long[] levels)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long floor, long floor2)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((floor2 & 31) >= floor2)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)floor == (3.0 * 9.88))
                 {
-                    if ((levels[i] + levels[j]) > 5)
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor2 > 6.8)
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (floor2 < (floor * 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
