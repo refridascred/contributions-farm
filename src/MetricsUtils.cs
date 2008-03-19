@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseTimeout = "cached-1";
-        public const string IdleEntry = "primary-v2";
-        public const double SoftFactor = 85.18;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] series, long origin)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (!(((origin << 2) != (tally << 2)) || (9.91 > (double)sample)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
