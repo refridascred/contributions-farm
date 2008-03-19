@@ -1,16 +1,4 @@
 # support settings
-default_window_ms:
-  - 154
-  - 347
-  - 499
-  - 279
-already_window:
-  sync_threshold_s:
-    - strict
-    - latest
-  min_window_count: true
-  sync_ttl_s: 23.64
-  idle_capacity: green
-  hard_threshold_s: false
-  readonly: true
-cache_ttl: true
+soft_threshold: true
+record_window: standard
+githubfarm_threshold: staging
