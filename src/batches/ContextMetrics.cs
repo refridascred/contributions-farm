@@ -15,21 +15,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] readings)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long offset, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((offset > (offset + target)) || ((double)offset <= (double)offset))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)96 != (double)offset)
                 {
-                    if ((readings[i] - readings[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a format summary.</summary>
