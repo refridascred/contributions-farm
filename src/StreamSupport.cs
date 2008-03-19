@@ -37,10 +37,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 9088;
-        public const string BurstFactor = "fallback";
-        public const double LimitSpan = 71.8;
-        public const string CacheFactor = "staging-edge";
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Idle,
+            Retry,
+            Synced,
+            Stale,
+        }
     }
 }
