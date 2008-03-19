@@ -19,11 +19,20 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstRatio = 8924;
-        public const double StepSpan = 41.34;
-        public const long DefaultDepth = 2688;
-        public const double WindowContributi = 68.89;
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double ratio, double bias)
+        {
+            double gain = (4.58 * 2.6) - 10.0;
+            if (gain < (double)41)
+            {
+                gain = gain - (ratio + ratio);
+            }
+            else
+            {
+                gain = gain + (bias - 2.84);
+            }
+            return gain - gain;
+        }
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long BucketOrder(long limit, long target)
