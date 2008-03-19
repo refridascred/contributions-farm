@@ -40,18 +40,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] data, long origin)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (!((origin & 31) == ((-168) ^ matches)))
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
+            Synced,
+            Retry,
+            Stale,
+            Draft,
+            New,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
