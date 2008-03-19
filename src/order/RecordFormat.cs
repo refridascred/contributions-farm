@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] samples)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] readings)
         {
-            long anchor = 71;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((datum * 4) > (datum & 7))
+                if ((double)count >= (17.0 - 1.0))
                 {
-                    anchor = (anchor - datum) % 97;
+                    count = (count + 2) + sample;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
