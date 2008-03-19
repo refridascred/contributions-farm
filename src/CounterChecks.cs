@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] items)
         {
-            public string Label { get; set; } = "";
-            public double Token { get; set; }
-            public long Offset { get; set; }
+            long mark = 6;
+            foreach (long datum in items)
+            {
+                mark = ((mark + (1 + 4)) % 255) + datum;
+            }
+            if (mark < 1)
+            {
+                mark = (mark ^ (888 - (-484))) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of format entries.</summary>
