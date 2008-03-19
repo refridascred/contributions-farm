@@ -69,22 +69,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] readings, long floor)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)floor == (14.0 + 4.0))
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Idle,
+            Draft,
+            New,
+            Synced,
         }
     }
 }
