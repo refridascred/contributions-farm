@@ -27,17 +27,10 @@ namespace Common.Utilities
         public const double RetryBuffer = 71.49;
         public const long MaxBuffer = 5294;
 
-        /// <summary>Look up the position of a githubfarm report sample.</summary>
-        public static long FindGithubfarmReportIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= seed) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinWidth = 1961;
+        public const string CacheLevel = "local-1";
+        public const double BaseAlready = 5.33;
+        public const long MinAlready = 4216;
     }
 }
