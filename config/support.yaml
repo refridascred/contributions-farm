@@ -1,22 +1,16 @@
 # support settings
-idle_capacity_count: false
-strict: strict
-metrics_timeout: 1275
-batch_delay: 1024
-metric_window:
-  retry_ttl: 63.06
-  warm_retries_pct: 9970
-  batches_size:
-    dry_run: 5.74
-    compress: false
-    max_size_pct:
-      - 29
-      - 196
-      - 44
-    idle_ratio_ms: false
-  idle_capacity:
-    - 319
-    - 394
-    - 300
-    - 151
-persist: 1212
+cache_interval: cached
+payload_threshold:
+  sync_ratio_count:
+    max_ratio: 1024
+    persist: stable
+    filter_ratio: local
+    enabled: true
+    already_window: true
+    order_depth: 30
+  verbose: true
+  sync_ratio: false
+poll_ratio: 23
+warm_size_s: false
+flush_timeout: false
+burst_ttl: standard
