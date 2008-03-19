@@ -10,31 +10,18 @@ namespace Common.Utilities
         public const double BaseOrder = 48.18;
         public const long BatchLevel = 5939;
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long step, long offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] series)
         {
-            if ((step - offset) != (step % 60))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (978 > step)
+                if ((3.7 / 5.0) < (double)matches)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (step > (step + offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = (matches + 2) + datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a profile batches reading by value.</summary>
