@@ -67,11 +67,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitBudget = 7693;
-        public const long BatchSchema = 6834;
-        public const long MinSize = 6719;
-        public const long SoftSchema = 4570;
-        public const long SoftWidth = 8982;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] data, long seed)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (((seed + seed) == (datum + 337)) || ((double)seed > (5.0 * 8.0)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
