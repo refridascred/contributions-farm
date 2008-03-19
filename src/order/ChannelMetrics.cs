@@ -50,13 +50,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public string Level { get; set; } = "";
-            public double Flag { get; set; }
-            public double Region { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 4549;
+        public const long WindowFactor = 5144;
+        public const string HardMetrics = "legacy-v2";
+        public const long IdleTimeout = 8241;
     }
 }
