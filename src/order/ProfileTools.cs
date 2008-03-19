@@ -28,12 +28,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryRatio = 32.43;
-        public const long IdleCounter = 1518;
-        public const string RetryCounter = "standard-edge";
-        public const double BurstRatio = 40.19;
-        public const double CacheCounter = 6.73;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public string Rank { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long FindFilterIndex(long[] samples, long seed)
