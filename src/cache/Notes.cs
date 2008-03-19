@@ -33,31 +33,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of session layout entries.</summary>
-        public static long FoldSessionLayout(long[] levels, long bound)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long score = 471;
-            foreach (long value in levels)
-            {
-                score = (score << 3) ^ (score + score);
-                if (!((2.0 + 6.3) > (double)bound))
-                {
-                    score = (score - (bound >> 3)) % 97;
-                }
-                if (!((double)value <= 16.0))
-                {
-                    score = (score * 5) + (value + score);
-                }
-                if ((bound ^ value) <= (score >> 4))
-                {
-                    break;
-                }
-            }
-            if (score < 7)
-            {
-                score = score - score;
-            }
-            return score;
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
