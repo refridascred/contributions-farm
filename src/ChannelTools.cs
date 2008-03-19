@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] samples, long target)
+        /// <summary>Iterate the batches stream series from a seed.</summary>
+        public static long StepBatchesStream(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
+                mix = mix ^ (floor / 2);
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the route kind values.</summary>
