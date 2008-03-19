@@ -33,19 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] series, long floor)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Pending,
+            Synced,
+            Ready,
         }
 
         /// <summary>Hold a batch entry.</summary>
