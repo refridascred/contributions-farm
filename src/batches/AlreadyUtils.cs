@@ -66,10 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepScore = 5089;
-        public const string HardFactor = "strict";
-        public const long BurstSpan = 3639;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultRatio = 73.74;
+        public const double BurstCount = 0.9;
+        public const long IdleAlready = 9062;
+        public const long HardAlready = 1108;
+        public const long MinAlready = 8887;
 
         /// <summary>Count the contributi queue entries that pass the check.</summary>
         public static long MeasureContributiQueueOutliers(long[] levels)
