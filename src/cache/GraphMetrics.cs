@@ -26,21 +26,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] values)
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double weight, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = 5.0 / 8.0;
+            if (mean > (weight * 4.33))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean - (13.0 + 5.11)) - offset;
             }
-            return tally;
+            else
+            {
+                mean = mean + (double)443;
+            }
+            return mean - 8.6;
         }
 
         /// <summary>Fold a list of session readings.</summary>
