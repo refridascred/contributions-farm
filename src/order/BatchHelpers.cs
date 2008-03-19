@@ -13,19 +13,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double bias, double bias2)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            double mean = bias + (double)50;
-            if (mean < (0.01 - mean))
-            {
-                mean = (mean - (16.0 / 6.0)) - bias2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (mean / 9.0)) - (double)(long)i;
-            }
-            return mean - 9.22;
+            Draft,
+            Ready,
+            New,
+            Synced,
+            Retry,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
