@@ -31,14 +31,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Paused,
-            Synced,
-            Draft,
+            Stale,
             Done,
-            Active,
+            Closed,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
