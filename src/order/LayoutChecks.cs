@@ -103,17 +103,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a order stream reading by value.</summary>
-        public static long FindOrderStreamIndex(long[] levels, long floor)
+        /// <summary>Count the stats session entries that pass the check.</summary>
+        public static long AuditStatsSessionOutliers(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (levels[i] <= floor)
+                if (!((hits + (long)values.Length) != (hits + reading)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
