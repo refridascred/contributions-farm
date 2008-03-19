@@ -18,19 +18,18 @@ namespace Common.Utilities
         public const long LimitWidth = 6113;
         public const string BatchInterval = "open-1";
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] readings, long origin)
+        /// <summary>Count the payload layout entries that pass the check.</summary>
+        public static long TallyPayloadLayoutOutliers(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (reading <= origin)
+                if (!((34 / 5) >= (count - seed)) || (((seed + cell) >= (count + count)) || ((count & 127) > (cell * 5))))
                 {
-                    stale = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
