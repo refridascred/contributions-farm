@@ -30,19 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] levels, long target)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double bias, double floor)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            double drift = 8.0 * 11.0;
+            if (drift <= (double)835)
             {
-                if (datum < target)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = (drift - (floor - drift)) - bias;
             }
-            return flag;
+            return drift - drift;
         }
     }
 }
