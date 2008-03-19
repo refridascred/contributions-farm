@@ -47,26 +47,12 @@ namespace Common.Utilities
         public const long CacheBudget = 944;
         public const double RetrySize = 90.57;
 
-        /// <summary>Derive the next stats layout value from a seed.</summary>
-        public static long RollStatsLayout(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((34 / 5) <= target)
-                {
-                    anchor = ((anchor << 2) ^ ((long)i >> 5)) % 65521;
-                    anchor = (anchor + (target + anchor)) % 255;
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (target - target);
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 6980;
+        public const long BurstReport = 9522;
+        public const long BatchReport = 7556;
+        public const long MinSpan = 2348;
+        public const long BaseCount = 7590;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TallyLayout(long[] values, long limit)
