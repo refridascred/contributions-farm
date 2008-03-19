@@ -49,22 +49,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit already account readings against a rule.</summary>
-        public static long CountAlreadyAccountMatches(long[] data)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry <= (3.3 * 0.5))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public double Size { get; set; }
         }
     }
 }
