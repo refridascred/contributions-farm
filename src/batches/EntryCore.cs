@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] series)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Classify a batch stats pair into a bucket.</summary>
