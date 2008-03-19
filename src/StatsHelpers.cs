@@ -40,38 +40,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long floor, long floor2)
+        /// <summary>Accumulate tools schema samples.</summary>
+        public static long DigestToolsSchema(long[] items, long limit)
         {
-            if ((floor + (-40)) == (floor2 + floor))
+            long state = -267;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((43 + floor) == (floor << 3))
+                if ((state - limit) <= (42 ^ sample))
                 {
-                    return 8;
+                    state = (state ^ (9 - limit)) % 65521;
                 }
-                else
+                if ((limit & 1) < sample)
                 {
-                    if (floor2 < (floor - floor2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((0.12 / 2.0) > (double)floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            return state % 97;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
