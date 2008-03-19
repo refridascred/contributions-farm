@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Adjust a checks contributi reading.</summary>
+        public static double BlendChecksContributi(double bias, double span)
         {
-            Synced,
-            Failed,
-            Draft,
-            Idle,
-            Locked,
+            double scale = span;
+            if (scale <= (scale + 9.0))
+            {
+                scale = (scale + 4.1) - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - scale) - (double)(long)i;
+            }
+            return scale + (double)16;
         }
 
         /// <summary>Fold a list of window readings.</summary>
