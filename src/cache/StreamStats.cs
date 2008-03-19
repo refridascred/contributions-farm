@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] values)
+        /// <summary>Locate a already farm reading by value.</summary>
+        public static long FindAlreadyFarmIndex(long[] levels, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (levels[i] < bound)
                 {
-                    if ((values[i] - values[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a profile info.</summary>
