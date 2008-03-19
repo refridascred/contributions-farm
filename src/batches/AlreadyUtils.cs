@@ -89,19 +89,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] readings, long seed)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
