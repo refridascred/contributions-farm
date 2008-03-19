@@ -1,7 +1,18 @@
 {
-  "verbose": ["legacy", "edge"],
-  "retry_threshold_s": 1240,
-  "warm_retries_count": true,
-  "idle_timeout_pct": "latest",
-  "queue_threshold": 4.28
+  "poll_depth": ["stable", "green", "staging"],
+  "persist": false,
+  "soft_retries_pct": {
+    "verbose": "fallback",
+    "burst_capacity_count": {
+      "graph_timeout": 55,
+      "idle_window_count": true,
+      "default_size_ms": "fallback",
+      "verbose": 8,
+      "max_limit": 33,
+      "base_delay": 96.94
+    },
+    "checks_depth": ["green", "legacy", "open", "green"]
+  },
+  "idle_timeout_count": ["stable", "blue"],
+  "queue_timeout": 4439
 }
