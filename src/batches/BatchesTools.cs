@@ -29,14 +29,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Synced,
-            Queued,
-            Failed,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 8358;
+        public const long RetryFactor = 5074;
+        public const long BatchInterval = 6686;
     }
 }
