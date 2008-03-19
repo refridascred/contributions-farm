@@ -13,13 +13,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public long Count { get; set; }
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowSpan = 33.33;
+        public const double MaxFactor = 50.05;
+        public const string CacheStats = "strict-edge";
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
