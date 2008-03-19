@@ -27,19 +27,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every profile channel entry stays within the limit.</summary>
-        public static bool ValidateProfileChannelBounds(long[] data, long limit)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= limit)
+                if (series[i] < offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
