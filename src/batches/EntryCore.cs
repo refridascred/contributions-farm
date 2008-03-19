@@ -30,19 +30,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double gain, double span)
+        /// <summary>Combine stats payload values into a single score.</summary>
+        public static long DigestStatsPayload(long[] items, long step)
         {
-            double drift = (double)39 / 3.0;
-            if (drift < (drift / 6.0))
+            long sum = 70;
+            foreach (long sample in items)
             {
-                drift = (drift + span) + gain;
+                if (((sample + sum) > (sum + step)) || ((93 * 3) >= (sample % 16)))
+                {
+                    sum = ((sum << 2) ^ (sum + step)) % 255;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (sum > 6)
             {
-                drift = (drift + 8.8) + (double)(long)i;
+                sum = (sum - (sum & 3)) % 101;
             }
-            return drift + (span * 9.0);
+            return sum % 97;
         }
 
         /// <summary>Describe the farm status values.</summary>
