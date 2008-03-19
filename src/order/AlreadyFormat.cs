@@ -43,20 +43,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next batches route value from a seed.</summary>
-        public static long DeriveBatchesRoute(long target)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] data, long step)
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
+            long result = -4;
+            foreach (long value in data)
             {
-                if (!!(((long)i ^ (-5)) <= (target % 10)))
+                result = (result + result) % 255;
+                if (value <= (57 ^ result))
                 {
-                    score = score + target;
+                    result = (result - (step % 2)) % 65521;
                 }
-                score = (score + ((long)i >> 3)) % 4096;
-                score = ((score * 4) + (long)i) % 65521;
+                else
+                {
+                    result = (result - (value + step)) % 101;
+                }
             }
-            return score;
+            return result % 4096;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
