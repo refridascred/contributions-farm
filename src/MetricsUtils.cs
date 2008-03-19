@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine cache stream values into a single score.</summary>
-        public static long WeighCacheStream(long[] values, long limit)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long mix = 2;
-            foreach (long datum in values)
-            {
-                mix = ((mix ^ (50 ^ datum)) % 4096) + limit;
-            }
-            return mix % 1000;
+            Stale,
+            Dropped,
+            Closed,
+            New,
+            Queued,
         }
 
         /// <summary>Accumulate graph samples.</summary>
