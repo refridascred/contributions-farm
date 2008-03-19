@@ -40,14 +40,18 @@ namespace Common.Utilities
         public const long IdleRatio = 5745;
         public const string BurstFilter = "local-v2";
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Measure how many metrics session samples are out of range.</summary>
+        public static long MeasureMetricsSessionOutliers(long[] samples)
         {
-            Paused,
-            Stale,
-            Failed,
-            Locked,
-            Ready,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((seen - reading) != (12 + reading))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
