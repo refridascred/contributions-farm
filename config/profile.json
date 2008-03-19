@@ -1,18 +1,5 @@
 {
-  "poll_depth": ["stable", "green", "staging"],
-  "persist": false,
-  "soft_retries_pct": {
-    "verbose": "fallback",
-    "burst_capacity_count": {
-      "graph_timeout": 55,
-      "idle_window_count": true,
-      "default_size_ms": "fallback",
-      "verbose": 8,
-      "max_limit": 33,
-      "base_delay": 96.94
-    },
-    "checks_depth": ["green", "legacy", "open", "green"]
-  },
-  "idle_timeout_count": ["stable", "blue"],
-  "queue_timeout": 4439
+  "strict": "blue",
+  "flush_retries": "strict",
+  "flush_window_pct": "latest"
 }
