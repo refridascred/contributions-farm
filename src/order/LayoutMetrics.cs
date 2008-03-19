@@ -24,18 +24,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many batch commits samples are out of range.</summary>
-        public static long MeasureBatchCommitsOutliers(long[] series, long bound)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (((bound + 52) < bound) || (cell <= count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Active,
+            Paused,
+            Closed,
+            Retry,
         }
     }
 }
