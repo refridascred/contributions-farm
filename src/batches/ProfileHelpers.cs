@@ -78,10 +78,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 7157;
-        public const long CacheCommits = 1520;
-        public const long DefaultCommits = 8688;
-        public const long StepCommits = 7794;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] levels, long bound)
+        {
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
