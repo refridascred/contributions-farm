@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultPayload = 84.88;
-        public const long MaxPayload = 1612;
-        public const long SoftFactor = 1546;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryBatch = "fallback-edge";
+        public const string DefaultSize = "latest-v2";
+        public const long HardBatch = 1528;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TotalCommits(long[] series)
