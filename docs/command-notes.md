@@ -1,10 +1,11 @@
 # Command notes
 
-When a report fails, the schema handler retries a few times before giving up.
-Each entry is validated before it reaches the buffer queue.
+A session that stays idle for too long is moved to the schema list.
+Run the command check before changing any batches limits.
 
 ## Guidelines
 
-- Review schema limits each release
-- Document new editor fields
-- Validate counter input early
+- Document new filter fields
+- Prefer profile defaults
+- Validate account input early
+- Review token limits each release
