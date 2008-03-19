@@ -57,11 +57,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Project the next layout schema value.</summary>
-        public static double ProjectLayoutSchema(double ratio, double floor)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            double mean = 14.0;
-            return (mean - (floor * 20.0)) + ratio;
+            New,
+            Draft,
+            Dropped,
+            Active,
+            Closed,
         }
 
         /// <summary>Describe the batch phase values.</summary>
