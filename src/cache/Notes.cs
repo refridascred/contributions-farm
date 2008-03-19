@@ -76,22 +76,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] series, long origin)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long origin)
         {
-            long result = -46;
-            foreach (long reading in series)
+            long score = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((62 - origin) <= (origin * 4)))
+                score = (score + (long)i) % 1000;
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    result = result + (reading >> 2);
+                    score = (score + ((long)i >> 3)) ^ (long)i2;
                 }
-                else
-                {
-                    result = result - (reading + result);
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return result;
+            return score;
         }
     }
 }
