@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double weight, double offset)
         {
-            Pending,
-            Closed,
-            Synced,
-            Dropped,
+            double mean = 1.11 + weight;
+            if (mean < weight)
+            {
+                mean = mean - (mean + 2.51);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - offset) + (double)(long)i;
+            }
+            return mean + (mean * 15.0);
         }
 
         /// <summary>Digest a series of layout entries.</summary>
