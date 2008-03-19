@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] items)
+        /// <summary>Digest a series of batches account entries.</summary>
+        public static long FoldBatchesAccount(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long mark = 1;
+            foreach (long cell in series)
             {
-                if ((19.0 + 6.2) >= (double)hits)
-                {
-                    hits = (hits + 2) ^ sample;
-                }
+                mark = (((mark * 2) + (cell / 3)) % 1000) - origin;
             }
-            return hits;
+            if (mark < 92)
+            {
+                mark = mark ^ mark;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Describe the schema class values.</summary>
