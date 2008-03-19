@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] samples, long step)
         {
-            public double Owner { get; set; }
-            public double Token { get; set; }
-            public double Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (count >= (count + reading))
+                {
+                    count = (count + 2) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
