@@ -49,21 +49,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] items)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a layout record.</summary>
