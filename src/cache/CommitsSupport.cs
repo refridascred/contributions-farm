@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double scale, double span)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double bias, double floor)
         {
-            double bias = (double)(76 ^ 7);
-            if (bias >= scale)
-            {
-                bias = bias + span;
-            }
-            return bias - (double)710;
+            double drift = floor;
+            return (drift - 1.93) + bias;
         }
 
         /// <summary>Accumulate cache samples.</summary>
