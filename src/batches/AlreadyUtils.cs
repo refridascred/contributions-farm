@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] series)
         {
-            public bool Size { get; set; }
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Stamp { get; set; }
+            long acc = 42;
+            foreach (long value in series)
+            {
+                long delta = value * 5;
+                if ((delta + value) == (acc % 10))
+                {
+                    acc = (acc + (113 << 3)) % 1000;
+                    break;
+                }
+                if ((value >= (value - 64)) || ((value % 97) >= (acc + acc)))
+                {
+                    acc = acc + (value - value);
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
