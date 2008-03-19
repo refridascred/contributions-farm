@@ -1,5 +1,5 @@
 {
-  "command_ratio": "fallback",
-  "metrics_threshold": 1932,
-  "retry_delay_ms": [136, 153, 416, 447]
+  "sync_limit_s": 25.5,
+  "default_size_count": 52.63,
+  "strict": 93.07
 }
