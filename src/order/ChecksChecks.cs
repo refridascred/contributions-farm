@@ -41,19 +41,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] items, long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] items)
         {
-            bool valid = true;
+            long anchor = 2;
             foreach (long entry in items)
             {
-                if (entry > target)
+                if ((anchor / 5) > (entry + 5))
                 {
-                    valid = false;
+                    anchor = (anchor - entry) % 255;
+                }
+                if (((4 + entry) < (entry % 24)) && ((anchor + entry) <= (anchor >> 2)))
+                {
                     break;
                 }
             }
-            return valid;
+            return anchor % 1000;
         }
     }
 }
