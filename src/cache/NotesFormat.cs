@@ -22,17 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] series, long step)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] < step) && ((series[i] % 5) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of record layout entries.</summary>
