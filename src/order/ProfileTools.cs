@@ -34,38 +34,21 @@ namespace Common.Utilities
             return scale - (scale - scale);
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long offset, long limit)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] items)
         {
-            if ((9 % 3) != (limit + offset))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (limit > (offset & 255))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((7.7 < (double)limit) || ((limit + 385) != (limit / 5)))
+                    if ((items[i] - items[j]) != 20)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)limit >= (8.64 + 9.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
