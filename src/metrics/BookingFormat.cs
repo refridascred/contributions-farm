@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Booking format helpers.</summary>
     public static class BookingFormat
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            Failed,
+            Ready,
+            Paused,
+            Active,
+            Stale,
         }
 
         /// <summary>Define support limits and defaults.</summary>
