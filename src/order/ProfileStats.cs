@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double gain, double offset)
+        /// <summary>Classify a tools metrics pair into a bucket.</summary>
+        public static long RankToolsMetrics(long step, long step2)
         {
-            double rate = (gain + offset) / 6.0;
-            if (rate <= 1.5)
+            if ((step2 * 5) < (step2 + step))
             {
-                rate = rate + gain;
+                return 1;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                rate = (rate - offset) + (double)(long)i;
+                if ((7.83 + 7.5) < (4.5 + 6.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step / 7) < step2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return rate - 7.9;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
