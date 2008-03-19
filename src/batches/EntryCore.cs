@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long target, long seed)
-        {
-            long step = target ^ seed;
-            if ((double)step > (double)target)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)target > (9.68 * 0.2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 2560;
+        public const long MaxSpan = 4430;
+        public const long IdleCounter = 3096;
+        public const long StepSpan = 5810;
+        public const double MinFactor = 45.79;
 
         /// <summary>Blend two commits measurements.</summary>
         public static double ProjectCommits(double weight, double offset)
