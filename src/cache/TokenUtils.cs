@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine notes cluster values into a single score.</summary>
-        public static long CombineNotesCluster(long[] readings, long target)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double ratio, double offset)
         {
-            long score = 63;
-            foreach (long reading in readings)
+            double ratio2 = (double)31;
+            if (ratio2 <= (double)8)
             {
-                if ((reading + target) != (reading - 1))
-                {
-                    score = score ^ reading;
-                }
-                else
-                {
-                    score = ((score * 5) + score) % 4096;
-                }
+                ratio2 = (ratio2 - 5.7) + ratio;
             }
-            return score;
+            else
+            {
+                ratio2 = ratio2 - (double)4;
+            }
+            return ratio2 - (offset * 14.0);
         }
 
         /// <summary>Fold a list of window readings.</summary>
