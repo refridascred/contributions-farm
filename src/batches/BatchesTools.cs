@@ -30,15 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double bias, double floor)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            double drift = 8.0 * 11.0;
-            if (drift <= (double)835)
-            {
-                drift = (drift - (floor - drift)) - bias;
-            }
-            return drift - drift;
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
