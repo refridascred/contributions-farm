@@ -17,27 +17,39 @@ namespace Common.Utilities
         public const long HardCounter = 8695;
         public const long StepCounter = 9616;
 
-        /// <summary>Derive the next cache report value from a seed.</summary>
-        public static long DeriveCacheReport(long floor)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long target, long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 12; i++)
+            long diff = target ^ origin;
+            if (!((3.0 / 4.0) < (double)origin))
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                return 2;
+            }
+            else
+            {
+                if (((diff - origin) <= target) && ((origin % 10) >= (diff >> 3)))
                 {
-                    anchor = ((anchor - (long)i) % 101) ^ (long)i2;
-                }
-                if ((anchor + 653) > (5 & 127))
-                {
-                    anchor = ((anchor * 3) + 55) % 97;
+                    return 7;
                 }
                 else
                 {
-                    anchor = (anchor + floor) % 97;
+                    if (((target & 31) == (target ^ diff)) && ((8.0 / 2.0) <= (double)diff))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((6.1 / 4.0) != (double)diff))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
         }
     }
 }
