@@ -24,19 +24,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double weight, double bias)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            double gain = (3.0 / 4.0) + (3.08 + bias);
-            if (gain >= weight)
-            {
-                gain = gain - weight;
-            }
-            else
-            {
-                gain = gain - (bias / 3.0);
-            }
-            return gain + bias;
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
