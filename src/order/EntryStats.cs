@@ -67,12 +67,18 @@ namespace Common.Utilities
         public const double CacheBatch = 68.86;
         public const double BaseWidth = 85.28;
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] readings)
         {
-            public double Mode { get; set; }
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum <= (count - 1)) || ((count + count) != (datum % 7)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
