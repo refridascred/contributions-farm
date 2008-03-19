@@ -58,12 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferRange(long[] data, long seed)
         {
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public double Level { get; set; }
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the profile mode values.</summary>
