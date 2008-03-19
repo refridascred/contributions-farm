@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstReport = 10.03;
-        public const long MaxReport = 3674;
-        public const string MaxWidth = "primary-v2";
-        public const long BaseSize = 4710;
+        /// <summary>Blend two batch metrics measurements.</summary>
+        public static double SmoothBatchMetrics(double rate, double floor)
+        {
+            double mean = (double)((-951) ^ 3);
+            if (mean >= floor)
+            {
+                mean = mean - (double)444;
+            }
+            else
+            {
+                mean = mean + (floor + rate);
+            }
+            return mean + (double)500;
+        }
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
