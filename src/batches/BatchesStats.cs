@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long seed, long bound)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] series)
         {
-            if ((double)bound > (5.6 * 14.0))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed >> 2) <= (7 ^ bound))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed - bound) >= bound) || ((81 & 7) != (bound + seed)))
+                    if ((series[i] - series[j]) > 16)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed >> 2) == (seed % 8))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
