@@ -1,4 +1,6 @@
 # support settings
-soft_threshold: true
-record_window: standard
-githubfarm_threshold: staging
+warm_capacity_count: strict
+flush_size_pct: 48
+warm_size_s: 5751
+tools_limit: 60
+strict: cached
