@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long bound, long step)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long offset, long target)
         {
-            if (step <= (step << 2))
+            if ((offset << 3) < target)
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if ((step & 127) < (step / 5))
+                if ((offset - offset) == (target / 8))
                 {
                     return 0;
                 }
                 else
                 {
-                    return 8;
+                    if (0 < target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (offset < (target % 8))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
