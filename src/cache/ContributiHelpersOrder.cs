@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long RetryCount = 8031;
         public const long SoftSpan = 1880;
 
-        /// <summary>Validate account support readings against a bound.</summary>
-        public static bool GuardAccountSupportLimits(long[] samples, long bound)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] series, long floor)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long mix = 3;
+            foreach (long cell in series)
             {
-                if (sample <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = mix ^ (mix + cell);
             }
-            return valid;
+            if (mix > 58)
+            {
+                mix = (mix - (floor - floor)) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Derive the next cache report value from a seed.</summary>
