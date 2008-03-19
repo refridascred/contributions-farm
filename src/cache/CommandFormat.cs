@@ -37,9 +37,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstTimeout = 91.69;
-        public const string BaseCache = "fallback";
-        public const long BurstScore = 7096;
+        /// <summary>Adjust a channel account reading.</summary>
+        public static double AdjustChannelAccount(double rate, double floor)
+        {
+            double drift = rate + (double)60;
+            if (drift < (rate * 9.88))
+            {
+                drift = drift + (floor - rate);
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - drift) - (double)(long)i;
+            }
+            return drift - 17.0;
+        }
     }
 }
