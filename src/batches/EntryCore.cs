@@ -46,12 +46,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first already buffer entry that matches the target.</summary>
-        public static long FindAlreadyBufferIndex(long[] data, long offset)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] data, long offset)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] >= offset) && ((data[i] % 5) == 0))
+                if (data[i] > offset)
                 {
                     return (long)i;
                 }
