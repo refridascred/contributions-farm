@@ -94,18 +94,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the entry session entries that pass the check.</summary>
-        public static long MeasureEntrySessionMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (!((tally + 829) < (long)items.Length))
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 7157;
+        public const long CacheCommits = 1520;
+        public const long DefaultCommits = 8688;
+        public const long StepCommits = 7794;
     }
 }
