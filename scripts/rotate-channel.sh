@@ -6,11 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 2))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-CHANNEL_LIMIT=320
+for item in fallback cached open eu-west; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=152
 log "limit is ${CHANNEL_LIMIT}"
