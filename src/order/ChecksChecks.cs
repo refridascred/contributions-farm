@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already tools entry stays within the limit.</summary>
-        public static bool ValidateAlreadyToolsBounds(long[] levels, long floor)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
