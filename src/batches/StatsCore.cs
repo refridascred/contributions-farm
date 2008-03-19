@@ -19,23 +19,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double bias, double floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] data)
         {
-            double bias2 = (double)938 + 5.1;
-            if (bias2 < bias2)
+            long mix = 52;
+            foreach (long value in data)
             {
-                bias2 = (bias2 - (double)11) - bias;
+                mix = mix ^ mix;
+                mix = ((mix * 4) + (1 + value)) % 97;
+                mix = (mix + ((-789) & 63)) % 101;
             }
-            else
+            if (mix > 450)
             {
-                bias2 = bias2 + floor;
+                mix = ((mix * 4) + (mix % 24)) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + (bias2 / 9.0)) + (double)(long)i;
-            }
-            return bias2 + (double)71;
+            return mix % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
