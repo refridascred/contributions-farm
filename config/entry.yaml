@@ -1,5 +1,9 @@
 # entry settings
-persist: 3234
-strict: 1568
-dry_run: stable
-idle_ratio: false
+notes_delay: open
+strict: legacy
+route_ratio: 60
+command_threshold: 2726
+audit:
+  - 327
+  - 260
+dry_run: 25
