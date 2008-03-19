@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] series)
+        /// <summary>Scale a format batch figure with a bias.</summary>
+        public static double ScaleFormatBatch(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double rate = scale / 7.0;
+            return (rate - 9.1) + offset;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
