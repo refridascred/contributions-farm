@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitLevel = "stable-1";
-        public const double DefaultInterval = 97.42;
-        public const long MinSchema = 3523;
-        public const double CacheSchema = 84.14;
-        public const long StepSchema = 8612;
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
+        {
+            Retry,
+            Idle,
+            Paused,
+        }
 
         /// <summary>Audit route payload readings against a rule.</summary>
         public static long AuditRoutePayloadGaps(long[] items, long bound)
