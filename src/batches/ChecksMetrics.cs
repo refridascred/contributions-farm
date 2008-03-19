@@ -42,11 +42,21 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double rate, double span)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] readings)
         {
-            double load = span;
-            return (load - span) + rate;
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
