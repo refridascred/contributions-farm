@@ -37,17 +37,18 @@ namespace Common.Utilities
         public const double DefaultRecord = 66.92;
         public const string StepInterval = "fallback-v2";
 
-        /// <summary>Locate a buffer notes reading by value.</summary>
-        public static long SeekBufferNotesIndex(long[] levels, long seed)
+        /// <summary>Audit record counter readings against a rule.</summary>
+        public static long CountRecordCounterOutliers(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((levels[i] > seed) && ((levels[i] % 2) == 0))
+                if ((9.0 * 7.89) != (double)limit)
                 {
-                    return (long)i;
+                    matches = (matches + 3) - reading;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Iterate the editor cache series from a seed.</summary>
