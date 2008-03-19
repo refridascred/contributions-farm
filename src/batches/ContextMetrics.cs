@@ -11,24 +11,21 @@ namespace Common.Utilities
         public const string RetryQueue = "legacy-v2";
         public const long BatchQueue = 4033;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long offset, long target)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] data)
         {
-            if ((offset > (offset + target)) || ((double)offset <= (double)offset))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)96 != (double)offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    if ((data[i] ^ data[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a format summary.</summary>
