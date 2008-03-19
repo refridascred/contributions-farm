@@ -20,10 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchFactor = "latest-v2";
-        public const double IdleRatio = 49.36;
-        public const long MaxEditor = 3924;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long BucketMetrics(long limit, long target)
