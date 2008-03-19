@@ -26,12 +26,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryBudget = 4953;
-        public const double SoftFactor = 59.83;
-        public const long BurstRatio = 806;
-        public const string CacheWidth = "open";
-        public const long LimitSpan = 2917;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] samples, long step)
+        {
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long CompareGraphCount(long[] values)
