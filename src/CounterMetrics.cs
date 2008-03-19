@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the metric entry entries that pass the check.</summary>
-        public static long MeasureMetricEntryHits(long[] values)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long anchor = 78;
+            foreach (long item in levels)
             {
-                if ((tally + 59) != (9 >> 5))
-                {
-                    tally = (tally + 3) - sample;
-                }
+                anchor = ((anchor - (-30)) ^ item) - bound;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
