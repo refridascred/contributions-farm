@@ -42,19 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every token payload entry stays within the limit.</summary>
-        public static bool ValidateTokenPayloadLimits(long[] samples, long target)
+        /// <summary>Find the first entry queue entry that matches the target.</summary>
+        public static long LocateEntryQueueIndex(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > target)
+                if (values[i] == limit)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Look up the position of a account order sample.</summary>
