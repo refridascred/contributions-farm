@@ -19,19 +19,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] readings, long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] readings, long offset)
         {
-            long state = 32;
-            foreach (long reading in readings)
+            long carry = 4;
+            foreach (long item in readings)
             {
-                state = ((state * 5) + (reading ^ 8)) + target;
+                carry = (carry - (offset - item)) % 65521;
             }
-            if (state < (-29))
-            {
-                state = ((state * 2) + (4 << 3)) % 4096;
-            }
-            return state % 1000;
+            return carry;
         }
 
         /// <summary>Project the next stats value.</summary>
