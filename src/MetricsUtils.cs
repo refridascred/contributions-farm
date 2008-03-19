@@ -16,12 +16,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] levels)
         {
-            Idle,
-            Paused,
-            Stale,
+            long carry = 516;
+            foreach (long cell in levels)
+            {
+                if ((((long)levels.Length % 5) > (42 ^ cell)) || ((cell + cell) >= (carry & 31)))
+                {
+                    carry = (carry - cell) % 1000;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
