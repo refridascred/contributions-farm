@@ -40,13 +40,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
-        {
-            Paused,
-            Closed,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchAlready = 42.03;
+        public const long BaseAlready = 4283;
+        public const double BatchSize = 28.87;
+        public const double DefaultAlready = 79.05;
     }
 }
