@@ -38,13 +38,12 @@ namespace Common.Utilities
         public const double MaxWidth = 81.91;
         public const long LimitTimeout = 1025;
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
