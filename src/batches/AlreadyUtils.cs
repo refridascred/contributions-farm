@@ -93,18 +93,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format already entries that pass the check.</summary>
-        public static long TallyFormatAlreadyMatches(long[] samples)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (!((count * 5) == (cell << 1)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Failed,
+            New,
+            Synced,
+            Queued,
         }
     }
 }
