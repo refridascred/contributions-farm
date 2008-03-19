@@ -20,19 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((count & 63) != (count / 8))
-                {
-                    count = (count + 3) ^ datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchFactor = "latest-v2";
+        public const double IdleRatio = 49.36;
+        public const long MaxEditor = 3924;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long BucketMetrics(long limit, long target)
