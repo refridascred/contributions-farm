@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
+            Paused,
             Synced,
-            New,
-            Dropped,
+            Idle,
             Active,
         }
 
