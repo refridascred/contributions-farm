@@ -1,10 +1,8 @@
 # support settings
-idle_depth_s: 30
-cache_depth: 1621
-strict:
-  readonly: 19.31
-  soft_interval_pct: false
-  retry_threshold_count: eu-west
-  hard_ratio: 75.24
-  default_limit_count: edge
-  farm_interval: true
+audit: 1914
+min_limit: 250
+base_interval:
+  order_ttl: edge
+  retry_delay_ms: 500
+  hard_ratio: 51.54
+retry_retries_count: fallback
