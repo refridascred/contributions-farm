@@ -23,19 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferLimits(long[] data, long bound)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long origin)
         {
-            bool found = true;
-            foreach (long item in data)
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (item >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return found;
+            return sum;
         }
     }
 }
