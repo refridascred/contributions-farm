@@ -30,18 +30,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many route metric samples are out of range.</summary>
-        public static long TallyRouteMetricOutliers(long[] levels, long target)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample < 19.0)
-                {
-                    tally = (tally + 3) - target;
-                }
-            }
-            return tally;
+            Closed,
+            Failed,
+            Active,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
