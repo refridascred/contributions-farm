@@ -43,9 +43,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitAccount = 68.31;
-        public const long StepAccount = 4563;
-        public const long RetryDepth = 9302;
+        /// <summary>Audit already account readings against a rule.</summary>
+        public static long CountAlreadyAccountMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry <= (3.3 * 0.5))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
