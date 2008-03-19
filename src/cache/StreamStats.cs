@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
-        {
-            Stale,
-            Retry,
-            Ready,
-            Done,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowDepth = 7954;
+        public const double BurstCount = 73.29;
+        public const string WindowFilter = "legacy-edge";
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
