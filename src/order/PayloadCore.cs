@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const string MaxWidth = "primary-v2";
         public const long BaseSize = 4710;
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Queued,
-            Locked,
-            Closed,
-            Stale,
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
