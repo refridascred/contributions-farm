@@ -40,38 +40,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long limit, long origin)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] items, long target)
         {
-            if (!(origin > (780 + limit)))
+            bool valid = true;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin + (-787)) <= (limit >> 4))
+                if (entry > target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((4 + origin) != ((-5) & 15)) && ((double)origin != (9.11 - 9.5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((limit * 2) != (origin << 3)) && ((double)origin > (double)6))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
