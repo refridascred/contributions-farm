@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long floor, long bound)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] readings, long seed)
         {
-            long prev = floor + bound;
-            if (prev <= bound)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)prev > (16.0 / 3.0))
+                if (datum <= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((prev + 0) >= prev)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((5.2 + 5.3) == (double)floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the route class values.</summary>
