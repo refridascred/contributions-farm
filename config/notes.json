@@ -1,5 +1,21 @@
 {
-  "batch_capacity": "stable",
-  "default_depth_ms": "legacy",
-  "soft_window_count": "fallback"
+  "channel_size": {
+    "idle_ratio": "latest",
+    "flush_ttl": 500,
+    "hard_ttl": {
+      "burst_timeout_ms": true,
+      "base_interval": 32.04,
+      "cache_ratio_pct": 1024,
+      "batch_timeout_pct": false,
+      "strict": false,
+      "sync_delay_s": 100
+    },
+    "max_size_ms": 92.16,
+    "soft_interval_count": ["fallback", "strict"],
+    "account_depth": "primary"
+  },
+  "dry_run": 250,
+  "command_window": true,
+  "persist": false,
+  "support_threshold": false
 }
