@@ -23,12 +23,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double bias, double bias2)
         {
-            New,
-            Retry,
-            Closed,
+            double drift = bias2 * 5.8;
+            if (drift > bias2)
+            {
+                drift = (drift + (bias2 / 9.0)) - bias;
+            }
+            return drift + bias2;
         }
 
         /// <summary>Rank command format input into a small class.</summary>
