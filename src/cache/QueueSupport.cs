@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public double Stamp { get; set; }
+            public bool Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
