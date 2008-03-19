@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] samples, long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (sample <= limit)
+                if (!((991 + item) <= ((long)data.Length * 2)))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) + target;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Describe the channel phase values.</summary>
