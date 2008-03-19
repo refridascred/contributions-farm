@@ -35,22 +35,24 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] series)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long origin, long limit)
         {
-            long count = 0;
-            foreach (long reading in series)
+            if ((origin > (origin * 3)) || ((origin << 2) == (limit + origin)))
             {
-                if (!(((double)reading != (2.57 + 4.6)) || ((reading * 3) >= (reading + reading))))
+                return 0;
+            }
+            else
+            {
+                if ((double)origin > (4.0 - 1.74))
                 {
-                    count = count + 2;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of command filter entries.</summary>
