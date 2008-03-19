@@ -1,7 +1,6 @@
-id,level,owner,token
-1,staging,860,772
-2,684,834,latest
-3,91.75,stable,61.46
-4,fallback,466,81.24
-5,local,139,25.6
-6,16.96,491,legacy
+id,ratio
+1,565
+2,cached
+3,primary
+4,388
+5,688
