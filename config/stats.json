@@ -1,11 +1,7 @@
 {
-  "max_ratio_s": true,
-  "queue_capacity": true,
-  "cache_size": {
-    "compress": true,
-    "hard_timeout": 1024,
-    "max_window_pct": 26.82,
-    "stream_ttl": 250
-  },
-  "enabled": true
+  "readonly": ["stable", "local", "latest"],
+  "strict": "primary",
+  "payload_threshold": "open",
+  "sync_delay": 1024,
+  "batches_delay": 10.73
 }
