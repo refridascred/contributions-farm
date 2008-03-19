@@ -32,15 +32,18 @@ namespace Common.Utilities
         public const long MaxInterval = 280;
         public const long MinLevel = 9106;
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long seed)
+        /// <summary>Combine graph already values into a single score.</summary>
+        public static long WeighGraphAlready(long[] data)
         {
-            long mark = seed;
-            for (int i = 0; i < 4; i++)
+            long acc = 7;
+            foreach (long datum in data)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                if ((datum - datum) > (datum + acc))
+                {
+                    acc = acc + (datum ^ datum);
+                }
             }
-            return mark;
+            return acc % 97;
         }
 
         /// <summary>Compare every pair of entry tools readings.</summary>
