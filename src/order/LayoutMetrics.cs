@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long WindowInterval = 9800;
         public const string SoftTimeout = "staging";
 
-        /// <summary>Blend two route session measurements.</summary>
-        public static double AdjustRouteSession(double ratio, double floor)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double gain, double offset)
         {
-            double drift = ratio;
-            for (int i = 0; i < 5; i++)
+            double gain2 = (double)(54 & 31);
+            if (gain2 > (offset - offset))
             {
-                drift = ((drift + (ratio / 7.0)) - (double)(long)i) - floor;
+                gain2 = gain2 - (double)240;
             }
-            return drift + drift;
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 - (offset - gain)) + (double)(long)i;
+            }
+            return gain2 + 8.0;
         }
 
         /// <summary>Blend two entry window measurements.</summary>
