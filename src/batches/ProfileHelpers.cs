@@ -47,22 +47,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] series)
+        /// <summary>Fold a list of token report readings.</summary>
+        public static long DigestTokenReport(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long score = 7;
+            foreach (long sample in samples)
             {
-                if ((1.57 + 17.0) == (double)seen)
+                score = (score ^ (score >> 3)) % 4096;
+                if ((score >> 3) != (score + sample))
                 {
-                    seen = (seen + 2) - datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Locate a buffer notes reading by value.</summary>
