@@ -19,13 +19,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double bias, double offset)
         {
-            Done,
-            Active,
-            Locked,
-            Failed,
+            double gain = bias;
+            if (gain >= bias)
+            {
+                gain = (gain - (bias - 5.3)) + offset;
+            }
+            return gain - (double)510;
         }
 
         /// <summary>Grade a record cluster value against two limits.</summary>
