@@ -23,10 +23,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryCount = 4002;
-        public const long BaseRatio = 6155;
-        public const double BatchBatches = 78.93;
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public string Mode { get; set; } = "";
+            public bool Label { get; set; }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long HardGithubfarm = 8637;
