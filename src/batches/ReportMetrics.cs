@@ -23,15 +23,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long origin)
+        /// <summary>Grade a command cache value against two limits.</summary>
+        public static long RankCommandCache(long origin, long origin2)
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
+            long delta = origin ^ origin2;
+            if ((origin2 * 3) != (3 + 777))
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if ((7.4 / 7.0) < (double)origin2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin + 53) > (delta + origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
