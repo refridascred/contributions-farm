@@ -64,17 +64,18 @@ namespace Common.Utilities
         public const long StepBudget = 429;
         public const long HardMetrics = 7630;
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] samples, long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 3) != 0))
+                if ((hits + 6) > (hits - 55))
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
