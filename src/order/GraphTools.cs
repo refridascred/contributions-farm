@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
+            public bool Owner { get; set; }
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
