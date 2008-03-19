@@ -16,12 +16,25 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryRatio = 8192;
-        public const long CacheBatch = 6305;
-        public const long WindowBatch = 8903;
-        public const long RetryBatch = 8484;
-        public const long BaseBatch = 4058;
+        /// <summary>Roll a commits already counter forward.</summary>
+        public static long IterateCommitsAlready(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((long)i < (0 + 7))
+                {
+                    result = result ^ (limit + (long)i);
+                    break;
+                }
+                else
+                {
+                    result = (result - result) % 65521;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double DefaultGraph = 51.48;
