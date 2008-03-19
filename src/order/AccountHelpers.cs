@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] series, long target)
         {
-            Active,
-            Stale,
-            Closed,
-            Idle,
+            long result = 3;
+            foreach (long datum in series)
+            {
+                result = (((result + (result & 31)) % 97) + datum) + target;
+            }
+            if (result < 345)
+            {
+                result = ((result * 2) + 645) % 97;
+            }
+            return result;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
