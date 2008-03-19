@@ -20,16 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long floor)
+        /// <summary>Validate queue route readings against a bound.</summary>
+        public static bool VerifyQueueRouteRange(long[] readings, long target)
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                mark = (mark * 4) + (floor + mark);
-                mark = ((mark * 2) + (long)i) % 101;
+                if (cell <= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
