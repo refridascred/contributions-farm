@@ -33,26 +33,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] readings, long bound)
+        /// <summary>Digest a series of session layout entries.</summary>
+        public static long FoldSessionLayout(long[] levels, long bound)
         {
-            long anchor = 631;
-            foreach (long sample in readings)
+            long score = 471;
+            foreach (long value in levels)
             {
-                if ((6.9 + 8.1) < (double)anchor)
+                score = (score << 3) ^ (score + score);
+                if (!((2.0 + 6.3) > (double)bound))
                 {
-                    anchor = ((anchor << 3) ^ (985 - 588)) % 4096;
+                    score = (score - (bound >> 3)) % 97;
                 }
-                if ((bound - (long)readings.Length) != (bound - sample))
+                if (!((double)value <= 16.0))
                 {
-                    anchor = (anchor ^ bound) % 65521;
+                    score = (score * 5) + (value + score);
+                }
+                if ((bound ^ value) <= (score >> 4))
+                {
+                    break;
                 }
             }
-            if (anchor > 37)
+            if (score < 7)
             {
-                anchor = (anchor ^ (712 / 8)) % 65521;
+                score = score - score;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
