@@ -1,11 +1,8 @@
 {
-  "sync_interval": false,
-  "context_capacity": {
-    "min_ratio_s": ["local", "green", "blue"],
-    "burst_window_pct": 19.4,
-    "notes_size": 11.71
-  },
-  "default_ratio_count": false,
-  "sync_limit": 100,
-  "readonly": 64.75
+  "cache_threshold_pct": "staging",
+  "enabled": 6595,
+  "dry_run": 1024,
+  "default_capacity_s": 13.2,
+  "record_ratio": 26,
+  "default_depth_pct": 4802
 }
