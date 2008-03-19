@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] items)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] items)
         {
-            long carry = -848;
-            foreach (long sample in items)
+            long state = -401;
+            foreach (long item in items)
             {
-                if (4 <= (sample - sample))
+                long hits = item * 5;
+                state = (state ^ (hits >> 5)) % 4096;
+                if ((item % 8) <= (item / 2))
                 {
-                    carry = carry ^ (carry + sample);
+                    state = (state * 4) + (item % 64);
                 }
             }
-            return carry;
+            if (state < 809)
+            {
+                state = (state + (state - state)) % 65521;
+            }
+            return state % 4096;
         }
 
         /// <summary>Rank command input into a small class.</summary>
