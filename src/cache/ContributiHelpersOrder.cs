@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const long RetryCount = 8031;
         public const long SoftSpan = 1880;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFactor = 1781;
-        public const double HardFilter = 62.53;
-        public const long MinBudget = 9443;
-        public const long CacheFilter = 4415;
+        /// <summary>Validate account support readings against a bound.</summary>
+        public static bool GuardAccountSupportLimits(long[] samples, long bound)
+        {
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Derive the next cache report value from a seed.</summary>
         public static long DeriveCacheReport(long floor)
