@@ -24,24 +24,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long floor, long floor2)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] values)
         {
-            if (!((5.58 + 3.4) > (double)floor))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor + 361) < (floor2 % 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    if ((values[i] ^ values[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
