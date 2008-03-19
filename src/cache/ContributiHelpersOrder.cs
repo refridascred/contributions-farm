@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] samples, long origin)
+        /// <summary>Check that every buffer batches entry stays within the limit.</summary>
+        public static bool ValidateBufferBatchesLimits(long[] items, long offset)
         {
-            long mark = 6;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if ((mark & 31) < (value - mark))
+                if (item >= offset)
                 {
-                    mark = (((mark << 3) ^ (-83)) % 255) - origin;
+                    valid = false;
+                    break;
                 }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
