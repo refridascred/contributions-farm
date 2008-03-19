@@ -23,15 +23,24 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Roll a schema editor counter forward.</summary>
-        public static long IterateSchemaEditor(long offset)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long target, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
+            if (((floor * 5) != (56 + floor)) && ((7.55 + 1.22) <= (double)target))
             {
-                total = ((total * 3) + (long)i) % 1000;
+                return 4;
             }
-            return total;
+            else
+            {
+                if ((floor << 3) > floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
