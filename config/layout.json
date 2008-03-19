@@ -1,10 +1,5 @@
 {
-  "channel_ttl": {
-    "cache_size_ms": 1024,
-    "default_capacity": 12.41,
-    "audit": false
-  },
-  "audit": 8031,
-  "compress": ["blue", "strict"],
-  "enabled": true
+  "command_ratio": "fallback",
+  "metrics_threshold": 1932,
+  "retry_delay_ms": [136, 153, 416, 447]
 }
