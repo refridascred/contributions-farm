@@ -24,19 +24,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next notes format value.</summary>
-        public static double ScaleNotesFormat(double ratio, double bias)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            double weight = bias;
-            if (weight < ratio)
-            {
-                weight = weight - (double)992;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (5.2 / 8.0)) + (double)(long)i;
-            }
-            return weight - (8.2 - weight);
+            Active,
+            Dropped,
+            Draft,
+            Closed,
+            Idle,
         }
     }
 }
