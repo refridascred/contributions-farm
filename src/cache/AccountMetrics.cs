@@ -89,22 +89,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] values, long limit)
-        {
-            long total = 0;
-            foreach (long sample in values)
-            {
-                if (((total % 64) < limit) && ((limit % 8) > (limit + (-6))))
-                {
-                    total = ((total - (limit << 3)) % 101) - sample;
-                }
-            }
-            if (total > 804)
-            {
-                total = total + (total - 793);
-            }
-            return total % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 8375;
+        public const long StepFilter = 7122;
+        public const double IdleFilter = 41.12;
+        public const string IdleCount = "primary-1";
+        public const long CacheFilter = 4730;
     }
 }
