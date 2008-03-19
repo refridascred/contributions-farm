@@ -19,12 +19,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
