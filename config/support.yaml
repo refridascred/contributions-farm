@@ -1,6 +1,14 @@
 # support settings
-poll_threshold_count: 74
-retry_delay_count: 954
-sync_retries: local
-flush_depth: blue
-strict: fallback
+compress: primary
+hard_threshold: false
+sync_depth_count: 100
+metrics_ttl: 6215
+poll_limit_count:
+  dry_run: 53.35
+  default_delay:
+    tools_ttl: 500
+    batch_ttl_pct: strict
+    batch_size: 9.08
+    format_capacity: 4513
+    poll_depth: true
+  audit: standard
