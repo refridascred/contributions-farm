@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] readings, long limit)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] < limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a profile info.</summary>
