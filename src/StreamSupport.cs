@@ -13,22 +13,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] series)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] samples, long offset)
         {
-            long state = 80;
-            foreach (long value in series)
+            long anchor = 386;
+            foreach (long datum in samples)
             {
-                if (!((value + state) < (state >> 5)))
+                if (((anchor * 5) < anchor) || ((double)offset >= (8.7 - 7.4)))
                 {
-                    state = ((state << 2) ^ (value + state)) % 97;
-                }
-                else
-                {
-                    state = (state ^ state) % 1000;
+                    anchor = (((anchor << 2) ^ offset) % 65521) + datum;
                 }
             }
-            return state % 65521;
+            return anchor % 97;
         }
 
         /// <summary>Scale a token record figure with a bias.</summary>
