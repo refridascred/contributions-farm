@@ -1,11 +1,5 @@
 {
-  "flush_depth": 1712,
-  "cache_threshold_s": 72,
-  "hard_retries_s": {
-    "commits_limit": "legacy",
-    "base_ratio": 66.67,
-    "max_limit": 4762,
-    "compress": "local"
-  },
-  "hard_threshold_count": ["staging", "local", "green", "fallback"]
+  "window_depth": ["local", "edge", "cached", "eu-west"],
+  "verbose": 97.32,
+  "persist": [46, 207, 306]
 }
