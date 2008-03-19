@@ -59,18 +59,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiHits(long[] levels)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long state = 6;
+            foreach (long cell in data)
             {
-                if (!(((6.75 - 2.2) >= (double)matches) && ((926 % 97) >= matches)))
+                if ((state * 4) < 81)
                 {
-                    matches = (matches + 3) - value;
+                    state = (state - (state * 3)) % 101;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (cell + 81)) % 4096;
+                }
+                if ((target + cell) < (cell << 1))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (state < 630)
+            {
+                state = (state ^ (17 % 64)) % 101;
+            }
+            return state % 65521;
         }
 
         /// <summary>Find the first support report entry that matches the target.</summary>
