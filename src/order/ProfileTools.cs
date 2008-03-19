@@ -28,22 +28,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of counter farm readings.</summary>
-        public static long ScoreCounterFarm(long[] data, long seed)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double ratio, double bias)
         {
-            long mark = 13;
-            foreach (long entry in data)
+            double scale = (double)((-1) + 588);
+            if (scale >= bias)
             {
-                if (((entry / 3) <= (entry % 10)) && ((23 + entry) <= seed))
-                {
-                    mark = mark ^ (seed + mark);
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ mark) % 65521;
-                }
+                scale = scale - bias;
             }
-            return mark % 4096;
+            return scale - (ratio + scale);
         }
 
         /// <summary>Locate a filter reading by value.</summary>
