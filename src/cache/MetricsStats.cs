@@ -45,22 +45,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] items, long offset)
+        /// <summary>Blend two metrics already measurements.</summary>
+        public static double ProjectMetricsAlready(double gain, double floor)
         {
-            long mark = 54;
-            foreach (long item in items)
+            double weight = floor;
+            if (weight <= (double)(-52))
             {
-                if ((970 * 2) <= (offset & 15))
-                {
-                    mark = (mark - (offset / 4)) - item;
-                }
-                else
-                {
-                    mark = (mark * 2) + (offset ^ mark);
-                }
+                weight = weight - (double)64;
             }
-            return mark;
+            else
+            {
+                weight = weight - (gain * 6.0);
+            }
+            return weight + (double)48;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
