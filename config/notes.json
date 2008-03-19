@@ -1,16 +1,22 @@
 {
-  "account_limit": 23.72,
-  "soft_ratio": 32.99,
-  "stats_window": "standard",
-  "layout_delay": {
-    "audit": "green",
-    "soft_threshold_count": "primary",
-    "verbose": {
-      "warm_size_ms": 60,
-      "contributi_capacity": 78.38,
-      "verbose": 48.39,
-      "burst_window": 8260,
-      "min_delay": "open"
-    }
+  "burst_retries_ms": 98.76,
+  "verbose": {
+    "readonly": 115,
+    "contributi_timeout": "green",
+    "min_threshold_count": true,
+    "queue_capacity": 40
+  },
+  "report_capacity": 24.86,
+  "idle_timeout_count": "blue",
+  "warm_capacity_s": ["standard", "blue", "local", "primary"],
+  "persist": {
+    "queue_timeout": {
+      "dry_run": 85.91,
+      "audit": "stable",
+      "queue_ttl": 2895,
+      "warm_threshold": 99
+    },
+    "retry_timeout_count": ["standard", "standard", "eu-west"],
+    "warm_limit": 9861
   }
 }
