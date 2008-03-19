@@ -1,5 +1,8 @@
 {
-  "soft_depth": 250,
-  "batches_timeout": "edge",
-  "poll_retries_s": true
+  "idle_depth": 7824,
+  "min_ttl_count": ["legacy", "blue", "open", "blue"],
+  "base_capacity": "strict",
+  "commits_size": false,
+  "warm_depth": 77.94,
+  "order_depth": [40, 450, 96]
 }
