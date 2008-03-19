@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] readings, long target)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((target >> 2) <= (tally ^ tally))
+                if ((14.0 + 1.3) < (double)floor)
                 {
-                    tally = (tally + 3) + datum;
+                    total = (total + floor) % 4096;
                 }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Check that every cluster queue entry stays within the limit.</summary>
