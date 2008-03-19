@@ -54,21 +54,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] levels)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (target >= (target + (-2)))
                 {
-                    if ((levels[i] ^ levels[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor + (anchor * 4)) % 65521;
                 }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
