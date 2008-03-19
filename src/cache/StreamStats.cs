@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            public bool Limit { get; set; }
+            public long Size { get; set; }
             public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
