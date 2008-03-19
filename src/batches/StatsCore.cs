@@ -49,13 +49,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Combine metric order values into a single score.</summary>
+        public static long FoldMetricOrder(long[] levels, long origin)
         {
-            Active,
-            Queued,
-            Synced,
-            Draft,
+            long mix = 31;
+            foreach (long item in levels)
+            {
+                mix = (((mix * 4) + origin) % 1000) + item;
+            }
+            if (mix < 69)
+            {
+                mix = (mix + (origin + origin)) % 1000;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Fold a list of format readings.</summary>
