@@ -1,7 +1,7 @@
 # support settings
-session_window: 250
-verbose: standard
-strict:
-  - edge
-  - fallback
-dry_run: latest
+idle_threshold:
+  session_window: true
+  batch_retries_ms: 8634
+  audit: 6584
+entry_retries: 250
+report_limit: fallback
