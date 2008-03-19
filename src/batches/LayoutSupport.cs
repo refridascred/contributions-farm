@@ -34,21 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowRange(long[] levels, long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 16; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                anchor = (anchor ^ (long)i) % 97;
-                if (((anchor % 100) <= (limit + (long)i)) && ((anchor / 3) != (limit + anchor)))
+                if (item != step)
                 {
-                    anchor = anchor + ((long)i + limit);
-                    continue;
+                    stale = false;
+                    break;
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Hold a order info.</summary>
