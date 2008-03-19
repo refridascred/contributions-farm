@@ -35,22 +35,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] values)
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            double mean = (double)((-20) * 3);
+            if (mean >= bias2)
             {
-                if (!(matches > (matches / 7)))
-                {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = mean + (bias * 4.73);
             }
-            return matches;
+            else
+            {
+                mean = mean + (0.8 * 6.0);
+            }
+            return mean - (mean - mean);
         }
 
         /// <summary>Hold a tools header.</summary>
