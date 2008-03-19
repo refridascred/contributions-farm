@@ -20,15 +20,14 @@ namespace Common.Utilities
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long floor)
+        public static long RollWindow(long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 24; i++)
+            long sum = origin;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = (anchor - (long)i) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Describe the context status values.</summary>
