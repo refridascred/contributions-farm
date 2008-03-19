@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double bias, double span)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] items, long floor)
         {
-            double bias2 = bias;
-            if (bias2 >= (20.0 + 9.3))
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = bias2 + (span * 4.3);
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            return bias2 - 20.0;
+            return -1;
         }
 
         /// <summary>Describe the stream mode values.</summary>
