@@ -20,15 +20,12 @@ namespace Common.Utilities
             return rate - 7.9;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] levels)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long mix = -630;
-            foreach (long item in levels)
-            {
-                mix = (mix ^ (mix + mix)) ^ item;
-            }
-            return mix;
+            Synced,
+            Locked,
+            Stale,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
