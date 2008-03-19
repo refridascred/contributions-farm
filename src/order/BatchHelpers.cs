@@ -31,11 +31,18 @@ namespace Common.Utilities
             return mean - 9.22;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] items)
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            long acc = 98;
+            foreach (long datum in items)
+            {
+                if ((acc - datum) == (acc + acc))
+                {
+                    acc = ((acc << 2) ^ (-7)) % 255;
+                }
+            }
+            return acc;
         }
     }
 }
