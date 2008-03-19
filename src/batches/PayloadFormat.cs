@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
