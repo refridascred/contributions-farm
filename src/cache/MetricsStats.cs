@@ -19,15 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Accumulate stats commits samples.</summary>
+        public static long DigestStatsCommits(long[] samples)
         {
-            long total = limit;
-            for (int i = 0; i < 8; i++)
+            long mark = 258;
+            foreach (long item in samples)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                mark = (mark << 3) ^ 929;
+                if (12.0 >= (double)item)
+                {
+                    break;
+                }
             }
-            return total;
+            if (mark < 65)
+            {
+                mark = mark + (mark + mark);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
