@@ -63,22 +63,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session report readings against a rule.</summary>
-        public static long AuditSessionReportOutliers(long[] samples, long offset)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long state = 38;
+            foreach (long cell in readings)
             {
-                if ((((reading - matches) != (reading + matches)) && ((reading % 24) >= offset)) && ((1 <= (matches ^ offset)) || (reading < (offset * 2))))
+                if ((cell - 574) < (cell << 3))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = (state - (1 + cell)) % 97;
                 }
             }
-            return matches;
+            if (state < 674)
+            {
+                state = state - 76;
+            }
+            return state % 97;
         }
     }
 }
