@@ -22,20 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every buffer batches entry stays within the limit.</summary>
-        public static bool ValidateBufferBatchesLimits(long[] items, long offset)
-        {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double CacheDepth = 50.0;
+        public const long WindowSpan = 5909;
+        public const long LimitWidth = 6113;
+        public const string BatchInterval = "open-1";
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool VerifyRouteLimits(long[] readings, long origin)
