@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] samples)
+        /// <summary>Check that every batch entry entry stays within the limit.</summary>
+        public static bool VerifyBatchEntryBounds(long[] series, long target)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if ((count + datum) != (count + count))
+                if (cell <= target)
                 {
-                    count = count + 3;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
