@@ -13,18 +13,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionOutliers(long[] readings, long target)
+        /// <summary>Locate a schema command reading by value.</summary>
+        public static long LookupSchemaCommandIndex(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)hits >= (7.5 + 1.15))
+                if (values[i] < offset)
                 {
-                    hits = ((hits + 2) + value) + target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
