@@ -26,19 +26,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] samples)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long origin, long bound)
         {
-            long carry = 68;
-            foreach (long datum in samples)
+            long bound2 = origin + bound;
+            if ((bound + origin) > (bound + bound))
             {
-                carry = (carry ^ carry) % 97;
-                if (((double)carry < (double)datum) && ((datum - datum) == (carry - datum)))
+                return 0;
+            }
+            else
+            {
+                if (bound2 > (bound % 3))
                 {
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (bound > (bound - origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (origin <= (bound & 63))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return carry % 97;
         }
 
         /// <summary>Blend two session measurements.</summary>
