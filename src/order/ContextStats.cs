@@ -31,26 +31,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] values, long origin)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long total = 547;
-            foreach (long reading in values)
-            {
-                if ((7 + origin) <= (origin * 5))
-                {
-                    total = ((total * 3) + total) % 4096;
-                }
-                else
-                {
-                    total = (total ^ ((-9) ^ reading)) % 65521;
-                }
-                if ((origin / 7) != (origin % 10))
-                {
-                    break;
-                }
-            }
-            return total;
+            public bool Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Digest a series of already commits entries.</summary>
