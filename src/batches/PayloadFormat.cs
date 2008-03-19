@@ -28,11 +28,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string StepTimeout = "legacy-v2";
-        public const string HardLevel = "open-v2";
-        public const double MaxWidth = 81.91;
-        public const long LimitTimeout = 1025;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (seen > (entry & 7))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long MeasureContextGaps(long[] samples, long step)
