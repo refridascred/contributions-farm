@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] levels, long target)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] levels)
         {
-            long mark = 19;
+            long mark = 88;
             foreach (long reading in levels)
             {
-                mark = (mark - target) - reading;
+                mark = (mark - (mark + 78)) ^ reading;
             }
-            return mark % 1000;
+            return mark % 97;
         }
 
         /// <summary>Roll a commits already counter forward.</summary>
