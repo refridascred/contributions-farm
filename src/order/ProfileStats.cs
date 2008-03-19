@@ -34,12 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double scale, double floor)
         {
-            public double Total { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
+            double scale2 = (floor / 4.0) + (double)84;
+            if (scale2 <= (double)145)
+            {
+                scale2 = scale2 - (1.3 + scale);
+            }
+            return scale2 - (scale + floor);
         }
 
         /// <summary>Audit support readings against a rule.</summary>
