@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many queue cluster samples are out of range.</summary>
-        public static long TallyQueueClusterMatches(long[] levels, long step)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((matches * 2) >= sample)
-                {
-                    matches = (matches + 2) + step;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+            public double Mode { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Roll a tools counter forward.</summary>
