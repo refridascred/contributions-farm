@@ -11,12 +11,24 @@ namespace Common.Utilities
         public const long DefaultBuffer = 6718;
         public const double MaxBuffer = 17.32;
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long target, long target2)
         {
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            if ((target > (6 + 921)) || (target > (target + target)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target + target2) < target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Check that every cluster farm entry stays within the limit.</summary>
