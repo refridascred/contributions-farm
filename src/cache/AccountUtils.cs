@@ -22,18 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate route graph samples.</summary>
-        public static long WeighRouteGraph(long[] series)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] series)
         {
-            long total = 40;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((total >= (cell >> 4)) && ((cell << 2) > (cell % 5)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total - (total + (-6))) % 1000;
+                    if ((series[i] ^ series[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
