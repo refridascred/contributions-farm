@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout queue readings against a bound.</summary>
-        public static bool ValidateLayoutQueueRange(long[] series, long floor)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > floor)
+                if (samples[i] > target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
