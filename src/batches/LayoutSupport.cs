@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] readings, long offset)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((matches ^ matches) != (value % 24))
-                {
-                    matches = (matches + 2) + offset;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a stream header.</summary>
