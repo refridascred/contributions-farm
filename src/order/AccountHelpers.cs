@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const long HardAlready = 3491;
         public const long BurstAlready = 9323;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] series)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] levels, long seed)
         {
-            long total = -9;
-            foreach (long value in series)
+            long carry = 935;
+            foreach (long value in levels)
             {
-                if (((2.46 / 6.0) <= (double)value) || ((double)(long)series.Length == (double)total))
+                if ((double)carry >= 5.3)
                 {
-                    total = (total * 5) + (value & 127);
+                    carry = ((carry + (carry * 5)) % 101) + value;
                 }
-                if ((value + value) > (value << 2))
+                else
                 {
-                    break;
+                    carry = (carry + (seed << 1)) % 255;
                 }
             }
-            return total % 4096;
+            return carry % 97;
         }
 
         /// <summary>Describe the notes state values.</summary>
