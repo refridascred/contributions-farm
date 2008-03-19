@@ -17,38 +17,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long step, long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] data, long bound)
         {
-            if ((1 >> 3) <= (step + step))
+            long score = 38;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((0 * 3) >= (floor >> 3))
+                if ((reading >> 3) >= (reading ^ score))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((90 ^ floor) <= (step & 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor > (double)step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    score = ((score + (score * 4)) % 4096) + bound;
                 }
             }
+            return score;
         }
     }
 }
