@@ -1,23 +1,7 @@
 {
-  "poll_ttl_count": true,
-  "persist": true,
-  "cache_delay_count": 4223,
-  "graph_retries": true,
-  "burst_timeout_s": {
-    "flush_retries_count": {
-      "buffer_delay": "fallback",
-      "flush_ratio": [266, 407, 176, 215],
-      "retry_threshold_pct": 4323,
-      "warm_capacity_pct": 6062
-    },
-    "cache_limit": 80,
-    "audit": 74,
-    "dry_run": 11,
-    "cache_capacity_pct": {
-      "cache_limit_pct": "eu-west",
-      "flush_delay": true,
-      "route_size": "staging",
-      "strict": false
-    }
-  }
+  "base_threshold_s": 92.32,
+  "burst_interval": false,
+  "entry_limit": "local",
+  "flush_window": "stable",
+  "retry_limit": 60
 }
