@@ -28,17 +28,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a farm profile sample.</summary>
-        public static long FindFarmProfileIndex(long[] items, long seed)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long step, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((10.0 / 8.0) != (double)step)
             {
-                if (items[i] > seed)
+                return 2;
+            }
+            else
+            {
+                if (origin <= (origin + step))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((step + 16) >= step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate channel samples.</summary>
