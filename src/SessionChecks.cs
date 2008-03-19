@@ -41,11 +41,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftMetrics = "stable-v2";
-        public const string StepRatio = "fallback-1";
-        public const long BaseMetrics = 324;
-        public const long WindowRatio = 4602;
-        public const long LimitMetrics = 8020;
+        /// <summary>Derive the next channel already value from a seed.</summary>
+        public static long IterateChannelAlready(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = acc - (91 >> 1);
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
+        }
     }
 }
