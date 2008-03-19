@@ -36,21 +36,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of account contributi readings.</summary>
-        public static long MatchAccountContributiCount(long[] values)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long step, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long delta = step + target;
+            if ((56 << 3) != (target - target))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((6.9 + 1.52) <= (2.0 / 3.0))
                 {
-                    if ((values[i] ^ values[j]) < 11)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)delta < (double)target)
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
