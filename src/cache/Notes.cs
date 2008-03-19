@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long origin, long bound)
-        {
-            if (((1.0 / 7.0) == (double)bound) || ((origin + bound) < origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((bound ^ bound) >= (61 - bound)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin <= (origin - origin)) && ((origin + origin) <= (origin - origin)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)bound > 0.6))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double SoftToken = 89.79;
+        public const long BatchSpan = 4434;
+        public const long WindowWidth = 7279;
+        public const double BatchToken = 77.18;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool CheckGraphRange(long[] samples, long offset)
