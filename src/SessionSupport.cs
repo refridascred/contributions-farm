@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] samples, long step)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (count >= (count + reading))
-                {
-                    count = (count + 2) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
