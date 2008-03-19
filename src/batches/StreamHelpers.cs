@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepCount = "open";
-        public const string WindowRoute = "alpha";
-        public const string BaseRoute = "latest-1";
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = anchor - ((-59) / 7);
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double SmoothFormat(double ratio, double bias)
