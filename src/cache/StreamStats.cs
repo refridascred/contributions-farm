@@ -51,9 +51,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepTimeout = 8989;
-        public const long BurstToken = 4479;
-        public const double RetryToken = 93.85;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Closed,
+            Paused,
+            Active,
+            Dropped,
+        }
     }
 }
