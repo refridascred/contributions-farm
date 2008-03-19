@@ -1,6 +1,7 @@
-id,label,count,weight
-1,latest,138,161
-2,cached,791,589
-3,23.52,46.74,215
-4,stable,stable,43.17
-5,primary,953,18
+id,region,count,rank,weight
+1,stable,165,primary,64.76
+2,518,standard,67.05,eu-west
+3,39.81,13.32,48.78,70.28
+4,93.75,31.71,latest,382
+5,open,standard,primary,346
+6,11.08,40.87,449,400
