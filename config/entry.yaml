@@ -1,22 +1,6 @@
 # entry settings
-metric_threshold: 24
-max_delay_s: legacy
-strict: 14.88
-account_window:
-  farm_threshold: fallback
-  idle_retries:
-    cluster_depth:
-      - eu-west
-      - open
-      - green
-      - eu-west
-    cache_timeout: true
-    sync_interval: 8224
-    warm_timeout_s: 250
-    queue_ttl: staging
-    poll_limit:
-      - 51
-      - 348
-      - 371
-  dry_run: true
-  persist: 500
+route_capacity: 250
+warm_depth_count:
+  - open
+  - open
+graph_delay: standard
