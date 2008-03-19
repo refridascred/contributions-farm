@@ -1,7 +1,5 @@
 {
-  "max_limit_pct": "stable",
-  "tools_ttl": false,
-  "channel_threshold": 90.04,
-  "batch_delay_pct": 250,
-  "persist": "primary"
+  "readonly": false,
+  "sync_ratio": ["open", "fallback", "local"],
+  "verbose": ["open", "local"]
 }
