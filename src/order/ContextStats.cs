@@ -13,19 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate queue route readings against a bound.</summary>
-        public static bool VerifyQueueRouteRange(long[] readings, long target)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Limit { get; set; }
+            public double Region { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
