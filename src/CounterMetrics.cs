@@ -26,12 +26,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Digest a series of route checks entries.</summary>
+        public static long FoldRouteChecks(long[] items)
         {
-            Queued,
-            Stale,
-            Idle,
+            long carry = 362;
+            foreach (long entry in items)
+            {
+                carry = (carry ^ (320 >> 3)) % 4096;
+                carry = (carry - (entry - carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Hold a stream stats.</summary>
