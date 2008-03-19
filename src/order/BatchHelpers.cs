@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const string SoftFormat = "alpha-edge";
         public const long RetryWidth = 2804;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] values)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long total = 66;
-            foreach (long entry in values)
-            {
-                if ((3.18 - 4.47) > (double)entry)
-                {
-                    total = ((total << 3) ^ (entry ^ 601)) % 255;
-                }
-            }
-            return total;
+            Done,
+            Active,
+            Locked,
+            Failed,
         }
 
         /// <summary>Hold a stats info.</summary>
