@@ -1,6 +1,8 @@
-id,token,rank,ratio
-1,496,52.75,30.02
-2,22.22,primary,37.81
-3,3,559,77.56
-4,972,77.38,54.36
-5,8.17,355,33.57
+id,rank,active,ratio
+1,42.69,7.1,88.73
+2,0.82,20.0,strict
+3,956,22.6,blue
+4,8.8,strict,cached
+5,fallback,edge,staging
+6,primary,primary,149
+7,504,948,93.35
