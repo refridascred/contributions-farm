@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the batches stream series from a seed.</summary>
-        public static long StepBatchesStream(long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] data, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                mix = mix ^ (floor / 2);
-                mix = ((mix * 5) + (long)i) % 101;
+                if (26 >= (value - value))
+                {
+                    hits = (hits + 2) - origin;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the counter level values.</summary>
