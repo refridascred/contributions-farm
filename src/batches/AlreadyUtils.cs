@@ -66,12 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultRatio = 73.74;
-        public const double BurstCount = 0.9;
-        public const long IdleAlready = 9062;
-        public const long HardAlready = 1108;
-        public const long MinAlready = 8887;
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= step) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the contributi queue entries that pass the check.</summary>
         public static long MeasureContributiQueueOutliers(long[] levels)
