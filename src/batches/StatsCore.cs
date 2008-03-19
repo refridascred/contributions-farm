@@ -54,18 +54,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] samples)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (tally < (cell - tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
