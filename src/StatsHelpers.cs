@@ -39,22 +39,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Accumulate tools schema samples.</summary>
-        public static long DigestToolsSchema(long[] items, long limit)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long state = -267;
-            foreach (long sample in items)
-            {
-                if ((state - limit) <= (42 ^ sample))
-                {
-                    state = (state ^ (9 - limit)) % 65521;
-                }
-                if ((limit & 1) < sample)
-                {
-                    break;
-                }
-            }
-            return state % 97;
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
