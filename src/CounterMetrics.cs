@@ -16,16 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next contributi commits value from a seed.</summary>
-        public static long DeriveContributiCommits(long offset)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long sum = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = sum ^ (115 >> 5);
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            Draft,
+            Active,
+            Retry,
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
