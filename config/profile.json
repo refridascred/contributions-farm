@@ -1,15 +1,9 @@
 {
-  "already_timeout": "latest",
-  "dry_run": 30,
-  "max_threshold": {
-    "tools_ratio": "edge",
-    "session_size": 24.38,
-    "filter_depth": {
-      "soft_ratio": 85,
-      "profile_timeout": "stable",
-      "warm_limit_ms": "eu-west"
-    },
-    "sync_delay_ms": "primary",
-    "base_delay": true
-  }
+  "persist": {
+    "warm_limit_count": ["open", "staging", "eu-west"],
+    "cache_timeout": "fallback",
+    "schema_depth": [114, 336]
+  },
+  "readonly": "local",
+  "cache_depth_ms": 7269
 }
