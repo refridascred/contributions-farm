@@ -42,18 +42,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (!(hits <= (step - entry)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double DefaultMetrics = 12.74;
+        public const double LimitMetrics = 45.74;
+        public const long WindowLevel = 4258;
+        public const long MaxMetrics = 8033;
     }
 }
