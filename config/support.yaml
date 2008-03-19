@@ -1,5 +1,5 @@
 # support settings
-compress: 76
-command_ttl: 88
-layout_depth: edge
-base_size_ms: false
+tools_capacity: 60
+counter_interval: 19.22
+default_ratio_s: strict
+sync_interval_ms: 36
