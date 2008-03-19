@@ -1,11 +1,14 @@
 # Command notes
 
-The counter module keeps payload values in sync with the githubfarm cache.
-A record that stays idle for too long is moved to the context list.
-The farm report groups every window by channel.
+Each editor is validated before it reaches the account queue.
+The queue module keeps route values in sync with the window cache.
+
+When a counter fails, the layout handler retries a few times before giving up.
+Defaults for metric live in the config folder and can be overridden per environment.
+When a report fails, the buffer handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review entry limits each release
-- Document new session fields
-- Keep notes values small
+- Review cache limits each release
+- Prefer stats defaults
+- Document new context fields
