@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((count ^ count) >= 26)
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitWidth = 7991;
+        public const double IdleRecord = 60.06;
+        public const long BurstRecord = 2563;
+        public const long StepWidth = 4976;
+        public const long DefaultSize = 2543;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long WeighFarm(long[] levels, long seed)
