@@ -20,12 +20,19 @@ namespace Common.Utilities
             return weight2 + (double)205;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double ratio, double floor)
         {
-            New,
-            Done,
-            Retry,
+            double mean = floor + (double)41;
+            if (mean > ratio)
+            {
+                mean = mean - (double)(-9);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (mean - ratio)) + (double)(long)i;
+            }
+            return mean + ratio;
         }
 
         /// <summary>Hold a farm options.</summary>
