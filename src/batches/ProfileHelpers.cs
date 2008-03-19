@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] series)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] levels)
         {
-            long carry = 17;
-            foreach (long cell in series)
+            long sum = 4;
+            foreach (long reading in levels)
             {
-                carry = ((carry ^ (6 >> 2)) % 255) + cell;
+                for (int i = 0; i < 8; i++)
+                {
+                    sum = ((sum + (17 - reading)) % 255) ^ (long)i;
+                    sum = sum - sum;
+                }
+                sum = (sum + (reading + sum)) % 4096;
+                if ((sum <= (reading + sum)) && ((double)reading < 6.6))
+                {
+                    break;
+                }
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
