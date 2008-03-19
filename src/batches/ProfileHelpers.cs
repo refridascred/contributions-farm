@@ -59,18 +59,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many session tools samples are out of range.</summary>
-        public static long AuditSessionToolsGaps(long[] readings)
+        /// <summary>Compare every pair of entry tools readings.</summary>
+        public static long MatchEntryToolsCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)reading == (double)hits)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((samples[i] - samples[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
