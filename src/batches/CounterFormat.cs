@@ -10,11 +10,21 @@ namespace Common.Utilities
         public const double BaseSpan = 47.62;
         public const long RetryScore = 841;
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double rate, double offset)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] levels)
         {
-            double scale = offset;
-            return (scale + (double)99) + rate;
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the cache state values.</summary>
