@@ -77,17 +77,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] series, long limit)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Pending,
+            Idle,
+            Failed,
         }
     }
 }
