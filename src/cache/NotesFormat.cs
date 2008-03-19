@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsOutliers(long[] items, long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (tally >= (tally * 3))
+                if ((double)value > 0.75)
                 {
-                    tally = ((tally + 1) ^ entry) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 2) - offset;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
