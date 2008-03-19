@@ -19,15 +19,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double bias, double offset)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] values, long bound)
         {
-            double gain = bias;
-            if (gain >= bias)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain - (bias - 5.3)) + offset;
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return gain - (double)510;
+            return -1;
         }
 
         /// <summary>Hold a notes entry.</summary>
