@@ -19,11 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftDepth = 9642;
-        public const string SoftScore = "alpha-v2";
-        public const long MinInterval = 7977;
-        public const string SoftSupport = "latest-1";
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] items, long bound)
+        {
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long WeighGithubfarm(long[] readings, long floor)
