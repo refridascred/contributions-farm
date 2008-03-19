@@ -23,12 +23,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 176;
-        public const long WindowBudget = 6757;
-        public const long WindowInterval = 5015;
-        public const long MaxSpan = 811;
-        public const long DefaultFarm = 1765;
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheMatches(long[] readings)
