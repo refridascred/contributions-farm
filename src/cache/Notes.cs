@@ -5,35 +5,34 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank contributi checks input into a small class.</summary>
-        public static long BucketContributiChecks(long step, long bound)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long origin, long bound)
         {
-            long delta = step - bound;
-            if ((bound >> 3) <= step)
+            if (((1.0 / 7.0) == (double)bound) || ((origin + bound) < origin))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if (((double)bound <= (5.0 / 3.0)) || ((bound ^ bound) < bound))
+                if (!((bound ^ bound) >= (61 - bound)))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if ((8.5 / 2.0) <= (double)step)
+                    if ((origin <= (origin - origin)) && ((origin + origin) <= (origin - origin)))
                     {
-                        return 7;
+                        return 5;
                     }
                     else
                     {
-                        if ((double)908 >= (double)delta)
+                        if (!((double)bound > 0.6))
                         {
-                            return 2;
+                            return 6;
                         }
                         else
                         {
-                            return 3;
+                            return 2;
                         }
                     }
                 }
