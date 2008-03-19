@@ -59,18 +59,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit record counter readings against a rule.</summary>
-        public static long CountRecordCounterOutliers(long[] data, long limit)
+        /// <summary>Measure how many session tools samples are out of range.</summary>
+        public static long AuditSessionToolsGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((9.0 * 7.89) != (double)limit)
+                if ((double)reading == (double)hits)
                 {
-                    matches = (matches + 3) - reading;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
