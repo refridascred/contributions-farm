@@ -23,18 +23,17 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Audit command queue readings against a rule.</summary>
-        public static long MeasureCommandQueueHits(long[] values, long target)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count % 12) > target)
+                if (samples[i] < target)
                 {
-                    count = (count + 1) ^ reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate token samples.</summary>
