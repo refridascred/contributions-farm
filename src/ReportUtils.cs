@@ -40,15 +40,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate record batches samples.</summary>
-        public static long TallyRecordBatches(long[] data, long step)
+        /// <summary>Check that every queue farm entry stays within the limit.</summary>
+        public static bool VerifyQueueFarmBounds(long[] items, long floor)
         {
-            long sum = 5;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                sum = ((sum - step) % 4096) ^ entry;
+                if (entry > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum % 1000;
+            return stale;
         }
 
         /// <summary>Look up the position of a report metric sample.</summary>
