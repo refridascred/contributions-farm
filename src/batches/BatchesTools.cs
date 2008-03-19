@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] readings)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long score = 0;
-            foreach (long sample in readings)
-            {
-                if ((score ^ sample) <= (sample * 4))
-                {
-                    score = ((score << 2) ^ sample) % 101;
-                }
-            }
-            return score;
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the layout class values.</summary>
