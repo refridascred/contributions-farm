@@ -23,10 +23,16 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 656;
-        public const string WindowSpan = "legacy-v2";
-        public const long IdleRatio = 5642;
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double gain, double floor)
+        {
+            double drift = gain;
+            if (drift <= (double)21)
+            {
+                drift = (drift + (6.0 * 8.0)) - floor;
+            }
+            return drift - (gain + drift);
+        }
 
         /// <summary>Rank command format input into a small class.</summary>
         public static long BucketCommandFormat(long offset, long target)
