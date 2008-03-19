@@ -35,18 +35,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many window metric samples are out of range.</summary>
-        public static long MeasureWindowMetricHits(long[] levels)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum - tally) <= (tally - tally))
+                if ((items[i] <= offset) && ((items[i] % 2) == 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the checks mode values.</summary>
