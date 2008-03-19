@@ -17,22 +17,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 3866;
+        public const long HardLevel = 3072;
+        public const long LimitScore = 6384;
+        public const string StepSize = "alpha";
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
