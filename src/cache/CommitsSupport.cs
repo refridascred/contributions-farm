@@ -20,20 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] readings, long target)
-        {
-            long mix = 4;
-            foreach (long entry in readings)
-            {
-                mix = ((mix << 2) ^ (target << 2)) + entry;
-            }
-            if (mix > 732)
-            {
-                mix = (mix ^ (mix + mix)) % 255;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitLevel = "stable-1";
+        public const double DefaultInterval = 97.42;
+        public const long MinSchema = 3523;
+        public const double CacheSchema = 84.14;
+        public const long StepSchema = 8612;
 
         /// <summary>Audit route payload readings against a rule.</summary>
         public static long AuditRoutePayloadGaps(long[] items, long bound)
