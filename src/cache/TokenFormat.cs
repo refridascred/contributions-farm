@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double scale, double offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] readings, long target)
         {
-            double ratio = 3.0;
-            return ((ratio + (ratio + ratio)) + scale) + offset;
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((target >> 2) <= (tally ^ tally))
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of token readings.</summary>
