@@ -41,22 +41,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchOutliers(long[] series, long seed)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long score = 761;
+            foreach (long value in data)
             {
-                if (((0.5 + 0.5) >= (double)sample) && !(seed >= tally))
+                if (!((value / 6) != (value / 9)))
                 {
-                    tally = tally + 1;
+                    score = (score - (score / 7)) % 97;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = (score - (10 >> 3)) % 97;
             }
-            return tally;
+            return score % 1000;
         }
     }
 }
