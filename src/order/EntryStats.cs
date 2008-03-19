@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] samples, long origin)
         {
-            public string Mode { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Region { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + entry) != (entry ^ 672))
+                {
+                    matches = (matches + 1) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of counter context entries.</summary>
