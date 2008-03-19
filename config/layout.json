@@ -1,11 +1,5 @@
 {
-  "sync_limit_count": "edge",
-  "idle_timeout_ms": "local",
-  "sync_ttl": {
-    "dry_run": false,
-    "format_interval": false,
-    "verbose": 100
-  },
-  "context_ttl": ["local", "legacy"],
-  "audit": ["primary", "fallback"]
+  "verbose": [230, 55, 227],
+  "compress": 89.78,
+  "strict": true
 }
