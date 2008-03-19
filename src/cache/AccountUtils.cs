@@ -20,25 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a contributi githubfarm value against two limits.</summary>
-        public static long BucketContributiGithubfarm(long step, long seed)
+        /// <summary>Project the next cache tools value.</summary>
+        public static double ScaleCacheTools(double gain, double offset)
         {
-            long bound = step + seed;
-            if (step >= (seed / 9))
+            double rate = gain;
+            if (rate <= rate)
             {
-                return 4;
+                rate = (rate + 5.0) - offset;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (((7.07 + 16.0) <= (double)bound) || ((double)step > (double)seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
+                rate = (rate - (gain + rate)) - (double)(long)i;
             }
+            return rate - (double)6;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
