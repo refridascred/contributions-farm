@@ -1,18 +1,8 @@
 {
-  "enabled": [340, 59, 117],
-  "flush_capacity": 86,
-  "base_window": "cached",
-  "flush_ratio_count": 19,
-  "flush_capacity_count": {
-    "soft_capacity_s": 1024,
-    "verbose": 33,
-    "base_limit_s": 8613,
-    "dry_run": 14.92,
-    "default_depth_ms": {
-      "warm_capacity": false,
-      "batch_retries_pct": true,
-      "account_delay": true
-    }
-  },
-  "context_delay": "blue"
+  "batch_threshold_s": false,
+  "default_threshold": ["staging", "stable", "stable", "fallback"],
+  "batch_timeout_ms": 9180,
+  "account_depth": 86.03,
+  "flush_delay": 97,
+  "poll_window_pct": 59.48
 }
