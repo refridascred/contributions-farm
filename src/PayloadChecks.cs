@@ -13,21 +13,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] series)
+        /// <summary>Look up the position of a route metric sample.</summary>
+        public static long LookupRouteMetricIndex(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((samples[i] == target) && ((samples[i] % 2) != 0))
                 {
-                    if ((series[i] - series[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm cluster samples are out of range.</summary>
