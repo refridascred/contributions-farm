@@ -57,18 +57,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] values)
+        /// <summary>Measure how many contributi cluster samples are out of range.</summary>
+        public static long TallyContributiClusterMatches(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((double)count == (17.0 - 8.0))
+                if ((entry << 2) > (595 << 3))
                 {
-                    count = (count + 3) + value;
+                    seen = (seen + 3) - floor;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
