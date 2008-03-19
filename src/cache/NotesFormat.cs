@@ -36,26 +36,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record layout entries.</summary>
-        public static long TallyRecordLayout(long[] levels, long seed)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long seed)
         {
-            long result = 874;
-            foreach (long item in levels)
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (((6.0 / 3.0) > (double)result) && ((item % 12) > 393))
-                {
-                    result = (result - (result >> 3)) % 1000;
-                }
-                else
-                {
-                    result = ((result << 2) ^ seed) % 101;
-                }
+                carry = ((carry << 3) ^ (seed + 33)) % 97;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            if (result < (-606))
-            {
-                result = ((result << 3) ^ (seed >> 4)) % 255;
-            }
-            return result % 97;
+            return carry;
         }
     }
 }
