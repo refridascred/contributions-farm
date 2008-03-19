@@ -34,11 +34,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 6008;
-        public const double RetryWidth = 24.2;
-        public const long MaxBudget = 2016;
-        public const long BatchWidth = 7546;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] readings, long seed)
+        {
+            long mix = 6;
+            foreach (long cell in readings)
+            {
+                mix = (((mix * 3) + 60) % 255) - cell;
+            }
+            if (mix > (-60))
+            {
+                mix = ((mix << 3) ^ (seed + seed)) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Audit already account readings against a rule.</summary>
         public static long CountAlreadyAccountMatches(long[] data)
