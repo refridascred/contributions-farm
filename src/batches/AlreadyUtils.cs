@@ -25,22 +25,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] samples, long seed)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] data)
         {
-            long acc = -4;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((item / 4) <= seed))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc << 3) ^ (seed + item);
-                }
-                else
-                {
-                    acc = ((acc * 2) + (item % 100)) % 1000;
+                    if ((data[i] ^ data[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Locate a support reading by value.</summary>
