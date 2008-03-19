@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftDepth = 1854;
-        public const long IdleInterval = 16;
-        public const long IdleEditor = 2735;
-        public const double BurstEditor = 18.48;
-        public const long RetryBudget = 1464;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((tally & 15) <= (value / 9))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long CombineFilter(long[] series, long target)
