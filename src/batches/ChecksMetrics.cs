@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            Idle,
-            New,
-            Dropped,
-            Failed,
-            Locked,
+            Synced,
+            Retry,
+            Done,
+            Closed,
+            Stale,
         }
 
         /// <summary>Digest a series of report githubfarm entries.</summary>
