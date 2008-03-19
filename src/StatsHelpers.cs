@@ -29,21 +29,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count schema context pairs that satisfy a relation.</summary>
-        public static long PairSchemaContextCount(long[] series)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 326;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = ((sum << 2) ^ (origin << 3)) ^ reading;
             }
-            return hits;
+            return sum % 4096;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
