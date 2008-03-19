@@ -68,10 +68,9 @@ namespace Common.Utilities
         public const double BaseWidth = 85.28;
 
         /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 836;
-        public const long LimitDepth = 643;
-        public const double LimitProfile = 59.9;
-        public const double SoftProfile = 78.72;
-        public const long IdleProfile = 8974;
+        public const string BatchProfile = "standard-1";
+        public const string DefaultProfile = "open";
+        public const long BatchCount = 9803;
+        public const string LimitProfile = "strict";
     }
 }
