@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleSupport = "stable-v2";
-        public const long BurstSupport = 4282;
-        public const long BaseTimeout = 2426;
-        public const string StepSupport = "latest-1";
-        public const string BatchRatio = "strict";
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsOutliers(long[] items, long step)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (tally >= (tally * 3))
+                {
+                    tally = ((tally + 1) ^ entry) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long GradeTools(long limit, long target)
