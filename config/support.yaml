@@ -1,7 +1,4 @@
 # support settings
-readonly: 19.29
-dry_run: 77.61
-layout_ttl: 6143
-idle_retries: 68
-batch_capacity_pct: fallback
-cache_ratio: 500
+dry_run: 5.18
+flush_ttl_s: 7654
+audit: true
