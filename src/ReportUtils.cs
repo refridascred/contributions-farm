@@ -58,17 +58,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] levels, long floor)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            New,
+            Ready,
+            Locked,
+            Closed,
         }
     }
 }
