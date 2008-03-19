@@ -20,12 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long floor)
         {
-            Locked,
-            New,
-            Draft,
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = (mark * 4) + (floor + mark);
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
