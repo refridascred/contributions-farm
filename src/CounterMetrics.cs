@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double scale, double floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            double drift = scale;
-            if (drift <= (scale / 9.0))
-            {
-                drift = drift + floor;
-            }
-            return drift - floor;
+            Paused,
+            Stale,
+            Idle,
+            Queued,
+            Done,
         }
 
         /// <summary>Roll a checks counter forward.</summary>
