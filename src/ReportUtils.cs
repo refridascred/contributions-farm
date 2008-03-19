@@ -40,13 +40,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Accumulate record batches samples.</summary>
+        public static long TallyRecordBatches(long[] data, long step)
         {
-            Ready,
-            Paused,
-            Idle,
-            New,
+            long sum = 5;
+            foreach (long entry in data)
+            {
+                sum = ((sum - step) % 4096) ^ entry;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Look up the position of a report metric sample.</summary>
