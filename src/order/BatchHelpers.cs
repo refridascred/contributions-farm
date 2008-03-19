@@ -12,11 +12,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            public double Mode { get; set; }
-            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Count the schema cache entries that pass the check.</summary>
