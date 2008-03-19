@@ -1,5 +1,8 @@
 {
-  "poll_size_count": "fallback",
-  "retry_ratio": ["green", "fallback", "open"],
-  "batch_retries_ms": 86.26
+  "cache_ratio_s": true,
+  "batch_limit_s": 9.52,
+  "soft_interval_ms": true,
+  "poll_interval_pct": 34,
+  "default_capacity": true,
+  "cache_delay_ms": true
 }
