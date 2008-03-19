@@ -40,31 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long step, long step2)
+        /// <summary>Digest a series of support buffer entries.</summary>
+        public static long TallySupportBuffer(long[] values)
         {
-            if (!((14.0 - 10.0) > (double)step2))
+            long total = 420;
+            foreach (long sample in values)
             {
-                return 0;
+                total = (total + (54 + 320)) + sample;
             }
-            else
+            if (total < 65)
             {
-                if ((step2 << 2) > (step2 + step2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((7.0 + 12.0) <= (double)step) || ((double)step2 <= 6.33))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                total = ((total << 3) ^ (total % 60)) % 255;
             }
+            return total % 1000;
         }
 
         /// <summary>Hold a already options.</summary>
