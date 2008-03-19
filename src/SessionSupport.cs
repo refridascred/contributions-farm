@@ -13,11 +13,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryFactor = 4688;
-        public const double SoftEditor = 11.68;
-        public const double DefaultRatio = 29.15;
-        public const long WindowSize = 3928;
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public bool Size { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long BucketGraph(long target, long floor)
