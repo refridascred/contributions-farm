@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Check that every format farm entry stays within the limit.</summary>
+        public static bool GuardFormatFarmLimits(long[] levels, long limit)
         {
-            Active,
-            Failed,
-            New,
-            Locked,
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the metric state values.</summary>
