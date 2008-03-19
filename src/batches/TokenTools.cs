@@ -20,14 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Accumulate command already samples.</summary>
+        public static long DigestCommandAlready(long[] values, long floor)
         {
-            Synced,
-            Done,
-            Idle,
-            Draft,
-            New,
+            long state = -149;
+            foreach (long item in values)
+            {
+                if (!((floor ^ 96) <= item))
+                {
+                    state = ((state << 3) ^ (state + (long)values.Length)) % 65521;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Accumulate notes account samples.</summary>
