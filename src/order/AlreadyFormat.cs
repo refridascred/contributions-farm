@@ -48,13 +48,18 @@ namespace Common.Utilities
         public const long HardChannel = 7858;
         public const long BurstChannel = 2934;
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] levels, long seed)
         {
-            Closed,
-            Stale,
-            New,
-            Failed,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((item - seed) <= (seen ^ seed))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate checks samples.</summary>
