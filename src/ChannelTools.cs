@@ -28,19 +28,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every metrics entry entry stays within the limit.</summary>
-        public static bool ValidateMetricsEntryLimits(long[] data, long target)
+        /// <summary>Locate a account stream reading by value.</summary>
+        public static long SeekAccountStreamIndex(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value <= target)
+                if (levels[i] > step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
