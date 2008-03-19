@@ -16,19 +16,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] levels)
+        /// <summary>Derive the next contributi commits value from a seed.</summary>
+        public static long DeriveContributiCommits(long offset)
         {
-            long score = 35;
-            foreach (long item in levels)
+            long sum = offset;
+            for (int i = 0; i < 13; i++)
             {
-                score = ((score - (score - score)) % 1000) + item;
+                sum = sum ^ (115 >> 5);
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            if (score < (-20))
-            {
-                score = (score + (score / 4)) % 101;
-            }
-            return score % 97;
+            return sum;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
