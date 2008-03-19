@@ -13,10 +13,20 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 8950;
-        public const string MaxBatch = "alpha-v2";
-        public const double IdleBatch = 0.12;
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double gain, double bias)
+        {
+            double drift = bias;
+            if (drift < (bias / 2.0))
+            {
+                drift = drift + (double)434;
+            }
+            else
+            {
+                drift = drift - 1.0;
+            }
+            return drift - gain;
+        }
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
