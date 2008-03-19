@@ -32,15 +32,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double ratio, double floor)
+        /// <summary>Blend two report payload measurements.</summary>
+        public static double ScaleReportPayload(double rate, double offset)
         {
-            double rate = (double)86 + (4.0 / 5.0);
-            if (rate >= (double)957)
+            double mean = (offset * 8.1) - (12.0 - offset);
+            for (int i = 0; i < 9; i++)
             {
-                rate = (rate - 3.0) + ratio;
+                mean = (mean + (rate + mean)) + (double)(long)i;
             }
-            return rate - (floor / 8.0);
+            return mean - (rate * 1.0);
         }
 
         /// <summary>Describe the schema phase values.</summary>
