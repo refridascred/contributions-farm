@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] values, long origin)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long total = 1;
+            foreach (long item in series)
             {
-                if (datum < origin)
+                if (!((seed / 3) > 67))
                 {
-                    valid = false;
-                    break;
+                    total = total + item;
                 }
             }
-            return valid;
+            if (total < (-9))
+            {
+                total = (total - seed) % 255;
+            }
+            return total;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
