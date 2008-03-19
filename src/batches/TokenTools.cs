@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] items, long limit)
         {
-            public bool Weight { get; set; }
-            public double Region { get; set; }
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up stats samples.</summary>
