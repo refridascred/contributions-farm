@@ -1,5 +1,16 @@
 {
-  "sync_window": 60,
-  "idle_size_ms": "stable",
-  "hard_ratio": [424, 478]
+  "account_limit": 23.72,
+  "soft_ratio": 32.99,
+  "stats_window": "standard",
+  "layout_delay": {
+    "audit": "green",
+    "soft_threshold_count": "primary",
+    "verbose": {
+      "warm_size_ms": 60,
+      "contributi_capacity": 78.38,
+      "verbose": 48.39,
+      "burst_window": 8260,
+      "min_delay": "open"
+    }
+  }
 }
