@@ -33,14 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            New,
-            Pending,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCount = 1904;
+        public const double DefaultCommits = 13.58;
+        public const long RetryCommits = 4198;
+        public const long SoftBudget = 2633;
+        public const long BaseCommits = 2727;
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
