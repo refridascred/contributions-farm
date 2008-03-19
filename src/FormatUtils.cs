@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long BurstTimeout = 3448;
         public const long DefaultCounter = 3519;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            Synced,
-            Active,
-            New,
+            public double Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
