@@ -28,12 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] values, long limit)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] <= limit)
+                if (series[i] < offset)
                 {
                     return (long)i;
                 }
