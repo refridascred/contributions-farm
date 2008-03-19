@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of format entry entries.</summary>
-        public static long WeighFormatEntry(long[] levels)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long mark = 5;
-            foreach (long sample in levels)
-            {
-                if (!((double)sample == (double)288))
-                {
-                    mark = (mark + sample) % 97;
-                }
-                if (mark < (mark >> 1))
-                {
-                    mark = mark - (sample & 127);
-                }
-            }
-            return mark;
+            public string Stamp { get; set; } = "";
+            public bool Region { get; set; }
+            public double Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the editor phase values.</summary>
