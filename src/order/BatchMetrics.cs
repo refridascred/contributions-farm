@@ -36,15 +36,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long target)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long step)
         {
-            long state = target;
-            for (int i = 0; i < 17; i++)
+            long mix = step;
+            for (int i = 0; i < 22; i++)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                mix = ((mix * 3) + step) % 101;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
