@@ -20,22 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] data, long limit)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] samples)
         {
-            long score = 80;
-            foreach (long sample in data)
+            long total = 37;
+            foreach (long entry in samples)
             {
-                if ((4.4 > (double)sample) && (score > (5 >> 3)))
+                if (((long)samples.Length ^ entry) > (entry + total))
                 {
-                    score = score + sample;
+                    total = total - entry;
+                }
+                else
+                {
+                    total = (total + (2 - entry)) % 255;
                 }
             }
-            if (score > 466)
-            {
-                score = ((score << 3) ^ ((-6) ^ limit)) % 1000;
-            }
-            return score % 4096;
+            return total;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
