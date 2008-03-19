@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const long RetryCount = 8031;
         public const long SoftSpan = 1880;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] series, long floor)
-        {
-            long mix = 3;
-            foreach (long cell in series)
-            {
-                mix = mix ^ (mix + cell);
-            }
-            if (mix > 58)
-            {
-                mix = (mix - (floor - floor)) % 255;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 8457;
+        public const double SoftCounter = 50.58;
+        public const long HardCounter = 8695;
+        public const long StepCounter = 9616;
 
         /// <summary>Derive the next cache report value from a seed.</summary>
         public static long DeriveCacheReport(long floor)
