@@ -1,11 +1,19 @@
 {
-  "notes_retries": "legacy",
-  "warm_ttl_pct": "staging",
-  "persist": {
-    "readonly": 6116,
-    "warm_retries_ms": "stable",
-    "dry_run": "blue",
-    "verbose": "primary",
-    "default_threshold_pct": "primary"
+  "window_ttl": [72, 437, 461],
+  "sync_ratio_s": "open",
+  "base_depth_pct": [455, 418, 442, 498],
+  "hard_threshold": 60,
+  "retry_ttl_ms": false,
+  "flush_ratio_s": {
+    "retry_threshold_count": "staging",
+    "cache_size_pct": 500,
+    "account_depth": "local",
+    "enabled": {
+      "batch_window_count": 52,
+      "command_interval": [367, 276, 312, 478],
+      "hard_ttl": false,
+      "schema_threshold": ["staging", "green", "green"]
+    },
+    "window_delay": 57
   }
 }
