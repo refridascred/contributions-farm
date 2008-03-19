@@ -56,25 +56,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long seed, long target)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] series)
         {
-            long next = seed + target;
-            if ((double)seed <= (8.9 - 6.51))
+            long hits = 0;
+            foreach (long entry in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((next + next) >= (seed * 2))
+                if ((hits - entry) <= (entry + entry))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a cluster record.</summary>
