@@ -34,16 +34,21 @@ namespace Common.Utilities
         public const double LimitAccount = 14.8;
         public const double MinTimeout = 83.15;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long origin)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] samples)
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = total - origin;
-                total = ((total * 5) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
