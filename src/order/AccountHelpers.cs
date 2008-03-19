@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] series)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Active,
+            Stale,
+            Closed,
+            Idle,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
