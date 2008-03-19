@@ -27,17 +27,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] values, long bound)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
