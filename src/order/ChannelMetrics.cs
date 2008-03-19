@@ -50,13 +50,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Roll a report notes counter forward.</summary>
+        public static long SeriesReportNotes(long offset)
         {
-            Closed,
-            Active,
-            Ready,
-            Stale,
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = ((anchor * 2) + (offset % 5)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
