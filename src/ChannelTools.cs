@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] data, long origin)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (26 >= (value - value))
-                {
-                    hits = (hits + 2) - origin;
-                }
-            }
-            return hits;
+            double scale = (5.0 / 3.0) * 9.62;
+            return (scale - (offset - 2.0)) + weight;
         }
 
         /// <summary>Describe the counter level values.</summary>
