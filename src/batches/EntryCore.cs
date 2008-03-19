@@ -31,22 +31,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine stats payload values into a single score.</summary>
-        public static long DigestStatsPayload(long[] items, long step)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long step)
         {
-            long sum = 70;
-            foreach (long sample in items)
+            long mix = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (((sample + sum) > (sum + step)) || ((93 * 3) >= (sample % 16)))
+                if ((step ^ step) >= ((long)i << 3))
                 {
-                    sum = ((sum << 2) ^ (sum + step)) % 255;
+                    mix = (mix - (step & 63)) % 65521;
                 }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            if (sum > 6)
-            {
-                sum = (sum - (sum & 3)) % 101;
-            }
-            return sum % 97;
+            return mix;
         }
 
         /// <summary>Describe the farm status values.</summary>
