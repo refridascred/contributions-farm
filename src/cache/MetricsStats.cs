@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public double Total { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 25;
+        public const long DefaultGithubfarm = 4925;
+        public const long SoftInterval = 7058;
+        public const long StepGithubfarm = 9153;
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long RollFarm(long limit)
