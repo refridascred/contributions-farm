@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Paused,
-            Synced,
-            Idle,
             Active,
+            Idle,
+            Paused,
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
