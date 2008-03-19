@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxSchema = 45.52;
-        public const long RetryInterval = 54;
-        public const long BaseSpan = 8605;
-        public const string BurstSchema = "primary-edge";
-        public const long CacheSchema = 6810;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Stale,
+            New,
+            Locked,
+        }
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long PairGraphCount(long[] series)
