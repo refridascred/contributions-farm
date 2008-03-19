@@ -13,12 +13,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long seed)
         {
-            public bool Size { get; set; }
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
+            long total = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
