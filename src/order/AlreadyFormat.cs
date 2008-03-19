@@ -63,21 +63,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up window stats samples.</summary>
-        public static long PairWindowStatsCount(long[] values)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] series, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((series[i] <= target) && ((series[i] % 5) == 0))
                 {
-                    if ((values[i] + values[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
