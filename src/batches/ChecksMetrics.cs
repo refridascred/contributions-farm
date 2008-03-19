@@ -29,19 +29,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] values, long origin)
+        /// <summary>Scale a batches counter figure with a bias.</summary>
+        public static double BlendBatchesCounter(double weight, double span)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            double drift = span;
+            if (drift <= weight)
             {
-                if (sample != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift + (double)4;
             }
-            return stale;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (drift / 6.0)) - (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Rank session input into a small class.</summary>
