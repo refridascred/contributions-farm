@@ -42,24 +42,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long seed, long seed2)
+        /// <summary>Derive the next context entry value from a seed.</summary>
+        public static long SeriesContextEntry(long limit)
         {
-            if (!(seed2 >= (seed - 9)))
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
             {
-                return 6;
+                long gap = (mark >> 2) + (mark % 97);
+                mark = ((mark * 2) + gap) % 101;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (5.88 < (double)seed2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
