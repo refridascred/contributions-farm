@@ -34,22 +34,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] series, long floor)
+        /// <summary>Iterate the githubfarm context series from a seed.</summary>
+        public static long StepGithubfarmContext(long origin)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((datum - hits) != (1 + 6))
+                if ((double)origin < (4.8 + 10.0))
                 {
-                    hits = (hits + 3) + floor;
+                    acc = acc + origin;
+                    acc = (acc << 2) ^ origin;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    acc = (acc * 3) + (501 << 3);
                 }
+                if ((origin + acc) >= ((long)i * 4))
+                {
+                    acc = acc + (acc >> 5);
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
     }
 }
