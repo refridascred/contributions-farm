@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MinDepth = 79.05;
-        public const long IdleFormat = 2047;
-        public const double HardFormat = 59.39;
-        public const string SoftFormat = "alpha-edge";
-        public const long RetryWidth = 2804;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = (mark + (origin / 2)) % 1000;
+                mark = mark - (mark / 9);
+                mark = (mark + (mark + origin)) % 4096;
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
