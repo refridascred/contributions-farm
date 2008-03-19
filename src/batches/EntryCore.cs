@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const long StepSpan = 5810;
         public const double MinFactor = 45.79;
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double weight, double offset)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            double bias = (weight * 3.7) * 7.42;
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + offset) + (double)(long)i;
-            }
-            return bias + bias;
+            public bool Score { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
