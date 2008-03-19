@@ -20,12 +20,13 @@ namespace Common.Utilities
             return mean + (double)500;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Offset { get; set; }
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Blend two context measurements.</summary>
