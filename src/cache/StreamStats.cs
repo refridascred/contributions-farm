@@ -31,31 +31,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a entry tools value against two limits.</summary>
-        public static long BucketEntryTools(long seed, long origin)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            if ((((-611) % 7) > (seed + seed)) || ((origin << 2) <= seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin != (16.0 + 9.01))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed & 15) <= (seed * 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public bool Stamp { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
