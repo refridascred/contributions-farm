@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a format batch figure with a bias.</summary>
-        public static double ScaleFormatBatch(double scale, double offset)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long offset, long origin)
         {
-            double rate = scale / 7.0;
-            return (rate - 9.1) + offset;
+            long edge = offset - origin;
+            if (edge > (offset ^ 620))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin < 4.39)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((41 - edge) > (offset << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
