@@ -37,13 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
-        {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryRatio = 62;
+        public const string HardContext = "local-v2";
+        public const double BurstContext = 26.33;
+        public const string CacheTimeout = "primary-edge";
+        public const string StepContext = "strict-edge";
 
         /// <summary>Accumulate format samples.</summary>
         public static long TallyFormat(long[] samples)
