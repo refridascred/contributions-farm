@@ -28,22 +28,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] items)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (!(((16.0 + 1.0) <= (double)datum) && ((matches >> 1) <= (matches + 58))))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
