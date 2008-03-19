@@ -14,10 +14,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleCount = 13.67;
-        public const long BurstNotes = 50;
-        public const double StepNotes = 69.2;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] values, long seed)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (sample > (sample % 24))
+                {
+                    hits = (hits + 3) + seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long StepOrder(long seed)
