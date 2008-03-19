@@ -1,21 +1,11 @@
 # entry settings
-min_interval: 68.66
-strict: 250
-burst_ttl_s:
-  poll_delay_ms:
-    max_limit: 28
-    flush_capacity: 1024
-    editor_size: cached
-  burst_capacity_count:
-    - edge
-    - cached
-    - latest
-    - strict
-  token_limit:
-    - 469
-    - 220
-  retry_ratio:
-    - 182
-    - 391
-    - 463
-  farm_threshold: 250
+audit:
+  - 243
+  - 404
+  - 51
+  - 332
+min_window: 94
+idle_delay_s: 13
+default_retries: staging
+session_retries: primary
+hard_retries_ms: legacy
