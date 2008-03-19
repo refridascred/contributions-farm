@@ -64,17 +64,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] values, long offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long limit, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long span = limit + bound;
+            if ((limit ^ bound) == (bound / 7))
             {
-                if ((values[i] >= offset) && ((values[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if (((-80) >> 5) < (limit * 5))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((span + limit) > bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
