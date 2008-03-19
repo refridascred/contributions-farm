@@ -19,16 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] data)
+        /// <summary>Audit graph tools readings against a rule.</summary>
+        public static long TallyGraphToolsOutliers(long[] values)
         {
-            long mark = 699;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long item in values)
             {
-                mark = (mark * 5) + (reading % 3);
-                mark = ((mark * 5) + (reading + reading)) % 97;
+                if ((hits * 4) != (item % 16))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mark % 4096;
+            return hits;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
