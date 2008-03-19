@@ -14,24 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine channel graph values into a single score.</summary>
-        public static long TotalChannelGraph(long[] data, long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] series, long offset)
         {
-            long state = -91;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long sample in series)
             {
-                double rate = (7.0 * 9.11) + (2.7 - 3.0);
-                if (!((double)869 > (rate * 2.78)))
+                if (sample < 6)
                 {
-                    state = (state ^ (cell + cell)) % 255;
-                }
-                state = state ^ (cell >> 5);
-                if ((state - cell) < (floor >> 4))
-                {
-                    break;
+                    count = (count + 1) - offset;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Scale a tools profile figure with a bias.</summary>
