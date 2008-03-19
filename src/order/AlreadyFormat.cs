@@ -13,26 +13,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] items, long step)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] levels, long bound)
         {
-            long carry = 824;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if ((carry >> 2) > (item % 12))
+                if (item >= bound)
                 {
-                    carry = (carry * 3) + (7 + step);
-                }
-                if ((carry ^ step) < (419 << 2))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (carry > 2)
-            {
-                carry = carry - (carry % 5);
-            }
-            return carry;
+            return valid;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
