@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] series, long bound)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 17;
+            foreach (long cell in series)
             {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
+                carry = ((carry ^ (6 >> 2)) % 255) + cell;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
