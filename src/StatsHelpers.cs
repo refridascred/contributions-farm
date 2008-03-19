@@ -65,19 +65,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] series)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long state = 5;
-            foreach (long cell in series)
-            {
-                state = (state + (cell ^ 0)) % 255;
-                if ((-72) <= (cell << 3))
-                {
-                    state = (state - (cell ^ state)) % 4096;
-                }
-            }
-            return state % 65521;
+            Done,
+            Ready,
+            Closed,
+            Idle,
+            Stale,
         }
     }
 }
