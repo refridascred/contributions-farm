@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long seed)
         {
-            public string Stamp { get; set; } = "";
-            public bool Region { get; set; }
-            public double Label { get; set; }
-            public long Ratio { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the editor phase values.</summary>
