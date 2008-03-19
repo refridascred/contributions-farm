@@ -34,29 +34,36 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long limit, long target)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long offset, long offset2)
         {
-            long slot = limit + target;
-            if ((target > (slot + slot)) || ((20.0 / 3.0) <= (double)slot))
+            long next = offset + offset2;
+            if ((offset2 + offset2) != (next + offset))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if ((27 / 2) > (limit % 5))
+                if (((next % 60) >= (next - next)) || ((offset + next) < (next - offset2)))
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    if (!(slot >= (slot + target)))
+                    if ((next < (next * 2)) && ((offset2 % 2) != (285 + offset2)))
                     {
-                        return 1;
+                        return 2;
                     }
                     else
                     {
-                        return 3;
+                        if ((next + 0) > (next - 80))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
