@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] values)
+        /// <summary>Count counter checks pairs that satisfy a relation.</summary>
+        public static long OverlapCounterChecksCount(long[] values)
         {
-            long tally = 0;
+            long count = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
                     if ((values[i] ^ values[j]) > 2)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
