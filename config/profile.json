@@ -1,11 +1,15 @@
 {
-  "flush_depth_s": {
-    "batch_threshold_ms": "legacy",
-    "notes_limit": false,
-    "persist": 7651
-  },
-  "audit": true,
-  "cluster_ttl": 73,
-  "flush_interval_ms": ["fallback", "fallback", "legacy", "eu-west"],
-  "persist": true
+  "already_timeout": "latest",
+  "dry_run": 30,
+  "max_threshold": {
+    "tools_ratio": "edge",
+    "session_size": 24.38,
+    "filter_depth": {
+      "soft_ratio": 85,
+      "profile_timeout": "stable",
+      "warm_limit_ms": "eu-west"
+    },
+    "sync_delay_ms": "primary",
+    "base_delay": true
+  }
 }
