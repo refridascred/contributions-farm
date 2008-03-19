@@ -20,10 +20,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 3229;
-        public const long BatchBudget = 317;
-        public const string MaxBudget = "open";
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Combine route schema values into a single score.</summary>
         public static long CombineRouteSchema(long[] samples)
