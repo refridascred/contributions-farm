@@ -61,18 +61,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] data)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((seen + (long)data.Length) <= cell)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Idle,
+            Queued,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
