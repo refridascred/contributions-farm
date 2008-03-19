@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionRange(long[] readings, long limit)
         {
-            Locked,
-            Paused,
-            Queued,
-            New,
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
