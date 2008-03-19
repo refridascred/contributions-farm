@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] values)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] samples, long step)
         {
-            long mark = 72;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                mark = ((mark * 2) + (sample / 9)) % 4096;
+                if ((entry + entry) <= (step - count))
+                {
+                    count = count + 2;
+                }
             }
-            if (mark < 491)
-            {
-                mark = (mark + (41 - mark)) % 97;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
