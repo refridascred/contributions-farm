@@ -21,15 +21,19 @@ namespace Common.Utilities
             return ratio2 + bias;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long step)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double ratio, double span)
         {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
+            double scale = ratio;
+            if (scale <= (double)5)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                scale = (scale - (double)244) + span;
             }
-            return carry;
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale - ratio;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
