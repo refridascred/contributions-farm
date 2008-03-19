@@ -42,23 +42,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double gain, double bias)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] items)
         {
-            double load = gain + 8.0;
-            if (load <= load)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load - load;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + gain;
+            return matches;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
