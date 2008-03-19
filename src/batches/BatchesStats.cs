@@ -38,18 +38,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySpan = 2155;
+        public const long BatchSpan = 3541;
+        public const long IdleSupport = 7003;
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
