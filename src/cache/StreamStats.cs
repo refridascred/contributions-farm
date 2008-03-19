@@ -30,15 +30,18 @@ namespace Common.Utilities
         public const long MaxSpan = 811;
         public const long DefaultFarm = 1765;
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] readings)
         {
-            long mark = target;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                if (item <= (item * 3))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
