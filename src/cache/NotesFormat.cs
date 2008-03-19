@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] data, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 5;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = (total + (floor - reading)) % 101;
             }
-            return hits;
+            return total % 65521;
         }
 
         /// <summary>Match up context samples.</summary>
