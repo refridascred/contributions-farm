@@ -32,24 +32,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank channel account input into a small class.</summary>
-        public static long SortChannelAccount(long origin, long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] values)
         {
-            if ((origin - origin) == (step * 2))
+            long acc = 64;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin <= (origin ^ origin))
+                if ((value >> 1) >= value)
                 {
-                    return 1;
+                    acc = acc + (value + acc);
                 }
-                else
+                if (value >= (acc % 8))
                 {
-                    return 0;
+                    acc = ((acc * 5) + (value + acc)) % 97;
                 }
             }
+            return acc % 4096;
         }
     }
 }
