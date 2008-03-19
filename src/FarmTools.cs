@@ -26,14 +26,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] readings)
         {
-            Active,
-            Pending,
-            New,
-            Retry,
-            Ready,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (!(((entry / 2) > entry) && ((matches << 2) <= (matches ^ entry))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
