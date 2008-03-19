@@ -19,12 +19,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
-            public double Ratio { get; set; }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
+            public bool Owner { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
