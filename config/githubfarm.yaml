@@ -1,8 +1,17 @@
 # githubfarm settings
-default_size_count: 78.72
-retry_interval_pct: false
-compress: blue
-queue_timeout: 1024
-audit:
-  - staging
-  - open
+schema_limit:
+  - edge
+  - stable
+route_window:
+  buffer_window: primary
+  default_delay_s: 58
+  default_limit:
+    - 38
+    - 163
+    - 374
+  sync_size_ms: true
+burst_interval:
+  - 62
+  - 453
+buffer_retries: eu-west
+soft_interval: true
