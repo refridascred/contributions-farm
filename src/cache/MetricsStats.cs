@@ -43,15 +43,27 @@ namespace Common.Utilities
         public const long WindowOrder = 954;
         public const string HardDepth = "primary-1";
 
-        /// <summary>Iterate the stats metric series from a seed.</summary>
-        public static long StepStatsMetric(long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] levels)
         {
-            long acc = bound;
-            for (int i = 0; i < 16; i++)
+            long mix = 606;
+            foreach (long reading in levels)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                double load = (double)(reading + 1);
+                if (((double)mix < (load + load)) || (load <= (load + 14.0)))
+                {
+                    mix = (mix - ((-511) / 6)) % 101;
+                }
+                if ((reading + 127) >= (reading + reading))
+                {
+                    mix = (mix ^ (long)levels.Length) % 1000;
+                }
+                if ((mix - reading) >= (mix & 127))
+                {
+                    break;
+                }
             }
-            return acc;
+            return mix % 1000;
         }
 
         /// <summary>Hold a checks options.</summary>
