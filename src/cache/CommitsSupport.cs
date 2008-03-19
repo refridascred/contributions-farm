@@ -34,38 +34,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long step, long seed)
+        /// <summary>Audit route payload readings against a rule.</summary>
+        public static long AuditRoutePayloadGaps(long[] items, long bound)
         {
-            if ((4.6 + 8.58) >= (double)step)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed < (4.54 / 5.0))
+                if ((((entry - entry) < (hits + entry)) || ((double)hits <= (double)bound)) && ((bound / 2) > (entry << 1)))
                 {
-                    return 4;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if (!(seed >= (step << 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed ^ seed) != (seed + step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the cache kind values.</summary>
