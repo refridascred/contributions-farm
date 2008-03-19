@@ -55,19 +55,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] items, long offset)
-        {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitTimeout = 9167;
+        public const double SoftTimeout = 59.89;
+        public const long StepScore = 4639;
     }
 }
