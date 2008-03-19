@@ -36,24 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long origin, long offset)
+        /// <summary>Count the channel stats entries that pass the check.</summary>
+        public static long MeasureChannelStatsGaps(long[] items)
         {
-            if ((6.9 + 9.5) > (double)origin)
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin >= offset)
+                if ((7.0 / 4.0) < (double)value)
                 {
-                    return 1;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    return 2;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
