@@ -20,12 +20,15 @@ namespace Common.Utilities
             return drift - ratio;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] levels)
         {
-            public long Flag { get; set; }
-            public double Token { get; set; }
-            public long Offset { get; set; }
+            long mix = -630;
+            foreach (long item in levels)
+            {
+                mix = (mix ^ (mix + mix)) ^ item;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
