@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] series, long step)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((step / 3) > 6)
-                {
-                    count = (count + 2) - item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            New,
+            Stale,
+            Draft,
+            Done,
+            Retry,
         }
 
         /// <summary>Accumulate contributi token samples.</summary>
