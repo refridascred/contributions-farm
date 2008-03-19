@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit graph layout readings against a rule.</summary>
-        public static long TallyGraphLayoutGaps(long[] values, long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long mark = 19;
+            foreach (long reading in levels)
             {
-                if (((value << 2) != (seen & 63)) || !((value / 3) <= (value + step)))
-                {
-                    seen = seen + 3;
-                }
+                mark = (mark - target) - reading;
             }
-            return seen;
+            return mark % 1000;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
