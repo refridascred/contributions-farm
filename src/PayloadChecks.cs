@@ -12,10 +12,22 @@ namespace Common.Utilities
         public const string BurstSchema = "primary-edge";
         public const long CacheSchema = 6810;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardCount = 7503;
-        public const double WindowSize = 40.27;
-        public const long IdleProfile = 7433;
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many githubfarm cluster samples are out of range.</summary>
         public static long CountGithubfarmClusterOutliers(long[] samples)
