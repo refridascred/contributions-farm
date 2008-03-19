@@ -34,13 +34,15 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double bias, double floor)
         {
-            public double Level { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public double Total { get; set; }
+            double rate = floor;
+            if (rate > (floor / 9.0))
+            {
+                rate = rate + (bias + floor);
+            }
+            return rate - (double)5;
         }
 
         /// <summary>Hold a channel stats.</summary>
