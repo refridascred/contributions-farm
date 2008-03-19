@@ -19,12 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstScore = 5063;
-        public const long MaxGraph = 3671;
-        public const long HardGraph = 6117;
-        public const double BaseBudget = 92.77;
-        public const long RetryGraph = 1835;
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long MeasureCommitsMatches(long[] levels)
