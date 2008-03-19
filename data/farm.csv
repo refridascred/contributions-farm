@@ -1,10 +1,7 @@
-id,active,weight,token
-1,50.07,17.34,62.61
-2,603,887,453
-3,532,fallback,88.32
-4,26.53,73.78,15.81
-5,green,eu-west,66.68
-6,green,40.47,35.11
-7,latest,784,524
-8,23.76,19.97,54.19
-9,staging,829,63.15
+id,active,rank,weight
+1,latest,345,15.1
+2,strict,blue,blue
+3,80.79,906,12.64
+4,287,blue,353
+5,976,legacy,102
+6,fallback,367,latest
