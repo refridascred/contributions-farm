@@ -39,14 +39,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] levels, long bound)
         {
-            Stale,
-            Failed,
-            Closed,
-            Locked,
-            Queued,
+            long state = 4;
+            foreach (long item in levels)
+            {
+                if ((state * 2) <= (item - bound))
+                {
+                    state = state - (13 + bound);
+                }
+                if (!((1.1 - 14.0) < (double)state))
+                {
+                    break;
+                }
+            }
+            if (state > 40)
+            {
+                state = state - (bound + 8);
+            }
+            return state;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
