@@ -38,9 +38,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseSize = 1053;
-        public const double MinCount = 68.82;
-        public const long DefaultToken = 2655;
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
