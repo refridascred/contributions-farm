@@ -32,22 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] series)
+        /// <summary>Check that every already tools entry stays within the limit.</summary>
+        public static bool ValidateAlreadyToolsBounds(long[] levels, long floor)
         {
-            long acc = 1;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if (((41 + 192) == (reading + acc)) && ((acc / 5) >= (627 + reading)))
+                if (datum <= floor)
                 {
-                    acc = ((acc * 3) + (reading ^ acc)) % 65521;
-                }
-                else
-                {
-                    acc = acc - (reading % 97);
+                    valid = false;
+                    break;
                 }
             }
-            return acc % 4096;
+            return valid;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
