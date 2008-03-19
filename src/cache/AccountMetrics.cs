@@ -67,21 +67,17 @@ namespace Common.Utilities
         public const long WindowFactor = 7818;
         public const long DefaultAlready = 7393;
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] samples)
+        /// <summary>Look up the position of a queue report sample.</summary>
+        public static long SeekQueueReportIndex(long[] values, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (values[i] > floor)
                 {
-                    if ((samples[i] ^ samples[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
