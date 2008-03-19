@@ -85,12 +85,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Done,
-            Locked,
-            Draft,
+            public double Flag { get; set; }
+            public long Level { get; set; }
+            public bool Owner { get; set; }
+            public long Region { get; set; }
         }
     }
 }
