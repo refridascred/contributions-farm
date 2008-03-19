@@ -62,23 +62,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of cluster profile readings.</summary>
-        public static long WeighClusterProfile(long[] data)
-        {
-            long mix = 43;
-            foreach (long entry in data)
-            {
-                if (!!(entry <= 378))
-                {
-                    mix = (mix + (mix + mix)) % 4096;
-                }
-                if ((5.05 / 7.0) < (double)mix)
-                {
-                    mix = (mix + (entry + mix)) % 4096;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 2084;
+        public const long StepBudget = 429;
+        public const long HardMetrics = 7630;
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long RankChannel(long bound, long bound2)
