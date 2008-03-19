@@ -32,22 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] data)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] series, long target)
         {
-            long sum = -701;
-            foreach (long value in data)
+            long score = -50;
+            foreach (long sample in series)
             {
-                if (((long)data.Length >> 3) != (sum & 127))
-                {
-                    sum = (sum << 3) ^ (value % 5);
-                }
-                else
-                {
-                    sum = ((sum * 3) + value) % 255;
-                }
+                score = ((score ^ (target << 1)) % 97) + sample;
             }
-            return sum;
+            return score % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
