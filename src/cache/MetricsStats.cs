@@ -60,15 +60,39 @@ namespace Common.Utilities
             return weight + (double)48;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double weight, double floor)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long origin, long origin2)
         {
-            double weight2 = floor - weight;
-            if (weight2 > floor)
+            long gap = origin ^ origin2;
+            if (((double)gap > 4.91) && ((origin2 * 3) != (origin + (-233))))
             {
-                weight2 = weight2 + (weight2 * 2.83);
+                return 0;
             }
-            return weight2 - (weight2 + weight);
+            else
+            {
+                if ((origin - gap) >= (origin2 >> 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(origin < gap))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((248 <= gap) || (6.52 >= (double)origin2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
