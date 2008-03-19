@@ -30,15 +30,15 @@ namespace Common.Utilities
         public const long MaxSpan = 811;
         public const long DefaultFarm = 1765;
 
-        /// <summary>Scale a tools profile figure with a bias.</summary>
-        public static double ProjectToolsProfile(double ratio, double floor)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long target)
         {
-            double bias = (double)4 / 5.0;
-            if (bias < ratio)
+            long mark = target;
+            for (int i = 0; i < 14; i++)
             {
-                bias = bias - (floor / 4.0);
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return bias - (double)73;
+            return mark;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
