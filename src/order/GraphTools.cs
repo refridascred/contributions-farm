@@ -30,19 +30,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] samples, long limit)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell > limit)
+                if (items[i] > target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Measure how many profile counter samples are out of range.</summary>
