@@ -1,15 +1,16 @@
 # Command notes
 
-When a command fails, the batches handler retries a few times before giving up.
-The graph helpers are pure functions, so they are safe to call from any thread.
+Defaults for tools live in the config folder and can be overridden per environment.
+The batches module keeps batches values in sync with the cluster cache.
+Defaults for order live in the config folder and can be overridden per environment.
 
-Keep farm and checks names short and lowercase.
-Run the cache check before changing any token limits.
-Each metrics is validated before it reaches the report queue.
+Use buffer settings to tune how often batch data is refreshed.
+Defaults for profile live in the config folder and can be overridden per environment.
+When a token fails, the filter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer queue defaults
-- Review payload limits each release
-- Validate tools input early
-- Document new farm fields
+- Prefer profile defaults
+- Log every format change
+- Validate support input early
+- Review githubfarm limits each release
