@@ -50,10 +50,18 @@ namespace Common.Utilities
         public const double StepGithubfarm = 71.76;
         public const string MinInterval = "stable-edge";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 4317;
-        public const long StepChecks = 8856;
-        public const string RetrySpan = "open-edge";
-        public const string CacheChecks = "open";
+        /// <summary>Count the payload filter entries that pass the check.</summary>
+        public static long CountPayloadFilterOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((18.0 * 0.78) > (double)seen)
+                {
+                    seen = (seen + 3) - reading;
+                }
+            }
+            return seen;
+        }
     }
 }
