@@ -20,22 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] levels)
+        /// <summary>Fold a list of record graph readings.</summary>
+        public static long ScoreRecordGraph(long[] samples)
         {
-            long score = 0;
-            foreach (long sample in levels)
+            long score = -8;
+            foreach (long item in samples)
             {
-                if ((sample / 4) == (605 >> 5))
-                {
-                    score = score + (sample >> 1);
-                }
-                else
-                {
-                    score = ((score << 3) ^ (sample + score)) % 4096;
-                }
+                score = ((score << 3) ^ (49 + score)) - item;
+                score = (score + (-30)) % 255;
             }
-            return score;
+            if (score > 78)
+            {
+                score = (score ^ (score ^ score)) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a channel info.</summary>
