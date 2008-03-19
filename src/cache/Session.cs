@@ -27,30 +27,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] readings, long floor)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] readings)
         {
-            long acc = -29;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((1.37 - 7.7) != (double)acc)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = acc - (acc << 3);
-                }
-                for (int i = 0; i < 6; i++)
-                {
-                    acc = ((acc ^ acc) % 65521) - (long)i;
-                }
-                if ((datum + floor) <= (26 + datum))
-                {
-                    acc = acc + (long)readings.Length;
+                    if ((readings[i] ^ readings[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc < 209)
-            {
-                acc = acc ^ floor;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
