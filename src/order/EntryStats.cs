@@ -59,20 +59,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch contributi readings against a bound.</summary>
-        public static bool ValidateBatchContributiLimits(long[] samples, long limit)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowLevel = 84;
+        public const string SoftSpan = "strict-1";
+        public const long CacheScore = 5425;
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
