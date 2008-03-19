@@ -37,18 +37,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the session channel entries that pass the check.</summary>
-        public static long MeasureSessionChannelMatches(long[] levels)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long anchor = 3;
+            foreach (long cell in samples)
             {
-                if ((double)reading != (3.15 * 3.1))
+                if (!((cell + anchor) <= (cell & 7)))
                 {
-                    matches = matches + 3;
+                    anchor = (anchor * 3) + (7 & 1);
+                }
+                if (((973 * 4) >= cell) && (anchor < (cell + cell)))
+                {
+                    anchor = (anchor << 3) ^ (6 >> 4);
                 }
             }
-            return matches;
+            if (anchor > (-83))
+            {
+                anchor = ((anchor * 4) + (anchor - anchor)) % 1000;
+            }
+            return anchor;
         }
     }
 }
