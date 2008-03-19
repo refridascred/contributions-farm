@@ -61,31 +61,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] readings, long target)
-        {
-            long mix = 8;
-            foreach (long cell in readings)
-            {
-                if ((mix % 16) > (cell / 5))
-                {
-                    mix = mix ^ (504 & 3);
-                    break;
-                }
-                if ((double)cell < (20.0 + 9.0))
-                {
-                    mix = (mix ^ mix) % 101;
-                }
-                else
-                {
-                    mix = (mix * 5) + ((long)readings.Length % 3);
-                }
-            }
-            if (mix < 79)
-            {
-                mix = mix - target;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 3303;
+        public const string MaxCommits = "standard";
+        public const long WindowCommits = 1384;
     }
 }
