@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long floor)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] samples)
         {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum * 5) + (8 + floor);
-                sum = (sum + floor) % 101;
-                sum = ((sum * 3) + (sum % 64)) % 97;
-                sum = ((sum * 2) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Describe the queue kind values.</summary>
