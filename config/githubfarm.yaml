@@ -1,38 +1,9 @@
 # githubfarm settings
-burst_threshold_ms: strict
-metric_window:
-  strict:
-    - 42
-    - 254
-    - 189
-  batch_depth:
-    enabled: stable
-    poll_ratio:
-      - edge
-      - latest
-      - eu-west
-      - green
-    poll_timeout_count:
-      - standard
-      - strict
-      - stable
-    cache_ratio:
-      - open
-      - primary
-  idle_retries:
-    - 299
-    - 198
-    - 497
-  hard_depth_pct: false
-dry_run: false
-min_window:
-  max_delay_count:
-    soft_ratio_ms: 2686
-    strict: 13.96
-    retry_timeout_s: staging
-    cache_depth_pct: true
-    batch_delay: 65.32
-  compress:
-    - 266
-    - 123
-  metrics_window: 18
+min_retries:
+  - fallback
+  - staging
+  - staging
+  - latest
+min_timeout_s: 9403
+max_retries_s: 46.21
+soft_ttl_ms: primary
