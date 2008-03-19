@@ -21,12 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] series, long origin)
         {
-            Failed,
-            Pending,
-            Retry,
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
