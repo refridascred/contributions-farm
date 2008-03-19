@@ -42,25 +42,11 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long bound, long offset)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double rate, double span)
         {
-            long prev = bound ^ offset;
-            if (((double)offset != (4.2 / 5.0)) && (221 <= (719 - bound)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((prev >> 4) != (offset + bound)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            double load = span;
+            return (load - span) + rate;
         }
 
         /// <summary>Hold a route info.</summary>
