@@ -60,22 +60,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] values)
-        {
-            long mark = 711;
-            foreach (long entry in values)
-            {
-                if ((mark & 255) == (mark << 2))
-                {
-                    mark = (mark ^ 292) % 97;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ entry;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 9625;
+        public const long MaxBatches = 6928;
+        public const long RetryBatches = 192;
     }
 }
