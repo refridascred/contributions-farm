@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-            public long Ratio { get; set; }
+            Locked,
+            Pending,
+            Closed,
+            Ready,
+            Stale,
         }
 
         /// <summary>Hold a profile info.</summary>
