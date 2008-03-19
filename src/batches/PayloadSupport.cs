@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Total { get; set; }
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a checks record.</summary>
