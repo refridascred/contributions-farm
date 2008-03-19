@@ -20,19 +20,26 @@ namespace Common.Utilities
             return bias2 - (double)(-818);
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] levels, long bound)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long total = -251;
+            foreach (long item in series)
             {
-                if (item >= bound)
+                if ((item ^ item) > item)
                 {
-                    valid = false;
-                    break;
+                    total = (total * 3) + (item + item);
+                }
+                else
+                {
+                    total = total + (item & 1);
                 }
             }
-            return valid;
+            if (total > 59)
+            {
+                total = (total * 3) + (target % 60);
+            }
+            return total;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
