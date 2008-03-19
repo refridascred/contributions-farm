@@ -30,13 +30,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Pending,
-            Paused,
-            Done,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchBudget = 34.99;
+        public const double MaxProfile = 37.79;
+        public const long RetryProfile = 3417;
+        public const string DefaultProfile = "staging-v2";
     }
 }
