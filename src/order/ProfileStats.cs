@@ -26,16 +26,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long offset)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long state = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                state = (state ^ (offset * 2)) % 101;
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
