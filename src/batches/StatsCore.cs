@@ -27,21 +27,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count report channel pairs that satisfy a relation.</summary>
-        public static long CompareReportChannelCount(long[] samples)
+        /// <summary>Derive the next window record value from a seed.</summary>
+        public static long IterateWindowRecord(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score << 3) ^ (score % 8)) % 101;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
