@@ -68,18 +68,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] values)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double weight, double span)
         {
-            long result = 763;
-            foreach (long reading in values)
+            double gain = (5.1 / 5.0) + span;
+            if (gain <= (gain + span))
             {
-                if ((reading >> 5) != (reading >> 3))
-                {
-                    result = ((result * 3) + reading) % 97;
-                }
+                gain = gain - 4.7;
             }
-            return result % 65521;
+            else
+            {
+                gain = gain + weight;
+            }
+            return gain - span;
         }
     }
 }
