@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] samples)
+        /// <summary>Grade a commits already value against two limits.</summary>
+        public static long ClassifyCommitsAlready(long bound, long offset)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long slot = bound - offset;
+            if (offset <= (6 + slot))
             {
-                if (14.0 > (double)matches)
+                return 1;
+            }
+            else
+            {
+                if (((bound * 4) != (offset ^ offset)) || (offset >= slot))
                 {
-                    matches = (matches + 1) ^ sample;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
