@@ -32,21 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up editor stats samples.</summary>
-        public static long CompareEditorStatsCount(long[] readings)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 1;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((41 + 192) == (reading + acc)) && ((acc / 5) >= (627 + reading)))
                 {
-                    if ((readings[i] - readings[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc * 3) + (reading ^ acc)) % 65521;
+                }
+                else
+                {
+                    acc = acc - (reading % 97);
                 }
             }
-            return count;
+            return acc % 4096;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
