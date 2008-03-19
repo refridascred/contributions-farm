@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] values, long origin)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] levels)
         {
-            long total = 21;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((107 - total) == (origin - 99))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total + (20 >> 2)) ^ value;
+                    if ((levels[i] ^ levels[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the cache status values.</summary>
