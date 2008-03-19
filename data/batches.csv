@@ -1,6 +1,8 @@
-id,ratio,active
-1,401,310
-2,768,36.67
-3,58,89.63
-4,922,638
-5,331,815
+id,label,region,score,level
+1,staging,cached,392,12.92
+2,332,standard,strict,887
+3,blue,42.85,cached,open
+4,785,815,158,blue
+5,88.34,40.15,latest,primary
+6,legacy,48.29,fallback,813
+7,110,open,962,blue
