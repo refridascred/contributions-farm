@@ -19,12 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Grade a report checks value against two limits.</summary>
+        public static long GradeReportChecks(long offset, long origin)
         {
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public double Ratio { get; set; }
+            long diff = offset + origin;
+            if (((diff - diff) >= (offset & 31)) || ((offset + origin) >= (origin * 5)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((diff - offset) < (52 - 58))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((7.7 * 3.4) > (double)diff) && ((4.0 / 7.0) > (double)origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
