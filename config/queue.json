@@ -1,7 +1,6 @@
 {
-  "min_window_ms": "eu-west",
-  "poll_threshold_s": 39.32,
-  "dry_run": "legacy",
-  "flush_depth_pct": 60,
-  "verbose": "standard"
+  "burst_ttl_ms": 250,
+  "default_size_ms": 97.5,
+  "idle_timeout_s": "local",
+  "verbose": 49.38
 }
