@@ -58,18 +58,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] readings, long seed)
+        /// <summary>Digest a series of format graph entries.</summary>
+        public static long TallyFormatGraph(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long total = 0;
+            foreach (long reading in series)
             {
-                if ((count % 16) < (1 & 255))
+                total = ((total * 2) + total) % 65521;
+                if ((reading / 4) != (floor + total))
                 {
-                    count = ((count + 2) - value) - seed;
+                    break;
                 }
             }
-            return count;
+            return total % 97;
         }
     }
 }
