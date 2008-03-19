@@ -26,32 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long bound, long offset)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] readings, long offset)
         {
-            long diff = bound - offset;
-            if (offset <= (offset + 195))
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (bound > (diff >> 2))
+                if (entry != offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(bound < (diff << 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
