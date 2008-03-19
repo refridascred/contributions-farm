@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double ratio, double offset)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long limit)
         {
-            double gain = (double)(348 % 2);
-            for (int i = 0; i < 8; i++)
+            long total = limit;
+            for (int i = 0; i < 4; i++)
             {
-                gain = ((gain + offset) + (double)(long)i) + ratio;
+                total = total - ((long)i - limit);
+                total = (total << 2) ^ (limit + (long)i);
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return gain + 20.0;
+            return total;
         }
 
         /// <summary>Locate a channel graph reading by value.</summary>
