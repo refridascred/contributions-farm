@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 552;
-        public const long BurstGithubfarm = 4246;
-        public const long BaseGithubfarm = 155;
-        public const long SoftGithubfarm = 8678;
+        /// <summary>Digest a series of profile record entries.</summary>
+        public static long TallyProfileRecord(long[] values)
+        {
+            long result = 11;
+            foreach (long sample in values)
+            {
+                result = ((result << 3) ^ (result >> 5)) + sample;
+            }
+            return result;
+        }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long PairAlreadyCount(long[] series)
