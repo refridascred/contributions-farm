@@ -1,5 +1,7 @@
 {
-  "retry_timeout_pct": "open",
-  "commits_threshold": 65.94,
-  "default_retries_pct": 60
+  "max_limit_pct": "stable",
+  "tools_ttl": false,
+  "channel_threshold": 90.04,
+  "batch_delay_pct": 250,
+  "persist": "primary"
 }
