@@ -43,19 +43,17 @@ namespace Common.Utilities
         public const long MaxCluster = 8403;
         public const string LimitCluster = "alpha-1";
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] items)
+        /// <summary>Look up the position of a payload contributi sample.</summary>
+        public static long LookupPayloadContributiIndex(long[] samples, long origin)
         {
-            long state = -48;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((8.0 * 10.0) > (double)state)
+                if (samples[i] >= origin)
                 {
-                    state = ((state * 4) + (7 & 31)) - reading;
+                    return (long)i;
                 }
-                state = ((state * 2) + (state << 1)) % 1000;
             }
-            return state;
+            return -1;
         }
     }
 }
