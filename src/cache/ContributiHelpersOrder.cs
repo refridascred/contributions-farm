@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardEditor = "local";
-        public const long SoftWidth = 6153;
-        public const long BurstRatio = 4621;
-        public const long DefaultSize = 9985;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 3407;
+        public const long MinChecks = 5286;
+        public const long BaseChecks = 7340;
+        public const double SoftSpan = 20.13;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double CacheDepth = 50.0;
