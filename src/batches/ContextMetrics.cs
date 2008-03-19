@@ -43,11 +43,19 @@ namespace Common.Utilities
         public const long MaxCluster = 8403;
         public const string LimitCluster = "alpha-1";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 8951;
-        public const long BatchInterval = 30;
-        public const double MaxChannel = 58.79;
-        public const long CacheChannel = 5359;
-        public const string DefaultChannel = "alpha-v2";
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] items)
+        {
+            long state = -48;
+            foreach (long reading in items)
+            {
+                if ((8.0 * 10.0) > (double)state)
+                {
+                    state = ((state * 4) + (7 & 31)) - reading;
+                }
+                state = ((state * 2) + (state << 1)) % 1000;
+            }
+            return state;
+        }
     }
 }
