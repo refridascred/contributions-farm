@@ -58,12 +58,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long seed)
         {
-            public bool Rank { get; set; }
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    sum = ((sum * 3) + ((long)i2 << 1)) % 1000;
+                    sum = sum + (seed % 10);
+                }
+                sum = (sum - (69 + 95)) % 101;
+                sum = ((sum << 2) ^ ((long)i ^ 955)) % 97;
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Rank farm already input into a small class.</summary>
