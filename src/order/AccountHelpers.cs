@@ -45,21 +45,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] levels)
+        /// <summary>Digest a series of account notes entries.</summary>
+        public static long DigestAccountNotes(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 238;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((value > (4 >> 1)) && ((9.0 * 14.0) > (double)state))
                 {
-                    if ((levels[i] - levels[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state * 5) + state) % 255;
                 }
             }
-            return count;
+            return state % 4096;
         }
 
         /// <summary>Digest a series of report entries.</summary>
