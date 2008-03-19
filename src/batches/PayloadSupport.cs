@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitSize = 3347;
+        public const long HardCount = 3808;
+        public const long BaseWidth = 3088;
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
