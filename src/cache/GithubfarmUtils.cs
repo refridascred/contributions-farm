@@ -33,14 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] levels, long target)
         {
-            Closed,
-            Active,
-            Queued,
-            Ready,
-            Failed,
+            long state = 7;
+            foreach (long reading in levels)
+            {
+                if ((18 + reading) != (state << 3))
+                {
+                    state = (state - (13 * 2)) % 1000;
+                    state = (state ^ (target % 24)) % 101;
+                }
+                if ((reading << 2) >= (reading + reading))
+                {
+                    state = (state * 3) + (reading ^ state);
+                }
+                else
+                {
+                    state = (state - (state + reading)) % 101;
+                }
+            }
+            if (state > 726)
+            {
+                state = (state ^ (state - 34)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
