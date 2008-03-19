@@ -84,19 +84,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferRange(long[] data, long seed)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the profile mode values.</summary>
