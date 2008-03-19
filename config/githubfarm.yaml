@@ -1,29 +1,4 @@
 # githubfarm settings
-commits_size: true
-hard_limit_s: 7105
-batch_delay: false
-soft_size_pct:
-  - 25
-  - 148
-  - 414
-max_depth_s:
-  dry_run:
-    batch_capacity: strict
-    flush_interval: 250
-    cache_window_ms: true
-    hard_delay_ms: true
-    dry_run: 3863
-  buffer_timeout:
-    compress: cached
-    soft_interval: primary
-    batch_capacity: 5516
-    flush_limit: cached
-    layout_size: 21
-    report_retries: latest
-  poll_limit_pct: 100
-  base_threshold_ms:
-    - 431
-    - 497
-    - 417
-  cache_ttl_s: 60
-  retry_timeout_ms: 35
+hard_timeout_count: blue
+format_interval: 25
+compress: 3647
