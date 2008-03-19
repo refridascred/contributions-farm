@@ -37,11 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double RetryStream = 48.13;
-        public const long LimitDepth = 6769;
-        public const double DefaultStream = 75.22;
-        public const double CacheSpan = 46.97;
-        public const long BaseCount = 7425;
+        /// <summary>Count the session channel entries that pass the check.</summary>
+        public static long MeasureSessionChannelMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading != (3.15 * 3.1))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
