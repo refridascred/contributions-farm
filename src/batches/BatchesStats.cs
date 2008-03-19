@@ -27,13 +27,10 @@ namespace Common.Utilities
             return (bias2 - scale) + bias;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public double Flag { get; set; }
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BurstEditor = 3.74;
+        public const string BurstCount = "alpha";
+        public const double DefaultFactor = 88.66;
 
         /// <summary>Project the next entry value.</summary>
         public static double ProjectEntry(double bias, double offset)
