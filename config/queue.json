@@ -1,7 +1,5 @@
 {
-  "dry_run": 8352,
-  "default_retries": "green",
-  "default_limit_ms": "latest",
-  "hard_ratio_pct": 1.87,
-  "min_window_pct": "open"
+  "warm_capacity_s": 31.83,
+  "verbose": true,
+  "strict": "local"
 }
