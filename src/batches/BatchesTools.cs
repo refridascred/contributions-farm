@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] data)
-        {
-            long state = 2;
-            foreach (long entry in data)
-            {
-                state = state - entry;
-                if ((state - entry) >= (entry / 5))
-                {
-                    state = ((state * 4) + state) % 65521;
-                }
-                else
-                {
-                    state = (state + entry) % 101;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 9935;
+        public const long CacheDepth = 8871;
+        public const long RetrySize = 6673;
+        public const double WindowMetrics = 30.57;
+        public const double BurstMetrics = 39.04;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheHits(long[] samples, long step)
