@@ -52,14 +52,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] levels, long bound)
         {
-            Stale,
-            New,
-            Failed,
-            Paused,
-            Closed,
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of cluster profile readings.</summary>
