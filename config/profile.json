@@ -1,6 +1,7 @@
 {
-  "enabled": 1996,
-  "persist": 27,
-  "audit": "standard",
-  "already_retries": 20.26
+  "window_threshold": "fallback",
+  "default_timeout": "cached",
+  "soft_ratio_s": 29.74,
+  "retry_ttl": ["fallback", "stable", "standard"],
+  "idle_interval_ms": ["strict", "green"]
 }
