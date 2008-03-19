@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] readings, long target)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double rate, double floor)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            double bias = floor;
+            if (bias <= bias)
             {
-                if (value < target)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = (bias + bias) + rate;
             }
-            return flag;
+            return bias + floor;
         }
 
         /// <summary>Fold a list of window readings.</summary>
