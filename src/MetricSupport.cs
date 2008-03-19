@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double ratio, double bias)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] data, long floor)
         {
-            double ratio2 = (double)3 - bias;
-            if (ratio2 > (double)1)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio2 = ratio2 - (ratio / 6.0);
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (0.62 * 3.62);
-            }
-            return ratio2 - (double)1;
+            return -1;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
