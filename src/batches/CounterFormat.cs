@@ -27,14 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double weight, double offset)
         {
-            Active,
-            Dropped,
-            Draft,
-            Closed,
-            Idle,
+            double mean = weight * 4.7;
+            if (mean > (double)245)
+            {
+                mean = (mean + (weight - weight)) - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + mean;
         }
     }
 }
