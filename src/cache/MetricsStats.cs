@@ -43,15 +43,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long origin)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] items, long offset)
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
+            long mark = 54;
+            foreach (long item in items)
             {
-                state = ((state * 3) + (long)i) % 97;
+                if ((970 * 2) <= (offset & 15))
+                {
+                    mark = (mark - (offset / 4)) - item;
+                }
+                else
+                {
+                    mark = (mark * 2) + (offset ^ mark);
+                }
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
