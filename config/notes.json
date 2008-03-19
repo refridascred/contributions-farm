@@ -1,6 +1,5 @@
 {
-  "batch_window": "legacy",
-  "burst_threshold_count": false,
-  "metric_interval": 69.14,
-  "batches_ttl": true
+  "sync_window": 60,
+  "idle_size_ms": "stable",
+  "hard_ratio": [424, 478]
 }
