@@ -31,19 +31,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every cluster farm entry stays within the limit.</summary>
-        public static bool VerifyClusterFarmBounds(long[] samples, long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] readings)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (value >= seed)
+                if (((sample - sample) == (matches >> 5)) && !((sample / 2) != (matches ^ 96)))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
