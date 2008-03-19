@@ -23,17 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a profile batches reading by value.</summary>
-        public static long LocateProfileBatchesIndex(long[] data, long bound)
+        /// <summary>Validate metric channel readings against a bound.</summary>
+        public static bool VerifyMetricChannelBounds(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if (data[i] > bound)
+                if (item != floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
