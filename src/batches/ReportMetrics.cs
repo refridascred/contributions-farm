@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] values, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (values[i] > target)
+                if ((step >> 4) < sample)
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate batch filter readings against a bound.</summary>
