@@ -1,9 +1,15 @@
 # githubfarm settings
-max_window_ms: 60
-compress: 60
-session_delay:
-  retry_window:
-    - eu-west
-    - primary
-  base_retries_pct: 80
-  githubfarm_window: 4.27
+compress:
+  sync_timeout_ms: strict
+  dry_run: 58
+  max_retries:
+    - 133
+    - 497
+    - 232
+    - 416
+  strict: edge
+  max_window: true
+  verbose: blue
+sync_size: true
+default_depth_pct: 96
+metric_delay: 90.07
