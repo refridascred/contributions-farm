@@ -26,40 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long origin, long bound)
-        {
-            long bound2 = origin + bound;
-            if ((bound + origin) > (bound + bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if (bound2 > (bound % 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound > (bound - origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (origin <= (bound & 63))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitReport = "open";
+        public const double LimitTimeout = 18.23;
+        public const long CacheReport = 1682;
+        public const long DefaultReport = 2741;
 
         /// <summary>Blend two session measurements.</summary>
         public static double BlendSession(double ratio, double span)
