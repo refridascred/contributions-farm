@@ -27,12 +27,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public bool Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
+            Retry,
+            Dropped,
+            Idle,
+            Done,
+            New,
         }
     }
 }
