@@ -20,13 +20,19 @@ namespace Common.Utilities
             return weight2 + (double)205;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double weight, double offset)
         {
-            Locked,
-            Synced,
-            New,
-            Draft,
+            double scale = (double)(632 + 820);
+            if (scale > weight)
+            {
+                scale = scale - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - offset) - (double)(long)i;
+            }
+            return scale + weight;
         }
 
         /// <summary>Hold a farm options.</summary>
