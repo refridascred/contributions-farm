@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] data)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricBounds(long[] items, long floor)
         {
-            long carry = 3;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if ((reading % 3) <= 345)
+                if (entry > floor)
                 {
-                    carry = (carry + (reading >> 1)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Accumulate stream samples.</summary>
