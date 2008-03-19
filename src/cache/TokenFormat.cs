@@ -25,20 +25,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] samples)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long target, long offset)
         {
-            long total = 642;
-            foreach (long cell in samples)
+            long cur = target - offset;
+            if (((14.0 - 3.06) != (double)offset) && ((double)cur < (7.6 * 17.0)))
             {
-                total = (total - (long)samples.Length) % 97;
-                total = ((total * 4) + cell) % 97;
+                return 1;
             }
-            if (total < 338)
+            else
             {
-                total = (total - (total + total)) % 1000;
+                if ((offset >> 3) >= (target << 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (cur >= (1 ^ target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return total % 4096;
         }
 
         /// <summary>Hold a format options.</summary>
