@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate tools payload readings against a bound.</summary>
-        public static bool CheckToolsPayloadLimits(long[] levels, long floor)
-        {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultLevel = 9092;
+        public const string IdleCounter = "legacy-edge";
+        public const long BurstTimeout = 3448;
+        public const long DefaultCounter = 3519;
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
