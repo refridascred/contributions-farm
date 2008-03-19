@@ -6,13 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback local; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-mode="${1:-blue}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-open}"
 case "${mode}" in
-    open)
+    staging)
         log "fast path"
         ;;
     *)
