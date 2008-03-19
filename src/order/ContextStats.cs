@@ -13,12 +13,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Grade a session profile value against two limits.</summary>
+        public static long ClassifySessionProfile(long floor, long seed)
         {
-            public long Limit { get; set; }
-            public double Region { get; set; }
-            public bool Count { get; set; }
+            long step = floor ^ seed;
+            if ((floor - 499) < 1)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((1.4 + 20.0) >= (double)step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)floor >= (19.0 - 1.07)) || ((458 & 127) != (step ^ seed)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
