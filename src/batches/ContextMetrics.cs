@@ -51,17 +51,11 @@ namespace Common.Utilities
         public const long DefaultAlready = 4444;
         public const double StepRatio = 18.93;
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 8951;
+        public const long BatchInterval = 30;
+        public const double MaxChannel = 58.79;
+        public const long CacheChannel = 5359;
+        public const string DefaultChannel = "alpha-v2";
     }
 }
