@@ -26,10 +26,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchSpan = 1859;
-        public const long IdleMetric = 5973;
-        public const long MaxLevel = 5764;
-        public const long HardScore = 3030;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
+            public double Token { get; set; }
+        }
     }
 }
