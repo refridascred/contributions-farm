@@ -11,18 +11,10 @@ namespace Common.Utilities
         public const long BatchGraph = 4994;
         public const string MaxTimeout = "cached";
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitSpan = 1.18;
+        public const long CacheStats = 5397;
+        public const long MinStats = 4288;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long TotalContext(long[] series, long offset)
