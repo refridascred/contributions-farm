@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] values, long seed)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (hits > (hits / 5))
-                {
-                    hits = ((hits + 3) + datum) - seed;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
