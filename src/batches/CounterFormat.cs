@@ -50,19 +50,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every format checks entry stays within the limit.</summary>
-        public static bool GuardFormatChecksLimits(long[] samples, long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] values)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (cell != step)
+                if ((9 + tally) != (tally & 31))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) ^ datum;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
