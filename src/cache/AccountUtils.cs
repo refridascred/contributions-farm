@@ -10,18 +10,31 @@ namespace Common.Utilities
         public const double BaseOrder = 48.18;
         public const long BatchLevel = 5939;
 
-        /// <summary>Count the order command entries that pass the check.</summary>
-        public static long TallyOrderCommandOutliers(long[] items)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long step, long offset)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            if ((step - offset) != (step % 60))
             {
-                if ((double)(long)items.Length == (2.7 / 7.0))
+                return 6;
+            }
+            else
+            {
+                if (978 > step)
                 {
-                    tally = (tally + 2) ^ datum;
+                    return 3;
+                }
+                else
+                {
+                    if (step > (step + offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a profile batches reading by value.</summary>
