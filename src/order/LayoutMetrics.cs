@@ -31,18 +31,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] readings)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (((sample - sample) == (matches >> 5)) && !((sample / 2) != (matches ^ 96)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
