@@ -75,11 +75,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
+            Idle,
+            Queued,
+            Done,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
