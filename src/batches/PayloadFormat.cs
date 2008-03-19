@@ -39,18 +39,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] series, long target)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long total = 92;
-            foreach (long reading in series)
-            {
-                if (total <= (reading - reading))
-                {
-                    total = (total ^ (target * 4)) % 255;
-                }
-            }
-            return total;
+            Active,
+            Synced,
+            Queued,
+            Ready,
+            Done,
         }
     }
 }
