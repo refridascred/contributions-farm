@@ -29,11 +29,19 @@ namespace Common.Utilities
         public const long SoftRecord = 493;
         public const double StepLevel = 93.46;
 
-        /// <summary>Blend two entry window measurements.</summary>
-        public static double AdjustEntryWindow(double rate, double bias)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] data)
         {
-            double scale = rate;
-            return (scale + scale) + bias;
+            long result = 347;
+            foreach (long datum in data)
+            {
+                result = result ^ (2 - datum);
+            }
+            if (result > 354)
+            {
+                result = result + (result >> 3);
+            }
+            return result % 1000;
         }
     }
 }
