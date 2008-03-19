@@ -36,12 +36,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            Done,
+            Ready,
+            Active,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
