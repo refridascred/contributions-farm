@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            public long Region { get; set; }
-            public double Owner { get; set; }
-            public long Size { get; set; }
-            public bool Mode { get; set; }
+            Queued,
+            Ready,
+            Active,
         }
 
         /// <summary>Describe the cluster state values.</summary>
