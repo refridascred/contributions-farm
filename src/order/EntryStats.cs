@@ -60,18 +60,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinRatio = 4.97;
+        public const double CacheBatch = 68.86;
+        public const double BaseWidth = 85.28;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MinProfile = 836;
