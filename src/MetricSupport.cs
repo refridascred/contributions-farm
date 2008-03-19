@@ -34,12 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Validate stats layout readings against a bound.</summary>
+        public static bool CheckStatsLayoutBounds(long[] values, long offset)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public double Count { get; set; }
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
