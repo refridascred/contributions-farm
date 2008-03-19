@@ -23,12 +23,26 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 1829;
-        public const long MinCounter = 749;
-        public const double BurstInterval = 80.04;
-        public const double SoftCounter = 50.87;
-        public const long CacheScore = 7537;
+        /// <summary>Classify a cluster buffer pair into a bucket.</summary>
+        public static long BucketClusterBuffer(long seed, long bound)
+        {
+            long span = seed - bound;
+            if (bound >= (span / 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((bound & 3) <= (seed ^ bound)) && ((span - span) != (bound & 255)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string DefaultAlready = "strict";
