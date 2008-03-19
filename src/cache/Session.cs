@@ -25,14 +25,15 @@ namespace Common.Utilities
         public const long MinInterval = 7977;
         public const string SoftSupport = "latest-1";
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long origin)
         {
-            Pending,
-            Done,
-            Synced,
-            New,
-            Paused,
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
