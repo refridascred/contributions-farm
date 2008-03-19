@@ -5,37 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long step, long origin)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long floor, long floor2)
         {
-            long lane = step ^ origin;
-            if ((lane & 7) >= lane)
+            long lane = floor ^ floor2;
+            if (((double)lane > (double)floor2) && ((floor + floor2) < lane))
             {
                 return 8;
             }
             else
             {
-                if (((2.0 * 1.88) == (double)step) || ((step - lane) > lane))
+                if ((16.0 / 2.0) > (double)floor2)
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    if ((origin + lane) > (0 - lane))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step >> 2) != (lane + lane))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
