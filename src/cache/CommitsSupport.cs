@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double bias, double floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] series, long step)
         {
-            double drift = floor;
-            return (drift - 1.93) + bias;
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the notes mode values.</summary>
