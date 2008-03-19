@@ -17,15 +17,18 @@ namespace Common.Utilities
         public const long StepTimeout = 1001;
         public const string MinFactor = "local-edge";
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] data)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] values)
         {
             long hits = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (hits > reading)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((values[i] + values[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
