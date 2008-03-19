@@ -1,31 +1,4 @@
 # support settings
-support_depth:
-  farm_window: false
-  already_threshold: false
-  burst_ttl:
-    hard_size_s: false
-    audit: latest
-    order_retries: false
-    soft_ratio_ms: standard
-  min_ttl: 7966
-warm_timeout_pct: legacy
-idle_interval_ms:
-  retry_ttl_s:
-    warm_size:
-      - standard
-      - fallback
-      - edge
-      - open
-    strict: 53.78
-    queue_capacity: legacy
-  persist: 30
-  flush_ttl_ms:
-    - open
-    - primary
-    - blue
-  compress:
-    - 444
-    - 308
-  route_capacity: primary
-  verbose: open
-session_capacity: false
+persist: edge
+retry_limit_count: false
+poll_timeout_count: blue
