@@ -59,10 +59,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowLevel = 84;
-        public const string SoftSpan = "strict-1";
-        public const long CacheScore = 5425;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Locked,
+            New,
+            Failed,
+            Queued,
+        }
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
