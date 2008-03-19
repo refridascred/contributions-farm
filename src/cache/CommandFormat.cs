@@ -24,12 +24,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] values, long target)
         {
-            Active,
-            Draft,
-            Pending,
+            long mix = 45;
+            foreach (long item in values)
+            {
+                mix = ((mix - (10 >> 3)) % 65521) + item;
+                if ((double)target < (double)mix)
+                {
+                    break;
+                }
+            }
+            if (mix < 72)
+            {
+                mix = ((mix << 3) ^ (mix >> 3)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Define account limits and defaults.</summary>
