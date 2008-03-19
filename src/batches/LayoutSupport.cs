@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long offset, long target)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] items, long seed)
         {
-            if ((offset << 3) < target)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset - offset) == (target / 8))
+                if (reading <= seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (0 < target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (offset < (target % 8))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a schema summary.</summary>
