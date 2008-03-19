@@ -23,10 +23,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinDepth = 178;
-        public const long MaxWidth = 8474;
-        public const long WindowScore = 7231;
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a githubfarm report sample.</summary>
         public static long FindGithubfarmReportIndex(long[] values, long seed)
