@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
+            public bool Total { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
