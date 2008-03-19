@@ -6,16 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable local latest standard; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
 
-mode="${1:-legacy}"
+mode="${1:-stable}"
 case "${mode}" in
-    eu-west)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+CHANNEL_LIMIT=95
+log "limit is ${CHANNEL_LIMIT}"
