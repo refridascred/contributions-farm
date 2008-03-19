@@ -46,14 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] samples)
         {
-            Locked,
-            Retry,
-            Queued,
-            New,
-            Pending,
+            long score = 2;
+            foreach (long datum in samples)
+            {
+                score = ((score + (score + score)) % 65521) ^ datum;
+            }
+            return score;
         }
     }
 }
