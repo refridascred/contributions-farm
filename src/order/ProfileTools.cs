@@ -46,21 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up schema commits samples.</summary>
-        public static long OverlapSchemaCommitsCount(long[] levels)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((((cell % 7) <= (68 + (long)samples.Length)) && ((cell + cell) >= 484)) && ((cell * 2) != (cell / 9)))
                 {
-                    if ((levels[i] ^ levels[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
