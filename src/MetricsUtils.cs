@@ -41,18 +41,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitRatio = "primary";
+        public const double WindowSize = 81.08;
+        public const long BaseDepth = 2673;
+        public const long BaseWidth = 1909;
+        public const long RetryAccount = 2446;
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
