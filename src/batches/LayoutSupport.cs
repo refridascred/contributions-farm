@@ -13,11 +13,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] series, long offset)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a stream header.</summary>
