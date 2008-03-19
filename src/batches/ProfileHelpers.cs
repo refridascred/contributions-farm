@@ -32,31 +32,15 @@ namespace Common.Utilities
         public const long MaxInterval = 280;
         public const long MinLevel = 9106;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] data, long step)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long seed)
         {
-            long sum = 76;
-            foreach (long value in data)
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    sum = (sum + (long)i) % 4096;
-                    sum = ((sum << 3) ^ step) % 101;
-                }
-                if ((double)value == (double)7)
-                {
-                    sum = sum - (sum >> 3);
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (sum >> 5);
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            if (sum > 66)
-            {
-                sum = (sum ^ 42) % 255;
-            }
-            return sum % 97;
+            return mark;
         }
 
         /// <summary>Compare every pair of entry tools readings.</summary>
