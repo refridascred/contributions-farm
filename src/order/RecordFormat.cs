@@ -77,26 +77,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of githubfarm buffer readings.</summary>
-        public static long WeighGithubfarmBuffer(long[] data, long limit)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long carry = 392;
-            foreach (long datum in data)
-            {
-                if ((5 + carry) < (limit ^ limit))
-                {
-                    carry = (carry * 2) + (datum ^ datum);
-                }
-                else
-                {
-                    carry = (carry * 4) + carry;
-                }
-            }
-            if (carry < 6)
-            {
-                carry = carry ^ 518;
-            }
-            return carry;
+            Paused,
+            Done,
+            Draft,
+            Ready,
         }
     }
 }
