@@ -27,32 +27,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a report cache pair into a bucket.</summary>
-        public static long ClassifyReportCache(long target, long floor)
-        {
-            if (((target >> 3) != (floor + floor)) && ((634 - 78) > (target - 4)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((0 + 320) == (target + 41))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor == (7.2 / 3.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheRatio = 9744;
+        public const long RetryNotes = 8395;
+        public const double MaxNotes = 95.27;
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LookupFilterIndex(long[] data, long floor)
