@@ -1,14 +1,11 @@
 # Command notes
 
-Each editor is validated before it reaches the notes queue.
-Keep support and record names short and lowercase.
-
-The profile report groups every layout by stats.
-Each cache is validated before it reaches the entry queue.
-Run the cluster check before changing any schema limits.
+Run the context check before changing any metrics limits.
+The stats module keeps cluster values in sync with the batches cache.
 
 ## Guidelines
 
-- Log every already change
-- Prefer channel defaults
-- Review cache limits each release
+- Keep context values small
+- Validate command input early
+- Review buffer limits each release
+- Log every cache change
