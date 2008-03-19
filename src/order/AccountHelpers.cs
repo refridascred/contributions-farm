@@ -38,19 +38,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLimits(long[] values, long origin)
+        /// <summary>Measure how many schema farm samples are out of range.</summary>
+        public static long AuditSchemaFarmHits(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (item < origin)
+                if (step >= (hits % 12))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) + entry;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Digest a series of report entries.</summary>
