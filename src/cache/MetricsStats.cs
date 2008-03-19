@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 25;
-        public const long DefaultGithubfarm = 4925;
-        public const long SoftInterval = 7058;
-        public const long StepGithubfarm = 9153;
+        /// <summary>Measure how many queue cluster samples are out of range.</summary>
+        public static long TallyQueueClusterMatches(long[] levels, long step)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches * 2) >= sample)
+                {
+                    matches = (matches + 2) + step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long RollFarm(long limit)
