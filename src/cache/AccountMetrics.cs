@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 3131;
-        public const long MaxCount = 9572;
-        public const long StepSpan = 5939;
-        public const long BaseCounter = 9540;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double DefaultStream = 12.3;
+        public const string HardStream = "local-v2";
+        public const double MaxBudget = 67.65;
+        public const double LimitStream = 66.95;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long TallyPayloadHits(long[] values, long step)
