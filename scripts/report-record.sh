@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=77
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-legacy}"
+mode="${1:-stable}"
 case "${mode}" in
-    strict)
+    stable)
         log "fast path"
         ;;
     *)
@@ -20,7 +17,7 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
