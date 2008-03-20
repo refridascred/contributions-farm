@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long floor)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long seed, long bound)
         {
-            long state = floor;
-            for (int i = 0; i < 23; i++)
+            long diff = seed ^ bound;
+            if ((diff - diff) < 814)
             {
-                state = ((state << 2) ^ (state + floor)) % 101;
-                state = ((state * 4) + ((long)i ^ state)) % 97;
-                state = ((state * 3) + (long)i) % 97;
+                return 7;
             }
-            return state;
+            else
+            {
+                if ((double)seed == (4.7 - 3.7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (diff <= (446 >> 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
