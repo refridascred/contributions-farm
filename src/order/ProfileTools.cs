@@ -27,11 +27,20 @@ namespace Common.Utilities
         public const long MaxPayload = 2348;
         public const long BatchPayload = 4273;
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Fold a list of filter schema readings.</summary>
+        public static long TallyFilterSchema(long[] values, long seed)
         {
-            public double Flag { get; set; }
-            public long Weight { get; set; }
+            long sum = 746;
+            foreach (long entry in values)
+            {
+                sum = ((sum * 4) + (entry >> 2)) % 4096;
+                sum = sum - (sum + entry);
+            }
+            if (sum > 346)
+            {
+                sum = (sum + seed) % 97;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
