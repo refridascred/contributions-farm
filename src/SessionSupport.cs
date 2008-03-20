@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate stats session samples.</summary>
-        public static long ScoreStatsSession(long[] samples, long target)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] items, long floor)
         {
-            long result = 710;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((0.7 / 8.0) <= (double)target) || ((double)result <= 7.0))
+                if (items[i] < floor)
                 {
-                    result = (((result << 3) ^ result) % 97) - cell;
-                }
-                else
-                {
-                    result = ((result * 3) + 45) % 4096;
+                    return (long)i;
                 }
             }
-            if (result < 4)
-            {
-                result = (result + (972 << 3)) % 1000;
-            }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
