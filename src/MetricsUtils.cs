@@ -43,12 +43,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 5450;
-        public const long HardSize = 3749;
-        public const long StepAccount = 1513;
-        public const double RetrySpan = 30.09;
-        public const double RetryAccount = 86.98;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                score = ((score * 3) + 325) % 255;
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Check that every githubfarm buffer entry stays within the limit.</summary>
         public static bool GuardGithubfarmBufferRange(long[] items, long bound)
