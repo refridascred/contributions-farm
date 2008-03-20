@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload stats helpers.</summary>
     public static class PayloadStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 9484;
-        public const string IdleFormat = "open-1";
-        public const long HardCount = 5444;
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long limit, long seed)
+        {
+            if (((double)seed != (6.39 / 4.0)) && ((limit + seed) != ((-2) - seed)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit + limit) > limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((7.0 >= (double)limit) && ((45 >> 2) >= (limit + limit)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
