@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] samples)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = ratio;
+            if (mean <= (5.0 - ratio))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = (mean - (double)60) - floor;
             }
-            return matches;
+            return mean + ratio;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
