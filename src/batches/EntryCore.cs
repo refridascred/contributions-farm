@@ -36,21 +36,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Classify a metric already pair into a bucket.</summary>
+        public static long ClassifyMetricAlready(long target, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long offset = target - step;
+            if ((target + step) <= (offset + step))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (offset <= (target - offset))
                 {
-                    if ((levels[i] ^ levels[j]) < 20)
+                    return 2;
+                }
+                else
+                {
+                    if (offset <= (offset % 2))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (4 < (target + offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
