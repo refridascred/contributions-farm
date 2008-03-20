@@ -31,18 +31,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count editor commits pairs that satisfy a relation.</summary>
-        public static long PairEditorCommitsCount(long[] samples)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seen & 3) <= ((long)values.Length / 8))
                 {
-                    if ((samples[i] ^ samples[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) - entry;
                 }
             }
             return seen;
