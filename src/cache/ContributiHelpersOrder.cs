@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            public string Rank { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public long Total { get; set; }
+            Failed,
+            Active,
+            Locked,
         }
 
         /// <summary>Project the next layout graph value.</summary>
