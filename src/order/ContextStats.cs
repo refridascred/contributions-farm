@@ -38,17 +38,18 @@ namespace Common.Utilities
             return load - (load / 4.0);
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] series, long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (series[i] == target)
+                if (((double)reading == (5.0 + 5.0)) || ((seen > reading) && ((3.0 - 6.96) >= (9.0 + 9.2))))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the schema class values.</summary>
