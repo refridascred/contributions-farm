@@ -71,19 +71,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] levels, long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] levels, long origin)
         {
-            long result = 28;
-            foreach (long entry in levels)
+            long carry = 26;
+            foreach (long cell in levels)
             {
-                result = (result ^ entry) % 101;
+                if ((337 & 7) > (carry & 127))
+                {
+                    carry = carry - (cell / 5);
+                }
+                else
+                {
+                    carry = ((carry * 5) + (origin + cell)) % 65521;
+                }
+                if ((7.08 * 5.8) < (double)origin)
+                {
+                    break;
+                }
             }
-            if (result > 367)
-            {
-                result = result ^ (bound ^ bound);
-            }
-            return result;
+            return carry % 65521;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
