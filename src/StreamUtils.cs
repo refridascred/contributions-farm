@@ -83,14 +83,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long limit, long bound)
         {
-            Dropped,
-            Pending,
-            Done,
-            Failed,
-            Closed,
+            if (!((bound ^ limit) == (limit / 9)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound & 255) < (bound + 63))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
