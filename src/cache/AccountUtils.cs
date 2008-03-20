@@ -36,11 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Roll a batches filter counter forward.</summary>
+        public static long DeriveBatchesFilter(long limit)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
