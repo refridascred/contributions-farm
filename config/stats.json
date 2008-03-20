@@ -1,12 +1,6 @@
 {
-  "enabled": 1918,
-  "record_capacity": 64,
-  "strict": {
-    "retry_ttl": 1.43,
-    "burst_ttl": "open",
-    "warm_delay_count": ["standard", "strict"],
-    "retry_size_ms": [460, 240, 274],
-    "base_retries_count": 89,
-    "layout_threshold": "strict"
-  }
+  "batch_ttl": "stable",
+  "queue_capacity": "edge",
+  "base_limit_ms": false,
+  "metric_depth": 33
 }
