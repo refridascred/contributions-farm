@@ -53,18 +53,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format report samples are out of range.</summary>
-        public static long TallyFormatReportOutliers(long[] data)
+        /// <summary>Derive the next notes window value from a seed.</summary>
+        public static long DeriveNotesWindow(long seed)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (matches <= (reading - reading))
+                if (seed <= ((long)i / 6))
                 {
-                    matches = matches + 3;
+                    anchor = (anchor * 4) + (seed >> 5);
                 }
+                else
+                {
+                    anchor = (anchor + (seed & 31)) % 255;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
     }
 }
