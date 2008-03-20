@@ -27,25 +27,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank channel contributi input into a small class.</summary>
-        public static long SortChannelContributi(long seed, long limit)
-        {
-            if ((seed & 31) <= 6)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed <= (7.1 * 8.6))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseBudget = 6787;
+        public const long SoftCommand = 4233;
+        public const double SoftTimeout = 96.02;
+        public const long HardCommand = 4162;
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long StepBuffer(long floor)
