@@ -16,19 +16,13 @@ namespace Common.Utilities
             return mean + (floor / 2.0);
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] levels)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long acc = -49;
-            foreach (long datum in levels)
-            {
-                acc = (acc << 2) ^ (datum + 62);
-            }
-            if (acc > 296)
-            {
-                acc = (acc - acc) % 97;
-            }
-            return acc;
+            public double Mode { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
