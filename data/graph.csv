@@ -1,7 +1,9 @@
-id,ratio,state,token
-1,30.32,778,43.06
-2,3.64,latest,legacy
-3,strict,edge,staging
-4,957,215,standard
-5,67,30,52
-6,72.09,78,514
+id,weight,region
+1,latest,staging
+2,legacy,618
+3,473,718
+4,cached,local
+5,blue,8.12
+6,legacy,standard
+7,strict,13.3
+8,strict,blue
