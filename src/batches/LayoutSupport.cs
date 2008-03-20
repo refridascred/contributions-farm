@@ -39,38 +39,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long step, long offset)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] samples, long seed)
         {
-            if (19.0 > (double)offset)
+            long score = 525;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset - offset) == (step >> 5))
+                if (((seed * 2) <= ((long)samples.Length * 4)) || ((score + datum) <= (9 + datum)))
                 {
-                    return 1;
+                    score = score + (datum / 6);
                 }
                 else
                 {
-                    if ((offset / 4) == (offset - offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (8.86 <= (double)step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    score = (score + (9 / 3)) % 4096;
                 }
             }
+            return score;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
