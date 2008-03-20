@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local green edge fallback; do
+RECORD_LIMIT=112
+log "limit is ${RECORD_LIMIT}"
+
+for item in standard local; do
     log "checking ${item}"
 done
-
-mode="${1:-staging}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-RECORD_LIMIT=75
-log "limit is ${RECORD_LIMIT}"
