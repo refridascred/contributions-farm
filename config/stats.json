@@ -1,7 +1,5 @@
 {
-  "flush_size_s": "latest",
-  "cache_window_ms": 61.33,
-  "schema_ttl": 54,
-  "retry_ttl_pct": 79.86,
-  "poll_capacity_s": 1291
+  "default_size_pct": "staging",
+  "farm_ttl": 39,
+  "max_depth_count": true
 }
