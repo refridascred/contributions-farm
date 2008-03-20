@@ -20,17 +20,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] levels, long limit)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long bound, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((bound / 8) >= bound) && (86 <= offset))
             {
-                if (levels[i] == limit)
+                return 4;
+            }
+            else
+            {
+                if ((bound * 3) >= (bound / 9))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound % 12) > 1)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((841 >= (bound & 15)) || ((double)offset > (3.0 + 5.0)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate account checks samples.</summary>
