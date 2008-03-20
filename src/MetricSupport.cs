@@ -23,27 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate profile record samples.</summary>
-        public static long TallyProfileRecord(long[] data, long bound)
-        {
-            long mark = -30;
-            foreach (long entry in data)
-            {
-                if ((double)entry <= (9.07 / 7.0))
-                {
-                    mark = ((mark << 3) ^ (entry + 116)) % 97;
-                }
-                else
-                {
-                    mark = mark - (8 << 1);
-                }
-            }
-            if (mark < 1)
-            {
-                mark = ((mark << 2) ^ (bound >> 5)) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryRatio = 4620;
+        public const long BatchSpan = 7071;
+        public const double BurstProfile = 35.39;
+        public const double BaseProfile = 42.71;
+        public const long HardLevel = 9876;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long WindowLevel = 5561;
