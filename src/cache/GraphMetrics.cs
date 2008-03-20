@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long bound)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long result = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                result = result - (bound % 64);
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            Stale,
+            New,
+            Draft,
         }
 
         /// <summary>Blend two report measurements.</summary>
