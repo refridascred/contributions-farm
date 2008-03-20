@@ -50,22 +50,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Match up layout order samples.</summary>
-        public static long MatchLayoutOrderCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitLevel = 98.2;
+        public const double BaseBudget = 78.65;
+        public const double BurstToken = 57.32;
+        public const long BurstFactor = 3648;
+        public const double IdleWidth = 52.24;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool CheckContextBounds(long[] items, long limit)
