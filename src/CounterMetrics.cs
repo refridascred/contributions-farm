@@ -41,15 +41,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the tools githubfarm series from a seed.</summary>
-        public static long DeriveToolsGithubfarm(long step)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] samples, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if ((samples[i] > bound) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
