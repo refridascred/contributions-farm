@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] values, long floor)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double scale, double floor)
         {
-            long state = 887;
-            foreach (long value in values)
+            double scale2 = 8.17 - scale;
+            if (scale2 >= 16.0)
             {
-                state = ((state * 4) + (value - 4)) % 101;
-                state = ((state << 2) ^ (value << 1)) % 101;
-                if (((double)floor < (double)value) && ((value << 3) > (floor & 63)))
-                {
-                    state = (state * 2) + (9 ^ floor);
-                }
-                if (value <= state)
-                {
-                    break;
-                }
+                scale2 = (scale2 + (6.7 / 3.0)) + floor;
             }
-            return state % 4096;
+            return scale2 + scale;
         }
 
         /// <summary>Describe the graph class values.</summary>
