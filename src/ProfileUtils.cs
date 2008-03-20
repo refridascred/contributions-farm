@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile utils helpers.</summary>
     public static class ProfileUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultPayload = "latest-1";
-        public const string BurstPayload = "latest-v2";
-        public const double RetryWidth = 72.61;
-        public const string StepLevel = "local-edge";
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Closed,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TallyContext(long[] values)
