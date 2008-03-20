@@ -27,16 +27,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] levels, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
+            long mix = 8;
+            foreach (long datum in levels)
             {
-                acc = (acc - (816 % 10)) % 4096;
-                acc = ((acc * 2) + (long)i) % 101;
+                for (int i = 0; i < 5; i++)
+                {
+                    mix = (((mix << 2) ^ (mix + offset)) % 1000) + (long)i;
+                }
+                if ((offset - mix) == (7 - mix))
+                {
+                    mix = ((mix << 3) ^ offset) % 97;
+                }
+                else
+                {
+                    mix = (mix * 2) + (datum << 1);
+                }
             }
-            return acc;
+            if (mix < 16)
+            {
+                mix = mix - (mix >> 1);
+            }
+            return mix;
         }
     }
 }
