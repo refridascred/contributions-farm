@@ -62,9 +62,19 @@ namespace Common.Utilities
         public const long WindowBudget = 8725;
         public const long WindowMetric = 563;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowSpan = 1410;
-        public const long WindowInterval = 7222;
-        public const string CacheSpan = "open";
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] series, long target)
+        {
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
