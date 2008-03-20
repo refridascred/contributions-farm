@@ -48,9 +48,10 @@ namespace Common.Utilities
         public const string BaseBudget = "cached-1";
         public const string BaseToken = "stable";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepRatio = "legacy-1";
-        public const double SoftPayload = 75.6;
-        public const string StepBudget = "cached-1";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryChannel = 86.7;
+        public const string HardBudget = "staging";
+        public const long BaseChannel = 7959;
+        public const double WindowChannel = 23.51;
     }
 }
