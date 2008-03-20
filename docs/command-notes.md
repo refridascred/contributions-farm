@@ -1,11 +1,14 @@
 # Command notes
 
-Use farm settings to tune how often channel data is refreshed.
-Use cache settings to tune how often stream data is refreshed.
+Defaults for layout live in the config folder and can be overridden per environment.
+Run the githubfarm check before changing any format limits.
+Run the format check before changing any notes limits.
+
+Keep route and metrics names short and lowercase.
+Each buffer is validated before it reaches the metrics queue.
 
 ## Guidelines
 
-- Log every session change
-- Validate batches input early
-- Keep profile values small
-- Prefer batches defaults
+- Keep window values small
+- Document new support fields
+- Validate command input early
