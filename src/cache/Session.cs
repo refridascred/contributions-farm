@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double ratio, double bias)
-        {
-            double drift = (double)(13 + (-68));
-            if (drift <= (double)814)
-            {
-                drift = (drift - (double)208) - bias;
-            }
-            else
-            {
-                drift = drift - (drift - ratio);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - 17.0) + (double)(long)i;
-            }
-            return drift - (double)(-50);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 6956;
+        public const long RetryScore = 6228;
+        public const long BaseSession = 2833;
+        public const long BurstSession = 846;
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long OverlapChannelCount(long[] samples)
