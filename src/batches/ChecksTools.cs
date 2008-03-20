@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const double RetryReport = 3.65;
         public const long BaseReport = 5337;
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double scale, double offset)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            double ratio = 5.0;
-            if (ratio >= ratio)
-            {
-                ratio = ratio + scale;
-            }
-            else
-            {
-                ratio = ratio + (offset - ratio);
-            }
-            return ratio + (double)97;
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
