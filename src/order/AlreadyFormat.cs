@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of layout entry entries.</summary>
-        public static long FoldLayoutEntry(long[] levels, long offset)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long carry = 35;
-            foreach (long cell in levels)
-            {
-                if ((cell - 365) > (carry & 31))
-                {
-                    carry = (carry * 5) + 4;
-                }
-                if ((cell % 7) < (cell + 69))
-                {
-                    carry = carry - (carry + (-83));
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (927 + cell);
-                }
-                if (550 <= cell)
-                {
-                    carry = (carry << 2) ^ (offset % 12);
-                }
-            }
-            return carry;
+            Pending,
+            Retry,
+            New,
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
