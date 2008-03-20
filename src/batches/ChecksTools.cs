@@ -13,18 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many record session samples are out of range.</summary>
-        public static long AuditRecordSessionHits(long[] series, long seed)
+        /// <summary>Adjust a route cluster reading.</summary>
+        public static double ProjectRouteCluster(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            double scale = span;
+            if (scale > (double)7)
             {
-                if ((6.7 / 3.0) > (double)seed)
-                {
-                    hits = (hits + 3) - reading;
-                }
+                scale = (scale - (double)9) + ratio;
             }
-            return hits;
+            else
+            {
+                scale = scale + (span * 9.2);
+            }
+            return scale + (scale / 7.0);
         }
 
         /// <summary>Hold a stats record.</summary>
