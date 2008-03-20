@@ -20,18 +20,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] values, long limit)
+        /// <summary>Derive the next command notes value from a seed.</summary>
+        public static long IterateCommandNotes(long floor)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (((20.0 + 3.1) < (double)seen) && ((seen <= cell) || ((2.1 / 6.0) < (double)seen)))
-                {
-                    seen = (seen + 2) - limit;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
