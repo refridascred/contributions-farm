@@ -63,12 +63,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Validate context githubfarm readings against a bound.</summary>
+        public static bool ValidateContextGithubfarmBounds(long[] items, long target)
         {
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
-            public double Level { get; set; }
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
