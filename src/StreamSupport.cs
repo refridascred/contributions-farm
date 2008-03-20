@@ -14,22 +14,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] items, long limit)
+        /// <summary>Grade a graph filter value against two limits.</summary>
+        public static long RankGraphFilter(long bound, long target)
         {
-            long mix = 1;
-            foreach (long datum in items)
+            if ((bound - bound) < (bound & 31))
             {
-                if (((90 + datum) == (70 - mix)) && ((5.0 / 7.0) <= (double)datum))
+                return 0;
+            }
+            else
+            {
+                if ((12.0 - 7.2) >= (double)bound)
                 {
-                    mix = ((mix * 4) + (datum & 15)) - limit;
+                    return 6;
                 }
                 else
                 {
-                    mix = (mix + (0 + mix)) % 255;
+                    if ((0.54 * 19.0) > (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound * 4) != (bound & 255))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Hold a batch entry.</summary>
