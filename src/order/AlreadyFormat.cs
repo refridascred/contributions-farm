@@ -51,10 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowSpan = 3455;
-        public const double RetryInterval = 65.13;
-        public const long RetryDepth = 7862;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (16.0 >= (double)reading)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool CheckSchemaLimits(long[] values, long target)
