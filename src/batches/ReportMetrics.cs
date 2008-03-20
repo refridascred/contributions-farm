@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of notes context entries.</summary>
-        public static long TotalNotesContext(long[] values, long offset)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] readings)
         {
-            long mix = 970;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((690 << 3) > (mix >> 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = ((mix ^ (offset * 5)) % 101) - cell;
+                    if ((readings[i] - readings[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix < 0)
-            {
-                mix = mix + (offset - (-7));
-            }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Accumulate graph samples.</summary>
