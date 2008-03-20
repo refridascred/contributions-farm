@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            Draft,
-            Locked,
-            Synced,
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the route state values.</summary>
