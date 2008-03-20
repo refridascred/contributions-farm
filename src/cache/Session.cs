@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 715;
-        public const long StepQueue = 7312;
-        public const long BaseQueue = 5981;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] data)
+        {
+            long sum = 2;
+            foreach (long entry in data)
+            {
+                sum = ((sum << 3) ^ (sum ^ (-9))) - entry;
+                sum = sum ^ (sum * 5);
+            }
+            return sum;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double MaxReport = 79.46;
