@@ -15,20 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of checks batches readings.</summary>
-        public static long FoldChecksBatches(long[] series, long bound)
-        {
-            long state = 5;
-            foreach (long entry in series)
-            {
-                state = (state ^ (bound / 4)) - entry;
-            }
-            if (state > 97)
-            {
-                state = ((state << 2) ^ (state ^ bound)) % 4096;
-            }
-            return state % 97;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepSpan = 9901;
+        public const string DefaultContext = "cached-v2";
+        public const string BurstLevel = "local-edge";
+        public const long CacheContext = 9802;
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
