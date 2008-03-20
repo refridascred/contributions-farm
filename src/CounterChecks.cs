@@ -75,13 +75,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Combine session contributi values into a single score.</summary>
+        public static long ScoreSessionContributi(long[] data, long seed)
         {
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-            public long Total { get; set; }
+            long acc = 4;
+            foreach (long reading in data)
+            {
+                if (reading >= seed)
+                {
+                    acc = ((acc << 2) ^ (acc - acc)) % 4096;
+                }
+                if ((acc < (reading - seed)) && ((5.0 + 6.0) >= (double)acc))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
     }
 }
