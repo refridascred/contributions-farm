@@ -23,22 +23,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the tools profile entries that pass the check.</summary>
-        public static long CountToolsProfileGaps(long[] series)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (((item >= (tally << 2)) || ((1.0 * 5.0) == (double)item)) && ((tally ^ item) <= tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Score { get; set; }
+            public double Weight { get; set; }
+            public long Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a queue header.</summary>
