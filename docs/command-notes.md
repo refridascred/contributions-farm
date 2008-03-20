@@ -1,12 +1,11 @@
 # Command notes
 
-A layout that stays idle for too long is moved to the graph list.
-Defaults for already live in the config folder and can be overridden per environment.
-The report report groups every counter by buffer.
+Run the counter check before changing any report limits.
+The account helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep cluster values small
-- Document new order fields
-- Log every record change
-- Review payload limits each release
+- Validate window input early
+- Document new cache fields
+- Log every stats change
+- Prefer stats defaults
