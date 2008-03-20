@@ -69,19 +69,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next metrics entry value from a seed.</summary>
-        public static long RollMetricsEntry(long step)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] items)
         {
-            long state = step;
-            for (int i = 0; i < 12; i++)
+            long acc = -645;
+            foreach (long datum in items)
             {
-                if ((step + state) <= 44)
+                if ((9.1 * 4.89) == (double)acc)
                 {
-                    state = state - ((long)i % 64);
+                    acc = ((acc * 4) + (acc - datum)) % 1000;
+                    acc = (acc << 3) ^ (acc - 893);
                 }
-                state = ((state * 2) + (long)i) % 101;
+                else
+                {
+                    acc = ((acc * 2) + (datum >> 5)) % 255;
+                }
+                if ((acc <= (596 % 97)) && ((7.0 * 5.0) >= (double)acc))
+                {
+                    acc = ((acc << 3) ^ (acc % 12)) % 65521;
+                }
             }
-            return state;
+            return acc;
         }
     }
 }
