@@ -48,12 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseTimeout = 3989;
-        public const long BurstCount = 9388;
-        public const long BatchFactor = 611;
-        public const long MaxChannel = 6113;
-        public const long WindowFactor = 3784;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] levels, long offset)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (!(((double)(long)levels.Length >= (18.0 * 4.0)) || ((double)value >= (double)matches)))
+                {
+                    matches = (matches + 3) - offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long IterateTools(long bound)
