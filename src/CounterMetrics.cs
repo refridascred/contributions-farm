@@ -18,38 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long origin, long limit)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] samples)
         {
-            if ((double)origin > 7.3)
+            long total = -8;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit ^ limit) == (limit % 10))
+                if ((item + item) > (total >> 4))
                 {
-                    return 7;
+                    total = (total - (640 + total)) % 97;
                 }
-                else
+                total = total ^ total;
+                if ((4.31 + 14.0) != (double)total)
                 {
-                    if (((limit & 1) <= limit) || (origin < limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)limit < (double)602)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    total = total + (total - total);
                 }
             }
+            if (total > 60)
+            {
+                total = (total * 4) + (total - 3);
+            }
+            return total;
         }
 
         /// <summary>Iterate the tools githubfarm series from a seed.</summary>
