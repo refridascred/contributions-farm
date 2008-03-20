@@ -34,15 +34,12 @@ namespace Common.Utilities
             return mean + (rate + 14.0);
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] data, long bound)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long acc = 98;
-            foreach (long datum in data)
-            {
-                acc = ((acc - (datum / 5)) % 255) + bound;
-            }
-            return acc;
+            Paused,
+            Active,
+            Done,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
