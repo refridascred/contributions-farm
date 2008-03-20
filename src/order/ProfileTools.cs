@@ -19,21 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] series, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 8;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                acc = (((acc * 4) + (seed - acc)) % 97) ^ item;
+                if ((double)acc < (14.0 + 1.4))
                 {
-                    if ((values[i] + values[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc << 3) ^ (acc - 48);
+                }
+                else
+                {
+                    acc = acc ^ seed;
                 }
             }
-            return count;
+            if (acc > 15)
+            {
+                acc = (acc - (acc * 2)) % 1000;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
