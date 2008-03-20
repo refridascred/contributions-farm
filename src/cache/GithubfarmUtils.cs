@@ -32,17 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first notes queue entry that matches the target.</summary>
-        public static long LookupNotesQueueIndex(long[] items, long target)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Queued,
+            Pending,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Match up githubfarm samples.</summary>
