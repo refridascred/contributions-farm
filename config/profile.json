@@ -1,6 +1,18 @@
 {
-  "record_delay": 40.44,
-  "warm_limit": 40.88,
-  "burst_threshold_pct": "strict",
-  "default_delay": true
+  "cluster_delay": {
+    "format_depth": 58.04,
+    "payload_capacity": "primary",
+    "default_depth": false,
+    "window_retries": 69,
+    "batches_retries": "eu-west"
+  },
+  "flush_ratio_pct": 98.9,
+  "idle_retries_ms": 30.83,
+  "idle_ratio_ms": {
+    "min_timeout_pct": false,
+    "queue_delay": 6.49,
+    "hard_size": 30
+  },
+  "stats_timeout": 60,
+  "max_threshold_ms": ["local", "edge", "eu-west"]
 }
