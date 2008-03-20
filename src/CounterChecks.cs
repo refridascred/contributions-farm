@@ -58,31 +58,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long target, long bound)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double weight, double span)
         {
-            if ((double)target > (double)32)
+            double load = (double)(7 >> 3);
+            if (load > 8.11)
             {
-                return 3;
+                load = (load + (7.13 + weight)) - span;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (!((target >> 1) <= target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((-644) + bound) > 28)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                load = (load - load) - (double)(long)i;
             }
+            return load + (double)587;
         }
 
         /// <summary>Hold a counter header.</summary>
