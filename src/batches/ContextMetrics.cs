@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Check that every checks farm entry stays within the limit.</summary>
+        public static bool GuardChecksFarmRange(long[] readings, long seed)
         {
-            Draft,
-            Synced,
-            Locked,
-            Active,
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a profile counter reading by value.</summary>
