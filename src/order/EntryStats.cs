@@ -35,15 +35,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of stream already entries.</summary>
-        public static long WeighStreamAlready(long[] levels)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            long carry = 9;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry - (89 * 3)) % 65521) + reading;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the farm class values.</summary>
