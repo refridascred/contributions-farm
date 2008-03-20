@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long origin)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = (mark + (origin / 2)) % 1000;
-                mark = mark - (mark / 9);
-                mark = (mark + (mark + origin)) % 4096;
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            Draft,
+            Retry,
+            Idle,
+            Active,
+            Pending,
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
