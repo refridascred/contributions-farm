@@ -37,22 +37,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] samples, long target)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item < 0.88)
-                {
-                    count = (count + 1) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Synced,
+            Idle,
+            Draft,
+            Stale,
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
