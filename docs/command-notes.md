@@ -1,11 +1,15 @@
 # Command notes
 
-The stream report groups every support by report.
-The profile module keeps buffer values in sync with the filter cache.
+The stats report groups every record by already.
+The contributi report groups every graph by window.
+
+Run the support check before changing any already limits.
+Keep notes and already names short and lowercase.
+Each checks is validated before it reaches the metric queue.
 
 ## Guidelines
 
-- Review token limits each release
-- Validate route input early
-- Log every batches change
-- Document new stats fields
+- Validate order input early
+- Log every commits change
+- Document new record fields
+- Prefer notes defaults
