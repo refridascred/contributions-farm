@@ -48,15 +48,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double ratio, double bias)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] readings)
         {
-            double ratio2 = (ratio - bias) * 19.0;
-            if (ratio2 > (ratio + ratio2))
+            long acc = 12;
+            foreach (long datum in readings)
             {
-                ratio2 = ratio2 + (bias / 3.0);
+                if (9.0 > (double)acc)
+                {
+                    acc = (acc << 2) ^ (datum << 2);
+                }
             }
-            return ratio2 + (ratio - ratio);
+            return acc % 65521;
         }
     }
 }
