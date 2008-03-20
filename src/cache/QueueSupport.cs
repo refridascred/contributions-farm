@@ -29,19 +29,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] items, long bound)
+        /// <summary>Iterate the format metrics series from a seed.</summary>
+        public static long RollFormatMetrics(long offset)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (sum + (offset ^ sum)) % 65521;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return ready;
+            return sum;
         }
     }
 }
