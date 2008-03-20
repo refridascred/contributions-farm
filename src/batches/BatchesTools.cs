@@ -49,17 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] levels, long limit)
+        /// <summary>Scale a entry order figure with a bias.</summary>
+        public static double BlendEntryOrder(double weight, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight2 = (double)20 * 1.0;
+            if (weight2 <= 2.23)
             {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
+                weight2 = ((weight2 - (double)8) + weight) + bias;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 - weight2) - (double)(long)i;
+            }
+            return weight2 + (double)545;
         }
     }
 }
