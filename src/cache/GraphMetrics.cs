@@ -50,12 +50,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Project the next queue metrics value.</summary>
+        public static double SmoothQueueMetrics(double gain, double floor)
         {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Ratio { get; set; }
+            double drift = (double)(0 << 3);
+            if (drift > floor)
+            {
+                drift = drift - (double)385;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (gain / 9.0)) - (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Accumulate format samples.</summary>
