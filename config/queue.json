@@ -1,7 +1,7 @@
 {
-  "compress": "legacy",
-  "route_interval": 89.25,
-  "metrics_size": false,
-  "poll_depth": [243, 206, 83],
-  "verbose": "legacy"
+  "schema_delay": 95.16,
+  "default_window_s": "standard",
+  "default_window_count": "staging",
+  "hard_depth_count": 6928,
+  "channel_ttl": 17.4
 }
