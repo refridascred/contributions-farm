@@ -65,12 +65,11 @@ namespace Common.Utilities
             return scale + (double)60;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Paused,
-            Ready,
-            Closed,
+            public string Label { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Project the next queue context value.</summary>
