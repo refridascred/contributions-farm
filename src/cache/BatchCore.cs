@@ -49,15 +49,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double gain, double bias)
+        /// <summary>Accumulate context support samples.</summary>
+        public static long TotalContextSupport(long[] readings, long offset)
         {
-            double rate = bias;
-            for (int i = 0; i < 7; i++)
+            long carry = 61;
+            foreach (long item in readings)
             {
-                rate = ((rate + 2.39) + (double)(long)i) - gain;
+                if ((carry + 8) >= carry)
+                {
+                    carry = (((carry << 2) ^ 156) - item) - offset;
+                }
             }
-            return rate - bias;
+            return carry;
         }
     }
 }
