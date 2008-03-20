@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch graph samples are out of range.</summary>
-        public static long TallyBatchGraphHits(long[] readings)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (36 >= entry)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of format notes entries.</summary>
