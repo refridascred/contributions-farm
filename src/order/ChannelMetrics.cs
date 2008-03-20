@@ -13,17 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] values, long limit)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (values[i] > limit)
+                if ((double)bound < (3.4 * 3.0))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Roll a context counter forward.</summary>
