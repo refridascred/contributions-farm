@@ -1,7 +1,42 @@
 # support settings
-base_limit_ms: 8085
-dry_run: green
-burst_window_count: green
-burst_timeout: false
-min_retries: open
-default_ratio_ms: 500
+min_retries_pct:
+  enabled: false
+  base_limit_count:
+    githubfarm_ratio: true
+    support_capacity:
+      - 355
+      - 61
+    checks_limit: 100
+  min_ratio:
+    - standard
+    - edge
+    - staging
+  sync_interval: primary
+  batch_retries: primary
+  flush_threshold_s:
+    enabled:
+      - open
+      - blue
+      - edge
+      - fallback
+    sync_delay_ms: standard
+    base_depth_count: open
+    metrics_window:
+      - standard
+      - eu-west
+      - green
+      - strict
+    flush_threshold_ms:
+      - 119
+      - 379
+      - 121
+    audit: cached
+base_ttl_count:
+  - 304
+  - 145
+flush_timeout: primary
+audit: 8926
+persist:
+  - 113
+  - 14
+retry_limit_count: 50
