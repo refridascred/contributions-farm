@@ -33,12 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Derive the next cache contributi value from a seed.</summary>
+        public static long StepCacheContributi(long bound)
         {
-            public bool Rank { get; set; }
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((6.88 * 0.1) > (double)acc)
+                {
+                    break;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (bound * 4)) % 101;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
