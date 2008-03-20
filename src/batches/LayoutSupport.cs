@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long BaseSize = 667;
         public const double IdleSize = 37.32;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] series, long floor)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((hits << 1) == ((long)series.Length + 6))
-                {
-                    hits = ((hits + 3) + reading) - floor;
-                }
-            }
-            return hits;
+            public bool Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a report snapshot.</summary>
