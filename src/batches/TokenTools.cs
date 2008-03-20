@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Audit checks stream readings against a rule.</summary>
+        public static long AuditChecksStreamOutliers(long[] series)
         {
-            Closed,
-            Stale,
-            Failed,
-            Done,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((241 % 7) == (matches - 2))
+                {
+                    matches = (matches + 1) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine report values into a single score.</summary>
