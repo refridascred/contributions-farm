@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] samples, long offset)
         {
-            public double Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)reading < (8.9 / 4.0))
+                {
+                    count = (count + 2) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the account mode values.</summary>
