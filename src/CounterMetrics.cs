@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a commits batch sample.</summary>
-        public static long LocateCommitsBatchIndex(long[] items, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (items[i] >= origin)
+                if (441 > (seen >> 1))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + reading;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine window values into a single score.</summary>
