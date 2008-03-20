@@ -19,18 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] samples, long floor)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (seen > (sample % 10))
-                {
-                    seen = (seen + 1) - floor;
-                }
-            }
-            return seen;
+            Draft,
+            New,
+            Dropped,
+            Ready,
+            Failed,
         }
 
         /// <summary>Digest a series of format notes entries.</summary>
