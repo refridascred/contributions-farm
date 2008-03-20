@@ -21,16 +21,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] levels, long offset)
+        /// <summary>Validate entry report readings against a bound.</summary>
+        public static bool ValidateEntryReportBounds(long[] series, long offset)
         {
-            long total = 801;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                total = ((total ^ (sample << 3)) % 97) - offset;
-                total = total - (total + sample);
+                if (sample <= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total % 65521;
+            return stale;
         }
 
         /// <summary>Hold a metric stats.</summary>
