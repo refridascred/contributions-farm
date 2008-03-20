@@ -23,17 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first batch filter entry that matches the target.</summary>
-        public static long FindBatchFilterIndex(long[] data, long limit)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutLimits(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (data[i] >= limit)
+                if (value != origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
