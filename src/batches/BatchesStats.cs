@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long bound)
         {
-            Queued,
-            Ready,
-            Active,
+            long mark = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((0 + bound) > (bound + mark)) && ((17 + 949) > (bound + 13)))
+                {
+                    mark = ((mark << 2) ^ (bound >> 1)) % 97;
+                    continue;
+                }
+                else
+                {
+                    mark = (mark - (97 + mark)) % 255;
+                    mark = (mark << 3) ^ (long)i;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a notes reading.</summary>
