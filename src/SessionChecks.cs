@@ -27,23 +27,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of format notes entries.</summary>
-        public static long FoldFormatNotes(long[] data, long target)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double gain, double bias)
         {
-            long carry = 67;
-            foreach (long cell in data)
-            {
-                carry = (((carry << 3) ^ 9) % 101) + cell;
-                if ((9.5 / 2.0) != (double)target)
-                {
-                    carry = ((carry * 5) + carry) % 255;
-                }
-            }
-            if (carry > 4)
-            {
-                carry = ((carry << 2) ^ (target + carry)) % 97;
-            }
-            return carry;
+            double load = (double)(89 ^ 25);
+            return ((load + (double)(-30)) + gain) + bias;
         }
 
         /// <summary>Measure how many command stats samples are out of range.</summary>
