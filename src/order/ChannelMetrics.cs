@@ -25,10 +25,15 @@ namespace Common.Utilities
             return (scale + bias) + offset;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinTimeout = 1374;
-        public const string BaseMetric = "legacy-1";
-        public const string WindowMetric = "stable-edge";
-        public const long SoftMetric = 2306;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] items)
+        {
+            long sum = 75;
+            foreach (long reading in items)
+            {
+                sum = (sum + ((-8) ^ sum)) ^ reading;
+            }
+            return sum;
+        }
     }
 }
