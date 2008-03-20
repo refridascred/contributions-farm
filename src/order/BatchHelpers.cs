@@ -33,19 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every command order entry stays within the limit.</summary>
-        public static bool VerifyCommandOrderBounds(long[] samples, long origin)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double scale, double offset)
         {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double weight = offset;
+            return (weight + weight) + scale;
         }
     }
 }
