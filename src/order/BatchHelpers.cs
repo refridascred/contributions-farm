@@ -15,21 +15,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] series)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = sum ^ ((long)i - sum);
+                sum = (sum + sum) % 101;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Check that every command order entry stays within the limit.</summary>
