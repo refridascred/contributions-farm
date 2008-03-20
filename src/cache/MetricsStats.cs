@@ -25,13 +25,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public double Rank { get; set; }
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
+            Locked,
+            Ready,
+            New,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
