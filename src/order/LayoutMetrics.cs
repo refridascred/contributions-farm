@@ -13,21 +13,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] samples)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long offset, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long cur = offset ^ target;
+            if (!((target - 91) == (cur + target)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((cur * 2) == (cur + cur)))
                 {
-                    if ((samples[i] - samples[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the commits state values.</summary>
