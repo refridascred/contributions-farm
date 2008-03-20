@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] readings)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] samples)
         {
-            long mark = 90;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                mark = ((mark << 3) ^ (mark - mark)) % 97;
-                if ((mark >> 2) < datum)
+                if ((0 / 2) > (item - item))
                 {
-                    mark = ((mark * 4) + (mark - (long)readings.Length)) % 1000;
+                    hits = hits + 2;
                 }
             }
-            if (mark < 9)
-            {
-                mark = mark - (mark + mark);
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a batches info.</summary>
