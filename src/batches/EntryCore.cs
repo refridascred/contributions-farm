@@ -32,22 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks token values into a single score.</summary>
-        public static long TallyChecksToken(long[] values)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] data)
         {
-            long state = 7;
-            foreach (long cell in values)
+            long mix = 9;
+            foreach (long cell in data)
             {
-                if (state <= (state + cell))
-                {
-                    state = (state ^ (25 * 3)) % 1000;
-                }
-                else
-                {
-                    state = state - (6 - 815);
-                }
+                mix = ((mix + (mix + mix)) % 101) + cell;
             }
-            return state % 97;
+            return mix;
         }
 
         /// <summary>Match up stream samples.</summary>
