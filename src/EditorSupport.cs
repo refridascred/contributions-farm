@@ -52,18 +52,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] items)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (((hits % 97) == (item / 4)) && ((hits + item) >= item))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
+            public double Owner { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
