@@ -1,10 +1,7 @@
 {
-  "stream_retries": 8551,
-  "max_depth_ms": true,
-  "notes_threshold": {
-    "verbose": 68,
-    "strict": ["edge", "open"],
-    "min_window_s": "stable"
-  },
-  "stats_interval": "local"
+  "batch_ratio_s": [89, 407],
+  "retry_capacity_ms": "open",
+  "base_delay_count": true,
+  "min_depth_count": 30,
+  "idle_retries_ms": 250
 }
