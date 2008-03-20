@@ -44,38 +44,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long floor, long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsOutliers(long[] levels, long bound)
         {
-            if (6 > floor)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)target > 3.2)
+                if (((-979) - (-79)) > (920 + sample))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((-907) - 8) < floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (target < (target % 8))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = (matches + 3) + bound;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
