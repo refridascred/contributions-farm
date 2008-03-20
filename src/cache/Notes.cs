@@ -52,19 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] readings, long seed)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long score = 9;
+            foreach (long reading in values)
             {
-                if (cell < seed)
+                if ((double)49 > (double)floor)
                 {
-                    flag = false;
-                    break;
+                    score = ((score << 2) ^ (reading * 4)) % 1000;
+                }
+                else
+                {
+                    score = score - (floor % 2);
                 }
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
