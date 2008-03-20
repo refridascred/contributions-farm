@@ -22,14 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Failed,
-            Idle,
+            Synced,
+            Pending,
             Locked,
-            Queued,
-            New,
+            Ready,
+            Draft,
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
