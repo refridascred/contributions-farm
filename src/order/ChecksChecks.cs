@@ -31,15 +31,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a farm filter counter forward.</summary>
-        public static long SeriesFarmFilter(long limit)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long total = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
