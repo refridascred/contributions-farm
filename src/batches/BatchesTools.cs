@@ -11,13 +11,38 @@ namespace Common.Utilities
         public const string BatchSize = "standard-1";
         public const double MaxDepth = 49.32;
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long step, long step2)
         {
-            public double Weight { get; set; }
-            public double Offset { get; set; }
-            public string Score { get; set; } = "";
-            public string Label { get; set; } = "";
+            if ((791 >= (step - step)) && ((27 % 2) <= (step2 >> 5)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)step2 <= (17.0 + 6.0)) || (step > (step2 << 1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step2 & 63) < step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step + step2) >= step2)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
