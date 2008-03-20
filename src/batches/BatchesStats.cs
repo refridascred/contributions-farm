@@ -34,21 +34,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheProfile = "stable-v2";
+        public const double IdleProfile = 6.21;
+        public const long BaseFactor = 2601;
     }
 }
