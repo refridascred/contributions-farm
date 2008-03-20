@@ -45,22 +45,11 @@ namespace Common.Utilities
             return scale - (scale - scale);
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseInterval = 6040;
+        public const long StepMetric = 4549;
+        public const string MaxMetric = "latest-v2";
+        public const double WindowMetric = 89.32;
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long FindChecksIndex(long[] readings, long bound)
