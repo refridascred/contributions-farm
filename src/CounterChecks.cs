@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] series, long limit)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long acc = 285;
-            foreach (long sample in series)
-            {
-                acc = (((acc * 4) + (limit & 15)) % 97) + sample;
-            }
-            if (acc < 631)
-            {
-                acc = (acc - (limit ^ acc)) % 65521;
-            }
-            return acc;
+            public bool Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
