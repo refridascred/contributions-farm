@@ -41,15 +41,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double weight, double offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] series, long origin)
         {
-            double scale = offset;
-            for (int i = 0; i < 9; i++)
+            long mark = 5;
+            foreach (long reading in series)
             {
-                scale = (scale - (double)(long)i) + weight;
+                mark = (mark - ((-639) * 3)) ^ reading;
             }
-            return scale + (offset + scale);
+            if (mark > 2)
+            {
+                mark = mark ^ origin;
+            }
+            return mark % 1000;
         }
     }
 }
