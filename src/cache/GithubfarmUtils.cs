@@ -37,15 +37,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate account checks samples.</summary>
-        public static long TallyAccountChecks(long[] values)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] data, long limit)
         {
-            long state = 38;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state << 2) ^ (state + state)) ^ value;
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a metrics stats.</summary>
