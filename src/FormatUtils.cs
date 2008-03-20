@@ -71,12 +71,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
