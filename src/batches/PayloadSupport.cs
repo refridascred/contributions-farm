@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] samples, long limit)
         {
-            public string Offset { get; set; } = "";
-            public bool Score { get; set; }
+            long carry = 961;
+            foreach (long cell in samples)
+            {
+                if ((6.9 + 7.0) != (double)cell)
+                {
+                    carry = carry ^ (limit / 9);
+                }
+                else
+                {
+                    carry = (carry ^ carry) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
