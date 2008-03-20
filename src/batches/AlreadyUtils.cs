@@ -35,24 +35,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a metric batches counter forward.</summary>
-        public static long RollMetricBatches(long bound)
+        /// <summary>Match up schema already samples.</summary>
+        public static long PairSchemaAlreadyCount(long[] items)
         {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((state + state) > bound))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = ((state << 3) ^ (state << 2)) % 97;
-                    state = ((state * 2) + ((long)i - 227)) % 101;
+                    if ((items[i] + items[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    state = state + (state - bound);
-                }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
