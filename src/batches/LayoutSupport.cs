@@ -39,13 +39,38 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long step, long offset)
         {
-            public bool Owner { get; set; }
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
+            if (19.0 > (double)offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset - offset) == (step >> 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset / 4) == (offset - offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (8.86 <= (double)step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
