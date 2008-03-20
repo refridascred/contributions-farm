@@ -1,7 +1,5 @@
 {
-  "token_threshold": 79.25,
-  "strict": 82.03,
-  "persist": ["fallback", "staging", "cached", "blue"],
-  "poll_window_s": "local",
-  "counter_depth": 74
+  "strict": "edge",
+  "idle_ratio": 100,
+  "hard_retries": [71, 400, 316]
 }
