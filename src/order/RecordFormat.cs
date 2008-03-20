@@ -78,38 +78,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long bound, long origin)
-        {
-            if (origin > bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1.72 + 3.0) < (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (origin <= (bound + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin / 4) <= (origin + bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 8485;
+        public const long DefaultWidth = 33;
+        public const long CacheDepth = 3837;
     }
 }
