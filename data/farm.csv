@@ -1,8 +1,9 @@
-id,label,level,rank
-1,96.18,250,73.36
-2,53,16.85,733
-3,0.39,17.81,33.14
-4,standard,11.63,698
-5,835,eu-west,blue
-6,91.31,edge,82.86
-7,157,402,legacy
+id,token,level,ratio,label
+1,standard,edge,524,92.31
+2,standard,0,667,102
+3,925,stable,25.57,963
+4,49,545,latest,400
+5,554,stable,stable,301
+6,90.41,latest,84.31,413
+7,725,cached,local,edge
+8,31.54,87.76,887,379
