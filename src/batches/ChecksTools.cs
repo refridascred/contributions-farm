@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long BatchGraph = 4994;
         public const string MaxTimeout = "cached";
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] samples)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double scale, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = 5.0;
+            if (ratio >= ratio)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio + scale;
             }
-            return count;
+            else
+            {
+                ratio = ratio + (offset - ratio);
+            }
+            return ratio + (double)97;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
