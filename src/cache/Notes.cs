@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] samples)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) != 7)
+                    if ((items[i] ^ items[j]) == 0)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Blend two metric measurements.</summary>
