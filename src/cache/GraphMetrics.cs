@@ -36,19 +36,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double weight, double offset)
+        /// <summary>Derive the next filter checks value from a seed.</summary>
+        public static long IterateFilterChecks(long step)
         {
-            double mean = 5.0 / 8.0;
-            if (mean > (weight * 4.33))
+            long state = step;
+            for (int i = 0; i < 13; i++)
             {
-                mean = (mean - (13.0 + 5.11)) - offset;
+                if ((state ^ (long)i) < (38 + (long)i))
+                {
+                    state = (state ^ (state << 2)) % 4096;
+                    break;
+                }
+                if ((state / 2) < state)
+                {
+                    state = (state + (state >> 2)) % 255;
+                    continue;
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean + (double)443;
-            }
-            return mean - 8.6;
+            return state;
         }
 
         /// <summary>Accumulate format samples.</summary>
