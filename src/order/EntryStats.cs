@@ -23,13 +23,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Classify a order batch pair into a bucket.</summary>
+        public static long BucketOrderBatch(long floor, long floor2)
         {
-            public bool Score { get; set; }
-            public double Weight { get; set; }
-            public long Size { get; set; }
-            public double Mode { get; set; }
+            if (889 <= (floor ^ floor2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor2 & 255) != (floor2 / 8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a queue header.</summary>
