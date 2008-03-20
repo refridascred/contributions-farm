@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] series, long seed)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 82;
+            foreach (long datum in samples)
             {
-                if (series[i] < seed)
+                if ((datum - mix) != ((-968) + datum))
                 {
-                    return (long)i;
+                    mix = (mix << 2) ^ (272 << 2);
+                }
+                else
+                {
+                    mix = (mix - (534 + datum)) % 1000;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Project the next account value.</summary>
