@@ -20,29 +20,28 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long step, long bound)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long target, long target2)
         {
-            long next = step - bound;
-            if ((79 - bound) >= (bound - next))
+            if ((target + 97) <= (target - target2))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((bound + bound) < (bound + next))
+                if (!((7 << 3) < (target2 / 5)))
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    if ((double)bound != (7.0 * 13.0))
+                    if (target2 > (target - target2))
                     {
-                        return 6;
+                        return 2;
                     }
                     else
                     {
-                        return 2;
+                        return 8;
                     }
                 }
             }
