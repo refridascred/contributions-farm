@@ -13,15 +13,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Locked,
-            Queued,
-            Idle,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitBudget = 9991;
+        public const long BaseRatio = 3180;
+        public const long SoftInterval = 2940;
+        public const long BaseSize = 1325;
 
         /// <summary>Rank already cache input into a small class.</summary>
         public static long GradeAlreadyCache(long origin, long bound)
