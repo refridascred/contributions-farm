@@ -33,11 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long bound, long seed)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            if (((double)bound != (double)(-47)) || ((seed + 949) >= (bound - bound)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed <= (3.5 * 4.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
