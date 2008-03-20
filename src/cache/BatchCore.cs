@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] data)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long floor, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((52 < (step ^ floor)) && (floor >= (floor - floor)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((floor >> 5) < (175 >> 2))
                 {
-                    if ((data[i] + data[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
