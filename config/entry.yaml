@@ -1,7 +1,28 @@
 # entry settings
-flush_delay_pct: eu-west
-entry_ratio: 18
-strict: fallback
-flush_retries_s: legacy
-flush_threshold_s: 22
-base_ttl: 83.57
+record_timeout:
+  graph_delay: 21
+  retry_window_count: fallback
+  strict: 56.88
+  order_limit: edge
+  metrics_limit: 78.81
+command_window:
+  - staging
+  - edge
+  - standard
+sync_retries_s: false
+idle_depth_pct:
+  tools_capacity:
+    - local
+    - eu-west
+    - primary
+    - stable
+  flush_size:
+    max_interval_count: legacy
+    base_capacity_pct:
+      - 190
+      - 310
+      - 340
+    min_timeout: 100
+  persist: 51
+  retry_limit: 27
+  idle_timeout: standard
