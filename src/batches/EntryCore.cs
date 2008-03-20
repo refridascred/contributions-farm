@@ -67,12 +67,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double SoftNotes = 6.99;
-        public const long StepCount = 1542;
-        public const double HardNotes = 54.79;
-        public const long BatchBudget = 2287;
-        public const long CacheScore = 5165;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 4834;
+        public const long HardCount = 5422;
+        public const long BaseFactor = 5532;
+        public const double MinAccount = 1.37;
+        public const string BatchRatio = "latest-v2";
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long TallyBufferGaps(long[] samples)
