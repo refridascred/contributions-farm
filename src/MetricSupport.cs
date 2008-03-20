@@ -20,18 +20,11 @@ namespace Common.Utilities
             return scale - (floor - 7.0);
         }
 
-        /// <summary>Count the layout command entries that pass the check.</summary>
-        public static long TallyLayoutCommandMatches(long[] samples, long seed)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (sample > (seed >> 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of order commits entries.</summary>
