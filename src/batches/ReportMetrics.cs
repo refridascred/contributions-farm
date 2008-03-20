@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double scale, double bias)
-        {
-            double ratio = (double)(8 ^ 246);
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ((ratio + bias) + (double)(long)i) - scale;
-            }
-            return ratio + (double)1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryInterval = 9998;
+        public const long BurstBuffer = 5180;
+        public const long WindowScore = 9334;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmHits(long[] data, long step)
