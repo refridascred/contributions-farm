@@ -25,39 +25,12 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long target, long origin)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long diff = target ^ origin;
-            if (!((3.0 / 4.0) < (double)origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((diff - origin) <= target) && ((origin % 10) >= (diff >> 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((target & 31) == (target ^ diff)) && ((8.0 / 2.0) <= (double)diff))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((6.1 / 4.0) != (double)diff))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
