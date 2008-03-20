@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitTimeout = 7873;
-        public const long WindowDepth = 2705;
-        public const long CacheSpan = 6940;
-        public const double WindowSize = 88.1;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] samples, long seed)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (((seed - cell) <= 17) || ((82 ^ seed) < (tally / 8)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool ValidateAccountBounds(long[] values, long limit)
