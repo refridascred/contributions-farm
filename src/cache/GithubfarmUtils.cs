@@ -26,38 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long bound, long offset)
+        /// <summary>Digest a series of layout counter entries.</summary>
+        public static long ScoreLayoutCounter(long[] levels)
         {
-            if (((bound / 8) >= bound) && (86 <= offset))
+            long total = 3;
+            foreach (long cell in levels)
             {
-                return 4;
+                total = (((total * 3) + (total << 3)) % 65521) + cell;
             }
-            else
-            {
-                if ((bound * 3) >= (bound / 9))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound % 12) > 1)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((841 >= (bound & 15)) || ((double)offset > (3.0 + 5.0)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Accumulate account checks samples.</summary>
