@@ -29,11 +29,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string StepFactor = "alpha-edge";
-        public const long CacheBatches = 7167;
-        public const string BurstRatio = "legacy";
-        public const string WindowBatches = "standard-1";
-        public const string StepBatches = "fallback-edge";
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Draft,
+            Failed,
+            Done,
+            Locked,
+        }
     }
 }
