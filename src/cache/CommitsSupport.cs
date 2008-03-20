@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Retry,
-            Idle,
-            Paused,
+            public double Score { get; set; }
+            public bool Token { get; set; }
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
