@@ -12,11 +12,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleNotes = 40.46;
-        public const long HardNotes = 4377;
-        public const double BatchScore = 11.09;
-        public const long MinSpan = 7655;
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
+        {
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long HardSize = 2230;
