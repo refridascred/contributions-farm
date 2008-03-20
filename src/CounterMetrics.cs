@@ -39,19 +39,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double rate, double bias)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] levels)
         {
-            double weight = rate;
-            if (weight >= rate)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight + (1.1 + 19.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - (bias / 5.0);
-            }
-            return weight - weight;
+            return seen;
         }
     }
 }
