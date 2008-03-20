@@ -35,23 +35,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long seed, long bound)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long seed, long limit)
         {
-            long diff = seed ^ bound;
-            if ((seed / 9) >= (diff & 3))
+            if (!((6.02 * 0.5) > (double)seed))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((4 + diff) >= (diff >> 2))
+                if ((limit << 3) >= limit)
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    return 8;
+                    if (seed > (limit & 63))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
