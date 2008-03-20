@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double gain, double offset)
         {
-            Stale,
-            Pending,
-            Dropped,
-            Failed,
-            Ready,
+            double ratio = 3.0;
+            if (ratio > (gain - gain))
+            {
+                ratio = (ratio + (2.49 - gain)) - offset;
+            }
+            return ratio - (ratio / 7.0);
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
