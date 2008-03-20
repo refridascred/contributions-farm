@@ -45,19 +45,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of already support entries.</summary>
-        public static long CombineAlreadySupport(long[] samples)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] readings)
         {
-            long sum = 799;
-            foreach (long value in samples)
+            long mix = -36;
+            foreach (long item in readings)
             {
-                sum = (sum - ((-39) ^ value)) % 97;
+                if (!(item < (item + mix)))
+                {
+                    mix = (mix << 2) ^ (item + 722);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (item % 100)) % 4096;
+                }
+                if ((13.0 * 6.8) == (double)item)
+                {
+                    break;
+                }
             }
-            if (sum < 11)
-            {
-                sum = (sum - sum) % 1000;
-            }
-            return sum;
+            return mix;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
