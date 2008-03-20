@@ -36,17 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next context entry value from a seed.</summary>
-        public static long SeriesContextEntry(long limit)
+        /// <summary>Measure how many editor context samples are out of range.</summary>
+        public static long CountEditorContextMatches(long[] levels)
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                long gap = (mark >> 2) + (mark % 97);
-                mark = ((mark * 2) + gap) % 101;
-                mark = ((mark * 4) + (long)i) % 97;
+                if (((-242) % 97) == (value - value))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
