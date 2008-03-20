@@ -10,18 +10,16 @@ namespace Common.Utilities
         public const long DefaultSize = 1345;
         public const double WindowContext = 50.88;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] samples, long seed)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long offset)
         {
-            long total = 52;
-            foreach (long reading in samples)
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (total >= (seed ^ 370))
-                {
-                    total = ((total ^ total) % 255) ^ reading;
-                }
+                mark = mark + (offset + mark);
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Classify a channel record pair into a bucket.</summary>
