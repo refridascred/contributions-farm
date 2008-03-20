@@ -59,19 +59,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the batches counter entries that pass the check.</summary>
-        public static long TallyBatchesCounterMatches(long[] items)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] readings)
         {
             long seen = 0;
-            foreach (long entry in items)
+            foreach (long datum in readings)
             {
-                if ((double)seen != (4.0 - 7.15))
+                if (datum < (seen * 5))
                 {
-                    seen = (seen + 3) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 1;
                 }
             }
             return seen;
