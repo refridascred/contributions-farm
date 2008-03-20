@@ -32,13 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Check that every command order entry stays within the limit.</summary>
+        public static bool VerifyCommandOrderBounds(long[] samples, long origin)
         {
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public bool Owner { get; set; }
-            public long Level { get; set; }
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
