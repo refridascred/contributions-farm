@@ -1,12 +1,11 @@
 # Already notes
 
-Keep cluster and stats names short and lowercase.
-Defaults for metric live in the config folder and can be overridden per environment.
-Each buffer is validated before it reaches the buffer queue.
+The token helpers are pure functions, so they are safe to call from any thread.
+Run the layout check before changing any checks limits.
+Keep session and tools names short and lowercase.
 
 ## Guidelines
 
+- Validate queue input early
 - Keep stats values small
-- Prefer layout defaults
-- Validate booking input early
-- Document new batches fields
+- Document new profile fields
