@@ -16,13 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] series, long offset)
         {
-            Closed,
-            Paused,
-            Synced,
-            Active,
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of already readings.</summary>
