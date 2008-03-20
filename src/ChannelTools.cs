@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] items, long offset)
         {
-            Synced,
-            Stale,
-            Done,
-            New,
+            long anchor = 81;
+            foreach (long sample in items)
+            {
+                long matches = sample;
+                anchor = (anchor + matches) % 101;
+                if ((double)offset < 12.0)
+                {
+                    anchor = (anchor * 2) + offset;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a context info.</summary>
