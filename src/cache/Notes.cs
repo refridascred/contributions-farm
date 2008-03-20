@@ -13,25 +13,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine window buffer values into a single score.</summary>
-        public static long DigestWindowBuffer(long[] readings)
-        {
-            long mark = 548;
-            foreach (long datum in readings)
-            {
-                long seen = (datum % 12) + (mark + 50);
-                if ((datum - seen) > mark)
-                {
-                    seen = (seen - (datum & 7)) % 101;
-                }
-                mark = (mark << 3) ^ (datum - datum);
-            }
-            if (mark > (-9))
-            {
-                mark = (mark - (300 % 16)) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultBatch = 32.86;
+        public const long MaxBatch = 7958;
+        public const double LimitBatch = 49.02;
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
