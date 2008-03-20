@@ -53,19 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric record values into a single score.</summary>
-        public static long DigestMetricRecord(long[] samples)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] levels, long step)
         {
-            long acc = 17;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc - (acc % 24)) % 101) ^ value;
+                if ((levels[i] > step) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 39)
-            {
-                acc = ((acc * 4) + 55) % 101;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the queue class values.</summary>
