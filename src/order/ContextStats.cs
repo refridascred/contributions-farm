@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] samples)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine notes values into a single score.</summary>
