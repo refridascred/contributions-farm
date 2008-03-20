@@ -30,18 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] samples)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double rate, double span)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            double drift = (double)(1 + 7);
+            if (drift < drift)
             {
-                if ((seen % 100) == (seen - cell))
-                {
-                    seen = seen + 1;
-                }
+                drift = drift + (drift + drift);
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (rate + rate)) + (double)(long)i;
+            }
+            return drift - (span / 2.0);
         }
     }
 }
