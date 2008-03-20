@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            Pending,
-            Failed,
-            Paused,
             Idle,
+            New,
+            Done,
+            Locked,
+            Stale,
         }
 
         /// <summary>Grade a graph filter value against two limits.</summary>
