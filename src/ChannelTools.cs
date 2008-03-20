@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] series, long limit)
         {
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (count < (count * 2))
+                {
+                    count = ((count + 2) ^ item) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
