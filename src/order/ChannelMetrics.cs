@@ -16,22 +16,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] data, long bound)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((double)bound < (3.4 * 3.0))
-                {
-                    hits = (hits + 2) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Paused,
+            Retry,
+            Done,
+            Synced,
+            Failed,
         }
 
         /// <summary>Roll a context counter forward.</summary>
