@@ -95,19 +95,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double scale, double offset)
-        {
-            double drift = (double)58 - (double)97;
-            if (drift < (4.04 - drift))
-            {
-                drift = (drift + offset) + scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (17.0 / 2.0)) + (double)(long)i;
-            }
-            return drift + (drift * 18.0);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheWidth = 6995;
+        public const string IdleRecord = "legacy-v2";
+        public const double DefaultDepth = 12.12;
     }
 }
