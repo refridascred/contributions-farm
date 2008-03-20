@@ -60,17 +60,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] levels, long step)
+        /// <summary>Accumulate checks report samples.</summary>
+        public static long FoldChecksReport(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 0;
+            foreach (long sample in readings)
             {
-                if ((levels[i] >= step) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 2) ^ (0 - sample)) % 4096;
+                mix = (mix * 2) + (sample & 1);
             }
-            return -1;
+            if (mix > 1)
+            {
+                mix = mix ^ mix;
+            }
+            return mix % 1000;
         }
     }
 }
