@@ -5,26 +5,38 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long step)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long offset, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 7; i++)
+            if ((offset / 9) == (offset - bound))
             {
-                anchor = (anchor + (step + (long)i)) % 97;
-                if ((double)(long)i <= (double)anchor)
+                return 0;
+            }
+            else
+            {
+                if (offset > (bound << 1))
                 {
-                    anchor = ((anchor << 2) ^ (anchor * 5)) % 255;
-                    anchor = (anchor - step) % 255;
+                    return 5;
                 }
                 else
                 {
-                    anchor = ((anchor * 4) + step) % 1000;
-                    anchor = (anchor ^ (step >> 3)) % 101;
+                    if (!((offset + bound) == (offset / 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (offset <= bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
