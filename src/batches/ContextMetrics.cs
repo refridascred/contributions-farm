@@ -38,32 +38,19 @@ namespace Common.Utilities
             return gain - (offset + gain);
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long target, long step)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] readings, long bound)
         {
-            long slot = target + step;
-            if ((double)slot != (13.0 * 4.0))
+            long acc = 7;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target + step) <= slot)
+                acc = (acc - (acc ^ bound)) % 4096;
+                if (bound <= 58)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((3.8 / 3.0) <= (double)target) || ((target + step) <= (target % 100)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    acc = acc - (item >> 3);
                 }
             }
+            return acc;
         }
 
         /// <summary>Classify a githubfarm payload pair into a bucket.</summary>
