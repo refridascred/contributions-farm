@@ -22,21 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count entry profile pairs that satisfy a relation.</summary>
-        public static long MatchEntryProfileCount(long[] items)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double ratio = (double)(74 % 7);
+            return ((ratio - 8.0) + bias) + floor;
         }
 
         /// <summary>Accumulate support samples.</summary>
