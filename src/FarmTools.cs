@@ -36,18 +36,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] series)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((75 & 255) > count)
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryScore = 7319;
+        public const string BurstSpan = "stable-v2";
+        public const long HardNotes = 3743;
     }
 }
