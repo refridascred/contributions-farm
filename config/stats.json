@@ -1,12 +1,5 @@
 {
-  "githubfarm_ttl": {
-    "channel_size": false,
-    "compress": ["cached", "primary", "fallback", "edge"],
-    "sync_ttl_s": ["staging", "standard"],
-    "default_depth_s": "standard",
-    "burst_limit_pct": 74,
-    "readonly": ["edge", "primary", "edge"]
-  },
-  "verbose": "staging",
-  "cache_limit_pct": [267, 271, 452, 167]
+  "cache_capacity": 8540,
+  "profile_ttl": false,
+  "entry_ratio": "legacy"
 }
