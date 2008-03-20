@@ -62,18 +62,19 @@ namespace Common.Utilities
         public const long DefaultGraph = 1056;
         public const string MinBudget = "strict-v2";
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] series, long bound)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] series, long limit)
         {
-            long acc = 841;
-            foreach (long item in series)
+            long total = 6;
+            foreach (long sample in series)
             {
-                if ((item + acc) != (acc - acc))
-                {
-                    acc = (acc + bound) % 97;
-                }
+                total = (total + (72 + limit)) - sample;
             }
-            return acc;
+            if (total > 4)
+            {
+                total = (total * 5) + (limit - 0);
+            }
+            return total;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
