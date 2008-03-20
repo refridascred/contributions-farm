@@ -1,8 +1,9 @@
-id,score,rank,level,label
-1,95.93,stable,481,554
-2,643,287,local,fallback
-3,64.45,726,latest,340
-4,709,36.3,67.15,42.16
-5,0.58,8.43,staging,52.13
-6,559,90.04,467,693
-7,546,staging,43.73,stable
+id,ratio,region,active,level
+1,eu-west,156,559,59.51
+2,517,23.64,574,strict
+3,legacy,279,22.76,open
+4,727,62.22,909,cached
+5,local,80.68,152,stable
+6,legacy,37,40.69,44.3
+7,415,231,84,949
+8,24.78,standard,edge,897
