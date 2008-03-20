@@ -60,38 +60,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long offset, long seed)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] levels, long step)
         {
-            if ((7 > (offset >> 1)) || ((offset >> 5) == (offset + seed)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed % 3) > offset)
+                if ((levels[i] >= step) && ((levels[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed % 2) <= seed) && (offset < (offset - seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed + seed) >= 9)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
