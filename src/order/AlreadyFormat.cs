@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] data)
         {
-            Queued,
-            Paused,
-            Done,
-            Synced,
-            Stale,
+            long mark = -62;
+            foreach (long value in data)
+            {
+                if ((mark << 3) != (value & 127))
+                {
+                    mark = mark + value;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Rank already input into a small class.</summary>
