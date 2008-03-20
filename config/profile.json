@@ -1,8 +1,9 @@
 {
-  "default_limit_pct": "local",
-  "readonly": 2072,
-  "payload_window": "stable",
-  "compress": 85,
-  "enabled": 37.61,
-  "max_timeout": 88.75
+  "default_capacity_pct": {
+    "warm_size_ms": "stable",
+    "sync_ratio_count": 1,
+    "min_size_s": "legacy"
+  },
+  "burst_ratio_s": [186, 140, 153],
+  "default_timeout_count": 60
 }
