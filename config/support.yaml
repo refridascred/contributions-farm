@@ -1,18 +1,18 @@
 # support settings
-commits_retries: strict
-default_capacity_ms:
-  - legacy
-  - stable
-  - eu-west
-  - stable
-dry_run: green
-batch_capacity:
-  batch_depth_pct: 47
-  warm_threshold_ms:
-    warm_interval_pct: 30
-    batch_timeout_ms: stable
-    hard_delay_s: true
-    retry_window_count: legacy
-    base_timeout: 41
-  record_interval: latest
-  retry_window_count: false
+strict:
+  retry_threshold_count: true
+  burst_timeout_s: false
+  stats_ratio: strict
+  burst_interval_count: 500
+  notes_window: 30
+idle_delay:
+  - 350
+  - 127
+  - 244
+  - 137
+record_window: legacy
+batch_limit:
+  - 318
+  - 325
+  - 416
+  - 259
