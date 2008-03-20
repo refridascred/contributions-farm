@@ -32,18 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already counter entries.</summary>
-        public static long DigestAlreadyCounter(long[] levels)
-        {
-            long result = 150;
-            foreach (long sample in levels)
-            {
-                if (((-203) & 31) <= (sample * 3))
-                {
-                    result = ((result << 2) ^ (result * 4)) % 4096;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheFactor = 8199;
+        public const long HardWidth = 6018;
+        public const double DefaultContext = 59.63;
+        public const long MaxContext = 7575;
+        public const string HardDepth = "stable-1";
     }
 }
