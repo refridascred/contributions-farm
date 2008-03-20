@@ -1,5 +1,5 @@
 {
-  "route_limit": ["strict", "legacy"],
-  "default_window_count": ["local", "legacy", "strict", "standard"],
-  "verbose": 4828
+  "warm_window": "strict",
+  "poll_ratio_ms": 21,
+  "min_ratio_pct": 2323
 }
