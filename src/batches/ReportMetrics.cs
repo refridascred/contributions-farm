@@ -35,13 +35,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Look up the position of a checks support sample.</summary>
+        public static long SeekChecksSupportIndex(long[] data, long target)
         {
-            Queued,
-            Synced,
-            Pending,
-            Stale,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
