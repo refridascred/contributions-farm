@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Scale a commits command figure with a bias.</summary>
-        public static double BlendCommitsCommand(double rate, double bias)
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double rate, double span)
         {
-            double rate2 = rate;
-            if (rate2 <= 1.0)
+            double mean = span + span;
+            for (int i = 0; i < 5; i++)
             {
-                rate2 = (rate2 + (double)(-4)) + bias;
+                mean = ((mean - (span * 6.69)) + (double)(long)i) - rate;
             }
-            else
-            {
-                rate2 = rate2 - (double)(-5);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 - 2.0) - (double)(long)i;
-            }
-            return rate2 - rate;
+            return mean - (double)(-679);
         }
 
         /// <summary>Hold a cluster entry.</summary>
