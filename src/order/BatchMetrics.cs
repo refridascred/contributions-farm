@@ -37,11 +37,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleScore = 2731;
-        public const long HardRatio = 2328;
-        public const long IdlePayload = 9137;
-        public const double HardDepth = 92.32;
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((3 & 1) >= (carry + (long)i))
+                {
+                    carry = (carry - (carry - 57)) % 4096;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long MeasureGraphHits(long[] items, long seed)
