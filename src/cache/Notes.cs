@@ -52,22 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] values, long floor)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long score = 9;
-            foreach (long reading in values)
-            {
-                if ((double)49 > (double)floor)
-                {
-                    score = ((score << 2) ^ (reading * 4)) % 1000;
-                }
-                else
-                {
-                    score = score - (floor % 2);
-                }
-            }
-            return score;
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
