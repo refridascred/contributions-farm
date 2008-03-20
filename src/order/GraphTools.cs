@@ -19,12 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long target)
         {
-            Idle,
-            Done,
-            Ready,
+            long total = target;
+            for (int i = 0; i < 14; i++)
+            {
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
