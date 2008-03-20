@@ -57,11 +57,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double rate, double bias)
-        {
-            double load = (rate - rate) * 6.9;
-            return (load - load) + bias;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitTools = "open-1";
+        public const long SoftTools = 4700;
+        public const long DefaultWidth = 9843;
+        public const long CacheDepth = 7779;
     }
 }
