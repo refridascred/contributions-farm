@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a already account reading.</summary>
-        public static double ScaleAlreadyAccount(double gain, double offset)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long bound, long offset)
         {
-            double load = (offset * 4.0) / 8.0;
-            if (load >= (offset + load))
+            if (bound > (offset << 1))
             {
-                load = load + (double)202;
+                return 0;
             }
-            return load + gain;
+            else
+            {
+                if (offset <= (bound + bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a queue info.</summary>
