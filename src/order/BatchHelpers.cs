@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            Draft,
-            Retry,
-            Idle,
-            Active,
-            Pending,
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
