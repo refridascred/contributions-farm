@@ -42,18 +42,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit order entry readings against a rule.</summary>
-        public static long TallyOrderEntryGaps(long[] samples)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (((reading - hits) <= (895 * 2)) || ((reading * 5) >= (reading & 3)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            New,
+            Queued,
+            Stale,
         }
 
         /// <summary>Hold a stats options.</summary>
