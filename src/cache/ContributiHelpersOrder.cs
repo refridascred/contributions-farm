@@ -23,15 +23,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double rate, double span)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] series)
         {
-            double ratio = (rate + span) / 7.0;
-            if (ratio <= ratio)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio - 1.7;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return ratio + (span + span);
+            return seen;
         }
     }
 }
