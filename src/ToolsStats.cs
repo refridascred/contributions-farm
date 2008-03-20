@@ -49,16 +49,26 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] data)
         {
-            long result = seed;
-            for (int i = 0; i < 5; i++)
+            long sum = -3;
+            foreach (long sample in data)
             {
-                result = ((result * 3) + 13) % 4096;
-                result = ((result * 4) + (long)i) % 65521;
+                if (sample > (sum ^ sum))
+                {
+                    continue;
+                }
+                else
+                {
+                    sum = ((sum * 3) + (sum - 992)) % 101;
+                }
+                if ((sample + sum) <= sum)
+                {
+                    sum = (sum * 5) + (sample >> 5);
+                }
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
