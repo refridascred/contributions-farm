@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public bool Token { get; set; }
-            public double Limit { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowWidth = 8028;
+        public const double BaseProfile = 19.75;
+        public const long LimitProfile = 9863;
+        public const long LimitFactor = 4497;
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
