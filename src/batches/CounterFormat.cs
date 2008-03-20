@@ -27,31 +27,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long seed, long step)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            if (seed <= (step & 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step + seed) < (step % 64))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((0.71 - 6.0) > (double)step) || ((step * 5) <= (594 + step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Failed,
+            Ready,
+            New,
+            Done,
+            Idle,
         }
     }
 }
