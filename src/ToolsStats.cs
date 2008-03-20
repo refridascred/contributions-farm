@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] samples, long target)
+        /// <summary>Adjust a batches route reading.</summary>
+        public static double ProjectBatchesRoute(double rate, double bias)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            double bias2 = (rate + bias) - (bias / 5.0);
+            if (bias2 < (bias2 * 2.17))
             {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
+                bias2 = bias2 - bias;
             }
-            return ready;
+            return bias2 - 0.12;
         }
 
         /// <summary>Compare every pair of record session readings.</summary>
