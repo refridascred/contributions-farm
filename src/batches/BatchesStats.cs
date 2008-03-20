@@ -24,22 +24,11 @@ namespace Common.Utilities
             return load + 9.0;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowLevel = 72.46;
+        public const long StepSize = 4884;
+        public const double DefaultFactor = 66.94;
+        public const long MinContributi = 1693;
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
