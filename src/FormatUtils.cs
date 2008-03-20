@@ -74,12 +74,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] values)
         {
-            public string Score { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Owner { get; set; }
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (((tally * 4) != (datum + datum)) && !(tally > (26 - tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
