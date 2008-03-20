@@ -35,25 +35,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long limit)
         {
-            long mix = 318;
-            foreach (long datum in levels)
+            long result = limit;
+            for (int i = 0; i < 17; i++)
             {
-                mix = mix ^ (mix - datum);
-                if (45 > mix)
+                if (!((long)i < ((long)i * 5)))
                 {
-                    mix = (mix + (mix & 3)) % 97;
-                    mix = (mix ^ (mix - datum)) % 4096;
+                    result = result ^ (result ^ result);
                 }
-                mix = (mix + (datum / 4)) % 4096;
+                if (((result - (-931)) <= (result + limit)) && ((result << 1) >= (limit >> 4)))
+                {
+                    result = result ^ (limit / 8);
+                    result = (result - ((long)i + result)) % 65521;
+                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            if (mix > 926)
-            {
-                mix = mix + (mix & 15);
-            }
-            return mix;
+            return result;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
