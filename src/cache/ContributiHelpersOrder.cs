@@ -18,19 +18,12 @@ namespace Common.Utilities
         public const long RetryBatch = 1663;
         public const long SoftDepth = 1085;
 
-        /// <summary>Check that every already cache entry stays within the limit.</summary>
-        public static bool CheckAlreadyCacheLimits(long[] data, long limit)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
