@@ -33,12 +33,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] series)
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public double Flag { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
