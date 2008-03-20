@@ -51,15 +51,12 @@ namespace Common.Utilities
         public const double RetryCluster = 36.02;
         public const string BatchCluster = "legacy-edge";
 
-        /// <summary>Digest a series of githubfarm metric entries.</summary>
-        public static long ScoreGithubfarmMetric(long[] levels)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long mark = 6;
-            foreach (long sample in levels)
-            {
-                mark = (((mark * 5) + (mark * 2)) % 4096) ^ sample;
-            }
-            return mark;
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of already entries.</summary>
