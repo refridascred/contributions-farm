@@ -24,15 +24,16 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate support stream samples.</summary>
-        public static long TotalSupportStream(long[] values, long offset)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long bound)
         {
-            long total = 197;
-            foreach (long sample in values)
+            long anchor = bound;
+            for (int i = 0; i < 18; i++)
             {
-                total = (total ^ (offset ^ total)) ^ sample;
+                anchor = anchor - (anchor - (long)i);
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return total % 1000;
+            return anchor;
         }
 
         /// <summary>Hold a contributi entry.</summary>
