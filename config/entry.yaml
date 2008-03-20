@@ -1,28 +1,13 @@
 # entry settings
-idle_depth_ms: true
-base_interval_ms: stable
-entry_timeout:
-  cache_ttl_s:
-    - blue
-    - standard
-    - eu-west
-  burst_ttl_pct: cached
-  burst_limit_s:
+persist: 5789
+poll_delay: 35
+soft_ratio_ms:
+  sync_timeout_ms: staging
+  retry_window:
+    - stable
     - edge
-    - standard
-  cache_interval: legacy
-  notes_depth:
-    counter_threshold: primary
-    strict:
-      - 339
-      - 370
-    tools_ttl:
-      - standard
-      - strict
-      - edge
-    compress: true
-    burst_threshold_s: 91.63
-    poll_ratio_ms: true
-  already_retries: cached
-counter_ttl: staging
-sync_interval: 4382
+    - local
+  hard_interval:
+    metric_delay: cached
+    context_limit: 1990
+    readonly: legacy
