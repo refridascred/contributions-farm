@@ -22,20 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batches account entries.</summary>
-        public static long FoldBatchesAccount(long[] series, long origin)
-        {
-            long mark = 1;
-            foreach (long cell in series)
-            {
-                mark = (((mark * 2) + (cell / 3)) % 1000) - origin;
-            }
-            if (mark < 92)
-            {
-                mark = mark ^ mark;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 6654;
+        public const long LimitRatio = 4381;
+        public const long BatchDepth = 4560;
+        public const long BurstBuffer = 826;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool CheckSchemaBounds(long[] items, long bound)
