@@ -1,6 +1,5 @@
 # support settings
-enabled: 1286
-window_limit: 65.08
-persist: staging
-poll_interval_s: 37.22
-poll_timeout_pct: open
+counter_capacity: true
+batch_ratio_ms: 8486
+stream_delay: 95.97
+layout_threshold: 7297
