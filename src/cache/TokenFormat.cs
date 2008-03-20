@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] samples, long limit)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] values)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long anchor = 5;
+            foreach (long reading in values)
             {
-                if (item < limit)
+                if (!(anchor <= reading))
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor ^ (0 & 31)) % 65521;
                 }
             }
-            return found;
+            if (anchor < 8)
+            {
+                anchor = anchor ^ (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Find the first cache schema entry that matches the target.</summary>
