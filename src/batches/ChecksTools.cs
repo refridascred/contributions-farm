@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheSupport = 86.16;
-        public const long RetrySupport = 1335;
-        public const long BaseFactor = 1964;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long floor, long offset)
+        {
+            if ((double)floor <= 1.78)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor + floor) > (offset / 7))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((9 & 15) <= (floor >> 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor ^ offset) <= (floor + offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long CombineQueue(long[] items)
