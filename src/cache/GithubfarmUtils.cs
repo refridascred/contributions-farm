@@ -53,12 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            Dropped,
-            Synced,
-            New,
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
