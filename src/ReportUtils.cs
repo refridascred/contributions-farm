@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadOutliers(long[] levels, long limit)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (((932 % 60) > hits) || (((double)41 >= (double)datum) && ((hits + 58) < (limit / 4))))
+                if (item != target)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
