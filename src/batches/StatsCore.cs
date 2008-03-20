@@ -53,19 +53,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine metric order values into a single score.</summary>
-        public static long FoldMetricOrder(long[] levels, long origin)
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] readings)
         {
-            long mix = 31;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (((mix * 4) + origin) % 1000) + item;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mix < 69)
-            {
-                mix = (mix + (origin + origin)) % 1000;
-            }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Fold a list of format readings.</summary>
