@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long LimitProfile = 9863;
         public const long LimitFactor = 4497;
 
-        /// <summary>Match up schema window samples.</summary>
-        public static long CompareSchemaWindowCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleDepth = 6097;
+        public const double DefaultProfile = 94.03;
+        public const long RetryProfile = 7334;
+        public const string HardProfile = "cached-edge";
+        public const double SoftProfile = 5.35;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long CountCounterMatches(long[] values, long origin)
