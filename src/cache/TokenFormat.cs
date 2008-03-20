@@ -31,19 +31,13 @@ namespace Common.Utilities
             return rate - (double)654;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] readings, long origin)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
         }
     }
 }
