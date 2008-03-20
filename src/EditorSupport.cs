@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long step, long target)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] items)
         {
-            long gap = step - target;
-            if ((gap / 8) > (target + step))
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((1 % 10) <= gap))
+                if (((double)tally != (double)item) && (item < (tally & 127)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (step <= (target << 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)target < (double)step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a support record.</summary>
