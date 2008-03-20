@@ -50,19 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] items, long seed)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((item < (long)items.Length) && !((seen * 4) <= (seed + seed)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBudget = 1297;
+        public const long LimitBatch = 4190;
+        public const long WindowTimeout = 9168;
+        public const double SoftBatch = 10.78;
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
