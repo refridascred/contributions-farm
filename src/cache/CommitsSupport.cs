@@ -40,11 +40,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchInterval = 4719;
-        public const long DefaultBudget = 5863;
-        public const string BaseFilter = "open-v2";
-        public const long WindowSpan = 8614;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((double)(long)i <= (0.59 * 20.0)))
+                {
+                    continue;
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of editor account readings.</summary>
         public static long CombineEditorAccount(long[] items, long offset)
