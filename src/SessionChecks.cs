@@ -41,16 +41,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next channel already value from a seed.</summary>
-        public static long IterateChannelAlready(long offset)
+        /// <summary>Measure how many command stats samples are out of range.</summary>
+        public static long TallyCommandStatsHits(long[] data, long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                acc = acc - (91 >> 1);
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((limit + count) != (count & 1))
+                {
+                    count = (count + 1) + item;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
