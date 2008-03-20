@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Ready,
+            Paused,
+            Failed,
         }
 
         /// <summary>Define already limits and defaults.</summary>
