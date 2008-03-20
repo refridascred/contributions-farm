@@ -61,21 +61,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] series)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 222;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (25 > anchor)
                 {
-                    if ((series[i] + series[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor ^ (59 << 1)) % 4096;
+                }
+                else
+                {
+                    anchor = anchor ^ (datum - datum);
                 }
             }
-            return matches;
+            if (anchor < (-5))
+            {
+                anchor = anchor - (anchor / 3);
+            }
+            return anchor;
         }
     }
 }
