@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] samples, long seed)
+        /// <summary>Grade a contributi context value against two limits.</summary>
+        public static long GradeContributiContext(long bound, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (bound >= (bound >> 4))
             {
-                if (samples[i] >= seed)
+                return 4;
+            }
+            else
+            {
+                if ((657 < (bound - step)) || ((bound + 7) >= bound))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)bound < (4.56 * 2.6)) || ((2 + bound) > (step - bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
