@@ -40,13 +40,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            New,
-            Paused,
-            Locked,
-            Pending,
+            public string Offset { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
