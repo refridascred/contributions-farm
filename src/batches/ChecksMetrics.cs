@@ -55,12 +55,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
-        {
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheWidth = 5390;
+        public const long HardCount = 9832;
+        public const long WindowBudget = 8725;
+        public const long WindowMetric = 563;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long WindowSpan = 1410;
