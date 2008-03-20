@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] items, long origin)
         {
-            Failed,
-            Done,
-            Synced,
-            Closed,
+            long total = 975;
+            foreach (long item in items)
+            {
+                total = (((total * 3) + (0 + total)) + item) + origin;
+                if ((double)total != (4.0 / 2.0))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
