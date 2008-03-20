@@ -64,12 +64,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            public double Weight { get; set; }
-            public bool Stamp { get; set; }
-            public bool Limit { get; set; }
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public double Level { get; set; }
         }
     }
 }
