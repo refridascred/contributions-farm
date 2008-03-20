@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = ((anchor << 2) ^ anchor) - (long)i2;
-                    anchor = anchor + (anchor - limit);
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            Synced,
+            Stale,
+            Done,
+            New,
         }
 
         /// <summary>Hold a context info.</summary>
