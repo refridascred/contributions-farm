@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] series)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long state = 25;
+            foreach (long datum in items)
             {
-                if ((datum + 481) < ((-47) + (-49)))
+                if ((state - datum) <= (datum << 1))
                 {
-                    hits = hits + 1;
+                    state = state + state;
+                    state = ((state << 2) ^ (datum * 2)) % 101;
                 }
+                state = state ^ (datum + state);
             }
-            return hits;
+            if (state < 41)
+            {
+                state = (state - 32) % 255;
+            }
+            return state;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
