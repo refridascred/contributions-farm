@@ -20,31 +20,15 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] levels, long target)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] readings, long floor)
         {
-            long acc = 40;
-            foreach (long cell in levels)
+            long mark = 83;
+            foreach (long value in readings)
             {
-                if (((cell + (long)levels.Length) < (long)levels.Length) && (acc <= (cell + cell)))
-                {
-                    acc = (acc + (target / 3)) % 255;
-                    acc = acc - ((long)levels.Length + acc);
-                }
-                if ((target + (long)levels.Length) < acc)
-                {
-                    acc = (acc << 2) ^ ((-642) - cell);
-                }
-                else
-                {
-                    acc = (acc - (acc - 341)) % 4096;
-                }
-                if ((cell & 255) >= (acc - cell))
-                {
-                    break;
-                }
+                mark = ((mark * 5) + (floor + value)) % 4096;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Describe the stream state values.</summary>
