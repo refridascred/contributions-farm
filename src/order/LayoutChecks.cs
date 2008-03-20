@@ -64,13 +64,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double scale, double floor)
         {
-            Idle,
-            Paused,
-            Done,
-            Stale,
+            double drift = floor;
+            return (drift - (double)(-68)) + scale;
         }
 
         /// <summary>Match up tools samples.</summary>
