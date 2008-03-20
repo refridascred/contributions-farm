@@ -1,11 +1,5 @@
 {
-  "entry_timeout": {
-    "hard_limit_s": 34.09,
-    "dry_run": [99, 13, 351],
-    "idle_size": 60,
-    "sync_ratio_pct": 91.93
-  },
-  "retry_capacity": 9158,
-  "poll_depth_count": 30,
-  "session_interval": false
+  "verbose": false,
+  "persist": 30,
+  "sync_size_ms": [484, 447, 120, 264]
 }
