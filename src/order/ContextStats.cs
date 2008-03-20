@@ -41,12 +41,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Done,
-            Draft,
-            Paused,
+            public double Size { get; set; }
+            public long Mode { get; set; }
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
