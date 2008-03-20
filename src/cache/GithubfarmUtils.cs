@@ -19,19 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double scale, double bias)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] items)
         {
-            double scale2 = scale;
-            if (scale2 >= scale2)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale2 = (scale2 - (double)599) + bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 - 9.0) + (double)(long)i;
-            }
-            return scale2 - 1.0;
+            return matches;
         }
 
         /// <summary>Find the first notes queue entry that matches the target.</summary>
