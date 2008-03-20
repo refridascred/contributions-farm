@@ -19,15 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of layout counter entries.</summary>
-        public static long ScoreLayoutCounter(long[] levels)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double scale, double bias)
         {
-            long total = 3;
-            foreach (long cell in levels)
+            double scale2 = scale;
+            if (scale2 >= scale2)
             {
-                total = (((total * 3) + (total << 3)) % 65521) + cell;
+                scale2 = (scale2 - (double)599) + bias;
             }
-            return total;
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 - 9.0) + (double)(long)i;
+            }
+            return scale2 - 1.0;
         }
 
         /// <summary>Hold a buffer summary.</summary>
