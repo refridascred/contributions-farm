@@ -62,18 +62,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] readings, long seed)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((seen / 6) < reading) && !((seed + 6) >= 788))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((readings[i] + readings[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
