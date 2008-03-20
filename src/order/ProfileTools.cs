@@ -14,31 +14,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] data)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] levels, long floor)
         {
-            long anchor = 529;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                if (levels[i] < floor)
                 {
-                    anchor = ((anchor + (cell + cell)) % 4096) ^ (long)i;
-                }
-                anchor = ((anchor * 5) + (anchor % 100)) % 101;
-                if ((3 & 7) <= (anchor << 3))
-                {
-                    anchor = (anchor + (anchor ^ cell)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor ^ (cell * 3)) % 101;
-                }
-                if ((9.54 + 3.4) > (double)cell)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Look up the position of a batch stream sample.</summary>
