@@ -20,19 +20,39 @@ namespace Common.Utilities
         public const long MinStats = 9617;
         public const double IdleStats = 98.63;
 
-        /// <summary>Combine route buffer values into a single score.</summary>
-        public static long DigestRouteBuffer(long[] readings, long bound)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long seed, long bound)
         {
-            long result = 0;
-            foreach (long sample in readings)
+            long bound2 = seed + bound;
+            if (seed <= (seed - seed))
             {
-                result = ((result * 4) + (bound - bound)) + sample;
+                return 5;
             }
-            if (result > 7)
+            else
             {
-                result = ((result * 3) + (result >> 5)) % 255;
+                if (seed > (8 - bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed << 1) >= (bound2 << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)bound >= 0.4)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return result;
         }
 
         /// <summary>Blend two session measurements.</summary>
