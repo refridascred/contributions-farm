@@ -29,22 +29,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] values, long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] values, long limit)
         {
-            long mark = 200;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((double)mark < (double)item)
+                if (!((double)limit <= (6.4 - 10.0)))
                 {
-                    mark = (mark + (mark + 3)) - seed;
-                }
-                else
-                {
-                    mark = (mark + mark) % 65521;
+                    matches = (matches + 3) + value;
                 }
             }
-            return mark % 65521;
+            return matches;
         }
     }
 }
