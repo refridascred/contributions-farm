@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] data)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((((hits & 255) > 779) && ((hits / 4) == (entry + entry))) || ((6.4 / 7.0) > (double)hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
