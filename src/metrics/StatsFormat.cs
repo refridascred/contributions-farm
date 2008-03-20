@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats format helpers.</summary>
     public static class StatsFormat
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowMatches(long[] samples)
         {
-            Closed,
-            Paused,
-            Retry,
-            Stale,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (((double)reading <= (5.32 + 0.72)) && (reading > (matches + matches)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
