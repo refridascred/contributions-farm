@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 7683;
-        public const double BurstRatio = 40.35;
-        public const string RetryMetric = "stable";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double WindowWidth = 2.4;
+        public const long SoftChecks = 7616;
+        public const long BatchChecks = 2645;
+        public const double HardSpan = 75.66;
 
         /// <summary>Rank commits account input into a small class.</summary>
         public static long SortCommitsAccount(long step, long seed)
