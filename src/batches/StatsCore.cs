@@ -67,17 +67,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] values, long target)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 707;
+            foreach (long item in items)
             {
-                if ((values[i] >= target) && ((values[i] % 3) == 0))
+                carry = carry + 651;
+                if ((item < (20 * 2)) && ((item / 2) < carry))
                 {
-                    return (long)i;
+                    carry = carry + item;
                 }
             }
-            return -1;
+            if (carry > 81)
+            {
+                carry = carry + (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
