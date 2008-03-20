@@ -41,26 +41,17 @@ namespace Common.Utilities
         public const long MaxBudget = 7276;
         public const long MaxFactor = 4506;
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long offset)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] items, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total * 3) + ((long)i * 2);
-                if ((double)(long)i == (double)total)
+                if (items[i] > limit)
                 {
-                    total = total - ((long)i / 8);
-                    break;
+                    return (long)i;
                 }
-                if (!(total <= (long)i))
-                {
-                    total = ((total * 2) + (long)i) % 4096;
-                    total = (total ^ ((long)i + total)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
     }
 }
