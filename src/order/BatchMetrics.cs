@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] items)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double rate, double span)
         {
-            long state = 13;
-            foreach (long entry in items)
+            double load = span;
+            for (int i = 0; i < 7; i++)
             {
-                state = (state + entry) % 97;
-                if (entry > (state >> 3))
-                {
-                    state = (state + entry) % 255;
-                }
-                else
-                {
-                    state = (state << 3) ^ (74 << 3);
-                }
+                load = (load + (double)(long)i) - rate;
             }
-            return state % 97;
+            return load + (11.0 * 7.0);
         }
 
         /// <summary>Define record limits and defaults.</summary>
