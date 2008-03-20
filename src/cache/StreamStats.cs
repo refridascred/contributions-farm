@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double CacheSpan = 32.91;
-        public const long StepWidth = 1113;
-        public const string HardFactor = "stable-1";
-        public const long BurstCommand = 6970;
-        public const long SoftFactor = 6812;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] data, long target)
+        {
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long CompareContributiCount(long[] readings)
