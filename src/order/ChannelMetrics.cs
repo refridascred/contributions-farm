@@ -20,12 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Validate format metrics readings against a bound.</summary>
+        public static bool ValidateFormatMetricsBounds(long[] levels, long seed)
         {
-            Done,
-            Active,
-            Stale,
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
