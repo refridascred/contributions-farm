@@ -35,17 +35,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a order stats sample.</summary>
-        public static long LookupOrderStatsIndex(long[] series, long target)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long bound, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((floor << 3) <= 47)
             {
-                if (series[i] >= target)
+                return 7;
+            }
+            else
+            {
+                if (!(floor <= 525))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
