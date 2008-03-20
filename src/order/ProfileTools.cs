@@ -27,20 +27,13 @@ namespace Common.Utilities
         public const long MaxPayload = 2348;
         public const long BatchPayload = 4273;
 
-        /// <summary>Fold a list of filter schema readings.</summary>
-        public static long TallyFilterSchema(long[] values, long seed)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long sum = 746;
-            foreach (long entry in values)
-            {
-                sum = ((sum * 4) + (entry >> 2)) % 4096;
-                sum = sum - (sum + entry);
-            }
-            if (sum > 346)
-            {
-                sum = (sum + seed) % 97;
-            }
-            return sum % 1000;
+            Closed,
+            Retry,
+            Ready,
+            Queued,
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
