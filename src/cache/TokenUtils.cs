@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long step)
         {
-            Locked,
-            Pending,
-            Queued,
-            Dropped,
+            long mix = step;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((long)i < ((long)i * 5))
+                {
+                    continue;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
