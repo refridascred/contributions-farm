@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 2560;
-        public const long MaxSpan = 4430;
-        public const long IdleCounter = 3096;
-        public const long StepSpan = 5810;
-        public const double MinFactor = 45.79;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftDepth = 5661;
+        public const string BurstBatch = "standard-v2";
+        public const long HardTimeout = 3679;
+        public const double HardBatch = 52.83;
+        public const long DefaultTimeout = 1042;
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
