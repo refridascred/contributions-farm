@@ -37,31 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long seed, long limit)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            if (!((6.02 * 0.5) > (double)seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit << 3) >= limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (seed > (limit & 63))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
