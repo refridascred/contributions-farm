@@ -29,9 +29,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheBatches = 20.21;
-        public const long HardLevel = 7798;
-        public const long HardRatio = 7031;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+        }
     }
 }
