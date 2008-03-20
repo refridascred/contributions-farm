@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double scale, double bias)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            double scale2 = (double)((-997) / 3);
-            if (scale2 > (double)(-63))
-            {
-                scale2 = ((scale2 + (double)3) - scale) - bias;
-            }
-            else
-            {
-                scale2 = scale2 - (double)570;
-            }
-            return scale2 + (double)4;
+            Failed,
+            Done,
+            Synced,
+            Closed,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
