@@ -22,15 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double scale, double offset)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            double rate = (offset * 6.0) + (scale - scale);
-            if (rate >= (7.2 - offset))
-            {
-                rate = rate + (rate * 8.35);
-            }
-            return rate - offset;
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
