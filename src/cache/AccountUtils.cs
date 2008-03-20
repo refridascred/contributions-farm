@@ -35,19 +35,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] readings, long offset)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Ready,
+            Closed,
         }
     }
 }
