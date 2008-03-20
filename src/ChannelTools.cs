@@ -33,20 +33,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 20; i++)
-            {
-                long gap = sum;
-                if ((309 % 64) >= (gap + (long)i))
-                {
-                    gap = gap + gap;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowSession = "strict-1";
+        public const string HardSession = "local-1";
+        public const string BurstSession = "primary-1";
     }
 }
