@@ -46,11 +46,18 @@ namespace Common.Utilities
         public const double CacheStream = 88.33;
         public const long StepLevel = 7651;
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double scale, double floor)
+        /// <summary>Count the farm command entries that pass the check.</summary>
+        public static long AuditFarmCommandMatches(long[] series)
         {
-            double drift = floor;
-            return (drift - (double)(-68)) + scale;
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((((seen >> 3) != (seen ^ 522)) && (((-8) + seen) > (item >> 1))) && !((item >> 4) < (item << 2)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up tools samples.</summary>
