@@ -71,26 +71,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] readings)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long mix = -36;
-            foreach (long item in readings)
-            {
-                if (!(item < (item + mix)))
-                {
-                    mix = (mix << 2) ^ (item + 722);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (item % 100)) % 4096;
-                }
-                if ((13.0 * 6.8) == (double)item)
-                {
-                    break;
-                }
-            }
-            return mix;
+            public bool Weight { get; set; }
+            public string Region { get; set; } = "";
+            public double Score { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Grade a support value against two limits.</summary>
