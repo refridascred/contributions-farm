@@ -30,11 +30,23 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] data)
         {
-            public double Level { get; set; }
-            public bool Offset { get; set; }
+            long acc = 4;
+            foreach (long value in data)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    acc = ((((acc << 2) ^ ((-6) - acc)) % 101) + (long)i) - value;
+                }
+                acc = (acc - acc) % 101;
+            }
+            if (acc < 78)
+            {
+                acc = (acc + acc) % 1000;
+            }
+            return acc % 4096;
         }
     }
 }
