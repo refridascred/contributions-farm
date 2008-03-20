@@ -17,12 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftBudget = 9183;
-        public const double LimitRecord = 42.13;
-        public const string RetryCount = "alpha";
-        public const long CacheRecord = 3729;
-        public const long StepBudget = 9775;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] levels)
+        {
+            long result = -49;
+            foreach (long value in levels)
+            {
+                if ((13.0 + 11.0) >= (double)result)
+                {
+                    result = (result * 5) + value;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
