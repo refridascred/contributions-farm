@@ -55,12 +55,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] samples, long bound)
         {
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public long Token { get; set; }
+            long mark = 88;
+            foreach (long value in samples)
+            {
+                if ((14.0 / 3.0) < (double)mark)
+                {
+                    break;
+                }
+                if ((double)13 != (double)bound)
+                {
+                    mark = mark ^ mark;
+                }
+                else
+                {
+                    mark = (mark - (value * 5)) % 1000;
+                }
+            }
+            if (mark > 259)
+            {
+                mark = mark ^ (mark * 3);
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of contributi schema entries.</summary>
