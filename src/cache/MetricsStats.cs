@@ -33,18 +33,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the support queue entries that pass the check.</summary>
-        public static long MeasureSupportQueueHits(long[] data)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (11.0 < (double)tally)
+                if (items[i] <= floor)
                 {
-                    tally = (tally + 3) ^ value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a token snapshot.</summary>
