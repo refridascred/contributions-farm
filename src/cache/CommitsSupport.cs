@@ -22,25 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long limit, long origin)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long gap = limit ^ origin;
-            if ((origin + gap) > (gap << 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin > (7.78 / 4.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Retry,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
