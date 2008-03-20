@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a account checks counter forward.</summary>
-        public static long StepAccountChecks(long offset)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                if (offset >= result)
-                {
-                    result = (result + offset) % 255;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public double Rank { get; set; }
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the payload status values.</summary>
