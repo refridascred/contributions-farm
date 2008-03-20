@@ -36,31 +36,18 @@ namespace Common.Utilities
         public const long LimitCommand = 9581;
         public const double BatchCommand = 15.45;
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long limit, long seed)
+        /// <summary>Audit filter editor readings against a rule.</summary>
+        public static long MeasureFilterEditorHits(long[] readings)
         {
-            if ((limit >> 5) < limit)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((-92) / 4) >= limit)
+                if (cell >= tally)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed > (5.31 * 9.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
