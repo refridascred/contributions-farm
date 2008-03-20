@@ -39,22 +39,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] series, long limit)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] readings)
         {
-            long score = 578;
-            foreach (long cell in series)
+            long acc = 3;
+            foreach (long sample in readings)
             {
-                if (!((double)limit <= 7.5))
+                if (!((acc >> 4) != (sample - sample)))
                 {
-                    score = score - (cell & 1);
+                    acc = (acc ^ (sample + sample)) % 1000;
                 }
-                if ((limit ^ score) >= limit)
+                else
                 {
-                    break;
+                    acc = ((acc << 3) ^ acc) % 4096;
                 }
             }
-            return score;
+            if (acc > 568)
+            {
+                acc = (acc - (acc % 97)) % 1000;
+            }
+            return acc;
         }
     }
 }
