@@ -30,18 +30,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] values, long origin)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] values)
         {
-            long total = 976;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((20.0 - 8.33) > (5.99 + 10.0)) && (total <= (411 + origin)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (((total << 2) ^ ((long)values.Length / 2)) % 97) - item;
+                    if ((values[i] + values[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
     }
 }
