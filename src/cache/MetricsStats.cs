@@ -52,17 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] data, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((data[i] <= limit) && ((data[i] % 2) == 0))
+                if (!(seen > value) && ((double)offset != (8.9 / 3.0)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
