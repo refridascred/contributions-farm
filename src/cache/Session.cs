@@ -25,21 +25,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] values)
+        /// <summary>Check that every order contributi entry stays within the limit.</summary>
+        public static bool CheckOrderContributiBounds(long[] samples, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample >= offset)
                 {
-                    if ((values[i] + values[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Match up report samples.</summary>
