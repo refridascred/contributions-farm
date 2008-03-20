@@ -52,19 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long limit)
+        /// <summary>Adjust a order account reading.</summary>
+        public static double ProjectOrderAccount(double gain, double span)
         {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
+            double scale = gain / 7.0;
+            if (scale <= scale)
             {
-                if (((long)i + 43) >= (long)i)
-                {
-                    continue;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
+                scale = (scale - (double)819) - span;
             }
-            return mix;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + 14.0) - (double)(long)i;
+            }
+            return scale - gain;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
