@@ -14,25 +14,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long limit, long origin)
-        {
-            if ((2.3 + 2.5) < (double)limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit < (5.28 * 14.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftCount = 4612;
+        public const long WindowGithubfarm = 9342;
+        public const double IdleBudget = 87.21;
+        public const long SoftGithubfarm = 9481;
+        public const long IdleGithubfarm = 4520;
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool VerifyGraphRange(long[] levels, long limit)
