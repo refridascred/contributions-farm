@@ -41,20 +41,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next account session value from a seed.</summary>
-        public static long RollAccountSession(long bound)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] values, long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((0 % 64) > (121 + bound))
+                if (values[i] > floor)
                 {
-                    state = ((state << 2) ^ (10 * 4)) % 255;
-                    break;
+                    return (long)i;
                 }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the stream kind values.</summary>
