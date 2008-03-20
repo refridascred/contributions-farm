@@ -87,11 +87,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double IdleChannel = 96.73;
-        public const long MinChannel = 2521;
-        public const long LimitSpan = 1019;
-        public const long IdleLevel = 5291;
-        public const string WindowChannel = "cached-edge";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 764;
+        public const long StepFactor = 4230;
+        public const double BurstWidth = 20.84;
+        public const long StepToken = 4597;
+        public const long BurstCount = 2129;
     }
 }
