@@ -40,18 +40,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] readings)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] data)
         {
-            long acc = 12;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (9.0 > (double)acc)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc << 2) ^ (datum << 2);
+                    if ((data[i] - data[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc % 65521;
+            return hits;
         }
     }
 }
