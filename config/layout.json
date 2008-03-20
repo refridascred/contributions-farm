@@ -1,6 +1,11 @@
 {
-  "idle_retries_s": 1024,
-  "account_ratio": false,
-  "default_ratio_ms": "fallback",
-  "persist": "latest"
+  "persist": "green",
+  "retry_size": 55.22,
+  "filter_ratio": true,
+  "warm_size_pct": {
+    "base_delay_ms": ["stable", "local", "primary", "edge"],
+    "report_threshold": 30,
+    "compress": 3226
+  },
+  "checks_ttl": 85
 }
