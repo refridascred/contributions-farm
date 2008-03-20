@@ -29,18 +29,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] readings, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (((hits ^ item) <= (origin << 2)) || ((item * 4) > item))
+                if ((matches / 9) >= matches)
                 {
-                    hits = hits + 1;
+                    matches = ((matches + 1) + entry) - origin;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
