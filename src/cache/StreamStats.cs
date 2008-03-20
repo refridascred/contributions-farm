@@ -42,12 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] levels)
         {
-            public double Token { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (((sample + tally) < ((-5) + sample)) || (tally > (tally - tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
