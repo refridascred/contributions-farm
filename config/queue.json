@@ -1,12 +1,10 @@
 {
-  "base_ttl_ms": 4.19,
-  "session_ttl": ["fallback", "fallback"],
-  "entry_threshold": {
-    "graph_ratio": 36,
-    "commits_timeout": "staging",
-    "soft_retries_count": "open",
-    "enabled": ["cached", "legacy"],
-    "hard_ttl": "cached"
+  "stream_retries": 8551,
+  "max_depth_ms": true,
+  "notes_threshold": {
+    "verbose": 68,
+    "strict": ["edge", "open"],
+    "min_window_s": "stable"
   },
-  "retry_capacity_ms": ["open", "latest", "standard"]
+  "stats_interval": "local"
 }
