@@ -22,13 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] values, long seed)
         {
-            Idle,
-            Active,
-            Closed,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
