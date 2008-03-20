@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitSize = 3347;
-        public const long HardCount = 3808;
-        public const long BaseWidth = 3088;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Synced,
+            Draft,
+            Failed,
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelMatches(long[] values)
