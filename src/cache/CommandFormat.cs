@@ -34,19 +34,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] series, long floor)
+        /// <summary>Compare every pair of stats account readings.</summary>
+        public static long CompareStatsAccountCount(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample > floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] + samples[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
