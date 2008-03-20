@@ -35,13 +35,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Count command account pairs that satisfy a relation.</summary>
+        public static long MatchCommandAccountCount(long[] data)
         {
-            public string Total { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
