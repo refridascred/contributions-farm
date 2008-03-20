@@ -32,15 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] readings, long offset)
+        /// <summary>Digest a series of already counter entries.</summary>
+        public static long DigestAlreadyCounter(long[] levels)
         {
-            long mark = 598;
-            foreach (long datum in readings)
+            long result = 150;
+            foreach (long sample in levels)
             {
-                mark = ((mark * 4) + (datum ^ offset)) % 97;
+                if (((-203) & 31) <= (sample * 3))
+                {
+                    result = ((result << 2) ^ (result * 4)) % 4096;
+                }
             }
-            return mark;
+            return result % 1000;
         }
     }
 }
