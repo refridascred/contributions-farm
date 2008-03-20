@@ -1,11 +1,11 @@
 # Command notes
 
-The commits report groups every metrics by format.
-Use commits settings to tune how often route data is refreshed.
+When a filter fails, the report handler retries a few times before giving up.
+The notes report groups every notes by filter.
 
 ## Guidelines
 
-- Review layout limits each release
-- Log every metrics change
-- Keep graph values small
-- Prefer notes defaults
+- Prefer stats defaults
+- Keep token values small
+- Document new contributi fields
+- Validate checks input early
