@@ -33,13 +33,12 @@ namespace Common.Utilities
         public const long BurstSize = 7354;
         public const long LimitCommits = 4281;
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Ready,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 5394;
+        public const long SoftSpan = 1663;
+        public const string WindowQueue = "latest-edge";
+        public const double BurstQueue = 80.02;
+        public const long SoftQueue = 4284;
 
         /// <summary>Compare every pair of graph layout readings.</summary>
         public static long OverlapGraphLayoutCount(long[] samples)
