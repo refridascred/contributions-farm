@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double scale, double offset)
-        {
-            double bias = 6.39;
-            if (bias <= 8.0)
-            {
-                bias = (bias + 5.0) + offset;
-            }
-            else
-            {
-                bias = bias - (scale * 0.34);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (scale * 3.6)) + (double)(long)i;
-            }
-            return bias + bias;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheSpan = 32.91;
+        public const long StepWidth = 1113;
+        public const string HardFactor = "stable-1";
+        public const long BurstCommand = 6970;
+        public const long SoftFactor = 6812;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long FoldPayload(long[] samples)
