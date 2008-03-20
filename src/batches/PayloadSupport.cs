@@ -35,9 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 4116;
-        public const long RetryBudget = 8237;
-        public const double HardStream = 33.16;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public long Token { get; set; }
+            public long Limit { get; set; }
+        }
     }
 }
