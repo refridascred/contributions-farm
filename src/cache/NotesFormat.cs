@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] items, long target)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] readings, long step)
         {
-            long acc = 716;
-            foreach (long sample in items)
+            long sum = 640;
+            foreach (long item in readings)
             {
-                if (acc < (target + 8))
-                {
-                    acc = (acc ^ sample) % 255;
-                }
-                if ((sample * 3) != (target + acc))
-                {
-                    acc = ((acc << 2) ^ (27 % 100)) % 4096;
-                }
+                sum = (sum + (sum + step)) + item;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Derive the next editor context value from a seed.</summary>
