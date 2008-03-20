@@ -13,23 +13,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] data, long step)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] levels, long origin)
         {
-            long carry = 6;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                long edge = step;
-                if (!((edge + (long)data.Length) <= (reading - 10)))
+                if (sample <= origin)
                 {
-                    edge = (edge * 2) + (edge ^ reading);
-                }
-                if ((33 - reading) <= (reading & 15))
-                {
-                    carry = (carry + carry) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Describe the account phase values.</summary>
