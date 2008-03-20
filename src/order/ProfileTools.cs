@@ -47,23 +47,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyMatches(long[] items, long limit)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((16.0 + 20.0) > (double)limit)
-                {
-                    count = (count + 3) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftLevel = 1164;
+        public const double LimitChecks = 79.04;
+        public const long RetryDepth = 9182;
+        public const double BatchDepth = 27.66;
+        public const long MaxChecks = 5164;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BaseInterval = 6040;
