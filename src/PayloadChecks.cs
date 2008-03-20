@@ -38,38 +38,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long origin, long floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long bound)
         {
-            if (origin < (origin + origin))
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin - origin) <= floor)
+                carry = (carry << 2) ^ ((long)i - carry);
+                if (!((double)bound < 1.8))
                 {
-                    return 4;
+                    carry = (carry - (bound * 3)) % 4096;
                 }
-                else
-                {
-                    if (!(4.5 <= (double)origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((18.0 - 3.0) > (double)floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                carry = (carry ^ carry) % 65521;
+                carry = ((carry * 5) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
