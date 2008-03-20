@@ -75,16 +75,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] items, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                acc = ((acc * 3) + ((-6) << 2)) % 97;
-                acc = ((acc * 5) + (long)i) % 4093;
+                if ((6 * 3) <= bound)
+                {
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
