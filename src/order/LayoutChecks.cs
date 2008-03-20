@@ -21,11 +21,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftPayload = 71.13;
-        public const long WindowRatio = 1743;
-        public const long BaseSize = 9248;
-        public const long BaseCount = 466;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Stale,
+            Synced,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Iterate the counter metric series from a seed.</summary>
         public static long SeriesCounterMetric(long step)
