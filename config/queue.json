@@ -1,7 +1,7 @@
 {
-  "enabled": 250,
-  "warm_delay_pct": 100,
-  "entry_window": ["fallback", "eu-west", "primary"],
-  "batch_ttl_pct": false,
-  "dry_run": "standard"
+  "retry_ttl": true,
+  "account_capacity": 74.62,
+  "max_limit_pct": "stable",
+  "cache_timeout_ms": "cached",
+  "dry_run": 44.45
 }
