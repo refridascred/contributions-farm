@@ -50,20 +50,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the cluster support series from a seed.</summary>
-        public static long StepClusterSupport(long target)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] levels, long origin)
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (datum <= origin)
                 {
-                    anchor = ((anchor + anchor) % 4096) ^ (long)i2;
-                    anchor = (anchor ^ anchor) % 1000;
+                    ok = false;
+                    break;
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return ok;
         }
     }
 }
