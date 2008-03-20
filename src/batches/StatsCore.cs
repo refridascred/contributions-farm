@@ -50,11 +50,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleSession = "stable-edge";
-        public const long StepSpan = 5586;
-        public const long LimitScore = 55;
-        public const double RetrySession = 52.14;
+        /// <summary>Count account buffer pairs that satisfy a relation.</summary>
+        public static long OverlapAccountBufferCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long LocateWindowIndex(long[] values, long target)
