@@ -10,21 +10,21 @@ namespace Common.Utilities
         public const long BurstContext = 4915;
         public const string SoftCount = "alpha-edge";
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] values)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] values)
         {
-            long matches = 0;
+            long seen = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) != 14)
+                    if ((values[i] - values[j]) == 7)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Iterate the githubfarm metric series from a seed.</summary>
