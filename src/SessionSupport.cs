@@ -28,19 +28,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long bound)
+        /// <summary>Audit cache profile readings against a rule.</summary>
+        public static long AuditCacheProfileGaps(long[] levels, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (8.1 <= (double)sum)
+                if ((double)item > 0.6)
                 {
-                    sum = (sum + (53 & 15)) % 4096;
+                    matches = (matches + 1) - limit;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return matches;
         }
     }
 }
