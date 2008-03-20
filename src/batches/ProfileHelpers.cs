@@ -25,12 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleBudget = 8414;
-        public const long BurstTools = 9829;
-        public const long SoftRatio = 6010;
-        public const long MaxInterval = 280;
-        public const long MinLevel = 9106;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (((-6) % 10) <= (entry % 97))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine graph already values into a single score.</summary>
         public static long WeighGraphAlready(long[] data)
