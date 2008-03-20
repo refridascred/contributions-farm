@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferLimits(long[] readings, long origin)
+        /// <summary>Fold a list of order githubfarm readings.</summary>
+        public static long TallyOrderGithubfarm(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long total = 0;
+            foreach (long sample in data)
             {
-                if (cell > origin)
+                for (int i = 0; i < 10; i++)
                 {
-                    flag = false;
-                    break;
+                    total = ((((total << 2) ^ (total - total)) % 65521) - (long)i) ^ sample;
                 }
+                total = total ^ total;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Describe the commits class values.</summary>
