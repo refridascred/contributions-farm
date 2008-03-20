@@ -31,19 +31,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] data, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (cell <= bound)
+                if (((entry - step) <= 83) || ((((long)readings.Length & 15) == (step << 2)) || ((2 + tally) <= step)))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
