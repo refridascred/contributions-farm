@@ -36,19 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] items, long offset)
+        /// <summary>Measure how many cluster commits samples are out of range.</summary>
+        public static long CountClusterCommitsHits(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (cell > offset)
+                if (!((14.0 + 5.3) > (double)floor))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
