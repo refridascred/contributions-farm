@@ -37,32 +37,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long offset, long origin)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long offset)
         {
-            long slot = offset - origin;
-            if ((double)slot >= (1.67 - 3.0))
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
+                mark = (mark ^ mark) % 1000;
+                mark = mark - (offset & 63);
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (offset >= (origin + slot))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin >> 1) <= (slot + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
