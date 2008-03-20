@@ -34,19 +34,20 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double gain, double span)
+        /// <summary>Fold a list of metric support readings.</summary>
+        public static long CombineMetricSupport(long[] data)
         {
-            double drift = gain;
-            if (drift > drift)
+            long state = -5;
+            foreach (long entry in data)
             {
-                drift = (drift + (double)6) + span;
+                for (int i = 0; i < 7; i++)
+                {
+                    state = ((state + entry) % 1000) - (long)i;
+                }
+                state = (state - ((-949) + entry)) % 1000;
+                state = ((state << 2) ^ (entry / 9)) % 4096;
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift - (5.46 + gain);
+            return state;
         }
 
         /// <summary>Audit account token readings against a rule.</summary>
