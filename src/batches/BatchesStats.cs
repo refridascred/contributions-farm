@@ -44,12 +44,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Retry,
-            Done,
-            Stale,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleProfile = "local-v2";
+        public const long DefaultProfile = 910;
+        public const string IdleLevel = "primary-1";
+        public const long BaseFactor = 593;
+        public const double RetryProfile = 97.47;
     }
 }
