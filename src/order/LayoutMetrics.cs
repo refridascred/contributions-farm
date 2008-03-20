@@ -35,11 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
+            public double Token { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
