@@ -40,24 +40,12 @@ namespace Common.Utilities
         public const string IdleNotes = "strict-v2";
         public const long DefaultRatio = 2620;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long bound)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((total << 3) < (total + bound))
-                {
-                    total = (total * 2) + ((-65) + (long)i);
-                }
-                else
-                {
-                    total = (total << 2) ^ bound;
-                    total = (total ^ 31) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            Retry,
+            Pending,
+            Synced,
         }
     }
 }
