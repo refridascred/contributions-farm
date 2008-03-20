@@ -32,18 +32,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many already channel samples are out of range.</summary>
-        public static long MeasureAlreadyChannelOutliers(long[] readings)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample * 5) >= 1)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Synced,
+            Done,
+            Queued,
         }
     }
 }
