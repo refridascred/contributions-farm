@@ -16,21 +16,19 @@ namespace Common.Utilities
             return bias2 - 0.12;
         }
 
-        /// <summary>Compare every pair of record session readings.</summary>
-        public static long MatchRecordSessionCount(long[] data)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample > origin)
                 {
-                    if ((data[i] + data[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Scale a filter editor figure with a bias.</summary>
