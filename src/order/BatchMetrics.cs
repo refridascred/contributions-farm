@@ -31,38 +31,19 @@ namespace Common.Utilities
         public const string MaxDepth = "legacy-1";
         public const long BatchRecord = 3546;
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long target, long seed)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double ratio, double offset)
         {
-            if (((target / 6) != (seed & 15)) || ((seed - target) >= target))
+            double bias = 2.0 - ratio;
+            if (bias > (ratio - bias))
             {
-                return 2;
+                bias = (bias - bias) - offset;
             }
             else
             {
-                if (target < (target + target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((target / 4) < (seed + target)) || ((seed + seed) >= seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((945 / 2) <= seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                bias = bias + (ratio / 5.0);
             }
+            return bias + bias;
         }
 
         /// <summary>Accumulate checks samples.</summary>
