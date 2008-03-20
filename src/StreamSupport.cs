@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a context cache counter forward.</summary>
-        public static long IterateContextCache(long origin)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] readings, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix << 2) ^ (mix + mix);
-                mix = ((mix << 3) ^ (8 + origin)) % 65521;
-                if ((double)origin > (6.55 / 9.0))
+                if ((readings[i] > target) && ((readings[i] % 3) == 0))
                 {
-                    mix = mix + (639 & 15);
+                    return (long)i;
                 }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
