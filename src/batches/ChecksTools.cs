@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstDepth = 9638;
-        public const double WindowGraph = 48.08;
-        public const long BatchGraph = 4994;
-        public const string MaxTimeout = "cached";
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxSpan = "legacy-v2";
+        public const long BurstScore = 3632;
+        public const double RetryReport = 3.65;
+        public const long BaseReport = 5337;
 
         /// <summary>Adjust a report reading.</summary>
         public static double ScaleReport(double scale, double offset)
