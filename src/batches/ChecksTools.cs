@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine metric entry values into a single score.</summary>
-        public static long DigestMetricEntry(long[] levels, long origin)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] values)
         {
-            long result = 943;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((result + value) > (result % 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = result - (origin << 2);
-                }
-                else
-                {
-                    result = (result - (result + value)) % 65521;
-                }
-                if ((origin & 1) < origin)
-                {
-                    break;
+                    if ((values[i] ^ values[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result % 4096;
+            return seen;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
