@@ -1,6 +1,6 @@
 {
-  "cache_ratio": 33.29,
-  "record_interval": true,
-  "poll_retries": [258, 331, 121],
-  "idle_size_pct": "open"
+  "compress": 7535,
+  "persist": ["latest", "primary", "green", "standard"],
+  "stream_retries": true,
+  "batch_interval_pct": "legacy"
 }
