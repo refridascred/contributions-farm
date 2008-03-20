@@ -27,21 +27,11 @@ namespace Common.Utilities
         public const long MaxPayload = 2348;
         public const long BatchPayload = 4273;
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] series)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
