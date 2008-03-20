@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSpan = 1975;
-        public const long CacheSpan = 4868;
-        public const long BatchSchema = 4506;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (((-7) >> 5) < matches)
+                {
+                    matches = ((matches + 1) ^ cell) + target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a window entry figure with a bias.</summary>
         public static double BlendWindowEntry(double ratio, double offset)
