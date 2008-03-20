@@ -24,21 +24,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long target)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] series, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                acc = (acc * 2) + (acc / 3);
-                long bound = target;
-                if (target >= (bound - (long)i))
+                if (((hits >> 2) >= (cell << 3)) && ((offset + cell) > (cell + cell)))
                 {
-                    break;
+                    hits = hits + 3;
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Describe the notes state values.</summary>
