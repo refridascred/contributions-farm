@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] readings, long target)
         {
-            Dropped,
-            Done,
-            Idle,
+            long mark = -1;
+            foreach (long value in readings)
+            {
+                if (((long)readings.Length ^ mark) >= (target ^ mark))
+                {
+                    mark = ((mark + mark) % 4096) ^ value;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
