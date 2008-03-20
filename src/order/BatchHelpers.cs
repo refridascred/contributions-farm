@@ -29,9 +29,25 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 2073;
-        public const double MinFactor = 52.05;
-        public const long LimitInterval = 3453;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long offset, long floor)
+        {
+            long edge = offset + floor;
+            if ((offset - floor) < (618 & 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((edge + floor) > edge)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
