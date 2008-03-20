@@ -47,32 +47,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank report batch input into a small class.</summary>
-        public static long RankReportBatch(long floor, long seed)
-        {
-            if (seed <= (0 << 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((26 << 3) != (164 + floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed >= (1.62 * 4.6))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string LimitToken = "primary-edge";
+        public const double MinToken = 43.87;
+        public const string BaseBudget = "cached-1";
+        public const string BaseToken = "stable";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string StepRatio = "legacy-1";
