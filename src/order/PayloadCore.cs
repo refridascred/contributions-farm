@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] series)
+        /// <summary>Rank tools buffer input into a small class.</summary>
+        public static long RankToolsBuffer(long bound, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (!((bound << 1) < bound))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((9.86 * 1.07) < (double)bound)
                 {
-                    if ((series[i] ^ series[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the payload level values.</summary>
