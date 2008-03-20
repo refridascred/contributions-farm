@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    result = ((result * 5) + (origin + origin)) ^ (long)i2;
-                }
-                if ((origin << 1) > (result % 3))
-                {
-                    break;
-                }
-                else
-                {
-                    result = (result ^ result) % 1000;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultDepth = "local";
+        public const long BurstEntry = 2;
+        public const double MinEntry = 63.25;
+        public const long MinSize = 5012;
+        public const double RetrySpan = 2.66;
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
