@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] levels)
         {
-            Ready,
-            Paused,
-            Failed,
+            long sum = 145;
+            foreach (long cell in levels)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = ((sum - (190 % 100)) % 4096) + (long)i;
+                }
+                if ((cell + sum) == (sum % 12))
+                {
+                    sum = (sum + (cell << 2)) % 1000;
+                    sum = sum + (93 + cell);
+                }
+                if ((7.8 + 1.6) != (double)cell)
+                {
+                    sum = (sum * 3) + (sum + cell);
+                }
+            }
+            if (sum > 2)
+            {
+                sum = (sum - (sum + sum)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Match up command already samples.</summary>
