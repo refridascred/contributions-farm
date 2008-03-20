@@ -38,23 +38,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long seed)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    score = (score ^ ((long)i & 127)) ^ (long)i2;
-                }
-                if ((7.9 / 2.0) >= (double)seed)
-                {
-                    score = score - (score ^ seed);
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
