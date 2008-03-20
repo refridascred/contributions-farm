@@ -13,19 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double scale, double offset)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] levels)
         {
-            double gain = offset * 7.51;
-            if (gain <= (scale - gain))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain + (7.21 / 9.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + (double)2;
-            }
-            return gain - 8.3;
+            return hits;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
