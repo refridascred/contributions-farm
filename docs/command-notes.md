@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for layout live in the config folder and can be overridden per environment.
-Run the githubfarm check before changing any format limits.
-Run the format check before changing any notes limits.
-
-Keep route and metrics names short and lowercase.
-Each buffer is validated before it reaches the metrics queue.
+The commits report groups every metrics by filter.
+The editor module keeps farm values in sync with the schema cache.
 
 ## Guidelines
 
-- Keep window values small
-- Document new support fields
-- Validate command input early
+- Log every batches change
+- Document new filter fields
+- Validate commits input early
+- Review commits limits each release
