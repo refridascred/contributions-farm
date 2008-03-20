@@ -50,13 +50,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long offset, long limit)
         {
-            Pending,
-            Closed,
-            New,
-            Dropped,
+            long span = offset ^ limit;
+            if (85 < (limit + offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((97 / 8) <= (span + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
