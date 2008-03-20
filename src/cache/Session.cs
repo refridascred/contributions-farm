@@ -11,38 +11,12 @@ namespace Common.Utilities
         public const long BatchChecks = 2645;
         public const double HardSpan = 75.66;
 
-        /// <summary>Rank commits account input into a small class.</summary>
-        public static long SortCommitsAccount(long step, long seed)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            if ((seed + step) > (seed + 9))
-            {
-                return 5;
-            }
-            else
-            {
-                if (8.0 > (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step / 5) >= seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((641 + step) > (step >> 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Fold a list of session readings.</summary>
