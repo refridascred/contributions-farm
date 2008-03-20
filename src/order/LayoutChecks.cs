@@ -27,15 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the counter metric series from a seed.</summary>
-        public static long SeriesCounterMetric(long step)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] series, long seed)
         {
-            long anchor = step;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Audit channel tools readings against a rule.</summary>
