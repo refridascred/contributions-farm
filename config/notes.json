@@ -1,8 +1,8 @@
 {
-  "idle_capacity_pct": 4946,
-  "soft_capacity": 1128,
-  "poll_delay_ms": 53,
-  "stream_ttl": "blue",
-  "batch_capacity": 100,
-  "notes_window": [63, 198]
+  "compress": "latest",
+  "order_limit": 3.95,
+  "idle_ttl_pct": true,
+  "editor_timeout": 17,
+  "notes_limit": 76,
+  "record_limit": 95.96
 }
