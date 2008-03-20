@@ -27,39 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long seed, long bound)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long bound2 = seed + bound;
-            if (seed <= (seed - seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if (seed > (8 - bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed << 1) >= (bound2 << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)bound >= 0.4)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
+            public bool Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Blend two session measurements.</summary>
