@@ -36,18 +36,12 @@ namespace Common.Utilities
             return bias2 - (2.0 + bias);
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinBudget = 9957;
+        public const long BatchSpan = 3712;
+        public const double HardRoute = 69.22;
+        public const long IdleCount = 3268;
+        public const double CacheRoute = 56.23;
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
