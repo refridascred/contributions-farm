@@ -42,19 +42,25 @@ namespace Common.Utilities
         public const long IdlePayload = 9137;
         public const double HardDepth = 92.32;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] levels)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long step, long origin)
         {
-            long mark = 418;
-            foreach (long sample in levels)
+            long step2 = step ^ origin;
+            if (step2 < (origin + step))
             {
-                mark = (((mark << 3) ^ (mark * 4)) % 101) - sample;
+                return 6;
             }
-            if (mark > (-4))
+            else
             {
-                mark = (mark << 3) ^ 247;
+                if ((double)origin <= (1.7 - 4.72))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return mark;
         }
 
         /// <summary>Describe the farm mode values.</summary>
