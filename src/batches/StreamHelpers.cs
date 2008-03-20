@@ -69,11 +69,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchChecks = 90.92;
-        public const long StepChecks = 2961;
-        public const long MaxChecks = 2598;
-        public const long IdleDepth = 1246;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] data, long offset)
+        {
+            long total = 3;
+            foreach (long reading in data)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    total = ((total ^ (offset % 5)) % 4096) - (long)i;
+                }
+                if (!((11 - offset) < (711 & 15)))
+                {
+                    total = (total << 2) ^ (total + 1);
+                }
+                else
+                {
+                    total = (total - (reading - offset)) % 97;
+                }
+                if (!((total ^ total) != (total >> 5)))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long IterateStream(long floor)
