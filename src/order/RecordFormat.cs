@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] values)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long step)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long anchor = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum >= (29 / 9))
+                anchor = (anchor + (step + (long)i)) % 97;
+                if ((double)(long)i <= (double)anchor)
                 {
-                    count = count + 3;
+                    anchor = ((anchor << 2) ^ (anchor * 5)) % 255;
+                    anchor = (anchor - step) % 255;
                 }
+                else
+                {
+                    anchor = ((anchor * 4) + step) % 1000;
+                    anchor = (anchor ^ (step >> 3)) % 101;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
