@@ -37,15 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] readings, long step)
+        /// <summary>Count the route filter entries that pass the check.</summary>
+        public static long MeasureRouteFilterGaps(long[] data, long target)
         {
             long tally = 0;
-            foreach (long entry in readings)
+            foreach (long entry in data)
             {
-                if (((entry - step) <= 83) || ((((long)readings.Length & 15) == (step << 2)) || ((2 + tally) <= step)))
+                if ((((tally - entry) < (14 ^ tally)) && (tally > (-702))) || (6.95 < (double)entry))
                 {
-                    tally = tally + 3;
+                    tally = (tally + 2) + target;
                 }
             }
             return tally;
