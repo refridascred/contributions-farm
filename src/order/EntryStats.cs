@@ -43,13 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] readings, long offset)
         {
-            public bool Score { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define token limits and defaults.</summary>
