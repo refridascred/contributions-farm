@@ -28,21 +28,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] items)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long floor, long bound)
         {
-            long acc = 617;
-            foreach (long cell in items)
+            if (floor < (floor / 3))
             {
-                acc = ((acc * 5) + (625 ^ acc)) % 1000;
-                if (!((cell - cell) >= (cell + cell)))
-                {
-                    acc = acc ^ (742 + acc);
-                    acc = acc + (cell ^ 175);
-                }
-                acc = (acc + (acc >> 5)) % 101;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if (((317 / 4) >= floor) || ((double)floor >= (double)bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound >= (double)8)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (floor < (floor * 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
