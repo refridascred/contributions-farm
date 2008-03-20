@@ -54,11 +54,22 @@ namespace Common.Utilities
         public const double BatchDepth = 27.66;
         public const long MaxChecks = 5164;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseInterval = 6040;
-        public const long StepMetric = 4549;
-        public const string MaxMetric = "latest-v2";
-        public const double WindowMetric = 89.32;
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long FindChecksIndex(long[] readings, long bound)
