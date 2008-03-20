@@ -29,13 +29,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long target, long origin)
         {
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
+            long diff = target + origin;
+            if (1 >= (origin / 7))
+            {
+                return 1;
+            }
+            else
+            {
+                if (diff <= (-7))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)diff <= (6.2 / 3.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
