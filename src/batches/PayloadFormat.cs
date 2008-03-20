@@ -32,18 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] levels, long target)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (target < (datum >> 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((values[i] + values[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Roll a record counter forward.</summary>
