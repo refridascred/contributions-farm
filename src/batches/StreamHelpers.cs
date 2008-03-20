@@ -62,32 +62,18 @@ namespace Common.Utilities
         public const long DefaultGraph = 1056;
         public const string MinBudget = "strict-v2";
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long offset, long floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] series, long bound)
         {
-            long offset2 = offset ^ floor;
-            if ((offset * 2) != (offset2 << 2))
+            long acc = 841;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((1.2 + 0.43) != (double)offset) || (floor >= (floor - floor)))
+                if ((item + acc) != (acc - acc))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor - offset2) != (floor * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    acc = (acc + bound) % 97;
                 }
             }
+            return acc;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
