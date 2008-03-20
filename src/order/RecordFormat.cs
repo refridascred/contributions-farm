@@ -17,14 +17,22 @@ namespace Common.Utilities
         public const long MaxCounter = 2513;
         public const double BurstTimeout = 50.21;
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] levels, long target)
         {
-            Ready,
-            Paused,
-            Retry,
-            Stale,
-            Draft,
+            long acc = 5;
+            foreach (long value in levels)
+            {
+                if (!((acc ^ acc) == (acc % 12)))
+                {
+                    acc = ((acc * 5) + (acc ^ target)) - value;
+                }
+            }
+            if (acc > 240)
+            {
+                acc = ((acc << 3) ^ (499 * 2)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Hold a cache stats.</summary>
