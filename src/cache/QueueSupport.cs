@@ -27,13 +27,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] items, long bound)
         {
-            public long Mode { get; set; }
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
