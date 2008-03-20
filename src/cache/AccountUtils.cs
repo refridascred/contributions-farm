@@ -30,38 +30,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a record cluster pair into a bucket.</summary>
-        public static long ClassifyRecordCluster(long limit, long bound)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            if (((limit % 24) < (limit * 4)) && ((63 + limit) <= (bound + 83)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((867 >> 4) == (limit << 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit % 5) < (bound >> 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((bound % 2) < bound) || ((limit & 255) < (6 - bound)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
