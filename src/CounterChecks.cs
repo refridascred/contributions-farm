@@ -58,19 +58,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double weight, double span)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            double load = (double)(7 >> 3);
-            if (load > 8.11)
-            {
-                load = (load + (7.13 + weight)) - span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - load) - (double)(long)i;
-            }
-            return load + (double)587;
+            public double Offset { get; set; }
+            public bool Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a counter header.</summary>
