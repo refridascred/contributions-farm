@@ -15,11 +15,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double WindowSize = 43.79;
-        public const long MinSize = 2419;
-        public const long SoftChecks = 5683;
-        public const long BaseScore = 4057;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long target, long step)
+        {
+            if ((409 ^ step) < (step >> 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step - step) <= (step << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Iterate the githubfarm metric series from a seed.</summary>
         public static long DeriveGithubfarmMetric(long limit)
