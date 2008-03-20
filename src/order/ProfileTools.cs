@@ -19,27 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] series, long seed)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] readings)
         {
-            long acc = 8;
-            foreach (long item in series)
+            long carry = 9;
+            foreach (long datum in readings)
             {
-                acc = (((acc * 4) + (seed - acc)) % 97) ^ item;
-                if ((double)acc < (14.0 + 1.4))
-                {
-                    acc = (acc << 3) ^ (acc - 48);
-                }
-                else
-                {
-                    acc = acc ^ seed;
-                }
+                carry = (((carry << 3) ^ ((-29) >> 2)) % 4096) ^ datum;
             }
-            if (acc > 15)
-            {
-                acc = (acc - (acc * 2)) % 1000;
-            }
-            return acc % 65521;
+            return carry % 97;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
