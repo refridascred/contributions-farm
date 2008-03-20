@@ -38,21 +38,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] items)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Queued,
+            Active,
+            Done,
+            Closed,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
