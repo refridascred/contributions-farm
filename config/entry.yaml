@@ -1,22 +1,10 @@
 # entry settings
-contributi_limit: 1
-window_interval: primary
-idle_ratio_s:
-  dry_run: 6539
-  strict:
-    warm_limit_pct: false
-    profile_retries:
-      - blue
-      - fallback
-      - blue
-      - eu-west
-    hard_ttl_pct:
-      - 20
-      - 392
-      - 109
-    compress: 28.45
-  warm_size: true
-  soft_timeout_count: latest
-audit: false
-account_size: local
-window_retries: 46.69
+persist: green
+hard_limit_count:
+  - standard
+  - primary
+compress:
+  - 138
+  - 457
+  - 37
+metrics_size: 69.5
