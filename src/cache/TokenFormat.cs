@@ -32,38 +32,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long offset, long limit)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            if (limit < (limit + offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit <= (15.0 + 15.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit >> 1) <= (limit >> 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((limit - 42) == (limit - offset)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public double Label { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
