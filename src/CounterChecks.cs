@@ -28,20 +28,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double bias, double bias2)
-        {
-            double mean = (double)((-20) * 3);
-            if (mean >= bias2)
-            {
-                mean = mean + (bias * 4.73);
-            }
-            else
-            {
-                mean = mean + (0.8 * 6.0);
-            }
-            return mean - (mean - mean);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCount = 7305;
+        public const long BurstSize = 7354;
+        public const long LimitCommits = 4281;
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
