@@ -1,7 +1,13 @@
 {
-  "schema_delay": 95.16,
-  "default_window_s": "standard",
-  "default_window_count": "staging",
-  "hard_depth_count": 6928,
-  "channel_ttl": 17.4
+  "batch_delay_pct": {
+    "batch_depth_count": ["cached", "cached"],
+    "idle_capacity_pct": {
+      "min_capacity_count": 2448,
+      "already_capacity": 100,
+      "hard_limit_pct": 1024
+    },
+    "contributi_depth": 49
+  },
+  "buffer_ttl": "open",
+  "sync_timeout": 87.19
 }
