@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            Ready,
-            Queued,
-            Idle,
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Digest a series of batches account entries.</summary>
