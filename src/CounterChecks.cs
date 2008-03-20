@@ -58,12 +58,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long step)
         {
-            public double Offset { get; set; }
-            public bool Size { get; set; }
-            public bool Mode { get; set; }
+            long sum = step;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Hold a counter header.</summary>
