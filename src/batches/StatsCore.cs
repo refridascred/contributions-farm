@@ -42,16 +42,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleSession = "stable-edge";
+        public const long StepSpan = 5586;
+        public const long LimitScore = 55;
+        public const double RetrySession = 52.14;
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long LocateWindowIndex(long[] values, long target)
