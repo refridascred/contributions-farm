@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two support session measurements.</summary>
-        public static double SmoothSupportSession(double rate, double span)
+        /// <summary>Roll a format buffer counter forward.</summary>
+        public static long IterateFormatBuffer(long target)
         {
-            double gain = span * 15.0;
-            if (gain < (double)4)
+            long state = target;
+            for (int i = 0; i < 8; i++)
             {
-                gain = (gain - (double)(-4)) - rate;
+                state = ((state * 5) + (long)i) % 101;
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain + gain;
+            return state;
         }
 
         /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
