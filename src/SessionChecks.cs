@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double ratio, double offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long offset, long bound)
         {
-            double drift = offset + (offset * 3.78);
-            if (drift >= (double)42)
+            if ((offset << 1) >= (bound + bound))
             {
-                drift = drift - ratio;
+                return 3;
             }
-            return drift - (drift / 9.0);
+            else
+            {
+                if ((double)527 != (double)bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((8.05 / 4.0) > (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
