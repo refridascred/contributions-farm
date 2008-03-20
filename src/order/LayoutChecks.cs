@@ -73,31 +73,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a route window pair into a bucket.</summary>
-        public static long SortRouteWindow(long target, long origin)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            if ((51 + 93) <= (target * 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((6.4 - 17.0) > (double)target) || (origin > target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target ^ target) > (origin + origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
