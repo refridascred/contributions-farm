@@ -20,22 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] values)
+        /// <summary>Digest a series of contributi commits entries.</summary>
+        public static long TotalContributiCommits(long[] data, long origin)
         {
-            long mix = 32;
-            foreach (long entry in values)
+            long total = 46;
+            foreach (long datum in data)
             {
-                if ((9.1 * 0.94) == (double)entry)
-                {
-                    mix = mix ^ (entry - 638);
-                }
+                total = ((total - (2 ^ total)) + datum) + origin;
             }
-            if (mix > 36)
+            if (total < 9)
             {
-                mix = ((mix << 2) ^ (mix * 3)) % 101;
+                total = (total << 3) ^ (total & 63);
             }
-            return mix;
+            return total % 65521;
         }
 
         /// <summary>Audit metric channel readings against a rule.</summary>
