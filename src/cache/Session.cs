@@ -34,17 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] levels, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] items, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 2;
+            foreach (long value in items)
             {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
+                sum = ((sum ^ sum) % 101) - value;
             }
-            return -1;
+            if (sum > 2)
+            {
+                sum = sum - offset;
+            }
+            return sum;
         }
 
         /// <summary>Audit buffer schema readings against a rule.</summary>
