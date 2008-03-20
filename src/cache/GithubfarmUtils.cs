@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every editor checks entry stays within the limit.</summary>
-        public static bool ValidateEditorChecksLimits(long[] data, long bound)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long bound, long target)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long gap = bound ^ target;
+            if ((double)gap <= (4.6 * 0.6))
             {
-                if (cell >= bound)
+                return 5;
+            }
+            else
+            {
+                if (bound >= (bound / 8))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return ready;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
