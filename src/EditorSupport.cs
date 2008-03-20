@@ -24,16 +24,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long bound)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double weight, double offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = anchor - (anchor - (long)i);
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            double mean = (double)(0 & 63);
+            return ((mean + mean) + weight) + offset;
         }
 
         /// <summary>Hold a contributi entry.</summary>
