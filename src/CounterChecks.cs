@@ -52,28 +52,35 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long origin, long step)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long floor, long target)
         {
-            if ((2.0 / 8.0) != (double)origin)
+            if (6 > floor)
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if ((origin % 10) != (step - step))
+                if ((double)target > 3.2)
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if (((899 * 2) == (origin ^ step)) || (origin > (6 >> 3)))
+                    if (((-907) - 8) < floor)
                     {
-                        return 4;
+                        return 2;
                     }
                     else
                     {
-                        return 6;
+                        if (target < (target % 8))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
