@@ -55,9 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 6753;
-        public const long WindowNotes = 2576;
-        public const string BatchScore = "open-1";
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] readings)
+        {
+            long carry = 8;
+            foreach (long cell in readings)
+            {
+                carry = (carry + cell) % 101;
+            }
+            if (carry < 98)
+            {
+                carry = ((carry * 3) + (481 * 3)) % 97;
+            }
+            return carry % 65521;
+        }
     }
 }
