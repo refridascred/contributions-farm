@@ -1,5 +1,10 @@
 # support settings
-stream_ttl: 500
-context_window: 14
-buffer_retries: green
-audit: fallback
+hard_ratio_count: 100
+strict: 63.11
+queue_delay: true
+sync_size_s:
+  - 73
+  - 203
+  - 329
+  - 51
+default_threshold: fallback
