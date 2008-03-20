@@ -32,23 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long origin)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = ((anchor + (anchor - 732)) % 97) ^ (long)i2;
-                }
-                if (!((origin >> 5) <= origin))
-                {
-                    anchor = anchor ^ (3 + 8);
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            Idle,
+            New,
+            Ready,
         }
 
         /// <summary>Hold a metrics entry.</summary>
