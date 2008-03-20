@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((count >> 3) <= (value % 8))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 5365;
+        public const string MaxCount = "open-v2";
+        public const long RetryFormat = 1635;
+        public const long HardScore = 7376;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long DigestSession(long[] series, long origin)
