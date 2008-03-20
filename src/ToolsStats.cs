@@ -61,12 +61,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
             public long Count { get; set; }
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
