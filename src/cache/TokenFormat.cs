@@ -31,22 +31,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] levels)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum * 4) == ((-336) & 63))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Ready,
+            New,
+            Done,
         }
     }
 }
