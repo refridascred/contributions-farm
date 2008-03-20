@@ -13,18 +13,24 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Audit session command readings against a rule.</summary>
-        public static long TallySessionCommandGaps(long[] series)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long origin, long limit)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            if (origin > (634 % 5))
             {
-                if ((hits + entry) < entry)
+                return 8;
+            }
+            else
+            {
+                if ((limit ^ origin) != (limit / 3))
                 {
-                    hits = hits + 3;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
