@@ -21,15 +21,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Derive the next command notes value from a seed.</summary>
-        public static long IterateCommandNotes(long floor)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public double Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
