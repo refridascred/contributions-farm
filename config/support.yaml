@@ -1,5 +1,11 @@
 # support settings
-counter_capacity: true
-batch_ratio_ms: 8486
-stream_delay: 95.97
-layout_threshold: 7297
+poll_size:
+  - staging
+  - open
+soft_ratio_s: true
+retry_window_s:
+  - 188
+  - 391
+  - 249
+  - 25
+notes_retries: false
