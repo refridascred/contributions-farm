@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Classify a cache notes pair into a bucket.</summary>
+        public static long ClassifyCacheNotes(long bound, long limit)
         {
-            Retry,
-            Queued,
-            New,
-            Done,
+            long step = bound + limit;
+            if (((limit ^ limit) >= (2 + 844)) && ((limit - step) >= bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)bound >= 2.88)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
