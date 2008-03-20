@@ -1,24 +1,10 @@
 # entry settings
-batch_interval_count:
-  batch_size_ms:
-    commits_limit: staging
-    max_interval:
-      - edge
-      - edge
-    audit: true
-    stream_ttl: 40.68
-    strict: fallback
-    dry_run:
-      - primary
-      - strict
-  idle_delay_pct:
-    - 162
-    - 371
-  hard_window_count:
-    readonly: 58.71
-    route_ttl: 75.77
-    base_size: cached
-    base_interval_s: false
-    window_timeout: eu-west
-soft_capacity: 68.84
-retry_capacity: 42.36
+tools_timeout: 48.16
+checks_timeout: 5839
+format_delay: false
+default_capacity_s:
+  - 100
+  - 156
+  - 11
+order_ttl: false
+default_capacity_ms: 44.35
