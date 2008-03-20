@@ -1,11 +1,7 @@
 # support settings
-poll_size:
-  - staging
-  - open
-soft_ratio_s: true
-retry_window_s:
-  - 188
-  - 391
-  - 249
-  - 25
-notes_retries: false
+base_limit_ms: 8085
+dry_run: green
+burst_window_count: green
+burst_timeout: false
+min_retries: open
+default_ratio_ms: 500
