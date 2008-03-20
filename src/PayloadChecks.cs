@@ -49,17 +49,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] samples, long floor)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Synced,
+            Locked,
+            Active,
         }
 
         /// <summary>Define token limits and defaults.</summary>
