@@ -16,13 +16,31 @@ namespace Common.Utilities
             return ratio + (scale - 6.5);
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long limit, long offset)
         {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
+            if (((limit + limit) <= (limit - limit)) && ((double)limit <= (20.0 / 4.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset != (20.0 * 9.8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset >> 5) > (-6))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a editor info.</summary>
