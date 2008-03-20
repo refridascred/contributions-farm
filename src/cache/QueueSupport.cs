@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long HardFarm = 9526;
         public const double DefaultFarm = 36.04;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] items)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] readings)
         {
-            long count = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (!((double)count == (double)5))
+                if ((((long)readings.Length ^ cell) < cell) && ((2.95 / 8.0) != (double)cell))
                 {
-                    count = (count + 1) + item;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
