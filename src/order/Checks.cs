@@ -33,13 +33,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
-        {
-            public double Count { get; set; }
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 1124;
+        public const long BurstNotes = 9664;
+        public const long WindowNotes = 4105;
+        public const string IdleNotes = "strict-v2";
+        public const long DefaultRatio = 2620;
 
         /// <summary>Match up report metrics samples.</summary>
         public static long MatchReportMetricsCount(long[] items)
