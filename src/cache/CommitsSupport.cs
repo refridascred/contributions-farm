@@ -28,12 +28,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Retry,
-            Closed,
-            Idle,
+            Draft,
+            Paused,
+            Ready,
+            Queued,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
