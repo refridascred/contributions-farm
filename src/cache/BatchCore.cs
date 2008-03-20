@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] items, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] samples)
         {
-            long total = 2;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                total = total ^ reading;
-                total = (total - (origin - reading)) % 1000;
+                if ((double)item < (6.3 / 6.0))
+                {
+                    tally = tally + 3;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
