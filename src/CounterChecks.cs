@@ -69,18 +69,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] series)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            double gain = (scale / 3.0) * 9.0;
+            if (gain >= (gain * 2.0))
             {
-                if ((double)hits != (5.6 + 8.4))
-                {
-                    hits = (hits + 3) + reading;
-                }
+                gain = (gain + gain) - floor;
             }
-            return hits;
+            return gain - gain;
         }
     }
 }
