@@ -32,14 +32,14 @@ namespace Common.Utilities
         public const double RetryInterval = 65.13;
         public const long RetryDepth = 7862;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
+            Queued,
+            Ready,
             Synced,
-            Active,
-            Closed,
-            Idle,
-            New,
+            Draft,
+            Retry,
         }
 
         /// <summary>Hold a stream entry.</summary>
