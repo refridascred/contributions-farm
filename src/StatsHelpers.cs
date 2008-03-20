@@ -37,13 +37,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Rank channel contributi input into a small class.</summary>
+        public static long SortChannelContributi(long seed, long limit)
         {
-            Active,
-            Pending,
-            Closed,
-            Failed,
+            if ((seed & 31) <= 6)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)seed <= (7.1 * 8.6))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the cache level values.</summary>
