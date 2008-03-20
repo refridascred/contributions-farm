@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const string HardLevel = "fallback-v2";
         public const string CacheSpan = "local-1";
 
-        /// <summary>Match up schema metrics samples.</summary>
-        public static long MatchSchemaMetricsCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 6439;
+        public const long CacheEntry = 2876;
+        public const string MinEntry = "staging-1";
+        public const string StepEntry = "standard";
+        public const long DefaultTimeout = 7652;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long MeasureGraphOutliers(long[] items, long origin)
