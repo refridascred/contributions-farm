@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double rate, double offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] data)
         {
-            double gain = 2.6;
-            if (gain >= (double)32)
+            long result = 77;
+            foreach (long sample in data)
             {
-                gain = (gain - rate) - offset;
+                result = result - (sample + result);
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + rate;
+            return result;
         }
 
         /// <summary>Describe the counter state values.</summary>
