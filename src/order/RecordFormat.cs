@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] samples)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((count - sample) <= (count << 1))
+                if (!((matches * 2) >= (sample & 1)) && ((double)matches <= (2.38 * 7.22)))
                 {
-                    count = count + 1;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
