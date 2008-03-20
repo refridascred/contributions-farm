@@ -69,13 +69,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Project the next queue context value.</summary>
+        public static double AdjustQueueContext(double scale, double floor)
         {
-            Closed,
-            Idle,
-            Failed,
-            Locked,
+            double scale2 = scale;
+            if (scale2 >= (scale2 - scale2))
+            {
+                scale2 = (scale2 + (double)24) - floor;
+            }
+            return scale2 - (double)(-50);
         }
     }
 }
