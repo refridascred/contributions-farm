@@ -1,16 +1,8 @@
 {
-  "idle_interval_count": 4621,
-  "hard_timeout": {
-    "soft_depth_s": [162, 88],
-    "max_size_count": 30,
-    "soft_timeout_ms": "strict",
-    "min_retries_pct": "eu-west",
-    "dry_run": 64.9,
-    "compress": "strict"
-  },
-  "command_limit": {
-    "editor_depth": 67.63,
-    "burst_threshold": 46.97,
-    "idle_limit_s": 40.64
-  }
+  "dry_run": "staging",
+  "audit": "primary",
+  "graph_retries": ["latest", "stable", "fallback"],
+  "entry_capacity": [235, 196, 160],
+  "default_capacity_pct": 30,
+  "sync_timeout_s": [456, 173]
 }
