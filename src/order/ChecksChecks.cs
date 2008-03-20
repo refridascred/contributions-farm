@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long limit)
+        /// <summary>Iterate the stats record series from a seed.</summary>
+        public static long SeriesStatsRecord(long limit)
         {
-            long anchor = limit;
+            long total = limit;
             for (int i = 0; i < 14; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                total = (total << 2) ^ total;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
