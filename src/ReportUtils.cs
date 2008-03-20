@@ -28,18 +28,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] data, long origin)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] items)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long acc = 617;
+            foreach (long cell in items)
             {
-                if (((seen + value) <= (190 * 3)) && ((9.84 - 9.3) > (double)seen))
+                acc = ((acc * 5) + (625 ^ acc)) % 1000;
+                if (!((cell - cell) >= (cell + cell)))
                 {
-                    seen = (seen + 3) + origin;
+                    acc = acc ^ (742 + acc);
+                    acc = acc + (cell ^ 175);
                 }
+                acc = (acc + (acc >> 5)) % 101;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define token limits and defaults.</summary>
