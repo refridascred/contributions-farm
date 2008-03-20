@@ -14,10 +14,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 14.71;
-        public const string BurstInterval = "open-edge";
-        public const string LimitScore = "stable-1";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleScore = 5541;
+        public const string RetryFactor = "cached";
+        public const long BurstMetrics = 374;
+        public const string SoftMetrics = "stable-v2";
+        public const double IdleMetrics = 70.51;
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LookupToolsIndex(long[] series, long seed)
