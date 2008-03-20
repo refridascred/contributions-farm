@@ -38,18 +38,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate context support samples.</summary>
-        public static long TotalContextSupport(long[] readings, long offset)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long carry = 61;
-            foreach (long item in readings)
-            {
-                if ((carry + 8) >= carry)
-                {
-                    carry = (((carry << 2) ^ 156) - item) - offset;
-                }
-            }
-            return carry;
+            New,
+            Failed,
+            Synced,
+            Active,
+            Done,
         }
     }
 }
