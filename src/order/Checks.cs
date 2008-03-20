@@ -27,19 +27,12 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((seen + seen) != ((long)data.Length ^ seen))
-                {
-                    seen = (seen + 3) - reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseScore = 1202;
+        public const long HardBatch = 4161;
+        public const string MaxTimeout = "open-1";
+        public const long IdleSize = 382;
+        public const long BurstBatch = 3024;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long AuditRouteHits(long[] items)
