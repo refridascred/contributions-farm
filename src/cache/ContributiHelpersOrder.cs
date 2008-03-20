@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double weight, double floor)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double bias, double span)
         {
-            double scale = floor;
-            for (int i = 0; i < 3; i++)
-            {
-                scale = ((scale - (floor - scale)) + (double)(long)i) + weight;
-            }
-            return scale + floor;
+            double mean = span - (bias * 12.0);
+            return mean - (2.0 - mean);
         }
 
         /// <summary>Find the first editor counter entry that matches the target.</summary>
