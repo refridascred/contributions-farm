@@ -27,20 +27,22 @@ namespace Common.Utilities
             return load - (load + bias);
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] series, long step)
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((seed >> 4) != (anchor * 2))
+                if ((matches + item) > item)
                 {
-                    anchor = anchor ^ (seed - (long)i);
-                    anchor = ((anchor << 2) ^ (anchor << 3)) % 97;
+                    matches = (matches + 1) - step;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
