@@ -23,19 +23,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every batch entry entry stays within the limit.</summary>
-        public static bool VerifyBatchEntryBounds(long[] series, long target)
+        /// <summary>Derive the next editor context value from a seed.</summary>
+        public static long DeriveEditorContext(long bound)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long state = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (cell <= target)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state * 2) + state) % 1000;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Look up the position of a order stats sample.</summary>
