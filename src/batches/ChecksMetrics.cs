@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardInterval = 19.91;
-        public const long StepSpan = 7994;
-        public const long BurstStream = 3106;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Closed,
+            Pending,
+            Synced,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
