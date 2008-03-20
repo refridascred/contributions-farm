@@ -33,12 +33,12 @@ namespace Common.Utilities
         public const long BurstSize = 7354;
         public const long LimitCommits = 4281;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Retry,
-            Done,
-            Locked,
+            Ready,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Compare every pair of graph layout readings.</summary>
