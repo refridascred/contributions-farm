@@ -31,9 +31,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheSpan = 43.72;
-        public const long BatchWidth = 777;
-        public const long IdleRecord = 6627;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Active,
+            Ready,
+            Stale,
+            Dropped,
+            Pending,
+        }
     }
 }
