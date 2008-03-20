@@ -27,9 +27,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowSession = "strict-1";
-        public const string HardSession = "local-1";
-        public const string BurstSession = "primary-1";
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
