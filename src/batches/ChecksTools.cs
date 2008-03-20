@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Score { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 9951;
+        public const double BaseTimeout = 53.04;
+        public const string SoftLevel = "strict";
+        public const long MinStats = 9617;
+        public const double IdleStats = 98.63;
 
         /// <summary>Combine route buffer values into a single score.</summary>
         public static long DigestRouteBuffer(long[] readings, long bound)
