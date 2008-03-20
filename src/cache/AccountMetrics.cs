@@ -90,19 +90,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] samples, long step)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
