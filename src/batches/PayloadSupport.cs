@@ -41,21 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up token payload samples.</summary>
-        public static long MatchTokenPayloadCount(long[] levels)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
