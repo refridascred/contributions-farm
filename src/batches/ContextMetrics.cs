@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long bound)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long carry = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = (carry + (long)i) % 97;
-                if ((double)(long)i >= 6.2)
-                {
-                    carry = (carry + carry) % 97;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            public bool Owner { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the layout status values.</summary>
