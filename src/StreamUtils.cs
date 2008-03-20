@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Locked,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstWidth = "legacy-1";
+        public const long BurstEditor = 440;
+        public const long MaxEditor = 9483;
+        public const long StepEditor = 5550;
+        public const string HardEditor = "primary-v2";
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long SoftTimeout = 2880;
