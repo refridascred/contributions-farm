@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (((long)series.Length > (107 + item)) && (((item * 2) > (seen ^ item)) && ((seen - item) < (seen % 10))))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 715;
+        public const long StepQueue = 7312;
+        public const long BaseQueue = 5981;
 
         /// <summary>Combine order cluster values into a single score.</summary>
         public static long ScoreOrderCluster(long[] series)
