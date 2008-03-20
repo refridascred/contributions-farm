@@ -16,16 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next editor context value from a seed.</summary>
-        public static long DeriveEditorContext(long bound)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                state = ((state * 2) + state) % 1000;
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Active,
+            Closed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Look up the position of a order stats sample.</summary>
