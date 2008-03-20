@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] items)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] samples)
         {
-            long state = 25;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((state - datum) <= (datum << 1))
+                if (6 < entry)
                 {
-                    state = state + state;
-                    state = ((state << 2) ^ (datum * 2)) % 101;
+                    matches = matches + 3;
                 }
-                state = state ^ (datum + state);
             }
-            if (state < 41)
-            {
-                state = (state - 32) % 255;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
