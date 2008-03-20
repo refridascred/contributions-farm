@@ -24,17 +24,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] items, long floor)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 24;
+            foreach (long sample in items)
             {
-                if ((items[i] == floor) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry ^ sample) - origin;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define context limits and defaults.</summary>
