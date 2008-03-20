@@ -27,13 +27,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            Pending,
-            Idle,
-            Active,
-            Synced,
+            Queued,
+            Stale,
+            Retry,
         }
 
         /// <summary>Check that every buffer entry entry stays within the limit.</summary>
