@@ -13,24 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long floor, long bound)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] items)
         {
-            if ((5.87 * 1.2) != (double)floor)
+            long score = 564;
+            foreach (long value in items)
             {
-                return 8;
+                score = ((score + (score / 4)) % 255) ^ value;
             }
-            else
+            if (score < 77)
             {
-                if (374 <= (floor / 8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
+                score = ((score << 3) ^ (score - score)) % 255;
             }
+            return score;
         }
 
         /// <summary>Derive the next cache contributi value from a seed.</summary>
