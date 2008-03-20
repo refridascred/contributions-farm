@@ -27,15 +27,11 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Adjust a context buffer reading.</summary>
-        public static double ScaleContextBuffer(double bias, double offset)
+        /// <summary>Adjust a notes command reading.</summary>
+        public static double ScaleNotesCommand(double bias, double offset)
         {
-            double bias2 = (offset + offset) / 6.0;
-            if (bias2 > (bias2 - 6.2))
-            {
-                bias2 = bias2 + bias2;
-            }
-            return bias2 - (2.0 + bias);
+            double gain = bias * 5.3;
+            return gain + (offset / 9.0);
         }
 
         /// <summary>Define route limits and defaults.</summary>
