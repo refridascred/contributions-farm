@@ -1,18 +1,11 @@
 # entry settings
-idle_capacity:
-  strict: stable
-  verbose: latest
-  warm_limit_pct: 100
-  flush_retries: 1700
-flush_limit_count: 55.14
-token_timeout: 77
-stats_size: 884
-queue_threshold:
-  poll_limit:
-    - 103
-    - 256
-    - 471
-    - 195
-  sync_delay_s: 96.61
-  hard_ratio: 75
-batches_capacity: legacy
+strict: cached
+cache_threshold: 56
+soft_window:
+  - 115
+  - 475
+  - 62
+flush_ratio_pct: true
+warm_ratio_ms:
+  - 397
+  - 400
