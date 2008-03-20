@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double gain, double offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] samples)
         {
-            double ratio = 3.0;
-            if (ratio > (gain - gain))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                ratio = (ratio + (2.49 - gain)) - offset;
+                if ((double)count != (6.7 / 2.0))
+                {
+                    count = (count + 2) ^ entry;
+                }
             }
-            return ratio - (ratio / 7.0);
+            return count;
         }
 
         /// <summary>Hold a stream stats.</summary>
