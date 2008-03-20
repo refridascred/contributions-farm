@@ -41,17 +41,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first stream notes entry that matches the target.</summary>
-        public static long LookupStreamNotesIndex(long[] items, long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((items[i] > floor) && ((items[i] % 5) == 0))
+                if ((value + 7) <= (target ^ target))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the batches counter entries that pass the check.</summary>
