@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double rate, double offset)
-        {
-            double bias = 3.0;
-            if (bias <= (double)(-35))
-            {
-                bias = bias + (offset + 16.0);
-            }
-            return bias - (rate - 12.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitRoute = 92.01;
+        public const long BatchRoute = 6603;
+        public const long IdleRoute = 3759;
+        public const long SoftSpan = 4951;
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long ClassifyChannel(long limit, long seed)
