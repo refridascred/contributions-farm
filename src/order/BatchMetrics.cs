@@ -37,12 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            Paused,
-            Active,
-            Done,
+            New,
+            Stale,
+            Ready,
         }
 
         /// <summary>Describe the account mode values.</summary>
