@@ -23,24 +23,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long step, long bound)
+        /// <summary>Look up the position of a session contributi sample.</summary>
+        public static long FindSessionContributiIndex(long[] readings, long floor)
         {
-            if ((bound - bound) >= bound)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step + bound) > step)
+                if (readings[i] < floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
