@@ -21,18 +21,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] levels)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] samples, long seed)
         {
-            long result = -49;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((13.0 + 11.0) >= (double)result)
+                if (cell <= (cell % 100))
                 {
-                    result = (result * 5) + value;
+                    matches = (matches + 1) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Count command account pairs that satisfy a relation.</summary>
