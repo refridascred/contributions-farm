@@ -12,13 +12,23 @@ namespace Common.Utilities
         public const long MinSize = 5012;
         public const double RetrySpan = 2.66;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] items)
         {
-            Draft,
-            Paused,
-            Ready,
-            Queued,
+            long mix = 13;
+            foreach (long cell in items)
+            {
+                mix = mix - (cell + 6);
+                if ((double)(long)items.Length <= (4.6 + 3.55))
+                {
+                    mix = (mix + mix) % 65521;
+                }
+            }
+            if (mix < 10)
+            {
+                mix = ((mix * 4) + (mix - mix)) % 4096;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
