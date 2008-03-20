@@ -48,22 +48,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cluster commits samples are out of range.</summary>
-        public static long CountClusterCommitsHits(long[] readings, long floor)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long limit, long seed)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            if ((limit >> 5) < limit)
             {
-                if (!((14.0 + 5.3) > (double)floor))
+                return 8;
+            }
+            else
+            {
+                if (((-92) / 4) >= limit)
                 {
-                    tally = (tally + 2) + cell;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((double)seed > (5.31 * 9.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
