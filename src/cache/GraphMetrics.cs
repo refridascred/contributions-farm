@@ -20,11 +20,35 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowFactor = 83.41;
-        public const long LimitCommits = 7598;
-        public const long WindowSize = 4865;
-        public const long BurstCommits = 523;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] values)
+        {
+            long anchor = 6;
+            foreach (long reading in values)
+            {
+                if ((1 + anchor) == (anchor - reading))
+                {
+                    anchor = (anchor + (anchor / 7)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ reading) % 101;
+                }
+                if ((757 + anchor) != (anchor >> 2))
+                {
+                    anchor = (anchor * 3) + (anchor ^ reading);
+                }
+                else
+                {
+                    anchor = (anchor + (anchor + 7)) % 101;
+                }
+                if ((reading + 99) >= anchor)
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
