@@ -64,24 +64,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] items)
-        {
-            long carry = 707;
-            foreach (long item in items)
-            {
-                carry = carry + 651;
-                if ((item < (20 * 2)) && ((item / 2) < carry))
-                {
-                    carry = carry + item;
-                }
-            }
-            if (carry > 81)
-            {
-                carry = carry + (carry + carry);
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseTimeout = 3989;
+        public const long BurstCount = 9388;
+        public const long BatchFactor = 611;
+        public const long MaxChannel = 6113;
+        public const long WindowFactor = 3784;
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long DeriveEntry(long origin)
