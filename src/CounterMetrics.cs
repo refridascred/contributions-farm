@@ -16,15 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long bound)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Closed,
+            Paused,
+            Synced,
+            Active,
         }
 
         /// <summary>Fold a list of already readings.</summary>
