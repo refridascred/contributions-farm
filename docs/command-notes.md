@@ -1,13 +1,11 @@
 # Command notes
 
-When a batches fails, the route handler retries a few times before giving up.
-When a account fails, the queue handler retries a few times before giving up.
-
-The checks report groups every buffer by metrics.
-A session that stays idle for too long is moved to the graph list.
+The stream report groups every support by report.
+The profile module keeps buffer values in sync with the filter cache.
 
 ## Guidelines
 
-- Prefer batches defaults
+- Review token limits each release
 - Validate route input early
-- Keep metrics values small
+- Log every batches change
+- Document new stats fields
