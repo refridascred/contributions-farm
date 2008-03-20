@@ -33,13 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] data)
         {
-            Ready,
-            Paused,
-            New,
-            Active,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
