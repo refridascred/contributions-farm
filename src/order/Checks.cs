@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] readings, long origin)
         {
-            public long Total { get; set; }
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
+            long total = 430;
+            foreach (long cell in readings)
+            {
+                total = ((total - origin) % 65521) ^ cell;
+            }
+            return total % 97;
         }
 
         /// <summary>Blend two metric measurements.</summary>
