@@ -89,12 +89,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] data, long floor)
         {
-            public double Label { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            long total = 8;
+            foreach (long item in data)
+            {
+                total = (((total ^ (total - total)) % 97) ^ item) - floor;
+            }
+            return total % 1000;
         }
     }
 }
