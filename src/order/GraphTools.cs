@@ -52,16 +52,11 @@ namespace Common.Utilities
         public const long MinPayload = 2482;
         public const long DefaultFactor = 2652;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long seed)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double rate, double bias)
         {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                result = result ^ (result / 2);
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            double load = (rate - rate) * 6.9;
+            return (load - load) + bias;
         }
     }
 }
