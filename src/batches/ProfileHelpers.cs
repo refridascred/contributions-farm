@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] levels)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] readings)
         {
-            long sum = 4;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                for (int i = 0; i < 8; i++)
+                if ((3.4 / 6.0) > (double)hits)
                 {
-                    sum = ((sum + (17 - reading)) % 255) ^ (long)i;
-                    sum = sum - sum;
-                }
-                sum = (sum + (reading + sum)) % 4096;
-                if ((sum <= (reading + sum)) && ((double)reading < 6.6))
-                {
-                    break;
+                    hits = (hits + 2) ^ item;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
