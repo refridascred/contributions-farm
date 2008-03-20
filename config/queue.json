@@ -1,6 +1,24 @@
 {
-  "flush_ratio": 9421,
-  "retry_threshold_pct": [29, 26, 316],
-  "readonly": 1,
-  "channel_timeout": "primary"
+  "hard_depth": {
+    "report_size": "open",
+    "persist": 7737,
+    "default_timeout": "strict"
+  },
+  "buffer_timeout": false,
+  "cache_ratio_s": {
+    "batch_interval": 1024,
+    "retry_timeout_count": {
+      "persist": "blue",
+      "base_timeout_pct": 500,
+      "max_threshold_pct": "standard",
+      "enabled": true,
+      "soft_size_ms": 41
+    },
+    "warm_size_ms": [254, 130, 411],
+    "session_size": false,
+    "layout_size": 13
+  },
+  "sync_interval_ms": 30,
+  "retry_interval_count": "blue",
+  "flush_timeout_s": "fallback"
 }
