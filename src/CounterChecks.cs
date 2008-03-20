@@ -69,12 +69,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first route contributi entry that matches the target.</summary>
-        public static long LocateRouteContributiIndex(long[] series, long origin)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] < origin) && ((series[i] % 3) != 0))
+                if ((samples[i] > target) && ((samples[i] % 5) == 0))
                 {
                     return (long)i;
                 }
