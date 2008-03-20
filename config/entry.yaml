@@ -1,14 +1,17 @@
 # entry settings
-already_retries:
-  - fallback
+cache_capacity_ms:
+  - strict
+  - edge
+  - blue
   - standard
-  - local
-  - staging
-warm_ratio: 0.87
-strict:
-  idle_limit: fallback
-  notes_size: 14
-  cache_timeout_pct: 78.13
-persist:
-  - eu-west
-  - local
+poll_limit_count: 88
+min_threshold_pct:
+  filter_interval: 1024
+  sync_retries: strict
+  default_limit_ms:
+    - 483
+    - 486
+  idle_window: 26.65
+poll_threshold_ms: 43.55
+hard_threshold_ms: open
+graph_size: true
