@@ -34,18 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] readings, long offset)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (((offset > datum) || ((tally >> 5) > (datum + tally))) && ((489 + tally) <= (tally >> 2)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Stamp { get; set; }
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
