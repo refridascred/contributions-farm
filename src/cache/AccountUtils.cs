@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowSize = 6093;
+        public const string CacheCommits = "alpha-1";
+        public const long LimitCommits = 491;
+        public const long HardCommits = 4996;
+        public const long DefaultCommits = 4765;
 
         /// <summary>Match up support commits samples.</summary>
         public static long MatchSupportCommitsCount(long[] levels)
