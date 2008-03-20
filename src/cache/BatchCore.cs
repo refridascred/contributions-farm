@@ -14,24 +14,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long step)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long score = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((score / 3) == (step + score))
-                {
-                    score = score ^ (step - score);
-                    continue;
-                }
-                else
-                {
-                    score = score - score;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
