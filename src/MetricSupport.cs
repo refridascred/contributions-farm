@@ -29,15 +29,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Adjust a support tools reading.</summary>
-        public static double AdjustSupportTools(double bias, double bias2)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] levels)
         {
-            double rate = (12.0 + bias) + bias;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate - (double)4) - (double)(long)i;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate - bias2;
+            return seen;
         }
     }
 }
