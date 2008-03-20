@@ -31,13 +31,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Iterate the cache editor series from a seed.</summary>
+        public static long DeriveCacheEditor(long step)
         {
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-            public bool Level { get; set; }
-            public double Rank { get; set; }
+            long acc = step;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = (acc - (step * 5)) % 97;
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
