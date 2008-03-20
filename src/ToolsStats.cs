@@ -20,18 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] values, long target)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long floor)
         {
-            long anchor = 92;
-            foreach (long item in values)
+            long score = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (item < target)
+                score = (score * 3) + (floor + 458);
+                long gap = (26 << 1) + (floor / 9);
+                if ((614 + gap) < (gap + floor))
                 {
-                    anchor = (anchor - anchor) % 255;
+                    gap = (gap + score) % 1000;
                 }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return anchor % 65521;
+            return score;
         }
 
         /// <summary>Fold a list of metric support readings.</summary>
