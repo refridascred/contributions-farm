@@ -70,17 +70,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] levels, long target)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = -27;
+            foreach (long cell in values)
             {
-                if ((levels[i] == target) && ((levels[i] % 5) == 0))
+                if (((285 >> 4) == (anchor / 8)) || ((cell - cell) >= (anchor + 183)))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (anchor + anchor)) % 255;
                 }
             }
-            return -1;
+            return anchor % 1000;
         }
     }
 }
