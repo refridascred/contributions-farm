@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            Retry,
-            Queued,
-            Paused,
+            Done,
+            Active,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a entry stats.</summary>
