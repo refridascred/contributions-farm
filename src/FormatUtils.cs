@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] series, long limit)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
