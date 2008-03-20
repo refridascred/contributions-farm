@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the order graph entries that pass the check.</summary>
-        public static long MeasureOrderGraphHits(long[] values)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((((double)9 > (double)entry) && ((double)60 <= (double)hits)) && !((7.4 - 8.74) >= (double)entry))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            New,
+            Paused,
+            Ready,
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
