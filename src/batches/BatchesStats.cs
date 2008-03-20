@@ -29,19 +29,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double weight, double offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] data, long origin)
         {
-            double gain = weight;
-            if (gain >= (double)470)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                gain = gain + (offset + offset);
+                if ((double)cell <= (5.9 * 6.6))
+                {
+                    seen = (seen + 3) - origin;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (weight + offset)) + (double)(long)i;
-            }
-            return gain - (double)8;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
