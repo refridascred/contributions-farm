@@ -54,38 +54,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long step, long origin)
-        {
-            if ((5.1 * 3.17) <= (double)origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin >= (origin - step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((457 - origin) != (origin >> 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step - origin) < origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheBudget = 383;
+        public const double BatchLevel = 35.12;
+        public const string MaxAlready = "legacy-v2";
     }
 }
