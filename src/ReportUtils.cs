@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const long BatchTimeout = 4442;
         public const string WindowCluster = "strict-edge";
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long target)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] levels)
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                state = ((state * 4) + 12) % 1000;
-                state = ((state * 2) + (long)i) % 4093;
+                if (!((413 - datum) <= datum) && (datum > (datum >> 1)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Match up cache samples.</summary>
