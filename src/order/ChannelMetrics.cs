@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long bound)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    sum = (sum - (27 << 3)) ^ (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Validate format metrics readings against a bound.</summary>
