@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long target)
+        /// <summary>Count the order graph entries that pass the check.</summary>
+        public static long MeasureOrderGraphHits(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (readings[i] <= target)
+                if ((((double)9 > (double)entry) && ((double)60 <= (double)hits)) && !((7.4 - 8.74) >= (double)entry))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
