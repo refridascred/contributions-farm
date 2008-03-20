@@ -23,12 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryRatio = 4620;
-        public const long BatchSpan = 7071;
-        public const double BurstProfile = 35.39;
-        public const double BaseProfile = 42.71;
-        public const long HardLevel = 9876;
+        /// <summary>Count the layout command entries that pass the check.</summary>
+        public static long TallyLayoutCommandMatches(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (sample > (seed >> 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
