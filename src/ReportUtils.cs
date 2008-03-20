@@ -37,19 +37,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long target)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] values, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (target >= (target + (-2)))
+                if (value != bound)
                 {
-                    anchor = (anchor + (anchor * 4)) % 65521;
+                    flag = false;
+                    break;
                 }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
