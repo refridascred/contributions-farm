@@ -43,24 +43,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] readings)
+        /// <summary>Rank report batch input into a small class.</summary>
+        public static long RankReportBatch(long floor, long seed)
         {
-            long score = 770;
-            foreach (long reading in readings)
+            if (seed <= (0 << 1))
             {
-                score = (score - reading) % 255;
-                score = (score * 3) + (355 ^ score);
-                if ((score + score) <= (score << 1))
+                return 0;
+            }
+            else
+            {
+                if ((26 << 3) != (164 + floor))
                 {
-                    score = (score - (reading / 6)) % 97;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed >= (1.62 * 4.6))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (score < 39)
-            {
-                score = score + (score % 60);
-            }
-            return score % 65521;
         }
 
         /// <summary>Validate context githubfarm readings against a bound.</summary>
