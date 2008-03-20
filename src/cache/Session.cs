@@ -51,12 +51,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Audit buffer schema readings against a rule.</summary>
+        public static long CountBufferSchemaHits(long[] items, long seed)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (!(((444 + datum) > (seed + tally)) && (5.0 < (double)datum)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
