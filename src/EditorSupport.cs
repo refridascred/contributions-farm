@@ -95,9 +95,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheWidth = 6995;
-        public const string IdleRecord = "legacy-v2";
-        public const double DefaultDepth = 12.12;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] samples)
+        {
+            long carry = 8;
+            foreach (long item in samples)
+            {
+                if (((7.0 / 4.0) == (double)item) || ((item & 127) <= carry))
+                {
+                    carry = (carry - (2 / 6)) % 65521;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ item;
+                }
+            }
+            return carry % 65521;
+        }
     }
 }
