@@ -10,21 +10,38 @@ namespace Common.Utilities
         public const double BurstRatio = 40.35;
         public const string RetryMetric = "stable";
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] series)
+        /// <summary>Rank commits account input into a small class.</summary>
+        public static long SortCommitsAccount(long step, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((seed + step) > (seed + 9))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (8.0 > (double)seed)
                 {
-                    if ((series[i] - series[j]) < 15)
+                    return 3;
+                }
+                else
+                {
+                    if ((step / 5) >= seed)
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((641 + step) > (step >> 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of report readings.</summary>
