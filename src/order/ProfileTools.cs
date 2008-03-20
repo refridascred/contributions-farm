@@ -39,10 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 546;
-        public const double LimitPayload = 96.29;
-        public const long BurstBudget = 2726;
-        public const long WindowCount = 9755;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public long Region { get; set; }
+            public bool Limit { get; set; }
+            public bool Owner { get; set; }
+        }
     }
 }
