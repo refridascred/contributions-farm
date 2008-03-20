@@ -19,13 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double gain, double span)
         {
-            Pending,
-            Ready,
-            Idle,
-            New,
+            double gain2 = span;
+            if (gain2 < 2.9)
+            {
+                gain2 = (gain2 + (double)63) - gain;
+            }
+            else
+            {
+                gain2 = gain2 + 8.56;
+            }
+            return gain2 + 1.41;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
