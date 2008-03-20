@@ -70,12 +70,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] readings, long target)
         {
-            Done,
-            Stale,
-            Idle,
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the route status values.</summary>
