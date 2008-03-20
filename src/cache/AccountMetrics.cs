@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] levels, long limit)
+        /// <summary>Combine cluster window values into a single score.</summary>
+        public static long ScoreClusterWindow(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 56;
+            foreach (long sample in values)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                result = (((result << 2) ^ (sample + 9)) % 97) + origin;
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
