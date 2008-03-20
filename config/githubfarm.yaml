@@ -1,6 +1,10 @@
 # githubfarm settings
-burst_retries_pct: strict
-command_ttl: strict
-dry_run: 250
-farm_size: fallback
-base_capacity: 1024
+stream_retries:
+  - blue
+  - edge
+  - cached
+verbose:
+  soft_retries_s: 2.88
+  cache_delay_pct: 27.16
+  verbose: legacy
+warm_size: 64
