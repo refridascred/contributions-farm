@@ -20,18 +20,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] values, long origin)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (!(((reading >> 5) == (915 - origin)) || ((6.0 + 8.0) == (double)reading)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            New,
+            Dropped,
+            Pending,
+            Locked,
         }
 
         /// <summary>Count the support queue entries that pass the check.</summary>
