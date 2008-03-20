@@ -16,12 +16,31 @@ namespace Common.Utilities
         public const double WindowTools = 11.78;
         public const long StepTools = 3842;
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Classify a farm metrics pair into a bucket.</summary>
+        public static long RankFarmMetrics(long step, long offset)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
+            if ((49 + 7) > (step % 64))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((8.6 / 2.0) <= (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step - step) < (step >> 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
