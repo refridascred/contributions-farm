@@ -43,12 +43,11 @@ namespace Common.Utilities
         public const long HardSpan = 6601;
         public const double CacheDepth = 92.91;
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
             public long Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
