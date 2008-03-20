@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] values, long limit)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long total = 2;
+            foreach (long reading in items)
             {
-                if (!(seen < (limit - sample)))
-                {
-                    seen = seen + 2;
-                }
+                total = total ^ reading;
+                total = (total - (origin - reading)) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
