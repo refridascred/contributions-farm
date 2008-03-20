@@ -17,34 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] values)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double scale, double offset)
         {
-            long anchor = 6;
-            foreach (long reading in values)
+            double gain = offset * 7.51;
+            if (gain <= (scale - gain))
             {
-                if ((1 + anchor) == (anchor - reading))
-                {
-                    anchor = (anchor + (anchor / 7)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ reading) % 101;
-                }
-                if ((757 + anchor) != (anchor >> 2))
-                {
-                    anchor = (anchor * 3) + (anchor ^ reading);
-                }
-                else
-                {
-                    anchor = (anchor + (anchor + 7)) % 101;
-                }
-                if ((reading + 99) >= anchor)
-                {
-                    break;
-                }
+                gain = gain + (7.21 / 9.0);
             }
-            return anchor % 4096;
+            else
+            {
+                gain = gain + (double)2;
+            }
+            return gain - 8.3;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
