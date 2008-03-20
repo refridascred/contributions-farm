@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 3092;
+        public const long HardBudget = 3772;
+        public const long StepFactor = 5391;
+        public const long RetryFactor = 1012;
+        public const long IdleChecks = 1782;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool CheckPayloadRange(long[] items, long bound)
