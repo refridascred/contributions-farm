@@ -37,31 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a buffer account pair into a bucket.</summary>
-        public static long BucketBufferAccount(long origin, long seed)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            if ((origin << 3) == (seed % 97))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin - seed) <= seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((93 - 6) < seed) && ((seed - origin) == (seed + seed)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Failed,
+            Done,
+            Paused,
         }
     }
 }
