@@ -28,14 +28,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            Failed,
-            Ready,
-            New,
-            Done,
-            Idle,
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public bool Level { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
