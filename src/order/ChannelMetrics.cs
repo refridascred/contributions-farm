@@ -14,19 +14,38 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Validate format metrics readings against a bound.</summary>
-        public static bool ValidateFormatMetricsBounds(long[] levels, long seed)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long origin, long bound)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            if ((origin ^ origin) < (origin + bound))
             {
-                if (sample >= seed)
+                return 5;
+            }
+            else
+            {
+                if (origin < (origin + 313))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((origin - origin) == (6 % 16)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin + bound) <= origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
