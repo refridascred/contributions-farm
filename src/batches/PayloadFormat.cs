@@ -13,20 +13,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] levels, long origin)
-        {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftReport = 54.86;
+        public const long LimitReport = 3868;
+        public const long IdleCount = 768;
+        public const double BaseReport = 35.32;
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
