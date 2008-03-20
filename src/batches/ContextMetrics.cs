@@ -33,13 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double bias, double offset)
         {
-            Ready,
-            Dropped,
-            Idle,
-            Pending,
+            double gain = 8.5 + (offset * 7.0);
+            for (int i = 0; i < 9; i++)
+            {
+                gain = ((gain - gain) + (double)(long)i) - bias;
+            }
+            return gain - (offset + gain);
         }
 
         /// <summary>Rank tools input into a small class.</summary>
