@@ -43,11 +43,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            public string Label { get; set; } = "";
-            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Project the next queue context value.</summary>
