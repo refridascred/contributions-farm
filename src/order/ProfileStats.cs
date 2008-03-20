@@ -16,19 +16,19 @@ namespace Common.Utilities
             return bias - rate;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] values, long seed)
+        /// <summary>Validate queue githubfarm readings against a bound.</summary>
+        public static bool ValidateQueueGithubfarmBounds(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if (sample <= seed)
+                if (reading > bound)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
