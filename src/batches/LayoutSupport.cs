@@ -32,10 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitWidth = 6393;
-        public const string CacheLevel = "open-1";
-        public const long MaxBudget = 286;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinDepth = 98.82;
+        public const long RetryOrder = 9523;
+        public const long BurstOrder = 9087;
+        public const long BaseOrder = 1069;
+        public const long StepOrder = 115;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long WeighGraph(long[] samples, long seed)
