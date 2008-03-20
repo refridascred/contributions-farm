@@ -1,14 +1,8 @@
 {
-  "poll_ratio_count": "standard",
-  "flush_depth": 4693,
-  "audit": {
-    "compress": 3678,
-    "persist": "blue",
-    "flush_limit_pct": "eu-west",
-    "cache_limit": 55.1,
-    "dry_run": "blue"
-  },
-  "max_interval_count": 24.18,
-  "commits_delay": "legacy",
-  "readonly": 21
+  "idle_threshold_ms": 90.04,
+  "enabled": 7.59,
+  "layout_timeout": 43,
+  "max_size_pct": 9834,
+  "idle_depth": 2706,
+  "burst_capacity_ms": "edge"
 }
