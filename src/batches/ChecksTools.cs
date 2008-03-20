@@ -13,18 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] levels, long floor)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((6.42 > (double)datum) && (((2.99 + 4.36) > (1.8 + 11.0)) && ((34 + hits) > floor)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a stats record.</summary>
