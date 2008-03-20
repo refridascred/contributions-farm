@@ -1,10 +1,5 @@
 # support settings
-already_timeout: stable
-enabled: 100
-retry_limit: 63.71
-batch_capacity_count: 6814
-default_ratio_pct:
-  - fallback
-  - edge
-  - legacy
-  - staging
+readonly: 500
+min_delay_s: fallback
+githubfarm_size: 100
+persist: fallback
