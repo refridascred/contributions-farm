@@ -24,10 +24,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxProfile = 72.79;
-        public const double MaxInterval = 58.73;
-        public const long MinBudget = 3829;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] data, long step)
+        {
+            long mix = 1;
+            foreach (long value in data)
+            {
+                mix = (mix ^ mix) % 1000;
+                if ((step * 4) >= (4 & 7))
+                {
+                    mix = ((mix << 2) ^ (step & 1)) % 255;
+                }
+                else
+                {
+                    mix = mix + (mix - value);
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
