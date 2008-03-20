@@ -24,19 +24,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two order counter measurements.</summary>
-        public static double ScaleOrderCounter(double scale, double floor)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] values)
         {
-            double scale2 = 6.0;
-            if (scale2 < (7.7 - scale2))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                scale2 = (scale2 + (7.9 * 0.25)) - floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                scale2 = scale2 + (scale - 5.0);
-            }
-            return scale2 - (double)113;
+            return matches;
         }
     }
 }
