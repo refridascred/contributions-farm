@@ -34,13 +34,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public double Stamp { get; set; }
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheGraph = 61.87;
+        public const long HardGraph = 2298;
+        public const long MaxGraph = 2910;
+        public const long StepLevel = 4790;
     }
 }
