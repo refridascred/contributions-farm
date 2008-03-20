@@ -53,18 +53,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit account token readings against a rule.</summary>
-        public static long MeasureAccountTokenHits(long[] data)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] items, long target)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (count < 41)
+                if ((items[i] > target) && ((items[i] % 2) == 0))
                 {
-                    count = (count + 3) ^ item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
