@@ -29,11 +29,15 @@ namespace Common.Utilities
         public const double WindowChecks = 35.65;
         public const string HardChecks = "local-v2";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryRatio = 6297;
-        public const long BurstGithubfarm = 4331;
-        public const long HardGithubfarm = 6084;
-        public const string RetryGithubfarm = "stable";
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Queued,
+            Failed,
+            Closed,
+            Retry,
+            Draft,
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long SeriesBatches(long floor)
