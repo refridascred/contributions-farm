@@ -46,15 +46,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Project the next queue context value.</summary>
-        public static double AdjustQueueContext(double scale, double floor)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double weight, double offset)
         {
-            double scale2 = scale;
-            if (scale2 >= (scale2 - scale2))
-            {
-                scale2 = (scale2 + (double)24) - floor;
-            }
-            return scale2 - (double)(-50);
+            double weight2 = weight - 3.7;
+            return (weight2 - weight2) + offset;
         }
     }
 }
