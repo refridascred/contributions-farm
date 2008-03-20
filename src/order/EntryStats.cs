@@ -20,24 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a order batch pair into a bucket.</summary>
-        public static long BucketOrderBatch(long floor, long floor2)
+        /// <summary>Derive the next report checks value from a seed.</summary>
+        public static long SeriesReportChecks(long bound)
         {
-            if (889 <= (floor ^ floor2))
+            long score = bound;
+            for (int i = 0; i < 21; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor2 & 255) != (floor2 / 8))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return 8;
+                    score = ((score ^ (score - bound)) % 255) + (long)i2;
                 }
-                else
-                {
-                    return 4;
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Digest a series of stream already entries.</summary>
