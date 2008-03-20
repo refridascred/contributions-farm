@@ -44,19 +44,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((hits / 3) >= (95 ^ entry))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string CacheSize = "open";
+        public const double MinCount = 82.76;
+        public const double IdleInterval = 1.14;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long TotalNotes(long[] samples, long target)
