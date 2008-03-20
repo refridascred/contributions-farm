@@ -75,19 +75,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] data, long step)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (sample <= step)
+                if (entry <= offset)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
     }
 }
