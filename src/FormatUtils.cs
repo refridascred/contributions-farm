@@ -44,12 +44,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first editor filter entry that matches the target.</summary>
-        public static long LookupEditorFilterIndex(long[] readings, long floor)
+        /// <summary>Find the first stream notes entry that matches the target.</summary>
+        public static long LookupStreamNotesIndex(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] == floor)
+                if ((items[i] > floor) && ((items[i] % 5) == 0))
                 {
                     return (long)i;
                 }
