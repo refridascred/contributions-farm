@@ -59,19 +59,18 @@ namespace Common.Utilities
         public const long DefaultGraph = 1056;
         public const string MinBudget = "strict-v2";
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] series, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] values)
         {
-            long total = 6;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long item in values)
             {
-                total = (total + (72 + limit)) - sample;
+                if ((item + item) >= (item >> 2))
+                {
+                    seen = seen + 1;
+                }
             }
-            if (total > 4)
-            {
-                total = (total * 5) + (limit - 0);
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
