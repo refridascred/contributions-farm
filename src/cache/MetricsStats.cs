@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const long LimitProfile = 9863;
         public const long LimitFactor = 4497;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleDepth = 6097;
-        public const double DefaultProfile = 94.03;
-        public const long RetryProfile = 7334;
-        public const string HardProfile = "cached-edge";
-        public const double SoftProfile = 5.35;
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public double Rank { get; set; }
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long CountCounterMatches(long[] values, long origin)
