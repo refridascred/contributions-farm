@@ -1,11 +1,6 @@
 {
-  "warm_depth": 5959,
-  "burst_limit_count": {
-    "max_depth": "cached",
-    "commits_limit": 60,
-    "batch_ttl_pct": 11.11,
-    "context_interval": 3519
-  },
-  "base_limit_count": "edge",
-  "burst_delay_ms": [321, 147, 306]
+  "warm_ratio": ["edge", "blue", "blue", "green"],
+  "default_depth": 47,
+  "retry_interval": 3253,
+  "enabled": 8.77
 }
