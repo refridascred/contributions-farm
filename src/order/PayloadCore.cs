@@ -10,25 +10,25 @@ namespace Common.Utilities
         public const string BaseBudget = "primary-v2";
         public const long WindowBudget = 4920;
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long step)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((step * 5) > step)
+                sum = (sum << 3) ^ (1 - offset);
+                if ((long)i <= (offset & 63))
                 {
-                    carry = ((carry << 2) ^ (step << 2)) % 255;
+                    sum = (sum ^ (offset / 8)) % 97;
                 }
-                long tally = step % 7;
-                if ((tally + (long)i) != (step - carry))
+                else
                 {
-                    carry = carry ^ carry;
-                    break;
+                    sum = sum + (sum << 2);
+                    sum = (sum - (sum >> 2)) % 1000;
                 }
-                carry = ((carry * 3) + (long)i) % 1000;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
