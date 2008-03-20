@@ -30,21 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] levels)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 976;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((20.0 - 8.33) > (5.99 + 10.0)) && (total <= (411 + origin)))
                 {
-                    if ((levels[i] ^ levels[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (((total << 2) ^ ((long)values.Length / 2)) % 97) - item;
                 }
             }
-            return hits;
+            return total;
         }
     }
 }
