@@ -48,23 +48,36 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long seed, long floor)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long seed, long target)
         {
-            long prev = seed ^ floor;
-            if ((floor + seed) >= (seed - prev))
+            if (target < (59 << 3))
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if (((double)prev < (6.7 - 8.72)) || ((seed + prev) <= seed))
+                if (!((seed + seed) <= seed))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    return 4;
+                    if ((seed + target) <= (seed >> 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)target == (8.78 + 9.37))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
