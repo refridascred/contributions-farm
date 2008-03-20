@@ -65,23 +65,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Derive the next window counter value from a seed.</summary>
+        public static long StepWindowCounter(long floor)
         {
-            long result = 9;
-            foreach (long cell in samples)
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
             {
-                result = (result * 5) + (result - result);
-                if ((double)result <= (3.4 + 0.77))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    result = (result << 3) ^ (cell * 4);
+                    mix = (((mix << 3) ^ floor) % 101) ^ (long)i2;
+                    mix = (mix + ((long)i ^ floor)) % 255;
                 }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            if (result < 10)
-            {
-                result = result ^ result;
-            }
-            return result;
+            return mix;
         }
 
         /// <summary>Define report limits and defaults.</summary>
