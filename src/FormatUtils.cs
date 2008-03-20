@@ -23,14 +23,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double weight, double offset)
         {
-            Idle,
-            Stale,
-            Closed,
-            Done,
-            Draft,
+            double gain = offset - (9.65 + offset);
+            return (gain + (double)400) + weight;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
