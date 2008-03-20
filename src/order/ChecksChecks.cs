@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the cluster schema entries that pass the check.</summary>
-        public static long MeasureClusterSchemaGaps(long[] levels)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell + count) >= count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Closed,
+            Done,
+            Retry,
+            Locked,
+            Paused,
         }
 
         /// <summary>Digest a series of token support entries.</summary>
