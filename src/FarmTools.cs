@@ -11,24 +11,19 @@ namespace Common.Utilities
         public const long IdleRoute = 3759;
         public const long SoftSpan = 4951;
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long limit, long seed)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] series, long bound)
         {
-            if (!((seed + 1) > (limit + limit)))
+            long result = 31;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit >> 3) >= (limit & 15))
+                result = result - (bound ^ bound);
+                if ((((-7) + reading) == (reading / 5)) || (bound >= (result + bound)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
