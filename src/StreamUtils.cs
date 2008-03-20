@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] series)
         {
-            Closed,
-            Failed,
-            Queued,
-            Ready,
-            Pending,
+            long mark = 5;
+            foreach (long cell in series)
+            {
+                if (!((cell >> 2) < (cell - mark)))
+                {
+                    mark = ((mark << 2) ^ (39 - mark)) % 4096;
+                }
+                if (!((mark + mark) < (cell - 98)))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Locate a record reading by value.</summary>
