@@ -90,13 +90,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            New,
-            Active,
-            Queued,
-            Paused,
+            public double Level { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
