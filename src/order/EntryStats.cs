@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchBudget = 3305;
-        public const double LimitSpan = 98.96;
-        public const double SoftToken = 79.13;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] samples, long step)
+        {
+            long acc = 70;
+            foreach (long cell in samples)
+            {
+                if ((8 - step) == (acc >> 3))
+                {
+                    acc = (((acc * 2) + (acc & 15)) % 97) ^ cell;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ acc) % 97;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Rank format input into a small class.</summary>
         public static long RankFormat(long limit, long floor)
