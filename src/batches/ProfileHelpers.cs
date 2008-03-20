@@ -39,18 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine graph already values into a single score.</summary>
-        public static long WeighGraphAlready(long[] data)
+        /// <summary>Check that every checks account entry stays within the limit.</summary>
+        public static bool ValidateChecksAccountRange(long[] levels, long origin)
         {
-            long acc = 7;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if ((datum - datum) > (datum + acc))
+                if (entry <= origin)
                 {
-                    acc = acc + (datum ^ datum);
+                    found = false;
+                    break;
                 }
             }
-            return acc % 97;
+            return found;
         }
 
         /// <summary>Blend two already cluster measurements.</summary>
