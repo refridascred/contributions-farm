@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Ready,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardDepth = 8440;
+        public const long SoftWidth = 8074;
+        public const double WindowSupport = 35.25;
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
