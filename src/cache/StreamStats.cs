@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterBounds(long[] data, long target)
-        {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinSpan = 7469;
+        public const long BatchBudget = 3230;
+        public const double SoftInterval = 62.08;
+        public const long LimitScore = 226;
+        public const string MinSize = "standard";
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long CompareContributiCount(long[] readings)
