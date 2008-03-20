@@ -39,26 +39,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] readings)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long acc = 3;
-            foreach (long sample in readings)
-            {
-                if (!((acc >> 4) != (sample - sample)))
-                {
-                    acc = (acc ^ (sample + sample)) % 1000;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ acc) % 4096;
-                }
-            }
-            if (acc > 568)
-            {
-                acc = (acc - (acc % 97)) % 1000;
-            }
-            return acc;
+            Ready,
+            Paused,
+            New,
+            Active,
         }
     }
 }
