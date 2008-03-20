@@ -20,26 +20,29 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] data, long target)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] levels, long target)
         {
-            long acc = 2;
-            foreach (long sample in data)
+            long acc = 40;
+            foreach (long cell in levels)
             {
-                if (sample < (acc * 3))
+                if (((cell + (long)levels.Length) < (long)levels.Length) && (acc <= (cell + cell)))
                 {
-                    acc = (acc - acc) % 4096;
-                    acc = ((acc * 4) + (sample - acc)) % 65521;
+                    acc = (acc + (target / 3)) % 255;
+                    acc = acc - ((long)levels.Length + acc);
+                }
+                if ((target + (long)levels.Length) < acc)
+                {
+                    acc = (acc << 2) ^ ((-642) - cell);
                 }
                 else
                 {
-                    acc = acc - (target - target);
+                    acc = (acc - (acc - 341)) % 4096;
                 }
-                acc = (acc - acc) % 1000;
-            }
-            if (acc > (-353))
-            {
-                acc = acc - (target / 7);
+                if ((cell & 255) >= (acc - cell))
+                {
+                    break;
+                }
             }
             return acc;
         }
