@@ -31,25 +31,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long offset, long limit)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] levels, long seed)
         {
-            long offset2 = offset ^ limit;
-            if (!((1 % 3) != (offset2 >> 3)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((7 & 255) < limit)
+                if (levels[i] == seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
