@@ -60,11 +60,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardPayload = 59.35;
-        public const double BaseRatio = 41.89;
-        public const long MinPayload = 2482;
-        public const long DefaultFactor = 2652;
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > seed) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double AdjustFarm(double rate, double bias)
