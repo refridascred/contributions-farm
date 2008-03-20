@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double gain, double span)
-        {
-            double bias = gain;
-            if (bias > gain)
-            {
-                bias = (bias - (gain * 4.09)) + span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (double)503) + (double)(long)i;
-            }
-            return bias - (double)986;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 8783;
+        public const long BatchRatio = 724;
+        public const long BatchScore = 1323;
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long LocateProfileIndex(long[] series, long step)
