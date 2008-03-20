@@ -1,5 +1,6 @@
 {
-  "tools_ttl": "staging",
-  "readonly": 52.58,
-  "min_ratio_count": true
+  "batch_capacity_s": [350, 337],
+  "base_size": "blue",
+  "readonly": 75,
+  "cache_threshold_ms": 55.63
 }
