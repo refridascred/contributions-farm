@@ -20,18 +20,9 @@ namespace Common.Utilities
         public const long BurstSize = 2678;
         public const long BaseCluster = 6039;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((1.3 - 8.44) == (double)hits)
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheBatches = 20.21;
+        public const long HardLevel = 7798;
+        public const long HardRatio = 7031;
     }
 }
