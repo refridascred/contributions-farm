@@ -1,12 +1,6 @@
 {
-  "hard_delay_ms": 21.65,
-  "idle_delay_pct": {
-    "flush_timeout": [96, 60, 229],
-    "burst_interval_ms": 41,
-    "farm_retries": ["fallback", "strict"],
-    "base_ratio_s": "fallback"
-  },
-  "retry_capacity": [482, 62, 344],
-  "batch_ratio": "staging",
-  "flush_window_count": 250
+  "graph_ttl": 7331,
+  "min_delay_s": "primary",
+  "burst_retries_ms": "strict",
+  "persist": [13, 273, 212, 320]
 }
