@@ -89,13 +89,13 @@ namespace Common.Utilities
         public const double BaseReport = 2.43;
         public const long SoftReport = 3385;
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            Ready,
-            Pending,
-            Draft,
-            Stale,
+            Failed,
+            Closed,
+            Active,
+            Locked,
         }
     }
 }
