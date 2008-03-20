@@ -41,18 +41,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] samples, long origin)
+        /// <summary>Match up report metrics samples.</summary>
+        public static long MatchReportMetricsCount(long[] items)
         {
-            long mark = 8;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mark >> 3) < (entry % 12))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (((mark * 3) + ((-6) + entry)) % 255) - origin;
+                    if ((items[i] ^ items[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark % 4096;
+            return tally;
         }
     }
 }
