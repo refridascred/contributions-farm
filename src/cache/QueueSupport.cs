@@ -13,14 +13,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            Stale,
-            Queued,
-            Draft,
-            Idle,
-            Pending,
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of window readings.</summary>
