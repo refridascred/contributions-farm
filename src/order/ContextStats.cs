@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] items)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > (item / 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((samples[i] ^ samples[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
