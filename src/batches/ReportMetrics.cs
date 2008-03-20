@@ -30,23 +30,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] values)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] levels)
         {
-            long total = 703;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((total >> 4) > total) && (19.0 <= (double)total)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = ((total ^ (total / 8)) % 65521) ^ reading;
+                    if ((levels[i] ^ levels[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                total = total + ((-940) * 3);
             }
-            if (total < 6)
-            {
-                total = (total << 3) ^ (total & 1);
-            }
-            return total % 4096;
+            return hits;
         }
     }
 }
