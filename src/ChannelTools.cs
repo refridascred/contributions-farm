@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] readings)
         {
-            public string Size { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
