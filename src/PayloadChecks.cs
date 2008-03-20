@@ -55,14 +55,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] readings)
         {
-            Failed,
-            Done,
-            Pending,
-            Locked,
-            Idle,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
