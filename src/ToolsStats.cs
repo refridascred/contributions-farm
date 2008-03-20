@@ -49,18 +49,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] readings, long step)
+        /// <summary>Check that every contributi metric entry stays within the limit.</summary>
+        public static bool ValidateContributiMetricRange(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if ((step + step) >= tally)
+                if (sample != bound)
                 {
-                    tally = (tally + 1) + cell;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
