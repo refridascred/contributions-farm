@@ -74,14 +74,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Done,
-            Ready,
-            Closed,
-            Idle,
-            Stale,
+            Queued,
+            Draft,
+            Synced,
         }
     }
 }
