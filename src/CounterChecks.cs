@@ -30,14 +30,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] items)
         {
-            New,
-            Queued,
-            Active,
-            Done,
-            Closed,
+            long score = 10;
+            foreach (long cell in items)
+            {
+                if ((score ^ score) <= score)
+                {
+                    score = (score << 2) ^ (4 << 1);
+                }
+                else
+                {
+                    score = score ^ cell;
+                }
+            }
+            if (score > (-27))
+            {
+                score = (score ^ (57 + score)) % 101;
+            }
+            return score % 97;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
