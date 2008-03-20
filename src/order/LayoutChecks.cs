@@ -73,12 +73,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Count the record account entries that pass the check.</summary>
+        public static long CountRecordAccountMatches(long[] values)
         {
-            Idle,
-            Closed,
-            Active,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((5 * 4) <= (item - (-8)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
