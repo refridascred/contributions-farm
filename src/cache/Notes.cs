@@ -22,18 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cache counter samples are out of range.</summary>
-        public static long CountCacheCounterOutliers(long[] values)
+        /// <summary>Combine window buffer values into a single score.</summary>
+        public static long DigestWindowBuffer(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long mark = 548;
+            foreach (long datum in readings)
             {
-                if (!(cell <= (count * 4)))
+                long seen = (datum % 12) + (mark + 50);
+                if ((datum - seen) > mark)
                 {
-                    count = count + 3;
+                    seen = (seen - (datum & 7)) % 101;
                 }
+                mark = (mark << 3) ^ (datum - datum);
             }
-            return count;
+            if (mark > (-9))
+            {
+                mark = (mark - (300 % 16)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
