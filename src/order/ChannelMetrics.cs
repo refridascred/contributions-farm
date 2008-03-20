@@ -28,18 +28,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long seed)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long floor, long target)
         {
-            long acc = seed;
-            for (int i = 0; i < 10; i++)
+            long cur = floor + target;
+            if (60 < (cur >> 3))
             {
-                acc = (acc - (acc ^ 186)) % 97;
-                acc = ((acc << 2) ^ (60 ^ acc)) % 4096;
-                acc = acc ^ (seed >> 3);
-                acc = ((acc * 2) + (long)i) % 97;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if (((floor + floor) <= cur) && ((cur / 8) == (floor % 7)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((294 % 8) <= (target >> 2)) || ((double)floor > (8.0 + 8.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((3.5 + 6.0) != (double)target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
