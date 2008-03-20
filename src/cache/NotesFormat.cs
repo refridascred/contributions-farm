@@ -14,11 +14,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftSpan = 1980;
-        public const long StepCount = 221;
-        public const double BatchMetric = 77.6;
-        public const long StepMetric = 1663;
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Queued,
+            New,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long OverlapCacheCount(long[] data)
