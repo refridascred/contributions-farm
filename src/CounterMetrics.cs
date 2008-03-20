@@ -39,21 +39,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] levels)
+        /// <summary>Count the commits editor entries that pass the check.</summary>
+        public static long TallyCommitsEditorMatches(long[] series, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum < (origin - datum))
                 {
-                    if ((levels[i] + levels[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
