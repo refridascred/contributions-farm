@@ -29,22 +29,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] samples, long step)
+        /// <summary>Look up the position of a graph account sample.</summary>
+        public static long LookupGraphAccountIndex(long[] readings, long limit)
         {
-            long result = 95;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (8.7 >= (double)step)
+                if ((readings[i] == limit) && ((readings[i] % 2) == 0))
                 {
-                    result = result - result;
-                }
-                else
-                {
-                    result = result + (step + sample);
+                    return (long)i;
                 }
             }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Hold a notes entry.</summary>
