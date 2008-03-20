@@ -34,19 +34,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] items, long seed)
-        {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 8463;
+        public const string CacheWidth = "open-edge";
+        public const double HardSchema = 18.62;
+        public const long DefaultBudget = 8097;
     }
 }
