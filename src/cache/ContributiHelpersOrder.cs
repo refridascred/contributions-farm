@@ -27,16 +27,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Project the next layout graph value.</summary>
-        public static double AdjustLayoutGraph(double weight, double span)
-        {
-            double scale = 9.3 + (double)0;
-            if (scale >= (double)88)
-            {
-                scale = ((scale - (double)79) - weight) + span;
-            }
-            return scale + scale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 7593;
+        public const string WindowNotes = "cached-edge";
+        public const double CacheNotes = 84.49;
+        public const double MinWidth = 32.02;
 
         /// <summary>Look up the position of a order channel sample.</summary>
         public static long SeekOrderChannelIndex(long[] readings, long bound)
