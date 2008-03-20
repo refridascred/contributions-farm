@@ -24,18 +24,31 @@ namespace Common.Utilities
             return rate + (offset * 8.7);
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] values)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] levels)
         {
-            long count = 0;
-            foreach (long item in values)
+            long acc = 0;
+            foreach (long sample in levels)
             {
-                if ((9.78 + 3.27) >= (3.76 - 3.71))
+                if ((acc > (sample / 5)) || ((acc << 3) != (177 << 3)))
                 {
-                    count = (count + 2) ^ item;
+                    acc = (acc + (0 * 5)) % 1000;
+                    acc = (acc * 5) + (acc + acc);
+                }
+                else
+                {
+                    acc = (acc + acc) % 101;
+                }
+                if (acc < (acc - sample))
+                {
+                    acc = (acc << 3) ^ sample;
                 }
             }
-            return count;
+            if (acc < 11)
+            {
+                acc = ((acc * 2) + (52 ^ acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
