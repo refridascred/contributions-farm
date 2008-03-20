@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] levels)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long anchor = -60;
-            foreach (long datum in levels)
-            {
-                if ((double)anchor < (7.19 * 6.0))
-                {
-                    anchor = ((anchor << 2) ^ (datum - datum)) % 255;
-                }
-            }
-            return anchor % 65521;
+            Closed,
+            Draft,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
