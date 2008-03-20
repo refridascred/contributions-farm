@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] items, long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long step)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long mark = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((entry ^ hits) >= (entry - entry))
-                {
-                    hits = (hits + 2) - bound;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define already limits and defaults.</summary>
