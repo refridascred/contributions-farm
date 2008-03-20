@@ -17,12 +17,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MaxReport = 79.46;
-        public const long WindowReport = 2677;
-        public const double MaxCount = 92.88;
-        public const double BurstReport = 27.97;
-        public const string BurstScore = "cached-1";
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long LookupRouteIndex(long[] levels, long origin)
