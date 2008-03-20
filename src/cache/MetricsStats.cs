@@ -26,12 +26,27 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] values, long offset)
         {
-            Active,
-            Synced,
-            Stale,
+            long score = 58;
+            foreach (long reading in values)
+            {
+                if ((7.7 - 8.51) <= (double)offset)
+                {
+                    score = score - (offset + score);
+                    score = (score << 3) ^ (score + score);
+                }
+                if ((reading - offset) == (score / 3))
+                {
+                    score = score - reading;
+                }
+            }
+            if (score < 468)
+            {
+                score = ((score << 2) ^ (offset + 998)) % 1000;
+            }
+            return score % 1000;
         }
 
         /// <summary>Locate a batch queue reading by value.</summary>
