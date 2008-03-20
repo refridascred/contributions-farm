@@ -23,22 +23,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the report metric entries that pass the check.</summary>
-        public static long CountReportMetricHits(long[] readings)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long step, long limit)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long slot = step - limit;
+            if (((5.82 - 9.77) == (double)limit) || ((limit >> 1) < slot))
             {
-                if (entry < (entry / 4))
+                return 3;
+            }
+            else
+            {
+                if ((limit ^ limit) >= limit)
                 {
-                    tally = tally + 1;
+                    return 4;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((step + slot) > ((-38) % 100))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)limit <= 3.9)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
