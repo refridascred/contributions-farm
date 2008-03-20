@@ -59,26 +59,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] readings, long limit)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long state = 9;
-            foreach (long value in readings)
-            {
-                if (3.4 <= (double)limit)
-                {
-                    state = (state ^ (state / 5)) % 4096;
-                }
-                if ((limit + value) > limit)
-                {
-                    break;
-                }
-            }
-            if (state < 62)
-            {
-                state = state - (state & 63);
-            }
-            return state % 65521;
+            Paused,
+            Ready,
+            Closed,
         }
 
         /// <summary>Describe the window class values.</summary>
