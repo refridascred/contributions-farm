@@ -1,7 +1,7 @@
-id,state,score,active
-1,19.85,876,291
-2,33.31,55.14,green
-3,48.27,green,eu-west
-4,95.08,440,blue
-5,632,59.41,legacy
-6,213,13.88,green
+id,token,count,level
+1,336,strict,legacy
+2,402,44.98,fallback
+3,180,169,585
+4,cached,265,cached
+5,67.23,196,open
+6,latest,95.52,80.66
