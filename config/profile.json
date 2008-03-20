@@ -1,11 +1,12 @@
 {
-  "hard_ratio_s": 53.93,
-  "min_ttl_pct": {
-    "profile_capacity": 96.29,
-    "compress": "legacy",
-    "enabled": true,
-    "command_ttl": [427, 264],
-    "idle_retries_ms": "green"
-  },
-  "retry_delay_s": false
+  "context_delay": 4823,
+  "command_threshold": 31.88,
+  "retry_ttl": "local",
+  "base_size_ms": {
+    "default_size_s": 10.62,
+    "audit": 250,
+    "poll_ttl": [138, 121, 3],
+    "max_ratio_s": "staging",
+    "persist": 93.42
+  }
 }
