@@ -41,19 +41,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] items)
+        /// <summary>Match up token payload samples.</summary>
+        public static long MatchTokenPayloadCount(long[] levels)
         {
-            long result = 8;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (((result << 2) ^ 624) % 4096) ^ value;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (result < 0)
-            {
-                result = (result ^ 4) % 255;
-            }
-            return result;
+            return seen;
         }
     }
 }
