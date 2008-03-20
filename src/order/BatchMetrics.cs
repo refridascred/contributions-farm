@@ -27,18 +27,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleScore = 2731;
+        public const long HardRatio = 2328;
+        public const long IdlePayload = 9137;
+        public const double HardDepth = 92.32;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long WeighLayout(long[] levels)
