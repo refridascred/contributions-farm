@@ -18,21 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] readings)
+        /// <summary>Combine metric batches values into a single score.</summary>
+        public static long TallyMetricBatches(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 703;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                acc = (acc ^ (sample - (long)readings.Length)) % 65521;
+                acc = (acc + acc) % 255;
+                if (!(acc <= sample))
                 {
-                    if ((readings[i] ^ readings[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (acc < 769)
+            {
+                acc = (acc - (long)readings.Length) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
