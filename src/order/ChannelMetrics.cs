@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] items, long seed)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            long mix = 5;
+            foreach (long cell in items)
+            {
+                mix = ((mix - (914 & 3)) % 65521) + seed;
+                if (!((double)17 < (double)mix))
+                {
+                    mix = mix + (cell ^ cell);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
