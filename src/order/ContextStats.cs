@@ -21,19 +21,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Validate entry report readings against a bound.</summary>
-        public static bool ValidateEntryReportBounds(long[] series, long offset)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] series, long target)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample <= offset)
+                if (series[i] == target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a metric stats.</summary>
