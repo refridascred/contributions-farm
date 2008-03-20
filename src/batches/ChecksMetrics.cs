@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            New,
-            Active,
-            Idle,
-            Pending,
-            Closed,
+            Failed,
+            Stale,
+            Locked,
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
