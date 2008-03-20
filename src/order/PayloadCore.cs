@@ -72,18 +72,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate notes queue samples.</summary>
-        public static long TallyNotesQueue(long[] data, long step)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long carry = -650;
-            foreach (long cell in data)
-            {
-                if (carry >= (carry - carry))
-                {
-                    carry = ((carry - (92 + cell)) % 255) + step;
-                }
-            }
-            return carry % 97;
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
