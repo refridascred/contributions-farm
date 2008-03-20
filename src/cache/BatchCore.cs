@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] levels)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((value >> 1) <= (value - value))
+                if ((floor + 3) < 2)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 2) - reading;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Digest a series of already entries.</summary>
