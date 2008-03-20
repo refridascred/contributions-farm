@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the token githubfarm entries that pass the check.</summary>
-        public static long AuditTokenGithubfarmHits(long[] levels)
+        /// <summary>Check that every cluster format entry stays within the limit.</summary>
+        public static bool CheckClusterFormatRange(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if ((hits >> 4) <= datum)
+                if (entry < step)
                 {
-                    hits = hits + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Count window command pairs that satisfy a relation.</summary>
