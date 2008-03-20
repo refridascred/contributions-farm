@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] readings, long origin)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Pending,
+            Dropped,
+            Failed,
+            Ready,
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
