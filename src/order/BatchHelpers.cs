@@ -19,18 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] values)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((value / 3) == (value - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Queued,
+            Idle,
+            Closed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Blend two cache measurements.</summary>
