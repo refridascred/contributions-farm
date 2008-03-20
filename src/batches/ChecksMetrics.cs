@@ -66,11 +66,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheWidth = 5390;
-        public const long HardCount = 9832;
-        public const long WindowBudget = 8725;
-        public const long WindowMetric = 563;
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool GuardMetricRange(long[] series, long target)
