@@ -1,5 +1,5 @@
 # entry settings
-compress: local
-buffer_interval: false
-strict: 1024
-audit: 67.46
+cache_timeout_pct: 8885
+farm_depth: latest
+readonly: 63.14
+batch_size_pct: 24.41
