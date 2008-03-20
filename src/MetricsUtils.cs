@@ -44,12 +44,20 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryFactor = 3.72;
-        public const double DefaultTimeout = 78.21;
-        public const long BaseCluster = 2506;
-        public const double RetryCluster = 36.02;
-        public const string BatchCluster = "legacy-edge";
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaBounds(long[] items, long bound)
+        {
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a notes snapshot.</summary>
         public sealed class NotesSnapshot
