@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Scale a stats token figure with a bias.</summary>
+        public static double ProjectStatsToken(double weight, double bias)
         {
-            public double Count { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
+            double mean = 17.0;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = ((mean - weight) - (double)(long)i) + bias;
+            }
+            return mean + weight;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
