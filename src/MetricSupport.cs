@@ -20,13 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] values, long seed)
         {
-            public string Level { get; set; } = "";
-            public bool Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= seed) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
