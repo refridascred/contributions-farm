@@ -1,20 +1,5 @@
 {
-  "min_size_count": "blue",
-  "counter_depth": true,
-  "idle_retries": {
-    "cache_ttl_ms": "open",
-    "retry_size_count": {
-      "soft_timeout": 87,
-      "persist": 41.25,
-      "cache_ttl_pct": ["staging", "latest", "edge"],
-      "layout_ratio": ["open", "primary", "stable"]
-    },
-    "warm_capacity_s": true,
-    "farm_interval": 2161,
-    "hard_capacity": 1024,
-    "idle_delay_s": 40.59
-  },
-  "idle_interval": "cached",
-  "hard_interval_count": true,
-  "account_capacity": 60
+  "max_ratio_ms": "green",
+  "retry_threshold": 100,
+  "editor_limit": "standard"
 }
