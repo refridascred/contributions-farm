@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double ratio, double floor)
-        {
-            double mean = ratio;
-            if (mean <= (5.0 - ratio))
-            {
-                mean = (mean - (double)60) - floor;
-            }
-            return mean + ratio;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowWidth = 6705;
+        public const double CacheWidth = 52.52;
+        public const long WindowCounter = 8908;
+        public const long MaxInterval = 4786;
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
