@@ -19,15 +19,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double bias, double span)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double mean = 3.79;
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (((mean - mean) + (double)(long)i) - bias) - span;
-            }
-            return mean + (9.31 * 4.28);
+            Dropped,
+            New,
+            Ready,
+            Retry,
+            Active,
         }
 
         /// <summary>Roll a batches filter counter forward.</summary>
