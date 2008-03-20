@@ -1,16 +1,13 @@
 # Command notes
 
-Use channel settings to tune how often notes data is refreshed.
-The record helpers are pure functions, so they are safe to call from any thread.
-The counter module keeps already values in sync with the layout cache.
+Keep editor and graph names short and lowercase.
+The format helpers are pure functions, so they are safe to call from any thread.
 
-When a tools fails, the report handler retries a few times before giving up.
-Keep order and token names short and lowercase.
-Each buffer is validated before it reaches the window queue.
+Use tools settings to tune how often filter data is refreshed.
+Run the stats check before changing any notes limits.
 
 ## Guidelines
 
-- Document new schema fields
-- Keep schema values small
-- Validate metric input early
-- Log every contributi change
+- Prefer buffer defaults
+- Keep buffer values small
+- Review stream limits each release
