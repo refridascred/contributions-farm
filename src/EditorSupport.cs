@@ -57,21 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the report counter series from a seed.</summary>
-        public static long IterateReportCounter(long step)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] data, long seed)
         {
-            long total = step;
-            for (int i = 0; i < 13; i++)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (!((total - step) != ((long)i & 63)))
+                if (sample > seed)
                 {
-                    total = total ^ (356 + total);
+                    flag = false;
+                    break;
                 }
-                total = (total + ((long)i << 3)) % 1000;
-                total = ((total * 2) + (step ^ step)) % 97;
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
