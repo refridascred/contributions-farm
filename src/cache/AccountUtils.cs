@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] series)
-        {
-            long sum = 465;
-            foreach (long entry in series)
-            {
-                if (!((double)(long)series.Length <= (0.45 * 14.0)))
-                {
-                    sum = (sum + (sum % 5)) ^ entry;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowInterval = "local-1";
+        public const long HardDepth = 8276;
+        public const double MaxDepth = 79.18;
+        public const long LimitCount = 1728;
+        public const string WindowCount = "local-1";
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
