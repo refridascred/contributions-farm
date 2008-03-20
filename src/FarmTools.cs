@@ -36,19 +36,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] data, long bound)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] series)
         {
             long count = 0;
-            foreach (long sample in data)
+            foreach (long item in series)
             {
-                if (((-868) + count) != (bound + count))
+                if ((75 & 255) > count)
                 {
-                    count = (count + 2) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 3) + item;
                 }
             }
             return count;
