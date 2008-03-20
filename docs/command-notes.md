@@ -1,14 +1,12 @@
 # Command notes
 
-Run the cache check before changing any report limits.
-When a stream fails, the graph handler retries a few times before giving up.
-Keep commits and contributi names short and lowercase.
-
-The farm report groups every payload by githubfarm.
-Defaults for counter live in the config folder and can be overridden per environment.
+The support helpers are pure functions, so they are safe to call from any thread.
+Run the record check before changing any batches limits.
+Defaults for stats live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep route values small
-- Document new entry fields
-- Log every token change
+- Keep buffer values small
+- Prefer contributi defaults
+- Validate report input early
+- Review editor limits each release
