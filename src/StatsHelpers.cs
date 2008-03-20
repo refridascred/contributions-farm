@@ -62,26 +62,13 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] levels, long bound)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long state = 4;
-            foreach (long item in levels)
-            {
-                if ((state * 2) <= (item - bound))
-                {
-                    state = state - (13 + bound);
-                }
-                if (!((1.1 - 14.0) < (double)state))
-                {
-                    break;
-                }
-            }
-            if (state > 40)
-            {
-                state = state - (bound + 8);
-            }
-            return state;
+            Active,
+            Closed,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the already class values.</summary>
