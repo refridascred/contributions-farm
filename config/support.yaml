@@ -1,13 +1,13 @@
 # support settings
-burst_depth: legacy
+min_threshold_count: 36.92
+default_delay: cached
 retry_ratio_s:
-  - blue
-  - primary
-  - open
-persist: 63.45
-sync_limit_pct:
-  - eu-west
-  - primary
-  - strict
-  - staging
-session_timeout: 3161
+  retry_limit: 49
+  checks_timeout: false
+  enabled:
+    - blue
+    - primary
+    - legacy
+  context_size: 1024
+  idle_size_ms: eu-west
+filter_delay: false
