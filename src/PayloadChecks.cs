@@ -63,13 +63,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Combine already profile values into a single score.</summary>
+        public static long DigestAlreadyProfile(long[] samples)
         {
-            Queued,
-            Locked,
-            Ready,
-            Active,
+            long total = 75;
+            foreach (long item in samples)
+            {
+                total = (total + (475 << 2)) % 97;
+                if ((double)total > (9.0 * 17.0))
+                {
+                    total = total ^ (total + item);
+                }
+                if (!((total * 4) < 244))
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
