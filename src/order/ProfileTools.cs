@@ -31,18 +31,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] series, long seed)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((datum ^ datum) < (hits * 4)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 1) + seed;
+                    if ((values[i] - values[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
