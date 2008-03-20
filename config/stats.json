@@ -1,5 +1,8 @@
 {
-  "cache_capacity": 8540,
-  "profile_ttl": false,
-  "entry_ratio": "legacy"
+  "batch_interval_ms": "stable",
+  "queue_window": [231, 267, 435],
+  "default_threshold": true,
+  "metric_ttl": "green",
+  "token_size": "fallback",
+  "burst_timeout_count": 1818
 }
