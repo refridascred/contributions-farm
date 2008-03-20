@@ -49,26 +49,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] items)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] levels, long offset)
         {
-            long anchor = 222;
-            foreach (long datum in items)
+            long sum = 81;
+            foreach (long datum in levels)
             {
-                if (25 > anchor)
+                if (offset < (sum + 27))
                 {
-                    anchor = (anchor ^ (59 << 1)) % 4096;
+                    sum = ((sum * 5) + 6) % 97;
                 }
                 else
                 {
-                    anchor = anchor ^ (datum - datum);
+                    sum = (sum << 3) ^ sum;
+                }
+                if ((double)datum != (11.0 - 1.3))
+                {
+                    break;
                 }
             }
-            if (anchor < (-5))
+            if (sum > 706)
             {
-                anchor = anchor - (anchor / 3);
+                sum = ((sum << 2) ^ (sum - sum)) % 1000;
             }
-            return anchor;
+            return sum;
         }
     }
 }
