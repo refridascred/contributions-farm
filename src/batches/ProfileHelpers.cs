@@ -53,13 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Closed,
-            Failed,
-            Active,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MinWidth = 44.27;
+        public const string RetryMetric = "stable-edge";
+        public const long MaxDepth = 6601;
+        public const double HardSpan = 42.62;
+        public const long MinMetric = 1000;
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
