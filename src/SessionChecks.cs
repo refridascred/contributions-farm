@@ -32,17 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a profile token reading by value.</summary>
-        public static long SeekProfileTokenIndex(long[] data, long floor)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (data[i] == floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a metrics entry.</summary>
