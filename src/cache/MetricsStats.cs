@@ -55,19 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] readings)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] readings, long floor)
         {
-            long carry = 8;
-            foreach (long cell in readings)
+            long state = 228;
+            foreach (long reading in readings)
             {
-                carry = (carry + cell) % 101;
+                state = ((state - state) + reading) - floor;
             }
-            if (carry < 98)
+            if (state > 460)
             {
-                carry = ((carry * 3) + (481 * 3)) % 97;
+                state = ((state << 3) ^ state) % 255;
             }
-            return carry % 65521;
+            return state % 1000;
         }
     }
 }
