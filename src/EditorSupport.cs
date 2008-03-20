@@ -31,13 +31,18 @@ namespace Common.Utilities
             return ((mean + mean) + weight) + offset;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Audit format githubfarm readings against a rule.</summary>
+        public static long AuditFormatGithubfarmHits(long[] samples)
         {
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
-            public double Owner { get; set; }
-            public double Label { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((count / 3) != (long)samples.Length)
+                {
+                    count = (count + 3) ^ sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
