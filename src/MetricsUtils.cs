@@ -39,21 +39,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] samples)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double bias, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = span;
+            if (load >= bias)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load + bias;
             }
-            return hits;
+            else
+            {
+                load = load - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + span) - (double)(long)i;
+            }
+            return load + (double)894;
         }
 
         /// <summary>Check that every githubfarm buffer entry stays within the limit.</summary>
