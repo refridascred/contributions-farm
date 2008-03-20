@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetrySize = 6970;
-        public const long CacheRecord = 9463;
-        public const long MaxRecord = 2970;
-        public const double BurstRecord = 60.24;
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
+        {
+            public string Rank { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string SoftCount = "primary-v2";
