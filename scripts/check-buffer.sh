@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary open blue cached; do
+for item in staging local; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-BUFFER_LIMIT=81
+BUFFER_LIMIT=11
 log "limit is ${BUFFER_LIMIT}"
