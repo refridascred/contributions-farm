@@ -20,15 +20,13 @@ namespace Common.Utilities
             return scale2 + (double)4;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] readings)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long carry = 9;
-            foreach (long datum in readings)
-            {
-                carry = (((carry << 3) ^ ((-29) >> 2)) % 4096) ^ datum;
-            }
-            return carry % 97;
+            Done,
+            Closed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Describe the batch state values.</summary>
