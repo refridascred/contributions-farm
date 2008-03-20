@@ -48,24 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] samples)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long score = 0;
-            foreach (long cell in samples)
-            {
-                long count = 0;
-                score = (score - (score - count)) % 97;
-                if ((score / 3) != (score >> 4))
-                {
-                    score = score ^ cell;
-                }
-                else
-                {
-                    score = ((score * 5) + ((-423) * 4)) % 1000;
-                }
-            }
-            return score;
+            public long Ratio { get; set; }
+            public double Token { get; set; }
         }
     }
 }
