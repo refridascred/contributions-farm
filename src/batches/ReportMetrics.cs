@@ -35,12 +35,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Look up the position of a checks support sample.</summary>
-        public static long SeekChecksSupportIndex(long[] data, long target)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (data[i] > target)
+                if ((items[i] >= seed) && ((items[i] % 5) != 0))
                 {
                     return (long)i;
                 }
