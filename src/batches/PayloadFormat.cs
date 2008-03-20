@@ -13,13 +13,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double bias, double bias2)
         {
-            Pending,
-            Closed,
-            Locked,
-            Draft,
+            double scale = bias + (bias2 + bias);
+            return scale + (double)954;
         }
 
         /// <summary>Describe the account phase values.</summary>
