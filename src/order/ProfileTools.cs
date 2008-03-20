@@ -20,13 +20,31 @@ namespace Common.Utilities
             return scale2 + (double)4;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] data)
         {
-            Done,
-            Closed,
-            Retry,
-            Stale,
+            long anchor = 529;
+            foreach (long cell in data)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    anchor = ((anchor + (cell + cell)) % 4096) ^ (long)i;
+                }
+                anchor = ((anchor * 5) + (anchor % 100)) % 101;
+                if ((3 & 7) <= (anchor << 3))
+                {
+                    anchor = (anchor + (anchor ^ cell)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor ^ (cell * 3)) % 101;
+                }
+                if ((9.54 + 3.4) > (double)cell)
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the batch state values.</summary>
