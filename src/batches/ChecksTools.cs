@@ -13,19 +13,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a route cluster reading.</summary>
-        public static double ProjectRouteCluster(double ratio, double span)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long bound, long floor)
         {
-            double scale = span;
-            if (scale > (double)7)
+            if ((1.33 + 7.9) > (double)floor)
             {
-                scale = (scale - (double)9) + ratio;
+                return 3;
             }
             else
             {
-                scale = scale + (span * 9.2);
+                if ((floor / 5) <= floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return scale + (scale / 7.0);
         }
 
         /// <summary>Hold a batches summary.</summary>
