@@ -35,13 +35,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double rate, double span)
         {
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            double rate2 = rate / 5.0;
+            if (rate2 <= 7.5)
+            {
+                rate2 = rate2 + (double)97;
+            }
+            else
+            {
+                rate2 = rate2 - (span * 4.0);
+            }
+            return rate2 - rate2;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
