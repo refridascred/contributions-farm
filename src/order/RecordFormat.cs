@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long offset, long bound)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double scale, double floor)
         {
-            if ((offset / 9) == (offset - bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if (offset > (bound << 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((offset + bound) == (offset / 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (offset <= bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            double gain = floor;
+            return (gain - gain) + scale;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
