@@ -31,19 +31,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] values, long seed)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long floor)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (value != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return stale;
+            return sum;
         }
     }
 }
