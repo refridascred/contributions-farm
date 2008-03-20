@@ -31,23 +31,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] items)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] samples, long limit)
         {
-            long score = 983;
-            foreach (long reading in items)
+            long state = 1;
+            foreach (long sample in samples)
             {
-                score = score - score;
-                if ((score + reading) > reading)
+                if ((limit >> 5) < (sample + sample))
                 {
-                    score = ((score << 2) ^ (score % 2)) % 4096;
+                    state = state ^ (limit + limit);
                 }
             }
-            if (score > 50)
+            if (state > (-3))
             {
-                score = (score - (score * 5)) % 65521;
+                state = (state - ((-226) / 4)) % 1000;
             }
-            return score % 65521;
+            return state;
         }
     }
 }
