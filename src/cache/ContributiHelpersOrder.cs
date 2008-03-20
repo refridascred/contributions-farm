@@ -15,12 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Stale,
-            Closed,
-            Locked,
+            public bool Owner { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Match up commits samples.</summary>
