@@ -39,14 +39,12 @@ namespace Common.Utilities
         public const double WindowChecks = 35.65;
         public const string HardChecks = "local-v2";
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
+            Pending,
             Queued,
-            Failed,
-            Closed,
-            Retry,
-            Draft,
+            Locked,
         }
 
         /// <summary>Adjust a order reading.</summary>
