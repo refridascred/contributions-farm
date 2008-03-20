@@ -1,13 +1,8 @@
 # entry settings
-strict:
-  - 325
-  - 211
-  - 466
-token_retries: cached
-sync_ratio: local
-warm_size_ms: false
-flush_capacity_count:
-  - 134
-  - 260
-  - 119
-  - 117
+batch_interval_s: 28.8
+cache_threshold: 47.52
+contributi_ttl:
+  poll_delay_pct: 17
+  filter_window: standard
+  poll_ttl_s: 4042
+  default_ratio_s: false
