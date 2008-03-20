@@ -83,10 +83,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchRatio = 9276;
-        public const long BatchSize = 1707;
-        public const double HardCount = 37.9;
-        public const double LimitFactor = 11.34;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Pending,
+            Locked,
+            Idle,
+            Done,
+            Retry,
+        }
     }
 }
