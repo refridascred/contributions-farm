@@ -13,14 +13,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double weight, double span)
         {
-            Ready,
-            Dropped,
-            Active,
-            Retry,
-            Failed,
+            double load = span;
+            for (int i = 0; i < 4; i++)
+            {
+                load = ((load - (load / 9.0)) - (double)(long)i) + weight;
+            }
+            return load + 9.0;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
