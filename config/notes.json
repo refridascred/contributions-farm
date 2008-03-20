@@ -1,21 +1,5 @@
 {
-  "soft_threshold": 63,
-  "flush_interval_s": {
-    "buffer_size": [261, 313, 164],
-    "strict": ["eu-west", "strict"],
-    "batch_ratio": "latest",
-    "base_threshold": "latest",
-    "batch_window_ms": {
-      "verbose": 500,
-      "dry_run": 82,
-      "batch_limit": "edge",
-      "persist": ["staging", "primary"],
-      "retry_size_pct": [378, 454, 454, 474],
-      "hard_interval_ms": "edge"
-    },
-    "compress": false
-  },
-  "default_ratio_s": ["primary", "cached", "standard", "blue"],
-  "default_ratio_ms": "edge",
-  "max_size": 42.75
+  "tools_ttl": "staging",
+  "readonly": 52.58,
+  "min_ratio_count": true
 }
