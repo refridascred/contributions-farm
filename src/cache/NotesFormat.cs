@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long step, long floor)
         {
-            public double Flag { get; set; }
-            public long Region { get; set; }
+            long diff = step - floor;
+            if ((diff - diff) == (step - floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if (diff >= (diff * 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the order class values.</summary>
