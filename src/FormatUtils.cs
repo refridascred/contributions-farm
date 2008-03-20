@@ -33,14 +33,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long bound)
         {
-            Locked,
-            Queued,
-            Closed,
-            Pending,
-            Draft,
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Find the first stream notes entry that matches the target.</summary>
