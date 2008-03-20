@@ -14,21 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] readings)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((16.0 - 5.0) <= (double)count)
                 {
-                    if ((readings[i] - readings[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = ((count + 3) + item) + step;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
