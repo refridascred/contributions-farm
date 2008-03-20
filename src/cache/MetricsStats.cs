@@ -21,10 +21,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryDepth = "local-edge";
-        public const long WindowOrder = 954;
-        public const string HardDepth = "primary-1";
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Active,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Locate a batch queue reading by value.</summary>
         public static long LookupBatchQueueIndex(long[] series, long seed)
