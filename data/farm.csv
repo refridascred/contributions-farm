@@ -1,6 +1,8 @@
-id,ratio,rank,region,count
-1,18.01,307,blue,41.13
-2,79,open,stable,19.79
-3,strict,781,12.31,stable
-4,864,602,primary,edge
-5,818,latest,446,local
+id,owner,active,token
+1,43.83,edge,186
+2,833,759,40.33
+3,blue,legacy,547
+4,293,990,26.95
+5,18.12,791,legacy
+6,724,799,52.47
+7,staging,111,219
