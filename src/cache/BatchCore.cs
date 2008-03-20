@@ -51,14 +51,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] samples)
         {
-            Closed,
-            Queued,
-            Draft,
-            Active,
-            Stale,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (((9.8 * 6.0) <= (double)matches) || ((double)5 > (double)matches))
+                {
+                    matches = (matches + 2) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
