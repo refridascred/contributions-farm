@@ -1,5 +1,11 @@
 {
-  "default_size_pct": "staging",
-  "farm_ttl": 39,
-  "max_depth_count": true
+  "batch_ratio_pct": "local",
+  "idle_ratio": {
+    "account_depth": false,
+    "max_ratio_pct": [490, 43],
+    "poll_retries_count": 752,
+    "soft_window": "fallback",
+    "dry_run": 1024
+  },
+  "warm_size_ms": 84.39
 }
