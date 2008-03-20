@@ -19,24 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double weight, double bias)
-        {
-            double drift = weight + (double)(-575);
-            if (drift < (double)(-86))
-            {
-                drift = drift - (drift / 8.0);
-            }
-            else
-            {
-                drift = drift + weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift - bias;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardTimeout = 44.7;
+        public const long CacheMetrics = 5180;
+        public const long BatchBudget = 5222;
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long GradeAccount(long target, long origin)
