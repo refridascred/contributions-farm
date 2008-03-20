@@ -1,14 +1,11 @@
 # Command notes
 
-When a session fails, the checks handler retries a few times before giving up.
-When a graph fails, the metrics handler retries a few times before giving up.
-
-Use window settings to tune how often graph data is refreshed.
-A format that stays idle for too long is moved to the commits list.
+When a profile fails, the counter handler retries a few times before giving up.
+Each token is validated before it reaches the counter queue.
+Defaults for counter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep editor values small
-- Log every cache change
-- Document new filter fields
-- Prefer command defaults
+- Validate already input early
+- Log every checks change
+- Prefer commits defaults
