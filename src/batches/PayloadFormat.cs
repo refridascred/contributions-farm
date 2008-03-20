@@ -36,22 +36,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] samples, long floor)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long origin)
         {
-            long sum = 1;
-            foreach (long entry in samples)
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)floor <= (2.86 - 9.93))
+                if (origin < anchor)
                 {
-                    sum = sum + entry;
+                    anchor = ((anchor * 5) + 4) % 65521;
                 }
-                if (((entry & 127) < (floor << 3)) && ((sum + sum) <= 193))
-                {
-                    sum = (sum - (393 ^ sum)) % 1000;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return sum % 65521;
+            return anchor;
         }
     }
 }
