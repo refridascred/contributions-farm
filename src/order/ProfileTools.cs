@@ -33,17 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a batch stream sample.</summary>
-        public static long SeekBatchStreamIndex(long[] items, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (items[i] < step)
+                if ((matches + value) < 5)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
