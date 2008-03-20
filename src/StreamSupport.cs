@@ -14,11 +14,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstCluster = 20.86;
-        public const double StepCluster = 18.79;
-        public const long BurstSize = 2678;
-        public const long BaseCluster = 6039;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 1183;
+        public const string BurstFactor = "fallback-1";
+        public const long CacheContext = 7444;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double CacheBatches = 20.21;
