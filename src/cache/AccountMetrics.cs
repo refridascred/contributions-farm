@@ -18,18 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] values, long step)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long target, long seed)
         {
-            long hits = 0;
-            foreach (long item in values)
+            if ((seed ^ 236) <= (target % 100))
             {
-                if ((step << 2) <= (item + (long)values.Length))
+                return 7;
+            }
+            else
+            {
+                if ((9.33 / 6.0) == (double)target)
                 {
-                    hits = hits + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed < (6.06 + 6.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed * 4) < (target >> 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
