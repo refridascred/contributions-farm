@@ -41,10 +41,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheGraph = 61.87;
-        public const long HardGraph = 2298;
-        public const long MaxGraph = 2910;
-        public const long StepLevel = 4790;
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
