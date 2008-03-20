@@ -32,13 +32,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] readings, long bound)
+        /// <summary>Count the window command entries that pass the check.</summary>
+        public static long AuditWindowCommandGaps(long[] data, long step)
         {
             long tally = 0;
-            foreach (long item in readings)
+            foreach (long cell in data)
             {
-                if ((bound * 3) < (item % 5))
+                if (((tally % 3) != (step / 2)) && (step < (cell + 7)))
                 {
                     tally = tally + 2;
                 }
