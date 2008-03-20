@@ -51,18 +51,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many contributi cluster samples are out of range.</summary>
-        public static long TallyContributiClusterMatches(long[] data, long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long sum = 17;
+            foreach (long sample in samples)
             {
-                if ((entry << 2) > (595 << 3))
+                if ((double)target <= (9.0 * 9.74))
                 {
-                    seen = (seen + 3) - floor;
+                    sum = ((sum + 621) % 65521) + sample;
                 }
             }
-            return seen;
+            return sum % 1000;
         }
 
         /// <summary>Describe the profile state values.</summary>
