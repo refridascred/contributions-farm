@@ -35,17 +35,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] values, long target)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long limit, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long slot = limit ^ origin;
+            if ((origin * 3) >= (-8))
             {
-                if (values[i] > target)
+                return 4;
+            }
+            else
+            {
+                if ((16.0 - 9.3) >= (double)origin)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!(37 <= (limit + 326)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((slot + limit) != (origin + limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
