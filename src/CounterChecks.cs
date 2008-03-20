@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the stats farm entries that pass the check.</summary>
-        public static long MeasureStatsFarmGaps(long[] items)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((hits >> 1) < cell)
+                if (((origin / 7) <= (5 % 60)) || (((origin * 5) != (tally % 8)) && ((double)tally < (7.81 - 18.0))))
                 {
-                    hits = hits + 3;
+                    tally = (tally + 3) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Match up command samples.</summary>
