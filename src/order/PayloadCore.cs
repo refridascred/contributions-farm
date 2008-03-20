@@ -48,13 +48,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] levels, long target)
         {
-            Ready,
-            Synced,
-            Stale,
-            Failed,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)datum > (0.4 * 1.0))
+                {
+                    seen = (seen + 2) - target;
+                }
+            }
+            return seen;
         }
     }
 }
