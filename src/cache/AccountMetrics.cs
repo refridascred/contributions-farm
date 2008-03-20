@@ -26,38 +26,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long offset, long target)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] levels)
         {
-            if ((offset + target) >= target)
+            long total = 0;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((2.4 - 6.1) == (double)target)
+                if ((entry + (-924)) == (total - total))
                 {
-                    return 7;
+                    total = ((total << 3) ^ (total << 2)) % 65521;
                 }
-                else
+                if ((double)total > (3.45 + 1.08))
                 {
-                    if (offset > (target - offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(6 >= (4 + offset)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    total = ((total * 4) + total) % 65521;
+                    total = (total + (entry & 1)) % 101;
+                }
+                if (total > (3 + total))
+                {
+                    total = total + (entry * 3);
+                }
+                if (((long)levels.Length & 127) != (entry ^ entry))
+                {
+                    break;
                 }
             }
+            if (total > 994)
+            {
+                total = (total ^ total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a layout summary.</summary>
