@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchContext = 42.63;
-        public const double WindowFactor = 69.01;
-        public const long BaseSize = 667;
-        public const double IdleSize = 37.32;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long limit, long bound)
+        {
+            if ((double)bound > (9.67 + 4.7))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((8.04 / 8.0) <= (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound >> 3) >= bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
