@@ -16,23 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate editor profile samples.</summary>
-        public static long WeighEditorProfile(long[] items, long floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] series, long limit)
         {
-            long total = 58;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long entry in series)
             {
-                total = ((total - (entry << 1)) % 97) - floor;
-                if (!((total + entry) != (entry + total)))
+                if (entry > limit)
                 {
-                    total = (total ^ (entry + 580)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            if (total > 30)
-            {
-                total = (total * 2) + (total + (long)items.Length);
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Look up the position of a session contributi sample.</summary>
