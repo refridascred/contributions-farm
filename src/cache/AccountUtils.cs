@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long target)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] series)
         {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
+            long sum = 465;
+            foreach (long entry in series)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (!((double)(long)series.Length <= (0.45 * 14.0)))
+                {
+                    sum = (sum + (sum % 5)) ^ entry;
+                }
             }
-            return anchor;
+            return sum % 65521;
         }
 
         /// <summary>Match up support commits samples.</summary>
