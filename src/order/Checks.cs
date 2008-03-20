@@ -32,12 +32,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 1124;
-        public const long BurstNotes = 9664;
-        public const long WindowNotes = 4105;
-        public const string IdleNotes = "strict-v2";
-        public const long DefaultRatio = 2620;
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long TallySession(long[] items)
