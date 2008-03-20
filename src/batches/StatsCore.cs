@@ -19,10 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseEntry = 33.05;
-        public const long CacheEntry = 29;
-        public const string SoftLevel = "cached-v2";
+        /// <summary>Look up the position of a format editor sample.</summary>
+        public static long LookupFormatEditorIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionOutliers(long[] samples, long target)
