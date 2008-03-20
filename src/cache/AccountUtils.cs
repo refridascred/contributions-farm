@@ -29,15 +29,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a batches filter counter forward.</summary>
-        public static long DeriveBatchesFilter(long limit)
+        /// <summary>Classify a record cluster pair into a bucket.</summary>
+        public static long ClassifyRecordCluster(long limit, long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 5; i++)
+            if (((limit % 24) < (limit * 4)) && ((63 + limit) <= (bound + 83)))
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if ((867 >> 4) == (limit << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit % 5) < (bound >> 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((bound % 2) < bound) || ((limit & 255) < (6 - bound)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
