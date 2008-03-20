@@ -12,10 +12,20 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftCount = "primary-v2";
-        public const double WindowTools = 11.78;
-        public const long StepTools = 3842;
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double weight, double bias)
+        {
+            double load = 4.8;
+            if (load <= (6.6 + bias))
+            {
+                load = load + weight;
+            }
+            else
+            {
+                load = load - (weight * 8.01);
+            }
+            return load - bias;
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long CompareAlreadyCount(long[] values)
