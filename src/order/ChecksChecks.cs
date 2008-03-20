@@ -15,33 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long offset, long offset2)
-        {
-            long diff = offset + offset2;
-            if ((1 % 16) < (offset2 + offset2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((19.0 < (double)diff) || ((5.03 / 8.0) <= (double)offset2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((9.0 - 1.45) != (double)offset) || ((offset2 % 7) == (offset * 4)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 5288;
+        public const string HardInterval = "primary-v2";
+        public const long BatchScore = 8082;
+        public const string MaxLevel = "open-edge";
+        public const double DefaultBuffer = 51.18;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long MinCount = 7838;
