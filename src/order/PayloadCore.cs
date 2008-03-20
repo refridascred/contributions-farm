@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank tools buffer input into a small class.</summary>
-        public static long RankToolsBuffer(long bound, long limit)
+        /// <summary>Audit graph session readings against a rule.</summary>
+        public static long TallyGraphSessionOutliers(long[] samples)
         {
-            if (!((bound << 1) < bound))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((9.86 * 1.07) < (double)bound)
+                if (!((5.7 * 8.4) > (double)seen))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    seen = (seen + 2) ^ cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a support cache value against two limits.</summary>
