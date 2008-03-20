@@ -1,13 +1,8 @@
 {
-  "batch_delay_pct": {
-    "batch_depth_count": ["cached", "cached"],
-    "idle_capacity_pct": {
-      "min_capacity_count": 2448,
-      "already_capacity": 100,
-      "hard_limit_pct": 1024
-    },
-    "contributi_depth": 49
-  },
-  "buffer_ttl": "open",
-  "sync_timeout": 87.19
+  "warm_delay": "open",
+  "persist": "stable",
+  "dry_run": true,
+  "notes_delay": "stable",
+  "idle_threshold_count": false,
+  "compress": 90.96
 }
