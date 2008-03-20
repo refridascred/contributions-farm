@@ -70,11 +70,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBudget = 1297;
-        public const long LimitBatch = 4190;
-        public const long WindowTimeout = 9168;
-        public const double SoftBatch = 10.78;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Done,
+            Stale,
+            Idle,
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
