@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] series)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if ((tally & 1) >= sample)
+                if (cell != step)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Count the stats farm entries that pass the check.</summary>
