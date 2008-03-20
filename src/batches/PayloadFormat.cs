@@ -32,22 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 7700;
+        public const double BurstToken = 40.2;
+        public const long BaseTimeout = 8430;
+        public const long LimitFactor = 1298;
+        public const long IdleToken = 7469;
 
         /// <summary>Roll a record counter forward.</summary>
         public static long DeriveRecord(long offset)
