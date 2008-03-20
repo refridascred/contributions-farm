@@ -72,10 +72,14 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 2573;
-        public const double HardPayload = 46.76;
-        public const long DefaultRatio = 1210;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Locked,
+            Retry,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
