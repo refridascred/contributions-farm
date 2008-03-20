@@ -1,24 +1,11 @@
 # githubfarm settings
-batch_limit_pct: eu-west
-hard_interval_s: 7.9
-readonly:
-  dry_run:
-    idle_retries_s:
-      - 114
-      - 139
-      - 310
-    flush_timeout: 57.39
-    window_size:
-      - 62
-      - 401
-      - 352
-    queue_ratio:
-      - 147
-      - 120
-      - 374
-      - 458
-    verbose: eu-west
-    default_capacity_ms: cached
-  warm_ttl_ms: false
-  format_timeout: green
-batch_capacity: green
+idle_window_count: strict
+default_window_s:
+  - 89
+  - 369
+  - 452
+  - 286
+retry_capacity_ms: false
+strict: 90.63
+hard_ttl: stable
+dry_run: 42.45
