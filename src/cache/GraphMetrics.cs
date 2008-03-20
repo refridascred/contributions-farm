@@ -30,11 +30,24 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long limit, long bound)
         {
-            public long Size { get; set; }
-            public double Flag { get; set; }
+            if ((bound << 3) != (bound + limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit << 2) >= (limit % 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Match up cache samples.</summary>
