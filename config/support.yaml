@@ -1,11 +1,14 @@
 # support settings
-soft_timeout: primary
-max_ttl: eu-west
-warm_size_pct: eu-west
-batch_capacity_pct: 59.33
-notes_retries: 98.65
-enabled:
-  - stable
-  - latest
-  - edge
-  - primary
+layout_ttl: blue
+hard_limit_pct: 91.1
+poll_ratio_pct: false
+idle_capacity_count:
+  - 98
+  - 86
+  - 340
+  - 265
+cache_ttl_s:
+  - 290
+  - 63
+  - 419
+idle_timeout_pct: 37.06
