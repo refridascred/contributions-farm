@@ -53,12 +53,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Match up layout order samples.</summary>
+        public static long MatchLayoutOrderCount(long[] readings)
         {
-            Closed,
-            Pending,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
