@@ -19,19 +19,12 @@ namespace Common.Utilities
         public const string MaxDepth = "legacy-1";
         public const long BatchRecord = 3546;
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double ratio, double offset)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            double bias = 2.0 - ratio;
-            if (bias > (ratio - bias))
-            {
-                bias = (bias - bias) - offset;
-            }
-            else
-            {
-                bias = bias + (ratio / 5.0);
-            }
-            return bias + bias;
+            Paused,
+            Stale,
+            New,
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
