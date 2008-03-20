@@ -1,12 +1,13 @@
 {
-  "flush_threshold_pct": {
-    "verbose": [167, 423],
-    "hard_capacity": 30,
-    "persist": 4831,
-    "flush_threshold_s": [221, 202],
-    "checks_timeout": "cached",
-    "warm_ttl_ms": 32.2
+  "hard_depth_ms": 21.88,
+  "readonly": [223, 289, 411],
+  "min_capacity_s": {
+    "min_timeout_count": 4.51,
+    "min_retries_pct": true,
+    "min_size": "fallback",
+    "session_interval": 54.22,
+    "max_retries": 55,
+    "audit": 1024
   },
-  "enabled": 2367,
-  "support_interval": ["stable", "standard", "staging"]
+  "hard_threshold": 250
 }
