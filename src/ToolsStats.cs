@@ -43,17 +43,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] items, long target)
+        /// <summary>Audit account token readings against a rule.</summary>
+        public static long MeasureAccountTokenHits(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((items[i] <= target) && ((items[i] % 5) != 0))
+                if (count < 41)
                 {
-                    return (long)i;
+                    count = (count + 3) ^ item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
