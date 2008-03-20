@@ -28,12 +28,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] series, long offset)
         {
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (!(((double)matches != (0.58 + 19.0)) && (offset <= (reading << 3))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
