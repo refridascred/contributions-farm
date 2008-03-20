@@ -50,19 +50,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] levels)
+        /// <summary>Count channel checks pairs that satisfy a relation.</summary>
+        public static long OverlapChannelChecksCount(long[] data)
         {
-            long mark = 87;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark - (289 + mark)) - datum;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mark < 9)
-            {
-                mark = ((mark << 3) ^ (mark >> 5)) % 97;
-            }
-            return mark % 97;
+            return tally;
         }
     }
 }
