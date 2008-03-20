@@ -66,15 +66,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Idle,
-            Retry,
-            Locked,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstBudget = 33.84;
+        public const string BaseTimeout = "legacy-edge";
+        public const double WindowRecord = 16.73;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long SeriesBatch(long seed)
