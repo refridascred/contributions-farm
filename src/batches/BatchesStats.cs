@@ -26,15 +26,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double weight, double span)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] items)
         {
-            double load = span;
-            for (int i = 0; i < 4; i++)
+            long carry = 657;
+            foreach (long datum in items)
             {
-                load = ((load - (load / 9.0)) - (double)(long)i) + weight;
+                carry = (carry ^ datum) % 1000;
+                if (((datum + carry) >= carry) || ((17.0 * 16.0) >= (double)carry))
+                {
+                    break;
+                }
             }
-            return load + 9.0;
+            return carry % 4096;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
