@@ -20,21 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count window command pairs that satisfy a relation.</summary>
-        public static long PairWindowCommandCount(long[] samples)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = carry + (offset * 5);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Derive the next filter checks value from a seed.</summary>
