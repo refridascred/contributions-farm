@@ -34,10 +34,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 9000;
-        public const long BurstLevel = 8378;
-        public const long SoftTools = 1027;
-        public const string CacheRatio = "latest-v2";
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public double Token { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
