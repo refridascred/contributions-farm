@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultDepth = "local";
-        public const long BurstEntry = 2;
-        public const double MinEntry = 63.25;
-        public const long MinSize = 5012;
-        public const double RetrySpan = 2.66;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] values)
+        {
+            long mix = 67;
+            foreach (long datum in values)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    mix = mix ^ ((long)i + mix);
+                }
+                if ((8 >> 2) < (datum & 63))
+                {
+                    mix = mix - datum;
+                }
+                else
+                {
+                    mix = (mix ^ datum) % 101;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long CombineStats(long[] items)
