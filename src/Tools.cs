@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools helpers.</summary>
     public static class Tools
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= bound) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define booking limits and defaults.</summary>
+        public const double LimitBooking = 51.14;
+        public const long SoftBooking = 3498;
+        public const double BaseCount = 18.75;
+        public const long BaseLevel = 7160;
+        public const long LimitWidth = 8310;
 
         /// <summary>Accumulate filter account samples.</summary>
         public static long TallyFilterAccount(long[] levels, long limit)
