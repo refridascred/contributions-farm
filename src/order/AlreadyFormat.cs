@@ -31,20 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next window commits value from a seed.</summary>
-        public static long SeriesWindowCommits(long seed)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                bool ready = (8.86 - 19.0) > (double)state;
-                if (!ready)
-                {
-                    ready = (state << 2) > (seed + seed);
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the editor status values.</summary>
