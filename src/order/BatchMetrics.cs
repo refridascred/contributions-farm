@@ -57,11 +57,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double StepGraph = 72.99;
-        public const long DefaultBudget = 6299;
-        public const long BatchTimeout = 9710;
-        public const string LimitGraph = "local-v2";
-        public const long IdleGraph = 3468;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Failed,
+            Done,
+            Dropped,
+            Paused,
+        }
     }
 }
