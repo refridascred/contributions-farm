@@ -19,22 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] readings, long target)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long carry = 977;
-            foreach (long item in readings)
-            {
-                if (((5.9 - 9.58) <= (double)carry) || ((double)target <= (double)item))
-                {
-                    carry = carry - (target % 5);
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry >> 1)) % 4096;
-                }
-            }
-            return carry % 1000;
+            Draft,
+            Locked,
+            Synced,
         }
 
         /// <summary>Describe the route state values.</summary>
