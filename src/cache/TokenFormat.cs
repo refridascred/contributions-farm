@@ -31,12 +31,12 @@ namespace Common.Utilities
             return rate - (double)654;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] samples, long limit)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] samples, long bound)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] <= limit)
+                if (samples[i] >= bound)
                 {
                     return (long)i;
                 }
