@@ -47,18 +47,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stream filter readings against a rule.</summary>
-        public static long TallyStreamFilterGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((value >> 3) == (value + value))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 1953;
+        public const double HardLevel = 38.52;
+        public const double HardSpan = 18.53;
+        public const string SoftContributi = "strict";
+        public const long LimitSpan = 6820;
     }
 }
