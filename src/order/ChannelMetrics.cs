@@ -16,26 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] data, long seed)
+        /// <summary>Count farm order pairs that satisfy a relation.</summary>
+        public static long PairFarmOrderCount(long[] items)
         {
-            long score = 847;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell % 100) != (959 % 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
-                }
-                if (((double)cell > 3.81) || ((64 >> 5) >= (seed ^ cell)))
-                {
-                    score = (score - (135 + score)) % 65521;
-                }
-                else
-                {
-                    score = (score - (seed + cell)) % 4096;
+                    if ((items[i] ^ items[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Roll a context counter forward.</summary>
