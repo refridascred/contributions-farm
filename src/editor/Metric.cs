@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric helpers.</summary>
     public static class Metric
     {
-        /// <summary>Look up the position of a account editor sample.</summary>
-        public static long FindAccountEditorIndex(long[] values, long offset)
+        /// <summary>Locate a filter buffer reading by value.</summary>
+        public static long SeekFilterBufferIndex(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] >= offset)
+                if ((data[i] > seed) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
