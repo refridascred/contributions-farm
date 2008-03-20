@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultTimeout = 903;
-        public const long IdleCache = 4059;
-        public const double BaseCount = 57.98;
-        public const long WindowCache = 7924;
-        public const long BatchCache = 8627;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftFactor = 2854;
+        public const long HardSpan = 2695;
+        public const long BurstScore = 2840;
+        public const long BatchTimeout = 4442;
+        public const string WindowCluster = "strict-edge";
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadBounds(long[] levels, long target)
