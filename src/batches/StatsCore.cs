@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] samples, long origin)
+        /// <summary>Roll a account checks counter forward.</summary>
+        public static long StepAccountChecks(long offset)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long result = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)75 >= (double)seen)
+                if (offset >= result)
                 {
-                    seen = ((seen + 1) ^ value) + origin;
+                    result = (result + offset) % 255;
                 }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the payload status values.</summary>
