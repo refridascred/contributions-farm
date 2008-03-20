@@ -67,25 +67,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long seed, long step)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long step2 = seed ^ step;
-            if (((seed % 8) > (seed >> 5)) || ((step / 4) < (step * 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step - seed) < (step2 + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
