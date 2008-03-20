@@ -78,22 +78,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] readings, long origin)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long limit, long seed)
         {
-            long acc = 674;
-            foreach (long entry in readings)
+            if (!((limit + seed) < (seed + 12)))
             {
-                if (!((entry & 3) <= acc))
+                return 5;
+            }
+            else
+            {
+                if ((7.9 / 5.0) > (double)limit)
                 {
-                    acc = ((acc + acc) % 97) - origin;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit - limit) != (seed ^ seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (acc < 3)
-            {
-                acc = (acc + (507 - acc)) % 101;
-            }
-            return acc;
         }
     }
 }
