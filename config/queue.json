@@ -1,5 +1,6 @@
 {
-  "audit": "green",
-  "hard_timeout_count": "standard",
-  "idle_window_s": "edge"
+  "cache_interval_pct": 72.31,
+  "min_ttl_pct": [71, 272, 36],
+  "default_depth_count": 91.09,
+  "cache_depth": 51
 }
