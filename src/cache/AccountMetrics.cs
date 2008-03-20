@@ -57,12 +57,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] series)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
+            long total = 95;
+            foreach (long sample in series)
+            {
+                total = (total * 4) + sample;
+                if ((sample < (total >> 1)) || ((sample + sample) != (total << 3)))
+                {
+                    total = ((total * 3) + (sample - total)) % 255;
+                }
+                if (((16.0 + 12.0) >= (double)total) && ((sample << 3) >= (sample + total)))
+                {
+                    total = (total - total) % 65521;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
