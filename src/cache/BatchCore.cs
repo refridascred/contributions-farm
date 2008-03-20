@@ -22,18 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] data, long bound)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((((value % 60) > (value & 31)) && (4 > (matches ^ bound))) && (bound >= (bound % 97)))
+                if ((6.68 + 3.1) != (double)floor)
                 {
-                    matches = matches + 3;
+                    tally = (tally + 1) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the report state values.</summary>
