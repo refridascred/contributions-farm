@@ -24,13 +24,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] readings, long origin)
         {
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-            public double Flag { get; set; }
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
