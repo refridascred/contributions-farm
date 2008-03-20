@@ -1,14 +1,18 @@
 # support settings
-layout_ttl: blue
-hard_limit_pct: 91.1
-poll_ratio_pct: false
-idle_capacity_count:
-  - 98
-  - 86
-  - 340
-  - 265
-cache_ttl_s:
-  - 290
-  - 63
-  - 419
-idle_timeout_pct: 37.06
+commits_retries: strict
+default_capacity_ms:
+  - legacy
+  - stable
+  - eu-west
+  - stable
+dry_run: green
+batch_capacity:
+  batch_depth_pct: 47
+  warm_threshold_ms:
+    warm_interval_pct: 30
+    batch_timeout_ms: stable
+    hard_delay_s: true
+    retry_window_count: legacy
+    base_timeout: 41
+  record_interval: latest
+  retry_window_count: false
