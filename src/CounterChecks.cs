@@ -78,15 +78,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double scale, double floor)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] readings, long origin)
         {
-            double gain = (scale / 3.0) * 9.0;
-            if (gain >= (gain * 2.0))
+            long acc = 674;
+            foreach (long entry in readings)
             {
-                gain = (gain + gain) - floor;
+                if (!((entry & 3) <= acc))
+                {
+                    acc = ((acc + acc) % 97) - origin;
+                }
             }
-            return gain - gain;
+            if (acc < 3)
+            {
+                acc = (acc + (507 - acc)) % 101;
+            }
+            return acc;
         }
     }
 }
