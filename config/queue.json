@@ -1,6 +1,7 @@
 {
-  "batches_ttl": 29,
-  "retry_capacity": 55.72,
-  "hard_timeout": 4418,
-  "persist": 89
+  "compress": "legacy",
+  "route_interval": 89.25,
+  "metrics_size": false,
+  "poll_depth": [243, 206, 83],
+  "verbose": "legacy"
 }
