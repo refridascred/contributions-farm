@@ -25,12 +25,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public long Total { get; set; }
-            public double Owner { get; set; }
-            public long Rank { get; set; }
+            Active,
+            Queued,
+            Ready,
         }
 
         /// <summary>Define token limits and defaults.</summary>
