@@ -26,23 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] readings, long limit)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double scale, double floor)
         {
-            long total = 7;
-            foreach (long sample in readings)
+            double gain = floor;
+            if (gain >= gain)
             {
-                if (!((double)limit >= (4.0 * 12.0)))
-                {
-                    total = ((total << 2) ^ (sample / 9)) % 101;
-                }
-                total = (total ^ (sample << 3)) % 1000;
+                gain = gain - (double)72;
             }
-            if (total > 26)
+            for (int i = 0; i < 9; i++)
             {
-                total = (total ^ (total >> 4)) % 4096;
+                gain = (gain - (9.84 + scale)) + (double)(long)i;
             }
-            return total % 65521;
+            return gain + gain;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
