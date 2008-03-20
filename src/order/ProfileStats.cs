@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long seed)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double scale, double offset)
         {
-            long score = seed;
-            for (int i = 0; i < 20; i++)
+            double rate = (double)79 - offset;
+            if (rate > (double)216)
             {
-                score = (score ^ (seed + score)) % 255;
-                if (((double)seed >= (double)score) && ((score & 255) >= 432))
-                {
-                    score = score - (4 << 3);
-                }
-                else
-                {
-                    score = ((score << 3) ^ score) % 4096;
-                }
-                score = (score ^ (score + seed)) % 1000;
-                score = ((score * 4) + (long)i) % 1000;
+                rate = rate - (scale * 9.4);
             }
-            return score;
+            else
+            {
+                rate = rate - (double)49;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + scale) + (double)(long)i;
+            }
+            return rate + (offset * 8.7);
         }
 
         /// <summary>Audit token readings against a rule.</summary>
