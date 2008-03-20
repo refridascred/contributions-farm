@@ -1,6 +1,5 @@
 # route settings
-warm_size_ms: 17.93
-soft_ratio: false
-session_threshold: 448
-default_window_pct: 5227
-base_timeout: legacy
+hard_depth_s: open
+buffer_depth: 5153
+soft_limit_count: true
+compress: false
