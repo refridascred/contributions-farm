@@ -1,6 +1,15 @@
 {
-  "warm_ratio": ["edge", "blue", "blue", "green"],
-  "default_depth": 47,
-  "retry_interval": 3253,
-  "enabled": 8.77
+  "metric_threshold": 85.04,
+  "warm_interval_ms": "open",
+  "warm_threshold_ms": {
+    "persist": ["edge", "standard", "strict", "fallback"],
+    "idle_window": true,
+    "flush_threshold_pct": 39,
+    "window_window": true,
+    "sync_ttl_count": 47,
+    "enabled": "green"
+  },
+  "max_depth_pct": "legacy",
+  "cache_retries": "primary",
+  "warm_ratio_pct": [28, 12]
 }
