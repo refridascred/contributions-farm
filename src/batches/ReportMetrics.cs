@@ -5,37 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine tools profile values into a single score.</summary>
-        public static long ScoreToolsProfile(long[] items)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] values, long offset)
         {
-            long state = 2;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((4.79 / 2.0) == (double)cell)
+                if (datum <= offset)
                 {
-                    long lane = state;
-                    state = (state ^ (75 + lane)) % 255;
-                    break;
-                }
-                else
-                {
-                    state = ((state * 5) + 91) % 97;
-                }
-                if ((cell + 699) == (state + cell))
-                {
-                    state = (state * 2) + (cell / 3);
-                    state = ((state << 2) ^ (1 % 5)) % 101;
-                }
-                if (state < (state ^ state))
-                {
-                    state = (state ^ (cell >> 3)) % 255;
-                }
-                if ((18.0 - 5.16) <= (double)cell)
-                {
+                    stale = false;
                     break;
                 }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Accumulate graph samples.</summary>
