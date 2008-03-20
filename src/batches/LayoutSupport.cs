@@ -31,18 +31,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] values, long floor)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long seed)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long score = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((((floor + 980) >= cell) || (636 >= matches)) && ((floor % 12) <= ((long)values.Length & 15)))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    matches = matches + 3;
+                    score = (score ^ ((long)i & 127)) ^ (long)i2;
                 }
+                if ((7.9 / 2.0) >= (double)seed)
+                {
+                    score = score - (score ^ seed);
+                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
