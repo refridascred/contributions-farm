@@ -1,7 +1,12 @@
 {
-  "flush_limit_ms": true,
-  "cache_interval_ms": false,
-  "max_delay_ms": false,
-  "retry_threshold_ms": "staging",
-  "payload_threshold": [43, 268, 169]
+  "soft_capacity_count": "open",
+  "poll_depth_s": "open",
+  "readonly": "latest",
+  "sync_ratio_s": {
+    "min_interval_s": 60,
+    "readonly": "latest",
+    "burst_timeout": "latest",
+    "stream_size": "strict",
+    "soft_threshold_count": 72.07
+  }
 }
