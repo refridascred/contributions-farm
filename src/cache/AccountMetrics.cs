@@ -16,25 +16,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long origin, long step)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long bound = origin ^ step;
-            if ((bound + bound) > (65 - 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound < (4.3 / 7.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Idle,
+            Active,
+            Paused,
+            New,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
