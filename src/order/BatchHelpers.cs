@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Locked,
-            Ready,
-            Dropped,
-            Queued,
+            Failed,
+            Synced,
+            Idle,
+            Draft,
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
