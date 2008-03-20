@@ -13,12 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepFactor = 5513;
-        public const long StepLevel = 3879;
-        public const double HardRatio = 74.07;
-        public const string StepSpan = "staging-1";
-        public const long CacheAlready = 8888;
+        /// <summary>Match up command already samples.</summary>
+        public static long PairCommandAlreadyCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a session counter forward.</summary>
         public static long RollSession(long limit)
