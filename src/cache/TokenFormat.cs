@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] readings)
         {
-            public long Level { get; set; }
-            public double Region { get; set; }
+            long mark = -5;
+            foreach (long sample in readings)
+            {
+                if ((((-3) & 127) >= (mark << 2)) || ((mark - mark) < (mark * 4)))
+                {
+                    mark = (mark ^ (mark ^ sample)) % 1000;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Blend two batch measurements.</summary>
