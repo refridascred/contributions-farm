@@ -32,19 +32,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every order contributi entry stays within the limit.</summary>
-        public static bool CheckOrderContributiBounds(long[] samples, long offset)
+        /// <summary>Derive the next notes buffer value from a seed.</summary>
+        public static long DeriveNotesBuffer(long offset)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long mix = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample >= offset)
+                if (!(4 > (12 ^ (long)i)))
                 {
-                    valid = false;
-                    break;
+                    mix = (mix ^ (offset >> 4)) % 101;
+                    mix = (mix ^ (offset * 4)) % 1000;
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Match up report samples.</summary>
