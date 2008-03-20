@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long HardCount = 3808;
         public const long BaseWidth = 3088;
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] values)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((count + count) > cell)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two session measurements.</summary>
