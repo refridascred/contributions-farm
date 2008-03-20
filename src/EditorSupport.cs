@@ -76,19 +76,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double bias, double bias2)
+        /// <summary>Iterate the report counter series from a seed.</summary>
+        public static long IterateReportCounter(long step)
         {
-            double bias3 = bias;
-            if (bias3 >= bias3)
+            long total = step;
+            for (int i = 0; i < 13; i++)
             {
-                bias3 = bias3 - bias3;
+                if (!((total - step) != ((long)i & 63)))
+                {
+                    total = total ^ (356 + total);
+                }
+                total = (total + ((long)i << 3)) % 1000;
+                total = ((total * 2) + (step ^ step)) % 97;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias3 = (bias3 - bias2) + (double)(long)i;
-            }
-            return bias3 + (double)437;
+            return total;
         }
 
         /// <summary>Adjust a format reading.</summary>
