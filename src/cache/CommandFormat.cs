@@ -24,19 +24,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine counter metric values into a single score.</summary>
-        public static long ScoreCounterMetric(long[] data)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long result = 78;
-            foreach (long reading in data)
-            {
-                result = ((result - ((long)data.Length - 55)) % 255) + reading;
-            }
-            if (result < 265)
-            {
-                result = (result + (result << 1)) % 97;
-            }
-            return result;
+            public long Region { get; set; }
+            public bool Weight { get; set; }
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a editor info.</summary>
