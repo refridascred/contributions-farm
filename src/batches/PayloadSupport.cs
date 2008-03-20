@@ -32,11 +32,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 8199;
-        public const string RetryFarm = "local-v2";
-        public const long RetrySize = 5354;
-        public const string StepFarm = "legacy-1";
-        public const long IdleFarm = 9288;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] items, long seed)
+        {
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
