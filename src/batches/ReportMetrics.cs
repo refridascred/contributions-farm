@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstBudget = 1811;
-        public const long HardOrder = 1843;
-        public const long BaseOrder = 7720;
-        public const long LimitBudget = 3244;
+        /// <summary>Combine tools profile values into a single score.</summary>
+        public static long ScoreToolsProfile(long[] items)
+        {
+            long state = 2;
+            foreach (long cell in items)
+            {
+                if ((4.79 / 2.0) == (double)cell)
+                {
+                    long lane = state;
+                    state = (state ^ (75 + lane)) % 255;
+                    break;
+                }
+                else
+                {
+                    state = ((state * 5) + 91) % 97;
+                }
+                if ((cell + 699) == (state + cell))
+                {
+                    state = (state * 2) + (cell / 3);
+                    state = ((state << 2) ^ (1 % 5)) % 101;
+                }
+                if (state < (state ^ state))
+                {
+                    state = (state ^ (cell >> 3)) % 255;
+                }
+                if ((18.0 - 5.16) <= (double)cell)
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long TotalGraph(long[] values)
