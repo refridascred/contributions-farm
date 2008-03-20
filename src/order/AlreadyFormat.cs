@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every account metrics entry stays within the limit.</summary>
-        public static bool VerifyAccountMetricsRange(long[] series, long seed)
+        /// <summary>Digest a series of layout entry entries.</summary>
+        public static long FoldLayoutEntry(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long carry = 35;
+            foreach (long cell in levels)
             {
-                if (item > seed)
+                if ((cell - 365) > (carry & 31))
                 {
-                    ready = false;
-                    break;
+                    carry = (carry * 5) + 4;
+                }
+                if ((cell % 7) < (cell + 69))
+                {
+                    carry = carry - (carry + (-83));
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (927 + cell);
+                }
+                if (550 <= cell)
+                {
+                    carry = (carry << 2) ^ (offset % 12);
                 }
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Rank already input into a small class.</summary>
