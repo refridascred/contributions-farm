@@ -72,21 +72,19 @@ namespace Common.Utilities
             return load + (double)894;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] values)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] samples, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum != seed)
                 {
-                    if ((values[i] + values[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
