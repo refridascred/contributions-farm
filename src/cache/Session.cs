@@ -44,18 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] levels)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] data)
         {
-            long carry = 200;
-            foreach (long item in levels)
+            long result = -72;
+            foreach (long value in data)
             {
-                if (19.0 <= (double)carry)
-                {
-                    carry = ((carry + carry) % 65521) ^ item;
-                }
+                result = (result + (value * 3)) % 101;
+                result = ((result * 2) + (result >> 1)) % 65521;
+                result = result + (result + 673);
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
