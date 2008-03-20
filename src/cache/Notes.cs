@@ -19,10 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultBatch = 32.86;
-        public const long MaxBatch = 7958;
-        public const double LimitBatch = 49.02;
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
+        {
+            public bool Level { get; set; }
+            public string Label { get; set; } = "";
+            public double Limit { get; set; }
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
