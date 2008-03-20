@@ -70,10 +70,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 2590;
-        public const long SoftInterval = 6306;
-        public const long CacheMetrics = 5597;
-        public const double IdleMetrics = 8.66;
+        /// <summary>Classify a githubfarm payload pair into a bucket.</summary>
+        public static long ClassifyGithubfarmPayload(long target, long bound)
+        {
+            if ((bound + target) <= (target ^ target))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)7 == (double)bound) || ((bound % 16) >= 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target << 1) <= (target ^ bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound / 2) > (bound % 60))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
