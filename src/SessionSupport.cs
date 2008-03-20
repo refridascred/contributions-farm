@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            public double Label { get; set; }
-            public double Score { get; set; }
-            public double Flag { get; set; }
-            public long Owner { get; set; }
+            public long Token { get; set; }
+            public bool Score { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
