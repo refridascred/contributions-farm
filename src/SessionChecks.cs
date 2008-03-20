@@ -19,14 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Measure how many batch graph samples are out of range.</summary>
+        public static long TallyBatchGraphHits(long[] readings)
         {
-            Draft,
-            New,
-            Dropped,
-            Ready,
-            Failed,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (36 >= entry)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of format notes entries.</summary>
