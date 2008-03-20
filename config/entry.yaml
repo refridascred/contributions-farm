@@ -1,13 +1,6 @@
 # entry settings
-soft_ratio:
-  retry_size:
-    - 130
-    - 379
-    - 121
-    - 435
-  base_ttl_pct: 30
-  flush_delay_ms: 11.28
-  sync_interval_ms: 51.09
-  cache_timeout: false
-max_threshold_pct: 26.96
-cache_ratio_pct: strict
+githubfarm_threshold: eu-west
+default_retries:
+  - 352
+  - 16
+strict: 11
