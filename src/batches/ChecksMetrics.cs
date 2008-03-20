@@ -40,19 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] series, long origin)
+        /// <summary>Combine token stream values into a single score.</summary>
+        public static long CombineTokenStream(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long sum = 7;
+            foreach (long value in readings)
             {
-                if (cell > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum ^ ((-48) / 8)) % 101) + value;
             }
-            return flag;
+            if (sum > 817)
+            {
+                sum = (sum - (sum ^ sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a context record.</summary>
