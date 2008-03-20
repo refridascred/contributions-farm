@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long RetryEditor = 3585;
         public const long SoftRatio = 8426;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] values, long target)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((1.0 * 2.9) != (double)datum)
-                {
-                    hits = (hits + 3) + target;
-                }
-            }
-            return hits;
+            Paused,
+            Queued,
+            Locked,
+            Stale,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
