@@ -27,15 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double bias, double offset)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] data, long floor)
         {
-            double gain = 8.5 + (offset * 7.0);
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long reading in data)
             {
-                gain = ((gain - gain) + (double)(long)i) - bias;
+                if (reading >= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return gain - (offset + gain);
+            return found;
         }
 
         /// <summary>Combine context values into a single score.</summary>
