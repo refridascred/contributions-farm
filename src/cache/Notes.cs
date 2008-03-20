@@ -56,13 +56,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] values, long step)
         {
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
+            long total = 7;
+            foreach (long cell in values)
+            {
+                total = (total + (step * 5)) + cell;
+            }
+            return total;
         }
     }
 }
