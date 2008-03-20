@@ -1,7 +1,6 @@
-id,score,state,region,token
-1,latest,staging,836,eu-west
-2,latest,273,45,30.06
-3,311,open,38.78,legacy
-4,84.79,edge,5.23,green
-5,standard,2.16,eu-west,primary
-6,87.08,27.91,blue,primary
+id,state,count
+1,68.88,stable
+2,latest,31.12
+3,613,green
+4,latest,49.6
+5,640,515
