@@ -1,8 +1,8 @@
-id,active,state,token,level
-1,50.44,309,79.83,9.97
-2,458,75.43,91.24,33
-3,136,492,901,835
-4,255,stable,eu-west,stable
-5,365,eu-west,143,384
-6,706,807,74.55,109
-7,821,strict,edge,39.84
+id,state,weight
+1,local,stable
+2,43.42,49.31
+3,281,33.39
+4,305,87.06
+5,legacy,primary
+6,147,423
+7,194,972
