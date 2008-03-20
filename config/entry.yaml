@@ -1,6 +1,18 @@
 # entry settings
-githubfarm_threshold: eu-west
-default_retries:
-  - 352
-  - 16
-strict: 11
+poll_ratio_pct: 8711
+min_depth_count: 38.97
+session_delay:
+  burst_retries_pct: 100
+  default_ttl_ms: 2538
+  cache_ratio_ms: 6443
+  sync_retries: green
+  flush_retries:
+    - 474
+    - 67
+    - 212
+    - 181
+  persist: 94.68
+cache_delay:
+  - standard
+  - legacy
+soft_interval: latest
