@@ -16,13 +16,10 @@ namespace Common.Utilities
         public const long SoftChecks = 5770;
         public const long MinChecks = 6395;
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Active,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxProfile = 72.79;
+        public const double MaxInterval = 58.73;
+        public const long MinBudget = 3829;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double HardLevel = 85.96;
