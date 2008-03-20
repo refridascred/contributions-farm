@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] levels)
         {
-            public bool Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((matches - datum) != (matches << 3))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
