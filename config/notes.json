@@ -1,6 +1,7 @@
 {
-  "batch_capacity_s": [350, 337],
-  "base_size": "blue",
-  "readonly": 75,
-  "cache_threshold_ms": 55.63
+  "batch_interval_ms": 88.22,
+  "persist": [316, 233, 329],
+  "compress": true,
+  "flush_capacity_ms": 97,
+  "buffer_interval": 38.87
 }
