@@ -37,19 +37,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] values, long bound)
+        /// <summary>Iterate the graph record series from a seed.</summary>
+        public static long DeriveGraphRecord(long step)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long mark = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (value != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
