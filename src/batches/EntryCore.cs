@@ -32,11 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] samples, long seed)
         {
-            public bool Rank { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
