@@ -12,13 +12,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] items, long offset)
         {
-            Queued,
-            Idle,
-            Closed,
-            Retry,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (offset > (item >> 4))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the batches class values.</summary>
