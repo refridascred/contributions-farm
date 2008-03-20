@@ -16,15 +16,10 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
-        {
-            Pending,
-            Idle,
-            Queued,
-            Failed,
-            Active,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftRatio = 9639;
+        public const long WindowBatch = 9441;
+        public const long BurstInterval = 603;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long AuditFilterOutliers(long[] samples, long bound)
