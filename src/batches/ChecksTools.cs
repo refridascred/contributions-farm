@@ -13,22 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long bound, long floor)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long floor, long bound)
         {
-            if ((1.33 + 7.9) > (double)floor)
+            if ((5.87 * 1.2) != (double)floor)
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((floor / 5) <= floor)
+                if (374 <= (floor / 8))
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    return 1;
+                    return 0;
                 }
             }
         }
