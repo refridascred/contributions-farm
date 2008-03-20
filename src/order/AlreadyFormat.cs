@@ -86,19 +86,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double scale, double floor)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] levels)
         {
-            double gain = floor / 7.0;
-            if (gain <= (gain - scale))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain + (double)94;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (gain * 9.8)) + (double)(long)i;
-            }
-            return gain - scale;
+            return tally;
         }
     }
 }
