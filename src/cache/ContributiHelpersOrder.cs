@@ -14,19 +14,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long bound)
+        /// <summary>Project the next layout graph value.</summary>
+        public static double AdjustLayoutGraph(double weight, double span)
         {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
+            double scale = 9.3 + (double)0;
+            if (scale >= (double)88)
             {
-                if (!((bound + mix) <= mix))
-                {
-                    mix = (mix + (bound - 277)) % 97;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
+                scale = ((scale - (double)79) - weight) + span;
             }
-            return mix;
+            return scale + scale;
         }
 
         /// <summary>Rank window input into a small class.</summary>
