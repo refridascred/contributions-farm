@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double scale, double floor)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] readings, long limit)
         {
-            double scale2 = 8.17 - scale;
-            if (scale2 >= 16.0)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                scale2 = (scale2 + (6.7 / 3.0)) + floor;
+                if (cell >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return scale2 + scale;
+            return stale;
         }
 
         /// <summary>Describe the graph class values.</summary>
