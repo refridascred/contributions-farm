@@ -39,19 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (!((matches * 2) >= (sample & 1)) && ((double)matches <= (2.38 * 7.22)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 9040;
+        public const string WindowStream = "latest-1";
+        public const double BaseDepth = 13.55;
+        public const long HardStream = 2173;
 
         /// <summary>Digest a series of report order entries.</summary>
         public static long DigestReportOrder(long[] series)
