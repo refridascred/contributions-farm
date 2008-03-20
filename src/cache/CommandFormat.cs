@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] samples)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum <= (double)hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
