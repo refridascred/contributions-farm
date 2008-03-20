@@ -59,11 +59,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double ratio, double floor)
         {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
+            double weight = (double)(192 + 4);
+            for (int i = 0; i < 8; i++)
+            {
+                weight = ((weight - (floor - 4.8)) + (double)(long)i) + ratio;
+            }
+            return weight - floor;
         }
     }
 }
