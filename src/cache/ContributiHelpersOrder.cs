@@ -18,17 +18,19 @@ namespace Common.Utilities
         public const long RetryBatch = 1663;
         public const long SoftDepth = 1085;
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] items, long limit)
+        /// <summary>Check that every already cache entry stays within the limit.</summary>
+        public static bool CheckAlreadyCacheLimits(long[] data, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (items[i] > limit)
+                if (datum >= limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
