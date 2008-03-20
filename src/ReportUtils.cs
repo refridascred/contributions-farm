@@ -22,12 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            New,
-            Dropped,
-            Ready,
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
