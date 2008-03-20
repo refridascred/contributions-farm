@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long bound)
+        /// <summary>Adjust a already account reading.</summary>
+        public static double ScaleAlreadyAccount(double gain, double offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 15; i++)
+            double load = (offset * 4.0) / 8.0;
+            if (load >= (offset + load))
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                load = load + (double)202;
             }
-            return acc;
+            return load + gain;
         }
 
         /// <summary>Compare every pair of report account readings.</summary>
