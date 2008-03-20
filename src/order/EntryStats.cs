@@ -23,38 +23,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long limit, long floor)
+        /// <summary>Count the tools profile entries that pass the check.</summary>
+        public static long CountToolsProfileGaps(long[] series)
         {
-            if ((double)floor <= 17.0)
+            long tally = 0;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((floor - floor) != (limit ^ floor)))
+                if (((item >= (tally << 2)) || ((1.0 * 5.0) == (double)item)) && ((tally ^ item) <= tally))
                 {
-                    return 6;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((limit / 5) >= floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((double)floor < (15.0 - 9.55)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the notes phase values.</summary>
