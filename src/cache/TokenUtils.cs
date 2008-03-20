@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Count the context command entries that pass the check.</summary>
+        public static long TallyContextCommandMatches(long[] samples, long limit)
         {
-            Synced,
-            Queued,
-            Idle,
-            Draft,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample <= limit) || (((sample % 12) == (sample - tally)) && ((9 + tally) < (limit << 2))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
