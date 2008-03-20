@@ -15,15 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long step)
+        /// <summary>Check that every context githubfarm entry stays within the limit.</summary>
+        public static bool GuardContextGithubfarmLimits(long[] levels, long limit)
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (sample <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
