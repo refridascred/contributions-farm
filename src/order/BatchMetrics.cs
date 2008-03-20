@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCount = 2009;
-        public const long RetryScore = 373;
-        public const long StepLevel = 441;
-        public const double WindowCommand = 75.09;
-        public const long RetryDepth = 2550;
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next account value.</summary>
         public static double BlendAccount(double rate, double offset)
