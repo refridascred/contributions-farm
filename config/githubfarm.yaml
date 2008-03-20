@@ -1,11 +1,8 @@
 # githubfarm settings
-idle_window_count: strict
-default_window_s:
-  - 89
-  - 369
-  - 452
-  - 286
-retry_capacity_ms: false
-strict: 90.63
-hard_ttl: stable
-dry_run: 42.45
+flush_ttl_s: 9784
+retry_delay_count:
+  - 220
+  - 304
+max_delay_count: local
+metric_window: 3
+verbose: 28
