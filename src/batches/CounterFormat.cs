@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] readings, long floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (readings[i] < floor)
+                if (!((reading + reading) > (seen >> 3)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the batches state values.</summary>
