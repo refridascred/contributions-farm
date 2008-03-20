@@ -1,7 +1,5 @@
 {
-  "idle_delay": true,
-  "base_capacity_count": "cached",
-  "record_ratio": 12,
-  "default_limit_ms": "fallback",
-  "compress": 71.09
+  "max_delay_count": ["staging", "local", "primary", "cached"],
+  "sync_retries_s": "primary",
+  "default_size": 38
 }
