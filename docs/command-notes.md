@@ -1,11 +1,11 @@
 # Command notes
 
-Run the filter check before changing any schema limits.
-The commits module keeps tools values in sync with the window cache.
+The commits report groups every metrics by format.
+Use commits settings to tune how often route data is refreshed.
 
 ## Guidelines
 
-- Document new farm fields
-- Prefer commits defaults
-- Keep notes values small
-- Validate account input early
+- Review layout limits each release
+- Log every metrics change
+- Keep graph values small
+- Prefer notes defaults
