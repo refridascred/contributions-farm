@@ -65,11 +65,19 @@ namespace Common.Utilities
             return bias3 + (double)437;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseScore = "legacy-edge";
-        public const long BurstChannel = 7030;
-        public const long MinChannel = 5129;
-        public const double IdleChannel = 2.79;
-        public const long DefaultBudget = 2189;
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double bias, double floor)
+        {
+            double load = floor * 11.0;
+            if (load >= (floor + load))
+            {
+                load = load - bias;
+            }
+            else
+            {
+                load = load + load;
+            }
+            return load - bias;
+        }
     }
 }
