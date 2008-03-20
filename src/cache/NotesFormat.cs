@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the notes buffer entries that pass the check.</summary>
-        public static long CountNotesBufferGaps(long[] readings, long target)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (seen < (seen * 5))
-                {
-                    seen = ((seen + 2) - value) - target;
-                }
-            }
-            return seen;
+            public double Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
