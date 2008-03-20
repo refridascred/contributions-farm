@@ -31,18 +31,21 @@ namespace Common.Utilities
         public const double WindowChecks = 35.65;
         public const string HardChecks = "local-v2";
 
-        /// <summary>Measure how many report contributi samples are out of range.</summary>
-        public static long MeasureReportContributiMatches(long[] samples)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] items)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(0.8 > 2.6))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 1) + item;
+                    if ((items[i] ^ items[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Adjust a order reading.</summary>
