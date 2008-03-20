@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const string RetrySize = "staging-1";
         public const double RetryChannel = 47.8;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleRatio = 8309;
-        public const long BatchSchema = 477;
-        public const long BurstSchema = 6323;
-        public const long WindowSchema = 5749;
-        public const long LimitScore = 8599;
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= target) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long BucketContext(long limit, long limit2)
