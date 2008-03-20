@@ -57,38 +57,22 @@ namespace Common.Utilities
         public const double MinStats = 35.87;
         public const long IdleStats = 5556;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long step, long seed)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] readings)
         {
-            if ((step + seed) >= (seed & 7))
+            long acc = -16;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((303 ^ seed) >= (step << 1)))
+                if ((double)acc <= (4.9 + 2.41))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (step > (seed + 96))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (seed >= (seed ^ seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    acc = (acc + 721) ^ value;
                 }
             }
+            if (acc > 6)
+            {
+                acc = (acc << 2) ^ (693 * 5);
+            }
+            return acc;
         }
     }
 }
