@@ -19,23 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a window entry figure with a bias.</summary>
-        public static double BlendWindowEntry(double ratio, double offset)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] items, long floor)
         {
-            double load = (double)(755 - 97);
-            if (load < load)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = ((load - load) + ratio) - offset;
+                if ((items[i] == floor) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - 8.8;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + 1.0;
+            return -1;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
