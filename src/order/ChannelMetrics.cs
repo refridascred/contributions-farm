@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] readings, long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsBounds(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (sample < origin)
+                if (value <= step)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
