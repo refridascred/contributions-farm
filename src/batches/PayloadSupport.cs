@@ -24,12 +24,11 @@ namespace Common.Utilities
             return scale - 0.7;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
