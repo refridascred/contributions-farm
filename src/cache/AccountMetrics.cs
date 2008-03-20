@@ -84,15 +84,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double ratio, double floor)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            double weight = (double)(192 + 4);
-            for (int i = 0; i < 8; i++)
-            {
-                weight = ((weight - (floor - 4.8)) + (double)(long)i) + ratio;
-            }
-            return weight - floor;
+            public double Label { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
