@@ -39,13 +39,19 @@ namespace Common.Utilities
         public const long WindowTimeout = 9168;
         public const double SoftBatch = 10.78;
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] samples, long offset)
         {
-            public double Score { get; set; }
-            public long Mode { get; set; }
-            public bool Count { get; set; }
-            public long Limit { get; set; }
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
