@@ -34,10 +34,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 8463;
-        public const string CacheWidth = "open-edge";
-        public const double HardSchema = 18.62;
-        public const long DefaultBudget = 8097;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 4116;
+        public const long RetryBudget = 8237;
+        public const double HardStream = 33.16;
     }
 }
