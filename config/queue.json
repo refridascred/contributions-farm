@@ -1,7 +1,31 @@
 {
-  "compress": ["standard", "eu-west"],
-  "commits_ttl": false,
-  "retry_limit_pct": true,
-  "dry_run": ["open", "fallback"],
-  "burst_size_pct": false
+  "audit": {
+    "hard_size": true,
+    "sync_capacity": {
+      "strict": "edge",
+      "soft_size_count": 30,
+      "base_depth_pct": 1754,
+      "sync_ttl_ms": false,
+      "soft_timeout_count": "stable",
+      "tools_ratio": ["staging", "green"]
+    },
+    "metrics_depth": 3586,
+    "warm_interval": 32.73,
+    "base_retries": 88
+  },
+  "persist": {
+    "default_interval_count": {
+      "channel_ttl": "open",
+      "max_depth_ms": [14, 120, 18, 358],
+      "cache_interval": "stable",
+      "retry_ratio_count": [495, 125],
+      "soft_depth_ms": 67.37
+    },
+    "flush_limit": "stable",
+    "poll_capacity_count": "strict",
+    "flush_timeout_s": ["standard", "local"],
+    "hard_limit_s": 6294
+  },
+  "verbose": "eu-west",
+  "enabled": [15, 491, 483, 80]
 }
