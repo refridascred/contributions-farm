@@ -1,30 +1,5 @@
 {
-  "min_delay_ms": [398, 495],
-  "persist": {
-    "queue_delay": "legacy",
-    "idle_ttl_s": ["fallback", "stable", "legacy", "strict"],
-    "commits_ratio": "green",
-    "compress": {
-      "min_timeout_s": 59.56,
-      "sync_timeout": ["green", "green"],
-      "buffer_delay": 66,
-      "burst_capacity": 60
-    },
-    "base_interval": {
-      "farm_limit": 21,
-      "flush_size_s": 8661,
-      "contributi_capacity": "green",
-      "poll_ratio_s": "legacy"
-    }
-  },
-  "cache_ttl": "staging",
-  "session_window": "edge",
-  "batch_timeout": "standard",
-  "profile_limit": {
-    "verbose": 4065,
-    "route_ratio": 3293,
-    "retry_capacity_count": "primary",
-    "sync_ratio": "legacy",
-    "counter_limit": "staging"
-  }
+  "poll_timeout_pct": 9209,
+  "dry_run": 9116,
+  "max_interval_pct": true
 }
