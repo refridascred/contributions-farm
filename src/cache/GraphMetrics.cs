@@ -32,25 +32,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next filter checks value from a seed.</summary>
-        public static long IterateFilterChecks(long step)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long state = step;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((state ^ (long)i) < (38 + (long)i))
-                {
-                    state = (state ^ (state << 2)) % 4096;
-                    break;
-                }
-                if ((state / 2) < state)
-                {
-                    state = (state + (state >> 2)) % 255;
-                    continue;
-                }
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Accumulate format samples.</summary>
