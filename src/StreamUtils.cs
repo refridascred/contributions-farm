@@ -11,11 +11,17 @@ namespace Common.Utilities
         public const long WindowScore = 1343;
         public const long SoftFilter = 7018;
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] readings, long seed)
         {
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < seed) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
