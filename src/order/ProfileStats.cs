@@ -43,14 +43,26 @@ namespace Common.Utilities
         public const long MaxBudget = 7276;
         public const long MaxFactor = 4506;
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long offset)
         {
-            Locked,
-            Ready,
-            Closed,
-            Synced,
-            Retry,
+            long total = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                total = (total * 3) + ((long)i * 2);
+                if ((double)(long)i == (double)total)
+                {
+                    total = total - ((long)i / 8);
+                    break;
+                }
+                if (!(total <= (long)i))
+                {
+                    total = ((total * 2) + (long)i) % 4096;
+                    total = (total ^ ((long)i + total)) % 97;
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
