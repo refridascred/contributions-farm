@@ -54,11 +54,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long step, long origin)
         {
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
+            if ((5.1 * 3.17) <= (double)origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin >= (origin - step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((457 - origin) != (origin >> 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step - origin) < origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
