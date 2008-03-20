@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 9188;
-        public const long BatchMetric = 9675;
-        public const string WindowMetric = "strict-edge";
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (6.4 >= (double)seen)
+                {
+                    seen = (seen + 1) ^ value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long FoldReport(long[] levels, long floor)
