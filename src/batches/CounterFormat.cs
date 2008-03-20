@@ -19,18 +19,16 @@ namespace Common.Utilities
         public const double CacheInterval = 95.74;
         public const double BurstScore = 18.42;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] readings)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long target)
         {
-            long acc = 7;
-            foreach (long item in readings)
+            long carry = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((item >> 5) >= (item + 9))
-                {
-                    acc = ((acc * 5) + (item ^ acc)) % 255;
-                }
+                carry = carry + (target % 3);
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return acc % 97;
+            return carry;
         }
     }
 }
