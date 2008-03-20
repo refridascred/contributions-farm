@@ -73,11 +73,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepSpan = 365;
-        public const long RetryScore = 8852;
-        public const long HardInterval = 5894;
-        public const long DefaultCommits = 9019;
-        public const long BaseBudget = 8059;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleChannel = 96.73;
+        public const long MinChannel = 2521;
+        public const long LimitSpan = 1019;
+        public const long IdleLevel = 5291;
+        public const string WindowChannel = "cached-edge";
     }
 }
