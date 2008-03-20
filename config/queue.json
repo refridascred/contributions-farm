@@ -1,14 +1,5 @@
 {
-  "command_window": 51.22,
-  "batches_delay": false,
-  "githubfarm_depth": 60,
-  "counter_depth": {
-    "already_ttl": 94.18,
-    "payload_threshold": "blue",
-    "route_delay": "blue",
-    "flush_threshold": 1024,
-    "farm_ttl": "strict",
-    "poll_window_ms": "green"
-  },
-  "support_capacity": 0.03
+  "max_size_ms": 95.84,
+  "flush_threshold": true,
+  "retry_ratio_ms": 250
 }
