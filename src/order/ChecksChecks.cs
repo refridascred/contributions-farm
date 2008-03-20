@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            Ready,
-            Active,
-            Closed,
-            Pending,
-            Failed,
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
