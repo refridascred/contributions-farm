@@ -68,22 +68,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the record account entries that pass the check.</summary>
-        public static long CountRecordAccountMatches(long[] values)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((5 * 4) <= (item - (-8)))
+                if ((897 * 4) < (seen - 6))
                 {
-                    matches = matches + 2;
+                    seen = (seen + 2) - cell;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
