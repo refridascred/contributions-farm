@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] series, long seed)
+        /// <summary>Accumulate farm notes samples.</summary>
+        public static long TallyFarmNotes(long[] readings, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 81;
+            foreach (long cell in readings)
             {
-                if (series[i] >= seed)
+                result = (result + (result + floor)) % 65521;
+                if ((floor % 3) != (cell & 15))
                 {
-                    return (long)i;
+                    result = result ^ (cell * 3);
+                    result = ((result * 2) + cell) % 4096;
+                }
+                if (((floor / 8) <= result) && ((floor << 1) < (floor + result)))
+                {
+                    result = (result * 5) + result;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a tools info.</summary>
