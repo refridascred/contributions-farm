@@ -29,11 +29,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double ratio, double span)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] samples, long bound)
         {
-            double mean = ratio;
-            return (mean - (6.39 * 9.0)) + span;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
