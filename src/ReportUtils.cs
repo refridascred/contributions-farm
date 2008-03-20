@@ -34,15 +34,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the graph record series from a seed.</summary>
-        public static long DeriveGraphRecord(long step)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            public long Mode { get; set; }
+            public double Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the record payload series from a seed.</summary>
