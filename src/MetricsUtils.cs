@@ -66,22 +66,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] readings)
+        /// <summary>Check that every githubfarm buffer entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBufferRange(long[] items, long bound)
         {
-            long acc = 70;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((12.0 - 2.4) < (double)(long)readings.Length)
+                if (entry != bound)
                 {
-                    acc = (((acc << 2) ^ acc) % 65521) - item;
-                }
-                else
-                {
-                    acc = (acc ^ ((-246) / 6)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return acc;
+            return flag;
         }
     }
 }
