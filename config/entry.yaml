@@ -1,7 +1,13 @@
 # entry settings
-burst_ratio:
-  token_capacity: 96
-  retry_depth: 30
-  warm_size_pct: cached
-default_depth_pct: fallback
-cache_threshold_pct: 34.21
+base_limit: true
+soft_depth_s: 5960
+strict:
+  - 176
+  - 88
+sync_limit_pct: 9281
+max_interval:
+  - 170
+  - 344
+  - 408
+  - 47
+min_ttl: open
