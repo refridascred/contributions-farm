@@ -13,13 +13,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] values, long limit)
         {
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Count { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a context counter forward.</summary>
