@@ -1,9 +1,16 @@
 # entry settings
-flush_ttl_pct: eu-west
-flush_limit_count:
-  - 228
-  - 107
-  - 396
-dry_run: 4794
-verbose: 6220
-default_interval: standard
+default_retries:
+  - 164
+  - 119
+  - 46
+  - 284
+warm_threshold: 1024
+batch_capacity_ms: 90.3
+notes_limit:
+  - 260
+  - 417
+sync_ratio_pct:
+  window_ttl: 6861
+  idle_window_pct: 27.31
+  poll_capacity: stable
+  account_depth: 1024
