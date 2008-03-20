@@ -42,13 +42,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double scale, double floor)
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Offset { get; set; }
+            double gain = floor / 7.0;
+            if (gain <= (gain - scale))
+            {
+                gain = gain + (double)94;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (gain * 9.8)) + (double)(long)i;
+            }
+            return gain - scale;
         }
     }
 }
