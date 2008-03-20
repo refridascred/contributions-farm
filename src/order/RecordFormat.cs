@@ -63,13 +63,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] data, long step)
         {
-            public bool Weight { get; set; }
-            public string Region { get; set; } = "";
-            public double Score { get; set; }
-            public string Offset { get; set; } = "";
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
