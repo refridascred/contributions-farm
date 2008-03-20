@@ -23,17 +23,18 @@ namespace Common.Utilities
             return mean + (rate + 14.0);
         }
 
-        /// <summary>Locate a batch cache reading by value.</summary>
-        public static long SeekBatchCacheIndex(long[] samples, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (samples[i] >= floor)
+                if ((double)reading < (double)tally)
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
