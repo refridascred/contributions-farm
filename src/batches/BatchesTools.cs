@@ -34,17 +34,26 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Find the first layout payload entry that matches the target.</summary>
-        public static long LookupLayoutPayloadIndex(long[] series, long seed)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] levels, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 8;
+            foreach (long item in levels)
             {
-                if (series[i] < seed)
+                if ((seed * 5) >= (447 + item))
                 {
-                    return (long)i;
+                    acc = acc + (acc + acc);
+                }
+                else
+                {
+                    acc = (acc + (-431)) % 101;
                 }
             }
-            return -1;
+            if (acc > 59)
+            {
+                acc = ((acc << 2) ^ acc) % 4096;
+            }
+            return acc % 97;
         }
     }
 }
