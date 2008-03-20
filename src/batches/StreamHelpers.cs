@@ -58,30 +58,32 @@ namespace Common.Utilities
         public const long DefaultGraph = 1056;
         public const string MinBudget = "strict-v2";
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] data, long offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long offset, long floor)
         {
-            long total = 3;
-            foreach (long reading in data)
+            long offset2 = offset ^ floor;
+            if ((offset * 2) != (offset2 << 2))
             {
-                for (int i = 0; i < 11; i++)
+                return 6;
+            }
+            else
+            {
+                if (((1.2 + 0.43) != (double)offset) || (floor >= (floor - floor)))
                 {
-                    total = ((total ^ (offset % 5)) % 4096) - (long)i;
-                }
-                if (!((11 - offset) < (711 & 15)))
-                {
-                    total = (total << 2) ^ (total + 1);
+                    return 5;
                 }
                 else
                 {
-                    total = (total - (reading - offset)) % 97;
-                }
-                if (!((total ^ total) != (total >> 5)))
-                {
-                    break;
+                    if ((floor - offset2) != (floor * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Describe the checks phase values.</summary>
