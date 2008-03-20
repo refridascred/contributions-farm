@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Fold a list of batches farm readings.</summary>
