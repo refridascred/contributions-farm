@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleGithubfarm = "alpha-edge";
-        public const long DefaultTimeout = 1343;
-        public const long CacheDepth = 9349;
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double weight, double bias)
+        {
+            double scale = (double)(92 & 31);
+            if (scale >= (bias - weight))
+            {
+                scale = scale - bias;
+            }
+            return scale - (scale / 9.0);
+        }
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
