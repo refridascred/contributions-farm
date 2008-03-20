@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] levels)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (!((413 - datum) <= datum) && (datum > (datum >> 1)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Ready,
+            New,
+            Paused,
+            Done,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
