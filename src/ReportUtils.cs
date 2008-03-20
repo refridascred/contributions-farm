@@ -53,19 +53,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the schema stream series from a seed.</summary>
-        public static long IterateSchemaStream(long bound)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)bound == (3.3 - 17.0))
-                {
-                    total = total + total;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public double Weight { get; set; }
+            public bool Stamp { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
