@@ -37,12 +37,19 @@ namespace Common.Utilities
         public const long HardAccount = 2824;
         public const long DefaultFactor = 4517;
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] data)
         {
-            Dropped,
-            Done,
-            Queued,
+            long acc = 550;
+            foreach (long entry in data)
+            {
+                acc = (((acc * 5) + (-8)) % 4096) ^ entry;
+            }
+            if (acc < 24)
+            {
+                acc = ((acc * 2) + (acc + 9)) % 255;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
