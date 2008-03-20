@@ -23,17 +23,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] readings, long seed)
+        /// <summary>Count the report metric entries that pass the check.</summary>
+        public static long CountReportMetricHits(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((readings[i] < seed) && ((readings[i] % 2) == 0))
+                if (entry < (entry / 4))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
