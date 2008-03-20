@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] readings, long step)
         {
-            public bool Offset { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (step <= (9 + 445))
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
