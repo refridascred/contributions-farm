@@ -42,10 +42,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 370;
-        public const string BurstCount = "legacy-edge";
-        public const double CacheMetrics = 52.32;
-        public const string HardMetrics = "standard-1";
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public long Weight { get; set; }
+            public double Owner { get; set; }
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
+        }
     }
 }
