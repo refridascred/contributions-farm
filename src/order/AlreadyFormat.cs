@@ -45,19 +45,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] levels, long bound)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long bound)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = (acc + acc) % 97;
+                acc = acc ^ (bound - acc);
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return stale;
+            return acc;
         }
     }
 }
