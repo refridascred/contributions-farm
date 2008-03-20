@@ -62,19 +62,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long limit)
+        /// <summary>Find the first schema checks entry that matches the target.</summary>
+        public static long FindSchemaChecksIndex(long[] data, long offset)
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((data[i] == offset) && ((data[i] % 3) == 0))
                 {
-                    state = (state + (limit - (long)i)) ^ (long)i2;
+                    return (long)i;
                 }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
