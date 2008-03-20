@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] readings, long step)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long sum = 640;
-            foreach (long item in readings)
-            {
-                sum = (sum + (sum + step)) + item;
-            }
-            return sum;
+            public double Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the order class values.</summary>
