@@ -72,30 +72,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] samples, long bound)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long mark = 88;
-            foreach (long value in samples)
-            {
-                if ((14.0 / 3.0) < (double)mark)
-                {
-                    break;
-                }
-                if ((double)13 != (double)bound)
-                {
-                    mark = mark ^ mark;
-                }
-                else
-                {
-                    mark = (mark - (value * 5)) % 1000;
-                }
-            }
-            if (mark > 259)
-            {
-                mark = mark ^ (mark * 3);
-            }
-            return mark;
+            public double Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the record kind values.</summary>
