@@ -30,10 +30,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftInterval = 2678;
-        public const double SoftProfile = 98.85;
-        public const long LimitSpan = 2695;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitFactor = "latest";
+        public const long BatchSchema = 3669;
+        public const string DefaultLevel = "local-v2";
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long TallyFilterMatches(long[] items, long target)
