@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinSize = 32.47;
-        public const long DefaultSize = 1345;
-        public const double WindowContext = 50.88;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Ready,
+            Active,
+            Closed,
+            Pending,
+            Failed,
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string HardReport = "fallback";
