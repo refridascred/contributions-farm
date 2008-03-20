@@ -45,19 +45,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long bound)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((3 & 1) >= (carry + (long)i))
-                {
-                    carry = (carry - (carry - 57)) % 4096;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Idle,
+            Draft,
+            Pending,
+            Failed,
         }
 
         /// <summary>Locate a counter reading by value.</summary>
