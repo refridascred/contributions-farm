@@ -16,18 +16,21 @@ namespace Common.Utilities
             return drift - (drift / 9.0);
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] levels)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] items)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)count < (double)7)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 1) ^ cell;
+                    if ((items[i] ^ items[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the queue class values.</summary>
