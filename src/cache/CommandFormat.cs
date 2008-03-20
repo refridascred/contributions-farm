@@ -34,21 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of stats account readings.</summary>
-        public static long CompareStatsAccountCount(long[] samples)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((offset > datum) || ((tally >> 5) > (datum + tally))) && ((489 + tally) <= (tally >> 2)))
                 {
-                    if ((samples[i] + samples[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
