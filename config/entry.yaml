@@ -1,13 +1,9 @@
 # entry settings
-strict: open
-dry_run: cached
-soft_ratio_count: 1990
-flush_threshold: strict
-soft_retries_ms:
-  compress:
-    - 69
-    - 64
-    - 24
-  filter_timeout: 53.17
-  min_limit_count: 2069
-  stream_interval: false
+cache_limit: 250
+checks_depth: latest
+route_ttl: 500
+flush_delay:
+  - 311
+  - 312
+  - 61
+  - 36
