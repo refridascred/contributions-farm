@@ -51,15 +51,10 @@ namespace Common.Utilities
         public const long CacheSize = 2441;
         public const long CacheCount = 7206;
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 14; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 8579;
+        public const string LimitSpan = "standard-edge";
+        public const long MaxCommits = 8419;
+        public const double HardTimeout = 41.51;
     }
 }
