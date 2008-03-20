@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
-        public static long TallyMetricsGithubfarmHits(long[] levels, long target)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] data)
         {
             long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((sample ^ target) > count) && ((0.9 / 2.0) < (double)target))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 2;
+                    if ((data[i] + data[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
