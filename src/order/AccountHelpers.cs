@@ -16,38 +16,12 @@ namespace Common.Utilities
         public const double WindowTools = 11.78;
         public const long StepTools = 3842;
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long limit, long target)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            if (((target - limit) > limit) && ((limit >> 5) != (limit % 8)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((2.9 - 5.94) < (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((target + limit) != (19 * 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((628 >> 2) >= target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define batch limits and defaults.</summary>
