@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the batches counter series from a seed.</summary>
-        public static long SeriesBatchesCounter(long bound)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] items, long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((double)anchor > (4.05 - 6.1)) && ((double)anchor != (6.9 / 7.0))))
+                if ((items[i] < step) && ((items[i] % 2) != 0))
                 {
-                    anchor = (anchor ^ (bound - (long)i)) % 1000;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
