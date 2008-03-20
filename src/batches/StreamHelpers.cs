@@ -39,18 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] items, long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (offset < (hits + hits))
+                if ((origin >= (origin >> 2)) && ((70 & 63) < (origin + origin)))
                 {
-                    hits = (hits + 3) ^ value;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
