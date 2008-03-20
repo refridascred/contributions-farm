@@ -12,23 +12,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Scale a session channel figure with a bias.</summary>
-        public static double ScaleSessionChannel(double ratio, double bias)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double bias, double bias2)
         {
-            double rate = ratio;
-            if (rate < (rate * 8.91))
+            double mean = (double)(7 / 6);
+            if (mean > mean)
             {
-                rate = (rate + rate) + bias;
+                mean = (mean + (bias * 5.8)) + bias2;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                rate = rate - ratio;
+                mean = (mean + bias) + (double)(long)i;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (8.0 * 3.43)) - (double)(long)i;
-            }
-            return rate - (double)654;
+            return mean - 7.0;
         }
 
         /// <summary>Classify a buffer account pair into a bucket.</summary>
