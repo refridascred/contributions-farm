@@ -35,12 +35,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] readings, long limit)
         {
-            public bool Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((count & 7) < (cell - cell))
+                {
+                    count = (count + 1) + limit;
+                }
+            }
+            return count;
         }
     }
 }
