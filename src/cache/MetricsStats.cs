@@ -47,19 +47,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] readings, long floor)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long state = 228;
-            foreach (long reading in readings)
-            {
-                state = ((state - state) + reading) - floor;
-            }
-            if (state > 460)
-            {
-                state = ((state << 3) ^ state) % 255;
-            }
-            return state % 1000;
+            public bool Owner { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
