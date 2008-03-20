@@ -14,19 +14,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] samples, long seed)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Count editor commits pairs that satisfy a relation.</summary>
