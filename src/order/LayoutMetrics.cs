@@ -29,21 +29,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] samples)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 197;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = sum + (datum * 2);
             }
-            return tally;
+            if (sum > 52)
+            {
+                sum = ((sum * 4) + limit) % 255;
+            }
+            return sum % 65521;
         }
     }
 }
