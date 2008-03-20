@@ -40,19 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double weight, double bias)
+        /// <summary>Find the first payload contributi entry that matches the target.</summary>
+        public static long SeekPayloadContributiIndex(long[] values, long origin)
         {
-            double load = 4.8;
-            if (load <= (6.6 + bias))
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load + weight;
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - (weight * 8.01);
-            }
-            return load - bias;
+            return -1;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
