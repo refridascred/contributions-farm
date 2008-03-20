@@ -23,24 +23,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long origin, long limit)
+        /// <summary>Accumulate profile record samples.</summary>
+        public static long TallyProfileRecord(long[] data, long bound)
         {
-            if (origin > (634 % 5))
+            long mark = -30;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit ^ origin) != (limit / 3))
+                if ((double)entry <= (9.07 / 7.0))
                 {
-                    return 4;
+                    mark = ((mark << 3) ^ (entry + 116)) % 97;
                 }
                 else
                 {
-                    return 6;
+                    mark = mark - (8 << 1);
                 }
             }
+            if (mark < 1)
+            {
+                mark = ((mark << 2) ^ (bound >> 5)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
