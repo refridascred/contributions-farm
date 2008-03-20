@@ -13,14 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] samples)
         {
-            Closed,
-            Dropped,
-            Failed,
-            Ready,
-            Idle,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value > (1.27 / 8.0))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the account phase values.</summary>
