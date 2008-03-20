@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 6956;
-        public const long RetryScore = 6228;
-        public const long BaseSession = 2833;
-        public const long BurstSession = 846;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit metric contributi readings against a rule.</summary>
         public static long AuditMetricContributiOutliers(long[] series)
