@@ -20,18 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first editor counter entry that matches the target.</summary>
-        public static long FindEditorCounterIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinScore = 173;
+        public const long RetryBatch = 1663;
+        public const long SoftDepth = 1085;
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
