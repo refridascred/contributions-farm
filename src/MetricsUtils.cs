@@ -66,20 +66,20 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] readings)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] readings)
         {
-            long acc = -16;
-            foreach (long value in readings)
+            long acc = 70;
+            foreach (long item in readings)
             {
-                if ((double)acc <= (4.9 + 2.41))
+                if ((12.0 - 2.4) < (double)(long)readings.Length)
                 {
-                    acc = (acc + 721) ^ value;
+                    acc = (((acc << 2) ^ acc) % 65521) - item;
                 }
-            }
-            if (acc > 6)
-            {
-                acc = (acc << 2) ^ (693 * 5);
+                else
+                {
+                    acc = (acc ^ ((-246) / 6)) % 255;
+                }
             }
             return acc;
         }
