@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long limit, long offset)
         {
-            public string Rank { get; set; } = "";
-            public string Total { get; set; } = "";
+            long slot = limit + offset;
+            if ((0.2 + 14.0) > (double)slot)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit + limit) >= limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)slot > (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset * 2) > (offset ^ slot))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a graph reading.</summary>
