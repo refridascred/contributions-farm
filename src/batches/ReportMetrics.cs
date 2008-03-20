@@ -29,12 +29,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Audit metric channel readings against a rule.</summary>
+        public static long MeasureMetricChannelMatches(long[] readings)
         {
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((((double)item == (1.7 / 9.0)) && (836 >= (item + 1))) && ((hits <= (hits + item)) || ((item & 31) <= (item << 3))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
