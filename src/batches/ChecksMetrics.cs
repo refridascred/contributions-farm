@@ -58,14 +58,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            Active,
             Queued,
-            Done,
             Ready,
-            Paused,
+            Pending,
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
