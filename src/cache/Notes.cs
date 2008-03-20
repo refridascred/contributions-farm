@@ -50,12 +50,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
+            Done,
+            New,
+            Stale,
+            Failed,
+            Queued,
         }
     }
 }
