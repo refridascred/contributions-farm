@@ -1,11 +1,13 @@
 # entry settings
-strict: cached
-cache_threshold: 56
-soft_window:
-  - 115
-  - 475
-  - 62
-flush_ratio_pct: true
-warm_ratio_ms:
-  - 397
-  - 400
+strict:
+  - 325
+  - 211
+  - 466
+token_retries: cached
+sync_ratio: local
+warm_size_ms: false
+flush_capacity_count:
+  - 134
+  - 260
+  - 119
+  - 117
