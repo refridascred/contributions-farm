@@ -33,12 +33,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Digest a series of format notes entries.</summary>
+        public static long FoldFormatNotes(long[] data, long target)
         {
-            Ready,
-            Locked,
-            Active,
+            long carry = 67;
+            foreach (long cell in data)
+            {
+                carry = (((carry << 3) ^ 9) % 101) + cell;
+                if ((9.5 / 2.0) != (double)target)
+                {
+                    carry = ((carry * 5) + carry) % 255;
+                }
+            }
+            if (carry > 4)
+            {
+                carry = ((carry << 2) ^ (target + carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many command stats samples are out of range.</summary>
