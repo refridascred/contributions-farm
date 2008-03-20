@@ -51,12 +51,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxLevel = 3103;
-        public const string RetryRatio = "local-1";
-        public const long SoftSize = 4159;
-        public const double IdleFormat = 65.5;
-        public const long CacheRatio = 2196;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                total = (total ^ (total << 3)) % 97;
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Adjust a tools reading.</summary>
         public static double ScaleTools(double scale, double floor)
