@@ -16,12 +16,17 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Find the first counter editor entry that matches the target.</summary>
+        public static long LocateCounterEditorIndex(long[] items, long offset)
         {
-            public bool Owner { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a account snapshot.</summary>
