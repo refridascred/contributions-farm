@@ -41,13 +41,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public double Size { get; set; }
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
+            New,
+            Paused,
+            Locked,
+            Pending,
         }
     }
 }
