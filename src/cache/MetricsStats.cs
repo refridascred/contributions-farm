@@ -20,27 +20,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] values, long offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] values, long origin)
         {
-            long score = 58;
+            long count = 0;
             foreach (long reading in values)
             {
-                if ((7.7 - 8.51) <= (double)offset)
+                if (!(((reading >> 5) == (915 - origin)) || ((6.0 + 8.0) == (double)reading)))
                 {
-                    score = score - (offset + score);
-                    score = (score << 3) ^ (score + score);
-                }
-                if ((reading - offset) == (score / 3))
-                {
-                    score = score - reading;
+                    count = count + 2;
                 }
             }
-            if (score < 468)
-            {
-                score = ((score << 2) ^ (offset + 998)) % 1000;
-            }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Locate a batch queue reading by value.</summary>
