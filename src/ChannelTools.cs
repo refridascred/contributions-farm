@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepTimeout = 5491;
-        public const long BurstDepth = 458;
-        public const long MaxStream = 9070;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] levels, long offset)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((matches + offset) <= item)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of cache batches entries.</summary>
         public static long DigestCacheBatches(long[] samples, long target)
