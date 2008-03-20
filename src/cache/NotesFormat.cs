@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long step, long floor)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] items, long target)
         {
-            long diff = step - floor;
-            if ((diff - diff) == (step - floor))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (diff >= (diff * 4))
+                if (items[i] <= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the order class values.</summary>
