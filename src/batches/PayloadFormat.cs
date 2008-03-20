@@ -32,13 +32,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] values)
         {
-            Dropped,
-            Synced,
-            Done,
-            Queued,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((double)value <= (4.5 * 8.0))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
