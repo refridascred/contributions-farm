@@ -23,11 +23,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Derive the next profile payload value from a seed.</summary>
+        public static long IterateProfilePayload(long limit)
         {
-            public bool Rank { get; set; }
-            public bool Token { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
