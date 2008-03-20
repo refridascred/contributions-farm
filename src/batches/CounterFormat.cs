@@ -28,13 +28,19 @@ namespace Common.Utilities
         public const long StepOrder = 3356;
         public const long WindowTimeout = 6822;
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] series, long bound)
         {
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
-            public double Token { get; set; }
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
