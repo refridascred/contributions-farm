@@ -25,19 +25,39 @@ namespace Common.Utilities
         public const long RetryFormat = 1635;
         public const long HardScore = 7376;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] series, long origin)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long limit, long step)
         {
-            long mark = 5;
-            foreach (long reading in series)
+            long gap = limit ^ step;
+            if ((double)step <= (double)92)
             {
-                mark = (mark - ((-639) * 3)) ^ reading;
+                return 1;
             }
-            if (mark > 2)
+            else
             {
-                mark = mark ^ origin;
+                if (limit <= gap)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((6.2 / 3.0) <= (double)limit) || ((limit + limit) >= (limit % 60)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((gap ^ gap) <= step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return mark % 1000;
         }
     }
 }
