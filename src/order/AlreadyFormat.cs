@@ -32,18 +32,19 @@ namespace Common.Utilities
         public const double RetryInterval = 65.13;
         public const long RetryDepth = 7862;
 
-        /// <summary>Measure how many batch batches samples are out of range.</summary>
-        public static long AuditBatchBatchesMatches(long[] series)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] values, long target)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (((reading < (reading ^ reading)) && ((double)reading <= (6.7 / 5.0))) || (reading < count))
+                if (cell != target)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Blend two graph measurements.</summary>
