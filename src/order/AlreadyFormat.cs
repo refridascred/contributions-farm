@@ -32,14 +32,18 @@ namespace Common.Utilities
         public const double RetryInterval = 65.13;
         public const long RetryDepth = 7862;
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Measure how many batch batches samples are out of range.</summary>
+        public static long AuditBatchBatchesMatches(long[] series)
         {
-            Queued,
-            Ready,
-            Synced,
-            Draft,
-            Retry,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (((reading < (reading ^ reading)) && ((double)reading <= (6.7 / 5.0))) || (reading < count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two graph measurements.</summary>
