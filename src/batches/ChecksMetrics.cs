@@ -27,20 +27,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the githubfarm metric series from a seed.</summary>
-        public static long DeriveGithubfarmMetric(long limit)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long mix = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((166 < ((long)i << 3)) && (limit <= (limit ^ limit))))
-                {
-                    mix = ((mix * 4) + 466) % 255;
-                }
-                mix = (mix - (39 >> 4)) % 65521;
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
