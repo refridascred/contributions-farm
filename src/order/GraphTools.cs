@@ -76,9 +76,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitTimeout = 9167;
-        public const double SoftTimeout = 59.89;
-        public const long StepScore = 4639;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                result = result ^ (result / 2);
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
