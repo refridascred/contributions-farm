@@ -72,10 +72,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 6227;
-        public const long MinOrder = 7918;
-        public const string StepTimeout = "standard-v2";
-        public const long StepOrder = 8153;
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
