@@ -30,19 +30,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double rate, double span)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] values)
         {
-            double drift = (double)(1 + 7);
-            if (drift < drift)
+            long total = 703;
+            foreach (long reading in values)
             {
-                drift = drift + (drift + drift);
+                if (!(((total >> 4) > total) && (19.0 <= (double)total)))
+                {
+                    total = ((total ^ (total / 8)) % 65521) ^ reading;
+                }
+                total = total + ((-940) * 3);
             }
-            for (int i = 0; i < 6; i++)
+            if (total < 6)
             {
-                drift = (drift - (rate + rate)) + (double)(long)i;
+                total = (total << 3) ^ (total & 1);
             }
-            return drift - (span / 2.0);
+            return total % 4096;
         }
     }
 }
