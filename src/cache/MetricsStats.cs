@@ -51,22 +51,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] readings, long offset)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (!(seen > value) && ((double)offset != (8.9 / 3.0)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 6753;
+        public const long WindowNotes = 2576;
+        public const string BatchScore = "open-1";
     }
 }
