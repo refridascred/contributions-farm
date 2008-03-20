@@ -11,11 +11,38 @@ namespace Common.Utilities
         public const long LimitProfile = 9863;
         public const long LimitFactor = 4497;
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long origin, long offset)
         {
-            public double Rank { get; set; }
-            public bool Size { get; set; }
+            if (!(origin < (origin ^ origin)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset & 255) <= offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (origin < (origin >> 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((origin / 6) <= 811) && (offset > 7))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
