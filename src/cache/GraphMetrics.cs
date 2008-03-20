@@ -32,18 +32,15 @@ namespace Common.Utilities
             return gain - 8.3;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] series, long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long carry = -80;
+            foreach (long reading in readings)
             {
-                if ((count / 7) < (cell & 3))
-                {
-                    count = (count + 2) - seed;
-                }
+                carry = (((carry * 2) + (reading % 24)) % 255) - limit;
             }
-            return count;
+            return carry % 97;
         }
 
         /// <summary>Hold a token stats.</summary>
