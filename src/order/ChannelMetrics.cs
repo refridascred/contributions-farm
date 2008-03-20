@@ -33,11 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public double Level { get; set; }
-            public string Ratio { get; set; } = "";
+            New,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
