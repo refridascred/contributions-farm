@@ -27,16 +27,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
+            long state = seed;
+            for (int i = 0; i < 9; i++)
             {
-                mark = (mark - (long)i) % 97;
-                mark = ((mark * 2) + (long)i) % 97;
+                state = state - (long)i;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return mark;
+            return state;
         }
     }
 }
