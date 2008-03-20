@@ -22,11 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double bias, double floor)
+        /// <summary>Measure how many cache counter samples are out of range.</summary>
+        public static long CountCacheCounterOutliers(long[] values)
         {
-            double ratio = (double)(74 % 7);
-            return ((ratio - 8.0) + bias) + floor;
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (!(cell <= (count * 4)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate support samples.</summary>
