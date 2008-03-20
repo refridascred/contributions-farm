@@ -12,13 +12,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            Synced,
-            Draft,
-            Locked,
-            Ready,
+            public double Weight { get; set; }
+            public bool Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate support context readings against a bound.</summary>
