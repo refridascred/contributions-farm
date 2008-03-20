@@ -16,12 +16,11 @@ namespace Common.Utilities
             return scale - (scale / 9.0);
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Stale,
-            Paused,
-            Synced,
+            public bool Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Match up cache metric samples.</summary>
