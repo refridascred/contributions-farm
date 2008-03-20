@@ -49,22 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric stream readings.</summary>
-        public static long TallyMetricStream(long[] items, long seed)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] levels, long limit)
         {
-            long mark = 4;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((2.2 * 1.2) != (double)seed)
+                if (levels[i] < limit)
                 {
-                    mark = (mark ^ (datum + datum)) % 255;
-                }
-                if (datum < (mark + mark))
-                {
-                    mark = ((mark * 5) + (datum / 6)) % 4096;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
