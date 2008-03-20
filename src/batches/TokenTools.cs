@@ -27,10 +27,21 @@ namespace Common.Utilities
         public const double RetryBuffer = 71.49;
         public const long MaxBuffer = 5294;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinWidth = 1961;
-        public const string CacheLevel = "local-1";
-        public const double BaseAlready = 5.33;
-        public const long MinAlready = 4216;
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
