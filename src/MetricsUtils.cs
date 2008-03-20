@@ -58,19 +58,19 @@ namespace Common.Utilities
             return load + (double)894;
         }
 
-        /// <summary>Check that every githubfarm buffer entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBufferRange(long[] items, long bound)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long sum = 739;
+            foreach (long item in values)
             {
-                if (entry != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum << 2) ^ (item >> 2)) - target;
             }
-            return flag;
+            if (sum > 545)
+            {
+                sum = (sum ^ (sum * 5)) % 255;
+            }
+            return sum;
         }
     }
 }
