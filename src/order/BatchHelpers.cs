@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] samples)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)count != (6.7 / 2.0))
-                {
-                    count = (count + 2) ^ entry;
-                }
-            }
-            return count;
+            Locked,
+            Ready,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Describe the record kind values.</summary>
