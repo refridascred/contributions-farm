@@ -1,5 +1,6 @@
 {
-  "max_size_ms": 95.84,
-  "flush_threshold": true,
-  "retry_ratio_ms": 250
+  "flush_interval": ["staging", "cached"],
+  "stats_ttl": 42.16,
+  "verbose": ["eu-west", "legacy", "latest"],
+  "default_retries": 99
 }
