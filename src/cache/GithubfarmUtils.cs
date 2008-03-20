@@ -33,24 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long bound, long seed)
+        /// <summary>Accumulate account checks samples.</summary>
+        public static long TallyAccountChecks(long[] values)
         {
-            if (((double)bound != (double)(-47)) || ((seed + 949) >= (bound - bound)))
+            long state = 38;
+            foreach (long value in values)
             {
-                return 1;
+                state = ((state << 2) ^ (state + state)) ^ value;
             }
-            else
-            {
-                if ((double)seed <= (3.5 * 4.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return state;
         }
 
         /// <summary>Hold a metrics stats.</summary>
