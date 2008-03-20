@@ -25,21 +25,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of order format readings.</summary>
-        public static long OverlapOrderFormatCount(long[] levels)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
