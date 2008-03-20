@@ -35,17 +35,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] levels, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] levels, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 38;
+            foreach (long reading in levels)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark + (mark + origin)) % 101) + reading;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a payload summary.</summary>
