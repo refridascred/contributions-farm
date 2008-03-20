@@ -47,19 +47,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double gain, double floor)
+        /// <summary>Grade a contributi metrics value against two limits.</summary>
+        public static long BucketContributiMetrics(long step, long step2)
         {
-            double weight = gain;
-            if (weight > (floor * 8.3))
+            if ((3.13 * 6.0) == (double)step)
             {
-                weight = weight + (double)870;
+                return 3;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                weight = (weight + (gain * 3.0)) - (double)(long)i;
+                if ((59 * 5) >= (step ^ step2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return weight - (gain / 4.0);
         }
     }
 }
