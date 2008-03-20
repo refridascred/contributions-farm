@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] data)
+        /// <summary>Iterate the filter batches series from a seed.</summary>
+        public static long SeriesFilterBatches(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if ((data[i] + data[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry + offset) + (long)i2;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Rank channel contributi input into a small class.</summary>
