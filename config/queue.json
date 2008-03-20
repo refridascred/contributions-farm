@@ -1,5 +1,6 @@
 {
-  "account_window": true,
-  "poll_interval_s": 32.06,
-  "flush_threshold_count": "open"
+  "batches_ttl": 29,
+  "retry_capacity": 55.72,
+  "hard_timeout": 4418,
+  "persist": 89
 }
