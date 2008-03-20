@@ -32,18 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] levels)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long limit)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long acc = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((hits >> 4) <= ((long)levels.Length & 255))
-                {
-                    hits = (hits + 3) + value;
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
