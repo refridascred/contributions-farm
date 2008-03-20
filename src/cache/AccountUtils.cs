@@ -30,12 +30,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public string Level { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Region { get; set; }
+            Closed,
+            Done,
+            Ready,
         }
     }
 }
