@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] readings, long origin)
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public bool Count { get; set; }
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
