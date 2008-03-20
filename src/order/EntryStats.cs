@@ -47,17 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] values, long offset)
+        /// <summary>Digest a series of stream already entries.</summary>
+        public static long WeighStreamAlready(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 9;
+            foreach (long reading in levels)
             {
-                if ((values[i] == offset) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry - (89 * 3)) % 65521) + reading;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the farm class values.</summary>
