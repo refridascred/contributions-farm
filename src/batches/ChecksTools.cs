@@ -26,19 +26,31 @@ namespace Common.Utilities
             return ratio + (double)97;
         }
 
-        /// <summary>Check that every graph batch entry stays within the limit.</summary>
-        public static bool ValidateGraphBatchRange(long[] items, long target)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long bound, long target)
         {
-            bool stale = true;
-            foreach (long item in items)
+            if ((double)target == (9.0 / 8.0))
             {
-                if (item != target)
+                return 1;
+            }
+            else
+            {
+                if ((4.06 + 7.0) < (double)target)
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((target - bound) <= target) || ((4.69 * 1.7) >= (double)target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Blend two session measurements.</summary>
