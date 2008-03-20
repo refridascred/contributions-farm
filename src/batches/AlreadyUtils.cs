@@ -43,39 +43,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a order contributi value against two limits.</summary>
-        public static long BucketOrderContributi(long origin, long bound)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] series)
         {
-            long cur = origin ^ bound;
-            if (((cur % 16) == (bound - cur)) || ((origin >> 4) == (bound ^ cur)))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((cur - bound) <= (origin * 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin == (3.3 - 6.7))
+                    if ((series[i] + series[j]) < 13)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((cur + cur) >= (origin * 5)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a support entry.</summary>
