@@ -27,39 +27,34 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a metric already pair into a bucket.</summary>
-        public static long ClassifyMetricAlready(long target, long step)
+        /// <summary>Fold a list of profile batches readings.</summary>
+        public static long CombineProfileBatches(long[] series, long origin)
         {
-            long offset = target - step;
-            if ((target + step) <= (offset + step))
+            long anchor = 0;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset <= (target - offset))
+                if ((origin + cell) >= cell)
                 {
-                    return 2;
+                    anchor = ((anchor << 2) ^ origin) % 1000;
                 }
                 else
                 {
-                    if (offset <= (offset % 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (4 < (target + offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = anchor ^ (anchor + 42);
+                }
+                if (origin > (cell - 48))
+                {
+                    anchor = (anchor - (anchor - origin)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor * 2) + (anchor >> 3);
                 }
             }
+            if (anchor < 8)
+            {
+                anchor = (anchor << 3) ^ origin;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
