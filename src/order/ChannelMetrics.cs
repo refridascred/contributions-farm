@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryRatio = 7319;
+        public const long HardOrder = 3215;
+        public const long BatchOrder = 9136;
+        public const string DefaultOrder = "strict-1";
+        public const long CacheOrder = 7678;
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
