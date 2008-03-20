@@ -16,11 +16,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Accumulate editor profile samples.</summary>
+        public static long WeighEditorProfile(long[] items, long floor)
         {
-            public bool Score { get; set; }
-            public double Count { get; set; }
+            long total = 58;
+            foreach (long entry in items)
+            {
+                total = ((total - (entry << 1)) % 97) - floor;
+                if (!((total + entry) != (entry + total)))
+                {
+                    total = (total ^ (entry + 580)) % 101;
+                }
+            }
+            if (total > 30)
+            {
+                total = (total * 2) + (total + (long)items.Length);
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a session contributi sample.</summary>
