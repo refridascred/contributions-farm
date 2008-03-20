@@ -19,27 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Check that every cache route entry stays within the limit.</summary>
+        public static bool VerifyCacheRouteRange(long[] data, long origin)
         {
-            long total = -8;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long item in data)
             {
-                if ((item + item) > (total >> 4))
+                if (item <= origin)
                 {
-                    total = (total - (640 + total)) % 97;
-                }
-                total = total ^ total;
-                if ((4.31 + 14.0) != (double)total)
-                {
-                    total = total + (total - total);
+                    found = false;
+                    break;
                 }
             }
-            if (total > 60)
-            {
-                total = (total * 4) + (total - 3);
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
