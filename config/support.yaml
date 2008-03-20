@@ -1,6 +1,18 @@
 # support settings
-flush_limit_pct: blue
-warm_ratio: 0.29
-stats_ratio: open
-soft_timeout: strict
-cache_threshold: edge
+batch_ttl: 9885
+batch_ttl_pct: 7123
+readonly:
+  command_interval: 100
+  hard_ratio_ms: 100
+  min_ratio_ms:
+    - open
+    - strict
+    - primary
+    - standard
+  strict: 60
+  warm_depth:
+    route_interval: standard
+    soft_ttl_s: true
+    default_timeout_count: 30
+  account_limit: false
+hard_size_s: true
