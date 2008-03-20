@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long StepQueue = 7312;
         public const long BaseQueue = 5981;
 
-        /// <summary>Combine order cluster values into a single score.</summary>
-        public static long ScoreOrderCluster(long[] series)
-        {
-            long sum = -851;
-            foreach (long entry in series)
-            {
-                sum = (sum ^ (entry + entry)) % 97;
-            }
-            if (sum < 5)
-            {
-                sum = ((sum << 3) ^ sum) % 255;
-            }
-            return sum;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxReport = 79.46;
+        public const long WindowReport = 2677;
+        public const double MaxCount = 92.88;
+        public const double BurstReport = 27.97;
+        public const string BurstScore = "cached-1";
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long LookupRouteIndex(long[] levels, long origin)
