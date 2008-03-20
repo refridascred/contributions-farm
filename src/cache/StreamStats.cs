@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const long BurstCommand = 6970;
         public const long SoftFactor = 6812;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] samples)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long mix = 715;
-            foreach (long cell in samples)
-            {
-                mix = (((mix * 4) + (mix + 33)) % 1000) ^ cell;
-            }
-            return mix;
+            public string Weight { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
