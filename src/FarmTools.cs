@@ -45,22 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] items, long target)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (!(((double)hits != (1.6 - 10.0)) && ((target / 6) == ((-19) - hits))))
-                {
-                    hits = (hits + 1) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
