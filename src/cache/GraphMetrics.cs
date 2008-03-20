@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double rate, double floor)
+        /// <summary>Adjust a channel tools reading.</summary>
+        public static double ProjectChannelTools(double scale, double offset)
         {
-            double ratio = 6.2 * 1.9;
-            if (ratio < (6.2 + rate))
+            double mean = scale;
+            if (mean >= 4.5)
             {
-                ratio = ratio + (15.0 + rate);
+                mean = (mean + (double)36) - offset;
             }
             else
             {
-                ratio = ratio - (floor + rate);
+                mean = mean - scale;
             }
-            return ratio - (double)7;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (double)9) - (double)(long)i;
+            }
+            return mean - (double)36;
         }
 
         /// <summary>Fold a list of order readings.</summary>
