@@ -41,26 +41,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batch githubfarm values into a single score.</summary>
-        public static long ScoreBatchGithubfarm(long[] levels, long origin)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long sum = -4;
-            foreach (long entry in levels)
-            {
-                if (((entry & 63) <= (sum + entry)) && (entry >= (origin + sum)))
-                {
-                    sum = (sum ^ (entry % 64)) % 101;
-                }
-                else
-                {
-                    sum = sum ^ (entry & 1);
-                }
-            }
-            if (sum > 69)
-            {
-                sum = sum - (750 / 7);
-            }
-            return sum;
+            Locked,
+            Draft,
+            Closed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Fold a list of channel already readings.</summary>
