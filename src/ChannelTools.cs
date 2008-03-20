@@ -34,12 +34,15 @@ namespace Common.Utilities
             return gain2 + 1.41;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double scale, double span)
         {
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            double weight = 1.17;
+            if (weight > 7.4)
+            {
+                weight = ((weight - (double)488) - scale) + span;
+            }
+            return weight - (double)259;
         }
     }
 }
