@@ -11,22 +11,28 @@ namespace Common.Utilities
         public const long SoftCache = 5695;
         public const long BatchBudget = 5303;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] readings, long origin)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long score = 78;
+            foreach (long item in series)
             {
-                if (((origin / 7) <= (5 % 60)) || (((origin * 5) != (tally % 8)) && ((double)tally < (7.81 - 18.0))))
+                if (((7.9 - 9.06) == (double)item) && (2 <= score))
                 {
-                    tally = (tally + 3) + entry;
+                    score = ((score << 3) ^ (long)series.Length) % 65521;
+                    continue;
                 }
-                else
+                score = (score + (item % 10)) % 255;
+                if ((item > (item - score)) && ((double)bound == (6.55 + 7.45)))
                 {
-                    tally = tally - 1;
+                    score = ((score * 2) + item) % 65521;
                 }
             }
-            return tally;
+            if (score > 3)
+            {
+                score = (score << 2) ^ score;
+            }
+            return score;
         }
 
         /// <summary>Validate token cluster readings against a bound.</summary>
