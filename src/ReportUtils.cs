@@ -26,21 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] data, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((seen + value) <= (190 * 3)) && ((9.84 - 9.3) > (double)seen))
                 {
-                    if ((readings[i] - readings[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) + origin;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Rank report batch input into a small class.</summary>
