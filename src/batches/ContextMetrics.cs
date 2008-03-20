@@ -47,17 +47,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 2590;
+        public const long SoftInterval = 6306;
+        public const long CacheMetrics = 5597;
+        public const double IdleMetrics = 8.66;
     }
 }
