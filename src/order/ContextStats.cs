@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine token command values into a single score.</summary>
-        public static long DigestTokenCommand(long[] items, long floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] items)
         {
-            long sum = 9;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long item in items)
             {
-                sum = (((sum << 2) ^ (sum * 5)) % 101) ^ cell;
+                if (item > (item / 7))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (sum < (-27))
-            {
-                sum = (sum + (22 + floor)) % 255;
-            }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
