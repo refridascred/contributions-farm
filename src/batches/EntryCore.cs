@@ -67,13 +67,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Stale,
-            New,
-            Ready,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double SoftNotes = 6.99;
+        public const long StepCount = 1542;
+        public const double HardNotes = 54.79;
+        public const long BatchBudget = 2287;
+        public const long CacheScore = 5165;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileGaps(long[] items, long bound)
