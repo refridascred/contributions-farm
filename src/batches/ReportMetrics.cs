@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long BurstBuffer = 5180;
         public const long WindowScore = 9334;
 
-        /// <summary>Check that every commits route entry stays within the limit.</summary>
-        public static bool ValidateCommitsRouteRange(long[] samples, long origin)
+        /// <summary>Validate filter contributi readings against a bound.</summary>
+        public static bool VerifyFilterContributiRange(long[] readings, long origin)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (value >= origin)
+                if (reading != origin)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
