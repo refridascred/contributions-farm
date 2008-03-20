@@ -46,19 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] samples, long offset)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (matches >= (matches - offset))
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardPayload = 59.35;
+        public const double BaseRatio = 41.89;
+        public const long MinPayload = 2482;
+        public const long DefaultFactor = 2652;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long SeriesBatch(long seed)
