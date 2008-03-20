@@ -15,20 +15,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every context githubfarm entry stays within the limit.</summary>
-        public static bool GuardContextGithubfarmLimits(long[] levels, long limit)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftCount = "primary-v2";
+        public const double WindowTools = 11.78;
+        public const long StepTools = 3842;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long BucketMetrics(long limit, long target)
