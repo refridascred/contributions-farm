@@ -47,15 +47,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            Failed,
-            Stale,
-            Idle,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheBuffer = 39.85;
+        public const string SoftSize = "open-edge";
+        public const long HardBuffer = 7741;
+        public const long MinBuffer = 2751;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BaseInterval = 6040;
