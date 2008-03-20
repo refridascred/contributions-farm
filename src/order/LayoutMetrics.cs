@@ -21,16 +21,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Iterate the cache buffer series from a seed.</summary>
-        public static long IterateCacheBuffer(long seed)
+        /// <summary>Count the record entry entries that pass the check.</summary>
+        public static long CountRecordEntryMatches(long[] levels, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                result = ((result << 2) ^ (result + seed)) % 1000;
-                result = ((result * 2) + (long)i) % 101;
+                if ((floor & 255) == (floor * 4))
+                {
+                    matches = (matches + 1) - cell;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
