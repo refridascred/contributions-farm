@@ -50,15 +50,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] items)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long mark = 713;
-            foreach (long entry in items)
-            {
-                mark = mark - (entry - mark);
-            }
-            return mark % 4096;
+            Active,
+            Ready,
+            Failed,
         }
     }
 }
