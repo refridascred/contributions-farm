@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long bound, long offset)
-        {
-            if (bound > (offset << 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if (offset <= (bound + bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstTimeout = 27.11;
+        public const double WindowBudget = 5.44;
+        public const string BatchSize = "standard-1";
+        public const double MaxDepth = 49.32;
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
