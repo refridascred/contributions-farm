@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] series)
         {
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((tally & 1) >= sample)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of format entries.</summary>
