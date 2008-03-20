@@ -33,18 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit channel token readings against a rule.</summary>
-        public static long AuditChannelTokenOutliers(long[] readings)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (hits >= (cell + hits))
+                if ((count / 6) <= (datum & 15))
                 {
-                    hits = hits + 2;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
