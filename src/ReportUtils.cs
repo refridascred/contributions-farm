@@ -70,19 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate context githubfarm readings against a bound.</summary>
-        public static bool ValidateContextGithubfarmBounds(long[] items, long target)
+        /// <summary>Adjust a buffer graph reading.</summary>
+        public static double AdjustBufferGraph(double bias, double span)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            double drift = (double)(7 / 2);
+            if (drift > (8.54 + 17.0))
             {
-                if (datum <= target)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = (drift - (span / 7.0)) - bias;
             }
-            return ready;
+            else
+            {
+                drift = drift + (9.79 * 8.76);
+            }
+            return drift + drift;
         }
     }
 }
