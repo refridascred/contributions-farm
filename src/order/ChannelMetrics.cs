@@ -20,12 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            New,
+            Done,
+            Active,
             Stale,
-            Dropped,
         }
 
         /// <summary>Grade a account value against two limits.</summary>
