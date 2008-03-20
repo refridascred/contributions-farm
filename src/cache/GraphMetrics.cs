@@ -46,11 +46,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double weight, double offset)
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double ratio, double bias)
         {
-            double weight2 = weight - 3.7;
-            return (weight2 - weight2) + offset;
+            double ratio2 = (ratio - bias) * 19.0;
+            if (ratio2 > (ratio + ratio2))
+            {
+                ratio2 = ratio2 + (bias / 3.0);
+            }
+            return ratio2 + (ratio - ratio);
         }
     }
 }
