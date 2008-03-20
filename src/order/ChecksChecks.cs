@@ -41,28 +41,36 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long floor, long step)
+        /// <summary>Classify a channel record pair into a bucket.</summary>
+        public static long GradeChannelRecord(long bound, long floor)
         {
-            if ((0.3 / 7.0) == (double)floor)
+            long offset = bound + floor;
+            if ((double)bound > 0.8)
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if (((floor + floor) > step) || ((floor & 15) <= step))
+                if (!((1.0 - 2.46) <= (double)offset))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    if (floor <= (floor >> 5))
+                    if ((offset & 31) < (floor * 5))
                     {
-                        return 8;
+                        return 4;
                     }
                     else
                     {
-                        return 0;
+                        if (offset < floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
