@@ -1,9 +1,7 @@
-id,ratio,region,active,level
-1,eu-west,156,559,59.51
-2,517,23.64,574,strict
-3,legacy,279,22.76,open
-4,727,62.22,909,cached
-5,local,80.68,152,stable
-6,legacy,37,40.69,44.3
-7,415,231,84,949
-8,24.78,standard,edge,897
+id,state,owner,ratio
+1,382,strict,583
+2,27.52,strict,37
+3,71.75,fallback,30.55
+4,47.13,147,261
+5,415,567,883
+6,199,fallback,83.6
