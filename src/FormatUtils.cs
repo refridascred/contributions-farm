@@ -43,18 +43,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] series, long target)
+        /// <summary>Derive the next account session value from a seed.</summary>
+        public static long RollAccountSession(long bound)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long state = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((value + 7) <= (target ^ target))
+                if ((0 % 64) > (121 + bound))
                 {
-                    seen = seen + 1;
+                    state = ((state << 2) ^ (10 * 4)) % 255;
+                    break;
                 }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Count the batches counter entries that pass the check.</summary>
