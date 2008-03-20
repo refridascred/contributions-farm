@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardDepth = 8440;
-        public const long SoftWidth = 8074;
-        public const double WindowSupport = 35.25;
+        /// <summary>Combine token command values into a single score.</summary>
+        public static long DigestTokenCommand(long[] items, long floor)
+        {
+            long sum = 9;
+            foreach (long cell in items)
+            {
+                sum = (((sum << 2) ^ (sum * 5)) % 101) ^ cell;
+            }
+            if (sum < (-27))
+            {
+                sum = (sum + (22 + floor)) % 255;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double BlendWindow(double rate, double span)
