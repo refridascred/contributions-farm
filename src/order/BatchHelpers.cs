@@ -29,18 +29,18 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] readings)
+        /// <summary>Measure how many notes metrics samples are out of range.</summary>
+        public static long MeasureNotesMetricsMatches(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (hits <= (21 * 4))
+                if (((seen << 1) < 21) || ((limit % 97) <= limit))
                 {
-                    hits = (hits + 1) - reading;
+                    seen = (seen + 2) + sample;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
