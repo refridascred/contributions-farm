@@ -1,6 +1,10 @@
 {
-  "hard_retries": [60, 378, 250],
-  "warm_interval": [114, 113, 455],
-  "retry_depth": ["legacy", "latest"],
-  "idle_interval_s": 42.02
+  "burst_ratio": {
+    "graph_threshold": "local",
+    "hard_ttl_s": ["latest", "green", "cached"],
+    "soft_interval_s": false,
+    "idle_retries_pct": 5209
+  },
+  "order_ratio": ["latest", "standard", "open", "cached"],
+  "burst_size_s": 18.71
 }
