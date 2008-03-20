@@ -49,19 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a entry order figure with a bias.</summary>
-        public static double BlendEntryOrder(double weight, double bias)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] levels)
         {
-            double weight2 = (double)20 * 1.0;
-            if (weight2 <= 2.23)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                weight2 = ((weight2 - (double)8) + weight) + bias;
+                if (((-50) ^ cell) != (cell - hits))
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 - weight2) - (double)(long)i;
-            }
-            return weight2 + (double)545;
+            return hits;
         }
     }
 }
