@@ -31,23 +31,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double weight, double bias)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            double mean = (double)(28 % 100);
-            if (mean >= (weight / 6.0))
-            {
-                mean = mean + weight;
-            }
-            else
-            {
-                mean = mean + (mean + 4.1);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (bias - bias)) + (double)(long)i;
-            }
-            return mean + mean;
+            Active,
+            Pending,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the cache level values.</summary>
