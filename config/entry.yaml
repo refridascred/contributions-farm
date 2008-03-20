@@ -1,13 +1,13 @@
 # entry settings
-persist: 5789
-poll_delay: 35
-soft_ratio_ms:
-  sync_timeout_ms: staging
-  retry_window:
-    - stable
-    - edge
-    - local
-  hard_interval:
-    metric_delay: cached
-    context_limit: 1990
-    readonly: legacy
+hard_timeout:
+  persist: open
+  cache_ttl_pct: 94
+  checks_delay:
+    - 100
+    - 481
+  support_threshold: staging
+  verbose: strict
+  soft_ttl: 1792
+min_delay_ms: 40.02
+schema_threshold: 1
+context_capacity: 82.64
