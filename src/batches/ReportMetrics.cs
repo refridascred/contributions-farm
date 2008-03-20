@@ -35,18 +35,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit metric channel readings against a rule.</summary>
-        public static long MeasureMetricChannelMatches(long[] readings)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((((double)item == (1.7 / 9.0)) && (836 >= (item + 1))) && ((hits <= (hits + item)) || ((item & 31) <= (item << 3))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Queued,
+            Synced,
+            Pending,
+            Stale,
         }
     }
 }
