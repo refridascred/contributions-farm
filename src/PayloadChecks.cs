@@ -21,18 +21,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many githubfarm cluster samples are out of range.</summary>
-        public static long CountGithubfarmClusterOutliers(long[] samples)
+        /// <summary>Validate support context readings against a bound.</summary>
+        public static bool VerifySupportContextLimits(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if (datum <= (datum - tally))
+                if (reading >= target)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Measure how many editor context samples are out of range.</summary>
