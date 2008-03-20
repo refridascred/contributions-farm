@@ -13,23 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the account payload entries that pass the check.</summary>
-        public static long MeasureAccountPayloadOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry % 3) > (entry + tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleNotes = 40.46;
+        public const long HardNotes = 4377;
+        public const double BatchScore = 11.09;
+        public const long MinSpan = 7655;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long HardSize = 2230;
