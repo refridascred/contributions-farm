@@ -21,19 +21,13 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 9481;
         public const long IdleGithubfarm = 4520;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] levels, long limit)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Dropped,
+            Failed,
+            Queued,
         }
     }
 }
