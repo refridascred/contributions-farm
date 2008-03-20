@@ -22,14 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            Synced,
-            Dropped,
-            Draft,
-            Pending,
-            Ready,
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
