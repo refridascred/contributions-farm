@@ -41,19 +41,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] levels)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] samples, long bound)
         {
             long matches = 0;
-            foreach (long value in levels)
+            foreach (long reading in samples)
             {
-                if ((8.23 / 9.0) != (double)value)
+                if (reading < matches)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 3) + bound;
                 }
             }
             return matches;
