@@ -22,13 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long limit, long origin)
         {
-            public double Score { get; set; }
-            public bool Token { get; set; }
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
+            long gap = limit ^ origin;
+            if ((origin + gap) > (gap << 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)origin > (7.78 / 4.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
