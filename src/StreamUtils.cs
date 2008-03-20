@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 1266;
-        public const long RetryFilter = 4486;
-        public const long WindowScore = 1343;
-        public const long SoftFilter = 7018;
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Closed,
+            Failed,
+            Queued,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Locate a record reading by value.</summary>
         public static long LookupRecordIndex(long[] readings, long seed)
