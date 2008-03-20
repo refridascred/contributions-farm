@@ -26,19 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support context readings against a bound.</summary>
-        public static bool VerifySupportContextLimits(long[] data, long target)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Token { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
