@@ -58,19 +58,21 @@ namespace Common.Utilities
             return load + (double)894;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] values, long target)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] values)
         {
-            long sum = 739;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum << 2) ^ (item >> 2)) - target;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (sum > 545)
-            {
-                sum = (sum ^ (sum * 5)) % 255;
-            }
-            return sum;
+            return seen;
         }
     }
 }
