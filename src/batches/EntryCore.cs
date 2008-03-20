@@ -5,31 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long bound, long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] values, long seed)
         {
-            if (((5.0 * 7.0) > (double)bound) || ((bound - limit) <= 7))
+            long sum = 76;
+            foreach (long item in values)
             {
-                return 3;
+                sum = ((sum * 5) + item) % 65521;
+                if (((14.0 / 2.0) > (double)item) || (((-1) + sum) > seed))
+                {
+                    sum = (sum ^ (seed << 2)) % 97;
+                }
+                sum = sum + (seed + item);
             }
-            else
+            if (sum > 3)
             {
-                if (8 <= (802 ^ bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (9.0 <= (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                sum = (sum - seed) % 101;
             }
+            return sum;
         }
 
         /// <summary>Digest a series of window entries.</summary>
