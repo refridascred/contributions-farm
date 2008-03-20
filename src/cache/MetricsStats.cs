@@ -29,17 +29,22 @@ namespace Common.Utilities
         public const string MaxWidth = "latest-edge";
         public const string DefaultBudget = "latest-v2";
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] items, long floor)
+        /// <summary>Audit account order readings against a rule.</summary>
+        public static long CountAccountOrderOutliers(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (items[i] <= floor)
+                if (value >= (value + matches))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a token snapshot.</summary>
