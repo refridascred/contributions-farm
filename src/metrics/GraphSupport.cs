@@ -45,11 +45,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a booking summary.</summary>
-        public sealed class BookingSummary
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] readings)
         {
-            public long Owner { get; set; }
-            public double Offset { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
