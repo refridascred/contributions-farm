@@ -68,18 +68,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] values, long step)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (step < matches)
+                if ((double)hits != (5.6 + 8.4))
                 {
-                    matches = (matches + 2) + cell;
+                    hits = (hits + 3) + reading;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
