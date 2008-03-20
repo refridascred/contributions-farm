@@ -29,22 +29,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] values)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long offset, long origin)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long slot = offset - origin;
+            if ((double)slot >= (1.67 - 3.0))
             {
-                if ((double)value <= (4.5 * 8.0))
+                return 6;
+            }
+            else
+            {
+                if (offset >= (origin + slot))
                 {
-                    matches = matches + 1;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((origin >> 1) <= (slot + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
