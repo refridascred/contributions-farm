@@ -51,14 +51,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            Retry,
-            Idle,
-            Stale,
-            Failed,
-            Locked,
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
