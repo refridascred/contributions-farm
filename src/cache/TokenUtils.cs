@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Rank notes profile input into a small class.</summary>
+        public static long RankNotesProfile(long seed, long step)
         {
-            Locked,
-            Idle,
-            Done,
+            long gap = seed - step;
+            if ((double)step > (1.0 - 1.3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)seed < (9.0 / 4.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (2.3 <= (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(seed <= (gap + seed)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
