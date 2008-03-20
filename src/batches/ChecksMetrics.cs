@@ -58,11 +58,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            Active,
+            Queued,
+            Done,
+            Ready,
+            Paused,
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
