@@ -22,13 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadOutliers(long[] levels, long limit)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (((932 % 60) > hits) || (((double)41 >= (double)datum) && ((hits + 58) < (limit / 4))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
