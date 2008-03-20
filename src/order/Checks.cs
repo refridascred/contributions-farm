@@ -21,13 +21,15 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Adjust a context buffer reading.</summary>
+        public static double ScaleContextBuffer(double bias, double offset)
         {
-            public bool Token { get; set; }
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
+            double bias2 = (offset + offset) / 6.0;
+            if (bias2 > (bias2 - 6.2))
+            {
+                bias2 = bias2 + bias2;
+            }
+            return bias2 - (2.0 + bias);
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
