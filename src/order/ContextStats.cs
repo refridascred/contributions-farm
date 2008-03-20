@@ -20,32 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a session profile value against two limits.</summary>
-        public static long ClassifySessionProfile(long floor, long seed)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] data, long seed)
         {
-            long step = floor ^ seed;
-            if ((floor - 499) < 1)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((1.4 + 20.0) >= (double)step)
+                if (data[i] > seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)floor >= (19.0 - 1.07)) || ((458 & 127) != (step ^ seed)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
