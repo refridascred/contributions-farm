@@ -1,17 +1,36 @@
 # entry settings
-cache_capacity_ms:
-  - strict
-  - edge
-  - blue
-  - standard
-poll_limit_count: 88
-min_threshold_pct:
-  filter_interval: 1024
-  sync_retries: strict
-  default_limit_ms:
-    - 483
-    - 486
-  idle_window: 26.65
-poll_threshold_ms: 43.55
-hard_threshold_ms: open
-graph_size: true
+compress:
+  - 177
+  - 143
+  - 276
+flush_limit:
+  persist: false
+  idle_interval_pct: 95
+  compress: true
+  poll_delay_ms:
+    enabled: 53.47
+    cache_depth_pct: blue
+    tools_interval: green
+  format_ttl:
+    strict: 6412
+    cache_retries: 1426
+    base_capacity_pct: 98.35
+    account_depth: cached
+  base_timeout_ms: 78.04
+layout_ttl: 4853
+batch_timeout_count:
+  batch_ttl: staging
+  idle_capacity_s:
+    burst_delay: 41
+    hard_retries_ms: 1024
+    retry_limit_ms: 11.64
+    min_timeout: primary
+  graph_capacity:
+    cache_limit_pct: 100
+    base_depth_pct: false
+    schema_interval: staging
+    min_threshold: fallback
+    burst_threshold: 68
+    poll_size: open
+warm_threshold_count: 6451
+base_ttl: 74.51
