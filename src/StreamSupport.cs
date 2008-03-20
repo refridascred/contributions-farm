@@ -14,18 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= target) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstCluster = 20.86;
+        public const double StepCluster = 18.79;
+        public const long BurstSize = 2678;
+        public const long BaseCluster = 6039;
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] levels)
