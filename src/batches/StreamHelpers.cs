@@ -17,15 +17,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Done,
-            Dropped,
-            Retry,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftBudget = 9183;
+        public const double LimitRecord = 42.13;
+        public const string RetryCount = "alpha";
+        public const long CacheRecord = 3729;
+        public const long StepBudget = 9775;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long TallyFormatOutliers(long[] samples, long origin)
