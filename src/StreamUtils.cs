@@ -59,22 +59,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] items, long bound)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] series)
         {
-            long mix = 4;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (!(14.0 < (double)cell))
+                if ((568 >> 3) <= (value % 24))
                 {
-                    mix = ((mix + mix) % 97) - bound;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    mix = mix + mix;
+                    matches = matches - 1;
                 }
             }
-            return mix;
+            return matches;
         }
     }
 }
