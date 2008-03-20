@@ -23,22 +23,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] values)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] values)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count + count) > cell)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] - values[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a account snapshot.</summary>
