@@ -1,22 +1,14 @@
 # entry settings
-command_window: 2.7
-default_ttl_ms: 30.67
-flush_threshold_count:
-  max_depth_s: legacy
-  flush_threshold: 5504
-  poll_interval:
-    enabled: 500
-    burst_interval_pct: standard
-    hard_size_pct: 20.63
-    cache_interval:
-      - 115
-      - 9
-      - 46
-    editor_threshold:
-      - standard
-      - local
-      - standard
-    entry_delay: 91
-min_depth_pct: local
-session_threshold: 250
-base_ttl_pct: true
+retry_window_s: 82.32
+flush_ttl_count:
+  - 11
+  - 447
+  - 270
+  - 435
+persist: cached
+batches_depth:
+  - 239
+  - 385
+  - 355
+flush_depth_ms: 40.37
+verbose: edge
