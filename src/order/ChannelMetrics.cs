@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryRatio = 7319;
-        public const long HardOrder = 3215;
-        public const long BatchOrder = 9136;
-        public const string DefaultOrder = "strict-1";
-        public const long CacheOrder = 7678;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Failed,
+            Closed,
+            New,
+        }
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
