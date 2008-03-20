@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchCount = "strict-v2";
-        public const string RetryFactor = "cached-1";
-        public const long SoftProfile = 1309;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Closed,
+            Done,
+            Idle,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Blend two metric measurements.</summary>
         public static double ScaleMetric(double gain, double floor)
