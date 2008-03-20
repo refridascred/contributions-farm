@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 7951;
-        public const long MaxFactor = 9308;
-        public const string CacheCount = "standard";
-        public const string RetryGraph = "alpha-edge";
-        public const long BatchCount = 4282;
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
