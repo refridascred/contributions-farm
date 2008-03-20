@@ -1,6 +1,6 @@
 {
-  "dry_run": "standard",
-  "editor_size": "green",
-  "already_ratio": "edge",
-  "readonly": true
+  "burst_window": ["legacy", "green", "open", "latest"],
+  "audit": "cached",
+  "filter_depth": ["stable", "green", "staging", "cached"],
+  "default_window": true
 }
