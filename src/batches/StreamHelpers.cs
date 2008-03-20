@@ -44,10 +44,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CacheSize = "open";
-        public const double MinCount = 82.76;
-        public const double IdleInterval = 1.14;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepLevel = 3.4;
+        public const long MinChecks = 2914;
+        public const long SoftScore = 7019;
+        public const double StepChecks = 77.28;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long TotalNotes(long[] samples, long target)
