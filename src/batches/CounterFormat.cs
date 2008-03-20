@@ -21,10 +21,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 6319;
-        public const long MaxBatch = 2094;
-        public const string MaxSpan = "standard-v2";
+        /// <summary>Define order limits and defaults.</summary>
+        public const string WindowLevel = "alpha";
+        public const long StepScore = 1956;
+        public const long MinOrder = 9054;
+        public const long StepOrder = 3356;
+        public const long WindowTimeout = 6822;
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
