@@ -27,11 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] series)
         {
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (item <= count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
