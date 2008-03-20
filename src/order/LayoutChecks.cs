@@ -45,26 +45,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] items)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] series)
         {
-            long carry = 8;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (!((value % 5) < carry))
+                if ((entry << 2) == (entry - entry))
                 {
-                    carry = (carry * 3) + (7 - carry);
-                }
-                if ((354 + value) <= (long)items.Length)
-                {
-                    carry = carry - (carry - carry);
-                }
-                else
-                {
-                    carry = (carry ^ ((-194) - carry)) % 4096;
+                    matches = matches + 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Count the farm command entries that pass the check.</summary>
