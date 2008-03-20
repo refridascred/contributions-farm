@@ -1,8 +1,10 @@
 # githubfarm settings
-hard_retries_count: 53.67
-retry_limit_ms: 22.01
-batch_window_count:
-  - open
+warm_ttl_s: 46.86
+poll_ratio:
   - staging
-  - primary
-  - cached
+  - blue
+  - strict
+  - fallback
+flush_capacity: open
+persist: true
+warm_delay_s: false
