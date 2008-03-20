@@ -98,26 +98,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of contributi schema entries.</summary>
-        public static long ScoreContributiSchema(long[] data, long target)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long acc = 7;
-            foreach (long entry in data)
-            {
-                if ((entry << 1) <= target)
-                {
-                    acc = ((acc * 5) + target) % 1000;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (entry + acc)) % 1000;
-                }
-            }
-            if (acc < 304)
-            {
-                acc = acc - (target + target);
-            }
-            return acc % 65521;
+            Dropped,
+            Pending,
+            Done,
+            Failed,
+            Closed,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
