@@ -1,4 +1,7 @@
 # githubfarm settings
-soft_threshold: 562
-support_depth: legacy
-warm_window_ms: green
+audit: 5.1
+cluster_threshold:
+  - 497
+  - 50
+  - 144
+cache_window_s: cached
