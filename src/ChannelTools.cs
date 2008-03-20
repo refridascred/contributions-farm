@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] readings)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Done,
+            Idle,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
