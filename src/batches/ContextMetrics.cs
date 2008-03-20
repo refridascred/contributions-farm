@@ -34,17 +34,32 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] samples, long offset)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long target, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long slot = target + step;
+            if ((double)slot != (13.0 * 4.0))
             {
-                if (samples[i] >= offset)
+                return 3;
+            }
+            else
+            {
+                if ((target + step) <= slot)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((3.8 / 3.0) <= (double)target) || ((target + step) <= (target % 100)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
