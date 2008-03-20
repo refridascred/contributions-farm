@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long step)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] series)
         {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
+            long mix = 759;
+            foreach (long sample in series)
             {
-                anchor = anchor - ((-59) / 7);
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                mix = ((mix * 2) + sample) % 65521;
+                mix = ((mix * 4) + (sample * 5)) % 4096;
             }
-            return anchor;
+            if (mix > 521)
+            {
+                mix = (mix * 4) + mix;
+            }
+            return mix % 97;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
