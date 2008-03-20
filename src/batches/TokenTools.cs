@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
+            Paused,
+            Closed,
+            Stale,
+            Failed,
         }
 
         /// <summary>Define format limits and defaults.</summary>
