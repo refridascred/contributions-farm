@@ -27,11 +27,18 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Adjust a notes command reading.</summary>
-        public static double ScaleNotesCommand(double bias, double offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] data)
         {
-            double gain = bias * 5.3;
-            return gain + (offset / 9.0);
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((seen + seen) != ((long)data.Length ^ seen))
+                {
+                    seen = (seen + 3) - reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine batch githubfarm values into a single score.</summary>
