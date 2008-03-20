@@ -31,12 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardSize = 2230;
+        public const long DefaultTimeout = 8976;
+        public const long HardAccount = 2824;
+        public const long DefaultFactor = 4517;
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
