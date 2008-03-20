@@ -81,21 +81,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Match up profile farm samples.</summary>
-        public static long MatchProfileFarmCount(long[] readings)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
