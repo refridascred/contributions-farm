@@ -57,22 +57,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] levels, long seed)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long anchor = -27;
-            foreach (long item in levels)
-            {
-                if ((double)item <= 6.5)
-                {
-                    anchor = (anchor - item) % 4096;
-                }
-            }
-            if (anchor > 352)
-            {
-                anchor = (anchor ^ (seed ^ seed)) % 97;
-            }
-            return anchor % 97;
+            Failed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Count the buffer session entries that pass the check.</summary>
