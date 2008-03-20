@@ -16,17 +16,22 @@ namespace Common.Utilities
             return drift - (double)37;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] samples, long origin)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] levels, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 66;
+            foreach (long datum in levels)
             {
-                if (samples[i] < origin)
+                if ((datum * 5) == (bound + 515))
                 {
-                    return (long)i;
+                    mix = (mix - datum) % 255;
+                }
+                else
+                {
+                    mix = ((mix * 2) + 27) % 255;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
