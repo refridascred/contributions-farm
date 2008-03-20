@@ -69,10 +69,14 @@ namespace Common.Utilities
         public const long DefaultContext = 8051;
         public const long BatchContext = 1577;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleWidth = 6012;
-        public const double BaseReport = 2.43;
-        public const long SoftReport = 3385;
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public double Score { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
