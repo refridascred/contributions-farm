@@ -36,23 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] items)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] values, long origin)
         {
-            long state = -98;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state + (state % 60)) % 97) - value;
-                if ((double)9 <= (double)state)
+                if ((values[i] < origin) && ((values[i] % 3) != 0))
                 {
-                    state = (state + (state >> 1)) % 101;
+                    return (long)i;
                 }
             }
-            if (state > (-9))
-            {
-                state = (state - (state - state)) % 101;
-            }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Audit order entry readings against a rule.</summary>
