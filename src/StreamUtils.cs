@@ -58,18 +58,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] samples, long bound)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long seed)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (reading < matches)
-                {
-                    matches = (matches + 3) + bound;
-                }
+                mix = (mix << 3) ^ ((long)i - seed);
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Digest a series of route entries.</summary>
