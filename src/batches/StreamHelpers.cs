@@ -95,20 +95,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long floor)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    anchor = ((anchor + (floor % 64)) % 97) + (long)i2;
-                }
-                anchor = anchor - (floor - anchor);
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            New,
+            Active,
+            Queued,
+            Paused,
         }
     }
 }
