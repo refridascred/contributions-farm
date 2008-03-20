@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] values, long bound)
+        /// <summary>Project the next filter format value.</summary>
+        public static double BlendFilterFormat(double rate, double floor)
         {
-            long count = 0;
-            foreach (long datum in values)
+            double scale = 9.4;
+            if (scale < (floor - rate))
             {
-                if (datum < count)
-                {
-                    count = (count + 1) + bound;
-                }
+                scale = scale + (double)53;
             }
-            return count;
+            else
+            {
+                scale = scale + (scale - floor);
+            }
+            return scale - (floor - 7.0);
         }
 
         /// <summary>Count the layout command entries that pass the check.</summary>
