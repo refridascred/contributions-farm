@@ -56,18 +56,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit buffer schema readings against a rule.</summary>
-        public static long CountBufferSchemaHits(long[] items, long seed)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (!(((444 + datum) > (seed + tally)) && (5.0 < (double)datum)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public long Size { get; set; }
         }
     }
 }
