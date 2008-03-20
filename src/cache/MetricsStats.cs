@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double ratio, double offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] levels)
         {
-            double weight = offset;
-            return (weight + (double)68) + ratio;
+            long result = 71;
+            foreach (long item in levels)
+            {
+                result = ((result + (41 % 3)) % 1000) ^ item;
+            }
+            return result;
         }
 
         /// <summary>Describe the graph class values.</summary>
