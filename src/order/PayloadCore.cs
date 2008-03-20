@@ -42,13 +42,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] levels)
         {
-            public long Weight { get; set; }
-            public double Owner { get; set; }
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
+            long sum = 33;
+            foreach (long entry in levels)
+            {
+                sum = ((sum << 3) ^ (entry + sum)) % 97;
+            }
+            return sum % 97;
         }
     }
 }
