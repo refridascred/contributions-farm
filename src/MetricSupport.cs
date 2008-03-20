@@ -13,17 +13,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] values, long seed)
+        /// <summary>Audit metric token readings against a rule.</summary>
+        public static long TallyMetricTokenGaps(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((values[i] <= seed) && ((values[i] % 2) == 0))
+                if ((double)step > 9.0)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
