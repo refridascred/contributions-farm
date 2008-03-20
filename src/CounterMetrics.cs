@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] levels)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (441 > (seen >> 1))
+                if (cell > target)
                 {
-                    seen = (seen + 1) + reading;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Check that every cache route entry stays within the limit.</summary>
