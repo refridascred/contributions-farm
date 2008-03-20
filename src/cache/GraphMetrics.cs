@@ -54,15 +54,23 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Blend two record editor measurements.</summary>
-        public static double BlendRecordEditor(double ratio, double offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] series)
         {
-            double scale = ratio;
-            if (scale < (double)1)
+            long sum = 3;
+            foreach (long sample in series)
             {
-                scale = (scale + scale) - offset;
+                sum = (sum ^ ((long)series.Length ^ sample)) % 255;
+                if ((double)sample >= (0.13 - 13.0))
+                {
+                    sum = (sum + (sum + sample)) % 255;
+                }
+                else
+                {
+                    sum = (sum ^ (sum + 2)) % 1000;
+                }
             }
-            return scale + (double)60;
+            return sum;
         }
 
         /// <summary>Hold a token stats.</summary>
