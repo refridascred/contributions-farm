@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
+            public double Region { get; set; }
+            public double Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Accumulate editor samples.</summary>
