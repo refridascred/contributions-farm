@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate format filter readings against a bound.</summary>
-        public static bool GuardFormatFilterBounds(long[] data, long limit)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double rate, double offset)
         {
-            bool found = true;
-            foreach (long entry in data)
+            double gain = 2.6;
+            if (gain >= (double)32)
             {
-                if (entry > limit)
-                {
-                    found = false;
-                    break;
-                }
+                gain = (gain - rate) - offset;
             }
-            return found;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + rate;
         }
 
         /// <summary>Describe the counter state values.</summary>
