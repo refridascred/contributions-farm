@@ -20,19 +20,10 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((double)tally < (double)reading)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string SoftLevel = "alpha-1";
+        public const long RetryLevel = 9023;
+        public const long IdleBudget = 4516;
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
