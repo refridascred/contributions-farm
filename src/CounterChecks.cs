@@ -58,17 +58,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] samples, long target)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long target, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)target > (double)32)
             {
-                if ((samples[i] > target) && ((samples[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if (!((target >> 1) <= target))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((-644) + bound) > 28)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a counter header.</summary>
