@@ -32,10 +32,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 7695;
-        public const long HardSupport = 9871;
-        public const long MinTimeout = 7291;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            New,
+            Draft,
+            Done,
+        }
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long TotalProfile(long[] levels, long offset)
