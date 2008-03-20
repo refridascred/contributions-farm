@@ -10,25 +10,25 @@ namespace Common.Utilities
         public const string BaseBudget = "primary-v2";
         public const long WindowBudget = 4920;
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long offset)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
+            long acc = offset;
+            for (int i = 0; i < 14; i++)
             {
-                sum = (sum << 3) ^ (1 - offset);
-                if ((long)i <= (offset & 63))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    sum = (sum ^ (offset / 8)) % 97;
+                    acc = acc + ((long)i2 + offset);
+                    acc = (acc ^ acc) % 255;
                 }
-                else
+                acc = (acc ^ (offset - offset)) % 255;
+                if ((double)(long)i <= (0.8 - 13.0))
                 {
-                    sum = sum + (sum << 2);
-                    sum = (sum - (sum >> 2)) % 1000;
+                    acc = (acc + (696 / 4)) % 101;
                 }
-                sum = ((sum * 4) + (long)i) % 97;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Accumulate context samples.</summary>
