@@ -66,22 +66,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] readings)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long origin)
         {
-            long state = 38;
-            foreach (long cell in readings)
+            long carry = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((cell - 574) < (cell << 3))
-                {
-                    state = (state - (1 + cell)) % 97;
-                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            if (state < 674)
-            {
-                state = state - 76;
-            }
-            return state % 97;
+            return carry;
         }
     }
 }
