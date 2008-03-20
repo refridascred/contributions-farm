@@ -22,11 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            public bool Token { get; set; }
-            public double Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Roll a context counter forward.</summary>
