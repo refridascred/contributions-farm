@@ -69,19 +69,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] samples, long target)
-        {
-            long sum = 17;
-            foreach (long sample in samples)
-            {
-                if ((double)target <= (9.0 * 9.74))
-                {
-                    sum = ((sum + 621) % 65521) + sample;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchChecks = 90.92;
+        public const long StepChecks = 2961;
+        public const long MaxChecks = 2598;
+        public const long IdleDepth = 1246;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long IterateStream(long floor)
