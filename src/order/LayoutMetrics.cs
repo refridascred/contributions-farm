@@ -37,19 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] readings, long limit)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long sum = 197;
-            foreach (long datum in readings)
-            {
-                sum = sum + (datum * 2);
-            }
-            if (sum > 52)
-            {
-                sum = ((sum * 4) + limit) % 255;
-            }
-            return sum % 65521;
+            Done,
+            Paused,
+            New,
         }
     }
 }
