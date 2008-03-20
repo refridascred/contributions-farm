@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] data)
+        /// <summary>Check that every account metrics entry stays within the limit.</summary>
+        public static bool VerifyAccountMetricsRange(long[] series, long seed)
         {
-            long mark = -62;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((mark << 3) != (value & 127))
+                if (item > seed)
                 {
-                    mark = mark + value;
+                    ready = false;
+                    break;
                 }
             }
-            return mark % 1000;
+            return ready;
         }
 
         /// <summary>Rank already input into a small class.</summary>
