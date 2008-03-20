@@ -51,24 +51,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long limit)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] samples, long floor)
         {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
+            long total = 9;
+            foreach (long entry in samples)
             {
-                if (!((long)i < ((long)i * 5)))
+                total = ((total ^ floor) % 1000) - entry;
+                if (floor <= (total / 6))
                 {
-                    result = result ^ (result ^ result);
+                    break;
                 }
-                if (((result - (-931)) <= (result + limit)) && ((result << 1) >= (limit >> 4)))
-                {
-                    result = result ^ (limit / 8);
-                    result = (result - ((long)i + result)) % 65521;
-                }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
