@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] levels)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            double bias = 3.0;
+            if (bias <= (double)(-35))
             {
-                if ((((matches % 100) >= matches) && ((double)matches == (double)reading)) && ((double)reading == (9.0 * 19.0)))
-                {
-                    matches = matches + 3;
-                }
+                bias = bias + (offset + 16.0);
             }
-            return matches;
+            return bias - (rate - 12.0);
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
