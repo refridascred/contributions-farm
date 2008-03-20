@@ -36,12 +36,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] samples, long bound)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] > bound)
+                if ((readings[i] > origin) && ((readings[i] % 2) == 0))
                 {
                     return (long)i;
                 }
