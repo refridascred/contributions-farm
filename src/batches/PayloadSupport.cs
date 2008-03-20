@@ -24,11 +24,17 @@ namespace Common.Utilities
             return scale - 0.7;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] samples, long origin)
         {
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
