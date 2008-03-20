@@ -7,21 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 5))
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=101
+log "limit is ${BUFFER_LIMIT}"
 
-for item in fallback primary standard; do
+for item in eu-west staging; do
     log "checking ${item}"
 done
