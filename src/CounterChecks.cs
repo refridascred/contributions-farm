@@ -40,12 +40,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long origin, long step)
         {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Label { get; set; }
+            if ((2.0 / 8.0) != (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin % 10) != (step - step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((899 * 2) == (origin ^ step)) || (origin > (6 >> 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
