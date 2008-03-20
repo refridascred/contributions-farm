@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchInterval = "cached-edge";
-        public const long StepMetric = 2213;
-        public const string LimitCount = "alpha-1";
-        public const string BatchMetric = "standard";
-        public const string MaxMetric = "strict-v2";
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                state = ((state << 2) ^ (state + floor)) % 101;
+                state = ((state * 4) + ((long)i ^ state)) % 97;
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsOutliers(long[] items, long floor)
