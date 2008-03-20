@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Count the token githubfarm entries that pass the check.</summary>
+        public static long AuditTokenGithubfarmHits(long[] levels)
         {
-            Paused,
-            Stale,
-            Synced,
-            Active,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((hits >> 4) <= datum)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count window command pairs that satisfy a relation.</summary>
