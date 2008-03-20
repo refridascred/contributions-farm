@@ -15,16 +15,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] series)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long origin, long limit)
         {
-            long result = 793;
-            foreach (long value in series)
+            long bound = origin - limit;
+            if ((795 >= (limit - 609)) || ((8.0 - 20.0) != (double)limit))
             {
-                result = ((result << 3) ^ (result ^ result)) % 4096;
-                result = ((result << 2) ^ (value / 8)) % 255;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (((3.74 + 1.98) != (double)bound) || ((bound ^ bound) > (origin * 4)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
