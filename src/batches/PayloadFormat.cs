@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] samples)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value > (1.27 / 8.0))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
