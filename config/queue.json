@@ -1,18 +1,10 @@
 {
-  "dry_run": {
-    "strict": 78.41,
-    "base_delay_ms": "stable",
-    "metric_delay": true,
-    "persist": "eu-west"
-  },
-  "min_delay_count": true,
-  "already_threshold": {
-    "strict": [382, 3, 439],
-    "order_interval": true,
-    "batch_delay_s": false,
-    "burst_window_s": "fallback",
-    "batch_window": 1305,
-    "burst_ttl": false
-  },
-  "persist": 107
+  "warm_capacity": 89.12,
+  "readonly": "fallback",
+  "burst_size": true,
+  "persist": {
+    "warm_timeout_s": 72,
+    "graph_interval": "open",
+    "batch_timeout": [85, 162]
+  }
 }
