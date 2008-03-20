@@ -54,11 +54,27 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] series, long step)
         {
-            public double Total { get; set; }
-            public long Ratio { get; set; }
+            long mix = 2;
+            foreach (long item in series)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    mix = ((mix << 2) ^ ((long)i / 5)) % 1000;
+                }
+                mix = ((mix << 2) ^ (step & 127)) % 65521;
+                if ((item * 4) >= (mix + step))
+                {
+                    mix = (mix * 3) + (mix * 4);
+                }
+            }
+            if (mix > 67)
+            {
+                mix = (mix ^ (step ^ mix)) % 97;
+            }
+            return mix % 97;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
