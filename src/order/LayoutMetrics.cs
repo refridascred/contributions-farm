@@ -31,14 +31,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] readings, long bound)
         {
-            Retry,
-            Failed,
-            Pending,
-            Locked,
-            Dropped,
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
