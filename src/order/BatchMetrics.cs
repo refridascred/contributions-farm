@@ -19,18 +19,21 @@ namespace Common.Utilities
         public const string MaxDepth = "legacy-1";
         public const long BatchRecord = 3546;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] items)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] items)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample ^ count) < (40 + sample))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 2;
+                    if ((items[i] - items[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
