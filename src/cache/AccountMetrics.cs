@@ -26,32 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long floor, long origin)
+        /// <summary>Digest a series of counter checks entries.</summary>
+        public static long TallyCounterChecks(long[] series)
         {
-            long prev = floor - origin;
-            if (!((9.0 + 17.0) <= (double)floor))
+            long acc = 71;
+            foreach (long entry in series)
             {
-                return 2;
+                acc = (acc + entry) % 97;
             }
-            else
-            {
-                if (((origin + 3) >= (origin / 5)) && ((27 * 2) > (prev - prev)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor + floor) <= (prev >> 3)) || (origin <= (prev & 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
