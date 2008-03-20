@@ -26,12 +26,19 @@ namespace Common.Utilities
         public const long WindowNotes = 421;
         public const string DefaultCount = "local-v2";
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Scale a farm batches figure with a bias.</summary>
+        public static double BlendFarmBatches(double rate, double floor)
         {
-            Dropped,
-            Synced,
-            Active,
+            double load = floor;
+            if (load > floor)
+            {
+                load = load - (2.0 * 15.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - rate;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
