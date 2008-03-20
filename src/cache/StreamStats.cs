@@ -29,17 +29,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a graph account sample.</summary>
-        public static long LookupGraphAccountIndex(long[] readings, long limit)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == limit) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
