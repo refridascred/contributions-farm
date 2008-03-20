@@ -66,18 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] levels)
+        /// <summary>Accumulate layout support samples.</summary>
+        public static long ScoreLayoutSupport(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long result = 5;
+            foreach (long entry in readings)
             {
-                if (((sample + tally) < ((-5) + sample)) || (tally > (tally - tally)))
+                if ((8.6 * 6.26) >= (double)entry)
                 {
-                    tally = tally + 3;
+                    result = ((result + (long)readings.Length) % 97) - seed;
+                }
+                else
+                {
+                    result = result ^ 14;
                 }
             }
-            return tally;
+            return result % 97;
         }
     }
 }
