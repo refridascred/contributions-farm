@@ -1,21 +1,6 @@
 # githubfarm settings
-contributi_size:
-  command_capacity:
-    - 109
-    - 98
-    - 14
-  hard_timeout_ms: true
-  batch_limit_pct:
-    hard_window_pct: blue
-    checks_retries: 40.4
-    batches_window: 4519
-  batch_capacity_s: legacy
-soft_limit_pct: 250
-burst_retries: blue
-format_depth:
-  - 457
-  - 500
-  - 127
-  - 49
-dry_run: strict
-account_limit: 5453
+verbose: true
+soft_window_count: 100
+idle_window_count: 60
+poll_ttl_ms: standard
+base_limit: 7848
