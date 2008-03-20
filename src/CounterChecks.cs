@@ -33,10 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCount = 7305;
-        public const long BurstSize = 7354;
-        public const long LimitCommits = 4281;
+        /// <summary>Audit channel token readings against a rule.</summary>
+        public static long AuditChannelTokenOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (hits >= (cell + hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelGaps(long[] data, long offset)
