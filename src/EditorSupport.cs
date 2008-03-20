@@ -45,17 +45,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] samples, long origin)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Active,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a command stats.</summary>
