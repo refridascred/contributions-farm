@@ -13,18 +13,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit metric token readings against a rule.</summary>
-        public static long TallyMetricTokenGaps(long[] values, long step)
+        /// <summary>Iterate the metrics window series from a seed.</summary>
+        public static long IterateMetricsWindow(long limit)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)step > 9.0)
-                {
-                    hits = (hits + 2) + cell;
-                }
+                sum = (sum + (sum * 3)) % 97;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
