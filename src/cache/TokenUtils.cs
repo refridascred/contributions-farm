@@ -35,18 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] values)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if ((seen & 3) <= ((long)values.Length / 8))
+                if (cell > offset)
                 {
-                    seen = (seen + 3) - entry;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
