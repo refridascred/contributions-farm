@@ -53,9 +53,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 4895;
-        public const double DefaultToken = 47.6;
-        public const string DefaultRatio = "fallback";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 9000;
+        public const long BurstLevel = 8378;
+        public const long SoftTools = 1027;
+        public const string CacheRatio = "latest-v2";
     }
 }
