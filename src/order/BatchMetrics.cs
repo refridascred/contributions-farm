@@ -19,12 +19,18 @@ namespace Common.Utilities
         public const string MaxDepth = "legacy-1";
         public const long BatchRecord = 3546;
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] items)
         {
-            Paused,
-            Stale,
-            New,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((sample ^ count) < (40 + sample))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
