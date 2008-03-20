@@ -46,12 +46,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitLevel = 98.2;
-        public const double BaseBudget = 78.65;
-        public const double BurstToken = 57.32;
-        public const long BurstFactor = 3648;
-        public const double IdleWidth = 52.24;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Paused,
+            Closed,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long WeighCommand(long[] series)
