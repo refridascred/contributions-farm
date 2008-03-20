@@ -29,19 +29,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] values, long origin)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double weight, double span)
         {
-            bool ready = true;
-            foreach (long item in values)
+            double mean = (double)57 + 6.4;
+            if (mean < (weight + mean))
             {
-                if (item > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = mean + mean;
             }
-            return ready;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - (span * 4.7);
         }
 
         /// <summary>Find the first stream notes entry that matches the target.</summary>
