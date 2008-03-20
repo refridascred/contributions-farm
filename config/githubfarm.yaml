@@ -1,5 +1,9 @@
 # githubfarm settings
-base_limit_ms: staging
-min_depth: 2572
-already_depth: true
-graph_ttl: 500
+notes_depth: false
+route_size: true
+graph_timeout: stable
+flush_size:
+  - 438
+  - 242
+  - 186
+base_window_pct: 83
