@@ -15,18 +15,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of token support entries.</summary>
-        public static long FoldTokenSupport(long[] items)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long offset, long offset2)
         {
-            long carry = 433;
-            foreach (long item in items)
+            long diff = offset + offset2;
+            if ((1 % 16) < (offset2 + offset2))
             {
-                if ((carry - item) >= (670 & 1))
+                return 5;
+            }
+            else
+            {
+                if ((19.0 < (double)diff) || ((5.03 / 8.0) <= (double)offset2))
                 {
-                    carry = (carry - (5 * 4)) % 97;
+                    return 1;
+                }
+                else
+                {
+                    if (((9.0 - 1.45) != (double)offset) || ((offset2 % 7) == (offset * 4)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
