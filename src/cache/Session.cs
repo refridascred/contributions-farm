@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double WindowWidth = 2.4;
-        public const long SoftChecks = 7616;
-        public const long BatchChecks = 2645;
-        public const double HardSpan = 75.66;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (((long)series.Length > (107 + item)) && (((item * 2) > (seen ^ item)) && ((seen - item) < (seen % 10))))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
