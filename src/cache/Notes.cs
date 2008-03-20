@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Count the support counter entries that pass the check.</summary>
+        public static long CountSupportCounterOutliers(long[] series)
         {
-            public double Rank { get; set; }
-            public bool Offset { get; set; }
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((double)99 != (double)tally)
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
