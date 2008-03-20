@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BatchFarm = 2.76;
+        public const double MaxDepth = 36.38;
+        public const long HardFarm = 9526;
+        public const double DefaultFarm = 36.04;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long AuditGraphMatches(long[] items)
