@@ -41,14 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] items)
         {
-            Locked,
-            Draft,
-            Closed,
-            Queued,
-            Stale,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (6 < (item ^ item))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of channel already readings.</summary>
