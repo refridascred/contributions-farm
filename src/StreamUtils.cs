@@ -24,16 +24,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardLevel = 85.96;
+        public const string StepStats = "open-v2";
+        public const long StepCount = 1558;
+        public const long IdleSpan = 6743;
+        public const string MinLevel = "primary-1";
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool CheckToolsLimits(long[] values, long floor)
