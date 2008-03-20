@@ -37,19 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutLimits(long[] series, long origin)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value != origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Hold a notes entry.</summary>
