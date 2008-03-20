@@ -40,16 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long origin)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 2) + 74) % 65521;
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            public long Owner { get; set; }
+            public bool Count { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a contributi entry.</summary>
