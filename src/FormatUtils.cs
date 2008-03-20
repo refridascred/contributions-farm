@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] levels)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 2;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((cell >> 5) > result)
                 {
-                    if ((levels[i] - levels[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = result - 687;
+                }
+                else
+                {
+                    result = ((result * 2) + cell) % 4096;
                 }
             }
-            return matches;
+            return result % 4096;
         }
 
         /// <summary>Hold a already summary.</summary>
