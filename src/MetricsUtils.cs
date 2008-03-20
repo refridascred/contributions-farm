@@ -49,23 +49,11 @@ namespace Common.Utilities
         public const long RetryFactor = 6441;
         public const long BatchCommits = 5031;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((7 + 7) != (matches ^ (long)items.Length))
-                {
-                    matches = (matches + 1) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxSpan = 1546;
+        public const long DefaultLevel = 4514;
+        public const double MinStats = 35.87;
+        public const long IdleStats = 5556;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long SortProfile(long step, long seed)
