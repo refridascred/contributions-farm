@@ -19,17 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a format editor sample.</summary>
-        public static long LookupFormatEditorIndex(long[] readings, long bound)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] readings, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 977;
+            foreach (long item in readings)
             {
-                if (readings[i] <= bound)
+                if (((5.9 - 9.58) <= (double)carry) || ((double)target <= (double)item))
                 {
-                    return (long)i;
+                    carry = carry - (target % 5);
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry >> 1)) % 4096;
                 }
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
