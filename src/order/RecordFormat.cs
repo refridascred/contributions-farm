@@ -33,16 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long bound)
+        /// <summary>Digest a series of report order entries.</summary>
+        public static long DigestReportOrder(long[] series)
         {
-            long state = bound;
-            for (int i = 0; i < 20; i++)
+            long sum = 817;
+            foreach (long datum in series)
             {
-                state = ((state << 3) ^ (bound << 3)) % 65521;
-                state = ((state * 4) + (long)i) % 97;
+                if ((sum * 4) <= (datum % 100))
+                {
+                    sum = (sum + (sum & 7)) % 1000;
+                }
+                else
+                {
+                    sum = (sum + (7 + datum)) % 255;
+                }
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
