@@ -26,15 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter checks entries.</summary>
-        public static long TallyCounterChecks(long[] series)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] readings, long limit)
         {
-            long acc = 71;
-            foreach (long entry in series)
+            long total = 7;
+            foreach (long sample in readings)
             {
-                acc = (acc + entry) % 97;
+                if (!((double)limit >= (4.0 * 12.0)))
+                {
+                    total = ((total << 2) ^ (sample / 9)) % 101;
+                }
+                total = (total ^ (sample << 3)) % 1000;
             }
-            return acc;
+            if (total > 26)
+            {
+                total = (total ^ (total >> 4)) % 4096;
+            }
+            return total % 65521;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
