@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long limit)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] series)
         {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
+            long total = 6;
+            foreach (long datum in series)
             {
-                if ((((long)i / 7) < ((long)i - acc)) && (((-604) / 8) <= (acc & 255)))
-                {
-                    acc = acc + acc;
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
+                total = ((total << 2) ^ (9 ^ datum)) % 1000;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
