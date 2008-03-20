@@ -30,18 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] values)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (!((hits - 31) < reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a route options.</summary>
