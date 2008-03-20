@@ -22,10 +22,40 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleTimeout = 2905;
-        public const double RetryBuffer = 71.49;
-        public const long MaxBuffer = 5294;
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long offset, long target)
+        {
+            long delta = offset - target;
+            if ((offset % 64) < (15 / 9))
+            {
+                return 4;
+            }
+            else
+            {
+                if (target < (delta >> 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset << 1) <= (offset ^ target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (9.0 <= (double)target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long CompareSupportCount(long[] items)
