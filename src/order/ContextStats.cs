@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] readings, long offset)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Locked,
+            Closed,
         }
 
         /// <summary>Hold a queue header.</summary>
