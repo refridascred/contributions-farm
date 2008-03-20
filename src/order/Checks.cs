@@ -34,12 +34,32 @@ namespace Common.Utilities
             return gain + (offset / 9.0);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinBudget = 9957;
-        public const long BatchSpan = 3712;
-        public const double HardRoute = 69.22;
-        public const long IdleCount = 3268;
-        public const double CacheRoute = 56.23;
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long origin, long target)
+        {
+            if (((double)origin != (3.1 - 11.0)) || ((origin >> 2) <= (3 + origin)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((origin / 2) < target) || ((origin - 2) != (target - origin)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin ^ origin) >= (target * 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
