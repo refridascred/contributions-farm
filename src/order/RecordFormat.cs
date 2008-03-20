@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double scale, double floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] levels)
         {
-            double gain = floor;
-            return (gain - gain) + scale;
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry * 4) < (hits - hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the token phase values.</summary>
