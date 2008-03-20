@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] data)
         {
-            public double Limit { get; set; }
-            public double Label { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry != (3.0 + 4.81))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
