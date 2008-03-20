@@ -25,13 +25,17 @@ namespace Common.Utilities
         public const long RetryBatch = 1663;
         public const long SoftDepth = 1085;
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] items, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
