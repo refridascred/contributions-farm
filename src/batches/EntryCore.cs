@@ -48,19 +48,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double rate, double offset)
+        /// <summary>Match up cache metric samples.</summary>
+        public static long PairCacheMetricCount(long[] items)
         {
-            double bias = rate;
-            if (bias >= (bias / 8.0))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias + offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - (offset * 1.9);
-            }
-            return bias + (8.9 / 5.0);
+            return tally;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
