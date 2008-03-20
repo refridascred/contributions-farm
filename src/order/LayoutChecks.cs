@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public double Count { get; set; }
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public double Score { get; set; }
+            Stale,
+            Idle,
+            New,
         }
 
         /// <summary>Locate a stats reading by value.</summary>
