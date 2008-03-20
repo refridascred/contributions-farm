@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double weight, double bias)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long bound, long limit)
         {
-            double scale = (double)(92 & 31);
-            if (scale >= (bias - weight))
+            if (((5.0 * 7.0) > (double)bound) || ((bound - limit) <= 7))
             {
-                scale = scale - bias;
+                return 3;
             }
-            return scale - (scale / 9.0);
+            else
+            {
+                if (8 <= (802 ^ bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (9.0 <= (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a profile info.</summary>
