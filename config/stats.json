@@ -1,8 +1,8 @@
 {
-  "idle_threshold_ms": 90.04,
-  "enabled": 7.59,
-  "layout_timeout": 43,
-  "max_size_pct": 9834,
-  "idle_depth": 2706,
-  "burst_capacity_ms": "edge"
+  "max_interval_count": ["local", "cached", "edge"],
+  "sync_size": "eu-west",
+  "strict": 83.3,
+  "report_limit": 83,
+  "readonly": "staging",
+  "hard_depth_ms": 100
 }
