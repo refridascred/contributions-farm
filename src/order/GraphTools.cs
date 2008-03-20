@@ -66,10 +66,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstBudget = 33.84;
-        public const string BaseTimeout = "legacy-edge";
-        public const double WindowRecord = 16.73;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] samples, long offset)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (matches >= (matches - offset))
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long SeriesBatch(long seed)
