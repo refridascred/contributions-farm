@@ -31,19 +31,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] values, long step)
-        {
-            long carry = -8;
-            foreach (long cell in values)
-            {
-                if ((6.0 + 7.52) < (double)step)
-                {
-                    carry = (carry * 3) + (cell << 2);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinPayload = 85.15;
+        public const string RetryWidth = "standard";
+        public const long IdlePayload = 403;
+        public const long SoftFactor = 7765;
+        public const long DefaultPayload = 1232;
 
         /// <summary>Count the commits editor entries that pass the check.</summary>
         public static long TallyCommitsEditorMatches(long[] series, long origin)
