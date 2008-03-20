@@ -20,18 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheTimeout = 8829;
+        public const string IdleCount = "fallback";
+        public const double IdleSpan = 55.22;
+        public const long MaxPayload = 2348;
+        public const long BatchPayload = 4273;
 
         /// <summary>Match up cache samples.</summary>
         public static long MatchCacheCount(long[] series)
