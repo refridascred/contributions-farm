@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double ratio, double floor)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long limit)
         {
-            double drift = 3.0;
-            if (drift <= 2.7)
+            long mix = limit;
+            for (int i = 0; i < 19; i++)
             {
-                drift = drift - (floor * 8.8);
+                if (limit >= (limit * 2))
+                {
+                    mix = mix + (long)i;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (mix - 1);
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            else
-            {
-                drift = drift + (ratio * 4.0);
-            }
-            return drift + drift;
+            return mix;
         }
 
         /// <summary>Define support limits and defaults.</summary>
