@@ -19,21 +19,17 @@ namespace Common.Utilities
         public const string MaxDepth = "legacy-1";
         public const long BatchRecord = 3546;
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] series)
+        /// <summary>Locate a batch cache reading by value.</summary>
+        public static long SeekBatchCacheIndex(long[] samples, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (samples[i] >= floor)
                 {
-                    if ((series[i] - series[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
