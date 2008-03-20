@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] series, long offset)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Active,
+            Idle,
+            Pending,
+            Closed,
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
