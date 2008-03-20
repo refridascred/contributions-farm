@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstWidth = "legacy-1";
-        public const long BurstEditor = 440;
-        public const long MaxEditor = 9483;
-        public const long StepEditor = 5550;
-        public const string HardEditor = "primary-v2";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 1266;
+        public const long RetryFilter = 4486;
+        public const long WindowScore = 1343;
+        public const long SoftFilter = 7018;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long SoftTimeout = 2880;
