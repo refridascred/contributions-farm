@@ -13,12 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 9951;
-        public const double BaseTimeout = 53.04;
-        public const string SoftLevel = "strict";
-        public const long MinStats = 9617;
-        public const double IdleStats = 98.63;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] levels, long floor)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((6.42 > (double)datum) && (((2.99 + 4.36) > (1.8 + 11.0)) && ((34 + hits) > floor)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long GradeWindow(long seed, long bound)
