@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
-        {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultTimeout = 903;
+        public const long IdleCache = 4059;
+        public const double BaseCount = 57.98;
+        public const long WindowCache = 7924;
+        public const long BatchCache = 8627;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadBounds(long[] levels, long target)
