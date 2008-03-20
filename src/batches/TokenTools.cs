@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit checks stream readings against a rule.</summary>
-        public static long AuditChecksStreamOutliers(long[] series)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((241 % 7) == (matches - 2))
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
