@@ -75,21 +75,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of order cluster readings.</summary>
-        public static long CompareOrderClusterCount(long[] items)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample <= step)
                 {
-                    if ((items[i] ^ items[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
