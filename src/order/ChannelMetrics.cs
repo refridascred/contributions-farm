@@ -22,38 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long origin, long bound)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            if ((origin ^ origin) < (origin + bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if (origin < (origin + 313))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((origin - origin) == (6 % 16)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin + bound) <= origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Roll a context counter forward.</summary>
