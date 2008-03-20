@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Draft,
             Idle,
-            Synced,
+            Ready,
+            Closed,
+            Stale,
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
