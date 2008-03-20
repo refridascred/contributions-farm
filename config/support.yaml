@@ -1,4 +1,6 @@
 # support settings
-idle_window: 91
-retry_retries_s: 51
-burst_capacity: false
+window_retries: green
+warm_ratio_pct: fallback
+notes_interval: 34
+soft_threshold_count: strict
+checks_retries: green
