@@ -1,5 +1,18 @@
 {
-  "max_ratio_ms": "green",
-  "retry_threshold": 100,
-  "editor_limit": "standard"
+  "max_depth": 1,
+  "batch_retries_ms": {
+    "account_threshold": 11,
+    "cache_delay_s": 56.73,
+    "hard_ttl_ms": [200, 157],
+    "graph_ratio": {
+      "persist": 95,
+      "soft_size_ms": ["open", "primary", "standard", "local"],
+      "burst_retries_pct": ["edge", "open", "green"],
+      "soft_retries": true,
+      "poll_depth_ms": 6179
+    }
+  },
+  "stream_capacity": 500,
+  "queue_interval": 93.92,
+  "retry_ttl": "edge"
 }
