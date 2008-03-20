@@ -51,18 +51,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many cache account samples are out of range.</summary>
-        public static long AuditCacheAccountOutliers(long[] data)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((64 & 3) > (hits + 2))
+                if (readings[i] == offset)
                 {
-                    hits = (hits + 2) + datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
