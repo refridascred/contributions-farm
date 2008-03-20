@@ -1,13 +1,28 @@
 # support settings
-min_threshold_count: 36.92
-default_delay: cached
-retry_ratio_s:
-  retry_limit: 49
-  checks_timeout: false
-  enabled:
-    - blue
-    - primary
-    - legacy
-  context_size: 1024
-  idle_size_ms: eu-west
-filter_delay: false
+session_limit:
+  - primary
+  - cached
+editor_capacity: green
+cache_size_pct:
+  dry_run: green
+  max_interval_ms:
+    sync_size_pct: 137
+    idle_window: open
+    burst_ratio_pct:
+      - edge
+      - green
+    batch_window_pct: 5
+    compress:
+      - 220
+      - 85
+      - 362
+    token_delay: 30
+  entry_timeout:
+    - latest
+    - local
+    - cached
+  poll_capacity_s: eu-west
+  batch_depth:
+    strict: true
+    queue_limit: 60
+    sync_capacity_s: 2.02
