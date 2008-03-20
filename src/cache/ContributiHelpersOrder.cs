@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstPayload = "alpha-1";
-        public const long IdleInterval = 3266;
-        public const long RetryCount = 8031;
-        public const long SoftSpan = 1880;
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
+        {
+            public string Rank { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long LimitCounter = 8457;
