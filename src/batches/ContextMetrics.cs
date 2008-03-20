@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long bound)
         {
-            Dropped,
-            Idle,
-            Active,
-            Queued,
+            long carry = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = (carry + (long)i) % 97;
+                if ((double)(long)i >= 6.2)
+                {
+                    carry = (carry + carry) % 97;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the layout status values.</summary>
