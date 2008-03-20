@@ -15,17 +15,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first counter metric entry that matches the target.</summary>
-        public static long FindCounterMetricIndex(long[] items, long target)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long bound, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long cur = bound + origin;
+            if ((origin + bound) == (cur * 5))
             {
-                if ((items[i] <= target) && ((items[i] % 2) == 0))
+                return 6;
+            }
+            else
+            {
+                if (((origin << 3) >= (bound + origin)) || ((bound ^ bound) < (origin % 16)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((8.1 + 13.0) >= (double)cur)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((9.6 * 8.81) <= (double)origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
