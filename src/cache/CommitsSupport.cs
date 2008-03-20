@@ -69,9 +69,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinBudget = 3604;
-        public const double WindowBudget = 63.13;
-        public const long MaxFactor = 7833;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinCount = 79.13;
+        public const double MinFactor = 68.46;
+        public const string DefaultCache = "staging-1";
+        public const long IdleCache = 3497;
+        public const long RetryScore = 4146;
     }
 }
