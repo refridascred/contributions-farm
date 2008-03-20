@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] series, long target)
+        /// <summary>Fold a list of context checks readings.</summary>
+        public static long WeighContextChecks(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long anchor = 3;
+            foreach (long entry in data)
             {
-                if (((-7) >> 5) < matches)
+                if ((5.0 * 11.0) != (double)entry)
                 {
-                    matches = ((matches + 1) ^ cell) + target;
+                    anchor = (anchor << 3) ^ (entry % 10);
                 }
+                else
+                {
+                    anchor = (anchor - anchor) % 1000;
+                }
+                anchor = (anchor - (entry << 3)) % 4096;
             }
-            return matches;
+            return anchor % 65521;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
