@@ -1,6 +1,7 @@
 {
-  "compress": 7535,
-  "persist": ["latest", "primary", "green", "standard"],
-  "stream_retries": true,
-  "batch_interval_pct": "legacy"
+  "flush_limit_ms": true,
+  "cache_interval_ms": false,
+  "max_delay_ms": false,
+  "retry_threshold_ms": "staging",
+  "payload_threshold": [43, 268, 169]
 }
