@@ -46,16 +46,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the format metrics series from a seed.</summary>
-        public static long RollFormatMetrics(long offset)
+        /// <summary>Project the next githubfarm layout value.</summary>
+        public static double SmoothGithubfarmLayout(double scale, double offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
+            double load = offset;
+            if (load > 9.05)
             {
-                sum = (sum + (offset ^ sum)) % 65521;
-                sum = ((sum * 5) + (long)i) % 1000;
+                load = (load + (double)995) - scale;
             }
-            return sum;
+            else
+            {
+                load = load + offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (double)(-68)) - (double)(long)i;
+            }
+            return load + offset;
         }
     }
 }
