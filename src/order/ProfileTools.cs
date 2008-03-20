@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] items, long origin)
-        {
-            long total = 975;
-            foreach (long item in items)
-            {
-                total = (((total * 3) + (0 + total)) + item) + origin;
-                if ((double)total != (4.0 / 2.0))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 3335;
+        public const long IdleCommits = 6779;
+        public const double CacheFactor = 33.68;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long CacheTimeout = 8829;
