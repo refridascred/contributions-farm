@@ -16,19 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] series, long offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterBounds(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (entry <= offset)
+                if (reading != origin)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Fold a list of already readings.</summary>
