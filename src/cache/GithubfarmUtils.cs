@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double gain, double floor)
+        /// <summary>Check that every editor checks entry stays within the limit.</summary>
+        public static bool ValidateEditorChecksLimits(long[] data, long bound)
         {
-            double drift = gain / 4.0;
-            if (drift > gain)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                drift = (drift + gain) - floor;
+                if (cell >= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift - gain;
+            return ready;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
