@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            public double Size { get; set; }
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
+            public double Rank { get; set; }
+            public bool Offset { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Combine window buffer values into a single score.</summary>
