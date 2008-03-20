@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] samples, long floor)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] samples)
         {
             long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((floor + 3) < 2)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 2) - reading;
+                    if ((samples[i] + samples[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
