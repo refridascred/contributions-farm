@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a filter schema reading.</summary>
-        public static double AdjustFilterSchema(double weight, double span)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            double drift = (double)2 / 9.0;
-            if (drift <= span)
-            {
-                drift = (drift - span) - weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (9.0 * 4.5)) - (double)(long)i;
-            }
-            return drift - (double)788;
+            public double Label { get; set; }
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Accumulate notes samples.</summary>
