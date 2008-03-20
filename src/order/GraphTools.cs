@@ -37,17 +37,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] samples, long origin)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 827;
+            foreach (long cell in values)
             {
-                if (samples[i] > origin)
+                anchor = ((anchor * 5) + (anchor >> 3)) % 1000;
+                if (!((cell & 127) >= cell))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ ((-30) * 2)) % 101;
+                }
+                else
+                {
+                    anchor = anchor + 63;
+                }
+                if ((8.0 * 9.7) >= (double)cell)
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
