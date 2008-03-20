@@ -18,12 +18,22 @@ namespace Common.Utilities
         public const long RetryBatch = 1663;
         public const long SoftDepth = 1085;
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Measure how many tools batches samples are out of range.</summary>
+        public static long MeasureToolsBatchesGaps(long[] series, long origin)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((804 / 6) > (datum - origin))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
