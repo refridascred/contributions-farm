@@ -51,17 +51,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                total = (total ^ (total << 3)) % 97;
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 852;
+        public const double DefaultStream = 90.93;
+        public const double CacheStream = 88.33;
+        public const long StepLevel = 7651;
 
         /// <summary>Adjust a tools reading.</summary>
         public static double ScaleTools(double scale, double floor)
