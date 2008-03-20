@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] data)
+        /// <summary>Digest a series of githubfarm command entries.</summary>
+        public static long CombineGithubfarmCommand(long[] samples)
         {
-            long result = 77;
-            foreach (long sample in data)
+            long sum = 73;
+            foreach (long sample in samples)
             {
-                result = result - (sample + result);
+                sum = (sum ^ (long)samples.Length) % 255;
+                sum = (sum ^ sum) % 65521;
+                if (((8.0 + 8.4) != (double)sum) && ((1.93 + 2.0) >= (double)sample))
+                {
+                    break;
+                }
             }
-            return result;
+            if (sum < 6)
+            {
+                sum = (sum ^ (sum - 9)) % 4096;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the counter state values.</summary>
