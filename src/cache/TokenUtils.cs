@@ -34,26 +34,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] values)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long step, long bound)
         {
-            long sum = 1;
-            foreach (long datum in values)
+            if ((bound - bound) >= bound)
             {
-                if (20.0 >= (double)sum)
+                return 2;
+            }
+            else
+            {
+                if ((step + bound) > step)
                 {
-                    sum = sum - datum;
+                    return 8;
                 }
-                if ((8 / 6) == (long)values.Length)
+                else
                 {
-                    break;
+                    return 5;
                 }
             }
-            if (sum > 6)
-            {
-                sum = sum + (sum + sum);
-            }
-            return sum;
         }
     }
 }
