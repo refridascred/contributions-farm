@@ -53,18 +53,10 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((19.0 / 3.0) <= (double)hits)
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 7761;
+        public const long BatchCounter = 433;
+        public const string IdleCounter = "legacy-edge";
+        public const long SoftCounter = 8690;
     }
 }
