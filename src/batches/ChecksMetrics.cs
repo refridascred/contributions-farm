@@ -13,24 +13,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long target, long step)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] values)
         {
-            if ((409 ^ step) < (step >> 3))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step - step) <= (step << 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    if ((values[i] ^ values[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the githubfarm metric series from a seed.</summary>
