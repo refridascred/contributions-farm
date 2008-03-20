@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitRoute = 92.01;
-        public const long BatchRoute = 6603;
-        public const long IdleRoute = 3759;
-        public const long SoftSpan = 4951;
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public bool Size { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TotalTools(long[] series, long bound)
