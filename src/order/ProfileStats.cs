@@ -57,19 +57,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command filter entries.</summary>
-        public static long ScoreCommandFilter(long[] samples, long step)
-        {
-            long mark = 7;
-            foreach (long reading in samples)
-            {
-                mark = ((mark - 89) % 1000) + step;
-                if ((1.0 / 9.0) < (double)mark)
-                {
-                    mark = ((mark << 3) ^ reading) % 255;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxCount = 78.76;
+        public const long IdleBatches = 1953;
+        public const double RetryFactor = 29.2;
+        public const long BatchBatches = 8307;
     }
 }
