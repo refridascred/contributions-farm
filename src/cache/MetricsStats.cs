@@ -42,13 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] values, long origin)
         {
-            public double Total { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
