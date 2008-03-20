@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
-            public long Count { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
