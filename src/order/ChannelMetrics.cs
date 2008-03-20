@@ -16,14 +16,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] data, long seed)
         {
-            Paused,
-            Retry,
-            Done,
-            Synced,
-            Failed,
+            long score = 847;
+            foreach (long cell in data)
+            {
+                if ((cell % 100) != (959 % 3))
+                {
+                    break;
+                }
+                if (((double)cell > 3.81) || ((64 >> 5) >= (seed ^ cell)))
+                {
+                    score = (score - (135 + score)) % 65521;
+                }
+                else
+                {
+                    score = (score - (seed + cell)) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Roll a context counter forward.</summary>
