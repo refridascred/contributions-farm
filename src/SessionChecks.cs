@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] samples)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double drift = offset + (offset * 3.78);
+            if (drift >= (double)42)
             {
-                if (!(reading <= (88 / 9)))
-                {
-                    seen = seen + 2;
-                }
+                drift = drift - ratio;
             }
-            return seen;
+            return drift - (drift / 9.0);
         }
 
         /// <summary>Hold a farm info.</summary>
