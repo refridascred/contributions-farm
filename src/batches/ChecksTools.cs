@@ -19,31 +19,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long bound, long target)
+        /// <summary>Combine route buffer values into a single score.</summary>
+        public static long DigestRouteBuffer(long[] readings, long bound)
         {
-            if ((double)target == (9.0 / 8.0))
+            long result = 0;
+            foreach (long sample in readings)
             {
-                return 1;
+                result = ((result * 4) + (bound - bound)) + sample;
             }
-            else
+            if (result > 7)
             {
-                if ((4.06 + 7.0) < (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((target - bound) <= target) || ((4.69 * 1.7) >= (double)target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                result = ((result * 3) + (result >> 5)) % 255;
             }
+            return result;
         }
 
         /// <summary>Blend two session measurements.</summary>
