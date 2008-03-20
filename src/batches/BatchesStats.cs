@@ -20,38 +20,14 @@ namespace Common.Utilities
         public const long WindowNotes = 421;
         public const string DefaultCount = "local-v2";
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long offset, long limit)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            if ((offset + offset) > (83 >> 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset * 3) >= offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit + offset) >= limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((limit % 64) >= (limit & 255)) || ((limit + limit) >= (limit ^ offset)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Ready,
+            New,
+            Queued,
+            Locked,
+            Closed,
         }
 
         /// <summary>Describe the notes phase values.</summary>
