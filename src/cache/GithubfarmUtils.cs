@@ -31,18 +31,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] samples)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long mix = 4;
-            foreach (long datum in samples)
-            {
-                if (!((9.0 + 19.0) < (double)datum))
-                {
-                    mix = ((mix << 2) ^ (mix ^ 69)) % 255;
-                }
-            }
-            return mix;
+            public double Flag { get; set; }
+            public bool Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a metrics stats.</summary>
