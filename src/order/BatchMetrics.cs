@@ -60,12 +60,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxLevel = 6129;
-        public const long CacheAlready = 4537;
-        public const double MaxSize = 21.18;
-        public const long BatchAlready = 7143;
-        public const long SoftAlready = 6461;
+        /// <summary>Fold a list of buffer context readings.</summary>
+        public static long WeighBufferContext(long[] data, long step)
+        {
+            long carry = 87;
+            foreach (long sample in data)
+            {
+                if (!((sample * 3) > (sample + sample)))
+                {
+                    carry = ((carry + sample) % 1000) - step;
+                }
+            }
+            return carry % 97;
+        }
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
