@@ -52,22 +52,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryLevel = 2464;
+        public const long SoftSize = 926;
+        public const long DefaultGraph = 1056;
+        public const string MinBudget = "strict-v2";
 
         /// <summary>Accumulate channel samples.</summary>
         public static long ScoreChannel(long[] data, long offset)
