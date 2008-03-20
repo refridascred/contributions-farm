@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order githubfarm readings.</summary>
-        public static long TallyOrderGithubfarm(long[] data)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] series)
         {
-            long total = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = ((((total << 2) ^ (total - total)) % 65521) - (long)i) ^ sample;
+                    if ((series[i] ^ series[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                total = total ^ total;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the commits class values.</summary>
