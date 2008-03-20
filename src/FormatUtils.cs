@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] data)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] series)
         {
-            long result = 2;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((cell >> 5) > result)
+                if ((datum + 481) < ((-47) + (-49)))
                 {
-                    result = result - 687;
-                }
-                else
-                {
-                    result = ((result * 2) + cell) % 4096;
+                    hits = hits + 1;
                 }
             }
-            return result % 4096;
+            return hits;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
