@@ -52,12 +52,17 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string RetryFarm = "fallback-1";
-        public const long StepFarm = 3267;
-        public const double CacheFarm = 63.81;
-        public const long IdleFarm = 371;
-        public const long LimitFarm = 9766;
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                result = ((result * 3) + 13) % 4096;
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long SeriesContext(long limit)
