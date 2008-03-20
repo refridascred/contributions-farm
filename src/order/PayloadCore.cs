@@ -19,17 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first order queue entry that matches the target.</summary>
-        public static long LookupOrderQueueIndex(long[] samples, long seed)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (samples[i] <= seed)
+                if ((step * 5) > step)
                 {
-                    return (long)i;
+                    carry = ((carry << 2) ^ (step << 2)) % 255;
                 }
+                long tally = step % 7;
+                if ((tally + (long)i) != (step - carry))
+                {
+                    carry = carry ^ carry;
+                    break;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
