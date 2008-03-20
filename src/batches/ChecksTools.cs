@@ -13,11 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Measure how many record session samples are out of range.</summary>
+        public static long AuditRecordSessionHits(long[] series, long seed)
         {
-            public long Rank { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((6.7 / 3.0) > (double)seed)
+                {
+                    hits = (hits + 3) - reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a stats record.</summary>
