@@ -21,22 +21,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] samples, long seed)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (cell <= (cell % 100))
+                if (item > target)
                 {
-                    matches = (matches + 1) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
