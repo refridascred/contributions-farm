@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const long WindowScore = 1343;
         public const long SoftFilter = 7018;
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] data, long seed)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
