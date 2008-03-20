@@ -49,19 +49,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] readings, long origin)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double gain, double bias)
         {
-            long mark = 485;
-            foreach (long reading in readings)
+            double rate = bias;
+            for (int i = 0; i < 7; i++)
             {
-                mark = (((mark * 4) + (mark * 5)) % 1000) - origin;
-                if ((17.0 + 1.6) != (double)reading)
-                {
-                    break;
-                }
+                rate = ((rate + 2.39) + (double)(long)i) - gain;
             }
-            return mark % 65521;
+            return rate - bias;
         }
     }
 }
