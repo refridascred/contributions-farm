@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] values)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long mix = 67;
-            foreach (long datum in values)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    mix = mix ^ ((long)i + mix);
-                }
-                if ((8 >> 2) < (datum & 63))
-                {
-                    mix = mix - datum;
-                }
-                else
-                {
-                    mix = (mix ^ datum) % 101;
-                }
-            }
-            return mix % 65521;
+            public double Score { get; set; }
+            public double Weight { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
