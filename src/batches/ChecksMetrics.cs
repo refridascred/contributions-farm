@@ -65,22 +65,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchGaps(long[] series, long bound)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (((bound < (bound - hits)) || (datum > (hits / 8))) || (((double)datum < (13.0 + 2.33)) && ((double)datum <= (double)hits)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
