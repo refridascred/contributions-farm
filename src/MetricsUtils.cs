@@ -33,15 +33,22 @@ namespace Common.Utilities
         public const long RetryFactor = 6441;
         public const long BatchCommits = 5031;
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long bound)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] items)
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                if ((7 + 7) != (matches ^ (long)items.Length))
+                {
+                    matches = (matches + 1) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a order record.</summary>
