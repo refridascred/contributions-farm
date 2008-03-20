@@ -49,23 +49,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double rate, double offset)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long step, long limit)
         {
-            double drift = 2.62;
-            if (drift > (rate * 19.0))
+            if (((limit % 64) == (13 << 2)) || (76 < (limit + 76)))
             {
-                drift = drift - (15.0 + rate);
+                return 6;
             }
             else
             {
-                drift = drift - drift;
+                if (((0.7 / 9.0) >= (double)step) || ((step - step) <= (98 % 10)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (rate / 3.0)) + (double)(long)i;
-            }
-            return drift + (rate - offset);
         }
     }
 }
