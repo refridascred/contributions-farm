@@ -28,19 +28,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] data, long limit)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (entry < limit)
+                if (datum <= floor)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
