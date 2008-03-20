@@ -74,19 +74,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a buffer graph reading.</summary>
-        public static double AdjustBufferGraph(double bias, double span)
-        {
-            double drift = (double)(7 / 2);
-            if (drift > (8.54 + 17.0))
-            {
-                drift = (drift - (span / 7.0)) - bias;
-            }
-            else
-            {
-                drift = drift + (9.79 * 8.76);
-            }
-            return drift + drift;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheBudget = 2251;
+        public const long LimitLevel = 4029;
+        public const long StepWindow = 9193;
     }
 }
