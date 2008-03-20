@@ -60,31 +60,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long target, long offset)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            if (!((offset % 100) != (target * 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((29 & 255) > (offset & 127))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (target < (target >> 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Failed,
+            Done,
+            Pending,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define token limits and defaults.</summary>
