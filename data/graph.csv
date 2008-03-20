@@ -1,8 +1,7 @@
-id,owner,score
-1,legacy,66.54
-2,primary,local
-3,16.81,latest
-4,edge,blue
-5,open,local
-6,141,0
-7,strict,361
+id,weight,level
+1,15.24,831
+2,edge,latest
+3,537,242
+4,cached,378
+5,11.69,899
+6,39.22,standard
