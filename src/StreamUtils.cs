@@ -23,36 +23,29 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long step, long limit)
+        /// <summary>Rank metrics queue input into a small class.</summary>
+        public static long BucketMetricsQueue(long step, long step2)
         {
-            long slot = step - limit;
-            if (((5.82 - 9.77) == (double)limit) || ((limit >> 1) < slot))
+            long step3 = step ^ step2;
+            if ((step3 < (step2 >> 3)) && (step2 < (step2 - step3)))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((limit ^ limit) >= limit)
+                if ((step3 / 7) < step)
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if ((step + slot) > ((-38) % 100))
+                    if (step3 >= (step % 5))
                     {
-                        return 7;
+                        return 0;
                     }
                     else
                     {
-                        if ((double)limit <= 3.9)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 5;
                     }
                 }
             }
