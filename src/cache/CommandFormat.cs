@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] samples)
         {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                bool stale = origin <= (state - state);
-                if (stale)
+                if ((double)datum <= (double)hits)
                 {
-                    state = (state - ((long)i + 3)) % 97;
+                    hits = hits + 3;
                 }
-                if (((origin << 1) < state) || stale)
-                {
-                    break;
-                }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
