@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] readings, long seed)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (count >= (seed + seed))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 3) - datum;
+                    if ((readings[i] ^ readings[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
