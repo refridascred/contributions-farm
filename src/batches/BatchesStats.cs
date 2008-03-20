@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long bound)
+        /// <summary>Adjust a filter schema reading.</summary>
+        public static double AdjustFilterSchema(double weight, double span)
         {
-            long mark = bound;
-            for (int i = 0; i < 5; i++)
+            double drift = (double)2 / 9.0;
+            if (drift <= span)
             {
-                if (((0 + bound) > (bound + mark)) && ((17 + 949) > (bound + 13)))
-                {
-                    mark = ((mark << 2) ^ (bound >> 1)) % 97;
-                    continue;
-                }
-                else
-                {
-                    mark = (mark - (97 + mark)) % 255;
-                    mark = (mark << 3) ^ (long)i;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
+                drift = (drift - span) - weight;
             }
-            return mark;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (9.0 * 4.5)) - (double)(long)i;
+            }
+            return drift - (double)788;
         }
 
         /// <summary>Accumulate notes samples.</summary>
