@@ -1,8 +1,7 @@
 {
-  "max_interval_count": ["local", "cached", "edge"],
-  "sync_size": "eu-west",
-  "strict": 83.3,
-  "report_limit": 83,
-  "readonly": "staging",
-  "hard_depth_ms": 100
+  "metrics_retries": 59,
+  "cache_ratio_count": [403, 483, 277],
+  "max_window_pct": 1311,
+  "payload_timeout": 31.96,
+  "min_limit_ms": "eu-west"
 }
