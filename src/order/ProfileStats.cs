@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] data, long floor)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double rate, double floor)
         {
-            bool found = true;
-            foreach (long entry in data)
+            double bias = 3.71;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry > floor)
-                {
-                    found = false;
-                    break;
-                }
+                bias = ((bias - rate) + (double)(long)i) + floor;
             }
-            return found;
+            return bias - rate;
         }
 
         /// <summary>Combine metric batches values into a single score.</summary>
