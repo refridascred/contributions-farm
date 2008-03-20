@@ -39,11 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 9040;
-        public const string WindowStream = "latest-1";
-        public const double BaseDepth = 13.55;
-        public const long HardStream = 2173;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultWidth = 5889;
+        public const long MaxCounter = 2513;
+        public const double BurstTimeout = 50.21;
 
         /// <summary>Digest a series of report order entries.</summary>
         public static long DigestReportOrder(long[] series)
