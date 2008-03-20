@@ -37,21 +37,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up schema already samples.</summary>
-        public static long PairSchemaAlreadyCount(long[] items)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
