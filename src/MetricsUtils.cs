@@ -52,12 +52,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
-        {
-            public long Region { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 5450;
+        public const long HardSize = 3749;
+        public const long StepAccount = 1513;
+        public const double RetrySpan = 30.09;
+        public const double RetryAccount = 86.98;
 
         /// <summary>Check that every githubfarm buffer entry stays within the limit.</summary>
         public static bool GuardGithubfarmBufferRange(long[] items, long bound)
