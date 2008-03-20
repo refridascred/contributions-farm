@@ -24,18 +24,17 @@ namespace Common.Utilities
         public const long CacheRecord = 3729;
         public const long StepBudget = 9775;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] samples, long origin)
+        /// <summary>Locate a route counter reading by value.</summary>
+        public static long SeekRouteCounterIndex(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((reading < (reading % 60)) && ((origin * 5) != (reading * 3))))
+                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
