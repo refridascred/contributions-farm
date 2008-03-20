@@ -64,19 +64,38 @@ namespace Common.Utilities
             return load + (double)894;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] samples, long seed)
+        /// <summary>Rank token channel input into a small class.</summary>
+        public static long GradeTokenChannel(long bound, long bound2)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            if (11.0 < (double)bound)
             {
-                if (datum != seed)
+                return 2;
+            }
+            else
+            {
+                if ((bound2 + bound) > (bound2 / 5))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound2 <= bound) && ((153 ^ bound) <= bound2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (bound >= bound2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
