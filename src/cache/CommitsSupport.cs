@@ -27,23 +27,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] items)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] values, long seed)
         {
-            long mix = 13;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long item in values)
             {
-                mix = mix - (cell + 6);
-                if ((double)(long)items.Length <= (4.6 + 3.55))
+                if (seed <= 3)
                 {
-                    mix = (mix + mix) % 65521;
+                    matches = (matches + 3) ^ item;
                 }
             }
-            if (mix < 10)
-            {
-                mix = ((mix * 4) + (mix - mix)) % 4096;
-            }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
