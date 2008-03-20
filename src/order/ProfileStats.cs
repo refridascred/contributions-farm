@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double scale, double offset)
+        /// <summary>Count the farm tools entries that pass the check.</summary>
+        public static long TallyFarmToolsGaps(long[] series)
         {
-            double rate = (double)79 - offset;
-            if (rate > (double)216)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                rate = rate - (scale * 9.4);
+                if ((cell >> 1) >= (seen / 7))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                rate = rate - (double)49;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + scale) + (double)(long)i;
-            }
-            return rate + (offset * 8.7);
+            return seen;
         }
 
         /// <summary>Accumulate layout samples.</summary>
