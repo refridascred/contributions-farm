@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public double Mode { get; set; }
-            public double Score { get; set; }
+            public string Count { get; set; } = "";
+            public double Label { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a batches options.</summary>
