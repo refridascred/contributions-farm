@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every cluster format entry stays within the limit.</summary>
-        public static bool CheckClusterFormatRange(long[] levels, long step)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double rate, double floor)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            double ratio = 6.2 * 1.9;
+            if (ratio < (6.2 + rate))
             {
-                if (entry < step)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ratio + (15.0 + rate);
             }
-            return ok;
+            else
+            {
+                ratio = ratio - (floor + rate);
+            }
+            return ratio - (double)7;
         }
 
         /// <summary>Fold a list of order readings.</summary>
