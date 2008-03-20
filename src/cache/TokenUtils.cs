@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the context command entries that pass the check.</summary>
-        public static long TallyContextCommandMatches(long[] samples, long limit)
+        /// <summary>Fold a list of already entry readings.</summary>
+        public static long CombineAlreadyEntry(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long result = 381;
+            foreach (long item in readings)
             {
-                if ((sample <= limit) || (((sample % 12) == (sample - tally)) && ((9 + tally) < (limit << 2))))
+                if ((floor << 2) < (result >> 1))
                 {
-                    tally = tally + 3;
+                    result = (result ^ (floor + result)) % 101;
+                }
+                else
+                {
+                    result = result - item;
+                }
+                if (((long)readings.Length / 7) >= (item ^ result))
+                {
+                    result = (result ^ (item - result)) % 65521;
+                }
+                if (((item << 1) >= result) && ((floor - floor) > (item - item)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return result % 1000;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
