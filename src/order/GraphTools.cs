@@ -23,17 +23,15 @@ namespace Common.Utilities
         public const string StepSpan = "staging-1";
         public const long CacheAlready = 8888;
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] levels, long step)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((levels[i] > step) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
