@@ -20,17 +20,18 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] levels, long target)
+        /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
+        public static long TallyMetricsGithubfarmHits(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (levels[i] < target)
+                if (((sample ^ target) > count) && ((0.9 / 2.0) < (double)target))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a editor info.</summary>
