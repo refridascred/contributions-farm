@@ -23,12 +23,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a order channel sample.</summary>
-        public static long SeekOrderChannelIndex(long[] readings, long bound)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] >= bound)
+                if ((series[i] <= floor) && ((series[i] % 5) != 0))
                 {
                     return (long)i;
                 }
