@@ -1,12 +1,7 @@
 {
-  "default_limit": [175, 300],
-  "max_depth_pct": 41,
-  "flush_depth": {
-    "warm_depth_ms": [208, 141, 105, 436],
-    "metrics_ttl": 54.87,
-    "hard_size_ms": [118, 205]
-  },
-  "cache_depth": "stable",
-  "audit": 30,
-  "base_interval_s": "local"
+  "default_limit_pct": "local",
+  "verbose": 6914,
+  "context_depth": 65.13,
+  "enabled": 3.17,
+  "burst_size": 14
 }
