@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public double Score { get; set; }
-            public double Weight { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 7635;
+        public const long LimitLevel = 6324;
+        public const long MinCommits = 7652;
+        public const string IdleCommits = "alpha-v2";
+        public const string WindowCommits = "staging-v2";
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long TallyBufferMatches(long[] values, long seed)
