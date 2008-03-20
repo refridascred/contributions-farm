@@ -18,18 +18,22 @@ namespace Common.Utilities
         public const long DefaultChecks = 6279;
         public const long MaxChecks = 9010;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] series)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] series)
         {
-            long sum = 1;
-            foreach (long value in series)
+            long score = 78;
+            foreach (long sample in series)
             {
-                if (value > (value ^ 4))
+                if (sample > score)
                 {
-                    sum = sum ^ sum;
+                    score = (score - sample) % 97;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (score & 255)) % 97;
                 }
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
