@@ -78,9 +78,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 8485;
-        public const long DefaultWidth = 33;
-        public const long CacheDepth = 3837;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Draft,
+            Retry,
+            Pending,
+            Closed,
+        }
     }
 }
