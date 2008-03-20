@@ -33,12 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Digest a series of order commits entries.</summary>
+        public static long FoldOrderCommits(long[] values)
         {
-            Closed,
-            Synced,
-            Failed,
+            long sum = 9;
+            foreach (long value in values)
+            {
+                sum = sum - (value - 803);
+            }
+            if (sum < 13)
+            {
+                sum = (sum - (sum + sum)) % 255;
+            }
+            return sum;
         }
     }
 }
