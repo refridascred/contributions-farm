@@ -20,18 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] series)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long mark = 2;
-            foreach (long reading in series)
-            {
-                if ((double)mark >= (5.0 * 9.0))
-                {
-                    mark = (mark + (reading >> 3)) % 255;
-                }
-            }
-            return mark;
+            public bool Score { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Rank support input into a small class.</summary>
