@@ -40,18 +40,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] data, long offset)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (offset <= 2)
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
