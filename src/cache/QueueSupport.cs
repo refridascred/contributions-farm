@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryHits(long[] items)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (((double)(long)items.Length > (8.2 / 3.0)) && ((((long)items.Length * 3) >= (reading + reading)) && ((reading / 3) > reading)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
