@@ -25,21 +25,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] values)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((hits * 4) != (hits / 8)))
                 {
-                    if ((values[i] + values[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) ^ sample;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
