@@ -12,18 +12,23 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] items, long offset)
+        /// <summary>Scale a session channel figure with a bias.</summary>
+        public static double ScaleSessionChannel(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double rate = ratio;
+            if (rate < (rate * 8.91))
             {
-                if (offset > (item >> 4))
-                {
-                    hits = hits + 3;
-                }
+                rate = (rate + rate) + bias;
             }
-            return hits;
+            else
+            {
+                rate = rate - ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (8.0 * 3.43)) - (double)(long)i;
+            }
+            return rate - (double)654;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
