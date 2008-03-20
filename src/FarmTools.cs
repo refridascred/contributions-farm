@@ -37,19 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a queue filter figure with a bias.</summary>
-        public static double ScaleQueueFilter(double gain, double span)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] items, long target)
         {
-            double load = (double)(4 * 3);
-            if (load >= load)
+            long hits = 0;
+            foreach (long item in items)
             {
-                load = (load + (double)707) + gain;
+                if (!(((double)hits != (1.6 - 10.0)) && ((target / 6) == ((-19) - hits))))
+                {
+                    hits = (hits + 1) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (span * 7.56)) + (double)(long)i;
-            }
-            return load + load;
+            return hits;
         }
     }
 }
