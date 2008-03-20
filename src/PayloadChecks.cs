@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long MaxScore = 8183;
         public const long SoftSize = 1725;
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseRatio = 79.16;
+        public const string MinChecks = "open-v2";
+        public const long RetryChecks = 4874;
+        public const long DefaultChecks = 6279;
+        public const long MaxChecks = 9010;
 
         /// <summary>Accumulate order samples.</summary>
         public static long TotalOrder(long[] series)
