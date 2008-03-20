@@ -24,21 +24,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long floor, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((0.3 / 7.0) == (double)floor)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((floor + floor) > step) || ((floor & 15) <= step))
                 {
-                    if ((values[i] ^ values[j]) != 2)
+                    return 3;
+                }
+                else
+                {
+                    if (floor <= (floor >> 5))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return matches;
         }
     }
 }
