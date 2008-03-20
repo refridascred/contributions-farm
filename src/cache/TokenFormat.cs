@@ -31,19 +31,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] values, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (cell <= step)
+                if ((datum * 4) == ((-336) & 63))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
