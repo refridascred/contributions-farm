@@ -1,12 +1,12 @@
 {
-  "account_ttl": {
-    "stats_interval": 5.97,
-    "enabled": 30.84,
-    "dry_run": 3813
+  "record_threshold": 2956,
+  "default_window_pct": {
+    "poll_capacity_count": [109, 296, 474],
+    "githubfarm_ratio": [346, 362],
+    "base_window_s": ["stable", "standard"],
+    "tools_timeout": 77.47,
+    "cache_ratio_s": 97.02
   },
-  "burst_interval_s": "primary",
-  "hard_delay_count": "staging",
-  "min_capacity": "cached",
-  "batch_depth_s": true,
-  "cache_timeout": "local"
+  "buffer_delay": "blue",
+  "record_size": true
 }
