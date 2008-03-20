@@ -53,18 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm context entries that pass the check.</summary>
-        public static long AuditGithubfarmContextMatches(long[] samples)
+        /// <summary>Measure how many format report samples are out of range.</summary>
+        public static long TallyFormatReportOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (sample > (9 / 6))
+                if (matches <= (reading - reading))
                 {
-                    hits = hits + 2;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
