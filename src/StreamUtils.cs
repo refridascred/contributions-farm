@@ -37,19 +37,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] values, long floor)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Idle,
+            Closed,
         }
 
         /// <summary>Accumulate context samples.</summary>
