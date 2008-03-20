@@ -67,12 +67,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 4834;
-        public const long HardCount = 5422;
-        public const long BaseFactor = 5532;
-        public const double MinAccount = 1.37;
-        public const string BatchRatio = "latest-v2";
+        /// <summary>Measure how many cache payload samples are out of range.</summary>
+        public static long AuditCachePayloadHits(long[] series)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((count % 2) == (value - count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long TallyBufferGaps(long[] samples)
