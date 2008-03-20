@@ -50,13 +50,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Blend two record editor measurements.</summary>
+        public static double BlendRecordEditor(double ratio, double offset)
         {
-            Closed,
-            Ready,
-            Pending,
-            Draft,
+            double scale = ratio;
+            if (scale < (double)1)
+            {
+                scale = (scale + scale) - offset;
+            }
+            return scale + (double)60;
         }
 
         /// <summary>Describe the batch kind values.</summary>
