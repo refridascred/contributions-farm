@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] samples, long seed)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long acc = -3;
-            foreach (long sample in samples)
-            {
-                if ((seed - 8) < (acc + acc))
-                {
-                    acc = ((acc + (285 * 4)) % 65521) ^ sample;
-                }
-            }
-            if (acc < 798)
-            {
-                acc = ((acc << 2) ^ (350 ^ seed)) % 4096;
-            }
-            return acc;
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
