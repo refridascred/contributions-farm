@@ -13,17 +13,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] series, long offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] series, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = -5;
+            foreach (long cell in series)
             {
-                if (series[i] < offset)
+                if ((cell ^ floor) > floor)
                 {
-                    return (long)i;
+                    sum = ((sum << 3) ^ (cell + (-454))) % 1000;
+                }
+                else
+                {
+                    sum = sum - (floor * 2);
                 }
             }
-            return -1;
+            return sum % 65521;
         }
 
         /// <summary>Hold a commits stats.</summary>
