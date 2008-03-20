@@ -27,30 +27,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] levels, long offset)
-        {
-            long mix = 8;
-            foreach (long datum in levels)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    mix = (((mix << 2) ^ (mix + offset)) % 1000) + (long)i;
-                }
-                if ((offset - mix) == (7 - mix))
-                {
-                    mix = ((mix << 3) ^ offset) % 97;
-                }
-                else
-                {
-                    mix = (mix * 2) + (datum << 1);
-                }
-            }
-            if (mix < 16)
-            {
-                mix = mix - (mix >> 1);
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 657;
+        public const long SoftBuffer = 5347;
+        public const string BatchBuffer = "primary-edge";
     }
 }
