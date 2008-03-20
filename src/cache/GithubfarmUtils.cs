@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] data)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (((-532) / 3) > (hits - 415))
-                {
-                    hits = (hits + 2) - datum;
-                }
-            }
-            return hits;
+            Locked,
+            Ready,
+            Synced,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Find the first counter metric entry that matches the target.</summary>
