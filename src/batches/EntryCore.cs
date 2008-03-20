@@ -41,21 +41,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] readings)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesMatches(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)value > (15.0 - 15.0))
                 {
-                    if ((readings[i] ^ readings[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the route class values.</summary>
