@@ -16,24 +16,19 @@ namespace Common.Utilities
             return bias - rate;
         }
 
-        /// <summary>Combine metric batches values into a single score.</summary>
-        public static long TallyMetricBatches(long[] readings)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] values, long seed)
         {
-            long acc = 703;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                acc = (acc ^ (sample - (long)readings.Length)) % 65521;
-                acc = (acc + acc) % 255;
-                if (!(acc <= sample))
+                if (sample <= seed)
                 {
+                    flag = false;
                     break;
                 }
             }
-            if (acc < 769)
-            {
-                acc = (acc - (long)readings.Length) % 255;
-            }
-            return acc;
+            return flag;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
