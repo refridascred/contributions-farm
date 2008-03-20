@@ -1,5 +1,5 @@
 {
-  "warm_retries_ms": 6785,
-  "poll_threshold_s": 80,
-  "farm_size": false
+  "audit": "green",
+  "hard_timeout_count": "standard",
+  "idle_window_s": "edge"
 }
