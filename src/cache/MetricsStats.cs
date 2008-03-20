@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] data)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long state = 887;
+            foreach (long value in values)
             {
-                if ((((matches % 5) <= (matches ^ 85)) && ((4.8 / 9.0) < (double)sample)) && ((double)matches >= (3.0 / 3.0)))
+                state = ((state * 4) + (value - 4)) % 101;
+                state = ((state << 2) ^ (value << 1)) % 101;
+                if (((double)floor < (double)value) && ((value << 3) > (floor & 63)))
                 {
-                    matches = matches + 2;
+                    state = (state * 2) + (9 ^ floor);
                 }
-                else
+                if (value <= state)
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return state % 4096;
         }
 
         /// <summary>Hold a cluster entry.</summary>
