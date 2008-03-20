@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] readings)
         {
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((48 + reading) == (hits / 8))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the metrics githubfarm entries that pass the check.</summary>
