@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] readings, long target)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long mark = -1;
-            foreach (long value in readings)
-            {
-                if (((long)readings.Length ^ mark) >= (target ^ mark))
-                {
-                    mark = ((mark + mark) % 4096) ^ value;
-                }
-            }
-            return mark;
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
