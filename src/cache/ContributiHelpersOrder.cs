@@ -14,11 +14,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 8457;
-        public const double SoftCounter = 50.58;
-        public const long HardCounter = 8695;
-        public const long StepCounter = 9616;
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!((bound + mix) <= mix))
+                {
+                    mix = (mix + (bound - 277)) % 97;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Rank window input into a small class.</summary>
         public static long SortWindow(long target, long origin)
