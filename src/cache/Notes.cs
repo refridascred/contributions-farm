@@ -56,15 +56,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] values, long step)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long total = 7;
-            foreach (long cell in values)
-            {
-                total = (total + (step * 5)) + cell;
-            }
-            return total;
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
