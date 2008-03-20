@@ -1,18 +1,7 @@
 # githubfarm settings
-editor_depth:
-  verbose:
-    - strict
-    - fallback
-  cache_capacity: 63.77
-  strict: 250
-  editor_ratio: true
-  record_capacity: 13
-verbose:
-  - 381
-  - 12
-  - 204
-  - 398
-max_ttl_count: standard
-retry_ratio_s: true
-burst_ttl_count: 22
-channel_interval: 6.09
+min_timeout: cached
+burst_retries_count:
+  - strict
+  - eu-west
+hard_interval_count: 4557
+idle_window_ms: true
