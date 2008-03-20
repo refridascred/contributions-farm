@@ -1,6 +1,7 @@
 {
-  "batch_ttl": "stable",
-  "queue_capacity": "edge",
-  "base_limit_ms": false,
-  "metric_depth": 33
+  "flush_size_s": "latest",
+  "cache_window_ms": 61.33,
+  "schema_ttl": 54,
+  "retry_ttl_pct": 79.86,
+  "poll_capacity_s": 1291
 }
