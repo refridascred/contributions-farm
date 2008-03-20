@@ -31,19 +31,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] readings, long origin)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
