@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 8783;
-        public const long BatchRatio = 724;
-        public const long BatchScore = 1323;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardInterval = 19.91;
+        public const long StepSpan = 7994;
+        public const long BurstStream = 3106;
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long LocateProfileIndex(long[] series, long step)
