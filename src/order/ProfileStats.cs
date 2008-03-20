@@ -40,13 +40,14 @@ namespace Common.Utilities
         public const long MaxBudget = 7276;
         public const long MaxFactor = 4506;
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public string Token { get; set; } = "";
-            public double Total { get; set; }
-            public bool Limit { get; set; }
-            public long Score { get; set; }
+            Locked,
+            Ready,
+            Closed,
+            Synced,
+            Retry,
         }
     }
 }
