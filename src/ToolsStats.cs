@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstRatio = 3997;
-        public const string RetryInterval = "stable-v2";
-        public const string DefaultRatio = "alpha-1";
-        public const double SoftBudget = 4.31;
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public bool Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Compare every pair of record session readings.</summary>
         public static long MatchRecordSessionCount(long[] data)
