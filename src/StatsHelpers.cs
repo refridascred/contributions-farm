@@ -33,19 +33,12 @@ namespace Common.Utilities
         public const double SoftTimeout = 96.02;
         public const long HardCommand = 4162;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long floor)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    score = (score + (long)i) + (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Closed,
+            Stale,
+            New,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
