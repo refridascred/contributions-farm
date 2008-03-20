@@ -1,7 +1,5 @@
 # entry settings
-route_capacity: 3.39
-buffer_limit:
-  - 491
-  - 113
-  - 117
-enabled: 88.16
+compress: local
+buffer_interval: false
+strict: 1024
+audit: 67.46
