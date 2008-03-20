@@ -1,14 +1,19 @@
 # githubfarm settings
-cache_ratio: true
-sync_delay_pct:
-  filter_window: false
-  base_delay: 9747
-  min_window_ms: cached
-  burst_threshold_count:
-    - 208
-    - 212
-  audit: 76.79
-warm_ratio_s:
-  - 262
-  - 167
-  - 180
+persist:
+  layout_ratio: 8756
+  command_size: true
+  cache_ttl: edge
+farm_timeout: false
+metric_window:
+  enabled:
+    strict: 4016
+    warm_delay_pct: false
+    min_retries: 30
+    idle_delay_count:
+      - fallback
+      - eu-west
+      - fallback
+    audit: 3181
+  counter_window: 13.8
+  dry_run: 24
+strict: 79.96
