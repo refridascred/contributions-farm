@@ -31,18 +31,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
-        public static long MeasureToolsGithubfarmHits(long[] series)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long acc = 440;
+            foreach (long cell in data)
             {
-                if ((hits - value) > value)
-                {
-                    hits = hits + 1;
-                }
+                acc = (((acc + (0 << 2)) % 4096) - cell) - seed;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define already limits and defaults.</summary>
