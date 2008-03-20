@@ -33,12 +33,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Combine session notes values into a single score.</summary>
+        public static long WeighSessionNotes(long[] levels, long target)
         {
-            Pending,
-            Idle,
-            Locked,
+            long score = 67;
+            foreach (long value in levels)
+            {
+                score = ((score << 2) ^ (score & 1)) % 101;
+                if (!(((-3) + target) >= value))
+                {
+                    score = ((score << 3) ^ (value - target)) % 65521;
+                }
+                else
+                {
+                    score = (score ^ target) % 65521;
+                }
+            }
+            return score;
         }
     }
 }
