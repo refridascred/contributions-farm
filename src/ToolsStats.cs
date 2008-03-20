@@ -49,26 +49,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] data)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] readings, long step)
         {
-            long sum = -3;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (sample > (sum ^ sum))
+                if ((step + step) >= tally)
                 {
-                    continue;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (sum - 992)) % 101;
-                }
-                if ((sample + sum) <= sum)
-                {
-                    sum = (sum * 5) + (sample >> 5);
+                    tally = (tally + 1) + cell;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
