@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Paused,
-            Failed,
-            Done,
+            Synced,
+            Draft,
+            Locked,
             Ready,
         }
 
