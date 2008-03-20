@@ -44,14 +44,13 @@ namespace Common.Utilities
         public const long MaxCounter = 2513;
         public const double BurstTimeout = 50.21;
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            Idle,
-            New,
-            Stale,
-            Failed,
-            Locked,
+            public double Ratio { get; set; }
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
