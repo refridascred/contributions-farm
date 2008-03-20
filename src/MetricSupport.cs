@@ -45,16 +45,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = anchor - ((long)i + limit);
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowLevel = 5561;
+        public const long MaxCache = 15;
+        public const long BurstWidth = 9899;
     }
 }
