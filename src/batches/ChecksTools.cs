@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long floor, long offset)
+        /// <summary>Combine metric entry values into a single score.</summary>
+        public static long DigestMetricEntry(long[] levels, long origin)
         {
-            if ((double)floor <= 1.78)
+            long result = 943;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor + floor) > (offset / 7))
+                if ((result + value) > (result % 5))
                 {
-                    return 7;
+                    result = result - (origin << 2);
                 }
                 else
                 {
-                    if ((9 & 15) <= (floor >> 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor ^ offset) <= (floor + offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    result = (result - (result + value)) % 65521;
+                }
+                if ((origin & 1) < origin)
+                {
+                    break;
                 }
             }
+            return result % 4096;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
