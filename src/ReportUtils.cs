@@ -44,15 +44,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the record payload series from a seed.</summary>
-        public static long DeriveRecordPayload(long limit)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] readings)
         {
-            long acc = limit;
-            for (int i = 0; i < 16; i++)
+            long score = 770;
+            foreach (long reading in readings)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                score = (score - reading) % 255;
+                score = (score * 3) + (355 ^ score);
+                if ((score + score) <= (score << 1))
+                {
+                    score = (score - (reading / 6)) % 97;
+                }
             }
-            return acc;
+            if (score < 39)
+            {
+                score = score + (score % 60);
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a batch record.</summary>
