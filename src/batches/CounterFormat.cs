@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] readings)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long anchor = 570;
-            foreach (long sample in readings)
-            {
-                if (!((5.76 + 1.3) == (double)sample))
-                {
-                    anchor = (anchor - anchor) % 97;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor + 4)) % 97;
-                }
-            }
-            return anchor % 65521;
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
