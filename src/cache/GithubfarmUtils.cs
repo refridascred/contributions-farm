@@ -16,13 +16,10 @@ namespace Common.Utilities
             return drift - gain;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
-        {
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 9808;
+        public const long HardCommits = 3120;
+        public const double SoftCommits = 17.18;
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
