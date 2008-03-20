@@ -29,39 +29,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long floor, long target)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] values, long seed)
         {
-            long cur = floor + target;
-            if (60 < (cur >> 3))
+            long mark = 200;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((floor + floor) <= cur) && ((cur / 8) == (floor % 7)))
+                if ((double)mark < (double)item)
                 {
-                    return 6;
+                    mark = (mark + (mark + 3)) - seed;
                 }
                 else
                 {
-                    if (((294 % 8) <= (target >> 2)) || ((double)floor > (8.0 + 8.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((3.5 + 6.0) != (double)target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mark = (mark + mark) % 65521;
                 }
             }
+            return mark % 65521;
         }
     }
 }
