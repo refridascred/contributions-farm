@@ -41,23 +41,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] data, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] levels)
         {
-            long mix = 1;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                mix = (mix ^ mix) % 1000;
-                if ((step * 4) >= (4 & 7))
+                if ((8.23 / 9.0) != (double)value)
                 {
-                    mix = ((mix << 2) ^ (step & 1)) % 255;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    mix = mix + (mix - value);
+                    matches = matches - 1;
                 }
             }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Hold a counter stats.</summary>
