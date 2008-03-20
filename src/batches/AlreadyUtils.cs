@@ -19,18 +19,19 @@ namespace Common.Utilities
         public const string StepEntry = "standard";
         public const long DefaultTimeout = 7652;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] items, long origin)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long mix = 6;
+            foreach (long reading in readings)
             {
-                if ((matches / 9) >= matches)
-                {
-                    matches = ((matches + 1) + entry) - origin;
-                }
+                mix = mix - (reading & 255);
             }
-            return matches;
+            if (mix < 5)
+            {
+                mix = (mix ^ mix) % 65521;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
