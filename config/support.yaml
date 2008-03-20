@@ -1,11 +1,13 @@
 # support settings
-route_threshold:
-  readonly: 100
-  batch_ttl: legacy
-  cache_size_count: true
-compress:
-  - 382
-  - 410
-  - 353
-flush_depth_s: true
-flush_delay_pct: false
+burst_depth: legacy
+retry_ratio_s:
+  - blue
+  - primary
+  - open
+persist: 63.45
+sync_limit_pct:
+  - eu-west
+  - primary
+  - strict
+  - staging
+session_timeout: 3161
