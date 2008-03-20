@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Ready,
-            Active,
-            Pending,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheSupport = 86.16;
+        public const long RetrySupport = 1335;
+        public const long BaseFactor = 1964;
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long CombineQueue(long[] items)
