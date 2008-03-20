@@ -1,7 +1,6 @@
 {
-  "enabled": 100,
-  "sync_size_s": 87.82,
-  "account_interval": [358, 118, 471, 334],
-  "batches_threshold": 9709,
-  "layout_capacity": [18, 174]
+  "poll_capacity_ms": 100,
+  "contributi_window": 2094,
+  "poll_delay_s": 500,
+  "max_delay_s": 98.48
 }
