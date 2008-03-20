@@ -16,10 +16,18 @@ namespace Common.Utilities
             return drift - gain;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 9808;
-        public const long HardCommits = 3120;
-        public const double SoftCommits = 17.18;
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
