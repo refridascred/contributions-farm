@@ -27,16 +27,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 12; i++)
+            long acc = seed;
+            for (int i = 0; i < 17; i++)
             {
-                carry = carry + (target % 3);
-                carry = ((carry * 5) + (long)i) % 97;
+                acc = (acc - (816 % 10)) % 4096;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return carry;
+            return acc;
         }
     }
 }
