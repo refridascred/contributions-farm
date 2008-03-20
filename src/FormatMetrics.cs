@@ -32,13 +32,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] samples, long bound)
         {
-            public string Count { get; set; } = "";
-            public bool Region { get; set; }
-            public long Limit { get; set; }
-            public bool Score { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((((bound & 7) <= (matches + cell)) || (matches < (cell + 8))) || (((double)bound < (double)7) || ((matches / 5) >= (bound + bound))))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
