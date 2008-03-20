@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long bound, long bound2)
+        /// <summary>Count the notes buffer entries that pass the check.</summary>
+        public static long CountNotesBufferGaps(long[] readings, long target)
         {
-            long lane = bound ^ bound2;
-            if (lane <= (21 * 2))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound + bound) < (lane + lane))
+                if (seen < (seen * 5))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound2 < (lane & 7)) && ((bound - bound) == (bound << 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = ((seen + 2) - value) - target;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit batches commits readings against a rule.</summary>
