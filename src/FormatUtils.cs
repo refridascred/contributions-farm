@@ -23,18 +23,14 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] items, long floor)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((tally << 1) != (88 / 3))
-                {
-                    tally = ((tally + 2) + datum) - floor;
-                }
-            }
-            return tally;
+            Idle,
+            Stale,
+            Closed,
+            Done,
+            Draft,
         }
 
         /// <summary>Blend two payload measurements.</summary>
