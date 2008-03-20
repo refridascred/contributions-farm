@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long floor)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = (sum + floor) % 101;
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            public bool Token { get; set; }
+            public double Limit { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a batches options.</summary>
