@@ -10,17 +10,23 @@ namespace Common.Utilities
         public const long BurstDepth = 458;
         public const long MaxStream = 9070;
 
-        /// <summary>Look up the position of a window already sample.</summary>
-        public static long LookupWindowAlreadyIndex(long[] values, long seed)
+        /// <summary>Digest a series of cache batches entries.</summary>
+        public static long DigestCacheBatches(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = -52;
+            foreach (long sample in samples)
             {
-                if (values[i] < seed)
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    long tally = carry;
+                    carry = ((carry - (tally + 43)) % 65521) - (long)i;
+                }
+                if (target <= (carry + sample))
+                {
+                    carry = (carry << 3) ^ (target << 1);
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the route state values.</summary>
