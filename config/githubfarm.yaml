@@ -1,25 +1,19 @@
 # githubfarm settings
-audit:
-  stream_size: 42
-  poll_window:
-    cache_window: false
-    readonly: 3864
-    warm_ratio: staging
-  dry_run:
-    default_capacity_count: edge
-    channel_timeout:
-      - 401
-      - 310
-    context_size: 7
-  graph_timeout: false
-  cache_retries_pct:
-    - 194
-    - 379
-    - 59
-metrics_retries:
-  verbose: 282
-  default_retries: 42
-  sync_limit_ms: 4031
-  base_delay_count: 500
-metrics_threshold: 1026
-base_limit_s: local
+graph_delay:
+  strict:
+    - strict
+    - fallback
+  enabled: true
+  editor_window: true
+  route_interval:
+    batch_retries_pct: 30
+    sync_window: 42
+    counter_ttl: 13.38
+    verbose:
+      - local
+      - blue
+    cache_interval: 49.44
+  batch_interval_count: staging
+  hard_size_ms: 9426
+persist: cached
+checks_window: 29
