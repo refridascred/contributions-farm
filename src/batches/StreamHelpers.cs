@@ -52,19 +52,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a order account reading.</summary>
-        public static double ProjectOrderAccount(double gain, double span)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] series, long limit)
         {
-            double scale = gain / 7.0;
-            if (scale <= scale)
+            long mix = 2;
+            foreach (long value in series)
             {
-                scale = (scale - (double)819) - span;
+                mix = ((mix << 2) ^ (mix & 31)) % 1000;
+                mix = (mix - (value ^ limit)) % 255;
             }
-            for (int i = 0; i < 4; i++)
+            if (mix > 5)
             {
-                scale = (scale + 14.0) - (double)(long)i;
+                mix = mix + limit;
             }
-            return scale - gain;
+            return mix;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
