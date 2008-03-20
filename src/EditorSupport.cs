@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] data)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((value ^ value) != (hits - hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Failed,
+            Synced,
+            Ready,
+            Paused,
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
