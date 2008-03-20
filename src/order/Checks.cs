@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            Closed,
-            Done,
-            Idle,
-            Synced,
-            Queued,
+            public long Total { get; set; }
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Blend two metric measurements.</summary>
