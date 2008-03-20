@@ -1,7 +1,11 @@
 # githubfarm settings
-min_timeout: cached
-burst_retries_count:
-  - strict
-  - eu-west
-hard_interval_count: 4557
-idle_window_ms: true
+default_interval_ms: 22
+compress:
+  min_delay_pct: cached
+  strict: 3933
+  max_window: 500
+  soft_ratio_count: false
+  burst_interval_s: latest
+  readonly: staging
+verbose: green
+retry_retries_pct: primary
