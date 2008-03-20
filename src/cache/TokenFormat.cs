@@ -19,22 +19,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] data, long step)
+        /// <summary>Find the first cache schema entry that matches the target.</summary>
+        public static long SeekCacheSchemaIndex(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((step ^ reading) != (count % 60))
+                if ((data[i] <= floor) && ((data[i] % 2) != 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the farm kind values.</summary>
