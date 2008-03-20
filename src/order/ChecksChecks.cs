@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Count the cluster schema entries that pass the check.</summary>
+        public static long MeasureClusterSchemaGaps(long[] levels)
         {
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell + count) >= count)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of batches farm readings.</summary>
