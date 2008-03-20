@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long BurstBuffer = 5180;
         public const long WindowScore = 9334;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] data, long step)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if ((step >> 4) < sample)
+                if (item <= limit)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
