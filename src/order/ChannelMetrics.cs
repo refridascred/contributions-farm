@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] items, long seed)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] items)
         {
-            long mix = 5;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix - (914 & 3)) % 65521) + seed;
-                if (!((double)17 < (double)mix))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = mix + (cell ^ cell);
+                    if ((items[i] + items[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
