@@ -10,25 +10,19 @@ namespace Common.Utilities
         public const string BaseBudget = "primary-v2";
         public const long WindowBudget = 4920;
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long offset)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] values, long origin)
         {
-            long acc = offset;
-            for (int i = 0; i < 14; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (item > origin)
                 {
-                    acc = acc + ((long)i2 + offset);
-                    acc = (acc ^ acc) % 255;
+                    stale = false;
+                    break;
                 }
-                acc = (acc ^ (offset - offset)) % 255;
-                if ((double)(long)i <= (0.8 - 13.0))
-                {
-                    acc = (acc + (696 / 4)) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Accumulate context samples.</summary>
