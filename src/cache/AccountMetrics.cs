@@ -88,13 +88,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long step, long limit)
         {
-            Active,
-            Closed,
-            Pending,
-            Idle,
+            if ((limit >> 2) > step)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((321 ^ (-80)) != (limit - 72))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step + limit) != (step / 6))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (5.9 <= (double)limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a format reading by value.</summary>
