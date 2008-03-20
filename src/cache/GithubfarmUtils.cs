@@ -36,10 +36,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitBudget = 8118;
-        public const string MinTimeout = "fallback-1";
-        public const double SoftQueue = 64.16;
-        public const string CacheQueue = "cached-v2";
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public long Count { get; set; }
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
