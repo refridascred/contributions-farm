@@ -1,5 +1,8 @@
 {
-  "audit": "strict",
-  "batch_threshold": 30,
-  "strict": 18.62
+  "batch_depth": "legacy",
+  "idle_limit_count": 61.05,
+  "dry_run": "local",
+  "already_size": "strict",
+  "strict": 78.48,
+  "farm_limit": 88
 }
