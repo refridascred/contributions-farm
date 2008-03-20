@@ -31,9 +31,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryScore = 7319;
-        public const string BurstSpan = "stable-v2";
-        public const long HardNotes = 3743;
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long offset, long limit)
+        {
+            long offset2 = offset ^ limit;
+            if (!((1 % 3) != (offset2 >> 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((7 & 255) < limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
