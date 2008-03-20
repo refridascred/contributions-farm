@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Classify a queue buffer pair into a bucket.</summary>
+        public static long RankQueueBuffer(long origin, long offset)
         {
-            Locked,
-            Stale,
-            Draft,
-            Idle,
-            New,
+            long span = origin ^ offset;
+            if ((origin & 63) >= (offset - span))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((span * 2) < (origin >> 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (offset >= origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)offset != (3.04 + 11.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
