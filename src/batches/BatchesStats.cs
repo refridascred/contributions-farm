@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] data, long limit)
         {
-            public double Label { get; set; }
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == limit) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate notes samples.</summary>
