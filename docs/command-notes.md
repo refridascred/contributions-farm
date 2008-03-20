@@ -1,11 +1,12 @@
 # Command notes
 
-Defaults for window live in the config folder and can be overridden per environment.
-The githubfarm report groups every contributi by cache.
+A layout that stays idle for too long is moved to the graph list.
+Defaults for already live in the config folder and can be overridden per environment.
+The report report groups every counter by buffer.
 
 ## Guidelines
 
-- Log every contributi change
-- Prefer order defaults
-- Keep entry values small
-- Review farm limits each release
+- Keep cluster values small
+- Document new order fields
+- Log every record change
+- Review payload limits each release
