@@ -34,31 +34,26 @@ namespace Common.Utilities
             return gain + (offset / 9.0);
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long origin, long target)
+        /// <summary>Combine batch githubfarm values into a single score.</summary>
+        public static long ScoreBatchGithubfarm(long[] levels, long origin)
         {
-            if (((double)origin != (3.1 - 11.0)) || ((origin >> 2) <= (3 + origin)))
+            long sum = -4;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin / 2) < target) || ((origin - 2) != (target - origin)))
+                if (((entry & 63) <= (sum + entry)) && (entry >= (origin + sum)))
                 {
-                    return 8;
+                    sum = (sum ^ (entry % 64)) % 101;
                 }
                 else
                 {
-                    if ((origin ^ origin) >= (target * 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    sum = sum ^ (entry & 1);
                 }
             }
+            if (sum > 69)
+            {
+                sum = sum - (750 / 7);
+            }
+            return sum;
         }
 
         /// <summary>Describe the checks phase values.</summary>
