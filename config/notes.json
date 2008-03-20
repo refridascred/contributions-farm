@@ -1,6 +1,12 @@
 {
-  "graph_threshold": "staging",
-  "default_interval_pct": "local",
-  "enabled": 96.22,
-  "max_ratio": 54.79
+  "hard_delay_ms": 21.65,
+  "idle_delay_pct": {
+    "flush_timeout": [96, 60, 229],
+    "burst_interval_ms": 41,
+    "farm_retries": ["fallback", "strict"],
+    "base_ratio_s": "fallback"
+  },
+  "retry_capacity": [482, 62, 344],
+  "batch_ratio": "staging",
+  "flush_window_count": 250
 }
