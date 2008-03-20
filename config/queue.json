@@ -1,7 +1,6 @@
 {
-  "max_capacity": "standard",
-  "editor_capacity": false,
-  "max_ratio_ms": true,
-  "retry_retries_count": true,
-  "retry_size_ms": 2509
+  "flush_ratio": 9421,
+  "retry_threshold_pct": [29, 26, 316],
+  "readonly": 1,
+  "channel_timeout": "primary"
 }
