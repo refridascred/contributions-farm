@@ -29,21 +29,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] levels)
+        /// <summary>Scale a stats counter figure with a bias.</summary>
+        public static double SmoothStatsCounter(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias2 = ratio;
+            if (bias2 <= (bias2 / 8.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias2 = bias2 + (7.8 - ratio);
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + bias) - (double)(long)i;
+            }
+            return bias2 + (double)558;
         }
     }
 }
