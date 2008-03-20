@@ -11,38 +11,26 @@ namespace Common.Utilities
         public const long LimitProfile = 9863;
         public const long LimitFactor = 4497;
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long origin, long offset)
+        /// <summary>Iterate the metrics queue series from a seed.</summary>
+        public static long RollMetricsQueue(long limit)
         {
-            if (!(origin < (origin ^ origin)))
+            long carry = limit;
+            for (int i = 0; i < 24; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset & 255) <= offset)
+                if (!(carry >= (carry & 15)))
                 {
-                    return 5;
+                    carry = ((carry * 3) + limit) % 1000;
+                    carry = (carry << 3) ^ (-925);
+                    continue;
                 }
-                else
+                long slot = (limit >> 2) + (carry + carry);
+                if (slot < carry)
                 {
-                    if (origin < (origin >> 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((origin / 6) <= 811) && (offset > 7))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    carry = ((carry << 3) ^ carry) % 1000;
                 }
+                carry = ((carry * 4) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
