@@ -31,21 +31,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] items)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((hits - 31) < reading))
                 {
-                    if ((items[i] - items[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a account options.</summary>
