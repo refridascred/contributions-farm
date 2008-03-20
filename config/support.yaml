@@ -1,28 +1,8 @@
 # support settings
-session_limit:
-  - primary
+persist: edge
+idle_depth_s: green
+min_size_ms: 55.28
+hard_capacity: 42.48
+schema_depth:
   - cached
-editor_capacity: green
-cache_size_pct:
-  dry_run: green
-  max_interval_ms:
-    sync_size_pct: 137
-    idle_window: open
-    burst_ratio_pct:
-      - edge
-      - green
-    batch_window_pct: 5
-    compress:
-      - 220
-      - 85
-      - 362
-    token_delay: 30
-  entry_timeout:
-    - latest
-    - local
-    - cached
-  poll_capacity_s: eu-west
-  batch_depth:
-    strict: true
-    queue_limit: 60
-    sync_capacity_s: 2.02
+  - open
