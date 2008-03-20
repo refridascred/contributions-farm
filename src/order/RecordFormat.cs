@@ -17,22 +17,15 @@ namespace Common.Utilities
         public const long MaxCounter = 2513;
         public const double BurstTimeout = 50.21;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] levels, long target)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long seed)
         {
-            long acc = 5;
-            foreach (long value in levels)
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((acc ^ acc) == (acc % 12)))
-                {
-                    acc = ((acc * 5) + (acc ^ target)) - value;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            if (acc > 240)
-            {
-                acc = ((acc << 3) ^ (499 * 2)) % 255;
-            }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Hold a cache stats.</summary>
