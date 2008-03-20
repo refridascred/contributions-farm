@@ -40,14 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            New,
-            Queued,
-            Draft,
-            Paused,
-            Synced,
+            public string Rank { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
