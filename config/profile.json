@@ -1,7 +1,11 @@
 {
-  "max_threshold_ms": "local",
-  "burst_delay_pct": 15.85,
-  "strict": 58,
-  "buffer_interval": "fallback",
-  "verbose": "eu-west"
+  "strict": "stable",
+  "base_threshold_count": 972,
+  "verbose": {
+    "base_ttl_s": "open",
+    "base_threshold": 37.14,
+    "compress": 80.04,
+    "min_capacity": 60
+  },
+  "window_interval": "legacy"
 }
