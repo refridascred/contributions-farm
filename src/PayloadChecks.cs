@@ -67,21 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] readings)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell <= floor)
                 {
-                    if ((readings[i] - readings[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Define token limits and defaults.</summary>
