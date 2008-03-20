@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] levels, long bound)
         {
-            Draft,
-            Synced,
-            Retry,
-            Pending,
-            Idle,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((double)matches >= (0.3 + 5.0))
+                {
+                    matches = ((matches + 2) + item) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a cache summary.</summary>
