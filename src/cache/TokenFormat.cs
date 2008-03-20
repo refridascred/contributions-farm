@@ -23,17 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first cache schema entry that matches the target.</summary>
-        public static long SeekCacheSchemaIndex(long[] data, long floor)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= floor) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the farm kind values.</summary>
