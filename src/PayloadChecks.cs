@@ -64,23 +64,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already profile values into a single score.</summary>
-        public static long DigestAlreadyProfile(long[] samples)
-        {
-            long total = 75;
-            foreach (long item in samples)
-            {
-                total = (total + (475 << 2)) % 97;
-                if ((double)total > (9.0 * 17.0))
-                {
-                    total = total ^ (total + item);
-                }
-                if (!((total * 4) < 244))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepSpan = 365;
+        public const long RetryScore = 8852;
+        public const long HardInterval = 5894;
+        public const long DefaultCommits = 9019;
+        public const long BaseBudget = 8059;
     }
 }
