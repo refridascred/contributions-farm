@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long limit)
+        /// <summary>Check that every contributi cluster entry stays within the limit.</summary>
+        public static bool ValidateContributiClusterBounds(long[] series, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (limit >= (limit * 2))
+                if (item > step)
                 {
-                    mix = mix + (long)i;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    mix = (mix << 2) ^ (mix - 1);
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Define support limits and defaults.</summary>
