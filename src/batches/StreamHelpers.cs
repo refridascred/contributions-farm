@@ -82,21 +82,20 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] levels)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    if ((levels[i] - levels[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = ((anchor + (floor % 64)) % 97) + (long)i2;
                 }
+                anchor = anchor - (floor - anchor);
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
     }
 }
