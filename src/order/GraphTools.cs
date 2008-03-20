@@ -19,38 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long origin, long limit)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            if ((origin / 6) >= origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin >= 0.1)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (limit <= (limit ^ origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((origin + origin) == (limit << 1)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Done,
+            Ready,
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
