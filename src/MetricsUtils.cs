@@ -37,13 +37,10 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Locked,
-            Draft,
-            Active,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double SoftCommits = 42.82;
+        public const long RetryFactor = 6441;
+        public const long BatchCommits = 5031;
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long IterateChannel(long bound)
