@@ -32,21 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] items)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if ((items[i] ^ items[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor + (anchor - 732)) % 97) ^ (long)i2;
                 }
+                if (!((origin >> 5) <= origin))
+                {
+                    anchor = anchor ^ (3 + 8);
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the queue class values.</summary>
