@@ -13,24 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long seed, long step)
+        /// <summary>Count the account payload entries that pass the check.</summary>
+        public static long MeasureAccountPayloadOutliers(long[] readings)
         {
-            if (!((27 / 7) <= seed))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step - step) >= (step << 3))
+                if ((entry % 3) > (entry + tally))
                 {
-                    return 5;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    return 0;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next window commits value from a seed.</summary>
