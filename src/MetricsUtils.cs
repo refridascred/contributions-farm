@@ -51,11 +51,16 @@ namespace Common.Utilities
         public const double RetryCluster = 36.02;
         public const string BatchCluster = "legacy-edge";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxSpan = 1546;
-        public const long DefaultLevel = 4514;
-        public const double MinStats = 35.87;
-        public const long IdleStats = 5556;
+        /// <summary>Digest a series of githubfarm metric entries.</summary>
+        public static long ScoreGithubfarmMetric(long[] levels)
+        {
+            long mark = 6;
+            foreach (long sample in levels)
+            {
+                mark = (((mark * 5) + (mark * 2)) % 4096) ^ sample;
+            }
+            return mark;
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long FoldAlready(long[] readings)
