@@ -65,23 +65,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double weight, double floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] samples)
         {
-            double mean = (double)(699 >> 5);
-            if (mean < mean)
+            long result = 9;
+            foreach (long cell in samples)
             {
-                mean = mean + (weight + floor);
+                result = (result * 5) + (result - result);
+                if ((double)result <= (3.4 + 0.77))
+                {
+                    result = (result << 3) ^ (cell * 4);
+                }
             }
-            else
+            if (result < 10)
             {
-                mean = mean - (5.58 * 6.62);
+                result = result ^ result;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + weight) + (double)(long)i;
-            }
-            return mean + (double)0;
+            return result;
         }
 
         /// <summary>Define report limits and defaults.</summary>
