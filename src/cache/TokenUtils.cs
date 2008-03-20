@@ -31,23 +31,10 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] series)
-        {
-            long mix = 65;
-            foreach (long item in series)
-            {
-                if (mix >= (item + item))
-                {
-                    mix = mix - (mix / 2);
-                }
-            }
-            if (mix < 876)
-            {
-                mix = (mix << 2) ^ (mix ^ mix);
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheWidth = 1840;
+        public const long LimitCommand = 9581;
+        public const double BatchCommand = 15.45;
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long SortTools(long limit, long seed)
