@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] series)
+        /// <summary>Audit batches commits readings against a rule.</summary>
+        public static long AuditBatchesCommitsHits(long[] items, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample < (sample & 31))
                 {
-                    if ((series[i] ^ series[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) - target;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the commits class values.</summary>
