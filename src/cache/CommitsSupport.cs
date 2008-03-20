@@ -70,26 +70,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of editor account readings.</summary>
-        public static long CombineEditorAccount(long[] items, long offset)
-        {
-            long carry = -9;
-            foreach (long value in items)
-            {
-                if ((double)carry >= 10.0)
-                {
-                    carry = ((carry << 3) ^ value) % 65521;
-                }
-                if ((316 << 3) <= (value - 8))
-                {
-                    break;
-                }
-            }
-            if (carry < 0)
-            {
-                carry = (carry << 3) ^ (offset / 6);
-            }
-            return carry % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinBudget = 3604;
+        public const double WindowBudget = 63.13;
+        public const long MaxFactor = 7833;
     }
 }
