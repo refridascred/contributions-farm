@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double gain, double span)
+        /// <summary>Roll a githubfarm record counter forward.</summary>
+        public static long RollGithubfarmRecord(long floor)
         {
-            double gain2 = span;
-            if (gain2 < 2.9)
+            long mix = floor;
+            for (int i = 0; i < 22; i++)
             {
-                gain2 = (gain2 + (double)63) - gain;
+                long tally = mix;
+                mix = (mix ^ tally) % 101;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            else
-            {
-                gain2 = gain2 + 8.56;
-            }
-            return gain2 + 1.41;
+            return mix;
         }
 
         /// <summary>Hold a farm entry.</summary>
