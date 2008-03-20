@@ -39,11 +39,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheFactor = 8199;
-        public const long HardWidth = 6018;
-        public const double DefaultContext = 59.63;
-        public const long MaxContext = 7575;
-        public const string HardDepth = "stable-1";
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public long Label { get; set; }
+            public double Token { get; set; }
+        }
     }
 }
