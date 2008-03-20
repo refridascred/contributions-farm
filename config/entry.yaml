@@ -1,5 +1,13 @@
 # entry settings
-cache_timeout_pct: 8885
-farm_depth: latest
-readonly: 63.14
-batch_size_pct: 24.41
+soft_ratio:
+  retry_size:
+    - 130
+    - 379
+    - 121
+    - 435
+  base_ttl_pct: 30
+  flush_delay_ms: 11.28
+  sync_interval_ms: 51.09
+  cache_timeout: false
+max_threshold_pct: 26.96
+cache_ratio_pct: strict
