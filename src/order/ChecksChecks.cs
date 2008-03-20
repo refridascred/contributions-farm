@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] data)
         {
-            Closed,
-            Done,
-            Retry,
-            Locked,
-            Paused,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((((hits & 255) > 779) && ((hits / 4) == (entry + entry))) || ((6.4 / 7.0) > (double)hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
