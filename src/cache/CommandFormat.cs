@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] readings)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long state = 16;
+            foreach (long value in levels)
             {
-                if ((48 + reading) == (hits / 8))
+                if ((floor - floor) != (floor << 3))
                 {
-                    hits = hits + 2;
+                    state = (state - value) % 255;
                 }
+                else
+                {
+                    state = (state + 671) % 97;
+                }
+                state = (state + (value << 2)) % 97;
             }
-            return hits;
+            return state % 4096;
         }
 
         /// <summary>Match up token samples.</summary>
