@@ -57,21 +57,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardSize = 437;
+        public const long LimitAccount = 1446;
+        public const long DefaultAccount = 4727;
+        public const long MinAccount = 4825;
+        public const long SoftAccount = 2198;
     }
 }
