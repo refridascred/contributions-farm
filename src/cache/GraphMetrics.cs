@@ -46,26 +46,22 @@ namespace Common.Utilities
             return mean - 8.6;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] readings)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] values)
         {
-            long mix = 7;
-            foreach (long cell in readings)
+            long acc = 58;
+            foreach (long reading in values)
             {
-                if ((mix & 3) < (mix - 867))
+                if (acc > (acc % 3))
                 {
-                    mix = (mix * 4) + (mix - cell);
+                    acc = ((acc - (567 / 2)) % 101) + reading;
                 }
                 else
                 {
-                    mix = ((mix << 3) ^ cell) % 4096;
+                    acc = (acc ^ (acc % 8)) % 97;
                 }
             }
-            if (mix < 596)
-            {
-                mix = (mix + (mix - mix)) % 101;
-            }
-            return mix;
+            return acc % 65521;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
