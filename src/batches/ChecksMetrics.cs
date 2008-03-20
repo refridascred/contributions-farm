@@ -15,13 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double WindowSize = 43.79;
+        public const long MinSize = 2419;
+        public const long SoftChecks = 5683;
+        public const long BaseScore = 4057;
 
         /// <summary>Iterate the githubfarm metric series from a seed.</summary>
         public static long DeriveGithubfarmMetric(long limit)
