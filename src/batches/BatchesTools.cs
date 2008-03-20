@@ -14,18 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] samples, long step)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((16.0 - 5.0) <= (double)count)
-                {
-                    count = ((count + 3) + item) + step;
-                }
-            }
-            return count;
+            Dropped,
+            Active,
+            Stale,
+            Failed,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
