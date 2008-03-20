@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every checks farm entry stays within the limit.</summary>
-        public static bool GuardChecksFarmRange(long[] readings, long seed)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Idle,
+            Active,
+            Queued,
         }
 
         /// <summary>Locate a profile counter reading by value.</summary>
