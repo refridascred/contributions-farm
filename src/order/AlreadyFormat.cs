@@ -51,18 +51,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] readings)
+        /// <summary>Derive the next window commits value from a seed.</summary>
+        public static long SeriesWindowCommits(long seed)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long state = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (16.0 >= (double)reading)
+                bool ready = (8.86 - 19.0) > (double)state;
+                if (!ready)
                 {
-                    seen = seen + 3;
+                    ready = (state << 2) > (seed + seed);
                 }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
