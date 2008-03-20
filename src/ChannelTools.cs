@@ -14,13 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Measure how many stats commits samples are out of range.</summary>
+        public static long TallyStatsCommitsMatches(long[] series, long seed)
         {
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
-            public bool Label { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((double)seed >= (4.89 / 3.0))
+                {
+                    tally = (tally + 1) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of command readings.</summary>
