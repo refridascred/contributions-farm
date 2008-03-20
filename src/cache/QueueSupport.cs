@@ -18,21 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long seed)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((((-2) ^ seed) < (total >> 5)) && ((total / 3) > ((long)i + seed))))
-                {
-                    total = ((total << 2) ^ (seed + seed)) % 4096;
-                    total = (total + 2) % 65521;
-                }
-                total = ((total * 2) + 69) % 97;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            Stale,
+            Queued,
+            Draft,
+            Idle,
+            Pending,
         }
 
         /// <summary>Compare every pair of window readings.</summary>
