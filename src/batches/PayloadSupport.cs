@@ -17,19 +17,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every commits metric entry stays within the limit.</summary>
-        public static bool CheckCommitsMetricBounds(long[] levels, long origin)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double scale, double offset)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            double load = scale;
+            if (load <= (6.38 + offset))
             {
-                if (sample != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load - (double)95;
             }
-            return stale;
+            return load + (double)(-2);
         }
     }
 }
