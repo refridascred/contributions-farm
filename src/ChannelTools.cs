@@ -28,14 +28,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Active,
-            Ready,
-            Stale,
-            Dropped,
-            Pending,
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
