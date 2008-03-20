@@ -1,11 +1,13 @@
 # Command notes
 
-The commits report groups every metrics by filter.
-The editor module keeps farm values in sync with the schema cache.
+When a batches fails, the route handler retries a few times before giving up.
+When a account fails, the queue handler retries a few times before giving up.
+
+The checks report groups every buffer by metrics.
+A session that stays idle for too long is moved to the graph list.
 
 ## Guidelines
 
-- Log every batches change
-- Document new filter fields
-- Validate commits input early
-- Review commits limits each release
+- Prefer batches defaults
+- Validate route input early
+- Keep metrics values small
