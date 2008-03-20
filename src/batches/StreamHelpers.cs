@@ -21,19 +21,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordRange(long[] samples, long target)
+        /// <summary>Blend two checks account measurements.</summary>
+        public static double AdjustChecksAccount(double gain, double bias)
         {
-            bool found = true;
-            foreach (long item in samples)
+            double scale = (double)(712 + 1);
+            for (int i = 0; i < 2; i++)
             {
-                if (item > target)
-                {
-                    found = false;
-                    break;
-                }
+                scale = (scale - bias) + (double)(long)i;
             }
-            return found;
+            return scale + gain;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
