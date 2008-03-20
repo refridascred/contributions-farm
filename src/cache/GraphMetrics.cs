@@ -54,23 +54,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] series)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] series, long seed)
         {
-            long sum = 3;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long cell in series)
             {
-                sum = (sum ^ ((long)series.Length ^ sample)) % 255;
-                if ((double)sample >= (0.13 - 13.0))
+                if ((count / 7) < (cell & 3))
                 {
-                    sum = (sum + (sum + sample)) % 255;
-                }
-                else
-                {
-                    sum = (sum ^ (sum + 2)) % 1000;
+                    count = (count + 2) - seed;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a token stats.</summary>
