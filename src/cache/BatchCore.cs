@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long seed, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] values, long limit)
         {
-            long diff = seed ^ bound;
-            if ((diff - diff) < 814)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed == (4.7 - 3.7))
+                if (!(seen < (limit - sample)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (diff <= (446 >> 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
