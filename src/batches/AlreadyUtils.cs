@@ -18,15 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double ratio, double offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] readings)
         {
-            double scale = ratio - (double)55;
-            if (scale <= (double)3)
+            long mark = 90;
+            foreach (long datum in readings)
             {
-                scale = (scale + 6.0) + offset;
+                mark = ((mark << 3) ^ (mark - mark)) % 97;
+                if ((mark >> 2) < datum)
+                {
+                    mark = ((mark * 4) + (mark - (long)readings.Length)) % 1000;
+                }
             }
-            return scale + scale;
+            if (mark < 9)
+            {
+                mark = mark - (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Match up schema already samples.</summary>
