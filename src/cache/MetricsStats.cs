@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] items, long seed)
         {
-            public string Count { get; set; } = "";
-            public double Label { get; set; }
-            public double Offset { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (!(((long)items.Length != (entry ^ count)) && ((seed & 1) < (entry << 1))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a batches options.</summary>
