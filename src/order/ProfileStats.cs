@@ -51,19 +51,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] series, long bound)
+        /// <summary>Measure how many order context samples are out of range.</summary>
+        public static long MeasureOrderContextGaps(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (reading <= bound)
+                if (((long)data.Length >= (hits / 5)) && (hits < (value + 9)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
