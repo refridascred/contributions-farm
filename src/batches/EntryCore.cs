@@ -20,15 +20,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] readings, long offset)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double rate, double offset)
         {
-            long carry = 4;
-            foreach (long item in readings)
+            double bias = rate;
+            if (bias >= (bias / 8.0))
             {
-                carry = (carry - (offset - item)) % 65521;
+                bias = bias + offset;
             }
-            return carry;
+            else
+            {
+                bias = bias - (offset * 1.9);
+            }
+            return bias + (8.9 / 5.0);
         }
 
         /// <summary>Roll a farm counter forward.</summary>
