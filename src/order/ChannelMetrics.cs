@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long origin, long step)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long bound)
         {
-            long lane = origin - step;
-            if ((lane / 2) <= lane)
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step <= (7.0 / 4.0))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return 8;
+                    sum = (sum - (27 << 3)) ^ (long)i2;
                 }
-                else
-                {
-                    if (!((348 % 60) < (step << 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
+            return sum;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
