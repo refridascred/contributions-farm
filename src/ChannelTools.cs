@@ -19,17 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a githubfarm record counter forward.</summary>
-        public static long RollGithubfarmRecord(long floor)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                long tally = mix;
-                mix = (mix ^ tally) % 101;
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
+            public bool Label { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a farm entry.</summary>
