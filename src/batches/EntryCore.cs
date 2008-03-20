@@ -74,22 +74,18 @@ namespace Common.Utilities
         public const long BatchBudget = 2287;
         public const long CacheScore = 5165;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] items, long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((6 * 3) <= bound)
+                if (!((double)matches != (2.0 * 2.33)))
                 {
-                    seen = (seen + 3) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 1) - item;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
