@@ -51,13 +51,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long step, long seed)
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            if ((step + seed) >= (seed & 7))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((303 ^ seed) >= (step << 1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (step > (seed + 96))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (seed >= (seed ^ seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
