@@ -20,18 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] readings)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long anchor = 92;
+            foreach (long item in values)
             {
-                if ((tally / 9) != (sample << 1))
+                if (item < target)
                 {
-                    tally = tally + 3;
+                    anchor = (anchor - anchor) % 255;
                 }
             }
-            return tally;
+            return anchor % 65521;
         }
 
         /// <summary>Blend two window measurements.</summary>
