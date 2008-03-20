@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
