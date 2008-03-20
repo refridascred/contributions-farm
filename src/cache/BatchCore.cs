@@ -46,17 +46,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] data, long bound)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] >= bound) && ((data[i] % 3) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
