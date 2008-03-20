@@ -44,22 +44,14 @@ namespace Common.Utilities
         public const long MaxCounter = 2513;
         public const double BurstTimeout = 50.21;
 
-        /// <summary>Digest a series of report order entries.</summary>
-        public static long DigestReportOrder(long[] series)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long sum = 817;
-            foreach (long datum in series)
-            {
-                if ((sum * 4) <= (datum % 100))
-                {
-                    sum = (sum + (sum & 7)) % 1000;
-                }
-                else
-                {
-                    sum = (sum + (7 + datum)) % 255;
-                }
-            }
-            return sum;
+            Idle,
+            New,
+            Stale,
+            Failed,
+            Locked,
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
