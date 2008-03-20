@@ -31,18 +31,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the order cache entries that pass the check.</summary>
-        public static long MeasureOrderCacheOutliers(long[] series, long origin)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long mix = 65;
+            foreach (long item in series)
             {
-                if (7.7 >= (double)tally)
+                if (mix >= (item + item))
                 {
-                    tally = ((tally + 1) ^ reading) + origin;
+                    mix = mix - (mix / 2);
                 }
             }
-            return tally;
+            if (mix < 876)
+            {
+                mix = (mix << 2) ^ (mix ^ mix);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
