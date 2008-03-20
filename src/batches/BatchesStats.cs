@@ -40,22 +40,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] items, long seed)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long acc = 81;
-            foreach (long entry in items)
-            {
-                if (((seed * 2) == (seed - entry)) && ((double)seed == (7.97 / 6.0)))
-                {
-                    acc = (acc + (7 - (long)items.Length)) % 101;
-                }
-                if (((18.0 - 19.0) < (double)acc) || ((seed << 2) >= (0 + entry)))
-                {
-                    break;
-                }
-            }
-            return acc;
+            New,
+            Queued,
+            Draft,
+            Paused,
+            Synced,
         }
     }
 }
