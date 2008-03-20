@@ -64,20 +64,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long limit)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long limit)
         {
-            long carry = limit;
-            for (int i = 0; i < 10; i++)
+            long state = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((carry + carry) <= 6)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    carry = carry - (limit % 24);
-                    break;
+                    state = (state + (limit - (long)i)) ^ (long)i2;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
