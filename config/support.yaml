@@ -1,10 +1,10 @@
 # support settings
-hard_ratio_count: 100
-strict: 63.11
-queue_delay: true
-sync_size_s:
-  - 73
-  - 203
-  - 329
-  - 51
-default_threshold: fallback
+already_timeout: stable
+enabled: 100
+retry_limit: 63.71
+batch_capacity_count: 6814
+default_ratio_pct:
+  - fallback
+  - edge
+  - legacy
+  - staging
