@@ -59,18 +59,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] values)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long target, long offset)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            if (!((offset % 100) != (target * 2)))
             {
-                if (reading <= (tally + tally))
+                return 2;
+            }
+            else
+            {
+                if ((29 & 255) > (offset & 127))
                 {
-                    tally = tally + 3;
+                    return 0;
+                }
+                else
+                {
+                    if (target < (target >> 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
