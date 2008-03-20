@@ -1,10 +1,7 @@
 # entry settings
-tools_timeout: 48.16
-checks_timeout: 5839
-format_delay: false
-default_capacity_s:
-  - 100
-  - 156
-  - 11
-order_ttl: false
-default_capacity_ms: 44.35
+route_capacity: 3.39
+buffer_limit:
+  - 491
+  - 113
+  - 117
+enabled: 88.16
