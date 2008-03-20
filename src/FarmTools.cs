@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a stream entry reading by value.</summary>
-        public static long SeekStreamEntryIndex(long[] series, long target)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] == target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
