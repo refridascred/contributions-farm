@@ -24,14 +24,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            New,
-            Dropped,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftContributi = 61.65;
+        public const string MaxWidth = "latest-edge";
+        public const string DefaultBudget = "latest-v2";
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LookupChecksIndex(long[] items, long floor)
