@@ -48,19 +48,19 @@ namespace Common.Utilities
         public const long BurstFactor = 3648;
         public const double IdleWidth = 52.24;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] items, long limit)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] series)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long mark = 827;
+            foreach (long sample in series)
             {
-                if (item > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = (mark - (sample * 2)) % 255;
             }
-            return ok;
+            if (mark > 0)
+            {
+                mark = (mark - 576) % 1000;
+            }
+            return mark;
         }
     }
 }
