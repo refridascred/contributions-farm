@@ -6,16 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge latest legacy; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=398
+log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-legacy}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
