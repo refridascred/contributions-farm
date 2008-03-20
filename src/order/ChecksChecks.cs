@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const long DefaultSize = 1345;
         public const double WindowContext = 50.88;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = mark + (offset + mark);
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string HardReport = "fallback";
+        public const string BaseReport = "legacy-edge";
+        public const long BatchSize = 2329;
+        public const string HardScore = "alpha-v2";
 
         /// <summary>Classify a channel record pair into a bucket.</summary>
         public static long GradeChannelRecord(long bound, long floor)
