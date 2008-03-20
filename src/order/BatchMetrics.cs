@@ -46,18 +46,17 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] values, long target)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] levels, long limit)
         {
-            long carry = -580;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading + carry) < (target % 16))
+                if (levels[i] > limit)
                 {
-                    carry = (carry ^ (carry - reading)) % 65521;
+                    return (long)i;
                 }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Fold a list of buffer context readings.</summary>
