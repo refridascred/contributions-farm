@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] readings)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((3.4 / 6.0) > (double)hits)
+                if ((double)sample < (double)count)
                 {
-                    hits = (hits + 2) ^ item;
+                    count = (count + 2) + offset;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
