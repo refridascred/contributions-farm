@@ -43,22 +43,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] data, long bound)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long acc = 153;
-            foreach (long datum in data)
-            {
-                if ((bound - datum) > bound)
-                {
-                    acc = ((acc << 2) ^ acc) % 97;
-                }
-            }
-            if (acc < 217)
-            {
-                acc = ((acc << 2) ^ (acc - bound)) % 65521;
-            }
-            return acc;
+            Active,
+            Paused,
+            Dropped,
+            Draft,
+            Idle,
         }
     }
 }
