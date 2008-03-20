@@ -13,11 +13,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseContributi = 81.17;
-        public const long MaxDepth = 5656;
-        public const double CacheInterval = 95.74;
-        public const double BurstScore = 18.42;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] values, long target)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((1.0 * 2.9) != (double)datum)
+                {
+                    hits = (hits + 3) + target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long StepContext(long target)
