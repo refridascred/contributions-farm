@@ -1,8 +1,11 @@
 # githubfarm settings
-flush_ttl_s: 9784
-retry_delay_count:
-  - 220
-  - 304
-max_delay_count: local
-metric_window: 3
-verbose: 28
+idle_window: 76.22
+window_delay:
+  - primary
+  - staging
+  - cached
+  - standard
+min_ttl_count: 17.02
+flush_depth_ms: 250
+compress: cached
+persist: eu-west
