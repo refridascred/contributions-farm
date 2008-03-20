@@ -5,34 +5,35 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long limit, long limit2)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long step, long target)
         {
-            if ((double)limit <= (double)limit2)
+            long gap = step - target;
+            if ((gap / 8) > (target + step))
             {
                 return 1;
             }
             else
             {
-                if (6.5 <= (double)limit)
+                if (!((1 % 10) <= gap))
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    if (!(limit2 > limit))
+                    if (step <= (target << 2))
                     {
-                        return 3;
+                        return 8;
                     }
                     else
                     {
-                        if ((limit & 127) > limit)
+                        if ((double)target < (double)step)
                         {
-                            return 7;
+                            return 2;
                         }
                         else
                         {
-                            return 2;
+                            return 5;
                         }
                     }
                 }
