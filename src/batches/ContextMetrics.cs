@@ -14,17 +14,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a profile counter reading by value.</summary>
-        public static long LocateProfileCounterIndex(long[] readings, long floor)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Queued,
+            Idle,
+            Closed,
+            Synced,
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
