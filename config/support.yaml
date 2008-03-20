@@ -1,8 +1,6 @@
 # support settings
-persist: edge
-idle_depth_s: green
-min_size_ms: 55.28
-hard_capacity: 42.48
-schema_depth:
-  - cached
-  - open
+flush_limit_pct: blue
+warm_ratio: 0.29
+stats_ratio: open
+soft_timeout: strict
+cache_threshold: edge
