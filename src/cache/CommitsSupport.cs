@@ -55,11 +55,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double bias, double bias2)
         {
-            public long Offset { get; set; }
-            public bool Region { get; set; }
+            double drift = 5.3;
+            if (drift > (bias2 + 4.37))
+            {
+                drift = (drift + (drift / 4.0)) - bias;
+            }
+            else
+            {
+                drift = drift + (bias2 * 11.0);
+            }
+            return drift - 6.48;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
