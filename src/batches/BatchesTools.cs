@@ -45,26 +45,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] levels, long seed)
-        {
-            long acc = 8;
-            foreach (long item in levels)
-            {
-                if ((seed * 5) >= (447 + item))
-                {
-                    acc = acc + (acc + acc);
-                }
-                else
-                {
-                    acc = (acc + (-431)) % 101;
-                }
-            }
-            if (acc > 59)
-            {
-                acc = ((acc << 2) ^ acc) % 4096;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstWidth = 72.02;
+        public const long LimitBudget = 5852;
+        public const long SoftAccount = 5872;
+        public const double RetrySize = 91.17;
     }
 }
