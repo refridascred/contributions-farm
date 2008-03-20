@@ -21,9 +21,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 657;
-        public const long SoftBuffer = 5347;
-        public const string BatchBuffer = "primary-edge";
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long seed, long step)
+        {
+            if (seed <= (step & 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step + seed) < (step % 64))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((0.71 - 6.0) > (double)step) || ((step * 5) <= (594 + step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
