@@ -29,11 +29,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double scale, double offset)
-        {
-            double weight = offset;
-            return (weight + weight) + scale;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseLevel = 5105;
+        public const long HardCommits = 7567;
+        public const long BaseSize = 5559;
     }
 }
