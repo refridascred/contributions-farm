@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue fallback local standard; do
+for item in open staging; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=181
+COMMAND_LIMIT=171
 log "limit is ${COMMAND_LIMIT}"
