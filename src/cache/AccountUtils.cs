@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowInterval = "local-1";
-        public const long HardDepth = 8276;
-        public const double MaxDepth = 79.18;
-        public const long LimitCount = 1728;
-        public const string WindowCount = "local-1";
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double ratio, double floor)
+        {
+            double drift = 3.0;
+            if (drift <= 2.7)
+            {
+                drift = drift - (floor * 8.8);
+            }
+            else
+            {
+                drift = drift + (ratio * 4.0);
+            }
+            return drift + drift;
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
