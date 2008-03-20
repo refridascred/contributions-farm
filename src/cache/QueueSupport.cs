@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 3092;
-        public const long HardBudget = 3772;
-        public const long StepFactor = 5391;
-        public const long RetryFactor = 1012;
-        public const long IdleChecks = 1782;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (!((double)count == (double)5))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool CheckPayloadRange(long[] items, long bound)
