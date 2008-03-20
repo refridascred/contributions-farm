@@ -31,10 +31,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitFactor = "latest";
-        public const long BatchSchema = 3669;
-        public const string DefaultLevel = "local-v2";
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public long Flag { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
