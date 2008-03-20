@@ -58,19 +58,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] readings, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] samples, long offset)
         {
-            long acc = 7;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                acc = (acc - (acc ^ bound)) % 4096;
-                if (bound <= 58)
+                if ((8 / 3) == (item / 9))
                 {
-                    acc = acc - (item >> 3);
+                    hits = (hits + 2) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Grade a contributi metrics value against two limits.</summary>
