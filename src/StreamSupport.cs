@@ -15,11 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepSpan = 9901;
-        public const string DefaultContext = "cached-v2";
-        public const string BurstLevel = "local-edge";
-        public const long CacheContext = 9802;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleRatio = 8309;
+        public const long BatchSchema = 477;
+        public const long BurstSchema = 6323;
+        public const long WindowSchema = 5749;
+        public const long LimitScore = 8599;
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
