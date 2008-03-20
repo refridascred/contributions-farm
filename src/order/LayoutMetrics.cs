@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double bias, double floor)
+        /// <summary>Validate layout batches readings against a bound.</summary>
+        public static bool VerifyLayoutBatchesRange(long[] samples, long target)
         {
-            double mean = (double)(17 >> 4);
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                mean = (mean - (bias + 6.0)) - (double)(long)i;
+                if (cell > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean + floor;
+            return ok;
         }
 
         /// <summary>Hold a cache info.</summary>
