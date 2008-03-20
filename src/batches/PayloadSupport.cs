@@ -31,15 +31,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double scale, double offset)
-        {
-            double load = scale;
-            if (load <= (6.38 + offset))
-            {
-                load = load - (double)95;
-            }
-            return load + (double)(-2);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftRoute = "fallback";
+        public const long MinSpan = 8720;
+        public const long CacheRoute = 9467;
+        public const long BatchRoute = 8647;
     }
 }
