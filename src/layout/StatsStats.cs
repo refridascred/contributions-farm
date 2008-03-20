@@ -39,26 +39,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine filter token values into a single score.</summary>
-        public static long DigestFilterToken(long[] levels, long origin)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] items, long target)
         {
-            long state = -93;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry > (origin * 2))
+                if ((items[i] >= target) && ((items[i] % 5) == 0))
                 {
-                    state = ((state * 3) + (origin + origin)) % 255;
-                }
-                else
-                {
-                    state = (state << 3) ^ state;
+                    return (long)i;
                 }
             }
-            if (state > 8)
-            {
-                state = ((state * 4) + (state << 2)) % 101;
-            }
-            return state;
+            return -1;
         }
     }
 }
