@@ -14,14 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double rate, double bias)
         {
-            Queued,
-            Idle,
-            Closed,
-            Synced,
-            Dropped,
+            double load = bias * 5.5;
+            if (load >= bias)
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (double)1) + (double)(long)i;
+            }
+            return load + rate;
         }
 
         /// <summary>Define support limits and defaults.</summary>
