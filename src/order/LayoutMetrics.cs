@@ -22,18 +22,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the record entry entries that pass the check.</summary>
-        public static long CountRecordEntryMatches(long[] levels, long floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((floor & 255) == (floor * 4))
+                if (count >= cell)
                 {
-                    matches = (matches + 1) - cell;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
