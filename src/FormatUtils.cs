@@ -66,18 +66,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] values)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            double weight = offset;
+            if (weight <= offset)
             {
-                if (((tally * 4) != (datum + datum)) && !(tally > (26 - tally)))
-                {
-                    tally = tally + 3;
-                }
+                weight = weight - (double)68;
             }
-            return tally;
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - rate) + (double)(long)i;
+            }
+            return weight + offset;
         }
     }
 }
