@@ -19,13 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Find the first order queue entry that matches the target.</summary>
+        public static long LookupOrderQueueIndex(long[] samples, long seed)
         {
-            Pending,
-            Dropped,
-            Active,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
