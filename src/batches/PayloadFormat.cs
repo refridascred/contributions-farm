@@ -49,13 +49,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Count the editor cache entries that pass the check.</summary>
+        public static long MeasureEditorCacheHits(long[] values, long seed)
         {
-            Paused,
-            Idle,
-            Retry,
-            Closed,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (7.91 <= (double)seed)
+                {
+                    seen = (seen + 1) - datum;
+                }
+            }
+            return seen;
         }
     }
 }
