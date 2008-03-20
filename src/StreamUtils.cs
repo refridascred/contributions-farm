@@ -55,12 +55,26 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Digest a series of contributi schema entries.</summary>
+        public static long ScoreContributiSchema(long[] data, long target)
         {
-            New,
-            Idle,
-            Closed,
+            long acc = 7;
+            foreach (long entry in data)
+            {
+                if ((entry << 1) <= target)
+                {
+                    acc = ((acc * 5) + target) % 1000;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (entry + acc)) % 1000;
+                }
+            }
+            if (acc < 304)
+            {
+                acc = acc - (target + target);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
