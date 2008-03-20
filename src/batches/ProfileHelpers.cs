@@ -33,19 +33,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every checks account entry stays within the limit.</summary>
-        public static bool ValidateChecksAccountRange(long[] levels, long origin)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long step, long target)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            if ((step % 5) >= step)
             {
-                if (entry <= origin)
+                return 4;
+            }
+            else
+            {
+                if (((step ^ target) >= (target + step)) || ((target + step) > (step % 12)))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return found;
         }
 
         /// <summary>Blend two already cluster measurements.</summary>
