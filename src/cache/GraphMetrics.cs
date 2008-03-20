@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
-        {
-            Stale,
-            New,
-            Draft,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double DefaultEntry = 48.03;
+        public const long BurstTimeout = 4712;
+        public const long SoftBudget = 2633;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
