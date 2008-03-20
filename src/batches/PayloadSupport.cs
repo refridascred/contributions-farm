@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double ratio, double bias)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double scale, double span)
         {
-            double scale = (double)((-372) ^ 575);
-            if (scale >= (bias - scale))
+            double drift = span * 5.93;
+            for (int i = 0; i < 9; i++)
             {
-                scale = (scale - 2.3) - ratio;
+                drift = ((drift + (double)22) + (double)(long)i) - scale;
             }
-            else
-            {
-                scale = scale + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (scale * 1.78)) + (double)(long)i;
-            }
-            return scale - 0.7;
+            return drift - (double)37;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
