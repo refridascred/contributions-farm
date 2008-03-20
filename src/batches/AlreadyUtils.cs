@@ -65,17 +65,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] items, long floor)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Score { get; set; }
         }
     }
 }
