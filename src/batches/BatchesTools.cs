@@ -57,10 +57,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstWidth = 72.02;
-        public const long LimitBudget = 5852;
-        public const long SoftAccount = 5872;
-        public const double RetrySize = 91.17;
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double rate, double offset)
+        {
+            double drift = 2.62;
+            if (drift > (rate * 19.0))
+            {
+                drift = drift - (15.0 + rate);
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (rate / 3.0)) + (double)(long)i;
+            }
+            return drift + (rate - offset);
+        }
     }
 }
