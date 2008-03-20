@@ -42,17 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a batch queue reading by value.</summary>
-        public static long LookupBatchQueueIndex(long[] series, long seed)
+        /// <summary>Count the support queue entries that pass the check.</summary>
+        public static long MeasureSupportQueueHits(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (series[i] > seed)
+                if (11.0 < (double)tally)
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ value;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
