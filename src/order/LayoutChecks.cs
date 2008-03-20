@@ -45,18 +45,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] series)
+        /// <summary>Audit channel tools readings against a rule.</summary>
+        public static long TallyChannelToolsMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((entry << 2) == (entry - entry))
+                if ((reading + reading) < 354)
                 {
-                    matches = matches + 1;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the farm command entries that pass the check.</summary>
