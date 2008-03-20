@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            Closed,
+            Pending,
+            Queued,
             Done,
-            Paused,
+            Stale,
         }
 
         /// <summary>Hold a stream stats.</summary>
