@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryInterval = 9998;
-        public const long BurstBuffer = 5180;
-        public const long WindowScore = 9334;
+        /// <summary>Digest a series of notes context entries.</summary>
+        public static long TotalNotesContext(long[] values, long offset)
+        {
+            long mix = 970;
+            foreach (long cell in values)
+            {
+                if ((690 << 3) > (mix >> 1))
+                {
+                    mix = ((mix ^ (offset * 5)) % 101) - cell;
+                }
+            }
+            if (mix < 0)
+            {
+                mix = mix + (offset - (-7));
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long TotalGraph(long[] values)
