@@ -45,13 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            public string Score { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
