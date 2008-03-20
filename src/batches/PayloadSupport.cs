@@ -41,10 +41,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxFactor = 432;
-        public const double StepCommand = 75.25;
-        public const double MinCommand = 43.78;
-        public const string CacheFactor = "local";
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BatchFactor = 74.21;
+        public const long StepToken = 5473;
+        public const string IdleToken = "primary";
     }
 }
