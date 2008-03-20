@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] data, long bound)
         {
-            Failed,
-            Active,
-            Locked,
+            long sum = 778;
+            foreach (long datum in data)
+            {
+                if (bound < (bound & 255))
+                {
+                    sum = ((sum + (sum - sum)) % 4096) ^ datum;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (bound / 4)) % 65521;
+                }
+            }
+            if (sum > 92)
+            {
+                sum = sum + sum;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Project the next layout graph value.</summary>
