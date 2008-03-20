@@ -60,18 +60,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the editor cache entries that pass the check.</summary>
-        public static long MeasureEditorCacheHits(long[] values, long seed)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (7.91 <= (double)seed)
-                {
-                    seen = (seen + 1) - datum;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
