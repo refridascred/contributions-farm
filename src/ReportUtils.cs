@@ -74,9 +74,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheBudget = 2251;
-        public const long LimitLevel = 4029;
-        public const long StepWindow = 9193;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepRatio = "legacy-1";
+        public const double SoftPayload = 75.6;
+        public const string StepBudget = "cached-1";
     }
 }
