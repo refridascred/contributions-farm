@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric contributi readings against a rule.</summary>
-        public static long AuditMetricContributiOutliers(long[] series)
+        /// <summary>Compare every pair of metric tools readings.</summary>
+        public static long OverlapMetricToolsCount(long[] items)
         {
-            long count = 0;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((7.37 / 4.0) > (double)count)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 1) ^ item;
+                    if ((items[i] - items[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Derive the next notes buffer value from a seed.</summary>
