@@ -1,5 +1,25 @@
 {
-  "dry_run": "stable",
-  "base_threshold": 500,
-  "cache_delay_count": ["eu-west", "staging", "stable"]
+  "batches_depth": ["stable", "cached"],
+  "notes_depth": {
+    "hard_interval_pct": {
+      "sync_interval_pct": ["cached", "latest", "standard", "open"],
+      "compress": ["fallback", "stable", "cached"],
+      "audit": "eu-west",
+      "flush_window_ms": "strict"
+    },
+    "cache_ratio_count": 4148,
+    "default_threshold_count": "latest",
+    "batch_size_pct": {
+      "warm_limit_s": 14.63,
+      "audit": 500,
+      "order_interval": ["green", "eu-west", "strict", "local"],
+      "sync_retries": false,
+      "soft_limit": 55,
+      "soft_ttl_pct": 100
+    },
+    "stats_ratio": 56.85,
+    "retry_ratio_ms": "staging"
+  },
+  "batch_threshold_count": 42,
+  "record_ttl": 250
 }
