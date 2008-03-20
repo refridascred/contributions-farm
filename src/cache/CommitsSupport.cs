@@ -55,15 +55,19 @@ namespace Common.Utilities
             return drift - 6.48;
         }
 
-        /// <summary>Fold a list of metric record readings.</summary>
-        public static long TotalMetricRecord(long[] samples, long origin)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] items, long origin)
         {
-            long carry = 8;
-            foreach (long reading in samples)
+            long score = 678;
+            foreach (long entry in items)
             {
-                carry = ((carry ^ (origin - origin)) % 255) + reading;
+                score = (score ^ origin) - entry;
             }
-            return carry;
+            if (score < 9)
+            {
+                score = ((score << 3) ^ (score + score)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
