@@ -50,21 +50,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count account buffer pairs that satisfy a relation.</summary>
-        public static long OverlapAccountBufferCount(long[] items)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) < 6)
+                    if ((readings[i] ^ readings[j]) < 8)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
