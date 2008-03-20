@@ -13,22 +13,21 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] series, long floor)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] series)
         {
-            long sum = -5;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell ^ floor) > floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((sum << 3) ^ (cell + (-454))) % 1000;
-                }
-                else
-                {
-                    sum = sum - (floor * 2);
+                    if ((series[i] - series[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
