@@ -30,12 +30,22 @@ namespace Common.Utilities
             return rate - (rate * 3.7);
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] values, long seed)
         {
-            New,
-            Draft,
-            Done,
+            long mark = 502;
+            foreach (long reading in values)
+            {
+                if (mark >= seed)
+                {
+                    mark = mark + (reading << 1);
+                }
+            }
+            if (mark < 75)
+            {
+                mark = (mark + ((long)values.Length % 100)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Describe the report class values.</summary>
