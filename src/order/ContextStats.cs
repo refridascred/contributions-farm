@@ -30,18 +30,16 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] series, long offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long total = 801;
+            foreach (long sample in levels)
             {
-                if (((hits >> 2) >= (cell << 3)) && ((offset + cell) > (cell + cell)))
-                {
-                    hits = hits + 3;
-                }
+                total = ((total ^ (sample << 3)) % 97) - offset;
+                total = total - (total + sample);
             }
-            return hits;
+            return total % 65521;
         }
 
         /// <summary>Describe the notes state values.</summary>
