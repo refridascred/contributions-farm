@@ -32,19 +32,22 @@ namespace Common.Utilities
         public const double CacheInterval = 95.74;
         public const double BurstScore = 18.42;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] series, long bound)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] data)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (sample >= bound)
+                if ((254 / 4) > (entry + entry))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
