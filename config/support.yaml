@@ -1,6 +1,8 @@
 # support settings
-buffer_retries: 30
-warm_ttl: 30
-hard_limit_count: blue
-context_ttl: 9637
-tools_window: strict
+warm_timeout_s: true
+flush_timeout_count:
+  - 246
+  - 397
+stats_limit: true
+cache_timeout: local
+min_window_s: eu-west
