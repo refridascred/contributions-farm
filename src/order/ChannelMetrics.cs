@@ -48,18 +48,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] values, long limit)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long target, long bound)
         {
-            long matches = 0;
-            foreach (long value in values)
+            if ((16.0 * 2.7) != (double)bound)
             {
-                if (!((double)limit <= (6.4 - 10.0)))
+                return 3;
+            }
+            else
+            {
+                if ((bound - target) >= 3)
                 {
-                    matches = (matches + 3) + value;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)target <= (double)(-39))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
