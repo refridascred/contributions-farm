@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Iterate the schema account series from a seed.</summary>
+        public static long SeriesSchemaAccount(long floor)
         {
-            public double Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
+            long result = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                result = (result << 2) ^ (result * 4);
+                result = (result << 3) ^ floor;
+                result = (result ^ ((-47) - 653)) % 97;
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the route state values.</summary>
