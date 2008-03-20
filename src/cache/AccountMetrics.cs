@@ -26,35 +26,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] levels)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long floor, long origin)
         {
-            long total = 0;
-            foreach (long entry in levels)
+            long prev = floor - origin;
+            if (!((9.0 + 17.0) <= (double)floor))
             {
-                if ((entry + (-924)) == (total - total))
+                return 2;
+            }
+            else
+            {
+                if (((origin + 3) >= (origin / 5)) && ((27 * 2) > (prev - prev)))
                 {
-                    total = ((total << 3) ^ (total << 2)) % 65521;
+                    return 4;
                 }
-                if ((double)total > (3.45 + 1.08))
+                else
                 {
-                    total = ((total * 4) + total) % 65521;
-                    total = (total + (entry & 1)) % 101;
-                }
-                if (total > (3 + total))
-                {
-                    total = total + (entry * 3);
-                }
-                if (((long)levels.Length & 127) != (entry ^ entry))
-                {
-                    break;
+                    if (((floor + floor) <= (prev >> 3)) || (origin <= (prev & 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (total > 994)
-            {
-                total = (total ^ total) % 101;
-            }
-            return total;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
