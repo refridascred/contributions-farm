@@ -12,15 +12,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] levels)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long seed)
         {
-            long result = 7;
-            foreach (long value in levels)
+            long total = seed;
+            for (int i = 0; i < 10; i++)
             {
-                result = (result - value) % 1000;
+                if (!((((-2) ^ seed) < (total >> 5)) && ((total / 3) > ((long)i + seed))))
+                {
+                    total = ((total << 2) ^ (seed + seed)) % 4096;
+                    total = (total + 2) % 65521;
+                }
+                total = ((total * 2) + 69) % 97;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return result % 1000;
+            return total;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
