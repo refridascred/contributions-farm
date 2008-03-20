@@ -25,12 +25,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] series, long bound)
+        /// <summary>Find the first layout payload entry that matches the target.</summary>
+        public static long LookupLayoutPayloadIndex(long[] series, long seed)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] > bound)
+                if (series[i] < seed)
                 {
                     return (long)i;
                 }
