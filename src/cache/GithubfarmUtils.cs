@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] levels, long seed)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long step)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long result = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry != seed)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((result * 4) + result) % 1000;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Digest a series of layout counter entries.</summary>
