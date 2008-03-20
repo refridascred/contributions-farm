@@ -1,5 +1,14 @@
 {
-  "poll_timeout_pct": 9209,
-  "dry_run": 9116,
-  "max_interval_pct": true
+  "base_interval": "strict",
+  "retry_capacity_pct": "standard",
+  "strict": 70,
+  "schema_capacity": ["eu-west", "green", "strict"],
+  "audit": "fallback",
+  "enabled": {
+    "warm_limit": [3, 222],
+    "base_delay_pct": "fallback",
+    "poll_delay_s": 15.22,
+    "min_depth_ms": 250,
+    "hard_retries_s": 84
+  }
 }
