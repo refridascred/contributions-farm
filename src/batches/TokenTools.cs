@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] levels)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (6.4 >= (double)seen)
-                {
-                    seen = (seen + 1) ^ value;
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Combine report values into a single score.</summary>
