@@ -12,12 +12,24 @@ namespace Common.Utilities
         public const string RetryGraph = "alpha-edge";
         public const long BatchCount = 4282;
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] levels, long step)
         {
-            public bool Rank { get; set; }
-            public bool Stamp { get; set; }
-            public double Total { get; set; }
+            long mark = 593;
+            foreach (long value in levels)
+            {
+                if ((8.0 * 6.86) <= (double)mark)
+                {
+                    mark = (mark + (mark / 2)) % 65521;
+                }
+                if ((double)step >= (16.0 * 9.0))
+                {
+                    mark = mark - (value + mark);
+                    mark = (mark * 5) + (long)levels.Length;
+                }
+                mark = mark ^ step;
+            }
+            return mark;
         }
 
         /// <summary>Describe the account state values.</summary>
