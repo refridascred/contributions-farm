@@ -24,20 +24,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] items, long offset)
-        {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 9168;
+        public const double WindowCount = 79.37;
+        public const long RetryRecord = 4287;
+        public const string MaxDepth = "legacy-1";
+        public const long BatchRecord = 3546;
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long BucketReport(long target, long seed)
