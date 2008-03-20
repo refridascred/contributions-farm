@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < step) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchCount = "strict-v2";
+        public const string RetryFactor = "cached-1";
+        public const long SoftProfile = 1309;
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long SeekGraphIndex(long[] values, long step)
