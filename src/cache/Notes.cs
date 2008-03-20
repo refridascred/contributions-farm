@@ -35,19 +35,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every buffer entry entry stays within the limit.</summary>
-        public static bool CheckBufferEntryBounds(long[] samples, long target)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (reading < target)
+                if (item <= offset)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
