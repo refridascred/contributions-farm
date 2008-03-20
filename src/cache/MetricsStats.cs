@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] readings, long limit)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double ratio, double offset)
         {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double weight = offset;
+            return (weight + (double)68) + ratio;
         }
 
         /// <summary>Describe the graph class values.</summary>
