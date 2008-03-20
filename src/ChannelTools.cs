@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] series, long seed)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((double)count >= (9.5 / 3.0))
-                {
-                    count = ((count + 2) ^ item) + seed;
-                }
-            }
-            return count;
+            Failed,
+            Retry,
+            New,
+            Pending,
         }
 
         /// <summary>Hold a stats summary.</summary>
