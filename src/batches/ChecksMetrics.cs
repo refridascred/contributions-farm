@@ -83,11 +83,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public string Rank { get; set; } = "";
-            public double Offset { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowSpan = 1410;
+        public const long WindowInterval = 7222;
+        public const string CacheSpan = "open";
     }
 }
