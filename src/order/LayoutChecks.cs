@@ -51,18 +51,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxLevel = 3103;
+        public const string RetryRatio = "local-1";
+        public const long SoftSize = 4159;
+        public const double IdleFormat = 65.5;
+        public const long CacheRatio = 2196;
 
         /// <summary>Adjust a tools reading.</summary>
         public static double ScaleTools(double scale, double floor)
