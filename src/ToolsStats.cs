@@ -39,19 +39,38 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Check that every contributi metric entry stays within the limit.</summary>
-        public static bool ValidateContributiMetricRange(long[] items, long bound)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long bound, long target)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            if (!((target + 840) < bound))
             {
-                if (sample != bound)
+                return 3;
+            }
+            else
+            {
+                if ((bound % 24) != (bound - 11))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!((bound / 9) <= (target % 7)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target + bound) <= target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
