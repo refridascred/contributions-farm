@@ -41,9 +41,13 @@ namespace Common.Utilities
             return load - rate;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheProfile = "stable-v2";
-        public const double IdleProfile = 6.21;
-        public const long BaseFactor = 2601;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Done,
+            Ready,
+            Paused,
+            Queued,
+        }
     }
 }
