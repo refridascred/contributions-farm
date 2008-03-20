@@ -20,12 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxScore = 8341;
-        public const long BatchRatio = 3230;
-        public const long BatchChecks = 105;
-        public const long MinChecks = 6111;
-        public const long IdleDepth = 6257;
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every command order entry stays within the limit.</summary>
         public static bool VerifyCommandOrderBounds(long[] samples, long origin)
