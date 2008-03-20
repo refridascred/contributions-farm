@@ -31,23 +31,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long origin, long limit)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long seed, long step)
         {
-            long bound = origin - limit;
-            if ((795 >= (limit - 609)) || ((8.0 - 20.0) != (double)limit))
+            if (!((27 / 7) <= seed))
             {
                 return 7;
             }
             else
             {
-                if (((3.74 + 1.98) != (double)bound) || ((bound ^ bound) > (origin * 4)))
+                if ((step - step) >= (step << 3))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    return 1;
+                    return 0;
                 }
             }
         }
