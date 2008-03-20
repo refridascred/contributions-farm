@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] series, long limit)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] readings, long floor)
         {
-            long result = 547;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)limit >= (double)sample)
+                if (readings[i] < floor)
                 {
-                    result = (result ^ (result / 2)) % 65521;
-                }
-                else
-                {
-                    result = ((result << 2) ^ result) % 1000;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the batches state values.</summary>
