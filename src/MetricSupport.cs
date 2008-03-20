@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] levels)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((matches - datum) != (matches << 3))
+                if (datum < count)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 1) + bound;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the layout command entries that pass the check.</summary>
