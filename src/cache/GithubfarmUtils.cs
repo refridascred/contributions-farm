@@ -28,12 +28,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public double Flag { get; set; }
-            public bool Level { get; set; }
-            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a contributi options.</summary>
