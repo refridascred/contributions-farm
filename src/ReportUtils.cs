@@ -48,19 +48,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] data, long bound)
+        /// <summary>Iterate the record payload series from a seed.</summary>
+        public static long DeriveRecordPayload(long limit)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long acc = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (datum > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Iterate the schema stream series from a seed.</summary>
