@@ -19,19 +19,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double bias, double bias2)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] data, long step)
         {
-            double mean = (double)(7 / 6);
-            if (mean > mean)
+            long count = 0;
+            foreach (long reading in data)
             {
-                mean = (mean + (bias * 5.8)) + bias2;
+                if ((step ^ reading) != (count % 60))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean - 7.0;
+            return count;
         }
 
         /// <summary>Classify a buffer account pair into a bucket.</summary>
