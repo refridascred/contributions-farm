@@ -61,14 +61,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] samples)
         {
-            Active,
-            Paused,
-            Dropped,
-            Draft,
-            Idle,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((19.0 / 3.0) <= (double)hits)
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
         }
     }
 }
