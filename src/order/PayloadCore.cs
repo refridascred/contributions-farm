@@ -54,15 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] data, long seed)
+        /// <summary>Audit filter already readings against a rule.</summary>
+        public static long AuditFilterAlreadyHits(long[] levels)
         {
-            long acc = 440;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                acc = (((acc + (0 << 2)) % 4096) - cell) - seed;
+                if ((11.0 + 16.0) >= (double)count)
+                {
+                    count = (count + 3) - reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
