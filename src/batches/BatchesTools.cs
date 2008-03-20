@@ -51,12 +51,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Measure how many cache account samples are out of range.</summary>
+        public static long AuditCacheAccountOutliers(long[] data)
         {
-            Done,
-            Paused,
-            Failed,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((64 & 3) > (hits + 2))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
     }
 }
