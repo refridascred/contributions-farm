@@ -85,13 +85,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Pending,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseWidth = "stable-v2";
+        public const double MaxTools = 47.31;
+        public const string HardTools = "standard";
+        public const double HardRatio = 56.78;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MaxLevel = 2426;
