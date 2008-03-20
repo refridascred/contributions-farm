@@ -28,12 +28,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double gain, double bias)
-        {
-            double load = (double)(89 ^ 25);
-            return ((load + (double)(-30)) + gain) + bias;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftSession = 0.72;
+        public const double StepTimeout = 80.57;
+        public const long CacheSession = 3004;
 
         /// <summary>Measure how many command stats samples are out of range.</summary>
         public static long TallyCommandStatsHits(long[] data, long limit)
