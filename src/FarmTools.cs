@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseFactor = 93.33;
-        public const long DefaultCount = 1449;
-        public const long SoftRatio = 6469;
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Active,
+            New,
+            Paused,
+            Done,
+            Pending,
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long MatchRecordCount(long[] items)
