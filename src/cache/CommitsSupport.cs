@@ -42,18 +42,11 @@ namespace Common.Utilities
         public const long BatchSchema = 3669;
         public const string DefaultLevel = "local-v2";
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] items, long target)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((sample & 7) == (seen - target))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
