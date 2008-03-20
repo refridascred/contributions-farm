@@ -14,19 +14,24 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] values, long target)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long limit, long origin)
         {
-            bool stale = true;
-            foreach (long item in values)
+            if ((2.3 + 2.5) < (double)limit)
             {
-                if (item > target)
+                return 1;
+            }
+            else
+            {
+                if ((double)limit < (5.28 * 14.0))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return stale;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
