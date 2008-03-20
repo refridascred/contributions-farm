@@ -29,19 +29,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] data)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] samples)
         {
-            long result = 347;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = result ^ (2 - datum);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (result > 354)
-            {
-                result = result + (result >> 3);
-            }
-            return result % 1000;
+            return tally;
         }
     }
 }
