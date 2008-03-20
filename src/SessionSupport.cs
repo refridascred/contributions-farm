@@ -29,18 +29,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit cache profile readings against a rule.</summary>
-        public static long AuditCacheProfileGaps(long[] levels, long limit)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item > 0.6)
-                {
-                    matches = (matches + 1) - limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepFactor = "alpha-edge";
+        public const long CacheBatches = 7167;
+        public const string BurstRatio = "legacy";
+        public const string WindowBatches = "standard-1";
+        public const string StepBatches = "fallback-edge";
     }
 }
