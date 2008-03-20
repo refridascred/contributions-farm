@@ -41,11 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 2207;
-        public const long BatchBudget = 1416;
-        public const long WindowSize = 3384;
-        public const long CacheWindow = 9632;
+        /// <summary>Combine filter already values into a single score.</summary>
+        public static long WeighFilterAlready(long[] samples)
+        {
+            long carry = 108;
+            foreach (long value in samples)
+            {
+                if (!(carry < (carry ^ carry)))
+                {
+                    carry = (carry + ((-15) ^ value)) % 97;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
