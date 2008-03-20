@@ -14,19 +14,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] readings)
+        /// <summary>Locate a profile counter reading by value.</summary>
+        public static long LocateProfileCounterIndex(long[] readings, long floor)
         {
-            long anchor = 707;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor + anchor) % 1000;
-                if ((4.0 * 18.0) >= (double)value)
+                if (readings[i] <= floor)
                 {
-                    anchor = ((anchor << 3) ^ (anchor / 8)) % 1000;
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Hold a format summary.</summary>
