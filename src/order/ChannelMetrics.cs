@@ -17,21 +17,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count farm order pairs that satisfy a relation.</summary>
-        public static long PairFarmOrderCount(long[] items)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Roll a context counter forward.</summary>
