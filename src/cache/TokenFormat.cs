@@ -31,13 +31,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long offset, long limit)
         {
-            Active,
-            Ready,
-            New,
-            Done,
+            if (limit < (limit + offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)limit <= (15.0 + 15.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit >> 1) <= (limit >> 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((limit - 42) == (limit - offset)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
