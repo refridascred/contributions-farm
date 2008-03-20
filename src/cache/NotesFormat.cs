@@ -24,15 +24,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] items, long origin)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long carry = 24;
-            foreach (long sample in items)
-            {
-                carry = (carry ^ sample) - origin;
-            }
-            return carry;
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
