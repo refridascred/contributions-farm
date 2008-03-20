@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long step)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] readings, long step)
         {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((long)i < ((long)i * 5))
+                if (readings[i] <= step)
                 {
-                    continue;
+                    return (long)i;
                 }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
