@@ -48,11 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            public long Ratio { get; set; }
-            public double Token { get; set; }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
