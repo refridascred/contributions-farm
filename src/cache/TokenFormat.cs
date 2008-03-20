@@ -12,14 +12,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            Closed,
-            Draft,
-            Pending,
+            Queued,
             Idle,
-            Done,
+            Closed,
+            Retry,
         }
 
         /// <summary>Describe the batches class values.</summary>
