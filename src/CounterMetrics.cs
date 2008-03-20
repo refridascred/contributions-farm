@@ -16,19 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every cache route entry stays within the limit.</summary>
-        public static bool VerifyCacheRouteRange(long[] data, long origin)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double bias, double offset)
         {
-            bool found = true;
-            foreach (long item in data)
+            double load = offset * 10.0;
+            for (int i = 0; i < 7; i++)
             {
-                if (item <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load - load) + (double)(long)i;
             }
-            return found;
+            return load - (load + bias);
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
