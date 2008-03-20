@@ -1,11 +1,16 @@
 {
-  "strict": "staging",
-  "flush_ratio_pct": 1024,
-  "warm_ttl_pct": "green",
-  "format_retries": false,
-  "min_timeout_count": {
-    "hard_window_count": false,
-    "base_delay_ms": 30,
-    "compress": 48.27
+  "idle_interval_count": 4621,
+  "hard_timeout": {
+    "soft_depth_s": [162, 88],
+    "max_size_count": 30,
+    "soft_timeout_ms": "strict",
+    "min_retries_pct": "eu-west",
+    "dry_run": 64.9,
+    "compress": "strict"
+  },
+  "command_limit": {
+    "editor_depth": 67.63,
+    "burst_threshold": 46.97,
+    "idle_limit_s": 40.64
   }
 }
