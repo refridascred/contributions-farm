@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
-        {
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 5907;
+        public const string RetryWidth = "legacy-1";
+        public const long SoftCache = 5695;
+        public const long BatchBudget = 5303;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheGaps(long[] readings, long origin)
