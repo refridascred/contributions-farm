@@ -29,21 +29,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] samples)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 95;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (8.7 >= (double)step)
                 {
-                    if ((samples[i] + samples[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = result - result;
+                }
+                else
+                {
+                    result = result + (step + sample);
                 }
             }
-            return matches;
+            return result % 1000;
         }
 
         /// <summary>Hold a notes entry.</summary>
