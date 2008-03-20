@@ -20,20 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] items)
-        {
-            long carry = 657;
-            foreach (long datum in items)
-            {
-                carry = (carry ^ datum) % 1000;
-                if (((datum + carry) >= carry) || ((17.0 * 16.0) >= (double)carry))
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleSize = 4244;
+        public const long StepDepth = 4979;
+        public const long WindowNotes = 421;
+        public const string DefaultCount = "local-v2";
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long AuditFilterHits(long[] data, long origin)
