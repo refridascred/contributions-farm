@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double rate, double span)
-        {
-            double load = span;
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (double)(long)i) - rate;
-            }
-            return load + (11.0 * 7.0);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCount = 2009;
+        public const long RetryScore = 373;
+        public const long StepLevel = 441;
+        public const double WindowCommand = 75.09;
+        public const long RetryDepth = 2550;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long CacheRecord = 9168;
