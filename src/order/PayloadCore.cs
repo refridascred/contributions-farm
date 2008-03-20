@@ -42,9 +42,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheBudget = 383;
-        public const double BatchLevel = 35.12;
-        public const string MaxAlready = "legacy-v2";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 370;
+        public const string BurstCount = "legacy-edge";
+        public const double CacheMetrics = 52.32;
+        public const string HardMetrics = "standard-1";
     }
 }
