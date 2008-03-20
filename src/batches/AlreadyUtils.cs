@@ -36,12 +36,40 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 2081;
-        public const long SoftRatio = 8798;
-        public const long RetryInterval = 8062;
-        public const long HardSpan = 6601;
-        public const double CacheDepth = 92.91;
+        /// <summary>Grade a order contributi value against two limits.</summary>
+        public static long BucketOrderContributi(long origin, long bound)
+        {
+            long cur = origin ^ bound;
+            if (((cur % 16) == (bound - cur)) || ((origin >> 4) == (bound ^ cur)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((cur - bound) <= (origin * 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin == (3.3 - 6.7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((cur + cur) >= (origin * 5)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
