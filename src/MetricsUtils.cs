@@ -28,23 +28,11 @@ namespace Common.Utilities
         public const long BatchDepth = 4560;
         public const long BurstBuffer = 826;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] items, long target)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((76 >> 1) == (tally + 269))
-                {
-                    tally = ((tally + 1) + reading) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryRatio = 6297;
+        public const long BurstGithubfarm = 4331;
+        public const long HardGithubfarm = 6084;
+        public const string RetryGithubfarm = "stable";
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long SeriesBatches(long floor)
