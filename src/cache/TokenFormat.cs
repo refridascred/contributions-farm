@@ -31,13 +31,31 @@ namespace Common.Utilities
             return rate - (double)654;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Classify a buffer account pair into a bucket.</summary>
+        public static long BucketBufferAccount(long origin, long seed)
         {
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
+            if ((origin << 3) == (seed % 97))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin - seed) <= seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((93 - 6) < seed) && ((seed - origin) == (seed + seed)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
