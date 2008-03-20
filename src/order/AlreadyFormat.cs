@@ -65,19 +65,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] values, long target)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long seed, long step)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long step2 = seed ^ step;
+            if (((seed % 8) > (seed >> 5)) || ((step / 4) < (step * 3)))
             {
-                if (cell != target)
+                return 7;
+            }
+            else
+            {
+                if ((step - seed) < (step2 + seed))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ok;
         }
 
         /// <summary>Blend two graph measurements.</summary>
