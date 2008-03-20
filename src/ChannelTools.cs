@@ -19,22 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] readings, long offset)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long value in values)
             {
-                if ((offset << 3) > (offset + hits))
+                if (value >= limit)
                 {
-                    hits = (hits + 3) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Define session limits and defaults.</summary>
