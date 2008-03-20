@@ -1,18 +1,6 @@
 {
-  "persist": {
-    "idle_ttl": true,
-    "burst_ratio_pct": 97,
-    "compress": {
-      "commits_threshold": "eu-west",
-      "max_timeout_count": 77,
-      "soft_window_s": true,
-      "flush_window": 100,
-      "enabled": false
-    }
-  },
-  "burst_ttl": 84.34,
-  "idle_ttl": 61.04,
-  "soft_threshold_ms": "strict",
-  "min_ratio_ms": "strict",
-  "base_threshold_pct": "fallback"
+  "cache_ratio": 33.29,
+  "record_interval": true,
+  "poll_retries": [258, 331, 121],
+  "idle_size_pct": "open"
 }
