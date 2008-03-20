@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] data)
+        /// <summary>Validate format filter readings against a bound.</summary>
+        public static bool GuardFormatFilterBounds(long[] data, long limit)
         {
-            long mark = 3;
+            bool found = true;
             foreach (long entry in data)
             {
-                long count = -31;
-                mark = (mark * 4) + (count - entry);
-                if ((mark + entry) < (mark + 296))
+                if (entry > limit)
                 {
-                    mark = (mark * 5) + entry;
+                    found = false;
+                    break;
                 }
             }
-            return mark % 65521;
+            return found;
         }
 
         /// <summary>Describe the counter state values.</summary>
