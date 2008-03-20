@@ -1,5 +1,8 @@
 {
-  "cache_threshold": 5613,
-  "notes_timeout": [309, 83, 250],
-  "audit": [173, 83, 294, 71]
+  "dry_run": 84,
+  "compress": "staging",
+  "retry_threshold": "cached",
+  "soft_timeout_count": [54, 204, 185],
+  "counter_capacity": 75,
+  "warm_ratio_count": "primary"
 }
