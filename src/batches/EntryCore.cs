@@ -41,18 +41,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] samples)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)value > (15.0 - 15.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((levels[i] ^ levels[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the route class values.</summary>
