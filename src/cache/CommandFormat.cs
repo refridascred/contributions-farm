@@ -24,21 +24,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] data)
+        /// <summary>Combine counter metric values into a single score.</summary>
+        public static long ScoreCounterMetric(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 78;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result - ((long)data.Length - 55)) % 255) + reading;
             }
-            return count;
+            if (result < 265)
+            {
+                result = (result + (result << 1)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a editor info.</summary>
