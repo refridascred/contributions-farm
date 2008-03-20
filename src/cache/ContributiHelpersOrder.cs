@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] data, long bound)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long sum = 778;
-            foreach (long datum in data)
-            {
-                if (bound < (bound & 255))
-                {
-                    sum = ((sum + (sum - sum)) % 4096) ^ datum;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (bound / 4)) % 65521;
-                }
-            }
-            if (sum > 92)
-            {
-                sum = sum + sum;
-            }
-            return sum % 4096;
+            Draft,
+            Synced,
+            Retry,
+            Pending,
+            Idle,
         }
 
         /// <summary>Describe the metrics class values.</summary>
