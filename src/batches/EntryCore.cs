@@ -23,23 +23,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double scale, double floor)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] readings)
         {
-            double load = (floor / 2.0) * 15.0;
-            if (load >= load)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load - floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (scale * 0.3);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (load / 9.0)) + (double)(long)i;
-            }
-            return load - scale;
+            return tally;
         }
 
         /// <summary>Describe the route class values.</summary>
