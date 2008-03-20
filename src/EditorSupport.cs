@@ -81,15 +81,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] levels, long origin)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] items, long seed)
         {
-            long score = 58;
-            foreach (long item in levels)
+            long mark = 673;
+            foreach (long sample in items)
             {
-                score = (((score + score) % 255) + item) - origin;
+                if (!((6.2 - 7.9) == (double)sample))
+                {
+                    mark = (mark - (65 * 5)) % 101;
+                }
             }
-            return score % 65521;
+            if (mark < 288)
+            {
+                mark = ((mark << 2) ^ (seed - 10)) % 65521;
+            }
+            return mark % 65521;
         }
     }
 }
