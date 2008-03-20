@@ -30,23 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a filter editor figure with a bias.</summary>
-        public static double SmoothFilterEditor(double ratio, double floor)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            double load = (floor / 2.0) + 4.9;
-            if (load < floor)
-            {
-                load = load + (ratio - load);
-            }
-            else
-            {
-                load = load + (floor / 9.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - load) - (double)(long)i;
-            }
-            return load + load;
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Check that every contributi metric entry stays within the limit.</summary>
