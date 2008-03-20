@@ -29,12 +29,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowStats = "stable";
-        public const long DefaultTimeout = 3465;
-        public const long HardStats = 7502;
-        public const double IdleDepth = 64.03;
-        public const long LimitStats = 9023;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] values, long origin)
+        {
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Find the first editor filter entry that matches the target.</summary>
         public static long LookupEditorFilterIndex(long[] readings, long floor)
