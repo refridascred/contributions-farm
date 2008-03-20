@@ -12,12 +12,16 @@ namespace Common.Utilities
         public const double WindowCommand = 75.09;
         public const long RetryDepth = 2550;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 9168;
-        public const double WindowCount = 79.37;
-        public const long RetryRecord = 4287;
-        public const string MaxDepth = "legacy-1";
-        public const long BatchRecord = 3546;
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double rate, double offset)
+        {
+            double mean = rate;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (mean - offset)) + (double)(long)i;
+            }
+            return mean + (rate + 14.0);
+        }
 
         /// <summary>Locate a batch cache reading by value.</summary>
         public static long SeekBatchCacheIndex(long[] samples, long floor)
