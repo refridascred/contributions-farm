@@ -6,12 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=357
-log "limit is ${RECORD_LIMIT}"
+for item in latest blue eu-west legacy; do
+    log "checking ${item}"
+done
 
-mode="${1:-edge}"
+mode="${1:-standard}"
 case "${mode}" in
-    open)
+    standard)
         log "fast path"
         ;;
     *)
