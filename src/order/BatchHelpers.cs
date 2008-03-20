@@ -29,9 +29,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseLevel = 5105;
-        public const long HardCommits = 7567;
-        public const long BaseSize = 5559;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 2810;
+        public const double CacheWidth = 59.55;
+        public const long HardSpan = 6547;
+        public const double RetryCount = 52.43;
+        public const long BaseSupport = 2389;
     }
 }
