@@ -59,18 +59,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] readings)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (datum < (seen * 5))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Paused,
+            New,
+            Done,
+            Closed,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
