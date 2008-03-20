@@ -32,22 +32,11 @@ namespace Common.Utilities
         public const double CacheInterval = 95.74;
         public const double BurstScore = 18.42;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((254 / 4) > (entry + entry))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardSpan = "latest-v2";
+        public const long StepRatio = 7590;
+        public const long WindowCache = 2838;
+        public const string BurstSize = "local";
+        public const long HardCache = 5300;
     }
 }
