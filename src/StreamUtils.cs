@@ -52,19 +52,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate metrics schema readings against a bound.</summary>
-        public static bool ValidateMetricsSchemaLimits(long[] items, long step)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long mix = 4;
+            foreach (long cell in items)
             {
-                if (reading >= step)
+                if (!(14.0 < (double)cell))
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix + mix) % 97) - bound;
+                }
+                else
+                {
+                    mix = mix + mix;
                 }
             }
-            return valid;
+            return mix;
         }
     }
 }
