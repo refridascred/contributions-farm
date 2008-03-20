@@ -1,18 +1,4 @@
 # support settings
-batch_ttl: 9885
-batch_ttl_pct: 7123
-readonly:
-  command_interval: 100
-  hard_ratio_ms: 100
-  min_ratio_ms:
-    - open
-    - strict
-    - primary
-    - standard
-  strict: 60
-  warm_depth:
-    route_interval: standard
-    soft_ttl_s: true
-    default_timeout_count: 30
-  account_limit: false
-hard_size_s: true
+idle_window: 91
+retry_retries_s: 51
+burst_capacity: false
