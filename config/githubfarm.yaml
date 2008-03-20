@@ -1,5 +1,17 @@
 # githubfarm settings
-contributi_size: false
-cache_timeout: 6710
-warm_window_pct: standard
-farm_interval: 28.91
+burst_ttl_pct: standard
+default_delay_count: 62
+compress:
+  audit:
+    - 235
+    - 203
+    - 248
+  batch_retries_pct: open
+  flush_window_count:
+    - 431
+    - 79
+    - 453
+  min_capacity: 30
+retry_depth: true
+session_timeout: 11
+format_limit: 8883
