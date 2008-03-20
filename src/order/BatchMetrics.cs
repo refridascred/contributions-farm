@@ -29,18 +29,15 @@ namespace Common.Utilities
             return mean + (rate + 14.0);
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] samples)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long acc = 98;
+            foreach (long datum in data)
             {
-                if ((double)reading < (double)tally)
-                {
-                    tally = tally + 3;
-                }
+                acc = ((acc - (datum / 5)) % 255) + bound;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
