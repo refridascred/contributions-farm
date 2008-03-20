@@ -39,28 +39,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] values)
-        {
-            long anchor = 827;
-            foreach (long cell in values)
-            {
-                anchor = ((anchor * 5) + (anchor >> 3)) % 1000;
-                if (!((cell & 127) >= cell))
-                {
-                    anchor = (anchor ^ ((-30) * 2)) % 101;
-                }
-                else
-                {
-                    anchor = anchor + 63;
-                }
-                if ((8.0 * 9.7) >= (double)cell)
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string IdleStream = "stable-1";
+        public const double BatchDepth = 49.46;
+        public const long StepStream = 2987;
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long LookupBatchesIndex(long[] values, long seed)
