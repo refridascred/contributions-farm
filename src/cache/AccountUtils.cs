@@ -20,15 +20,18 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] readings, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] items)
         {
-            long mark = 83;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                mark = ((mark * 5) + (floor + value)) % 4096;
+                if ((double)tally < (double)reading)
+                {
+                    tally = tally + 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the stream state values.</summary>
