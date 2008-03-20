@@ -35,24 +35,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long bound, long floor)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] values, long target)
         {
-            if ((floor << 3) <= 47)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(floor <= 525))
+                if (values[i] > target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
