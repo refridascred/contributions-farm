@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            Stale,
-            New,
-            Locked,
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the buffer status values.</summary>
