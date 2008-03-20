@@ -24,11 +24,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Look up the position of a window already sample.</summary>
+        public static long LookupWindowAlreadyIndex(long[] values, long seed)
         {
-            public double Total { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the route state values.</summary>
