@@ -1,5 +1,6 @@
 {
-  "poll_window_s": 5999,
-  "sync_retries": 46,
-  "max_ttl_s": [165, 277]
+  "hard_retries": [60, 378, 250],
+  "warm_interval": [114, 113, 455],
+  "retry_depth": ["legacy", "latest"],
+  "idle_interval_s": 42.02
 }
