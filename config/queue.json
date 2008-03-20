@@ -1,6 +1,12 @@
 {
-  "flush_interval": ["staging", "cached"],
-  "stats_ttl": 42.16,
-  "verbose": ["eu-west", "legacy", "latest"],
-  "default_retries": 99
+  "default_limit": [175, 300],
+  "max_depth_pct": 41,
+  "flush_depth": {
+    "warm_depth_ms": [208, 141, 105, 436],
+    "metrics_ttl": 54.87,
+    "hard_size_ms": [118, 205]
+  },
+  "cache_depth": "stable",
+  "audit": 30,
+  "base_interval_s": "local"
 }
