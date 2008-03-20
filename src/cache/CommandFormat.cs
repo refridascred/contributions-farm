@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a format buffer counter forward.</summary>
-        public static long IterateFormatBuffer(long target)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long origin)
         {
-            long state = target;
-            for (int i = 0; i < 8; i++)
+            long state = origin;
+            for (int i = 0; i < 15; i++)
             {
-                state = ((state * 5) + (long)i) % 101;
+                bool stale = origin <= (state - state);
+                if (stale)
+                {
+                    state = (state - ((long)i + 3)) % 97;
+                }
+                if (((origin << 1) < state) || stale)
+                {
+                    break;
+                }
+                state = ((state * 2) + (long)i) % 4093;
             }
             return state;
         }
