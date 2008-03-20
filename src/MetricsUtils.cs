@@ -44,10 +44,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double SoftCommits = 42.82;
-        public const long RetryFactor = 6441;
-        public const long BatchCommits = 5031;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryFactor = 3.72;
+        public const double DefaultTimeout = 78.21;
+        public const long BaseCluster = 2506;
+        public const double RetryCluster = 36.02;
+        public const string BatchCluster = "legacy-edge";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MaxSpan = 1546;
