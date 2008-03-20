@@ -1,18 +1,5 @@
 # support settings
-strict:
-  retry_threshold_count: true
-  burst_timeout_s: false
-  stats_ratio: strict
-  burst_interval_count: 500
-  notes_window: 30
-idle_delay:
-  - 350
-  - 127
-  - 244
-  - 137
-record_window: legacy
-batch_limit:
-  - 318
-  - 325
-  - 416
-  - 259
+stream_ttl: 500
+context_window: 14
+buffer_retries: green
+audit: fallback
