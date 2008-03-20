@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every contributi cluster entry stays within the limit.</summary>
-        public static bool ValidateContributiClusterBounds(long[] series, long step)
+        /// <summary>Grade a session window value against two limits.</summary>
+        public static long SortSessionWindow(long offset, long offset2)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long gap = offset ^ offset2;
+            if ((7.6 * 5.7) > (double)offset)
             {
-                if (item > step)
+                return 0;
+            }
+            else
+            {
+                if (((offset2 + offset2) < (offset2 ^ offset2)) && ((gap % 3) >= (offset2 % 60)))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset > (offset2 >> 1)) || ((gap % 7) >= (offset2 + gap)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((double)offset2 <= (3.0 - 6.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
