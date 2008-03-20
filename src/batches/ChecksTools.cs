@@ -28,25 +28,12 @@ namespace Common.Utilities
             return scale + (scale / 7.0);
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long offset, long origin)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long lane = offset + origin;
-            if ((double)origin >= (9.02 * 10.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((lane % 16) <= (2 & 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Rank { get; set; }
+            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Locate a schema reading by value.</summary>
