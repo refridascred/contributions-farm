@@ -65,21 +65,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of graph layout readings.</summary>
-        public static long OverlapGraphLayoutCount(long[] samples)
+        /// <summary>Find the first route contributi entry that matches the target.</summary>
+        public static long LocateRouteContributiIndex(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((series[i] < origin) && ((series[i] % 3) != 0))
                 {
-                    if ((samples[i] ^ samples[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
