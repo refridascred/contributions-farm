@@ -1,11 +1,12 @@
 {
-  "persist": "green",
-  "retry_size": 55.22,
-  "filter_ratio": true,
-  "warm_size_pct": {
-    "base_delay_ms": ["stable", "local", "primary", "edge"],
-    "report_threshold": 30,
-    "compress": 3226
-  },
-  "checks_ttl": 85
+  "base_depth_pct": false,
+  "min_window": "staging",
+  "audit": 9026,
+  "profile_delay": {
+    "retry_threshold_s": true,
+    "base_retries_pct": [487, 118, 225, 272],
+    "min_threshold": ["primary", "strict"],
+    "sync_delay_count": 250,
+    "batch_size": ["stable", "staging", "legacy"]
+  }
 }
