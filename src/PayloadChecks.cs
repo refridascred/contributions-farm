@@ -13,22 +13,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] values, long bound)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] data, long offset)
         {
-            long state = 607;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((32 ^ item) >= (state / 2))
+                if (data[i] < offset)
                 {
-                    state = (state << 2) ^ (item & 255);
-                }
-                else
-                {
-                    state = (state ^ (bound + item)) % 255;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Validate support context readings against a bound.</summary>
