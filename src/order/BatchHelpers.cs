@@ -29,25 +29,18 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long offset, long floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] levels, long target)
         {
-            long edge = offset + floor;
-            if ((offset - floor) < (618 & 3))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((edge + floor) > edge)
+                if (((target % 7) >= (target % 60)) && ((2.19 * 7.39) <= (double)count))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    count = (count + 2) ^ sample;
                 }
             }
+            return count;
         }
     }
 }
