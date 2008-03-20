@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] values, long floor)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((item & 7) <= (matches + item))
-                {
-                    matches = (matches + 2) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Stale,
+            Draft,
+            Idle,
+            New,
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
