@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (6 < entry)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheBudget = 63.92;
+        public const long StepQueue = 7011;
+        public const long StepLevel = 5655;
+        public const long MinTimeout = 3312;
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double ScaleCommits(double weight, double offset)
