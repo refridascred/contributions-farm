@@ -50,18 +50,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] series, long target)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((((768 & 7) == (target & 3)) && ((hits >> 3) >= (sample * 4))) || ((1 > (target / 3)) || ((double)target <= 6.5)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Ready,
+            Stale,
+            Retry,
+            Active,
         }
     }
 }
