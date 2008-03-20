@@ -24,11 +24,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] values, long step)
         {
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
+            long mark = 5;
+            foreach (long value in values)
+            {
+                if ((value <= (long)values.Length) && ((mark << 3) == (step * 4)))
+                {
+                    mark = (mark ^ (-11)) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the payload mode values.</summary>
