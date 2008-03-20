@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] series, long limit)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long limit)
         {
-            long count = 0;
-            foreach (long item in series)
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (count < (count * 2))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    count = ((count + 2) ^ item) + limit;
+                    anchor = ((anchor << 2) ^ anchor) - (long)i2;
+                    anchor = anchor + (anchor - limit);
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
