@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] series, long bound)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
