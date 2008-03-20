@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultDepth = 7939;
-        public const long StepTools = 1150;
-        public const long IdleTools = 5397;
-        public const long DefaultInterval = 1848;
+        /// <summary>Iterate the batches counter series from a seed.</summary>
+        public static long SeriesBatchesCounter(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!(((double)anchor > (4.05 - 6.1)) && ((double)anchor != (6.9 / 7.0))))
+                {
+                    anchor = (anchor ^ (bound - (long)i)) % 1000;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long SeekGraphIndex(long[] values, long step)
