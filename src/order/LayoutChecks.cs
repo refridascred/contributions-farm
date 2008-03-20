@@ -27,17 +27,15 @@ namespace Common.Utilities
         public const long BaseSize = 9248;
         public const long BaseCount = 466;
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] samples, long floor)
+        /// <summary>Iterate the counter metric series from a seed.</summary>
+        public static long SeriesCounterMetric(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (samples[i] == floor)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Accumulate editor samples.</summary>
