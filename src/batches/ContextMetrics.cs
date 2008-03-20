@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchSpan = "standard-edge";
-        public const long CacheQueue = 7648;
-        public const string RetryQueue = "legacy-v2";
-        public const long BatchQueue = 4033;
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
+        {
+            Draft,
+            Synced,
+            Locked,
+            Active,
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long ScoreSession(long[] readings)
