@@ -10,19 +10,23 @@ namespace Common.Utilities
         public const long CacheSpan = 4868;
         public const long BatchSchema = 4506;
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double ratio, double floor)
+        /// <summary>Scale a window entry figure with a bias.</summary>
+        public static double BlendWindowEntry(double ratio, double offset)
         {
-            double bias = ratio * 18.0;
-            if (bias > (4.04 + ratio))
+            double load = (double)(755 - 97);
+            if (load < load)
             {
-                bias = bias - (bias - bias);
+                load = ((load - load) + ratio) - offset;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                bias = (bias - floor) + (double)(long)i;
+                load = load - 8.8;
             }
-            return bias - (double)(-191);
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + 1.0;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
