@@ -43,24 +43,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long target, long offset)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long limit)
         {
-            if ((target << 1) <= (target / 5))
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
             {
-                return 1;
+                anchor = anchor - ((long)i + limit);
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)offset >= (2.35 * 1.4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return anchor;
         }
     }
 }
