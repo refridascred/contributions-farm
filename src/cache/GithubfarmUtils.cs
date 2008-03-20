@@ -37,17 +37,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] data, long limit)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 4;
+            foreach (long datum in samples)
             {
-                if (data[i] > limit)
+                if (!((9.0 + 19.0) < (double)datum))
                 {
-                    return (long)i;
+                    mix = ((mix << 2) ^ (mix ^ 69)) % 255;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a metrics stats.</summary>
