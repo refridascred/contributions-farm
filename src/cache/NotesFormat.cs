@@ -38,21 +38,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long offset)
+        /// <summary>Look up the position of a order stats sample.</summary>
+        public static long LookupOrderStatsIndex(long[] series, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = total ^ offset;
-                total = ((total << 3) ^ (offset / 5)) % 1000;
-                if ((total + total) >= (total ^ 453))
+                if (series[i] >= target)
                 {
-                    total = total + (total >> 1);
+                    return (long)i;
                 }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
     }
 }
