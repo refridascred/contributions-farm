@@ -1,5 +1,6 @@
 {
-  "max_delay_count": ["staging", "local", "primary", "cached"],
-  "sync_retries_s": "primary",
-  "default_size": 38
+  "idle_retries_s": 1024,
+  "account_ratio": false,
+  "default_ratio_ms": "fallback",
+  "persist": "latest"
 }
