@@ -21,20 +21,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] series, long origin)
-        {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftPayload = 71.13;
+        public const long WindowRatio = 1743;
+        public const long BaseSize = 9248;
+        public const long BaseCount = 466;
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long LocateSchemaIndex(long[] samples, long floor)
