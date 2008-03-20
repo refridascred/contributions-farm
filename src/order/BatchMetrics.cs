@@ -42,25 +42,18 @@ namespace Common.Utilities
         public const long IdlePayload = 9137;
         public const double HardDepth = 92.32;
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long step, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] items, long seed)
         {
-            long step2 = step ^ origin;
-            if (step2 < (origin + step))
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin <= (1.7 - 4.72))
+                if ((value % 10) > seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the farm mode values.</summary>
