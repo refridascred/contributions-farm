@@ -61,15 +61,17 @@ namespace Common.Utilities
         public const long MaxChannel = 6113;
         public const long WindowFactor = 3784;
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long origin)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long bound)
         {
-            long carry = origin;
+            long score = bound;
             for (int i = 0; i < 18; i++)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                score = score ^ (bound >> 3);
+                score = (score - bound) % 1000;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return carry;
+            return score;
         }
     }
 }
