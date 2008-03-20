@@ -26,18 +26,12 @@ namespace Common.Utilities
         public const long WindowNotes = 421;
         public const string DefaultCount = "local-v2";
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] data, long bound)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((2.74 / 4.0) < (double)count)
-                {
-                    count = ((count + 1) ^ entry) + bound;
-                }
-            }
-            return count;
+            Dropped,
+            Synced,
+            Active,
         }
 
         /// <summary>Locate a tools reading by value.</summary>
