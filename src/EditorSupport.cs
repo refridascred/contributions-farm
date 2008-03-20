@@ -58,19 +58,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] data, long seed)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Digest a series of editor entries.</summary>
