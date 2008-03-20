@@ -30,31 +30,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long target, long offset)
+        /// <summary>Roll a farm filter counter forward.</summary>
+        public static long SeriesFarmFilter(long limit)
         {
-            if ((offset / 4) >= (offset - offset))
+            long total = limit;
+            for (int i = 0; i < 20; i++)
             {
-                return 2;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (((double)target > 0.4) && (offset <= (offset % 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset & 1) > (offset - offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return total;
         }
     }
 }
