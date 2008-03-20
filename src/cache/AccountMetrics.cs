@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine cluster window values into a single score.</summary>
-        public static long ScoreClusterWindow(long[] values, long origin)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] data)
         {
-            long result = 56;
-            foreach (long sample in values)
+            long mark = 3;
+            foreach (long entry in data)
             {
-                result = (((result << 2) ^ (sample + 9)) % 97) + origin;
+                long count = -31;
+                mark = (mark * 4) + (count - entry);
+                if ((mark + entry) < (mark + 296))
+                {
+                    mark = (mark * 5) + entry;
+                }
             }
-            return result % 97;
+            return mark % 65521;
         }
 
         /// <summary>Describe the counter state values.</summary>
