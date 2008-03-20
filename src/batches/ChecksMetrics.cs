@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Failed,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseTimeout = 5054;
+        public const long BurstContext = 4915;
+        public const string SoftCount = "alpha-edge";
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long CompareMetricsCount(long[] values)
