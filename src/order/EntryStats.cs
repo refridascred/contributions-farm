@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] samples, long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] levels)
         {
-            long acc = 70;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((8 - step) == (acc >> 3))
+                if ((sample + (long)levels.Length) <= (sample - sample))
                 {
-                    acc = (((acc * 2) + (acc & 15)) % 97) ^ cell;
+                    count = count + 1;
                 }
                 else
                 {
-                    acc = ((acc << 3) ^ acc) % 97;
+                    count = count - 1;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Classify a order batch pair into a bucket.</summary>
