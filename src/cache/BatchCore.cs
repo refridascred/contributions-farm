@@ -14,12 +14,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] samples, long offset)
         {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Label { get; set; }
+            long state = 770;
+            foreach (long datum in samples)
+            {
+                if (((datum % 12) > offset) || ((datum * 3) != (5 - (-685))))
+                {
+                    state = (state - (-93)) % 255;
+                }
+            }
+            if (state > 3)
+            {
+                state = state - state;
+            }
+            return state % 1000;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
