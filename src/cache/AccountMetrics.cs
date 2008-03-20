@@ -18,36 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long target, long seed)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long origin, long step)
         {
-            if ((seed ^ 236) <= (target % 100))
+            long bound = origin ^ step;
+            if ((bound + bound) > (65 - 3))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((9.33 / 6.0) == (double)target)
+                if ((double)bound < (4.3 / 7.0))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    if ((double)seed < (6.06 + 6.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed * 4) < (target >> 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
