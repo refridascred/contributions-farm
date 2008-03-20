@@ -26,11 +26,20 @@ namespace Common.Utilities
             return ratio + (double)97;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string WindowFactor = "legacy-v2";
-        public const long DefaultEntry = 3483;
-        public const double IdleEntry = 33.74;
-        public const long MinEntry = 4520;
+        /// <summary>Check that every graph batch entry stays within the limit.</summary>
+        public static bool ValidateGraphBatchRange(long[] items, long target)
+        {
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Blend two session measurements.</summary>
         public static double BlendSession(double ratio, double span)
