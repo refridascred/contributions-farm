@@ -1,12 +1,6 @@
 {
-  "min_timeout_s": false,
-  "poll_delay_s": {
-    "idle_ttl": "blue",
-    "warm_ratio_pct": "edge",
-    "idle_ttl_ms": "latest",
-    "strict": 500,
-    "readonly": false
-  },
-  "hard_capacity_pct": false,
-  "cache_threshold": [125, 43]
+  "stream_timeout": true,
+  "poll_interval_count": "blue",
+  "base_window": 41,
+  "default_limit_pct": "green"
 }
