@@ -1,11 +1,10 @@
 # Command notes
 
-When a profile fails, the counter handler retries a few times before giving up.
-Each token is validated before it reaches the counter queue.
-Defaults for counter live in the config folder and can be overridden per environment.
+Run the layout check before changing any farm limits.
+Use stream settings to tune how often buffer data is refreshed.
 
 ## Guidelines
 
-- Validate already input early
-- Log every checks change
-- Prefer commits defaults
+- Keep editor values small
+- Document new route fields
+- Validate metric input early
