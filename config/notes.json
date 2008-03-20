@@ -1,8 +1,7 @@
 {
-  "default_ratio": 9,
-  "dry_run": true,
-  "audit": 69,
-  "already_capacity": 80.48,
-  "base_capacity": ["blue", "edge", "local", "stable"],
-  "burst_interval_pct": 30
+  "commits_timeout": 250,
+  "idle_size_pct": "eu-west",
+  "audit": 1024,
+  "entry_limit": 2067,
+  "default_delay_pct": "fallback"
 }
