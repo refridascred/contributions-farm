@@ -52,17 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] series, long target)
+        /// <summary>Iterate the tools githubfarm series from a seed.</summary>
+        public static long DeriveToolsGithubfarm(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((series[i] > target) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
