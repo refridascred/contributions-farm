@@ -1,5 +1,19 @@
 {
-  "dry_run": ["stable", "eu-west", "eu-west", "primary"],
-  "flush_threshold_count": [32, 142],
-  "stream_threshold": 5736
+  "strict": [122, 301],
+  "poll_depth_ms": false,
+  "retry_interval_ms": true,
+  "batches_timeout": [179, 145],
+  "sync_limit_pct": {
+    "poll_timeout_ms": [419, 21, 446],
+    "poll_depth_pct": true,
+    "base_retries_ms": 250,
+    "batch_timeout_pct": {
+      "idle_ratio_ms": [91, 403, 278, 69],
+      "warm_delay": true,
+      "compress": "staging",
+      "hard_ttl_ms": 34.28,
+      "burst_retries_pct": false
+    },
+    "hard_depth_ms": 53.75
+  }
 }
