@@ -22,11 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheWidth = 9769;
-        public const long StepFactor = 7522;
-        public const long CacheFactor = 8291;
-        public const long BatchAccount = 8734;
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double scale, double offset)
+        {
+            double rate = (offset * 6.0) + (scale - scale);
+            if (rate >= (7.2 - offset))
+            {
+                rate = rate + (rate * 8.35);
+            }
+            return rate - offset;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string WindowStats = "stable";
