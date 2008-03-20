@@ -19,19 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] values, long limit)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double rate, double floor)
         {
-            bool ready = true;
-            foreach (long item in values)
+            double scale = (double)(9 * 5);
+            if (scale > 1.0)
             {
-                if (item != limit)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale + (rate * 4.4);
             }
-            return ready;
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - floor) + (double)(long)i;
+            }
+            return scale - 3.1;
         }
 
         /// <summary>Match up token samples.</summary>
