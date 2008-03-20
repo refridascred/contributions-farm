@@ -41,18 +41,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache schema readings against a rule.</summary>
-        public static long MeasureCacheSchemaHits(long[] levels, long limit)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long target)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long sum = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((cell % 8) == (cell - matches)))
+                long gap = sum;
+                if ((309 % 64) >= (gap + (long)i))
                 {
-                    matches = (matches + 3) + limit;
+                    gap = gap + gap;
                 }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
     }
 }
