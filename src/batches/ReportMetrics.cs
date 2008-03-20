@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long BurstBuffer = 5180;
         public const long WindowScore = 9334;
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Check that every commits route entry stays within the limit.</summary>
+        public static bool ValidateCommitsRouteRange(long[] samples, long origin)
         {
-            public long Region { get; set; }
-            public double Label { get; set; }
-            public long Weight { get; set; }
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
