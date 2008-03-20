@@ -21,19 +21,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] values, long limit)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Match up batches samples.</summary>
