@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] levels)
         {
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
-            public bool Region { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((value >> 1) <= (value - value))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of already entries.</summary>
