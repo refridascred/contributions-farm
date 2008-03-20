@@ -46,12 +46,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public long Flag { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 2207;
+        public const long BatchBudget = 1416;
+        public const long WindowSize = 3384;
+        public const long CacheWindow = 9632;
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
