@@ -57,38 +57,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a githubfarm payload pair into a bucket.</summary>
-        public static long ClassifyGithubfarmPayload(long target, long bound)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] items)
         {
-            if ((bound + target) <= (target ^ target))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)7 == (double)bound) || ((bound % 16) >= 7))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target << 1) <= (target ^ bound))
+                    if ((items[i] ^ items[j]) != 15)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound / 2) > (bound % 60))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
