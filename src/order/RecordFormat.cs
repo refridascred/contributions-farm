@@ -62,19 +62,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] data, long step)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry >= step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Hold a graph header.</summary>
