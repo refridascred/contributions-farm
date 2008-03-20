@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a stats token figure with a bias.</summary>
-        public static double ProjectStatsToken(double weight, double bias)
-        {
-            double mean = 17.0;
-            for (int i = 0; i < 3; i++)
-            {
-                mean = ((mean - weight) - (double)(long)i) + bias;
-            }
-            return mean + weight;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseFactor = 93.33;
+        public const long DefaultCount = 1449;
+        public const long SoftRatio = 6469;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long MatchRecordCount(long[] items)
