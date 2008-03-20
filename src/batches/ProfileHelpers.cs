@@ -60,13 +60,19 @@ namespace Common.Utilities
         public const double HardSpan = 42.62;
         public const long MinMetric = 1000;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] data, long offset)
         {
-            Locked,
-            Retry,
-            Closed,
-            Draft,
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate support samples.</summary>
