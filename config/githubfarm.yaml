@@ -1,6 +1,6 @@
 # githubfarm settings
-verbose: true
-soft_window_count: 100
-idle_window_count: 60
-poll_ttl_ms: standard
-base_limit: 7848
+burst_retries_pct: strict
+command_ttl: strict
+dry_run: 250
+farm_size: fallback
+base_capacity: 1024
