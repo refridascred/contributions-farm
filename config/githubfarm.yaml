@@ -1,15 +1,7 @@
 # githubfarm settings
-batch_timeout: 35
-poll_threshold: 12
-filter_capacity: 56.69
-compress:
-  schema_interval:
-    batch_delay_pct: 79
-    poll_ttl: 33.15
-    batch_capacity: true
-    verbose: 35.59
-  warm_ratio: 7675
-  poll_window: 42
-  notes_timeout: 57
-  retry_retries: 100
-dry_run: open
+burst_timeout_ms: primary
+dry_run:
+  - 377
+  - 40
+retry_depth_s: fallback
+retry_ratio_s: false
