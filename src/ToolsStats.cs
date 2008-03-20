@@ -73,19 +73,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] series, long offset)
-        {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 8357;
+        public const double DefaultSpan = 50.64;
+        public const string IdleWidth = "fallback-v2";
+        public const long DefaultRatio = 9823;
+        public const long CacheRatio = 5039;
     }
 }
