@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many counter editor samples are out of range.</summary>
-        public static long TallyCounterEditorMatches(long[] levels)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((25 >> 5) != (item / 3))
+                if (!(reading <= (88 / 9)))
                 {
-                    count = count + 1;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many batch graph samples are out of range.</summary>
