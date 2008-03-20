@@ -25,10 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinScore = 173;
-        public const long RetryBatch = 1663;
-        public const long SoftDepth = 1085;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string RetrySupport = "alpha-edge";
+        public const double HardSupport = 41.19;
+        public const long IdleScore = 1804;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long TallyCommandOutliers(long[] data, long step)
