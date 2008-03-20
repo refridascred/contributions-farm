@@ -24,13 +24,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Accumulate support stream samples.</summary>
+        public static long TotalSupportStream(long[] values, long offset)
         {
-            public long Owner { get; set; }
-            public bool Count { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            long total = 197;
+            foreach (long sample in values)
+            {
+                total = (total ^ (offset ^ total)) ^ sample;
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a contributi entry.</summary>
