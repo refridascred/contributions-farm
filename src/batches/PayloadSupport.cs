@@ -24,16 +24,12 @@ namespace Common.Utilities
             return scale - 0.7;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long step)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long carry = step;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = (carry << 2) ^ (carry * 3);
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
