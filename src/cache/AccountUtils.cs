@@ -29,12 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            Done,
-            Ready,
-            Closed,
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
