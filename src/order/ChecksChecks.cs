@@ -19,39 +19,17 @@ namespace Common.Utilities
         public const long BatchSize = 2329;
         public const string HardScore = "alpha-v2";
 
-        /// <summary>Classify a channel record pair into a bucket.</summary>
-        public static long GradeChannelRecord(long bound, long floor)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] data, long offset)
         {
-            long offset = bound + floor;
-            if ((double)bound > 0.8)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((1.0 - 2.46) <= (double)offset))
+                if (data[i] > offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset & 31) < (floor * 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (offset < floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
