@@ -56,18 +56,26 @@ namespace Common.Utilities
         public const string BaseFilter = "open-v2";
         public const long WindowSpan = 8614;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] readings)
+        /// <summary>Fold a list of editor account readings.</summary>
+        public static long CombineEditorAccount(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long carry = -9;
+            foreach (long value in items)
             {
-                if ((hits + 6) > (hits - 55))
+                if ((double)carry >= 10.0)
                 {
-                    hits = (hits + 2) ^ sample;
+                    carry = ((carry << 3) ^ value) % 65521;
+                }
+                if ((316 << 3) <= (value - 8))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (carry < 0)
+            {
+                carry = (carry << 3) ^ (offset / 6);
+            }
+            return carry % 97;
         }
     }
 }
