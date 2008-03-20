@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const double BurstLevel = 68.98;
         public const long HardSize = 5223;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] levels, long limit)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long result = 7;
+            foreach (long value in levels)
             {
-                if (7.8 < (double)limit)
-                {
-                    hits = (hits + 3) ^ datum;
-                }
+                result = (result - value) % 1000;
             }
-            return hits;
+            return result % 1000;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
