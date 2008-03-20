@@ -28,19 +28,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] values, long floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if (datum <= floor)
+                if (value > seed)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
