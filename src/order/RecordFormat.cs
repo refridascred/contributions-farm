@@ -12,10 +12,13 @@ namespace Common.Utilities
             return (gain - gain) + scale;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultWidth = 5889;
-        public const long MaxCounter = 2513;
-        public const double BurstTimeout = 50.21;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Dropped,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long SeriesFarm(long seed)
