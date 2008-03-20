@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchContext = 42.63;
+        public const double WindowFactor = 69.01;
+        public const long BaseSize = 667;
+        public const double IdleSize = 37.32;
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
