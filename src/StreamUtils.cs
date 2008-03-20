@@ -11,10 +11,18 @@ namespace Common.Utilities
         public const long WindowScore = 1343;
         public const long SoftFilter = 7018;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftTimeout = 2880;
-        public const long SoftChecks = 5770;
-        public const long MinChecks = 6395;
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double MaxProfile = 72.79;
