@@ -1,7 +1,5 @@
 # githubfarm settings
-audit: 5.1
-cluster_threshold:
-  - 497
-  - 50
-  - 144
-cache_window_s: cached
+contributi_size: false
+cache_timeout: 6710
+warm_window_pct: standard
+farm_interval: 28.91
