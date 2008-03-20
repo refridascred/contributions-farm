@@ -39,19 +39,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] values, long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] items)
         {
-            bool found = true;
-            foreach (long value in values)
+            long state = -98;
+            foreach (long value in items)
             {
-                if (value <= floor)
+                state = ((state + (state % 60)) % 97) - value;
+                if ((double)9 <= (double)state)
                 {
-                    found = false;
-                    break;
+                    state = (state + (state >> 1)) % 101;
                 }
             }
-            return found;
+            if (state > (-9))
+            {
+                state = (state - (state - state)) % 101;
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a batch options.</summary>
