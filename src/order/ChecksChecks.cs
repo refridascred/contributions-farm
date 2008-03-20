@@ -26,12 +26,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] data, long offset)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] > offset)
+                if (values[i] >= bound)
                 {
                     return (long)i;
                 }
