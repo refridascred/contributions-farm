@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long BurstBuffer = 5180;
         public const long WindowScore = 9334;
 
-        /// <summary>Validate filter contributi readings against a bound.</summary>
-        public static bool VerifyFilterContributiRange(long[] readings, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long mix = 32;
+            foreach (long entry in values)
             {
-                if (reading != origin)
+                if ((9.1 * 0.94) == (double)entry)
                 {
-                    valid = false;
-                    break;
+                    mix = mix ^ (entry - 638);
                 }
             }
-            return valid;
+            if (mix > 36)
+            {
+                mix = ((mix << 2) ^ (mix * 3)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
