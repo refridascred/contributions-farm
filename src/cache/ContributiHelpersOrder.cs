@@ -30,18 +30,21 @@ namespace Common.Utilities
         public const double HardSupport = 41.19;
         public const long IdleScore = 1804;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] data, long step)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading ^ step) >= 5)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 3;
+                    if ((samples[i] - samples[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
