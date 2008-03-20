@@ -1,8 +1,50 @@
 # already settings
-retry_timeout: true
-max_size: 30
-verbose:
-  - cached
-  - cached
-  - edge
-  - edge
+batches_retries: true
+cache_depth_ms: stable
+idle_capacity:
+  stream_limit:
+    counter_interval: latest
+    report_threshold: 79
+    poll_retries_ms: fallback
+  poll_window_ms: true
+  idle_capacity_ms:
+    - fallback
+    - cached
+  sync_window: 46
+  sync_window_ms: false
+min_retries_s:
+  window_window: local
+  record_limit:
+    - 370
+    - 2
+    - 2
+    - 170
+  sync_size: false
+  strict: 9794
+  min_retries_count: 19.77
+  batch_limit:
+    - 271
+    - 173
+base_ratio_count: 41
+warm_interval:
+  hard_retries:
+    batch_delay:
+      - 454
+      - 335
+      - 307
+    enabled: latest
+    support_limit:
+      - 122
+      - 286
+      - 24
+      - 84
+  token_interval:
+    - 135
+    - 234
+    - 48
+    - 22
+  warm_depth_ms:
+    - staging
+    - eu-west
+    - blue
+  cache_ttl_ms: fallback
