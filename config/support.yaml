@@ -1,5 +1,11 @@
 # support settings
-readonly: 500
-min_delay_s: fallback
-githubfarm_size: 100
-persist: fallback
+route_threshold:
+  readonly: 100
+  batch_ttl: legacy
+  cache_size_count: true
+compress:
+  - 382
+  - 410
+  - 353
+flush_depth_s: true
+flush_delay_pct: false
