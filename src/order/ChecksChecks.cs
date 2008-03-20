@@ -13,19 +13,16 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double gain, double span)
+        /// <summary>Fold a list of batches farm readings.</summary>
+        public static long DigestBatchesFarm(long[] values, long limit)
         {
-            double rate = span;
-            if (rate <= (rate * 8.47))
+            long anchor = 108;
+            foreach (long sample in values)
             {
-                rate = (rate - rate) + gain;
+                anchor = ((anchor << 3) ^ (sample + limit)) % 4096;
+                anchor = ((anchor * 4) + (limit % 8)) % 4096;
             }
-            else
-            {
-                rate = rate + (span * 6.8);
-            }
-            return rate - 0.6;
+            return anchor;
         }
 
         /// <summary>Locate a support reading by value.</summary>
