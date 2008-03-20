@@ -31,15 +31,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] items)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            long score = 983;
+            foreach (long reading in items)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                score = score - score;
+                if ((score + reading) > reading)
+                {
+                    score = ((score << 2) ^ (score % 2)) % 4096;
+                }
             }
-            return sum;
+            if (score > 50)
+            {
+                score = (score - (score * 5)) % 65521;
+            }
+            return score % 65521;
         }
     }
 }
