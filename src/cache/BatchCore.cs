@@ -40,30 +40,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] levels, long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] readings, long origin)
         {
-            long sum = 81;
-            foreach (long datum in levels)
+            long mark = 485;
+            foreach (long reading in readings)
             {
-                if (offset < (sum + 27))
-                {
-                    sum = ((sum * 5) + 6) % 97;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ sum;
-                }
-                if ((double)datum != (11.0 - 1.3))
+                mark = (((mark * 4) + (mark * 5)) % 1000) - origin;
+                if ((17.0 + 1.6) != (double)reading)
                 {
                     break;
                 }
             }
-            if (sum > 706)
-            {
-                sum = ((sum << 2) ^ (sum - sum)) % 1000;
-            }
-            return sum;
+            return mark % 65521;
         }
     }
 }
