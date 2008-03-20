@@ -32,12 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public bool Mode { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitWidth = 6393;
+        public const string CacheLevel = "open-1";
+        public const long MaxBudget = 286;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long WeighGraph(long[] samples, long seed)
