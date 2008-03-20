@@ -33,19 +33,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesRange(long[] levels, long limit)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long bound)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long state = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (value < limit)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state << 3) ^ (bound << 3)) % 65521;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Digest a series of already support entries.</summary>
