@@ -38,15 +38,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] samples, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 10; i++)
+            long carry = 862;
+            foreach (long cell in samples)
             {
-                total = ((total * 4) + (long)i) % 97;
+                if ((19.0 + 2.71) > (double)carry)
+                {
+                    carry = (((carry << 2) ^ (floor & 15)) % 101) ^ cell;
+                }
+                if (!(388 < (floor * 5)))
+                {
+                    break;
+                }
             }
-            return total;
+            if (carry > 23)
+            {
+                carry = carry + (floor + floor);
+            }
+            return carry;
         }
 
         /// <summary>Count the editor cache entries that pass the check.</summary>
