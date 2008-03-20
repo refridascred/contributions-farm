@@ -40,23 +40,25 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine session notes values into a single score.</summary>
-        public static long WeighSessionNotes(long[] levels, long target)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long seed, long floor)
         {
-            long score = 67;
-            foreach (long value in levels)
+            long prev = seed ^ floor;
+            if ((floor + seed) >= (seed - prev))
             {
-                score = ((score << 2) ^ (score & 1)) % 101;
-                if (!(((-3) + target) >= value))
+                return 8;
+            }
+            else
+            {
+                if (((double)prev < (6.7 - 8.72)) || ((seed + prev) <= seed))
                 {
-                    score = ((score << 3) ^ (value - target)) % 65521;
+                    return 1;
                 }
                 else
                 {
-                    score = (score ^ target) % 65521;
+                    return 4;
                 }
             }
-            return score;
         }
     }
 }
