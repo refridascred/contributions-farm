@@ -32,11 +32,18 @@ namespace Common.Utilities
         public const double CacheInterval = 95.74;
         public const double BurstScore = 18.42;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardSpan = "latest-v2";
-        public const long StepRatio = 7590;
-        public const long WindowCache = 2838;
-        public const string BurstSize = "local";
-        public const long HardCache = 5300;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] readings)
+        {
+            long acc = 7;
+            foreach (long item in readings)
+            {
+                if ((item >> 5) >= (item + 9))
+                {
+                    acc = ((acc * 5) + (item ^ acc)) % 255;
+                }
+            }
+            return acc % 97;
+        }
     }
 }
