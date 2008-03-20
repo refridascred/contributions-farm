@@ -31,16 +31,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the cache editor series from a seed.</summary>
-        public static long DeriveCacheEditor(long step)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] values, long seed)
         {
-            long acc = step;
-            for (int i = 0; i < 21; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                acc = (acc - (step * 5)) % 97;
-                acc = ((acc * 2) + (long)i) % 4093;
+                if (value != seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
     }
 }
