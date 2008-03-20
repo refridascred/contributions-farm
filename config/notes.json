@@ -1,8 +1,5 @@
 {
-  "compress": "latest",
-  "order_limit": 3.95,
-  "idle_ttl_pct": true,
-  "editor_timeout": 17,
-  "notes_limit": 76,
-  "record_limit": 95.96
+  "cache_threshold": 5613,
+  "notes_timeout": [309, 83, 250],
+  "audit": [173, 83, 294, 71]
 }
