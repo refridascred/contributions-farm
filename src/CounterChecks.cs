@@ -33,18 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] data)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] items)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count / 6) <= (datum & 15))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 2;
+                    if ((items[i] - items[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
