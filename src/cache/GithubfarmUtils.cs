@@ -36,11 +36,10 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitBudget = 8118;
+        public const string MinTimeout = "fallback-1";
+        public const double SoftQueue = 64.16;
+        public const string CacheQueue = "cached-v2";
     }
 }
