@@ -39,21 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count command account pairs that satisfy a relation.</summary>
-        public static long MatchCommandAccountCount(long[] data)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] items, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (offset < (hits + hits))
                 {
-                    if ((data[i] - data[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) ^ value;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
