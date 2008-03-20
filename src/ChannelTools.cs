@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] levels, long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((matches + offset) <= item)
+                if ((double)count >= (9.5 / 3.0))
                 {
-                    matches = matches + 2;
+                    count = ((count + 2) ^ item) + seed;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Roll a githubfarm record counter forward.</summary>
