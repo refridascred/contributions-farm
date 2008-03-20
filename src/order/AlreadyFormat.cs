@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Pending,
-            Retry,
-            New,
+            public double Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
