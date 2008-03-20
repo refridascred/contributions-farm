@@ -30,13 +30,18 @@ namespace Common.Utilities
         public const double DefaultFactor = 66.94;
         public const long MinContributi = 1693;
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] samples, long origin)
         {
-            public string Rank { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
+            long acc = 19;
+            foreach (long datum in samples)
+            {
+                if (!((datum >> 3) > acc))
+                {
+                    acc = (acc << 2) ^ origin;
+                }
+            }
+            return acc % 1000;
         }
     }
 }
