@@ -73,19 +73,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] samples, long bound)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long bound)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (item != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return ok;
+            return sum;
         }
     }
 }
