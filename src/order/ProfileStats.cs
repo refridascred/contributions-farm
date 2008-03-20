@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the farm tools entries that pass the check.</summary>
-        public static long TallyFarmToolsGaps(long[] series)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell >> 1) >= (seen / 7))
+                if (readings[i] <= target)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Accumulate layout samples.</summary>
