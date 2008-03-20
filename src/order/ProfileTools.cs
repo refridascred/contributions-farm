@@ -57,17 +57,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 546;
+        public const double LimitPayload = 96.29;
+        public const long BurstBudget = 2726;
+        public const long WindowCount = 9755;
     }
 }
