@@ -26,13 +26,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] values)
         {
-            Synced,
-            Active,
-            Dropped,
-            Stale,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((9.78 + 3.27) >= (3.76 - 3.71))
+                {
+                    count = (count + 2) ^ item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count tools route pairs that satisfy a relation.</summary>
