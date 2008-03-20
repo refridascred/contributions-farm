@@ -41,18 +41,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many editor context samples are out of range.</summary>
-        public static long CountEditorContextMatches(long[] levels)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long origin, long floor)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            if (origin < (origin + origin))
             {
-                if (((-242) % 97) == (value - value))
+                return 1;
+            }
+            else
+            {
+                if ((origin - origin) <= floor)
                 {
-                    tally = tally + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (!(4.5 <= (double)origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((18.0 - 3.0) > (double)floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
