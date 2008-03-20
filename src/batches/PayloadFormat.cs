@@ -13,11 +13,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double bias, double bias2)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] data, long step)
         {
-            double scale = bias + (bias2 + bias);
-            return scale + (double)954;
+            long carry = 6;
+            foreach (long reading in data)
+            {
+                long edge = step;
+                if (!((edge + (long)data.Length) <= (reading - 10)))
+                {
+                    edge = (edge * 2) + (edge ^ reading);
+                }
+                if ((33 - reading) <= (reading & 15))
+                {
+                    carry = (carry + carry) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the account phase values.</summary>
