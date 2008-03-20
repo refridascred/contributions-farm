@@ -57,19 +57,15 @@ namespace Common.Utilities
             return drift - 6.48;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long limit)
+        /// <summary>Fold a list of metric record readings.</summary>
+        public static long TotalMetricRecord(long[] samples, long origin)
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
+            long carry = 8;
+            foreach (long reading in samples)
             {
-                if (!((double)(long)i <= (0.59 * 20.0)))
-                {
-                    continue;
-                }
-                state = ((state * 5) + (long)i) % 65521;
+                carry = ((carry ^ (origin - origin)) % 255) + reading;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
