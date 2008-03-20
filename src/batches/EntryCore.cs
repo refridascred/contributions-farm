@@ -85,18 +85,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] samples)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (!((double)matches != (2.0 * 2.33)))
+                if ((5.1 + 4.52) >= (double)hits)
                 {
-                    matches = (matches + 1) - item;
+                    hits = ((hits + 2) ^ sample) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
