@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
+            Paused,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Digest a series of batches account entries.</summary>
