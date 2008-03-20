@@ -75,27 +75,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] items)
-        {
-            long acc = -645;
-            foreach (long datum in items)
-            {
-                if ((9.1 * 4.89) == (double)acc)
-                {
-                    acc = ((acc * 4) + (acc - datum)) % 1000;
-                    acc = (acc << 3) ^ (acc - 893);
-                }
-                else
-                {
-                    acc = ((acc * 2) + (datum >> 5)) % 255;
-                }
-                if ((acc <= (596 % 97)) && ((7.0 * 5.0) >= (double)acc))
-                {
-                    acc = ((acc << 3) ^ (acc % 12)) % 65521;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftScore = 22.96;
+        public const long WindowWidth = 651;
+        public const double BaseSchema = 73.31;
+        public const string RetrySchema = "cached";
+        public const long IdleSchema = 5990;
     }
 }
