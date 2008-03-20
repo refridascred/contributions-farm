@@ -37,19 +37,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two command record measurements.</summary>
-        public static double SmoothCommandRecord(double weight, double offset)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] values)
         {
-            double bias = 4.08;
-            if (bias < offset)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias - bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - weight;
-            }
-            return bias - (double)37;
+            return matches;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
