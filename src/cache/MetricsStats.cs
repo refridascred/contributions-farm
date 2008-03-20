@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double rate, double span)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] data)
         {
-            double mean = span + span;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                mean = ((mean - (span * 6.69)) + (double)(long)i) - rate;
+                if ((((matches % 5) <= (matches ^ 85)) && ((4.8 / 9.0) < (double)sample)) && ((double)matches >= (3.0 / 3.0)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mean - (double)(-679);
+            return matches;
         }
 
         /// <summary>Hold a cluster entry.</summary>
