@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 9809;
-        public const string RetrySize = "staging-1";
-        public const double RetryChannel = 47.8;
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
+        {
+            Idle,
+            New,
+            Done,
+            Failed,
+        }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LocateStatsIndex(long[] data, long target)
