@@ -27,12 +27,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Check that every buffer entry entry stays within the limit.</summary>
+        public static bool CheckBufferEntryBounds(long[] samples, long target)
         {
-            New,
-            Queued,
-            Stale,
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count channel checks pairs that satisfy a relation.</summary>
