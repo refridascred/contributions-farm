@@ -70,11 +70,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinCount = 79.13;
-        public const double MinFactor = 68.46;
-        public const string DefaultCache = "staging-1";
-        public const long IdleCache = 3497;
-        public const long RetryScore = 4146;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstScore = 55.33;
+        public const long BurstEntry = 9761;
+        public const long LimitEntry = 6297;
     }
 }
