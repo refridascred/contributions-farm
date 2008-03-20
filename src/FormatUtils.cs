@@ -26,20 +26,12 @@ namespace Common.Utilities
         public const long CacheFactor = 8291;
         public const long BatchAccount = 8734;
 
-        /// <summary>Validate githubfarm profile readings against a bound.</summary>
-        public static bool CheckGithubfarmProfileBounds(long[] series, long step)
-        {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowStats = "stable";
+        public const long DefaultTimeout = 3465;
+        public const long HardStats = 7502;
+        public const double IdleDepth = 64.03;
+        public const long LimitStats = 9023;
 
         /// <summary>Find the first editor filter entry that matches the target.</summary>
         public static long LookupEditorFilterIndex(long[] readings, long floor)
