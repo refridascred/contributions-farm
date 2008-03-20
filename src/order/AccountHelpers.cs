@@ -78,19 +78,38 @@ namespace Common.Utilities
         public const long WindowTimeout = 9168;
         public const double SoftBatch = 10.78;
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] samples, long offset)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long origin, long target)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            if (!(target >= ((-35) - origin)))
             {
-                if (reading > offset)
+                return 6;
+            }
+            else
+            {
+                if (origin >= target)
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((target << 1) <= (origin + target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target > (target >> 3)) || ((double)origin == (double)6))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
