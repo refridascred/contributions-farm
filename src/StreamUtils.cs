@@ -46,12 +46,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Closed,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftContributi = 26.15;
+        public const double BatchDepth = 21.73;
+        public const long StepSpan = 9722;
+        public const long StepFactor = 3722;
     }
 }
