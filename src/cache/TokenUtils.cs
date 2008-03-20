@@ -16,17 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] samples, long bound)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] samples, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if ((samples[i] == bound) && ((samples[i] % 2) != 0))
+                if (sample < seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Count editor commits pairs that satisfy a relation.</summary>
