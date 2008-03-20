@@ -23,12 +23,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long step)
         {
-            public bool Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
+            long carry = step;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = (carry << 2) ^ (carry * 3);
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Hold a account snapshot.</summary>
