@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a channel tools reading.</summary>
-        public static double ProjectChannelTools(double scale, double offset)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long bound)
         {
-            double mean = scale;
-            if (mean >= 4.5)
+            long result = bound;
+            for (int i = 0; i < 20; i++)
             {
-                mean = (mean + (double)36) - offset;
+                result = result - (bound % 64);
+                result = ((result * 3) + (long)i) % 4093;
             }
-            else
-            {
-                mean = mean - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (double)9) - (double)(long)i;
-            }
-            return mean - (double)36;
+            return result;
         }
 
         /// <summary>Fold a list of order readings.</summary>
