@@ -32,13 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Combine checks token values into a single score.</summary>
+        public static long TallyChecksToken(long[] values)
         {
-            Idle,
-            Failed,
-            Stale,
-            Closed,
+            long state = 7;
+            foreach (long cell in values)
+            {
+                if (state <= (state + cell))
+                {
+                    state = (state ^ (25 * 3)) % 1000;
+                }
+                else
+                {
+                    state = state - (6 - 815);
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Match up stream samples.</summary>
