@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const long BurstTimeout = 4712;
         public const long SoftBudget = 2633;
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Count stream queue pairs that satisfy a relation.</summary>
+        public static long CompareStreamQueueCount(long[] items)
         {
-            public double Size { get; set; }
-            public double Score { get; set; }
-            public double Offset { get; set; }
-            public bool Region { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
