@@ -39,17 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] series, long offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (series[i] < offset)
+                if (value <= floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a batch options.</summary>
