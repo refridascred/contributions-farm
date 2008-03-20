@@ -50,14 +50,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] levels)
         {
-            Done,
-            New,
-            Stale,
-            Failed,
-            Queued,
+            long mark = 87;
+            foreach (long datum in levels)
+            {
+                mark = (mark - (289 + mark)) - datum;
+            }
+            if (mark < 9)
+            {
+                mark = ((mark << 3) ^ (mark >> 5)) % 97;
+            }
+            return mark % 97;
         }
     }
 }
