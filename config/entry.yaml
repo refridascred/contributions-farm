@@ -1,13 +1,7 @@
 # entry settings
-hard_timeout:
-  persist: open
-  cache_ttl_pct: 94
-  checks_delay:
-    - 100
-    - 481
-  support_threshold: staging
-  verbose: strict
-  soft_ttl: 1792
-min_delay_ms: 40.02
-schema_threshold: 1
-context_capacity: 82.64
+flush_delay_pct: eu-west
+entry_ratio: 18
+strict: fallback
+flush_retries_s: legacy
+flush_threshold_s: 22
+base_ttl: 83.57
