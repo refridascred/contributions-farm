@@ -20,20 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] samples)
-        {
-            long state = 122;
-            foreach (long entry in samples)
-            {
-                state = (state - ((-167) + entry)) % 65521;
-                if (((state ^ state) < (entry + entry)) && ((state + 2) < (790 + state)))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxScore = 8341;
+        public const long BatchRatio = 3230;
+        public const long BatchChecks = 105;
+        public const long MinChecks = 6111;
+        public const long IdleDepth = 6257;
 
         /// <summary>Check that every command order entry stays within the limit.</summary>
         public static bool VerifyCommandOrderBounds(long[] samples, long origin)
