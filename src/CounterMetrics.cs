@@ -28,19 +28,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] readings, long seed)
+        /// <summary>Blend two command record measurements.</summary>
+        public static double SmoothCommandRecord(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            double bias = 4.08;
+            if (bias < offset)
             {
-                if (value > seed)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = bias - bias;
             }
-            return flag;
+            else
+            {
+                bias = bias - weight;
+            }
+            return bias - (double)37;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
