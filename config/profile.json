@@ -1,8 +1,5 @@
 {
-  "idle_retries_s": 8119,
-  "buffer_threshold": "blue",
-  "max_interval_ms": "edge",
-  "burst_capacity_count": true,
-  "default_interval_ms": "latest",
-  "channel_ttl": [72, 234, 177]
+  "base_delay_s": true,
+  "channel_retries": 1316,
+  "support_retries": 13.95
 }
