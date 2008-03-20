@@ -22,21 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] readings)
+        /// <summary>Count entry profile pairs that satisfy a relation.</summary>
+        public static long MatchEntryProfileCount(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) != 9)
+                    if ((items[i] - items[j]) != 11)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
