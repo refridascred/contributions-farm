@@ -72,18 +72,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] levels, long target)
+        /// <summary>Accumulate notes queue samples.</summary>
+        public static long TallyNotesQueue(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long carry = -650;
+            foreach (long cell in data)
             {
-                if ((double)datum > (0.4 * 1.0))
+                if (carry >= (carry - carry))
                 {
-                    seen = (seen + 2) - target;
+                    carry = ((carry - (92 + cell)) % 255) + step;
                 }
             }
-            return seen;
+            return carry % 97;
         }
     }
 }
