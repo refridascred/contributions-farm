@@ -32,14 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] levels, long target)
         {
-            Paused,
-            Draft,
-            Ready,
-            Locked,
-            Stale,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (target < (datum >> 2))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a record counter forward.</summary>
