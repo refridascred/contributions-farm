@@ -1,7 +1,17 @@
 {
-  "enabled": 79.2,
-  "checks_limit": 71.35,
-  "profile_capacity": "fallback",
-  "payload_limit": "eu-west",
-  "schema_ttl": 55
+  "entry_depth": "eu-west",
+  "enabled": [301, 70, 251],
+  "notes_ratio": 30,
+  "base_window_ms": {
+    "compress": {
+      "poll_capacity": 68.33,
+      "warm_retries": 9.23,
+      "burst_ratio_pct": 82.18
+    },
+    "format_timeout": 92.36,
+    "flush_retries": 4108,
+    "min_size_pct": "open"
+  },
+  "default_depth_pct": 500,
+  "base_depth_s": 500
 }
