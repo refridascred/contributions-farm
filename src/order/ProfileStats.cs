@@ -66,19 +66,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every route context entry stays within the limit.</summary>
-        public static bool ValidateRouteContextLimits(long[] levels, long floor)
+        /// <summary>Count the contributi commits entries that pass the check.</summary>
+        public static long MeasureContributiCommitsGaps(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (sample <= floor)
+                if (floor > (matches + matches))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) - cell;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
