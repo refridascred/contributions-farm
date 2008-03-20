@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] levels, long bound)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            double scale = floor;
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)matches >= (0.3 + 5.0))
-                {
-                    matches = ((matches + 2) + item) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = ((scale - (floor - scale)) + (double)(long)i) + weight;
             }
-            return matches;
+            return scale + floor;
         }
 
         /// <summary>Hold a cache summary.</summary>
