@@ -25,12 +25,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Look up the position of a already layout sample.</summary>
+        public static long FindAlreadyLayoutIndex(long[] items, long origin)
         {
-            Active,
-            Queued,
-            Ready,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < origin) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
