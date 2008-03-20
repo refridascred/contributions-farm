@@ -1,4 +1,25 @@
 # entry settings
-max_timeout: false
-flush_ttl_ms: false
-counter_retries: blue
+record_size: primary
+cache_window_pct:
+  audit:
+    sync_ratio_s:
+      - 297
+      - 289
+      - 463
+      - 139
+    idle_window: 96
+    stats_retries: 74.94
+    cache_capacity_count: 3693
+    default_timeout_pct: 58.46
+    batch_ttl: false
+  hard_ttl_pct:
+    idle_delay_pct: blue
+    audit: legacy
+    strict: 7176
+    retry_depth: 6660
+    verbose: staging
+    max_delay_pct: 33
+  sync_threshold_s: blue
+batch_timeout_s: false
+soft_timeout_s: 1687
+readonly: 7197
