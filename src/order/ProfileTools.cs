@@ -33,18 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] items)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] series)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches + value) < 5)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((series[i] ^ series[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
