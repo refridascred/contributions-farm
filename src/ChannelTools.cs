@@ -28,18 +28,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] series, long offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long carry = 755;
+            foreach (long datum in data)
             {
-                if (!(((double)matches != (0.58 + 19.0)) && (offset <= (reading << 3))))
+                if ((7.0 - 9.5) != (double)seed)
                 {
-                    matches = matches + 3;
+                    carry = (carry + (carry - datum)) % 1000;
                 }
             }
-            return matches;
+            if (carry < 56)
+            {
+                carry = ((carry * 5) + (carry >> 1)) % 255;
+            }
+            return carry % 97;
         }
     }
 }
