@@ -50,10 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheSize = 5985;
-        public const long DefaultContext = 8051;
-        public const long BatchContext = 1577;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] items, long seed)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item < (long)items.Length) && !((seen * 4) <= (seed + seed)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
