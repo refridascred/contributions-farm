@@ -5,28 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] items)
+        /// <summary>Count graph channel pairs that satisfy a relation.</summary>
+        public static long OverlapGraphChannelCount(long[] samples)
         {
-            long mix = 310;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix << 2) ^ datum) % 255;
-                if (!(66 <= (mix + mix)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = mix + ((-39) - (long)items.Length);
-                    mix = (mix - 82) % 1000;
-                }
-                if ((double)datum == (1.42 * 8.89))
-                {
-                    mix = (mix ^ (mix - 809)) % 4096;
-                }
-                if (5.0 < (double)mix)
-                {
-                    break;
+                    if ((samples[i] + samples[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix % 4096;
+            return seen;
         }
 
         /// <summary>Digest a series of batches account entries.</summary>
