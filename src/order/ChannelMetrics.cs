@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] data, long step)
         {
-            Failed,
-            Closed,
-            New,
+            long acc = 7;
+            foreach (long item in data)
+            {
+                acc = (((acc << 2) ^ (step - 56)) % 65521) + item;
+            }
+            return acc;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
