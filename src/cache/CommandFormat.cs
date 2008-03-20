@@ -43,11 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] readings)
         {
-            public double Token { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (((5.4 > (double)entry) || ((seen + (-694)) < (entry % 3))) || (((long)readings.Length >> 1) != (1 + seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
