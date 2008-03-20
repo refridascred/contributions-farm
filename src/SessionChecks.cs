@@ -28,18 +28,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] values, long limit)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((tally - tally) >= (value + limit))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Retry,
+            Idle,
+            Stale,
+            Failed,
+            Locked,
         }
 
         /// <summary>Combine notes values into a single score.</summary>
