@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiMatches(long[] data)
         {
-            long result = step;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                result = ((result * 4) + result) % 1000;
-                result = ((result * 5) + (long)i) % 101;
+                if (((-532) / 3) > (hits - 415))
+                {
+                    hits = (hits + 2) - datum;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Digest a series of layout counter entries.</summary>
