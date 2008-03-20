@@ -1,14 +1,13 @@
 # entry settings
-retry_window_s: 82.32
-flush_ttl_count:
-  - 11
-  - 447
-  - 270
-  - 435
-persist: cached
-batches_depth:
-  - 239
-  - 385
-  - 355
-flush_depth_ms: 40.37
-verbose: edge
+strict: open
+dry_run: cached
+soft_ratio_count: 1990
+flush_threshold: strict
+soft_retries_ms:
+  compress:
+    - 69
+    - 64
+    - 24
+  filter_timeout: 53.17
+  min_limit_count: 2069
+  stream_interval: false
