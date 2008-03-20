@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] items)
-        {
-            long mark = 405;
-            foreach (long datum in items)
-            {
-                if ((63 ^ datum) == (mark ^ mark))
-                {
-                    mark = mark + (mark / 4);
-                }
-                else
-                {
-                    mark = (mark ^ (datum % 5)) % 4096;
-                }
-                if (7 <= (datum * 3))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinSize = 32.47;
+        public const long DefaultSize = 1345;
+        public const double WindowContext = 50.88;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long TotalWindow(long[] samples, long seed)
