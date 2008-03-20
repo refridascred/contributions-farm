@@ -78,38 +78,12 @@ namespace Common.Utilities
         public const long WindowTimeout = 9168;
         public const double SoftBatch = 10.78;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long origin, long target)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            if (!(target >= ((-35) - origin)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (origin >= target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target << 1) <= (origin + target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target > (target >> 3)) || ((double)origin == (double)6))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Locked,
+            Idle,
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
