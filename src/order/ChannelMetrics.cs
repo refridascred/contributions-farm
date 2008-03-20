@@ -25,19 +25,10 @@ namespace Common.Utilities
             return (scale + bias) + offset;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((state ^ limit) <= state)
-                {
-                    state = (state << 2) ^ (long)i;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinTimeout = 1374;
+        public const string BaseMetric = "legacy-1";
+        public const string WindowMetric = "stable-edge";
+        public const long SoftMetric = 2306;
     }
 }
