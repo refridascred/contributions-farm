@@ -1,5 +1,6 @@
 {
-  "warm_window": "strict",
-  "poll_ratio_ms": 21,
-  "min_ratio_pct": 2323
+  "poll_delay": 60,
+  "retry_window_pct": 3906,
+  "account_ttl": 7618,
+  "dry_run": "local"
 }
