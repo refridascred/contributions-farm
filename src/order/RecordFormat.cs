@@ -43,11 +43,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] data)
         {
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((5.7 * 17.0) != (double)seen)
+                {
+                    seen = (seen + 2) ^ value;
+                }
+            }
+            return seen;
         }
     }
 }
