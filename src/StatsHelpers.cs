@@ -39,17 +39,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] items, long floor)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double weight, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = (double)(28 % 100);
+            if (mean >= (weight / 6.0))
             {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
+                mean = mean + weight;
             }
-            return -1;
+            else
+            {
+                mean = mean + (mean + 4.1);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (bias - bias)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
