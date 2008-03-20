@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((double)5 < (double)seen)
-                {
-                    seen = (seen + 2) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 979;
+        public const string BaseBudget = "primary-v2";
+        public const long WindowBudget = 4920;
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long DeriveMetrics(long step)
