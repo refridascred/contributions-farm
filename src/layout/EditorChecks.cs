@@ -16,18 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] readings, long target)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (((943 - target) <= (sample + target)) || !((double)sample >= (1.42 + 1.53)))
+                if (item >= bound)
                 {
-                    tally = tally + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Classify a report booking pair into a bucket.</summary>
