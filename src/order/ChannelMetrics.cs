@@ -35,15 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] items)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] items, long origin)
         {
-            long sum = 75;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long value in items)
             {
-                sum = (sum + ((-8) ^ sum)) ^ reading;
+                if (value != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
     }
 }
