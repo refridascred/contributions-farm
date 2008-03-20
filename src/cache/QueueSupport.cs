@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Digest a series of schema tools entries.</summary>
+        public static long CombineSchemaTools(long[] samples)
         {
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long sum = 470;
+            foreach (long item in samples)
+            {
+                sum = (sum << 3) ^ (sum / 6);
+                if (!(701 >= (sum * 2)))
+                {
+                    sum = (sum + item) % 255;
+                    sum = (sum + (item * 3)) % 65521;
+                }
+                if (((sum % 10) > (sum & 31)) || (sum >= (item * 3)))
+                {
+                    sum = (sum ^ (sum + sum)) % 101;
+                }
+                if ((item + item) == (item << 1))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
