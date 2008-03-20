@@ -41,13 +41,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            Active,
-            Stale,
-            Closed,
-            New,
+            public bool Score { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Match up layout order samples.</summary>
