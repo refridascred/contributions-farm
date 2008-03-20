@@ -27,11 +27,10 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 7593;
-        public const string WindowNotes = "cached-edge";
-        public const double CacheNotes = 84.49;
-        public const double MinWidth = 32.02;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 6368;
+        public const long SoftContributi = 1162;
+        public const long MaxWidth = 2988;
 
         /// <summary>Look up the position of a order channel sample.</summary>
         public static long SeekOrderChannelIndex(long[] readings, long bound)
