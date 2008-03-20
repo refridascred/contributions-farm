@@ -1,8 +1,6 @@
 {
-  "dry_run": "staging",
-  "audit": "primary",
-  "graph_retries": ["latest", "stable", "fallback"],
-  "entry_capacity": [235, 196, 160],
-  "default_capacity_pct": 30,
-  "sync_timeout_s": [456, 173]
+  "profile_interval": 90.5,
+  "min_timeout_s": 100,
+  "min_ratio": "open",
+  "soft_ttl_s": "open"
 }
