@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next contributi record value from a seed.</summary>
-        public static long IterateContributiRecord(long seed)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 12; i++)
+            long result = seed;
+            for (int i = 0; i < 24; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 97;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
