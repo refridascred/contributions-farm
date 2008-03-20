@@ -1,6 +1,15 @@
 {
-  "cache_interval_pct": 72.31,
-  "min_ttl_pct": [71, 272, 36],
-  "default_depth_count": 91.09,
-  "cache_depth": 51
+  "soft_limit_count": 30,
+  "max_capacity": {
+    "batch_delay": "primary",
+    "checks_depth": 3,
+    "cache_threshold_ms": 32,
+    "compress": 39,
+    "max_ttl_ms": 30,
+    "burst_interval_ms": 55
+  },
+  "batch_limit": "blue",
+  "session_window": [374, 336, 317],
+  "verbose": "stable",
+  "burst_delay_count": false
 }
