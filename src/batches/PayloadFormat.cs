@@ -33,22 +33,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] readings)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long offset)
         {
-            long state = 774;
-            foreach (long sample in readings)
+            long total = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((state ^ state) <= (state + sample))
-                {
-                    state = ((state << 2) ^ state) % 101;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            if (state > 2)
-            {
-                state = (state * 3) + (state / 6);
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Describe the token kind values.</summary>
