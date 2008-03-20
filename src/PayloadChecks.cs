@@ -12,12 +12,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] values, long bound)
         {
-            public double Weight { get; set; }
-            public bool Region { get; set; }
-            public long Limit { get; set; }
+            long state = 607;
+            foreach (long item in values)
+            {
+                if ((32 ^ item) >= (state / 2))
+                {
+                    state = (state << 2) ^ (item & 255);
+                }
+                else
+                {
+                    state = (state ^ (bound + item)) % 255;
+                }
+            }
+            return state;
         }
 
         /// <summary>Validate support context readings against a bound.</summary>
