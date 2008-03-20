@@ -21,13 +21,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] levels, long target)
         {
-            Stale,
-            Synced,
-            Queued,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= target) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the counter metric series from a seed.</summary>
