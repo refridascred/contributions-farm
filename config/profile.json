@@ -1,5 +1,5 @@
 {
-  "strict": "edge",
-  "idle_ratio": 100,
-  "hard_retries": [71, 400, 316]
+  "default_interval_s": "cached",
+  "burst_retries_ms": false,
+  "default_size_ms": 3.62
 }
