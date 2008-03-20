@@ -12,12 +12,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 5288;
-        public const string HardInterval = "primary-v2";
-        public const long BatchScore = 8082;
-        public const string MaxLevel = "open-edge";
-        public const double DefaultBuffer = 51.18;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] data, long offset)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((4.0 > (double)entry) || !((double)(long)data.Length > (double)count))
+                {
+                    count = (count + 2) - offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long GradeToken(long target, long offset)
