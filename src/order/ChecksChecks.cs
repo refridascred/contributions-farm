@@ -19,16 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batches farm readings.</summary>
-        public static long DigestBatchesFarm(long[] values, long limit)
+        /// <summary>Digest a series of token support entries.</summary>
+        public static long FoldTokenSupport(long[] items)
         {
-            long anchor = 108;
-            foreach (long sample in values)
+            long carry = 433;
+            foreach (long item in items)
             {
-                anchor = ((anchor << 3) ^ (sample + limit)) % 4096;
-                anchor = ((anchor * 4) + (limit % 8)) % 4096;
+                if ((carry - item) >= (670 & 1))
+                {
+                    carry = (carry - (5 * 4)) % 97;
+                }
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Compare every pair of route cache readings.</summary>
