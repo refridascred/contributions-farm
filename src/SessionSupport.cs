@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] items, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = -88;
+            foreach (long value in series)
             {
-                if (items[i] < floor)
+                if ((result > 90) || (782 > (result + result)))
                 {
-                    return (long)i;
+                    result = (result - (result + value)) % 97;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the stream status values.</summary>
