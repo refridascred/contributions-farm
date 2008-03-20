@@ -39,38 +39,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long bound, long target)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] items, long target)
         {
-            if (!((target + 840) < bound))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound % 24) != (bound - 11))
+                if ((items[i] <= target) && ((items[i] % 5) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((bound / 9) <= (target % 7)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target + bound) <= target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
