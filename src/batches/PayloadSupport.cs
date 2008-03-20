@@ -31,10 +31,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftRoute = "fallback";
-        public const long MinSpan = 8720;
-        public const long CacheRoute = 9467;
-        public const long BatchRoute = 8647;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxFactor = 432;
+        public const double StepCommand = 75.25;
+        public const double MinCommand = 43.78;
+        public const string CacheFactor = "local";
     }
 }
