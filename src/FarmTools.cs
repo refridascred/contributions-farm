@@ -20,19 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] series, long bound)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] data)
         {
-            long result = 31;
-            foreach (long reading in series)
+            long total = 969;
+            foreach (long entry in data)
             {
-                result = result - (bound ^ bound);
-                if ((((-7) + reading) == (reading / 5)) || (bound >= (result + bound)))
-                {
-                    break;
-                }
+                total = (((total * 5) + (total - 64)) % 1000) + entry;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
