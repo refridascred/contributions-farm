@@ -27,23 +27,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next githubfarm layout value.</summary>
-        public static double SmoothGithubfarmLayout(double scale, double offset)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            double load = offset;
-            if (load > 9.05)
-            {
-                load = (load + (double)995) - scale;
-            }
-            else
-            {
-                load = load + offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (double)(-68)) - (double)(long)i;
-            }
-            return load + offset;
+            New,
+            Synced,
+            Retry,
+            Pending,
+            Idle,
         }
     }
 }
