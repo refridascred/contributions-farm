@@ -31,12 +31,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] items)
         {
-            public long Size { get; set; }
-            public bool Score { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (((hits % 97) == (item / 4)) && ((hits + item) >= item))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of token entries.</summary>
