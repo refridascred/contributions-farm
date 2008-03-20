@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BatchFarm = 2.76;
-        public const double MaxDepth = 36.38;
-        public const long HardFarm = 9526;
-        public const double DefaultFarm = 36.04;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long MeasureSchemaHits(long[] readings)
