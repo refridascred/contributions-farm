@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchSize = 7360;
-        public const double BurstLevel = 68.98;
-        public const long HardSize = 5223;
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long DigestQueue(long[] levels)
