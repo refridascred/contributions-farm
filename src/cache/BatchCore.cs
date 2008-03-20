@@ -32,18 +32,28 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] samples)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long sum = 8;
+            foreach (long sample in values)
             {
-                if (((9.8 * 6.0) <= (double)matches) || ((double)5 > (double)matches))
+                for (int i = 0; i < 11; i++)
                 {
-                    matches = (matches + 2) + entry;
+                    long lane = sum / 5;
+                    sum = ((sum ^ lane) % 65521) + (long)i;
+                }
+                sum = ((sum * 4) + ((-77) - sum)) % 255;
+                if (!((0.06 - 16.0) > (double)sample))
+                {
+                    sum = (sum * 3) + (target + sum);
                 }
             }
-            return matches;
+            if (sum < 3)
+            {
+                sum = sum - (sum % 7);
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
