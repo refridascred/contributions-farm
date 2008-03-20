@@ -31,12 +31,19 @@ namespace Common.Utilities
         public const long BurstSize = 7354;
         public const long LimitCommits = 4281;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 5394;
-        public const long SoftSpan = 1663;
-        public const string WindowQueue = "latest-edge";
-        public const double BurstQueue = 80.02;
-        public const long SoftQueue = 4284;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] data, long offset)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (offset <= 2)
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of graph layout readings.</summary>
         public static long OverlapGraphLayoutCount(long[] samples)
