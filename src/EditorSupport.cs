@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long limit, long limit2)
         {
-            Failed,
-            Synced,
-            Ready,
-            Paused,
+            if ((double)limit <= (double)limit2)
+            {
+                return 1;
+            }
+            else
+            {
+                if (6.5 <= (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(limit2 > limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit & 127) > limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
