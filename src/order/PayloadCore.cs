@@ -25,12 +25,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Grade a support cache value against two limits.</summary>
+        public static long GradeSupportCache(long floor, long target)
         {
-            Ready,
-            Queued,
-            Paused,
+            long edge = floor - target;
+            if ((double)floor > (12.0 - 9.93))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((edge % 100) > (edge + 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((floor - floor) <= (edge - edge)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor + edge) <= 482)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate context samples.</summary>
