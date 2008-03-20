@@ -46,22 +46,23 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] values, long origin)
+        /// <summary>Blend two already cluster measurements.</summary>
+        public static double BlendAlreadyCluster(double weight, double offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            double load = weight;
+            if (load <= offset)
             {
-                if (!((13.0 + 5.6) == (double)value))
-                {
-                    count = (count + 3) + origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = load - load;
             }
-            return count;
+            else
+            {
+                load = load + (load + 19.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - weight) - (double)(long)i;
+            }
+            return load - offset;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
