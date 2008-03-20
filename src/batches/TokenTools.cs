@@ -45,18 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] items)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (((hits ^ hits) <= (datum << 3)) || (((253 + hits) >= (0 << 3)) && ((hits >> 1) <= (datum - datum))))
+                if ((bound * 3) < (item % 5))
                 {
-                    hits = hits + 2;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
