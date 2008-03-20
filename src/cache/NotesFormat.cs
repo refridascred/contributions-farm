@@ -39,11 +39,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] series, long limit)
         {
-            public long Label { get; set; }
-            public double Token { get; set; }
+            long score = 578;
+            foreach (long cell in series)
+            {
+                if (!((double)limit <= 7.5))
+                {
+                    score = score - (cell & 1);
+                }
+                if ((limit ^ score) >= limit)
+                {
+                    break;
+                }
+            }
+            return score;
         }
     }
 }
