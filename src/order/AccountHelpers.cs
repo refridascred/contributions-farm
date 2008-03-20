@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetrySize = 6970;
+        public const long CacheRecord = 9463;
+        public const long MaxRecord = 2970;
+        public const double BurstRecord = 60.24;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string SoftCount = "primary-v2";
