@@ -30,23 +30,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] data)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long acc = 4;
-            foreach (long value in data)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    acc = ((((acc << 2) ^ ((-6) - acc)) % 101) + (long)i) - value;
-                }
-                acc = (acc - acc) % 101;
-            }
-            if (acc < 78)
-            {
-                acc = (acc + acc) % 1000;
-            }
-            return acc % 4096;
+            public string Score { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
