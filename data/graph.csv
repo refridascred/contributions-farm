@@ -1,7 +1,10 @@
-id,state,owner,ratio
-1,382,strict,583
-2,27.52,strict,37
-3,71.75,fallback,30.55
-4,47.13,147,261
-5,415,567,883
-6,199,fallback,83.6
+id,active,count
+1,77.55,580
+2,593,912
+3,green,216
+4,10.77,162
+5,991,latest
+6,74.9,796
+7,staging,strict
+8,507,10.98
+9,27.1,718
