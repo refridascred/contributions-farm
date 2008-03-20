@@ -31,10 +31,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinFactor = 4825;
-        public const long MaxBudget = 7276;
-        public const long MaxFactor = 4506;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 5300;
+        public const long StepRoute = 1619;
+        public const long DefaultRatio = 6324;
+        public const long MaxRoute = 5725;
+        public const double LimitLevel = 72.27;
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long LookupGraphIndex(long[] items, long limit)
