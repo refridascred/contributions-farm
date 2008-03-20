@@ -66,18 +66,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the contributi commits entries that pass the check.</summary>
-        public static long MeasureContributiCommitsGaps(long[] items, long floor)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (floor > (matches + matches))
+                if (values[i] > offset)
                 {
-                    matches = (matches + 2) - cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
