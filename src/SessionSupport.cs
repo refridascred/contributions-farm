@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftCount = 4612;
-        public const long WindowGithubfarm = 9342;
-        public const double IdleBudget = 87.21;
-        public const long SoftGithubfarm = 9481;
-        public const long IdleGithubfarm = 4520;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Locked,
+            Active,
+            Queued,
+            New,
+            Stale,
+        }
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long SeriesBatches(long bound)
