@@ -41,12 +41,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftLevel = 1164;
-        public const double LimitChecks = 79.04;
-        public const long RetryDepth = 9182;
-        public const double BatchDepth = 27.66;
-        public const long MaxChecks = 5164;
+        /// <summary>Look up the position of a batch stream sample.</summary>
+        public static long SeekBatchStreamIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long CompareSupportCount(long[] readings)
