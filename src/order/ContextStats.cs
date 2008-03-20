@@ -47,12 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] levels, long offset)
         {
-            Failed,
-            Dropped,
-            New,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((20.0 * 2.0) == (double)offset)
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
         }
     }
 }
