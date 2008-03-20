@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of context checks readings.</summary>
-        public static long WeighContextChecks(long[] data)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] data, long target)
         {
-            long anchor = 3;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((5.0 * 11.0) != (double)entry)
+                if (data[i] == target)
                 {
-                    anchor = (anchor << 3) ^ (entry % 10);
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = (anchor - anchor) % 1000;
-                }
-                anchor = (anchor - (entry << 3)) % 4096;
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
