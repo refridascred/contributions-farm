@@ -23,21 +23,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] series)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
     }
 }
