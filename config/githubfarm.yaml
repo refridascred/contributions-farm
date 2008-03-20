@@ -1,17 +1,8 @@
 # githubfarm settings
-burst_ttl_pct: standard
-default_delay_count: 62
-compress:
-  audit:
-    - 235
-    - 203
-    - 248
-  batch_retries_pct: open
-  flush_window_count:
-    - 431
-    - 79
-    - 453
-  min_capacity: 30
-retry_depth: true
-session_timeout: 11
-format_limit: 8883
+session_window:
+  flush_limit_s: 97.34
+  hard_depth: false
+  warm_timeout: true
+  max_timeout: false
+sync_delay_count: false
+counter_ratio: 72
