@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit route layout readings against a rule.</summary>
-        public static long CountRouteLayoutOutliers(long[] data)
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double scale, double bias)
         {
-            long count = 0;
-            foreach (long entry in data)
+            double scale2 = (double)((-997) / 3);
+            if (scale2 > (double)(-63))
             {
-                if (!!((entry + count) >= (count ^ 4)))
-                {
-                    count = count + 1;
-                }
+                scale2 = ((scale2 + (double)3) - scale) - bias;
             }
-            return count;
+            else
+            {
+                scale2 = scale2 - (double)570;
+            }
+            return scale2 + (double)4;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
