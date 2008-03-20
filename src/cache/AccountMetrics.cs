@@ -81,19 +81,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric support series from a seed.</summary>
-        public static long IterateMetricSupport(long seed)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = (score ^ (9 ^ seed)) + (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            New,
+            Failed,
+            Queued,
+            Draft,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
