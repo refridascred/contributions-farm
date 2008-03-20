@@ -65,17 +65,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] values, long offset)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
