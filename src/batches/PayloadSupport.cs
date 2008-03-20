@@ -41,9 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchFactor = 74.21;
-        public const long StepToken = 5473;
-        public const string IdleToken = "primary";
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] items)
+        {
+            long result = 8;
+            foreach (long value in items)
+            {
+                result = (((result << 2) ^ 624) % 4096) ^ value;
+            }
+            if (result < 0)
+            {
+                result = (result ^ 4) % 255;
+            }
+            return result;
+        }
     }
 }
