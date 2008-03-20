@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long offset, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] values, long origin)
         {
-            if ((offset << 1) >= (bound + bound))
+            long count = 0;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)527 != (double)bound)
+                if ((double)origin != (0.69 + 8.5))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((8.05 / 4.0) > (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = (count + 2) + value;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up graph samples.</summary>
