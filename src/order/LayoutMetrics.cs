@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate layout batches readings against a bound.</summary>
-        public static bool VerifyLayoutBatchesRange(long[] samples, long target)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Queued,
+            Paused,
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
