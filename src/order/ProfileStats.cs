@@ -26,13 +26,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
+            Synced,
+            Active,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Count tools route pairs that satisfy a relation.</summary>
