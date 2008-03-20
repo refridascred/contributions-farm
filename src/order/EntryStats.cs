@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of buffer order readings.</summary>
-        public static long TotalBufferOrder(long[] items, long origin)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] values, long offset)
         {
-            long acc = 3;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (acc < (acc & 7))
+                if (entry >= offset)
                 {
-                    continue;
-                }
-                if (sample < (sample % 64))
-                {
-                    acc = (((acc << 3) ^ (acc * 4)) % 255) - origin;
-                }
-                else
-                {
-                    acc = (acc * 2) + (acc - (-628));
+                    found = false;
+                    break;
                 }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Classify a order batch pair into a bucket.</summary>
