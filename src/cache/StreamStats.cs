@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinSpan = 7469;
-        public const long BatchBudget = 3230;
-        public const double SoftInterval = 62.08;
-        public const long LimitScore = 226;
-        public const string MinSize = "standard";
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] data, long target)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((target / 6) > (6 + target))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long CompareContributiCount(long[] readings)
