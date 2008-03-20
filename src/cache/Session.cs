@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] data)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double ratio, double bias)
         {
-            long sum = 2;
-            foreach (long entry in data)
+            double drift = (double)(13 + (-68));
+            if (drift <= (double)814)
             {
-                sum = ((sum << 3) ^ (sum ^ (-9))) - entry;
-                sum = sum ^ (sum * 5);
+                drift = (drift - (double)208) - bias;
             }
-            return sum;
+            else
+            {
+                drift = drift - (drift - ratio);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - 17.0) + (double)(long)i;
+            }
+            return drift - (double)(-50);
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
