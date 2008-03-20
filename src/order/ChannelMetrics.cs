@@ -48,31 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long target, long bound)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long target)
         {
-            if ((16.0 * 2.7) != (double)bound)
+            long total = target;
+            for (int i = 0; i < 18; i++)
             {
-                return 3;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((bound - target) >= 3)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)target <= (double)(-39))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return total;
         }
     }
 }
