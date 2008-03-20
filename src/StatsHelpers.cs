@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] data, long origin)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Score { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Iterate the filter batches series from a seed.</summary>
