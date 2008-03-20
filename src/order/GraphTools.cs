@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long target)
+        /// <summary>Measure how many contributi checks samples are out of range.</summary>
+        public static long TallyContributiChecksGaps(long[] readings, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                total = ((total * 5) + (long)i) % 101;
+                if (count < (floor >> 4))
+                {
+                    count = (count + 1) + value;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
