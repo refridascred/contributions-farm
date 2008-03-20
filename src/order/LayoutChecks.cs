@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long bound)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if (state < ((long)i % 12))
-                {
-                    long lane = 121;
-                    state = (state * 5) + (lane << 2);
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public double Count { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
