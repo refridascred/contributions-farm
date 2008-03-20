@@ -19,21 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] readings)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = weight + (double)(-575);
+            if (drift < (double)(-86))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = drift - (drift / 8.0);
             }
-            return matches;
+            else
+            {
+                drift = drift + weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
