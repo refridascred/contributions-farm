@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseTimeout = 5054;
-        public const long BurstContext = 4915;
-        public const string SoftCount = "alpha-edge";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheScore = 1058;
+        public const string RetryEditor = "open-1";
+        public const long RetryInterval = 560;
+        public const long LimitSpan = 9965;
+        public const double RetryTimeout = 21.33;
 
         /// <summary>Match up notes samples.</summary>
         public static long PairNotesCount(long[] values)
