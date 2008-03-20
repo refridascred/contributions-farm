@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
             Pending,
-            Stale,
-            Ready,
+            Dropped,
+            Active,
+            Failed,
         }
 
         /// <summary>Define context limits and defaults.</summary>
