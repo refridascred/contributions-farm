@@ -90,11 +90,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] samples, long bound)
         {
-            public double Level { get; set; }
-            public bool Score { get; set; }
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
