@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double weight, double floor)
+        /// <summary>Look up the position of a editor commits sample.</summary>
+        public static long LookupEditorCommitsIndex(long[] samples, long target)
         {
-            double weight2 = weight;
-            if (weight2 < (double)67)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight2 = (weight2 + (double)(-45)) + floor;
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 - (weight - weight2)) + (double)(long)i;
-            }
-            return weight2 + 5.37;
+            return -1;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
