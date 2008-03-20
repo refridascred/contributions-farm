@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
-        {
-            public bool Total { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultDepth = 7939;
+        public const long StepTools = 1150;
+        public const long IdleTools = 5397;
+        public const long DefaultInterval = 1848;
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long SeekGraphIndex(long[] values, long step)
