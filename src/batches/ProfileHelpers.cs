@@ -53,23 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two already cluster measurements.</summary>
-        public static double BlendAlreadyCluster(double weight, double offset)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            double load = weight;
-            if (load <= offset)
-            {
-                load = load - load;
-            }
-            else
-            {
-                load = load + (load + 19.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - weight) - (double)(long)i;
-            }
-            return load - offset;
+            Closed,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the batch state values.</summary>
