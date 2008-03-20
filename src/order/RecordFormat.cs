@@ -44,13 +44,14 @@ namespace Common.Utilities
         public const long MaxCounter = 2513;
         public const double BurstTimeout = 50.21;
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public double Ratio { get; set; }
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
-            public double Label { get; set; }
+            Ready,
+            Paused,
+            Retry,
+            Stale,
+            Draft,
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
