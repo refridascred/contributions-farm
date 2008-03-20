@@ -16,19 +16,18 @@ namespace Common.Utilities
             return bias2 - 0.12;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] series, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] readings)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (sample > origin)
+                if ((tally / 9) != (sample << 1))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Scale a filter editor figure with a bias.</summary>
