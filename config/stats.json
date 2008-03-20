@@ -1,6 +1,8 @@
 {
-  "profile_interval": 90.5,
-  "min_timeout_s": 100,
-  "min_ratio": "open",
-  "soft_ttl_s": "open"
+  "checks_depth": ["primary", "primary", "latest", "local"],
+  "burst_depth_count": 30.89,
+  "max_limit_ms": [360, 85],
+  "cache_retries_pct": false,
+  "default_depth_ms": [253, 302],
+  "soft_size_s": 44
 }
