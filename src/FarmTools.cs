@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] samples)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double weight, double floor)
         {
-            long acc = 581;
-            foreach (long cell in samples)
+            double weight2 = weight;
+            if (weight2 < (double)67)
             {
-                acc = (acc + acc) ^ cell;
+                weight2 = (weight2 + (double)(-45)) + floor;
             }
-            if (acc < 504)
+            for (int i = 0; i < 7; i++)
             {
-                acc = (acc * 4) + (acc + (long)samples.Length);
+                weight2 = (weight2 - (weight - weight2)) + (double)(long)i;
             }
-            return acc;
+            return weight2 + 5.37;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
