@@ -29,11 +29,18 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 2810;
-        public const double CacheWidth = 59.55;
-        public const long HardSpan = 6547;
-        public const double RetryCount = 52.43;
-        public const long BaseSupport = 2389;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (hits <= (21 * 4))
+                {
+                    hits = (hits + 1) - reading;
+                }
+            }
+            return hits;
+        }
     }
 }
