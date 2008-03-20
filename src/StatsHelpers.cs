@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a cache notes pair into a bucket.</summary>
-        public static long ClassifyCacheNotes(long bound, long limit)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long step = bound + limit;
-            if (((limit ^ limit) >= (2 + 844)) && ((limit - step) >= bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound >= 2.88)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Draft,
+            Idle,
+            Synced,
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
