@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] readings)
         {
-            Idle,
-            Queued,
-            New,
-            Paused,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (seen < (reading + reading))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the batches state values.</summary>
