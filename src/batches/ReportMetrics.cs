@@ -29,18 +29,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] levels)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (!((hits * 4) != (hits / 8)))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
     }
 }
