@@ -13,25 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long offset, long target)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long cur = offset ^ target;
-            if (!((target - 91) == (cur + target)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((cur * 2) == (cur + cur)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Rank { get; set; }
+            public bool Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the commits state values.</summary>
