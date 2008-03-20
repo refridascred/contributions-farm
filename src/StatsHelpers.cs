@@ -62,18 +62,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] values)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            long anchor = -27;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((285 >> 4) == (anchor / 8)) || ((cell - cell) >= (anchor + 183)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor ^ (anchor + anchor)) % 255;
+                    if ((levels[i] ^ levels[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor % 1000;
+            return count;
         }
     }
 }
