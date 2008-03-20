@@ -33,24 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long step, long target)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            if ((step % 5) >= step)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((step ^ target) >= (target + step)) || ((target + step) > (step % 12)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Paused,
+            Synced,
+            Draft,
+            Failed,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
