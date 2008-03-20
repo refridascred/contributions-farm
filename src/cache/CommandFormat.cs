@@ -20,12 +20,12 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] data, long bound)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] levels, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((data[i] == bound) && ((data[i] % 5) == 0))
+                if (levels[i] < target)
                 {
                     return (long)i;
                 }
