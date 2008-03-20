@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] levels, long floor)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double scale, double span)
         {
-            long state = 16;
-            foreach (long value in levels)
+            double ratio = 4.71;
+            if (ratio > ratio)
             {
-                if ((floor - floor) != (floor << 3))
-                {
-                    state = (state - value) % 255;
-                }
-                else
-                {
-                    state = (state + 671) % 97;
-                }
-                state = (state + (value << 2)) % 97;
+                ratio = ratio - span;
             }
-            return state % 4096;
+            return ratio + (scale - 6.5);
         }
 
         /// <summary>Hold a commits record.</summary>
