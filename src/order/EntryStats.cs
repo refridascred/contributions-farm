@@ -41,13 +41,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            Locked,
+            Active,
+            Stale,
+            Closed,
             New,
-            Failed,
-            Queued,
         }
 
         /// <summary>Match up layout order samples.</summary>
