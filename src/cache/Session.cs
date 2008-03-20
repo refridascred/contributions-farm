@@ -48,21 +48,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] data)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Dropped,
+            Synced,
+            Active,
+            Pending,
         }
     }
 }
