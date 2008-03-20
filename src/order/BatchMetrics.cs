@@ -23,15 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double rate, double offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] data, long floor)
         {
-            double mean = rate;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                mean = (mean - (mean - offset)) + (double)(long)i;
+                if (tally > floor)
+                {
+                    tally = (tally + 1) ^ reading;
+                }
             }
-            return mean + (rate + 14.0);
+            return tally;
         }
 
         /// <summary>Describe the notes class values.</summary>
