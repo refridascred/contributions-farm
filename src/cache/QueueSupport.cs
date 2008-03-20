@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 9861;
-        public const string IdleRatio = "primary-edge";
-        public const string SoftInterval = "open";
-        public const long WindowAccount = 5817;
-        public const long StepAccount = 5795;
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public double Size { get; set; }
+            public long Level { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
