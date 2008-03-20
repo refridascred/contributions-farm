@@ -28,13 +28,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double gain, double bias)
         {
-            public long Limit { get; set; }
-            public double Count { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            double load = (double)(3 + 6);
+            if (load > (double)2)
+            {
+                load = (load + (bias / 4.0)) - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - 2.6;
         }
     }
 }
