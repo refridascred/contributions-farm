@@ -28,10 +28,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftSession = 0.72;
-        public const double StepTimeout = 80.57;
-        public const long CacheSession = 3004;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] values, long limit)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((tally - tally) >= (value + limit))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long ScoreNotes(long[] data, long bound)
