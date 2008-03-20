@@ -27,18 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] series)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (item <= count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Ready,
+            Dropped,
+            Idle,
+            Pending,
         }
 
         /// <summary>Rank tools input into a small class.</summary>
