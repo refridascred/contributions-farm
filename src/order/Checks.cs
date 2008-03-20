@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const string RetryFactor = "cached-1";
         public const long SoftProfile = 1309;
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] values, long step)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double gain, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = 5.0;
+            if (weight >= (weight + weight))
             {
-                if ((values[i] <= step) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight - (floor - gain);
             }
-            return -1;
+            return weight - weight;
         }
 
         /// <summary>Hold a buffer entry.</summary>
