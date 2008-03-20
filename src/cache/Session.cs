@@ -28,19 +28,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] items, long offset)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] values)
         {
-            long sum = 2;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum ^ sum) % 101) - value;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (sum > 2)
-            {
-                sum = sum - offset;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a notes stats.</summary>
