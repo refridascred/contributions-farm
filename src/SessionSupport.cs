@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] levels, long seed)
         {
-            Failed,
-            Draft,
-            Stale,
-            Paused,
-            Dropped,
+            long state = 36;
+            foreach (long item in levels)
+            {
+                if ((309 - seed) <= (state + state))
+                {
+                    state = state ^ item;
+                }
+                else
+                {
+                    state = (state << 2) ^ (item ^ item);
+                }
+                if ((state & 1) < (state + item))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a window options.</summary>
