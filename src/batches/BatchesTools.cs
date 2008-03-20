@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 9507;
-        public const double StepBuffer = 93.51;
-        public const long MinCount = 701;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] values, long floor)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((item & 7) <= (matches + item))
+                {
+                    matches = (matches + 2) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long RankContributi(long step, long step2)
