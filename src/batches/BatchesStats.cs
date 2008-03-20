@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const long WindowNotes = 421;
         public const string DefaultCount = "local-v2";
 
-        /// <summary>Scale a farm batches figure with a bias.</summary>
-        public static double BlendFarmBatches(double rate, double floor)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            double load = floor;
-            if (load > floor)
-            {
-                load = load - (2.0 * 15.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - rate;
+            Stale,
+            Idle,
+            Locked,
         }
 
         /// <summary>Describe the notes phase values.</summary>
