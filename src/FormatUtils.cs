@@ -33,19 +33,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double weight, double span)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] readings)
         {
-            double mean = (double)57 + 6.4;
-            if (mean < (weight + mean))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean + mean;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (span * 4.7);
+            return count;
         }
 
         /// <summary>Find the first stream notes entry that matches the target.</summary>
