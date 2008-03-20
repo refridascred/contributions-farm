@@ -67,19 +67,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] series)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long offset, long seed)
         {
-            long mark = 827;
-            foreach (long sample in series)
+            if ((7 > (offset >> 1)) || ((offset >> 5) == (offset + seed)))
             {
-                mark = (mark - (sample * 2)) % 255;
+                return 3;
             }
-            if (mark > 0)
+            else
             {
-                mark = (mark - 576) % 1000;
+                if ((seed % 3) > offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((seed % 2) <= seed) && (offset < (offset - seed)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed + seed) >= 9)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return mark;
         }
     }
 }
