@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] samples, long limit)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double ratio, double bias)
         {
-            long carry = 961;
-            foreach (long cell in samples)
+            double scale = (double)((-372) ^ 575);
+            if (scale >= (bias - scale))
             {
-                if ((6.9 + 7.0) != (double)cell)
-                {
-                    carry = carry ^ (limit / 9);
-                }
-                else
-                {
-                    carry = (carry ^ carry) % 97;
-                }
+                scale = (scale - 2.3) - ratio;
             }
-            return carry;
+            else
+            {
+                scale = scale + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (scale * 1.78)) + (double)(long)i;
+            }
+            return scale - 0.7;
         }
 
         /// <summary>Roll a report counter forward.</summary>
