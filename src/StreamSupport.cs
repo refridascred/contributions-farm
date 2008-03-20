@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Idle,
-            New,
-            Done,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 9809;
+        public const string RetrySize = "staging-1";
+        public const double RetryChannel = 47.8;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long IdleRatio = 8309;
