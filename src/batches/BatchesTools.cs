@@ -49,17 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] data)
+        /// <summary>Fold a list of metric stream readings.</summary>
+        public static long TallyMetricStream(long[] items, long seed)
         {
-            long state = 6;
-            foreach (long datum in data)
+            long mark = 4;
+            foreach (long datum in items)
             {
-                long delta = (54 + (-2)) * 5;
-                state = ((state * 2) + (delta - state)) - datum;
-                state = ((state << 2) ^ ((long)data.Length >> 4)) % 65521;
+                if ((2.2 * 1.2) != (double)seed)
+                {
+                    mark = (mark ^ (datum + datum)) % 255;
+                }
+                if (datum < (mark + mark))
+                {
+                    mark = ((mark * 5) + (datum / 6)) % 4096;
+                }
             }
-            return state;
+            return mark;
         }
     }
 }
