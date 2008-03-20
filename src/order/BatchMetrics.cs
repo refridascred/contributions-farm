@@ -47,18 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer context readings.</summary>
-        public static long WeighBufferContext(long[] data, long step)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] levels)
         {
-            long carry = 87;
-            foreach (long sample in data)
+            long mark = 418;
+            foreach (long sample in levels)
             {
-                if (!((sample * 3) > (sample + sample)))
-                {
-                    carry = ((carry + sample) % 1000) - step;
-                }
+                mark = (((mark << 3) ^ (mark * 4)) % 101) - sample;
             }
-            return carry % 97;
+            if (mark > (-4))
+            {
+                mark = (mark << 3) ^ 247;
+            }
+            return mark;
         }
 
         /// <summary>Describe the already status values.</summary>
