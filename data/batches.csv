@@ -1,6 +1,7 @@
-id,level,rank,active,owner
-1,764,467,52.19,153
-2,strict,strict,887,619
-3,latest,450,962,79.38
-4,4.69,open,fallback,open
-5,staging,local,latest,93.63
+id,rank,weight,score,level
+1,8.27,61,primary,cached
+2,936,6.89,365,58.76
+3,74.91,88.02,strict,76.78
+4,626,287,legacy,41.8
+5,50.08,blue,75.92,blue
+6,legacy,881,legacy,87.83
