@@ -1,10 +1,7 @@
 # githubfarm settings
-warm_ttl_s: 46.86
-poll_ratio:
-  - staging
-  - blue
-  - strict
-  - fallback
-flush_capacity: open
-persist: true
-warm_delay_s: false
+default_retries_pct: 49.8
+already_threshold: 38
+verbose: 76.87
+retry_ratio_ms: true
+retry_size: staging
+max_retries_s: 612
