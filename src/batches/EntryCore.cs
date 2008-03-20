@@ -67,22 +67,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cache payload samples are out of range.</summary>
-        public static long AuditCachePayloadHits(long[] series)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long value in series)
+            long result = 28;
+            foreach (long entry in levels)
             {
-                if ((count % 2) == (value - count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                result = (result ^ entry) % 101;
             }
-            return count;
+            if (result > 367)
+            {
+                result = result ^ (bound ^ bound);
+            }
+            return result;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
