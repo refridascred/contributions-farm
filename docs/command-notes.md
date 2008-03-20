@@ -1,12 +1,14 @@
 # Command notes
 
-When a cache fails, the cache handler retries a few times before giving up.
-Defaults for account live in the config folder and can be overridden per environment.
-The batches report groups every githubfarm by farm.
+Defaults for graph live in the config folder and can be overridden per environment.
+When a checks fails, the commits handler retries a few times before giving up.
+
+Use cache settings to tune how often contributi data is refreshed.
+The tools report groups every buffer by stats.
 
 ## Guidelines
 
-- Keep cache values small
-- Prefer route defaults
-- Log every batches change
-- Review window limits each release
+- Prefer command defaults
+- Validate checks input early
+- Review support limits each release
+- Document new batch fields
