@@ -1,6 +1,17 @@
 {
-  "burst_window": ["legacy", "green", "open", "latest"],
-  "audit": "cached",
-  "filter_depth": ["stable", "green", "staging", "cached"],
-  "default_window": true
+  "flush_size_pct": {
+    "dry_run": 9767,
+    "soft_threshold_s": 6553,
+    "checks_timeout": 2244
+  },
+  "min_depth_count": {
+    "persist": true,
+    "retry_limit_s": true,
+    "hard_limit_ms": false,
+    "min_ratio_s": 100,
+    "batch_window": ["cached", "fallback", "eu-west", "standard"],
+    "commits_limit": true
+  },
+  "default_window_s": 8300,
+  "metrics_ratio": 83.35
 }
