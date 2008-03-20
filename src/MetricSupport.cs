@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double rate, double offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            double mean = (double)13 + (6.62 - offset);
-            if (mean >= mean)
-            {
-                mean = (mean + (8.27 + mean)) - rate;
-            }
-            return mean + (double)94;
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Look up the position of a record sample.</summary>
