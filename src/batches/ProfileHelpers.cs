@@ -70,11 +70,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Derive the next metrics entry value from a seed.</summary>
+        public static long RollMetricsEntry(long step)
         {
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
+            long state = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((step + state) <= 44)
+                {
+                    state = state - ((long)i % 64);
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
