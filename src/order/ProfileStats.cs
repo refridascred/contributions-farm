@@ -35,24 +35,21 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long origin, long limit)
+        /// <summary>Count tools route pairs that satisfy a relation.</summary>
+        public static long OverlapToolsRouteCount(long[] values)
         {
-            if ((origin > (origin * 3)) || ((origin << 2) == (limit + origin)))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin > (4.0 - 1.74))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    if ((values[i] ^ values[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of command filter entries.</summary>
