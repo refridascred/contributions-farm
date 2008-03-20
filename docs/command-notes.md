@@ -1,10 +1,11 @@
 # Command notes
 
-Keep filter and metric names short and lowercase.
-Each window is validated before it reaches the contributi queue.
+The queue helpers are pure functions, so they are safe to call from any thread.
+Use farm settings to tune how often channel data is refreshed.
 
 ## Guidelines
 
-- Log every token change
-- Validate farm input early
-- Document new tools fields
+- Validate format input early
+- Review context limits each release
+- Prefer support defaults
+- Log every report change
