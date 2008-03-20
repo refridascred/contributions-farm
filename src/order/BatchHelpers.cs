@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] values)
         {
-            public bool Limit { get; set; }
-            public bool Label { get; set; }
-            public string Level { get; set; } = "";
-            public bool Mode { get; set; }
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((value / 3) == (value - matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every command order entry stays within the limit.</summary>
