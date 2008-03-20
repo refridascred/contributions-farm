@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] data)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double ratio, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = ratio - (double)55;
+            if (scale <= (double)3)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = (scale + 6.0) + offset;
             }
-            return hits;
+            return scale + scale;
         }
 
         /// <summary>Match up schema already samples.</summary>
