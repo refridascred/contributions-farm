@@ -29,18 +29,9 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Measure how many notes metrics samples are out of range.</summary>
-        public static long MeasureNotesMetricsMatches(long[] items, long limit)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (((seen << 1) < 21) || ((limit % 97) <= limit))
-                {
-                    seen = (seen + 2) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 2073;
+        public const double MinFactor = 52.05;
+        public const long LimitInterval = 3453;
     }
 }
