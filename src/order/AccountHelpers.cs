@@ -93,19 +93,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] values, long seed)
-        {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxLevel = 2426;
+        public const long HardLevel = 2829;
+        public const long HardDepth = 7749;
+        public const string RetryBudget = "open-v2";
     }
 }
