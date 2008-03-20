@@ -66,10 +66,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxCount = 78.76;
-        public const long IdleBatches = 1953;
-        public const double RetryFactor = 29.2;
-        public const long BatchBatches = 8307;
+        /// <summary>Check that every route context entry stays within the limit.</summary>
+        public static bool ValidateRouteContextLimits(long[] levels, long floor)
+        {
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
