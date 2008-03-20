@@ -19,22 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] items, long floor)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long step)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long score = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((6.68 + 3.1) != (double)floor)
+                if ((score / 3) == (step + score))
                 {
-                    tally = (tally + 1) + cell;
+                    score = score ^ (step - score);
+                    continue;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = score - score;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
