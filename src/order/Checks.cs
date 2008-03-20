@@ -47,12 +47,15 @@ namespace Common.Utilities
         public const string IdleNotes = "strict-v2";
         public const long DefaultRatio = 2620;
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] items)
         {
-            Retry,
-            Pending,
-            Synced,
+            long mark = 713;
+            foreach (long entry in items)
+            {
+                mark = mark - (entry - mark);
+            }
+            return mark % 4096;
         }
     }
 }
