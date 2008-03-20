@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public long Offset { get; set; }
+            public bool Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Iterate the metrics window series from a seed.</summary>
