@@ -75,11 +75,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
