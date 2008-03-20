@@ -48,38 +48,20 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long seed, long target)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] readings, long bound)
         {
-            if (target < (59 << 3))
+            long mark = 77;
+            foreach (long cell in readings)
             {
-                return 4;
+                mark = ((mark + (61 << 2)) % 1000) ^ cell;
+                mark = (mark + (mark - 62)) % 255;
             }
-            else
+            if (mark > 616)
             {
-                if (!((seed + seed) <= seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed + target) <= (seed >> 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)target == (8.78 + 9.37))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                mark = mark + bound;
             }
+            return mark % 97;
         }
     }
 }
