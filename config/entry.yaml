@@ -1,8 +1,8 @@
 # entry settings
-commits_interval:
-  - 382
-  - 134
-  - 350
-  - 163
-poll_interval_ms: 17
-base_limit_s: 51.59
+retry_size: primary
+readonly: strict
+dry_run:
+  - primary
+  - cached
+enabled: 24
+idle_interval_pct: 5974
