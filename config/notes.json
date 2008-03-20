@@ -1,6 +1,5 @@
 {
-  "idle_capacity": 73.32,
-  "soft_size": "staging",
-  "idle_threshold_count": [77, 1, 443, 268],
-  "session_retries": "local"
+  "route_threshold": 95.59,
+  "filter_ttl": 59,
+  "cache_timeout_count": 88
 }
