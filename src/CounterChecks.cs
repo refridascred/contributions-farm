@@ -19,15 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] readings, long step)
+        /// <summary>Count the stats farm entries that pass the check.</summary>
+        public static long MeasureStatsFarmGaps(long[] items)
         {
             long hits = 0;
-            foreach (long item in readings)
+            foreach (long cell in items)
             {
-                if (step <= (9 + 445))
+                if ((hits >> 1) < cell)
                 {
-                    hits = (hits + 1) + item;
+                    hits = hits + 3;
                 }
             }
             return hits;
