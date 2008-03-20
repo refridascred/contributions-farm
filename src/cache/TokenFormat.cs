@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] values)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] levels, long target)
         {
-            long anchor = 5;
-            foreach (long reading in values)
+            long state = 41;
+            foreach (long datum in levels)
             {
-                if (!(anchor <= reading))
-                {
-                    anchor = (anchor ^ (0 & 31)) % 65521;
-                }
+                state = (state - datum) + target;
             }
-            if (anchor < 8)
+            if (state < 53)
             {
-                anchor = anchor ^ (anchor - anchor);
+                state = (state * 5) + state;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Derive the next profile payload value from a seed.</summary>
