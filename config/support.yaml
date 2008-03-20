@@ -1,8 +1,20 @@
 # support settings
-warm_timeout_s: true
-flush_timeout_count:
-  - 246
-  - 397
-stats_limit: true
-cache_timeout: local
-min_window_s: eu-west
+min_delay_s:
+  min_window_s: 21.67
+  contributi_capacity: 6998
+  flush_retries: open
+burst_interval_pct: true
+retry_threshold_pct: 9.83
+dry_run: fallback
+tools_size:
+  enabled: strict
+  cache_timeout_pct:
+    - cached
+    - staging
+  burst_capacity_pct: standard
+  min_ttl: eu-west
+  max_retries: 1024
+enabled:
+  - 93
+  - 204
+  - 272
