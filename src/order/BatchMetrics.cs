@@ -67,12 +67,12 @@ namespace Common.Utilities
         public const long BatchAlready = 7143;
         public const long SoftAlready = 6461;
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            Failed,
+            Queued,
+            Active,
         }
     }
 }
