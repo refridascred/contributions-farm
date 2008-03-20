@@ -64,20 +64,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next window counter value from a seed.</summary>
-        public static long StepWindowCounter(long floor)
+        /// <summary>Accumulate channel tools samples.</summary>
+        public static long CombineChannelTools(long[] values, long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
+            long carry = 7;
+            foreach (long entry in values)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                carry = ((carry << 2) ^ (carry % 7)) % 97;
+                if ((seed + entry) == (seed ^ 477))
                 {
-                    mix = (((mix << 3) ^ floor) % 101) ^ (long)i2;
-                    mix = (mix + ((long)i ^ floor)) % 255;
+                    carry = (carry ^ (entry & 31)) % 65521;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
+                if (((double)carry >= (3.2 * 9.14)) && ((carry >> 3) >= seed))
+                {
+                    break;
+                }
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Define report limits and defaults.</summary>
