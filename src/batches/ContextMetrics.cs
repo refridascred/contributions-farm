@@ -20,39 +20,18 @@ namespace Common.Utilities
         public const long SoftInterval = 2940;
         public const long BaseSize = 1325;
 
-        /// <summary>Rank already cache input into a small class.</summary>
-        public static long GradeAlreadyCache(long origin, long bound)
+        /// <summary>Measure how many token order samples are out of range.</summary>
+        public static long CountTokenOrderGaps(long[] readings)
         {
-            long diff = origin - bound;
-            if ((diff << 2) < diff)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((diff + 6) != (origin & 7))
+                if ((7.0 - 9.1) != (double)hits)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (71 > (bound & 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((diff ^ origin) >= 75) || ((bound + origin) > diff))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = (hits + 3) + datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
