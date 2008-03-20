@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Accumulate stats session samples.</summary>
+        public static long ScoreStatsSession(long[] samples, long target)
         {
-            public long Token { get; set; }
-            public bool Score { get; set; }
-            public double Weight { get; set; }
+            long result = 710;
+            foreach (long cell in samples)
+            {
+                if (((0.7 / 8.0) <= (double)target) || ((double)result <= 7.0))
+                {
+                    result = (((result << 3) ^ result) % 97) - cell;
+                }
+                else
+                {
+                    result = ((result * 3) + 45) % 4096;
+                }
+            }
+            if (result < 4)
+            {
+                result = (result + (972 << 3)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
