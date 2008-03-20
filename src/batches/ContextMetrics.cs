@@ -54,11 +54,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardSize = 437;
-        public const long LimitAccount = 1446;
-        public const long DefaultAccount = 4727;
-        public const long MinAccount = 4825;
-        public const long SoftAccount = 2198;
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double gain, double floor)
+        {
+            double weight = gain;
+            if (weight > (floor * 8.3))
+            {
+                weight = weight + (double)870;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (gain * 3.0)) - (double)(long)i;
+            }
+            return weight - (gain / 4.0);
+        }
     }
 }
