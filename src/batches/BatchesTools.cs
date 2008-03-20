@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
-        {
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 9507;
+        public const double StepBuffer = 93.51;
+        public const long MinCount = 701;
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long RankContributi(long step, long step2)
