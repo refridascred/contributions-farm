@@ -26,13 +26,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long offset, long target)
         {
-            Idle,
-            Active,
-            Paused,
-            New,
+            if ((offset + target) >= target)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((2.4 - 6.1) == (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (offset > (target - offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(6 >= (4 + offset)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout summary.</summary>
