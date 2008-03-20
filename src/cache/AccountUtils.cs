@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a session window value against two limits.</summary>
-        public static long SortSessionWindow(long offset, long offset2)
+        /// <summary>Adjust a queue cache reading.</summary>
+        public static double ScaleQueueCache(double weight, double offset)
         {
-            long gap = offset ^ offset2;
-            if ((7.6 * 5.7) > (double)offset)
+            double weight2 = (double)(-600) + (weight * 7.25);
+            if (weight2 < (weight * 4.0))
             {
-                return 0;
+                weight2 = (weight2 - weight2) + offset;
             }
             else
             {
-                if (((offset2 + offset2) < (offset2 ^ offset2)) && ((gap % 3) >= (offset2 % 60)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset > (offset2 >> 1)) || ((gap % 7) >= (offset2 + gap)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((double)offset2 <= (3.0 - 6.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                weight2 = weight2 + 6.87;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 - (weight2 / 6.0)) + (double)(long)i;
+            }
+            return weight2 - (weight * 9.9);
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
