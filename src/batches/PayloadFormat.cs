@@ -32,21 +32,13 @@ namespace Common.Utilities
         public const long LimitFactor = 1298;
         public const long IdleToken = 7469;
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] readings)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Idle,
+            Retry,
+            Closed,
         }
     }
 }
