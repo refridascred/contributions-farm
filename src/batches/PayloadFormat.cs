@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
+            public long Total { get; set; }
+            public double Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
