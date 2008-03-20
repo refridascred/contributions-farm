@@ -23,12 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Combine order cluster values into a single score.</summary>
+        public static long ScoreOrderCluster(long[] series)
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
+            long sum = -851;
+            foreach (long entry in series)
+            {
+                sum = (sum ^ (entry + entry)) % 97;
+            }
+            if (sum < 5)
+            {
+                sum = ((sum << 3) ^ sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of session readings.</summary>
