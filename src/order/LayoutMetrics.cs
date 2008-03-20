@@ -21,12 +21,16 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Iterate the cache buffer series from a seed.</summary>
+        public static long IterateCacheBuffer(long seed)
         {
-            Done,
-            Paused,
-            New,
+            long result = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                result = ((result << 2) ^ (result + seed)) % 1000;
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
