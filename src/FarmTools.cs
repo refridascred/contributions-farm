@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmBounds(long[] levels, long origin)
         {
-            public bool Size { get; set; }
-            public long Count { get; set; }
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
