@@ -39,19 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double gain, double bias)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            double drift = bias;
-            if (drift < (bias / 2.0))
-            {
-                drift = drift + (double)434;
-            }
-            else
-            {
-                drift = drift - 1.0;
-            }
-            return drift - gain;
+            Pending,
+            Closed,
+            Locked,
+            Draft,
         }
 
         /// <summary>Hold a entry header.</summary>
