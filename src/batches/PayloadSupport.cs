@@ -32,18 +32,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] readings, long limit)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count & 7) < (cell - cell))
-                {
-                    count = (count + 1) + limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 8199;
+        public const string RetryFarm = "local-v2";
+        public const long RetrySize = 5354;
+        public const string StepFarm = "legacy-1";
+        public const long IdleFarm = 9288;
     }
 }
