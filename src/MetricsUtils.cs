@@ -22,11 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 6654;
-        public const long LimitRatio = 4381;
-        public const long BatchDepth = 4560;
-        public const long BurstBuffer = 826;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double IdleChecks = 25.93;
+        public const long RetryLevel = 9481;
+        public const long LimitChecks = 4343;
+        public const double WindowChecks = 35.65;
+        public const string HardChecks = "local-v2";
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long RetryRatio = 6297;
