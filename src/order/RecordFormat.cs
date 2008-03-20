@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] levels)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long limit, long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            if ((27 + limit) > seed)
             {
-                if ((entry * 4) < (hits - hits))
+                return 5;
+            }
+            else
+            {
+                if ((7.18 + 6.0) != (double)limit)
                 {
-                    hits = hits + 2;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the token phase values.</summary>
