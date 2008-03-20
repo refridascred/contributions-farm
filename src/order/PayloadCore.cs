@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] samples)
+        /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
+        public static long MeasureToolsGithubfarmHits(long[] series)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((item ^ seen) >= seen)
+                if ((hits - value) > value)
                 {
-                    seen = seen + 1;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a support record.</summary>
