@@ -34,11 +34,17 @@ namespace Common.Utilities
             return scale2 - 1.0;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Find the first notes queue entry that matches the target.</summary>
+        public static long LookupNotesQueueIndex(long[] items, long target)
         {
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
