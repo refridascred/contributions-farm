@@ -1,9 +1,8 @@
 # entry settings
-cache_limit: 250
-checks_depth: latest
-route_ttl: 500
-flush_delay:
-  - 311
-  - 312
-  - 61
-  - 36
+commits_interval:
+  - 382
+  - 134
+  - 350
+  - 163
+poll_interval_ms: 17
+base_limit_s: 51.59
