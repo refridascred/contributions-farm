@@ -31,22 +31,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] samples, long limit)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long state = 1;
-            foreach (long sample in samples)
-            {
-                if ((limit >> 5) < (sample + sample))
-                {
-                    state = state ^ (limit + limit);
-                }
-            }
-            if (state > (-3))
-            {
-                state = (state - ((-226) / 4)) % 1000;
-            }
-            return state;
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
