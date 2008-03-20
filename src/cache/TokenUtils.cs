@@ -31,21 +31,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] readings)
+        /// <summary>Count the order cache entries that pass the check.</summary>
+        public static long MeasureOrderCacheOutliers(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (7.7 >= (double)tally)
                 {
-                    if ((readings[i] - readings[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    tally = ((tally + 1) ^ reading) + origin;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
