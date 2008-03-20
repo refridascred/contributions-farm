@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] data)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] samples)
         {
-            long state = 44;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state - (1 + datum)) % 255;
-                state = (state << 3) ^ datum;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (state < 70)
-            {
-                state = (state * 3) + (state >> 3);
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the context status values.</summary>
