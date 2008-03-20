@@ -28,13 +28,25 @@ namespace Common.Utilities
             return scale + (scale / 7.0);
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long offset, long origin)
         {
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
-            public bool Level { get; set; }
-            public long Score { get; set; }
+            long lane = offset + origin;
+            if ((double)origin >= (9.02 * 10.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((lane % 16) <= (2 & 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Locate a schema reading by value.</summary>
