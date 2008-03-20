@@ -1,8 +1,14 @@
 # entry settings
-retry_size: primary
-readonly: strict
-dry_run:
-  - primary
-  - cached
-enabled: 24
-idle_interval_pct: 5974
+already_retries:
+  - fallback
+  - standard
+  - local
+  - staging
+warm_ratio: 0.87
+strict:
+  idle_limit: fallback
+  notes_size: 14
+  cache_timeout_pct: 78.13
+persist:
+  - eu-west
+  - local
