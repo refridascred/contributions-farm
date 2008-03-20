@@ -29,21 +29,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of route cache readings.</summary>
-        public static long PairRouteCacheCount(long[] series)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long step, long step2)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((step2 ^ step) >= (step2 * 3))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (95 > (step2 - step2))
                 {
-                    if ((series[i] ^ series[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
