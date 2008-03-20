@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long BaseSession = 2833;
         public const long BurstSession = 846;
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] samples)
+        /// <summary>Audit metric contributi readings against a rule.</summary>
+        public static long AuditMetricContributiOutliers(long[] series)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((7.37 / 4.0) > (double)count)
                 {
-                    if ((samples[i] - samples[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) ^ item;
                 }
             }
             return count;
