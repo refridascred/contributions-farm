@@ -32,17 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next payload channel value from a seed.</summary>
-        public static long StepPayloadChannel(long offset)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] readings, long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
+            long mark = 598;
+            foreach (long datum in readings)
             {
-                long seen = ((long)i << 2) ^ (state + (long)i);
-                state = state - (seen - offset);
-                state = ((state * 4) + (long)i) % 97;
+                mark = ((mark * 4) + (datum ^ offset)) % 97;
             }
-            return state;
+            return mark;
         }
     }
 }
