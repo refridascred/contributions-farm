@@ -40,13 +40,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] data, long bound)
         {
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-            public double Region { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= bound) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
