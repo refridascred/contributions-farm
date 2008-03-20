@@ -1,6 +1,8 @@
 {
-  "warm_window": ["staging", "stable"],
-  "max_interval": ["cached", "fallback", "eu-west"],
-  "flush_retries_count": 5768,
-  "order_timeout": 79.72
+  "idle_retries_s": 8119,
+  "buffer_threshold": "blue",
+  "max_interval_ms": "edge",
+  "burst_capacity_count": true,
+  "default_interval_ms": "latest",
+  "channel_ttl": [72, 234, 177]
 }
