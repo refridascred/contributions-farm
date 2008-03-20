@@ -16,13 +16,18 @@ namespace Common.Utilities
             return drift - (drift / 9.0);
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] levels)
         {
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-            public bool Level { get; set; }
-            public string Rank { get; set; } = "";
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)count < (double)7)
+                {
+                    count = (count + 1) ^ cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the queue class values.</summary>
