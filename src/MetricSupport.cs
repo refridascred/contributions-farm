@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] levels)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double rate, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (double)13 + (6.62 - offset);
+            if (mean >= mean)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean + (8.27 + mean)) - rate;
             }
-            return tally;
+            return mean + (double)94;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
