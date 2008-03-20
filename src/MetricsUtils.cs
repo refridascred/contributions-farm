@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a contributi context value against two limits.</summary>
-        public static long GradeContributiContext(long bound, long step)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long origin)
         {
-            if (bound >= (bound >> 4))
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((657 < (bound - step)) || ((bound + 7) >= bound))
+                if ((double)(long)i == (2.51 * 20.0))
                 {
-                    return 1;
+                    anchor = (anchor + ((long)i << 1)) % 65521;
                 }
                 else
                 {
-                    if (((double)bound < (4.56 * 2.6)) || ((2 + bound) > (step - bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    anchor = ((anchor << 2) ^ (anchor + (long)i)) % 4096;
                 }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
