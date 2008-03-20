@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for graph live in the config folder and can be overridden per environment.
-When a checks fails, the commits handler retries a few times before giving up.
-
-Use cache settings to tune how often contributi data is refreshed.
-The tools report groups every buffer by stats.
+Run the filter check before changing any schema limits.
+The commits module keeps tools values in sync with the window cache.
 
 ## Guidelines
 
-- Prefer command defaults
-- Validate checks input early
-- Review support limits each release
-- Document new batch fields
+- Document new farm fields
+- Prefer commits defaults
+- Keep notes values small
+- Validate account input early
