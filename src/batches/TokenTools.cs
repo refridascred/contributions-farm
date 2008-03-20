@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long BatchMetric = 9675;
         public const string WindowMetric = "strict-edge";
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] values)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (60 >= (matches - datum))
                 {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
