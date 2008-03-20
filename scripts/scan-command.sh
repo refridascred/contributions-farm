@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in eu-west stable primary; do
+for item in latest fallback standard; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=300
-log "limit is ${COMMAND_LIMIT}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
