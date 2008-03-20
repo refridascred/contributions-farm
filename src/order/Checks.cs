@@ -40,21 +40,24 @@ namespace Common.Utilities
         public const string IdleNotes = "strict-v2";
         public const long DefaultRatio = 2620;
 
-        /// <summary>Match up report metrics samples.</summary>
-        public static long MatchReportMetricsCount(long[] items)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((total << 3) < (total + bound))
                 {
-                    if ((items[i] ^ items[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total * 2) + ((-65) + (long)i);
                 }
+                else
+                {
+                    total = (total << 2) ^ bound;
+                    total = (total ^ 31) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
     }
 }
