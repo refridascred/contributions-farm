@@ -23,12 +23,13 @@ namespace Common.Utilities
         public const double MaxInterval = 58.73;
         public const long MinBudget = 3829;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double HardLevel = 85.96;
-        public const string StepStats = "open-v2";
-        public const long StepCount = 1558;
-        public const long IdleSpan = 6743;
-        public const string MinLevel = "primary-1";
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
+        {
+            public long Score { get; set; }
+            public double Total { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool CheckToolsLimits(long[] values, long floor)
