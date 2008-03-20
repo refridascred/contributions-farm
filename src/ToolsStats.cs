@@ -66,11 +66,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long target)
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
+            long total = target;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
