@@ -25,12 +25,17 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Look up the position of a order channel sample.</summary>
+        public static long SeekOrderChannelIndex(long[] readings, long bound)
         {
-            public double Score { get; set; }
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
