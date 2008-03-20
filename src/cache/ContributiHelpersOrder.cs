@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] data, long seed)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Mode { get; set; }
+            public double Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
