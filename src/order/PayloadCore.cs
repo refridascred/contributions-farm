@@ -19,22 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch profile samples are out of range.</summary>
-        public static long TallyBatchProfileGaps(long[] items, long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (!((double)(long)items.Length < 7.21))
+                if (entry != bound)
                 {
-                    tally = ((tally + 3) + item) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
