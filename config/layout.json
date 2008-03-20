@@ -1,6 +1,5 @@
 {
-  "cluster_ratio": ["green", "edge", "local", "eu-west"],
-  "token_limit": 15.95,
-  "cache_capacity_ms": [441, 174, 261, 160],
-  "idle_timeout_pct": "legacy"
+  "poll_ratio_pct": ["blue", "blue", "cached"],
+  "compress": 1024,
+  "verbose": 21.25
 }
