@@ -60,19 +60,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] values, long origin)
-        {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 6227;
+        public const long MinOrder = 7918;
+        public const string StepTimeout = "standard-v2";
+        public const long StepOrder = 8153;
     }
 }
