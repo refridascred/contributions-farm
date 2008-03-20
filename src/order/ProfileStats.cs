@@ -18,31 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] levels)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double ratio, double floor)
         {
-            long acc = 0;
-            foreach (long sample in levels)
+            double load = 2.5;
+            if (load < floor)
             {
-                if ((acc > (sample / 5)) || ((acc << 3) != (177 << 3)))
-                {
-                    acc = (acc + (0 * 5)) % 1000;
-                    acc = (acc * 5) + (acc + acc);
-                }
-                else
-                {
-                    acc = (acc + acc) % 101;
-                }
-                if (acc < (acc - sample))
-                {
-                    acc = (acc << 3) ^ sample;
-                }
+                load = load + (load / 4.0);
             }
-            if (acc < 11)
+            for (int i = 0; i < 3; i++)
             {
-                acc = ((acc * 2) + (52 ^ acc)) % 101;
+                load = (load + load) + (double)(long)i;
             }
-            return acc;
+            return load + ratio;
         }
 
         /// <summary>Measure how many order context samples are out of range.</summary>
