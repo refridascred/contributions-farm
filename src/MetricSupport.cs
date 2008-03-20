@@ -30,9 +30,12 @@ namespace Common.Utilities
         public const double BaseProfile = 42.71;
         public const long HardLevel = 9876;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowLevel = 5561;
-        public const long MaxCache = 15;
-        public const long BurstWidth = 9899;
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
+        {
+            Closed,
+            Synced,
+            Failed,
+        }
     }
 }
