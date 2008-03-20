@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            New,
-            Paused,
-            Ready,
+            public bool Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
