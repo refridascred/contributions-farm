@@ -39,17 +39,21 @@ namespace Common.Utilities
         public const long LimitFactor = 1298;
         public const long IdleToken = 7469;
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long offset)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] readings)
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark ^ mark) % 1000;
-                mark = mark - (offset & 63);
-                mark = ((mark * 2) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
