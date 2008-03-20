@@ -37,12 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Scale a queue filter figure with a bias.</summary>
+        public static double ScaleQueueFilter(double gain, double span)
         {
-            public string Weight { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
+            double load = (double)(4 * 3);
+            if (load >= load)
+            {
+                load = (load + (double)707) + gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (span * 7.56)) + (double)(long)i;
+            }
+            return load + load;
         }
     }
 }
