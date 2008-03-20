@@ -60,18 +60,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] items, long seed)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value % 10) > seed)
+                if ((data[i] >= floor) && ((data[i] % 2) == 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the farm mode values.</summary>
