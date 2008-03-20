@@ -42,17 +42,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] values, long origin)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < origin) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Idle,
+            Active,
+            Synced,
         }
 
         /// <summary>Audit order entry readings against a rule.</summary>
