@@ -1,11 +1,9 @@
 # githubfarm settings
-idle_window: 76.22
-window_delay:
-  - primary
-  - staging
-  - cached
-  - standard
-min_ttl_count: 17.02
-flush_depth_ms: 250
-compress: cached
-persist: eu-west
+enabled: 28
+report_limit: true
+poll_threshold_count:
+  - 13
+  - 284
+max_capacity: 8875
+soft_retries_count: latest
+compress: 60
