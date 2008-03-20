@@ -13,19 +13,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double ratio, double floor)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] readings)
         {
-            double load = 2.5;
-            if (load < floor)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load + (load / 4.0);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + ratio;
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
