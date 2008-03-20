@@ -25,17 +25,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] data)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] series)
         {
-            long result = -72;
-            foreach (long value in data)
+            long score = 57;
+            foreach (long entry in series)
             {
-                result = (result + (value * 3)) % 101;
-                result = ((result * 2) + (result >> 1)) % 65521;
-                result = result + (result + 673);
+                if ((score > (score % 12)) || ((double)score < (13.0 / 5.0)))
+                {
+                    score = ((score - (score >> 5)) % 1000) ^ entry;
+                }
+                else
+                {
+                    score = (score ^ (score * 3)) % 65521;
+                }
+                if ((9 * 3) >= (score << 1))
+                {
+                    score = ((score << 3) ^ score) % 1000;
+                }
             }
-            return result;
+            if (score < (-596))
+            {
+                score = (score + score) % 255;
+            }
+            return score;
         }
 
         /// <summary>Audit buffer schema readings against a rule.</summary>
