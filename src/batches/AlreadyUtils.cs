@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const string HardLevel = "fallback-v2";
         public const string CacheSpan = "local-1";
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] samples)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if ((0 / 2) > (item - item))
+                if (item >= bound)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Hold a batches info.</summary>
