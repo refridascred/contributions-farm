@@ -24,17 +24,13 @@ namespace Common.Utilities
         public const long CacheRecord = 3729;
         public const long StepBudget = 9775;
 
-        /// <summary>Locate a route counter reading by value.</summary>
-        public static long SeekRouteCounterIndex(long[] samples, long floor)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
