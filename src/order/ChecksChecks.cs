@@ -13,11 +13,24 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string HardReport = "fallback";
-        public const string BaseReport = "legacy-edge";
-        public const long BatchSize = 2329;
-        public const string HardScore = "alpha-v2";
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double gain, double span)
+        {
+            double ratio = (7.19 * 3.34) - (span - span);
+            if (ratio < (double)87)
+            {
+                ratio = ratio + (ratio / 6.0);
+            }
+            else
+            {
+                ratio = ratio - (gain - ratio);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + gain) + (double)(long)i;
+            }
+            return ratio - 6.8;
+        }
 
         /// <summary>Locate a support reading by value.</summary>
         public static long LookupSupportIndex(long[] data, long offset)
