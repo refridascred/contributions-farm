@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double bias, double span)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] data, long seed)
         {
-            double mean = span - (bias * 12.0);
-            return mean - (2.0 - mean);
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first editor counter entry that matches the target.</summary>
