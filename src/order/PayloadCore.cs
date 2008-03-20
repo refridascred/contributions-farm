@@ -28,12 +28,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryRatio = 62;
-        public const string HardContext = "local-v2";
-        public const double BurstContext = 26.33;
-        public const string CacheTimeout = "primary-edge";
-        public const string StepContext = "strict-edge";
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long offset, long offset2)
+        {
+            if ((offset * 4) > offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset / 2) > offset2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long TallyFormat(long[] samples)
