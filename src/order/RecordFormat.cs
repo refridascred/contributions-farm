@@ -77,13 +77,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Draft,
-            Retry,
-            Pending,
-            Closed,
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
     }
 }
