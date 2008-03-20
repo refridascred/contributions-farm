@@ -72,11 +72,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] items)
         {
-            public double Owner { get; set; }
-            public string Flag { get; set; } = "";
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((double)cell <= (1.17 * 4.1))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the record kind values.</summary>
