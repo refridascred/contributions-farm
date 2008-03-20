@@ -34,12 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] values)
         {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
+            long sum = 370;
+            foreach (long cell in values)
+            {
+                sum = (sum ^ (cell + sum)) % 101;
+            }
+            if (sum > 4)
+            {
+                sum = (sum - (5 % 16)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
