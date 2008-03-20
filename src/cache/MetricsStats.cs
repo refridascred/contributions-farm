@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] items, long seed)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long floor)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (!(((long)items.Length != (entry ^ count)) && ((seed & 1) < (entry << 1))))
-                {
-                    count = count + 1;
-                }
+                sum = (sum + floor) % 101;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a batches options.</summary>
