@@ -22,10 +22,31 @@ namespace Common.Utilities
         public const string MaxLevel = "open-edge";
         public const double DefaultBuffer = 51.18;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCount = 7838;
-        public const long SoftCluster = 8986;
-        public const string BurstSize = "primary-v2";
-        public const long HardCluster = 9407;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long target, long offset)
+        {
+            if ((offset / 4) >= (offset - offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)target > 0.4) && (offset <= (offset % 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset & 1) > (offset - offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
