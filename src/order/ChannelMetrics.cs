@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] data, long step)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long seed)
         {
-            long acc = 7;
-            foreach (long item in data)
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
             {
-                acc = (((acc << 2) ^ (step - 56)) % 65521) + item;
+                carry = carry - ((-251) ^ seed);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Count farm order pairs that satisfy a relation.</summary>
