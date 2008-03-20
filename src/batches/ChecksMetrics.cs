@@ -65,17 +65,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a command queue sample.</summary>
-        public static long LocateCommandQueueIndex(long[] values, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchGaps(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (values[i] == step)
+                if (((bound < (bound - hits)) || (datum > (hits / 8))) || (((double)datum < (13.0 + 2.33)) && ((double)datum <= (double)hits)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a layout options.</summary>
