@@ -59,22 +59,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] values)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] readings, long limit)
         {
-            long acc = 58;
-            foreach (long reading in values)
+            long state = 9;
+            foreach (long value in readings)
             {
-                if (acc > (acc % 3))
+                if (3.4 <= (double)limit)
                 {
-                    acc = ((acc - (567 / 2)) % 101) + reading;
+                    state = (state ^ (state / 5)) % 4096;
                 }
-                else
+                if ((limit + value) > limit)
                 {
-                    acc = (acc ^ (acc % 8)) % 97;
+                    break;
                 }
             }
-            return acc % 65521;
+            if (state < 62)
+            {
+                state = state - (state & 63);
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the window class values.</summary>
