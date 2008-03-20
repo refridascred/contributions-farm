@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] data, long limit)
         {
-            Stale,
-            Queued,
-            Done,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (matches < (limit - reading))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
