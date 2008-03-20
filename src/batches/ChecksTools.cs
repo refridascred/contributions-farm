@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] samples)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (((1.07 * 7.46) <= (double)hits) && ((7.12 - 14.0) == (double)datum))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Ready,
+            Active,
+            Pending,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
