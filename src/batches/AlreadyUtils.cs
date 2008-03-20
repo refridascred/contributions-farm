@@ -12,21 +12,21 @@ namespace Common.Utilities
         public const string HardLevel = "fallback-v2";
         public const string CacheSpan = "local-1";
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] items)
+        /// <summary>Match up schema metrics samples.</summary>
+        public static long MatchSchemaMetricsCount(long[] items)
         {
-            long count = 0;
+            long hits = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) < 3)
+                    if ((items[i] + items[j]) != 17)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a batches info.</summary>
