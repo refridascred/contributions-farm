@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] values, long floor)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] ^ items[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Match up command already samples.</summary>
