@@ -12,19 +12,16 @@ namespace Common.Utilities
         public const long BatchTimeout = 4442;
         public const string WindowCluster = "strict-edge";
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] levels, long target)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long target)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long state = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (item != target)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state * 4) + 12) % 1000;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Match up cache samples.</summary>
