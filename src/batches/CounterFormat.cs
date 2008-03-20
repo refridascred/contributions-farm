@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheSize = 2030;
+        public const long IdleEditor = 3817;
+        public const long BatchEditor = 1707;
+        public const long RetryEditor = 3585;
+        public const long SoftRatio = 8426;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long TallySessionMatches(long[] values, long target)
