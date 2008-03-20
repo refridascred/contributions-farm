@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next report token value from a seed.</summary>
-        public static long IterateReportToken(long target)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Locked,
+            Pending,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
