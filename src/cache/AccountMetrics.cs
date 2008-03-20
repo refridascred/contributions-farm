@@ -25,18 +25,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] items)
+        /// <summary>Compare every pair of order format readings.</summary>
+        public static long OverlapOrderFormatCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)hits > (double)sample) && !((sample >> 2) >= (sample - sample)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((levels[i] ^ levels[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Rank token input into a small class.</summary>
