@@ -22,24 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long offset, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] readings, long offset)
         {
-            if ((seed / 2) != (offset - seed))
+            long hits = 0;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)offset < (9.8 + 2.73)))
+                if ((offset << 3) > (offset + hits))
                 {
-                    return 6;
+                    hits = (hits + 3) ^ item;
                 }
                 else
                 {
-                    return 4;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
