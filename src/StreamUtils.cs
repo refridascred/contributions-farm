@@ -25,19 +25,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate checks queue samples.</summary>
-        public static long TotalChecksQueue(long[] values, long seed)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long origin)
         {
-            long total = 538;
-            foreach (long value in values)
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
             {
-                total = (((total * 2) + (total * 5)) ^ value) + seed;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            if (total < 399)
-            {
-                total = (total ^ (51 & 63)) % 4096;
-            }
-            return total % 1000;
+            return carry;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
