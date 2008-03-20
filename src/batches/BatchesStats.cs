@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            public bool Region { get; set; }
-            public long Flag { get; set; }
+            Done,
+            Dropped,
+            Pending,
+            Failed,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
