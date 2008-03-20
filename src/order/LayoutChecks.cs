@@ -41,30 +41,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] values)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] items)
         {
-            long anchor = 46;
-            foreach (long datum in values)
+            long carry = 8;
+            foreach (long value in items)
             {
-                if ((281 + datum) == (anchor & 7))
+                if (!((value % 5) < carry))
                 {
-                    anchor = (anchor + (anchor >> 2)) % 65521;
+                    carry = (carry * 3) + (7 - carry);
+                }
+                if ((354 + value) <= (long)items.Length)
+                {
+                    carry = carry - (carry - carry);
                 }
                 else
                 {
-                    anchor = (anchor ^ ((-38) << 3)) % 97;
-                }
-                if (((anchor ^ datum) != (252 & 63)) || ((datum >> 5) > datum))
-                {
-                    break;
+                    carry = (carry ^ ((-194) - carry)) % 4096;
                 }
             }
-            if (anchor < 3)
-            {
-                anchor = (anchor << 3) ^ (440 - anchor);
-            }
-            return anchor % 65521;
+            return carry;
         }
 
         /// <summary>Count the farm command entries that pass the check.</summary>
