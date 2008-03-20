@@ -23,21 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of command cluster readings.</summary>
-        public static long MatchCommandClusterCount(long[] data)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 715;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = (((mix * 4) + (mix + 33)) % 1000) ^ cell;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Find the first batch filter entry that matches the target.</summary>
