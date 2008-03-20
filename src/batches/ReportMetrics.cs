@@ -34,17 +34,32 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] items, long seed)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long step, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long span = step ^ floor;
+            if (span <= step)
             {
-                if ((items[i] >= seed) && ((items[i] % 5) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((3.8 - 8.94) <= (double)span)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)floor < (2.0 / 4.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
