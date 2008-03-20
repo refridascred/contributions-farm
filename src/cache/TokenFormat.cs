@@ -22,14 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            Synced,
-            Pending,
-            Locked,
-            Ready,
+            Closed,
             Draft,
+            Pending,
+            Idle,
+            Done,
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
