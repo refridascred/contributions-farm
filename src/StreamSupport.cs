@@ -20,21 +20,18 @@ namespace Common.Utilities
         public const long BurstSize = 2678;
         public const long BaseCluster = 6039;
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] levels)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((1.3 - 8.44) == (double)hits)
                 {
-                    if ((levels[i] ^ levels[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) + item;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
