@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback blue standard edge; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 1))
 done
-
-RECORD_LIMIT=212
-log "limit is ${RECORD_LIMIT}"
+log "total ${total}"
 
 count=0
 while [ "${count}" -lt 8 ]; do
