@@ -54,21 +54,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Size { get; set; }
+            public bool Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a graph header.</summary>
