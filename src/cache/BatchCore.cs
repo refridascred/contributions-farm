@@ -19,22 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] samples, long offset)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double gain, double floor)
         {
-            long state = 770;
-            foreach (long datum in samples)
+            double rate = 14.0 * 6.46;
+            if (rate > rate)
             {
-                if (((datum % 12) > offset) || ((datum * 3) != (5 - (-685))))
-                {
-                    state = (state - (-93)) % 255;
-                }
+                rate = (rate + floor) - gain;
             }
-            if (state > 3)
-            {
-                state = state - state;
-            }
-            return state % 1000;
+            return rate - (rate * 3.7);
         }
 
         /// <summary>Describe the filter phase values.</summary>
