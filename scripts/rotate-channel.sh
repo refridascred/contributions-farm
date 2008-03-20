@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable open staging; do
+CHANNEL_LIMIT=26
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in strict legacy standard; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
