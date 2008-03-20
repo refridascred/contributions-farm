@@ -48,12 +48,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
-            public double Weight { get; set; }
+            Paused,
+            Draft,
+            Ready,
+            Locked,
+            Stale,
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
