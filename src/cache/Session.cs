@@ -18,21 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of metric tools readings.</summary>
-        public static long OverlapMetricToolsCount(long[] items)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((items[i] - items[j]) == 15)
+                    if ((data[i] + data[j]) < 13)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Derive the next notes buffer value from a seed.</summary>
