@@ -31,13 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            Stale,
-            Synced,
-            Draft,
-            Paused,
+            Failed,
+            Dropped,
+            New,
         }
     }
 }
