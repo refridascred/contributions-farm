@@ -24,13 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] series)
         {
-            public double Token { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            long sum = 1;
+            foreach (long value in series)
+            {
+                if (value > (value ^ 4))
+                {
+                    sum = sum ^ sum;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
