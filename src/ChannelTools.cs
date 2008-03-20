@@ -34,15 +34,12 @@ namespace Common.Utilities
             return gain2 + 1.41;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double scale, double span)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            double weight = 1.17;
-            if (weight > 7.4)
-            {
-                weight = ((weight - (double)488) - scale) + span;
-            }
-            return weight - (double)259;
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
