@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public double Region { get; set; }
-            public double Ratio { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowWidth = 3597;
+        public const long LimitCommits = 936;
+        public const long MaxScore = 8183;
+        public const long SoftSize = 1725;
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long SeekLayoutIndex(long[] data, long offset)
