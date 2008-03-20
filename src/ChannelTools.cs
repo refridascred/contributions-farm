@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the schema account series from a seed.</summary>
-        public static long SeriesSchemaAccount(long floor)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long result = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                result = (result << 2) ^ (result * 4);
-                result = (result << 3) ^ floor;
-                result = (result ^ ((-47) - 653)) % 97;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Pending,
+            Ready,
+            Idle,
+            New,
         }
 
         /// <summary>Describe the route state values.</summary>
