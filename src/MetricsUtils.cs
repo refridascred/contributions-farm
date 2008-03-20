@@ -39,16 +39,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long floor)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] samples)
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 3) + 325) % 255;
-                score = ((score * 5) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Check that every githubfarm buffer entry stays within the limit.</summary>
