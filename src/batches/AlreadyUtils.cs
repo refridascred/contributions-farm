@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 9181;
+        public const string HardSize = "latest-1";
+        public const long IdleFilter = 8568;
+        public const string HardLevel = "fallback-v2";
+        public const string CacheSpan = "local-1";
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long MeasureReportMatches(long[] samples)
