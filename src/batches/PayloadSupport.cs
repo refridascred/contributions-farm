@@ -22,22 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] levels, long bound)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] samples, long origin)
         {
-            long mix = 66;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum * 5) == (bound + 515))
+                if (samples[i] <= origin)
                 {
-                    mix = (mix - datum) % 255;
-                }
-                else
-                {
-                    mix = ((mix * 2) + 27) % 255;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
