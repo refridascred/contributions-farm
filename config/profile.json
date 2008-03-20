@@ -1,5 +1,6 @@
 {
-  "verbose": false,
-  "persist": 30,
-  "sync_size_ms": [484, 447, 120, 264]
+  "warm_window": ["staging", "stable"],
+  "max_interval": ["cached", "fallback", "eu-west"],
+  "flush_retries_count": 5768,
+  "order_timeout": 79.72
 }
