@@ -67,17 +67,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] levels, long limit)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] levels, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 58;
+            foreach (long item in levels)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                score = (((score + score) % 255) + item) - origin;
             }
-            return -1;
+            return score % 65521;
         }
     }
 }
