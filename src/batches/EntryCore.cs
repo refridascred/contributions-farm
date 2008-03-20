@@ -50,25 +50,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long offset, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] series, long target)
         {
-            long span = offset ^ limit;
-            if (85 < (limit + offset))
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((97 / 8) <= (span + offset))
+                if ((((768 & 7) == (target & 3)) && ((hits >> 3) >= (sample * 4))) || ((1 > (target / 3)) || ((double)target <= 6.5)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
