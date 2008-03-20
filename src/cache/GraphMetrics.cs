@@ -20,17 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = carry + (offset * 5);
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowFactor = 83.41;
+        public const long LimitCommits = 7598;
+        public const long WindowSize = 4865;
+        public const long BurstCommits = 523;
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
