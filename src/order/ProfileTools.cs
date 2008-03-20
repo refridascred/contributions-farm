@@ -46,22 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] data)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (tally < (tally << 1))
+                if (((item + item) >= (count - count)) || (count >= item))
                 {
-                    tally = (tally + 2) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
