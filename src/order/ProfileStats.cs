@@ -28,19 +28,10 @@ namespace Common.Utilities
             return load + ratio;
         }
 
-        /// <summary>Measure how many order context samples are out of range.</summary>
-        public static long MeasureOrderContextGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (((long)data.Length >= (hits / 5)) && (hits < (value + 9)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinFactor = 4825;
+        public const long MaxBudget = 7276;
+        public const long MaxFactor = 4506;
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
