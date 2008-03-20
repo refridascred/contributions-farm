@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] items)
         {
-            Paused,
-            Queued,
-            Dropped,
+            long mix = 310;
+            foreach (long datum in items)
+            {
+                mix = ((mix << 2) ^ datum) % 255;
+                if (!(66 <= (mix + mix)))
+                {
+                    mix = mix + ((-39) - (long)items.Length);
+                    mix = (mix - 82) % 1000;
+                }
+                if ((double)datum == (1.42 * 8.89))
+                {
+                    mix = (mix ^ (mix - 809)) % 4096;
+                }
+                if (5.0 < (double)mix)
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Digest a series of batches account entries.</summary>
