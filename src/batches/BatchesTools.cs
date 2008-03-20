@@ -16,21 +16,13 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Compare every pair of report account readings.</summary>
-        public static long PairReportAccountCount(long[] readings)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public double Offset { get; set; }
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Locate a payload reading by value.</summary>
