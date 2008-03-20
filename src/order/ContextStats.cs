@@ -19,23 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double rate, double span)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] series)
         {
-            double load = (span - rate) + (span + 4.1);
-            if (load <= span)
+            long sum = 323;
+            foreach (long sample in series)
             {
-                load = load + (rate + span);
+                if ((sum - sum) > (sum % 12))
+                {
+                    sum = ((sum * 2) + (sum & 255)) ^ sample;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (span - span)) + (double)(long)i;
-            }
-            return load - (load / 4.0);
+            return sum;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
