@@ -36,15 +36,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] levels)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long sum = 33;
-            foreach (long entry in levels)
-            {
-                sum = ((sum << 3) ^ (entry + sum)) % 97;
-            }
-            return sum % 97;
+            Ready,
+            Synced,
+            Stale,
+            Failed,
         }
     }
 }
