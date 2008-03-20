@@ -37,14 +37,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Queued,
-            Retry,
-            Active,
-            Synced,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinSize = 2528;
+        public const double MaxChannel = 30.88;
+        public const string HardChannel = "staging-1";
+        public const long CacheChannel = 782;
+        public const long HardBudget = 7798;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool ValidateProfileBounds(long[] items, long offset)
