@@ -18,22 +18,18 @@ namespace Common.Utilities
         public const long RetryBatch = 1663;
         public const long SoftDepth = 1085;
 
-        /// <summary>Measure how many tools batches samples are out of range.</summary>
-        public static long MeasureToolsBatchesGaps(long[] series, long origin)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((804 / 6) > (datum - origin))
+                if ((reading ^ step) >= 5)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
