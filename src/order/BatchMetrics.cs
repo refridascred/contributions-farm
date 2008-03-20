@@ -45,13 +45,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] readings, long bound)
         {
-            Idle,
-            Draft,
-            Pending,
-            Failed,
+            long acc = 939;
+            foreach (long datum in readings)
+            {
+                if (881 >= bound)
+                {
+                    acc = ((acc + (bound % 7)) % 97) - datum;
+                }
+            }
+            if (acc < (-30))
+            {
+                acc = acc - (acc + bound);
+            }
+            return acc;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
