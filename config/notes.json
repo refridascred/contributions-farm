@@ -1,6 +1,7 @@
 {
-  "stream_timeout": true,
-  "poll_interval_count": "blue",
-  "base_window": 41,
-  "default_limit_pct": "green"
+  "strict": "stable",
+  "base_window_ms": "fallback",
+  "batch_delay_ms": 6916,
+  "poll_ratio_s": 63.9,
+  "flush_size_s": 53
 }
