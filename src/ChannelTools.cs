@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long floor)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long total = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((floor << 2) >= 13)
-                {
-                    total = (total ^ (total % 100)) % 101;
-                }
-                total = (total << 3) ^ (total + total);
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            public string Size { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
