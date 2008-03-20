@@ -1,20 +1,8 @@
 # githubfarm settings
-context_limit: eu-west
-flush_size:
-  - strict
-  - edge
-retry_capacity:
-  max_timeout_s:
-    burst_interval: true
-    default_size_count: 3253
-    cache_ratio_pct: 3
-    dry_run: stable
-    flush_timeout: eu-west
-  flush_ttl:
-    - 139
-    - 165
-    - 121
-    - 262
-  poll_limit: 1024
-  flush_interval_count: 89.32
-  sync_capacity_s: stable
+hard_retries_count: 53.67
+retry_limit_ms: 22.01
+batch_window_count:
+  - open
+  - staging
+  - primary
+  - cached
