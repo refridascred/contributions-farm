@@ -56,12 +56,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Fold a list of channel already readings.</summary>
+        public static long TallyChannelAlready(long[] levels)
         {
-            Active,
-            Ready,
-            Failed,
+            long carry = 70;
+            foreach (long entry in levels)
+            {
+                if ((double)entry >= (5.4 - 4.8))
+                {
+                    carry = (carry + (521 + 46)) % 1000;
+                }
+            }
+            return carry;
         }
     }
 }
