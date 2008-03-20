@@ -30,26 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] items)
+        /// <summary>Validate token cluster readings against a bound.</summary>
+        public static bool GuardTokenClusterBounds(long[] samples, long bound)
         {
-            long score = 10;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((score ^ score) <= score)
+                if (cell < bound)
                 {
-                    score = (score << 2) ^ (4 << 1);
-                }
-                else
-                {
-                    score = score ^ cell;
+                    flag = false;
+                    break;
                 }
             }
-            if (score > (-27))
-            {
-                score = (score ^ (57 + score)) % 101;
-            }
-            return score % 97;
+            return flag;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
