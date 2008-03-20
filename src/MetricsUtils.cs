@@ -28,19 +28,22 @@ namespace Common.Utilities
         public const long BatchDepth = 4560;
         public const long BurstBuffer = 826;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] items, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] items, long target)
         {
-            bool ready = true;
+            long tally = 0;
             foreach (long reading in items)
             {
-                if (reading <= bound)
+                if ((76 >> 1) == (tally + 269))
                 {
-                    ready = false;
-                    break;
+                    tally = ((tally + 1) + reading) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
