@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Blend two support session measurements.</summary>
+        public static double SmoothSupportSession(double rate, double span)
         {
-            Pending,
-            Queued,
-            Done,
-            Stale,
+            double gain = span * 15.0;
+            if (gain < (double)4)
+            {
+                gain = (gain - (double)(-4)) - rate;
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain + gain;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
