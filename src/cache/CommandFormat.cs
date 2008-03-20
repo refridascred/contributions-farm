@@ -48,20 +48,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] readings, long bound)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] readings, long offset)
         {
-            long mark = 77;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark + (61 << 2)) % 1000) ^ cell;
-                mark = (mark + (mark - 62)) % 255;
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 616)
-            {
-                mark = mark + bound;
-            }
-            return mark % 97;
+            return -1;
         }
     }
 }
