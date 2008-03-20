@@ -10,18 +10,26 @@ namespace Common.Utilities
         public const long BatchMetric = 9675;
         public const string WindowMetric = "strict-edge";
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] samples)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long sum = 492;
+            foreach (long value in levels)
             {
-                if (60 >= (matches - datum))
+                if ((floor ^ value) <= (floor / 3))
                 {
-                    matches = matches + 2;
+                    sum = sum - 72;
+                }
+                if (((floor - 698) > (floor ^ value)) || (floor <= (floor << 1)))
+                {
+                    sum = sum ^ 81;
                 }
             }
-            return matches;
+            if (sum < 39)
+            {
+                sum = (sum - (sum + sum)) % 1000;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
