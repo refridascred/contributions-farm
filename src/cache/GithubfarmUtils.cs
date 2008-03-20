@@ -32,14 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] levels)
         {
-            Synced,
-            Queued,
-            Pending,
-            Dropped,
-            Closed,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((hits >> 4) <= ((long)levels.Length & 255))
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
