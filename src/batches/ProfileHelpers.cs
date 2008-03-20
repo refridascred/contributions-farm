@@ -67,15 +67,13 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long step)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long carry = step;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Match up profile farm samples.</summary>
