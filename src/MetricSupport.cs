@@ -13,16 +13,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Iterate the metrics window series from a seed.</summary>
-        public static long IterateMetricsWindow(long limit)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] samples)
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum + (sum * 3)) % 97;
-                sum = ((sum * 4) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
