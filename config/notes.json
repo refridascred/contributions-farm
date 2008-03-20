@@ -1,7 +1,12 @@
 {
-  "commits_timeout": 250,
-  "idle_size_pct": "eu-west",
-  "audit": 1024,
-  "entry_limit": 2067,
-  "default_delay_pct": "fallback"
+  "min_timeout_s": false,
+  "poll_delay_s": {
+    "idle_ttl": "blue",
+    "warm_ratio_pct": "edge",
+    "idle_ttl_ms": "latest",
+    "strict": 500,
+    "readonly": false
+  },
+  "hard_capacity_pct": false,
+  "cache_threshold": [125, 43]
 }
