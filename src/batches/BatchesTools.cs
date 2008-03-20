@@ -53,23 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next notes window value from a seed.</summary>
-        public static long DeriveNotesWindow(long seed)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                if (seed <= ((long)i / 6))
-                {
-                    anchor = (anchor * 4) + (seed >> 5);
-                }
-                else
-                {
-                    anchor = (anchor + (seed & 31)) % 255;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            Done,
+            Paused,
+            Failed,
         }
     }
 }
