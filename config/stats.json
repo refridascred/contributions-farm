@@ -1,13 +1,6 @@
 {
-  "idle_ttl_s": {
-    "enabled": {
-      "hard_size_s": "latest",
-      "payload_retries": true,
-      "min_retries": false
-    },
-    "audit": "latest",
-    "batches_timeout": 3736
-  },
-  "warm_interval": "green",
-  "record_ttl": 6429
+  "compress": 20.64,
+  "warm_ttl": 2402,
+  "flush_ratio_s": "blue",
+  "metric_threshold": 32.45
 }
