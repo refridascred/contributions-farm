@@ -54,12 +54,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
-        {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double StepGraph = 72.99;
+        public const long DefaultBudget = 6299;
+        public const long BatchTimeout = 9710;
+        public const string LimitGraph = "local-v2";
+        public const long IdleGraph = 3468;
     }
 }
