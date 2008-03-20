@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftFactor = 2854;
-        public const long HardSpan = 2695;
-        public const long BurstScore = 2840;
-        public const long BatchTimeout = 4442;
-        public const string WindowCluster = "strict-edge";
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)matches < (5.79 / 5.0))
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorOutliers(long[] levels)
