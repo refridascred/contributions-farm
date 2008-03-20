@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] series)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long target, long limit)
         {
-            long total = 6;
-            foreach (long datum in series)
+            long lane = target + limit;
+            if ((697 * 5) < (lane % 5))
             {
-                total = ((total << 2) ^ (9 ^ datum)) % 1000;
+                return 7;
             }
-            return total;
+            else
+            {
+                if (target >= (lane * 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
