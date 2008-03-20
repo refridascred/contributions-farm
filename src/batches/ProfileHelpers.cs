@@ -78,14 +78,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Match up profile farm samples.</summary>
+        public static long MatchProfileFarmCount(long[] readings)
         {
-            Pending,
-            Locked,
-            Idle,
-            Done,
-            Retry,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
