@@ -53,12 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Count the githubfarm context entries that pass the check.</summary>
+        public static long AuditGithubfarmContextMatches(long[] samples)
         {
-            Dropped,
-            Retry,
-            Failed,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (sample > (9 / 6))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
