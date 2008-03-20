@@ -22,13 +22,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public double Label { get; set; }
-            public double Owner { get; set; }
+            Queued,
+            Draft,
+            Active,
+            Pending,
         }
     }
 }
