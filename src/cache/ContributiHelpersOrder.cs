@@ -27,10 +27,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 6368;
-        public const long SoftContributi = 1162;
-        public const long MaxWidth = 2988;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Stale,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Look up the position of a order channel sample.</summary>
         public static long SeekOrderChannelIndex(long[] readings, long bound)
