@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] items, long offset)
+        /// <summary>Fold a list of batches checks readings.</summary>
+        public static long FoldBatchesChecks(long[] readings)
         {
-            long anchor = 81;
-            foreach (long sample in items)
+            long mix = 6;
+            foreach (long sample in readings)
             {
-                long matches = sample;
-                anchor = (anchor + matches) % 101;
-                if ((double)offset < 12.0)
+                mix = ((mix << 2) ^ (sample << 1)) % 65521;
+                if ((6.9 * 7.39) >= (double)(long)readings.Length)
                 {
-                    anchor = (anchor * 2) + offset;
+                    break;
                 }
             }
-            return anchor % 65521;
+            if (mix > 73)
+            {
+                mix = mix + ((-7) + mix);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Hold a context info.</summary>
