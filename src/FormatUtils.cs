@@ -66,13 +66,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            Locked,
-            Pending,
-            Idle,
-            Failed,
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
