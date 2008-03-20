@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] data, long limit)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double bias = 6.39;
+            if (bias <= 8.0)
             {
-                if (matches < (limit - reading))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                bias = (bias + 5.0) + offset;
             }
-            return matches;
+            else
+            {
+                bias = bias - (scale * 0.34);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (scale * 3.6)) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
