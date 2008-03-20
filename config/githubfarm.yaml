@@ -1,7 +1,4 @@
 # githubfarm settings
-default_retries_pct: 49.8
-already_threshold: 38
-verbose: 76.87
-retry_ratio_ms: true
-retry_size: staging
-max_retries_s: 612
+retry_limit: 30
+cluster_depth: 3129
+batches_ratio: 4878
