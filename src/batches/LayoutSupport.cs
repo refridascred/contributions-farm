@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long BaseSize = 667;
         public const double IdleSize = 37.32;
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] series, long floor)
         {
-            public bool Size { get; set; }
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((hits << 1) == ((long)series.Length + 6))
+                {
+                    hits = ((hits + 3) + reading) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a report snapshot.</summary>
