@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] samples)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item < (6.3 / 6.0))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
+            public bool Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Roll a entry counter forward.</summary>
