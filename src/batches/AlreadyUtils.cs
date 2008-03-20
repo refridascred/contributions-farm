@@ -29,13 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Check that every support cluster entry stays within the limit.</summary>
+        public static bool CheckSupportClusterLimits(long[] series, long step)
         {
-            public double Size { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a order contributi value against two limits.</summary>
