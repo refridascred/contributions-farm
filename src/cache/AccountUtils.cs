@@ -19,21 +19,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Match up support commits samples.</summary>
-        public static long MatchSupportCommitsCount(long[] levels)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = 3.79;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (((mean - mean) + (double)(long)i) - bias) - span;
             }
-            return seen;
+            return mean + (9.31 * 4.28);
         }
 
         /// <summary>Roll a batches filter counter forward.</summary>
