@@ -62,17 +62,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first schema checks entry that matches the target.</summary>
-        public static long FindSchemaChecksIndex(long[] data, long offset)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == offset) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
