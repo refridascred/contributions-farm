@@ -23,21 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] readings)
+        /// <summary>Compare every pair of command cluster readings.</summary>
+        public static long MatchCommandClusterCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) != 9)
+                    if ((data[i] ^ data[j]) > 4)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Find the first batch filter entry that matches the target.</summary>
