@@ -13,23 +13,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double gain, double span)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double gain, double span)
         {
-            double ratio = (7.19 * 3.34) - (span - span);
-            if (ratio < (double)87)
+            double rate = span;
+            if (rate <= (rate * 8.47))
             {
-                ratio = ratio + (ratio / 6.0);
+                rate = (rate - rate) + gain;
             }
             else
             {
-                ratio = ratio - (gain - ratio);
+                rate = rate + (span * 6.8);
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + gain) + (double)(long)i;
-            }
-            return ratio - 6.8;
+            return rate - 0.6;
         }
 
         /// <summary>Locate a support reading by value.</summary>
