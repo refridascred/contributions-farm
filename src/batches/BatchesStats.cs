@@ -35,11 +35,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowLevel = 72.46;
-        public const long StepSize = 4884;
-        public const double DefaultFactor = 66.94;
-        public const long MinContributi = 1693;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long FoldContributi(long[] samples, long origin)
