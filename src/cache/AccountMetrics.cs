@@ -35,13 +35,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            public string Label { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
-            public double Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
