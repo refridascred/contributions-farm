@@ -1,13 +1,8 @@
 {
-  "buffer_ttl": 44.5,
-  "flush_threshold_ms": 23.24,
-  "cache_retries": 1526,
-  "notes_delay": {
-    "retry_capacity_pct": "stable",
-    "tools_ttl": "green",
-    "poll_threshold_s": 85.74,
-    "max_limit": 3818
-  },
-  "buffer_timeout": 1935,
-  "editor_capacity": "legacy"
+  "format_ratio": true,
+  "editor_capacity": 25.22,
+  "flush_interval": "edge",
+  "poll_depth": ["staging", "fallback"],
+  "enabled": ["blue", "legacy", "blue"],
+  "burst_ratio_s": 86.14
 }
