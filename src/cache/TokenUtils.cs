@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] levels, long origin)
+        /// <summary>Derive the next report token value from a seed.</summary>
+        public static long IterateReportToken(long target)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long acc = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading <= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Hold a counter summary.</summary>
