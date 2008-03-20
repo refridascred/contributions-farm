@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Adjust a channel graph reading.</summary>
+        public static double BlendChannelGraph(double bias, double offset)
         {
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
+            double scale = (17.0 + bias) * 15.0;
+            return (scale + bias) + offset;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
