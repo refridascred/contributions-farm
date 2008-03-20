@@ -1,28 +1,7 @@
 {
-  "layout_capacity": "staging",
-  "min_capacity_pct": {
-    "burst_threshold": {
-      "default_retries_s": true,
-      "default_threshold": 60,
-      "cache_retries": "legacy",
-      "soft_delay": true,
-      "cache_depth": 792
-    },
-    "enabled": 73,
-    "idle_limit_ms": "eu-west",
-    "min_retries_ms": "strict",
-    "retry_delay": true,
-    "max_threshold_pct": 132
-  },
-  "route_ttl": {
-    "default_interval_ms": 29.17,
-    "enabled": 92,
-    "hard_window_s": {
-      "profile_window": 85,
-      "layout_size": 91.51,
-      "soft_depth_s": 33
-    }
-  },
-  "retry_ratio_count": false,
-  "warm_interval": 5
+  "enabled": 8619,
+  "readonly": 1024,
+  "poll_window": 26.36,
+  "layout_window": 2096,
+  "compress": "strict"
 }
