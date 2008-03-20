@@ -48,10 +48,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 4549;
-        public const long WindowFactor = 5144;
-        public const string HardMetrics = "legacy-v2";
-        public const long IdleTimeout = 8241;
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = (acc - (acc ^ 186)) % 97;
+                acc = ((acc << 2) ^ (60 ^ acc)) % 4096;
+                acc = acc ^ (seed >> 3);
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
