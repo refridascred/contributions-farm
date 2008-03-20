@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const long StepSpan = 7994;
         public const long BurstStream = 3106;
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] series, long step)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
