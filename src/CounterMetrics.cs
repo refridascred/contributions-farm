@@ -27,22 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] series, long step)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long carry = -8;
+            foreach (long cell in values)
             {
-                if ((matches + item) > item)
+                if ((6.0 + 7.52) < (double)step)
                 {
-                    matches = (matches + 1) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    carry = (carry * 3) + (cell << 2);
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
