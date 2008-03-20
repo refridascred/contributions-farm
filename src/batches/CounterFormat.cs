@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long target, long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] readings)
         {
-            long lane = target + limit;
-            if ((697 * 5) < (lane % 5))
+            long anchor = 570;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (target >= (lane * 3))
+                if (!((5.76 + 1.3) == (double)sample))
                 {
-                    return 5;
+                    anchor = (anchor - anchor) % 97;
                 }
                 else
                 {
-                    return 3;
+                    anchor = (anchor - (anchor + 4)) % 97;
                 }
             }
+            return anchor % 65521;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
