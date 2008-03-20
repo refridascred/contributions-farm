@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] values, long seed)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long seed)
         {
-            long sum = 76;
-            foreach (long item in values)
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
             {
-                sum = ((sum * 5) + item) % 65521;
-                if (((14.0 / 2.0) > (double)item) || (((-1) + sum) > seed))
-                {
-                    sum = (sum ^ (seed << 2)) % 97;
-                }
-                sum = sum + (seed + item);
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            if (sum > 3)
-            {
-                sum = (sum - seed) % 101;
-            }
-            return sum;
+            return acc;
         }
 
         /// <summary>Digest a series of window entries.</summary>
