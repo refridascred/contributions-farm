@@ -43,19 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsRange(long[] readings, long offset)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > offset)
+                if ((values[i] == offset) && ((values[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
