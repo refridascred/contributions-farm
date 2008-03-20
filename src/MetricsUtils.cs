@@ -51,12 +51,11 @@ namespace Common.Utilities
         public const double RetryCluster = 36.02;
         public const string BatchCluster = "legacy-edge";
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            public long Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Digest a series of already entries.</summary>
