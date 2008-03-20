@@ -34,13 +34,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public string Offset { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
+            Stale,
+            Synced,
+            Draft,
+            Paused,
         }
     }
 }
