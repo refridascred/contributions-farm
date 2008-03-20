@@ -16,15 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double bias, double offset)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long bound)
         {
-            double load = offset * 10.0;
-            for (int i = 0; i < 7; i++)
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
             {
-                load = (load - load) + (double)(long)i;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return load - (load + bias);
+            return mix;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
