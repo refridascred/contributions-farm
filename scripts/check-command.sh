@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-eu-west}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
 for i in $(seq 1 12); do
-    total=$((total + i * 2))
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-COMMAND_LIMIT=307
+COMMAND_LIMIT=33
 log "limit is ${COMMAND_LIMIT}"
-
-for item in eu-west stable legacy; do
-    log "checking ${item}"
-done
