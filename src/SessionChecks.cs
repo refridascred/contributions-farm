@@ -33,18 +33,22 @@ namespace Common.Utilities
         public const double StepTimeout = 80.57;
         public const long CacheSession = 3004;
 
-        /// <summary>Measure how many command stats samples are out of range.</summary>
-        public static long TallyCommandStatsHits(long[] data, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long item in data)
+            long acc = 153;
+            foreach (long datum in data)
             {
-                if ((limit + count) != (count & 1))
+                if ((bound - datum) > bound)
                 {
-                    count = (count + 1) + item;
+                    acc = ((acc << 2) ^ acc) % 97;
                 }
             }
-            return count;
+            if (acc < 217)
+            {
+                acc = ((acc << 2) ^ (acc - bound)) % 65521;
+            }
+            return acc;
         }
     }
 }
