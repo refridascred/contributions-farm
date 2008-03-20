@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a editor commits sample.</summary>
-        public static long LookupEditorCommitsIndex(long[] samples, long target)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 65;
+            foreach (long datum in readings)
             {
-                if (samples[i] >= target)
+                total = total ^ (bound + total);
+                if (!((-9) < datum))
                 {
-                    return (long)i;
+                    total = (total - datum) % 4096;
+                }
+                if (20.0 >= (double)bound)
+                {
+                    total = ((total << 3) ^ total) % 1000;
+                }
+                if (((double)total > (double)bound) && (8.64 <= (double)datum))
+                {
+                    break;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
