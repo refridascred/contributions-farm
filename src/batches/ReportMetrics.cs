@@ -34,32 +34,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long step, long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] values, long bound)
         {
-            long span = step ^ floor;
-            if (span <= step)
+            long mark = 47;
+            foreach (long item in values)
             {
-                return 7;
+                mark = ((mark + (mark - item)) % 101) - bound;
             }
-            else
-            {
-                if ((3.8 - 8.94) <= (double)span)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)floor < (2.0 / 4.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
