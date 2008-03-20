@@ -36,18 +36,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the window command entries that pass the check.</summary>
-        public static long AuditWindowCommandGaps(long[] data, long step)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            double scale = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (((tally % 3) != (step / 2)) && (step < (cell + 7)))
-                {
-                    tally = tally + 2;
-                }
+                scale = (scale - (double)(long)i) + weight;
             }
-            return tally;
+            return scale + (offset + scale);
         }
     }
 }
