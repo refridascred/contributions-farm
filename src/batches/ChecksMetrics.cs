@@ -18,21 +18,20 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] readings)
+        /// <summary>Iterate the githubfarm metric series from a seed.</summary>
+        public static long DeriveGithubfarmMetric(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((166 < ((long)i << 3)) && (limit <= (limit ^ limit))))
                 {
-                    if ((readings[i] ^ readings[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix * 4) + 466) % 255;
                 }
+                mix = (mix - (39 >> 4)) % 65521;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
