@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const double SoftLevel = 14.33;
         public const long LimitBudget = 890;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] samples, long bound)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (item <= (9 + item))
-                {
-                    seen = (seen + 2) - bound;
-                }
-            }
-            return seen;
+            Synced,
+            Dropped,
+            Draft,
+            Pending,
+            Ready,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
