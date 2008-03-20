@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public double Stamp { get; set; }
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public bool Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
