@@ -1,7 +1,14 @@
 # githubfarm settings
-burst_timeout_ms: primary
-dry_run:
-  - 377
-  - 40
-retry_depth_s: fallback
-retry_ratio_s: false
+cache_ratio: true
+sync_delay_pct:
+  filter_window: false
+  base_delay: 9747
+  min_window_ms: cached
+  burst_threshold_count:
+    - 208
+    - 212
+  audit: 76.79
+warm_ratio_s:
+  - 262
+  - 167
+  - 180
