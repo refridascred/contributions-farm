@@ -31,11 +31,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] items)
         {
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a account options.</summary>
