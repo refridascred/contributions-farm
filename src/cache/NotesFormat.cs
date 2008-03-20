@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long CacheSpan = 4868;
         public const long BatchSchema = 4506;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double ratio, double floor)
         {
-            Active,
-            Closed,
-            Dropped,
-            Ready,
+            double bias = ratio * 18.0;
+            if (bias > (4.04 + ratio))
+            {
+                bias = bias - (bias - bias);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - floor) + (double)(long)i;
+            }
+            return bias - (double)(-191);
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
