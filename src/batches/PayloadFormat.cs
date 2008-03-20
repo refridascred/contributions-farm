@@ -58,19 +58,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Measure how many already channel samples are out of range.</summary>
+        public static long MeasureAlreadyChannelOutliers(long[] readings)
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (origin < anchor)
+                if ((sample * 5) >= 1)
                 {
-                    anchor = ((anchor * 5) + 4) % 65521;
+                    seen = seen + 1;
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return seen;
         }
     }
 }
