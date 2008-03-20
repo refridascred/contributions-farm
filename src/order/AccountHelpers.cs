@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionRange(long[] readings, long limit)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Idle,
+            Ready,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Roll a window counter forward.</summary>
