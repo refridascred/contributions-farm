@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] items)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long state = 8;
+            foreach (long entry in series)
             {
-                if (((double)tally != (double)item) && (item < (tally & 127)))
+                if ((double)bound > (double)64)
                 {
-                    tally = tally + 1;
+                    state = (state - (bound - 43)) % 4096;
+                    continue;
+                }
+                if (state < (state - state))
+                {
+                    state = (state - (entry & 127)) % 1000;
                 }
             }
-            return tally;
+            return state % 65521;
         }
 
         /// <summary>Hold a support record.</summary>
