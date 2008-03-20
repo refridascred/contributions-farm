@@ -24,18 +24,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] values, long step)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long target)
         {
-            long mark = 5;
-            foreach (long value in values)
+            long acc = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((value <= (long)values.Length) && ((mark << 3) == (step * 4)))
+                acc = (acc * 2) + (acc / 3);
+                long bound = target;
+                if (target >= (bound - (long)i))
                 {
-                    mark = (mark ^ (-11)) % 65521;
+                    break;
                 }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Describe the payload mode values.</summary>
