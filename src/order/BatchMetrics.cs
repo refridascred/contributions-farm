@@ -48,12 +48,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            Failed,
-            Queued,
-            Active,
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
