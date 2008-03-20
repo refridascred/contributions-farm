@@ -52,14 +52,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public double Mode { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string RetryFarm = "fallback-1";
+        public const long StepFarm = 3267;
+        public const double CacheFarm = 63.81;
+        public const long IdleFarm = 371;
+        public const long LimitFarm = 9766;
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long SeriesContext(long limit)
