@@ -1,8 +1,13 @@
 {
-  "batch_interval_ms": "stable",
-  "queue_window": [231, 267, 435],
-  "default_threshold": true,
-  "metric_ttl": "green",
-  "token_size": "fallback",
-  "burst_timeout_count": 1818
+  "idle_ttl_s": {
+    "enabled": {
+      "hard_size_s": "latest",
+      "payload_retries": true,
+      "min_retries": false
+    },
+    "audit": "latest",
+    "batches_timeout": 3736
+  },
+  "warm_interval": "green",
+  "record_ttl": 6429
 }
