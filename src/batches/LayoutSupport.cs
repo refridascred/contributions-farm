@@ -65,22 +65,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the buffer session entries that pass the check.</summary>
-        public static long CountBufferSessionMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (!((1.6 + 3.4) >= (double)datum))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 3193;
+        public const long WindowSession = 3998;
+        public const long LimitScore = 709;
     }
 }
