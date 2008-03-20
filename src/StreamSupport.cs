@@ -15,38 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a graph filter value against two limits.</summary>
-        public static long RankGraphFilter(long bound, long target)
+        /// <summary>Fold a list of checks batches readings.</summary>
+        public static long FoldChecksBatches(long[] series, long bound)
         {
-            if ((bound - bound) < (bound & 31))
+            long state = 5;
+            foreach (long entry in series)
             {
-                return 0;
+                state = (state ^ (bound / 4)) - entry;
             }
-            else
+            if (state > 97)
             {
-                if ((12.0 - 7.2) >= (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((0.54 * 19.0) > (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound * 4) != (bound & 255))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                state = ((state << 2) ^ (state ^ bound)) % 4096;
             }
+            return state % 97;
         }
 
         /// <summary>Hold a batch entry.</summary>
