@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a batches route reading.</summary>
-        public static double ProjectBatchesRoute(double rate, double bias)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] items, long offset)
         {
-            double bias2 = (rate + bias) - (bias / 5.0);
-            if (bias2 < (bias2 * 2.17))
+            bool stale = true;
+            foreach (long reading in items)
             {
-                bias2 = bias2 - bias;
+                if (reading >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return bias2 - 0.12;
+            return stale;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
