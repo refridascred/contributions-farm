@@ -29,11 +29,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 72;
-        public const long WindowScore = 8431;
-        public const string BurstSession = "staging-edge";
-        public const long StepSession = 7451;
-        public const string RetryWidth = "alpha-edge";
+        /// <summary>Adjust a support tools reading.</summary>
+        public static double AdjustSupportTools(double bias, double bias2)
+        {
+            double rate = (12.0 + bias) + bias;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (double)4) - (double)(long)i;
+            }
+            return rate - bias2;
+        }
     }
 }
