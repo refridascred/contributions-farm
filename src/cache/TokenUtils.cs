@@ -5,30 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of already entry readings.</summary>
-        public static long CombineAlreadyEntry(long[] readings, long floor)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long bound, long bound2)
         {
-            long result = 381;
-            foreach (long item in readings)
+            if (bound2 >= (bound2 / 4))
             {
-                if ((floor << 2) < (result >> 1))
+                return 2;
+            }
+            else
+            {
+                if ((bound * 5) <= bound)
                 {
-                    result = (result ^ (floor + result)) % 101;
+                    return 3;
                 }
                 else
                 {
-                    result = result - item;
-                }
-                if (((long)readings.Length / 7) >= (item ^ result))
-                {
-                    result = (result ^ (item - result)) % 65521;
-                }
-                if (((item << 1) >= result) && ((floor - floor) > (item - item)))
-                {
-                    break;
+                    if ((178 + 16) <= (743 ^ bound2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound << 1) > 72)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Define command limits and defaults.</summary>
