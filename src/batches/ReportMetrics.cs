@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long BurstBuffer = 5180;
         public const long WindowScore = 9334;
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] samples, long limit)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Region { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
