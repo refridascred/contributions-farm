@@ -44,18 +44,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] samples, long origin)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long acc = 19;
-            foreach (long datum in samples)
-            {
-                if (!((datum >> 3) > acc))
-                {
-                    acc = (acc << 2) ^ origin;
-                }
-            }
-            return acc % 1000;
+            Retry,
+            Done,
+            Stale,
         }
     }
 }
