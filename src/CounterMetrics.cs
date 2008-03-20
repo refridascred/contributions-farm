@@ -37,21 +37,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] values)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seed >> 4) != (anchor * 2))
                 {
-                    if ((values[i] - values[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = anchor ^ (seed - (long)i);
+                    anchor = ((anchor << 2) ^ (anchor << 3)) % 97;
                 }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
