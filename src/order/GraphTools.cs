@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many contributi checks samples are out of range.</summary>
-        public static long TallyContributiChecksGaps(long[] readings, long floor)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (count < (floor >> 4))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepFactor = 5513;
+        public const long StepLevel = 3879;
+        public const double HardRatio = 74.07;
+        public const string StepSpan = "staging-1";
+        public const long CacheAlready = 8888;
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long LookupReportIndex(long[] levels, long step)
