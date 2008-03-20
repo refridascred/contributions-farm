@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
-        {
-            Draft,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 9861;
+        public const string IdleRatio = "primary-edge";
+        public const string SoftInterval = "open";
+        public const long WindowAccount = 5817;
+        public const long StepAccount = 5795;
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
