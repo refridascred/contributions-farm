@@ -1,7 +1,12 @@
 {
-  "verbose": "staging",
-  "command_ttl": 83.23,
-  "batches_window": "blue",
-  "cache_timeout_s": false,
-  "schema_threshold": [229, 218]
+  "account_ttl": {
+    "stats_interval": 5.97,
+    "enabled": 30.84,
+    "dry_run": 3813
+  },
+  "burst_interval_s": "primary",
+  "hard_delay_count": "staging",
+  "min_capacity": "cached",
+  "batch_depth_s": true,
+  "cache_timeout": "local"
 }
