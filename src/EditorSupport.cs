@@ -95,19 +95,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double bias, double floor)
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double scale, double offset)
         {
-            double load = floor * 11.0;
-            if (load >= (floor + load))
+            double drift = (double)58 - (double)97;
+            if (drift < (4.04 - drift))
             {
-                load = load - bias;
+                drift = (drift + offset) + scale;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                load = load + load;
+                drift = (drift - (17.0 / 2.0)) + (double)(long)i;
             }
-            return load - bias;
+            return drift + (drift * 18.0);
         }
     }
 }
