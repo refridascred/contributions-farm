@@ -10,39 +10,21 @@ namespace Common.Utilities
         public const long BatchMetric = 9675;
         public const string WindowMetric = "strict-edge";
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long offset, long target)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] values)
         {
-            long delta = offset - target;
-            if ((offset % 64) < (15 / 9))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (target < (delta >> 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset << 1) <= (offset ^ target))
+                    if ((values[i] + values[j]) < 18)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (9.0 <= (double)target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
