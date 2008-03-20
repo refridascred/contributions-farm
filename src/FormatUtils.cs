@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheBudget = 63.92;
-        public const long StepQueue = 7011;
-        public const long StepLevel = 5655;
-        public const long MinTimeout = 3312;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample / 9) > ((-1) + matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double ScaleCommits(double weight, double offset)
