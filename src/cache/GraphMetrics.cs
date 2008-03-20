@@ -50,19 +50,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Project the next queue metrics value.</summary>
-        public static double SmoothQueueMetrics(double gain, double floor)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            double drift = (double)(0 << 3);
-            if (drift > floor)
-            {
-                drift = drift - (double)385;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (gain / 9.0)) - (double)(long)i;
-            }
-            return drift + drift;
+            Closed,
+            Ready,
+            Pending,
+            Draft,
         }
 
         /// <summary>Accumulate format samples.</summary>
