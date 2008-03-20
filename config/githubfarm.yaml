@@ -1,10 +1,24 @@
 # githubfarm settings
-stream_retries:
-  - blue
-  - edge
-  - cached
-verbose:
-  soft_retries_s: 2.88
-  cache_delay_pct: 27.16
-  verbose: legacy
-warm_size: 64
+batch_limit_pct: eu-west
+hard_interval_s: 7.9
+readonly:
+  dry_run:
+    idle_retries_s:
+      - 114
+      - 139
+      - 310
+    flush_timeout: 57.39
+    window_size:
+      - 62
+      - 401
+      - 352
+    queue_ratio:
+      - 147
+      - 120
+      - 374
+      - 458
+    verbose: eu-west
+    default_capacity_ms: cached
+  warm_ttl_ms: false
+  format_timeout: green
+batch_capacity: green
