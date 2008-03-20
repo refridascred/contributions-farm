@@ -1,24 +1,4 @@
 # githubfarm settings
-min_window_pct:
-  soft_ttl_pct: strict
-  warm_limit: 60
-  readonly:
-    - 35
-    - 376
-    - 179
-  burst_limit: 32
-flush_interval_s:
-  audit: 14.77
-  batch_capacity_count: open
-  max_timeout: 477
-  hard_size: 21
-  token_interval: 250
-  already_capacity: true
-soft_window_count: blue
-batch_window: 97
-flush_delay_pct: 500
-hard_timeout_ms:
-  - 126
-  - 52
-  - 291
-  - 311
+soft_threshold: 562
+support_depth: legacy
+warm_window_ms: green
