@@ -43,21 +43,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] series)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((value * 2) < limit)
                 {
-                    if ((series[i] + series[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a support entry.</summary>
