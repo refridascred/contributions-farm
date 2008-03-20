@@ -23,11 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a account snapshot.</summary>
