@@ -49,13 +49,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long target)
         {
-            Ready,
-            Stale,
-            Retry,
-            Active,
+            long acc = target;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 3) + ((-6) << 2)) % 97;
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
