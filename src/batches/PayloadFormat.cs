@@ -13,11 +13,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftReport = 54.86;
-        public const long LimitReport = 3868;
-        public const long IdleCount = 768;
-        public const double BaseReport = 35.32;
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Closed,
+            Dropped,
+            Failed,
+            Ready,
+            Idle,
+        }
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
