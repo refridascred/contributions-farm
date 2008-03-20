@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] items, long offset)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if (items[i] >= offset)
+                if (entry > floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Combine metric batches values into a single score.</summary>
