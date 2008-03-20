@@ -77,18 +77,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] levels)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((0.1 / 3.0) >= (double)value)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Closed,
+            Idle,
+            Failed,
+            Locked,
         }
     }
 }
