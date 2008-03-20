@@ -1,10 +1,6 @@
-id,level,weight,state
-1,2.57,local,local
-2,blue,stable,353
-3,fallback,64.06,297
-4,cached,681,primary
-5,21.77,15.84,43.27
-6,745,262,blue
-7,571,blue,148
-8,9.18,31.52,legacy
-9,877,7.38,209
+id,ratio,rank,region,count
+1,18.01,307,blue,41.13
+2,79,open,stable,19.79
+3,strict,781,12.31,stable
+4,864,602,primary,edge
+5,818,latest,446,local
