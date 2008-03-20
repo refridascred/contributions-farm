@@ -1,12 +1,5 @@
 {
-  "record_threshold": 2956,
-  "default_window_pct": {
-    "poll_capacity_count": [109, 296, 474],
-    "githubfarm_ratio": [346, 362],
-    "base_window_s": ["stable", "standard"],
-    "tools_timeout": 77.47,
-    "cache_ratio_s": 97.02
-  },
-  "buffer_delay": "blue",
-  "record_size": true
+  "route_limit": ["strict", "legacy"],
+  "default_window_count": ["local", "legacy", "strict", "standard"],
+  "verbose": 4828
 }
