@@ -1,6 +1,8 @@
 # support settings
-window_retries: green
-warm_ratio_pct: fallback
-notes_interval: 34
-soft_threshold_count: strict
-checks_retries: green
+profile_ratio: eu-west
+dry_run: 8674
+retry_retries: standard
+strict: primary
+filter_interval:
+  - cached
+  - edge
