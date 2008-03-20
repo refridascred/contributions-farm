@@ -43,11 +43,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleProfile = "local-v2";
-        public const long DefaultProfile = 910;
-        public const string IdleLevel = "primary-1";
-        public const long BaseFactor = 593;
-        public const double RetryProfile = 97.47;
+        /// <summary>Iterate the batches record series from a seed.</summary>
+        public static long IterateBatchesRecord(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 2) + (total - total)) % 1000;
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
