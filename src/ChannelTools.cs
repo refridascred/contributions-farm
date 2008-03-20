@@ -19,23 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cache batches entries.</summary>
-        public static long DigestCacheBatches(long[] samples, long target)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long carry = -52;
-            foreach (long sample in samples)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    long tally = carry;
-                    carry = ((carry - (tally + 43)) % 65521) - (long)i;
-                }
-                if (target <= (carry + sample))
-                {
-                    carry = (carry << 3) ^ (target << 1);
-                }
-            }
-            return carry;
+            public double Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the route state values.</summary>
