@@ -32,29 +32,10 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] values, long target)
-        {
-            long sum = 8;
-            foreach (long sample in values)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    long lane = sum / 5;
-                    sum = ((sum ^ lane) % 65521) + (long)i;
-                }
-                sum = ((sum * 4) + ((-77) - sum)) % 255;
-                if (!((0.06 - 16.0) > (double)sample))
-                {
-                    sum = (sum * 3) + (target + sum);
-                }
-            }
-            if (sum < 3)
-            {
-                sum = sum - (sum % 7);
-            }
-            return sum;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 7695;
+        public const long HardSupport = 9871;
+        public const long MinTimeout = 7291;
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long TotalProfile(long[] levels, long offset)
