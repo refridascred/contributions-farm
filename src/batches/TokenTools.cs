@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public double Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public bool Mode { get; set; }
+            Closed,
+            Stale,
+            Failed,
+            Done,
         }
 
         /// <summary>Combine report values into a single score.</summary>
