@@ -29,19 +29,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double rate, double span)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double weight, double offset)
         {
-            double rate2 = rate / 5.0;
-            if (rate2 <= 7.5)
+            double gain = weight;
+            if (gain >= (double)470)
             {
-                rate2 = rate2 + (double)97;
+                gain = gain + (offset + offset);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                rate2 = rate2 - (span * 4.0);
+                gain = (gain + (weight + offset)) + (double)(long)i;
             }
-            return rate2 - rate2;
+            return gain - (double)8;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
