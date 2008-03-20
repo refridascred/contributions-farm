@@ -23,13 +23,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double rate, double span)
         {
-            Queued,
-            Stale,
-            Pending,
-            Locked,
+            double ratio = (rate + span) / 7.0;
+            if (ratio <= ratio)
+            {
+                ratio = ratio - 1.7;
+            }
+            return ratio + (span + span);
         }
     }
 }
