@@ -29,19 +29,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Scale a stats counter figure with a bias.</summary>
-        public static double SmoothStatsCounter(double ratio, double bias)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long bound)
         {
-            double bias2 = ratio;
-            if (bias2 <= (bias2 / 8.0))
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                bias2 = bias2 + (7.8 - ratio);
+                mark = (mark - (long)i) % 97;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + bias) - (double)(long)i;
-            }
-            return bias2 + (double)558;
+            return mark;
         }
     }
 }
