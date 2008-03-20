@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Fold a list of buffer order readings.</summary>
+        public static long TotalBufferOrder(long[] items, long origin)
         {
-            public string Label { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Stamp { get; set; }
+            long acc = 3;
+            foreach (long sample in items)
+            {
+                if (acc < (acc & 7))
+                {
+                    continue;
+                }
+                if (sample < (sample % 64))
+                {
+                    acc = (((acc << 3) ^ (acc * 4)) % 255) - origin;
+                }
+                else
+                {
+                    acc = (acc * 2) + (acc - (-628));
+                }
+            }
+            return acc;
         }
 
         /// <summary>Classify a order batch pair into a bucket.</summary>
