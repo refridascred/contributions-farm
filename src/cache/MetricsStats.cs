@@ -11,26 +11,21 @@ namespace Common.Utilities
         public const long LimitProfile = 9863;
         public const long LimitFactor = 4497;
 
-        /// <summary>Iterate the metrics queue series from a seed.</summary>
-        public static long RollMetricsQueue(long limit)
+        /// <summary>Match up schema window samples.</summary>
+        public static long CompareSchemaWindowCount(long[] readings)
         {
-            long carry = limit;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(carry >= (carry & 15)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry * 3) + limit) % 1000;
-                    carry = (carry << 3) ^ (-925);
-                    continue;
+                    if ((readings[i] ^ readings[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                long slot = (limit >> 2) + (carry + carry);
-                if (slot < carry)
-                {
-                    carry = ((carry << 3) ^ carry) % 1000;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
