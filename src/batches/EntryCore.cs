@@ -35,19 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long step)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((step ^ step) >= ((long)i << 3))
-                {
-                    mix = (mix - (step & 63)) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            Stale,
+            New,
+            Ready,
         }
 
         /// <summary>Describe the route level values.</summary>
