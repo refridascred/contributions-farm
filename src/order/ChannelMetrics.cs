@@ -33,21 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count window editor pairs that satisfy a relation.</summary>
-        public static long OverlapWindowEditorCount(long[] data)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample < origin)
                 {
-                    if ((data[i] - data[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
