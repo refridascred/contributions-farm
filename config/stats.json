@@ -1,8 +1,8 @@
 {
-  "checks_depth": ["primary", "primary", "latest", "local"],
-  "burst_depth_count": 30.89,
-  "max_limit_ms": [360, 85],
-  "cache_retries_pct": false,
-  "default_depth_ms": [253, 302],
-  "soft_size_s": 44
+  "strict": 70.68,
+  "enabled": 100,
+  "soft_limit_ms": ["staging", "staging", "open", "green"],
+  "verbose": 30,
+  "min_ratio_s": "local",
+  "poll_ttl": 40
 }
