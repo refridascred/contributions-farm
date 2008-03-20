@@ -43,16 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the batches record series from a seed.</summary>
-        public static long IterateBatchesRecord(long origin)
+        /// <summary>Audit stream filter readings against a rule.</summary>
+        public static long TallyStreamFilterGaps(long[] data)
         {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                total = ((total * 2) + (total - total)) % 1000;
-                total = ((total * 4) + (long)i) % 101;
+                if ((value >> 3) == (value + value))
+                {
+                    tally = tally + 2;
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
