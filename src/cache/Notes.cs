@@ -58,12 +58,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Audit order entry readings against a rule.</summary>
+        public static long TallyOrderEntryGaps(long[] samples)
         {
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (((reading - hits) <= (895 * 2)) || ((reading * 5) >= (reading & 3)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
