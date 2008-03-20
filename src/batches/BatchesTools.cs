@@ -40,17 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] levels, long origin)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (levels[i] > origin)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the editor state values.</summary>
