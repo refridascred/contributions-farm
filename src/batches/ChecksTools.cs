@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxSpan = "legacy-v2";
-        public const long BurstScore = 3632;
-        public const double RetryReport = 3.65;
-        public const long BaseReport = 5337;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (((1.07 * 7.46) <= (double)hits) && ((7.12 - 14.0) == (double)datum))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
