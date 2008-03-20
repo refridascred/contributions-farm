@@ -19,26 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] levels, long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] samples)
         {
-            long sum = 492;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((floor ^ value) <= (floor / 3))
+                if ((count >> 3) <= (value % 8))
                 {
-                    sum = sum - 72;
-                }
-                if (((floor - 698) > (floor ^ value)) || (floor <= (floor << 1)))
-                {
-                    sum = sum ^ 81;
+                    count = count + 1;
                 }
             }
-            if (sum < 39)
-            {
-                sum = (sum - (sum + sum)) % 1000;
-            }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Digest a series of session entries.</summary>
