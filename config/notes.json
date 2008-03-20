@@ -1,18 +1,5 @@
 {
-  "batch_interval_pct": {
-    "audit": 250,
-    "idle_ttl_count": true,
-    "readonly": 9059,
-    "retry_threshold": [427, 393],
-    "max_capacity": "cached"
-  },
-  "notes_size": ["edge", "fallback", "blue"],
-  "window_retries": {
-    "default_window_count": 30,
-    "flush_ratio": false,
-    "filter_timeout": "local",
-    "warm_ratio": "fallback",
-    "dry_run": "primary"
-  },
-  "strict": 3839
+  "dry_run": "stable",
+  "base_threshold": 500,
+  "cache_delay_count": ["eu-west", "staging", "stable"]
 }
