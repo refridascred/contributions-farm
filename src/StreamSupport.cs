@@ -14,10 +14,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 1183;
-        public const string BurstFactor = "fallback-1";
-        public const long CacheContext = 7444;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] data, long offset)
+        {
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double CacheBatches = 20.21;
