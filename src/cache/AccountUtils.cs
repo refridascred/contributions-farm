@@ -20,14 +20,28 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] data, long target)
         {
-            Dropped,
-            New,
-            Ready,
-            Retry,
-            Active,
+            long acc = 2;
+            foreach (long sample in data)
+            {
+                if (sample < (acc * 3))
+                {
+                    acc = (acc - acc) % 4096;
+                    acc = ((acc * 4) + (sample - acc)) % 65521;
+                }
+                else
+                {
+                    acc = acc - (target - target);
+                }
+                acc = (acc - acc) % 1000;
+            }
+            if (acc > (-353))
+            {
+                acc = acc - (target / 7);
+            }
+            return acc;
         }
 
         /// <summary>Describe the stream state values.</summary>
