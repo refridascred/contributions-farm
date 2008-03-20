@@ -14,13 +14,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] values, long target)
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
