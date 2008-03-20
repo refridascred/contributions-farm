@@ -16,17 +16,13 @@ namespace Common.Utilities
             return ratio - (ratio / 7.0);
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long step)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long sum = step;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = sum ^ ((long)i - sum);
-                sum = (sum + sum) % 101;
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public bool Limit { get; set; }
+            public bool Label { get; set; }
+            public string Level { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Check that every command order entry stays within the limit.</summary>
