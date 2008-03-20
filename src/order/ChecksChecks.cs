@@ -29,24 +29,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long step, long step2)
-        {
-            if ((step2 ^ step) >= (step2 * 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (95 > (step2 - step2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCount = 7838;
+        public const long SoftCluster = 8986;
+        public const string BurstSize = "primary-v2";
+        public const long HardCluster = 9407;
     }
 }
