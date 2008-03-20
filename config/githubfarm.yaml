@@ -1,17 +1,4 @@
 # githubfarm settings
-cache_window: 12.04
-report_depth:
-  soft_ratio: standard
-  soft_retries_pct:
-    verbose: 52.31
-    queue_retries:
-      - 327
-      - 4
-      - 444
-    audit: edge
-  poll_delay_ms:
-    - 89
-    - 489
-  flush_ttl_s: cached
-  default_interval_count: 364
-entry_timeout: primary
+audit: 2382
+dry_run: 66
+commits_ratio: false
