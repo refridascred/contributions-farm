@@ -49,24 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long step, long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] data)
         {
-            if (((limit % 64) == (13 << 2)) || (76 < (limit + 76)))
+            long state = 6;
+            foreach (long datum in data)
             {
-                return 6;
+                long delta = (54 + (-2)) * 5;
+                state = ((state * 2) + (delta - state)) - datum;
+                state = ((state << 2) ^ ((long)data.Length >> 4)) % 65521;
             }
-            else
-            {
-                if (((0.7 / 9.0) >= (double)step) || ((step - step) <= (98 % 10)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return state;
         }
     }
 }
