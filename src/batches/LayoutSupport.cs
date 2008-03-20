@@ -75,13 +75,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Count the buffer session entries that pass the check.</summary>
+        public static long CountBufferSessionMatches(long[] levels)
         {
-            Draft,
-            Pending,
-            Ready,
-            New,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (!((1.6 + 3.4) >= (double)datum))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
