@@ -31,18 +31,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the route filter entries that pass the check.</summary>
-        public static long MeasureRouteFilterGaps(long[] data, long target)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long seed, long bound)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long diff = seed ^ bound;
+            if ((seed / 9) >= (diff & 3))
             {
-                if ((((tally - entry) < (14 ^ tally)) && (tally > (-702))) || (6.95 < (double)entry))
+                return 5;
+            }
+            else
+            {
+                if ((4 + diff) >= (diff >> 2))
                 {
-                    tally = (tally + 2) + target;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
     }
 }
