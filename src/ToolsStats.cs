@@ -34,13 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double gain, double span)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            double drift = gain;
+            if (drift > drift)
+            {
+                drift = (drift + (double)6) + span;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - (5.46 + gain);
         }
 
         /// <summary>Audit account token readings against a rule.</summary>
