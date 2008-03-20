@@ -52,20 +52,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] series, long limit)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] items)
         {
-            long mix = 2;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix << 2) ^ (mix & 31)) % 1000;
-                mix = (mix - (value ^ limit)) % 255;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mix > 5)
-            {
-                mix = mix + limit;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
