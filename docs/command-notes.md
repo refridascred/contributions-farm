@@ -1,11 +1,15 @@
 # Command notes
 
-The order report groups every tools by schema.
-Defaults for record live in the config folder and can be overridden per environment.
-Each filter is validated before it reaches the record queue.
+The context report groups every tools by batch.
+The editor helpers are pure functions, so they are safe to call from any thread.
+Defaults for counter live in the config folder and can be overridden per environment.
+
+Keep stats and route names short and lowercase.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every counter change
-- Prefer counter defaults
-- Review stats limits each release
+- Document new batch fields
+- Log every session change
+- Review support limits each release
+- Prefer buffer defaults
