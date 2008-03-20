@@ -1,8 +1,12 @@
 {
-  "strict": 70.68,
-  "enabled": 100,
-  "soft_limit_ms": ["staging", "staging", "open", "green"],
-  "verbose": 30,
-  "min_ratio_s": "local",
-  "poll_ttl": 40
+  "githubfarm_ttl": {
+    "channel_size": false,
+    "compress": ["cached", "primary", "fallback", "edge"],
+    "sync_ttl_s": ["staging", "standard"],
+    "default_depth_s": "standard",
+    "burst_limit_pct": 74,
+    "readonly": ["edge", "primary", "edge"]
+  },
+  "verbose": "staging",
+  "cache_limit_pct": [267, 271, 452, 167]
 }
