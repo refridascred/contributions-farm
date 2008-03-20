@@ -45,13 +45,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] data, long bound)
         {
-            Draft,
-            Synced,
-            Active,
-            Queued,
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the schema stream series from a seed.</summary>
