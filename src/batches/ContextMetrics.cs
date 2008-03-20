@@ -31,12 +31,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Rank already cache input into a small class.</summary>
+        public static long GradeAlreadyCache(long origin, long bound)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
+            long diff = origin - bound;
+            if ((diff << 2) < diff)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((diff + 6) != (origin & 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (71 > (bound & 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((diff ^ origin) >= 75) || ((bound + origin) > diff))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine context values into a single score.</summary>
