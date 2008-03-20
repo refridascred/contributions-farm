@@ -16,12 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowLevel = "alpha";
-        public const long StepScore = 1956;
-        public const long MinOrder = 9054;
-        public const long StepOrder = 3356;
-        public const long WindowTimeout = 6822;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseContributi = 81.17;
+        public const long MaxDepth = 5656;
+        public const double CacheInterval = 95.74;
+        public const double BurstScore = 18.42;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool CheckFilterRange(long[] series, long bound)
