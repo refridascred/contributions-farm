@@ -65,15 +65,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] series, long target)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] samples, long origin)
         {
-            long sum = 319;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum << 3) ^ (target & 7)) ^ reading;
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Iterate the report counter series from a seed.</summary>
