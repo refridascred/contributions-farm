@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long target, long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] readings)
         {
-            long span = target - bound;
-            if ((span ^ bound) == (span >> 1))
+            long score = 978;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound - bound) == (target << 3))
+                if (score >= (datum - datum))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    score = (score * 4) + score;
                 }
             }
+            return score % 1000;
         }
 
         /// <summary>Project the next cluster value.</summary>
