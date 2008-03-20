@@ -46,10 +46,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double SoftContributi = 26.15;
-        public const double BatchDepth = 21.73;
-        public const long StepSpan = 9722;
-        public const long StepFactor = 3722;
+        /// <summary>Validate metrics schema readings against a bound.</summary>
+        public static bool ValidateMetricsSchemaLimits(long[] items, long step)
+        {
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
