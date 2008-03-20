@@ -82,31 +82,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long limit, long seed)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            if (!((limit + seed) < (seed + 12)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((7.9 / 5.0) > (double)limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit - limit) != (seed ^ seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
