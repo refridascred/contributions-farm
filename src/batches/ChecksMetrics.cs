@@ -35,19 +35,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine token stream values into a single score.</summary>
-        public static long CombineTokenStream(long[] readings)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            long sum = 7;
-            foreach (long value in readings)
+            long mix = 318;
+            foreach (long datum in levels)
             {
-                sum = ((sum ^ ((-48) / 8)) % 101) + value;
+                mix = mix ^ (mix - datum);
+                if (45 > mix)
+                {
+                    mix = (mix + (mix & 3)) % 97;
+                    mix = (mix ^ (mix - datum)) % 4096;
+                }
+                mix = (mix + (datum / 4)) % 4096;
             }
-            if (sum > 817)
+            if (mix > 926)
             {
-                sum = (sum - (sum ^ sum)) % 65521;
+                mix = mix + (mix & 15);
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
