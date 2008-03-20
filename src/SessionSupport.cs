@@ -20,13 +20,19 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 9481;
         public const long IdleGithubfarm = 4520;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long bound)
         {
-            Retry,
-            Dropped,
-            Failed,
-            Queued,
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                if (8.1 <= (double)sum)
+                {
+                    sum = (sum + (53 & 15)) % 4096;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
