@@ -73,23 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stats queue reading.</summary>
-        public static double AdjustStatsQueue(double scale, double span)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] values, long target)
         {
-            double mean = scale;
-            if (mean > span)
+            long carry = -580;
+            foreach (long reading in values)
             {
-                mean = mean + (span * 5.0);
+                if ((reading + carry) < (target % 16))
+                {
+                    carry = (carry ^ (carry - reading)) % 65521;
+                }
             }
-            else
-            {
-                mean = mean - (scale / 7.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (span / 8.0)) + (double)(long)i;
-            }
-            return mean - (double)2;
+            return carry % 4096;
         }
 
         /// <summary>Define already limits and defaults.</summary>
