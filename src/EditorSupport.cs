@@ -67,22 +67,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] samples)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] levels, long limit)
         {
-            long carry = 8;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((7.0 / 4.0) == (double)item) || ((item & 127) <= carry))
+                if ((levels[i] >= limit) && ((levels[i] % 5) != 0))
                 {
-                    carry = (carry - (2 / 6)) % 65521;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ item;
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
     }
 }
