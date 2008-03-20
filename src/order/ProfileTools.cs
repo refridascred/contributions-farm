@@ -31,19 +31,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double ratio, double bias)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] series, long seed)
         {
-            double scale = bias;
-            if (scale < 7.2)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                scale = (scale + scale) - ratio;
+                if (!((datum ^ datum) < (hits * 4)))
+                {
+                    hits = (hits + 1) + seed;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (double)27) + (double)(long)i;
-            }
-            return scale - (scale - scale);
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
