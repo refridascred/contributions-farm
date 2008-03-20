@@ -44,11 +44,20 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepLevel = 3.4;
-        public const long MinChecks = 2914;
-        public const long SoftScore = 7019;
-        public const double StepChecks = 77.28;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((long)i + 43) >= (long)i)
+                {
+                    continue;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long TotalNotes(long[] samples, long target)
