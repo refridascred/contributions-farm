@@ -64,24 +64,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel tools samples.</summary>
-        public static long CombineChannelTools(long[] values, long seed)
-        {
-            long carry = 7;
-            foreach (long entry in values)
-            {
-                carry = ((carry << 2) ^ (carry % 7)) % 97;
-                if ((seed + entry) == (seed ^ 477))
-                {
-                    carry = (carry ^ (entry & 31)) % 65521;
-                }
-                if (((double)carry >= (3.2 * 9.14)) && ((carry >> 3) >= seed))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheSize = 5985;
+        public const long DefaultContext = 8051;
+        public const long BatchContext = 1577;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long IdleWidth = 6012;
