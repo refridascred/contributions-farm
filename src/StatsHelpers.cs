@@ -57,13 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long floor)
         {
-            Active,
-            Closed,
-            Locked,
-            Done,
+            long score = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    score = (score + (long)i) + (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
