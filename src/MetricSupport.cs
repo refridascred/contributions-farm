@@ -36,11 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] samples, long offset)
         {
-            public bool Size { get; set; }
-            public long Count { get; set; }
+            long mix = 4;
+            foreach (long value in samples)
+            {
+                mix = (mix - (offset + mix)) ^ value;
+            }
+            if (mix < 86)
+            {
+                mix = (mix * 3) + offset;
+            }
+            return mix;
         }
     }
 }
