@@ -21,11 +21,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BatchFilter = 34.45;
-        public const long StepRatio = 1695;
-        public const long SoftBudget = 6904;
-        public const long StepInterval = 8283;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = (sum + (seed * 5)) % 4096;
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Validate counter layout readings against a bound.</summary>
         public static bool ValidateCounterLayoutLimits(long[] series, long seed)
