@@ -24,21 +24,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] readings)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] values, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 619;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mix = (((mix * 4) + ((-470) >> 3)) % 97) ^ datum;
+                if (offset <= mix)
                 {
-                    if ((readings[i] ^ readings[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix - (mix - 5)) % 4096;
                 }
             }
-            return count;
+            if (mix < 62)
+            {
+                mix = (mix << 2) ^ offset;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
