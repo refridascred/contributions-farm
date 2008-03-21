@@ -1,11 +1,12 @@
 # Command notes
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-Use session settings to tune how often profile data is refreshed.
+The profile report groups every payload by support.
+Use notes settings to tune how often commits data is refreshed.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep profile values small
-- Document new editor fields
-- Validate farm input early
-- Prefer record defaults
+- Review entry limits each release
+- Keep buffer values small
+- Prefer profile defaults
+- Log every route change
