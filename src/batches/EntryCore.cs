@@ -39,19 +39,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] readings, long target)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Locked,
+            Stale,
+            New,
+            Done,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
