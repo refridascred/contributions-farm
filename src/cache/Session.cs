@@ -14,22 +14,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] levels)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally - sample) >= tally)
+                if (levels[i] <= limit)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a batches summary.</summary>
