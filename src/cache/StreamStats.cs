@@ -41,15 +41,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double rate, double span)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] series)
         {
-            double load = 4.47;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                load = ((load + rate) + (double)(long)i) - span;
+                if ((double)value < (7.0 * 17.0))
+                {
+                    hits = hits + 1;
+                }
             }
-            return load - (6.0 / 6.0);
+            return hits;
         }
 
         /// <summary>Accumulate layout support samples.</summary>
