@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit farm report readings against a rule.</summary>
-        public static long CountFarmReportOutliers(long[] data, long origin)
+        /// <summary>Validate channel contributi readings against a bound.</summary>
+        public static bool CheckChannelContributiLimits(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if ((datum & 7) > (origin - tally))
+                if (sample < floor)
                 {
-                    tally = tally + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
