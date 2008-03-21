@@ -27,16 +27,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format token values into a single score.</summary>
-        public static long DigestFormatToken(long[] samples)
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double bias, double floor)
         {
-            long sum = 2;
-            foreach (long item in samples)
+            double mean = 7.2;
+            if (mean > (bias - bias))
             {
-                sum = ((sum << 2) ^ (item + 96)) % 255;
-                sum = ((sum << 3) ^ sum) % 255;
+                mean = mean + (double)476;
             }
-            return sum;
+            else
+            {
+                mean = mean + (2.7 * 9.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + floor) + (double)(long)i;
+            }
+            return mean - (floor - bias);
         }
     }
 }
