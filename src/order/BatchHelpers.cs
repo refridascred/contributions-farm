@@ -19,13 +19,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] levels, long step)
         {
-            public double Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the contributi cache entries that pass the check.</summary>
