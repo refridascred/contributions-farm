@@ -45,19 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double gain, double offset)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long target)
         {
-            double mean = offset;
-            if (mean < 3.0)
+            long total = target;
+            for (int i = 0; i < 7; i++)
             {
-                mean = mean + (3.87 / 9.0);
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    total = ((total ^ ((long)i % 5)) % 101) - (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - mean) - (double)(long)i;
-            }
-            return mean - gain;
+            return total;
         }
     }
 }
