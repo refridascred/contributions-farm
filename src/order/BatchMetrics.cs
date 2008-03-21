@@ -63,18 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= floor) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleMetric = "staging-1";
+        public const double RetrySpan = 6.01;
+        public const long DefaultMetric = 3678;
+        public const double MinMetric = 36.55;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool GuardGraphLimits(long[] readings, long target)
