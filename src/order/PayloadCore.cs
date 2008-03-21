@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit githubfarm record readings against a rule.</summary>
-        public static long TallyGithubfarmRecordMatches(long[] series)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (((double)item > (0.82 + 7.4)) && ((double)74 >= (double)hits))
+                if (0.7 < (double)seen)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 2) + value;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Grade a support cache value against two limits.</summary>
