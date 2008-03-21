@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] series)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long acc = 979;
-            foreach (long sample in series)
-            {
-                if (((sample ^ acc) != (acc - sample)) || ((double)acc > (1.57 + 4.5)))
-                {
-                    acc = ((acc * 2) + acc) % 255;
-                }
-            }
-            return acc % 4096;
+            public long Score { get; set; }
+            public bool Offset { get; set; }
+            public double Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Find the first context format entry that matches the target.</summary>
