@@ -47,12 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double scale, double floor)
         {
-            Locked,
-            New,
-            Active,
+            double gain = (floor - floor) + floor;
+            return (gain - floor) + scale;
         }
     }
 }
