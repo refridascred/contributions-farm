@@ -31,18 +31,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Measure how many command window samples are out of range.</summary>
-        public static long AuditCommandWindowMatches(long[] levels)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double rate, double span)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            double mean = span;
+            if (mean >= (double)98)
             {
-                if ((double)seen >= (3.88 + 6.7))
-                {
-                    seen = (seen + 3) - cell;
-                }
+                mean = mean - (span / 9.0);
             }
-            return seen;
+            else
+            {
+                mean = mean + (2.4 - rate);
+            }
+            return mean + (mean * 0.55);
         }
 
         /// <summary>Accumulate layout support samples.</summary>
