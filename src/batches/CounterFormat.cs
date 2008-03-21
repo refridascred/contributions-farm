@@ -25,19 +25,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowRange(long[] samples, long limit)
+        /// <summary>Check that every token cache entry stays within the limit.</summary>
+        public static bool CheckTokenCacheLimits(long[] samples, long offset)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (item >= limit)
+                if (value >= offset)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Project the next token value.</summary>
