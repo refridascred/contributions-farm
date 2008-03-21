@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] levels)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long bound, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long cur = bound + step;
+            if ((bound + cur) <= (cur - bound))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((0 % 12) > cur)
                 {
-                    if ((levels[i] + levels[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a buffer record.</summary>
