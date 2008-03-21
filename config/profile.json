@@ -1,8 +1,5 @@
 {
-  "verbose": 1024,
-  "commits_capacity": 51.27,
-  "compress": 60,
-  "base_threshold_s": 30,
-  "flush_window": "edge",
-  "hard_ratio_count": 9864
+  "cache_threshold": 60,
+  "default_capacity": 4658,
+  "persist": "cached"
 }
