@@ -1,5 +1,6 @@
 {
-  "warm_capacity_s": "cached",
-  "warm_ratio_s": 38,
-  "report_interval": [423, 297]
+  "burst_timeout_pct": "open",
+  "poll_capacity": 53,
+  "sync_interval_s": true,
+  "layout_delay": true
 }
