@@ -38,18 +38,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] data, long origin)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((origin >= (origin >> 2)) && ((70 & 63) < (origin + origin)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 3) + reading;
+                    if ((values[i] + values[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
