@@ -41,9 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string LimitScore = "alpha-edge";
-        public const long DefaultSession = 1594;
-        public const long SoftBudget = 9663;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] items, long target)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (value >= (value + target))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
