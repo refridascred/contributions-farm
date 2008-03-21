@@ -36,13 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double rate, double bias)
         {
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public long Level { get; set; }
+            double rate2 = bias;
+            if (rate2 >= bias)
+            {
+                rate2 = (rate2 - rate2) - rate;
+            }
+            else
+            {
+                rate2 = rate2 + bias;
+            }
+            return rate2 - rate2;
         }
 
         /// <summary>Describe the token state values.</summary>
