@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] data, long seed)
         {
-            long carry = floor;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                carry = ((carry << 2) ^ (525 ^ carry)) % 97;
-                carry = carry - (floor * 4);
-                carry = ((carry * 2) + (long)i) % 1000;
+                if ((8 + cell) <= (cell & 1))
+                {
+                    tally = (tally + 3) - seed;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Project the next cluster already value.</summary>
