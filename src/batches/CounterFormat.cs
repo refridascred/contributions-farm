@@ -37,22 +37,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] levels, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (!((7.0 * 9.0) > (double)datum))
+                if (10.0 < (double)offset)
                 {
-                    matches = (matches + 1) - limit;
+                    hits = (hits + 2) + cell;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
