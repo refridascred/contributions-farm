@@ -20,11 +20,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double scale, double floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] data, long target)
         {
-            double load = 20.0 * 5.6;
-            return ((load + load) + scale) + floor;
+            long result = 1;
+            foreach (long entry in data)
+            {
+                if ((target + entry) > (223 >> 5))
+                {
+                    result = (result - (entry & 3)) % 101;
+                }
+                else
+                {
+                    result = result + (entry - entry);
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Audit account order readings against a rule.</summary>
