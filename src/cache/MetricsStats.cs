@@ -40,11 +40,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxSize = 79.37;
-        public const long IdleBudget = 9358;
-        public const double MaxBudget = 59.0;
-        public const string HardFarm = "standard-edge";
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long bound, long floor)
+        {
+            if ((floor << 3) < floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((2.0 * 10.0) < (double)(-68))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Classify a batch metrics pair into a bucket.</summary>
         public static long RankBatchMetrics(long bound, long offset)
