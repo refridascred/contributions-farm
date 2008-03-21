@@ -20,18 +20,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] values)
+        /// <summary>Measure how many window token samples are out of range.</summary>
+        public static long CountWindowTokenGaps(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((2.3 - 18.0) != (double)datum)
+                if (offset < (matches + offset))
                 {
-                    hits = hits + 1;
+                    matches = (matches + 1) - datum;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
