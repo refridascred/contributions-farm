@@ -1,6 +1,8 @@
 # support settings
-idle_size_pct: stable
-warm_ratio_s:
-  - 380
-  - 467
-cluster_timeout: latest
+audit: true
+format_ratio:
+  - 245
+  - 383
+sync_window: 91
+compress: primary
+retry_delay_count: 23.76
