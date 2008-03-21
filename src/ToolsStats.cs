@@ -61,19 +61,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue stream entry stays within the limit.</summary>
-        public static bool CheckQueueStreamLimits(long[] items, long target)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Pending,
+            Active,
         }
 
         /// <summary>Accumulate batches samples.</summary>
