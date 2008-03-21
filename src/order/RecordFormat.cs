@@ -16,38 +16,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long limit, long floor)
+        /// <summary>Count entry farm pairs that satisfy a relation.</summary>
+        public static long OverlapEntryFarmCount(long[] data)
         {
-            if ((6.48 - 4.0) < (double)limit)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit > (5.87 * 15.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor + floor) != (floor ^ 20))
+                    if ((data[i] + data[j]) == 1)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)limit >= (double)825)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
