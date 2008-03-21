@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next filter format value.</summary>
-        public static double BlendFilterFormat(double rate, double floor)
+        /// <summary>Measure how many layout window samples are out of range.</summary>
+        public static long CountLayoutWindowHits(long[] series)
         {
-            double scale = 9.4;
-            if (scale < (floor - rate))
+            long seen = 0;
+            foreach (long entry in series)
             {
-                scale = scale + (double)53;
+                if (seen > (seen * 5))
+                {
+                    seen = (seen + 3) + entry;
+                }
             }
-            else
-            {
-                scale = scale + (scale - floor);
-            }
-            return scale - (floor - 7.0);
+            return seen;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
