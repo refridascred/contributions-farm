@@ -47,15 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double bias, double bias2)
+        /// <summary>Count the cache buffer entries that pass the check.</summary>
+        public static long AuditCacheBufferGaps(long[] series)
         {
-            double scale = bias2 / 5.0;
-            if (scale >= bias2)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                scale = (scale + scale) + bias;
+                if ((reading + reading) >= tally)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return scale + 17.0;
+            return tally;
         }
 
         /// <summary>Accumulate checks samples.</summary>
