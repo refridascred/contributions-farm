@@ -28,12 +28,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double weight, double floor)
         {
-            public double Token { get; set; }
-            public string Rank { get; set; } = "";
-            public double Score { get; set; }
+            double ratio = (double)(97 - (-588));
+            return ((ratio + ratio) + weight) + floor;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
