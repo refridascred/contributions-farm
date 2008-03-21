@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in open standard; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-COMMAND_LIMIT=359
-log "limit is ${COMMAND_LIMIT}"
-
-for item in local primary; do
-    log "checking ${item}"
-done
+mode="${1:-standard}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
