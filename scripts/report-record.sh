@@ -7,11 +7,17 @@ log() {
 }
 
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 2))
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in stable strict latest; do
-    log "checking ${item}"
-done
+mode="${1:-stable}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
