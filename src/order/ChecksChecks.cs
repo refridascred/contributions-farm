@@ -26,18 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] samples)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double weight, double span)
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (87 < (matches % 100))
-                {
-                    matches = (matches + 1) + reading;
-                }
-            }
-            return matches;
+            double gain = weight / 5.0;
+            return gain + span;
         }
 
         /// <summary>Classify a session graph pair into a bucket.</summary>
