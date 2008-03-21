@@ -77,19 +77,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] levels, long offset)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Weight { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Compare every pair of context readings.</summary>
