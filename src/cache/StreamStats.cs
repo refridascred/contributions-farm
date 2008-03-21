@@ -31,19 +31,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double rate, double span)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            double mean = span;
-            if (mean >= (double)98)
-            {
-                mean = mean - (span / 9.0);
-            }
-            else
-            {
-                mean = mean + (2.4 - rate);
-            }
-            return mean + (mean * 0.55);
+            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate layout support samples.</summary>
