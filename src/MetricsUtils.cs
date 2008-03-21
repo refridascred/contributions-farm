@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] levels)
+        /// <summary>Count the stats farm entries that pass the check.</summary>
+        public static long TallyStatsFarmGaps(long[] values, long seed)
         {
             long matches = 0;
-            foreach (long value in levels)
+            foreach (long item in values)
             {
-                if ((value + matches) > (value - matches))
+                if ((807 - matches) <= (47 / 4))
                 {
-                    matches = matches + 2;
+                    matches = ((matches + 1) - item) + seed;
                 }
             }
             return matches;
