@@ -56,15 +56,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cache buffer counter forward.</summary>
-        public static long RollCacheBuffer(long seed)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] levels, long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
+            long result = 65;
+            foreach (long reading in levels)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (((-60) / 3) > (reading + seed))
+                {
+                    result = ((result * 2) + (32 & 15)) % 1000;
+                }
             }
-            return mark;
+            if (result > 153)
+            {
+                result = ((result << 3) ^ seed) % 65521;
+            }
+            return result;
         }
     }
 }
