@@ -31,13 +31,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] data, long floor)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a stats summary.</summary>
