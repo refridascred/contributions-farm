@@ -45,18 +45,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] items)
+        /// <summary>Classify a stream record pair into a bucket.</summary>
+        public static long RankStreamRecord(long target, long limit)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            if ((target % 12) < (53 * 4))
             {
-                if (((cell % 8) < (cell >> 4)) || (((cell % 16) >= 7) || ((matches >> 1) > matches)))
+                return 0;
+            }
+            else
+            {
+                if (target >= (limit % 7))
                 {
-                    matches = matches + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((8.76 + 0.2) == (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((limit << 1) != (17 + target)) || ((double)target > (8.0 * 8.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
