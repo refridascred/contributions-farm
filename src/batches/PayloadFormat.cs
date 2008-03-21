@@ -45,12 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double gain, double offset)
         {
-            public string Mode { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
+            double mean = offset;
+            if (mean < 3.0)
+            {
+                mean = mean + (3.87 / 9.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - mean) - (double)(long)i;
+            }
+            return mean - gain;
         }
     }
 }
