@@ -34,12 +34,23 @@ namespace Common.Utilities
             return rate - 6.0;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] items)
         {
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
+            long state = 41;
+            foreach (long cell in items)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    state = state ^ 6;
+                    state = (state + (long)i) % 4096;
+                }
+                if (!((double)cell <= (double)state))
+                {
+                    state = (state + cell) % 255;
+                }
+            }
+            return state;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
