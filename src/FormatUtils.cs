@@ -39,17 +39,14 @@ namespace Common.Utilities
         public const string DefaultRatio = "fallback-edge";
         public const long BaseFactor = 987;
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] samples, long target)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < target) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Failed,
+            Ready,
+            Stale,
+            Draft,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
