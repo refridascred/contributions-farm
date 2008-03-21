@@ -50,14 +50,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] items, long target)
         {
-            Queued,
-            Ready,
-            New,
-            Paused,
-            Idle,
+            long total = 8;
+            foreach (long item in items)
+            {
+                total = (((total * 3) + (9 & 1)) - item) + target;
+            }
+            if (total < 8)
+            {
+                total = ((total << 2) ^ total) % 101;
+            }
+            return total;
         }
     }
 }
