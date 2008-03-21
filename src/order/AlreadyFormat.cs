@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] data, long step)
         {
-            public double Rank { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((double)hits < (8.0 / 3.0))
+                {
+                    hits = ((hits + 3) ^ entry) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of stream farm readings.</summary>
