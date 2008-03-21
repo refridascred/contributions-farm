@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] data, long floor)
         {
-            Active,
-            Paused,
-            Done,
-            Draft,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < floor) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
