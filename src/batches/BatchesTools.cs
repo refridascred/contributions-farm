@@ -14,14 +14,14 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Closed,
-            Idle,
-            Queued,
             New,
             Ready,
+            Locked,
+            Stale,
+            Queued,
         }
 
         /// <summary>Define account limits and defaults.</summary>
