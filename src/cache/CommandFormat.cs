@@ -45,17 +45,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] readings, long offset)
+        /// <summary>Validate channel cluster readings against a bound.</summary>
+        public static bool ValidateChannelClusterBounds(long[] readings, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if (readings[i] > offset)
+                if (cell < step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
