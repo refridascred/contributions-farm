@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiBounds(long[] readings, long target)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long target, long target2)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long offset = target ^ target2;
+            if ((target2 >> 3) > (target >> 5))
             {
-                if (reading > target)
+                return 6;
+            }
+            else
+            {
+                if ((target < 12) || ((double)offset >= 8.3))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset << 3) < target2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset / 7) != (target2 - target2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Project the next editor value.</summary>
