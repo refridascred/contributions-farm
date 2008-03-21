@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] series)
+        /// <summary>Combine counter batches values into a single score.</summary>
+        public static long CombineCounterBatches(long[] levels, long offset)
         {
-            long score = 7;
-            foreach (long item in series)
+            long anchor = 869;
+            foreach (long item in levels)
             {
-                if (9.5 >= (double)item)
+                anchor = anchor - (offset - anchor);
+                if (item < (item - offset))
                 {
-                    score = score + (score ^ score);
+                    anchor = (anchor + (item + 0)) % 4096;
                 }
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Hold a tools info.</summary>
