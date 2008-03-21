@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] values)
-        {
-            long mark = 27;
-            foreach (long datum in values)
-            {
-                mark = ((mark * 3) + (datum + 966)) % 101;
-                if (((-80) ^ datum) < (916 >> 1))
-                {
-                    mark = (mark << 2) ^ (datum + mark);
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 8919;
+        public const string BatchSize = "latest-edge";
+        public const double MinPayload = 76.47;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksGaps(long[] levels)
