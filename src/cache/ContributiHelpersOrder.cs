@@ -25,10 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetrySupport = "alpha-edge";
-        public const double HardSupport = 41.19;
-        public const long IdleScore = 1804;
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double bias, double floor)
+        {
+            double load = 7.8;
+            if (load >= load)
+            {
+                load = ((load - load) - bias) - floor;
+            }
+            return load + (2.0 * 10.0);
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string BurstInterval = "latest-v2";
