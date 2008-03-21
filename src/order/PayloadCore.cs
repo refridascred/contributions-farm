@@ -58,24 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a filter account pair into a bucket.</summary>
-        public static long GradeFilterAccount(long origin, long bound)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double scale, double bias)
         {
-            if (!((double)origin > (double)56))
+            double rate = scale / 6.0;
+            if (rate < rate)
             {
-                return 6;
+                rate = (rate + scale) - bias;
             }
-            else
-            {
-                if ((origin % 3) >= (origin + origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return rate - scale;
         }
 
         /// <summary>Check that every profile record entry stays within the limit.</summary>
