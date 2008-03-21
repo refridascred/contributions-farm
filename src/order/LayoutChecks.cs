@@ -60,10 +60,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstToken = 72.67;
-        public const long MinToken = 3713;
-        public const double SoftToken = 20.74;
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < origin) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the farm command entries that pass the check.</summary>
         public static long AuditFarmCommandMatches(long[] series)
