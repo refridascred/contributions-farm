@@ -1,5 +1,8 @@
 # entry settings
-enabled: eu-west
-hard_size_count: 12
-report_delay: stable
-support_window: staging
+idle_limit:
+  - cached
+  - latest
+  - standard
+retry_retries_ms: 9.81
+hard_ttl_count: 250
+readonly: true
