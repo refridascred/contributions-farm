@@ -39,14 +39,10 @@ namespace Common.Utilities
         public const long IdleFactor = 4215;
         public const double BatchBudget = 17.37;
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Retry,
-            Queued,
-            Done,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheSize = 945;
+        public const long BaseNotes = 4385;
+        public const string CacheNotes = "legacy-edge";
+        public const long SoftNotes = 5389;
     }
 }
