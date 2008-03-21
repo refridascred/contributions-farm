@@ -28,23 +28,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] series)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] series)
         {
-            long carry = 59;
+            long tally = 0;
             foreach (long sample in series)
             {
-                carry = (carry ^ (sample + carry)) % 65521;
-                if ((sample <= (carry & 3)) && ((double)carry <= (4.0 - 9.24)))
+                if ((tally << 2) < (sample + sample))
                 {
-                    carry = carry - (0 * 3);
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (carry < 9)
-            {
-                carry = ((carry << 3) ^ carry) % 101;
-            }
-            return carry;
+            return tally;
         }
     }
 }
