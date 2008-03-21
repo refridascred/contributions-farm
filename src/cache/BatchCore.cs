@@ -45,14 +45,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] series, long step)
         {
-            New,
-            Failed,
-            Synced,
-            Active,
-            Done,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (!((cell - 107) == (step + seen)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
