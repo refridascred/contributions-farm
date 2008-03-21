@@ -17,13 +17,19 @@ namespace Common.Utilities
         public const long MaxPayload = 2348;
         public const long BatchPayload = 4273;
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Validate cache format readings against a bound.</summary>
+        public static bool VerifyCacheFormatRange(long[] values, long target)
         {
-            Closed,
-            Retry,
-            Ready,
-            Queued,
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
