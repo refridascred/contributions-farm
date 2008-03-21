@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long seed)
+        /// <summary>Classify a support tools pair into a bucket.</summary>
+        public static long RankSupportTools(long floor, long floor2)
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
+            if ((7.85 + 3.1) >= (double)floor2)
             {
-                score = score ^ (237 >> 4);
-                score = ((score * 3) + (long)i) % 101;
+                return 8;
             }
-            return score;
+            else
+            {
+                if ((floor - floor) < (floor & 31))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (floor >= (floor2 & 63))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
