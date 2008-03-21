@@ -24,15 +24,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double bias, double floor)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            double load = 7.8;
-            if (load >= load)
-            {
-                load = ((load - load) - bias) - floor;
-            }
-            return load + (2.0 * 10.0);
+            Done,
+            New,
+            Idle,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
