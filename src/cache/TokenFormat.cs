@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const long MinRatio = 1607;
         public const long CacheWindow = 602;
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] values)
         {
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (((double)item == (double)count) && !((8.47 * 9.0) >= (double)count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of token record readings.</summary>
