@@ -31,32 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a cache metric value against two limits.</summary>
-        public static long GradeCacheMetric(long limit, long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] items, long floor)
         {
-            long edge = limit ^ bound;
-            if ((edge % 100) < (879 % 7))
+            bool found = true;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((edge ^ bound) < (limit % 2)))
+                if (sample < floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((edge >> 4) >= (edge + edge)) || ((bound / 6) != (edge << 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
