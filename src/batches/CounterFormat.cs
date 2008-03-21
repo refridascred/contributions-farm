@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] values)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long MatchLayoutCount(long[] series)
         {
-            long anchor = 649;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (980 <= (cell + 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = ((anchor << 3) ^ (cell - (-33))) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor - cell)) % 4096;
+                    if ((series[i] + series[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Combine format values into a single score.</summary>
