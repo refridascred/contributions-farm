@@ -13,21 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the record support series from a seed.</summary>
-        public static long IterateRecordSupport(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((1.1 - 3.0) >= (double)(long)i)
-                {
-                    sum = sum ^ (long)i;
-                    sum = (sum + (sum & 63)) % 65521;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 1708;
+        public const double BurstSpan = 76.22;
+        public const double BaseInterval = 48.72;
+        public const long LimitAlready = 1511;
+        public const long SoftAlready = 731;
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
