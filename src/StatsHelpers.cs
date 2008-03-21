@@ -43,39 +43,17 @@ namespace Common.Utilities
         public const double SoftTimeout = 96.02;
         public const long HardCommand = 4162;
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long floor, long origin)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] levels, long step)
         {
-            long bound = floor ^ origin;
-            if ((bound & 255) != (origin + floor))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)96 != (double)origin)
+                if ((levels[i] < step) && ((levels[i] % 3) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((4.8 * 8.92) <= (double)floor) && ((floor - origin) >= (floor - 722)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (origin >= (floor & 127))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next metrics stream value.</summary>
