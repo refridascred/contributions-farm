@@ -14,21 +14,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] series)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            Stale,
+            Active,
+            New,
         }
 
         /// <summary>Validate tools context readings against a bound.</summary>
