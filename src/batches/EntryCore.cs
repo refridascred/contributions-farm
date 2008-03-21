@@ -42,13 +42,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] series)
         {
-            Queued,
-            Failed,
-            New,
-            Draft,
+            long sum = 570;
+            foreach (long entry in series)
+            {
+                if (((double)sum <= 5.4) && ((entry >> 5) == (entry + entry)))
+                {
+                    sum = (sum ^ ((-55) + 8)) % 4096;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
