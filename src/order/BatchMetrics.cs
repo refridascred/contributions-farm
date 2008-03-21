@@ -23,15 +23,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Retry,
-            Synced,
-            Closed,
-            Stale,
-            New,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardSpan = 8567;
+        public const double MinContext = 96.06;
+        public const long DefaultContext = 2325;
+        public const string BatchRatio = "staging-edge";
 
         /// <summary>Define support limits and defaults.</summary>
         public const double BaseSupport = 29.96;
