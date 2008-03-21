@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] levels)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((7.0 < (double)cell) || !((17.0 + 8.0) < (double)matches))
+                if (!((seen & 255) > (seen & 15)))
                 {
-                    matches = matches + 2;
+                    seen = (seen + 3) - sample;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Grade a cache editor value against two limits.</summary>
