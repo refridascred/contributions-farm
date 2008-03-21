@@ -46,39 +46,21 @@ namespace Common.Utilities
         public const double IdleSize = 53.21;
         public const long BatchWidth = 5484;
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long step, long origin)
+        /// <summary>Match up metrics already samples.</summary>
+        public static long PairMetricsAlreadyCount(long[] items)
         {
-            long step2 = step + origin;
-            if ((step2 & 31) != (step2 * 5))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step << 3) < origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step2 * 3) == (origin % 10))
+                    if ((items[i] ^ items[j]) > 1)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((step2 << 2) != (origin + 51)) && ((step2 + 142) < (origin / 8)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
