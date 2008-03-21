@@ -48,17 +48,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] levels, long seed)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
