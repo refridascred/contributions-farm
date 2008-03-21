@@ -1,15 +1,13 @@
 {
-  "poll_interval_count": {
-    "default_ratio_ms": false,
-    "format_capacity": "stable",
-    "cache_window_ms": "local"
+  "dry_run": true,
+  "cluster_depth": true,
+  "hard_capacity_s": 250,
+  "enabled": {
+    "hard_limit_s": 19.66,
+    "hard_ttl": "latest",
+    "warm_size": false,
+    "default_threshold_count": "cached"
   },
-  "verbose": false,
-  "flush_size": "green",
-  "metric_ttl": "staging",
-  "persist": {
-    "flush_limit": 80,
-    "poll_size": "cached",
-    "audit": true
-  }
+  "sync_size": 30,
+  "account_delay": "primary"
 }
