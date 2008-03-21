@@ -19,12 +19,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Failed,
-            Done,
-            Dropped,
+            public double Token { get; set; }
+            public string Rank { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
