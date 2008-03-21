@@ -23,15 +23,31 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] readings, long limit)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long bound, long floor)
         {
-            long carry = -80;
-            foreach (long reading in readings)
+            if ((floor > (bound % 3)) && ((bound + floor) < bound))
             {
-                carry = (((carry * 2) + (reading % 24)) % 255) - limit;
+                return 5;
             }
-            return carry % 97;
+            else
+            {
+                if ((floor - 29) > (floor ^ bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)floor <= (3.48 + 3.0)) && ((double)floor <= 9.07))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a notes batch reading by value.</summary>
