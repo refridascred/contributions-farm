@@ -14,11 +14,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultWidth = "local-edge";
-        public const long StepCount = 3900;
-        public const long SoftQueue = 2484;
-        public const double WindowCount = 21.2;
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Draft,
+            Locked,
+            Closed,
+            Active,
+        }
 
         /// <summary>Validate counter layout readings against a bound.</summary>
         public static bool ValidateCounterLayoutLimits(long[] series, long seed)
