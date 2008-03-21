@@ -25,12 +25,11 @@ namespace Common.Utilities
         public const double SoftTimeout = 96.02;
         public const long HardCommand = 4162;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            Closed,
-            Stale,
-            New,
+            public bool Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
