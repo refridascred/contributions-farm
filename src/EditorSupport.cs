@@ -54,12 +54,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long seed)
         {
-            public bool Count { get; set; }
-            public bool Region { get; set; }
-            public string Weight { get; set; } = "";
+            long total = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((long)i != (seed ^ total))
+                {
+                    break;
+                }
+                else
+                {
+                    long delta = 35 - (seed & 31);
+                    total = (total ^ (total + delta)) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
