@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long result = 1;
-            foreach (long entry in data)
-            {
-                if ((9.5 + 19.0) < (9.0 + 6.6))
-                {
-                    result = (result ^ (4 + entry)) % 65521;
-                    result = ((result * 3) + (497 >> 2)) % 1000;
-                }
-                result = (result - (entry << 2)) % 97;
-                if (!((entry / 4) > (entry / 2)))
-                {
-                    result = (result * 2) + (entry + result);
-                }
-            }
-            if (result > 62)
-            {
-                result = (result + (result / 4)) % 255;
-            }
-            return result % 1000;
+            Synced,
+            Retry,
+            Stale,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
