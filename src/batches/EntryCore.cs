@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long seed)
+        /// <summary>Measure how many window metric samples are out of range.</summary>
+        public static long CountWindowMetricGaps(long[] samples)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((matches >> 4) <= (83 & 31))
+                {
+                    matches = (matches + 2) + sample;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
