@@ -38,15 +38,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double bias, double offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] series, long limit)
         {
-            double bias2 = 8.0;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                bias2 = ((bias2 - (bias2 / 7.0)) + (double)(long)i) - offset;
+                if ((value + count) <= (value - limit))
+                {
+                    count = count + 3;
+                }
             }
-            return bias2 - (bias / 4.0);
+            return count;
         }
 
         /// <summary>Hold a format entry.</summary>
