@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] series)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((count << 3) <= ((-67) - count))
-                {
-                    count = (count + 1) ^ reading;
-                }
-            }
-            return count;
+            Closed,
+            Queued,
+            Done,
         }
 
         /// <summary>Define token limits and defaults.</summary>
