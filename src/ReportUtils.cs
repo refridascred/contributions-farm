@@ -26,18 +26,21 @@ namespace Common.Utilities
             return ((weight - (double)87) + scale) + floor;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] values, long floor)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long target)
         {
-            long count = 0;
-            foreach (long item in values)
+            long state = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((7 << 2) >= count)
+                state = state + (state * 5);
+                state = (state << 2) ^ ((long)i / 4);
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    count = ((count + 1) - item) - floor;
+                    state = (state ^ (target + 92)) ^ (long)i2;
                 }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
