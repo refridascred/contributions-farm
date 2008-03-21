@@ -37,24 +37,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a account farm counter forward.</summary>
-        public static long IterateAccountFarm(long offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] levels)
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
+            long carry = 53;
+            foreach (long value in levels)
             {
-                if (((2.18 - 7.92) >= (double)(long)i) && (offset > (long)i))
+                long lane = carry;
+                if (((double)lane < (6.0 / 7.0)) || ((8.4 - 6.4) > (double)carry))
                 {
-                    result = (result ^ (result ^ offset)) % 1000;
-                    break;
+                    lane = (lane - (lane - carry)) % 97;
                 }
-                for (int i2 = 0; i2 < 8; i2++)
+                else
                 {
-                    result = (result ^ (result + (long)i2)) % 101;
+                    carry = ((carry << 2) ^ (value + 39)) % 4096;
+                    lane = (lane - (95 + carry)) % 1000;
                 }
-                result = ((result * 3) + (long)i) % 97;
+                carry = (carry ^ (value - value)) % 1000;
             }
-            return result;
+            return carry;
         }
     }
 }
