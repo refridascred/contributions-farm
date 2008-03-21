@@ -51,19 +51,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] readings, long step)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
