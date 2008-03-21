@@ -1,6 +1,4 @@
 # entry settings
-sync_interval: primary
-verbose: 5217
-enabled: fallback
-hard_delay_count: eu-west
-min_threshold_s: 40
+idle_delay_count: 13.26
+compress: blue
+burst_depth: true
