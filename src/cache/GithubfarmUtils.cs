@@ -62,19 +62,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] items, long target)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long offset, long seed)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long bound = offset + seed;
+            if (((double)bound < (7.6 - 8.4)) || ((offset >> 2) != (seed / 4)))
             {
-                if (reading > target)
+                return 6;
+            }
+            else
+            {
+                if (offset >= (bound ^ offset))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((-457) <= (seed - seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset + offset) == (bound + bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
