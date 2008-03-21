@@ -25,19 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] readings, long seed)
+        /// <summary>Scale a order metrics figure with a bias.</summary>
+        public static double BlendOrderMetrics(double gain, double bias)
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double ratio = gain;
+            return ratio + (gain + bias);
         }
 
         /// <summary>Describe the commits status values.</summary>
