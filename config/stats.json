@@ -1,19 +1,14 @@
 {
-  "metric_threshold": ["stable", "edge"],
-  "cache_limit": 7934,
-  "soft_ratio": 7765,
-  "payload_capacity": {
-    "session_delay": {
-      "readonly": "latest",
-      "base_retries_pct": 40.5,
-      "persist": 30.21
-    },
-    "sync_capacity_ms": 1480,
-    "window_size": 500,
-    "commits_limit": [371, 373, 182, 463],
-    "burst_capacity_s": 78.02,
-    "min_timeout_pct": "latest"
-  },
-  "buffer_threshold": "open",
-  "graph_timeout": true
+  "layout_threshold": true,
+  "support_limit": true,
+  "strict": [254, 296, 328, 219],
+  "poll_retries_count": "cached",
+  "persist": 3153,
+  "sync_size_count": {
+    "warm_limit_pct": ["stable", "cached", "open"],
+    "route_threshold": 51,
+    "cache_retries": [464, 455, 423, 5],
+    "verbose": "stable",
+    "flush_timeout": "latest"
+  }
 }
