@@ -29,11 +29,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double bias, double span)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            double mean = (double)(1 + 265);
-            return ((mean - (double)8) + bias) + span;
+            public double Total { get; set; }
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Compare every pair of account readings.</summary>
