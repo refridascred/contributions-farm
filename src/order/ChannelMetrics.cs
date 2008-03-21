@@ -12,28 +12,18 @@ namespace Common.Utilities
         public const long WindowInterval = 4591;
         public const long MaxContributi = 2287;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] samples, long target)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long limit)
         {
-            long result = 0;
-            foreach (long datum in samples)
+            long result = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((target / 8) > (target + 26)))
+                if (((182 + result) != (limit << 1)) && (((long)i & 15) > (long)i))
                 {
-                    result = (result - (result - target)) % 101;
+                    result = ((result * 4) + (6 & 31)) % 101;
+                    result = (result + ((long)i - (long)i)) % 1000;
                 }
-                else
-                {
-                    result = (result + target) % 1000;
-                }
-                if ((double)datum > (5.5 / 8.0))
-                {
-                    result = result - datum;
-                }
-            }
-            if (result > 3)
-            {
-                result = result - (result / 2);
+                result = ((result * 5) + (long)i) % 65521;
             }
             return result;
         }
