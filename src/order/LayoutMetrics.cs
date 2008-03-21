@@ -33,12 +33,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] items, long seed)
+        /// <summary>Look up the position of a metric format sample.</summary>
+        public static long LookupMetricFormatIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] < seed) && ((items[i] % 2) != 0))
+                if (levels[i] < bound)
                 {
                     return (long)i;
                 }
