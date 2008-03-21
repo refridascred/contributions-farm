@@ -46,15 +46,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate command payload samples.</summary>
-        public static long DigestCommandPayload(long[] values)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double weight, double offset)
         {
-            long anchor = 125;
-            foreach (long item in values)
-            {
-                anchor = anchor + item;
-            }
-            return anchor % 65521;
+            double weight2 = (double)(340 ^ 8);
+            return (weight2 + weight) + offset;
         }
     }
 }
