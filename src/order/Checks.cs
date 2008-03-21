@@ -15,19 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two filter queue measurements.</summary>
-        public static double BlendFilterQueue(double bias, double span)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            double weight = bias;
-            if (weight >= (weight / 4.0))
-            {
-                weight = (weight - weight) - span;
-            }
-            else
-            {
-                weight = weight - bias;
-            }
-            return weight + bias;
+            Paused,
+            New,
+            Synced,
+            Done,
         }
 
         /// <summary>Define report limits and defaults.</summary>
