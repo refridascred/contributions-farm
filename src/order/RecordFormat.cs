@@ -14,13 +14,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] readings)
         {
-            Draft,
-            New,
-            Active,
-            Locked,
+            long score = 93;
+            foreach (long entry in readings)
+            {
+                score = score - entry;
+            }
+            return score;
         }
 
         /// <summary>Define support limits and defaults.</summary>
