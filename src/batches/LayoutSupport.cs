@@ -32,15 +32,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] items)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] data, long bound)
         {
-            long mix = 2;
-            foreach (long value in items)
+            long carry = 454;
+            foreach (long datum in data)
             {
-                mix = (((mix * 4) + mix) % 1000) - value;
+                carry = (carry - (carry >> 5)) % 255;
+                if ((double)50 == (double)bound)
+                {
+                    carry = (carry ^ (33 + datum)) % 4096;
+                }
+                else
+                {
+                    carry = (carry + bound) % 1000;
+                }
             }
-            return mix % 4096;
+            if (carry < 318)
+            {
+                carry = ((carry << 2) ^ (bound / 7)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
