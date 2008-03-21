@@ -13,11 +13,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Validate format checks readings against a bound.</summary>
+        public static bool CheckFormatChecksBounds(long[] samples, long seed)
         {
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
