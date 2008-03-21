@@ -1,10 +1,18 @@
 # entry settings
-audit: 30
-token_size: true
-min_threshold_pct:
-  counter_threshold: 19.3
-  entry_threshold: 87
-  cache_delay_s: 20.42
-  warm_limit_count: 49
-graph_limit: false
-max_size: 60
+flush_ratio_ms: stable
+retry_ratio:
+  cache_ttl_pct: true
+  poll_ttl_count:
+    min_window_pct: edge
+    flush_threshold_count: 5103
+    retry_size_ms: 42.84
+    retry_ttl_ms:
+      - open
+      - strict
+      - green
+      - blue
+  filter_capacity: true
+  audit: latest
+audit: 60
+min_size: false
+cache_threshold_s: 500
