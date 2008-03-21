@@ -49,12 +49,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Locate a metric filter reading by value.</summary>
+        public static long LocateMetricFilterIndex(long[] values, long step)
         {
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= step) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
