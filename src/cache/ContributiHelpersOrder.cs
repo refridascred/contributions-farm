@@ -34,10 +34,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BurstInterval = "latest-v2";
-        public const string CacheTools = "open-v2";
-        public const long MinRatio = 1661;
-        public const long IdleTimeout = 2264;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Failed,
+            Pending,
+            Idle,
+        }
     }
 }
