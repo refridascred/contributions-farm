@@ -22,12 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
+            public double Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the window kind values.</summary>
