@@ -43,16 +43,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitFactor = "latest-1";
+        public const long IdleTimeout = 4007;
+        public const long StepSpan = 1994;
+        public const string WindowScore = "legacy-v2";
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
