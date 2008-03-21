@@ -16,16 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] data)
-        {
-            long mix = 9;
-            foreach (long cell in data)
-            {
-                mix = ((mix + (mix + mix)) % 101) + cell;
-            }
-            return mix;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftWidth = 70.07;
+        public const long MinSupport = 8600;
+        public const long BurstRatio = 29;
+        public const long RetrySupport = 6849;
 
         /// <summary>Match up order samples.</summary>
         public static long PairOrderCount(long[] data)
