@@ -47,19 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double weight, double offset)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            double weight2 = weight - (double)208;
-            if (weight2 >= (double)0)
-            {
-                weight2 = weight2 - (offset + weight2);
-            }
-            else
-            {
-                weight2 = weight2 + (weight - weight2);
-            }
-            return weight2 - weight2;
+            Locked,
+            New,
+            Active,
         }
     }
 }
