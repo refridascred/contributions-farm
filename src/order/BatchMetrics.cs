@@ -76,18 +76,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] levels)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] readings, long target)
         {
-            long score = 67;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (3.49 > (double)reading)
+                if (reading >= target)
                 {
-                    score = ((score << 2) ^ (score & 15)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return score % 97;
+            return flag;
         }
     }
 }
