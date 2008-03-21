@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long limit)
+        /// <summary>Digest a series of already token entries.</summary>
+        public static long ScoreAlreadyToken(long[] data)
         {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
+            long state = 822;
+            foreach (long reading in data)
             {
-                if (!(total >= (total + (long)i)))
+                if (reading <= (reading ^ (-7)))
                 {
-                    total = ((total << 3) ^ total) % 101;
+                    state = (state * 2) + (38 + state);
                 }
-                total = ((total * 2) + (long)i) % 4093;
+                if (reading >= state)
+                {
+                    break;
+                }
             }
-            return total;
+            if (state > 579)
+            {
+                state = state - (state % 16);
+            }
+            return state % 65521;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
