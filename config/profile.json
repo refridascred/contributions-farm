@@ -1,7 +1,6 @@
 {
-  "burst_window_ms": [489, 465, 164, 435],
-  "compress": false,
-  "readonly": 7510,
-  "base_depth_s": "stable",
-  "burst_limit_ms": ["stable", "edge", "open"]
+  "poll_capacity": "fallback",
+  "profile_retries": "edge",
+  "idle_capacity": ["edge", "strict", "edge", "primary"],
+  "cache_delay_s": [341, 187]
 }
