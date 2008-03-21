@@ -40,11 +40,13 @@ namespace Common.Utilities
         public const long MinSize = 6289;
         public const double LimitCache = 47.06;
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            public string Level { get; set; } = "";
-            public bool Region { get; set; }
+            New,
+            Retry,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Compare every pair of farm session readings.</summary>
