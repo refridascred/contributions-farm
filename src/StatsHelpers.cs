@@ -12,20 +12,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Iterate the filter batches series from a seed.</summary>
-        public static long SeriesFilterBatches(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = (carry + offset) + (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 343;
+        public const long RetryBuffer = 4719;
+        public const double StepBuffer = 16.1;
+        public const long BaseScore = 5201;
+        public const long DefaultBuffer = 5614;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BaseBudget = 6787;
