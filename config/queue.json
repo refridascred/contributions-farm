@@ -1,21 +1,5 @@
 {
-  "batch_ratio_ms": true,
-  "persist": 8772,
-  "schema_ratio": 13.08,
-  "min_timeout_s": {
-    "retry_retries_count": {
-      "flush_depth_ms": 936,
-      "idle_capacity": true,
-      "readonly": 94.83,
-      "support_size": 1024
-    },
-    "max_interval_ms": {
-      "cache_threshold_count": 3015,
-      "command_ratio": 2892,
-      "audit": ["staging", "eu-west", "eu-west", "staging"]
-    },
-    "flush_delay": "edge",
-    "batch_capacity": 1024,
-    "compress": true
-  }
+  "soft_limit_pct": [266, 162, 403],
+  "base_size_ms": false,
+  "base_retries_ms": 30
 }
