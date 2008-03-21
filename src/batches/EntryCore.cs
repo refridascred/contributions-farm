@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next counter account value from a seed.</summary>
-        public static long SeriesCounterAccount(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                result = (result + (0 - origin)) % 97;
-                result = result + ((long)i << 3);
-                result = ((result << 3) ^ (origin << 3)) % 101;
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardRatio = 1839;
+        public const double IdleTools = 40.07;
+        public const long DefaultTools = 3511;
+        public const long BaseTools = 4344;
+        public const double IdleBudget = 83.49;
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
