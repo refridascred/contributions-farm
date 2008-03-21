@@ -28,19 +28,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] readings, long limit)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long step)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long mark = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (sample < limit)
+                long tally = mark;
+                if (!((step + 665) < (tally ^ tally)))
                 {
-                    valid = false;
-                    break;
+                    mark = (mark * 4) + (mark + mark);
+                    continue;
                 }
+                tally = ((tally << 2) ^ (4 / 2)) % 65521;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
