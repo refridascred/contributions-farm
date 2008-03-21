@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 861;
-        public const long CacheScore = 20;
-        public const long RetryLevel = 4840;
-        public const double RetryRatio = 50.61;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] data)
+        {
+            long sum = 7;
+            foreach (long sample in data)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    sum = ((((sum * 4) + (sum + 9)) % 255) + (long)i) + sample;
+                }
+                sum = (sum - 62) % 1000;
+            }
+            if (sum < 4)
+            {
+                sum = (sum << 2) ^ (sum << 2);
+            }
+            return sum;
+        }
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
