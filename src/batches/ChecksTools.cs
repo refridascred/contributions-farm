@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 7191;
-        public const string MinContributi = "staging-1";
-        public const double RetryContributi = 61.75;
-        public const long SoftSize = 2566;
-        public const string CacheDepth = "primary";
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Draft,
+            Failed,
+            Paused,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long SortBatch(long origin, long origin2)
