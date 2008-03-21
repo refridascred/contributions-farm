@@ -62,22 +62,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] samples, long origin)
+        /// <summary>Roll a report channel counter forward.</summary>
+        public static long IterateReportChannel(long floor)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (tally > (tally << 1))
-                {
-                    tally = ((tally + 2) + reading) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
     }
 }
