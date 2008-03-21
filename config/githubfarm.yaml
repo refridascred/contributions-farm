@@ -1,6 +1,13 @@
 # githubfarm settings
-enabled:
-  - stable
-  - stable
-verbose: 100
-idle_ratio: 30
+batch_capacity_ms: strict
+tools_depth: 500
+max_limit_s:
+  - 364
+  - 459
+readonly:
+  schema_retries: 500
+  tools_limit: green
+  audit: 5.71
+  batch_window: false
+  default_delay_ms: 27.66
+  max_depth: green
