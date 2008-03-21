@@ -23,12 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] values)
         {
-            Failed,
-            Pending,
-            Idle,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((entry - hits) != (entry << 3))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
