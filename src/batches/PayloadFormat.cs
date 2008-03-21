@@ -37,11 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
+            Locked,
+            Draft,
+            Failed,
         }
     }
 }
