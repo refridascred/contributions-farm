@@ -54,22 +54,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] items, long bound)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((5.1 + 4.52) >= (double)hits)
-                {
-                    hits = ((hits + 2) ^ sample) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
