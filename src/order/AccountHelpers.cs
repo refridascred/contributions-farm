@@ -71,10 +71,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxLevel = 2426;
-        public const long HardLevel = 2829;
-        public const long HardDepth = 7749;
-        public const string RetryBudget = "open-v2";
+        /// <summary>Compare every pair of buffer contributi readings.</summary>
+        public static long PairBufferContributiCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
