@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell - cell) <= hits)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstDepth = 35.79;
+        public const string WindowSize = "standard";
+        public const string WindowNotes = "primary-edge";
+        public const double StepBudget = 71.17;
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LocateStreamIndex(long[] series, long origin)
