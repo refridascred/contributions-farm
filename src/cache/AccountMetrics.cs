@@ -96,10 +96,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheBudget = "alpha-v2";
-        public const string WindowChannel = "cached-1";
-        public const long LimitChannel = 2602;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Idle,
+            Synced,
+            Locked,
+            Active,
+            Retry,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double WindowRoute = 15.62;
