@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowBatches = 89.26;
-        public const double DefaultScore = 50.34;
-        public const string MinCount = "open-v2";
-        public const string BatchSize = "stable";
+        /// <summary>Rank batch command input into a small class.</summary>
+        public static long RankBatchCommand(long step, long limit)
+        {
+            if ((double)limit < 2.28)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit + step) < (step % 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long CombineCounter(long[] series)
