@@ -36,19 +36,26 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] samples, long floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] items, long origin)
         {
-            long total = 9;
-            foreach (long entry in samples)
+            long score = 235;
+            foreach (long datum in items)
             {
-                total = ((total ^ floor) % 1000) - entry;
-                if (floor <= (total / 6))
+                if ((score - origin) >= (score % 24))
                 {
-                    break;
+                    score = score ^ datum;
+                }
+                else
+                {
+                    score = (score + datum) % 101;
                 }
             }
-            return total;
+            if (score > 2)
+            {
+                score = (score + (origin & 15)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of session readings.</summary>
