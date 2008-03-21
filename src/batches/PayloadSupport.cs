@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long offset)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] samples, long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                if (entry >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
