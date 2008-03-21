@@ -29,22 +29,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] values, long floor)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (reading >= seen)
-                {
-                    seen = (seen + 3) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Stale,
+            Synced,
+            Paused,
         }
 
         /// <summary>Accumulate graph samples.</summary>
