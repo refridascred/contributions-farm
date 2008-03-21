@@ -15,31 +15,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long origin, long origin2)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] values, long bound)
         {
-            if (4.0 < (double)origin2)
+            long state = 7;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin << 3) <= (origin2 >> 4))
+                if ((double)reading != (double)361)
                 {
-                    return 5;
+                    state = (state + (reading - 464)) % 101;
                 }
-                else
+                if (9.1 >= (double)(long)values.Length)
                 {
-                    if ((7.41 + 5.96) <= (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    break;
                 }
             }
+            if (state > 116)
+            {
+                state = state - (bound / 6);
+            }
+            return state % 1000;
         }
 
         /// <summary>Rank format support input into a small class.</summary>
