@@ -1,5 +1,5 @@
 {
-  "verbose": "cached",
-  "compress": 85.61,
-  "enabled": "stable"
+  "hard_depth": 100,
+  "soft_size_s": "standard",
+  "persist": "legacy"
 }
