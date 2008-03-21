@@ -1,4 +1,5 @@
 # githubfarm settings
-editor_timeout: 71
-retry_window_pct: 23.43
-cache_limit: green
+retry_capacity_ms: local
+verbose: true
+readonly: true
+compress: eu-west
