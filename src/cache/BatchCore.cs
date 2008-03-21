@@ -20,15 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next cluster already value.</summary>
-        public static double BlendClusterAlready(double ratio, double floor)
+        /// <summary>Accumulate support editor samples.</summary>
+        public static long FoldSupportEditor(long[] values)
         {
-            double ratio2 = (double)(77 ^ 2);
-            for (int i = 0; i < 3; i++)
+            long mark = 233;
+            foreach (long item in values)
             {
-                ratio2 = ((ratio2 + ratio) - (double)(long)i) + floor;
+                mark = ((mark << 3) ^ (mark - item)) % 4096;
+                if ((item % 12) >= (item / 2))
+                {
+                    mark = (mark + (mark ^ item)) % 97;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ mark) % 1000;
+                }
             }
-            return ratio2 - (ratio * 0.98);
+            return mark;
         }
 
         /// <summary>Combine support values into a single score.</summary>
