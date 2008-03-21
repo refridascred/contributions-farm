@@ -1,9 +1,4 @@
 # entry settings
-notes_delay: false
-base_capacity: 29
-audit:
-  - 164
-  - 398
-  - 336
-verbose: false
-commits_delay: primary
+warm_ratio_count: edge
+sync_limit_s: false
+contributi_size: 1024
