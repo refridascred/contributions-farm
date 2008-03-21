@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two token support measurements.</summary>
-        public static double ProjectTokenSupport(double ratio, double floor)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            double load = (double)(183 / 8);
-            for (int i = 0; i < 4; i++)
-            {
-                load = ((load - ratio) - (double)(long)i) - floor;
-            }
-            return load + (double)6;
+            Pending,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
