@@ -12,15 +12,22 @@ namespace Common.Utilities
             return gain2 - (floor / 8.0);
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] levels, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] data, long seed)
         {
-            long mix = 67;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                mix = (((mix << 3) ^ (bound % 24)) % 255) ^ sample;
+                if ((sample - seen) > seen)
+                {
+                    seen = (seen + 3) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
