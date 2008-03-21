@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxScore = 5192;
-        public const long StepRoute = 1250;
-        public const long CacheDepth = 5589;
-        public const long SoftRoute = 3641;
-        public const double BurstWidth = 59.66;
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long target, long offset)
+        {
+            long lane = target - offset;
+            if ((target - 610) > (target << 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if (lane <= (2 + target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long TallyChecksMatches(long[] levels)
