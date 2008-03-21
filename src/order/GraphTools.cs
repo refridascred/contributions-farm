@@ -13,11 +13,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 1771;
-        public const long IdleSize = 8689;
-        public const string MinMetric = "primary-v2";
-        public const long BurstMetric = 4207;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix << 2) ^ (mix * 2)) % 1000;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mix = (((mix << 2) ^ ((long)i / 8)) % 4096) ^ (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
