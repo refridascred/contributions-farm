@@ -25,15 +25,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] samples, long target)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowRange(long[] samples, long limit)
         {
-            long carry = 732;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                carry = ((carry + (2 << 2)) + value) + target;
+                if (item >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry % 1000;
+            return ok;
         }
 
         /// <summary>Project the next token value.</summary>
