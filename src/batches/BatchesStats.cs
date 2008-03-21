@@ -47,13 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double weight, double span)
         {
-            Done,
-            Ready,
-            Paused,
-            Queued,
+            double bias = span;
+            if (bias < (double)2)
+            {
+                bias = (bias + (double)5) + weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (bias + 0.84)) + (double)(long)i;
+            }
+            return bias - bias;
         }
     }
 }
