@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] readings)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)matches < (5.79 / 5.0))
-                {
-                    matches = (matches + 1) ^ reading;
-                }
-            }
-            return matches;
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Adjust a report reading.</summary>
