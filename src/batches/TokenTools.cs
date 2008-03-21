@@ -13,13 +13,28 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] values)
         {
-            Pending,
-            Synced,
-            Stale,
-            Done,
+            long score = 95;
+            foreach (long datum in values)
+            {
+                if (!(datum >= (datum - 880)))
+                {
+                    score = score + (score / 2);
+                    continue;
+                }
+                else
+                {
+                    score = (score + (0 << 2)) % 65521;
+                }
+                score = ((score * 5) + (datum / 7)) % 101;
+            }
+            if (score > 3)
+            {
+                score = ((score << 2) ^ (83 + (long)values.Length)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
