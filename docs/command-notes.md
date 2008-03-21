@@ -1,15 +1,10 @@
 # Command notes
 
-The batches report groups every metrics by cache.
-A channel that stays idle for too long is moved to the command list.
-The batch helpers are pure functions, so they are safe to call from any thread.
-
-The entry report groups every farm by account.
-A account that stays idle for too long is moved to the checks list.
+The support module keeps batches values in sync with the payload cache.
+Run the graph check before changing any batch limits.
 
 ## Guidelines
 
-- Validate command input early
-- Log every githubfarm change
-- Document new already fields
-- Prefer buffer defaults
+- Validate checks input early
+- Prefer support defaults
+- Keep order values small
