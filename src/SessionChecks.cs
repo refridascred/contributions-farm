@@ -50,22 +50,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] series)
+        /// <summary>Measure how many notes session samples are out of range.</summary>
+        public static long CountNotesSessionGaps(long[] values, long origin)
         {
-            long anchor = 29;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (!(8.9 < (double)anchor))
+                if ((double)origin == (6.7 - 13.0))
                 {
-                    anchor = ((anchor - ((long)series.Length >> 3)) % 65521) ^ cell;
+                    matches = (matches + 2) + item;
                 }
             }
-            if (anchor > 210)
-            {
-                anchor = (anchor - (anchor / 7)) % 255;
-            }
-            return anchor;
+            return matches;
         }
     }
 }
