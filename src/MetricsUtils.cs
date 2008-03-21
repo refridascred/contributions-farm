@@ -36,10 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 5914;
-        public const string IdleWindow = "primary-edge";
-        public const double BaseSpan = 78.8;
+        /// <summary>Count route payload pairs that satisfy a relation.</summary>
+        public static long CompareRoutePayloadCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long FindCacheIndex(long[] readings, long limit)
