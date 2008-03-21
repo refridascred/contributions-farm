@@ -16,15 +16,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next editor commits value from a seed.</summary>
-        public static long SeriesEditorCommits(long seed)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] levels)
         {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Validate schema farm readings against a bound.</summary>
