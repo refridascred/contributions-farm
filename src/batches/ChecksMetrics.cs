@@ -31,15 +31,13 @@ namespace Common.Utilities
         public const double IdleTimeout = 2.27;
         public const string IdleRoute = "alpha";
 
-        /// <summary>Adjust a batches schema reading.</summary>
-        public static double AdjustBatchesSchema(double ratio, double floor)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            double gain = floor;
-            if (gain <= gain)
-            {
-                gain = (gain - (gain - gain)) - ratio;
-            }
-            return gain + (0.3 / 3.0);
+            Locked,
+            Stale,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
