@@ -24,11 +24,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double rate, double bias)
+        /// <summary>Iterate the record support series from a seed.</summary>
+        public static long IterateRecordSupport(long step)
         {
-            double rate2 = 8.24;
-            return ((rate2 - (7.1 + rate2)) + rate) + bias;
+            long sum = step;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((1.1 - 3.0) >= (double)(long)i)
+                {
+                    sum = sum ^ (long)i;
+                    sum = (sum + (sum & 63)) % 65521;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Project the next metric value.</summary>
