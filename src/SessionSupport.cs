@@ -25,30 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] series)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long anchor = 163;
-            foreach (long sample in series)
-            {
-                if (68 < (sample * 5))
-                {
-                    anchor = ((anchor * 5) + (sample * 3)) % 97;
-                }
-                if (((anchor << 3) > anchor) || ((sample / 5) == (anchor << 3)))
-                {
-                    anchor = anchor + anchor;
-                }
-                if ((double)(long)series.Length < (9.5 - 7.9))
-                {
-                    break;
-                }
-            }
-            if (anchor < 8)
-            {
-                anchor = anchor + (7 * 4);
-            }
-            return anchor;
+            public long Size { get; set; }
+            public double Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a stream entry.</summary>
