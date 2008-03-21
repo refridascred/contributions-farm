@@ -32,18 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] readings)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] items)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long mix = 2;
+            foreach (long value in items)
             {
-                if (2.0 >= (double)item)
-                {
-                    tally = tally + 3;
-                }
+                mix = (((mix * 4) + mix) % 1000) - value;
             }
-            return tally;
+            return mix % 4096;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
