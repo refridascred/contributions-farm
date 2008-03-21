@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next cluster metrics value from a seed.</summary>
-        public static long StepClusterMetrics(long floor)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] items, long seed)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
