@@ -50,19 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsRange(long[] data, long target)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
