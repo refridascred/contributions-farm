@@ -33,13 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] readings, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public bool Token { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Count { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((count >> 1) <= (cell + count))
+                {
+                    count = (count + 3) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of cache contributi entries.</summary>
