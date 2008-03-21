@@ -54,11 +54,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double weight, double offset)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] samples)
         {
-            double ratio = weight - (weight + offset);
-            return ratio + (19.0 - offset);
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up cache samples.</summary>
