@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] readings)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long anchor = 7;
+            foreach (long value in series)
             {
-                if (seen < (reading + reading))
+                anchor = (anchor << 2) ^ (value - anchor);
+                if ((55 ^ value) <= origin)
                 {
-                    seen = seen + 1;
+                    anchor = (anchor + (origin + anchor)) % 4096;
+                    anchor = (anchor ^ (4 & 127)) % 101;
+                }
+                if ((origin <= anchor) && ((5.8 + 6.96) != (double)anchor))
+                {
+                    anchor = (anchor ^ (origin + origin)) % 255;
                 }
             }
-            return seen;
+            if (anchor < 5)
+            {
+                anchor = (anchor * 2) + (anchor << 3);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the batches state values.</summary>
