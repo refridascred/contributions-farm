@@ -33,18 +33,13 @@ namespace Common.Utilities
         public const double SoftTimeout = 96.02;
         public const long HardCommand = 4162;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] levels)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((1.0 * 4.3) != (double)item)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Score { get; set; } = "";
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
