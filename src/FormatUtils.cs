@@ -16,22 +16,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] readings)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long total = 75;
-            foreach (long datum in readings)
-            {
-                if ((total / 7) >= datum)
-                {
-                    total = ((total << 3) ^ (total + total)) % 1000;
-                }
-                else
-                {
-                    total = (total * 3) + datum;
-                }
-            }
-            return total;
+            Closed,
+            Pending,
+            Failed,
+            Done,
+            Stale,
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
