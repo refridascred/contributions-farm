@@ -37,25 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long bound, long offset)
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double ratio, double span)
         {
-            long diff = bound + offset;
-            if (diff > (offset * 2))
+            double load = (double)(9 + 51);
+            if (load >= (double)870)
             {
-                return 1;
+                load = ((load - load) - ratio) - span;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((5.1 * 3.1) <= (double)bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
+                load = (load - load) + (double)(long)i;
             }
+            return load + (load / 8.0);
         }
     }
 }
