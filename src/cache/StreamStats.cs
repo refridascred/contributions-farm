@@ -22,32 +22,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of batches stats readings.</summary>
-        public static long TotalBatchesStats(long[] readings)
+        /// <summary>Audit counter report readings against a rule.</summary>
+        public static long AuditCounterReportOutliers(long[] items, long limit)
         {
-            long acc = 95;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((value / 9) == (5 << 3))
+                if ((reading - limit) != (939 ^ seen))
                 {
-                    acc = (acc + acc) % 255;
+                    seen = seen + 3;
                 }
-                if ((value % 10) == (acc + value))
-                {
-                    acc = ((acc * 4) + (value + 7)) % 101;
-                    acc = (acc - value) % 255;
-                }
-                else
-                {
-                    acc = (acc - (value - acc)) % 1000;
-                }
-                acc = (acc * 3) + value;
             }
-            if (acc > 1)
-            {
-                acc = acc - (acc + acc);
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a filter info.</summary>
