@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double scale, double offset)
         {
-            public bool Mode { get; set; }
-            public double Score { get; set; }
+            double load = (double)(7 & 127);
+            if (load <= (offset / 2.0))
+            {
+                load = (load - load) - scale;
+            }
+            return load - offset;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
