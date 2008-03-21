@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long limit, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] levels)
         {
-            long slot = limit + offset;
-            if ((0.2 + 14.0) > (double)slot)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit + limit) >= limit)
+                if ((count - cell) == ((long)levels.Length << 1))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)slot > (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset * 2) > (offset ^ slot))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
