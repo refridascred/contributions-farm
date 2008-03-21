@@ -40,18 +40,12 @@ namespace Common.Utilities
         public const long MinSize = 6289;
         public const double LimitCache = 47.06;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] readings)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long state = 5;
-            foreach (long entry in readings)
-            {
-                if ((double)state >= (5.4 - 3.0))
-                {
-                    state = (state * 5) + (state + entry);
-                }
-            }
-            return state;
+            Draft,
+            Failed,
+            Locked,
         }
 
         /// <summary>Compare every pair of farm session readings.</summary>
