@@ -27,12 +27,22 @@ namespace Common.Utilities
         public const long BatchCommand = 9825;
         public const long IdleCommand = 3612;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] readings)
         {
-            Queued,
-            Stale,
-            Retry,
+            long acc = 3;
+            foreach (long reading in readings)
+            {
+                if (((reading - acc) < (acc ^ 39)) && ((reading + acc) == (reading & 255)))
+                {
+                    acc = (acc - 0) % 97;
+                }
+                if (((acc + acc) >= (830 / 5)) || ((double)(long)readings.Length == (9.39 / 3.0)))
+                {
+                    break;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Accumulate cache samples.</summary>
