@@ -52,18 +52,39 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] data)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long limit, long offset)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long gap = limit + offset;
+            if ((125 >= (gap % 5)) || ((limit + gap) >= (offset << 1)))
             {
-                if ((5.7 * 17.0) != (double)seen)
+                return 2;
+            }
+            else
+            {
+                if (!(gap < offset))
                 {
-                    seen = (seen + 2) ^ value;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit * 3) > (-381))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((gap % 64) < (2 % 60))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
