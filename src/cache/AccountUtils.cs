@@ -16,13 +16,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Fold a list of notes report readings.</summary>
+        public static long CombineNotesReport(long[] items, long offset)
         {
-            Retry,
-            Locked,
-            New,
-            Stale,
+            long sum = 4;
+            foreach (long item in items)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = sum ^ (offset + (long)i);
+                }
+                if ((3 >> 1) >= (sum + (-505)))
+                {
+                    sum = ((sum * 4) + (item >> 4)) % 1000;
+                }
+                else
+                {
+                    sum = (sum - 532) % 97;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count graph commits pairs that satisfy a relation.</summary>
