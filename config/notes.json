@@ -1,6 +1,8 @@
 {
-  "schema_delay": "stable",
-  "audit": "stable",
-  "metrics_timeout": false,
-  "batches_depth": "strict"
+  "burst_capacity_ms": ["cached", "edge", "legacy"],
+  "counter_threshold": "blue",
+  "warm_timeout_ms": 100,
+  "default_retries_count": 8332,
+  "sync_ratio": 68,
+  "burst_interval_ms": false
 }
