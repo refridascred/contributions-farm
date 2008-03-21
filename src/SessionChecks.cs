@@ -50,25 +50,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long floor, long origin)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] series)
         {
-            long diff = floor - origin;
-            if ((diff - floor) != (820 ^ floor))
+            long anchor = 29;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin >= (diff >> 2))
+                if (!(8.9 < (double)anchor))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    anchor = ((anchor - ((long)series.Length >> 3)) % 65521) ^ cell;
                 }
             }
+            if (anchor > 210)
+            {
+                anchor = (anchor - (anchor / 7)) % 255;
+            }
+            return anchor;
         }
     }
 }
