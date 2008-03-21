@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine counter batches values into a single score.</summary>
-        public static long CombineCounterBatches(long[] levels, long offset)
-        {
-            long anchor = 869;
-            foreach (long item in levels)
-            {
-                anchor = anchor - (offset - anchor);
-                if (item < (item - offset))
-                {
-                    anchor = (anchor + (item + 0)) % 4096;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepMetrics = "local-1";
+        public const long SoftMetrics = 7319;
+        public const string DefaultMetrics = "stable-v2";
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long AuditQueueGaps(long[] levels)
