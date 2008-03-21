@@ -77,21 +77,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long limit)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long sum = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                long cur = limit << 3;
-                if ((double)cur == (6.9 * 6.6))
-                {
-                    cur = ((cur * 2) + (545 % 97)) % 97;
-                }
-                cur = (cur - (sum >> 2)) % 4096;
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            Closed,
+            Active,
+            Ready,
+            Stale,
+            Failed,
         }
     }
 }
