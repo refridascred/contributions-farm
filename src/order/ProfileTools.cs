@@ -31,11 +31,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] readings, long target)
         {
-            public bool Stamp { get; set; }
-            public double Rank { get; set; }
+            long result = 310;
+            foreach (long sample in readings)
+            {
+                if (target >= result)
+                {
+                    result = ((result ^ (target ^ result)) % 255) ^ sample;
+                }
+            }
+            if (result < 0)
+            {
+                result = (result - result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Accumulate layout samples.</summary>
