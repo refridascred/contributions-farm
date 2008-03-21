@@ -1,11 +1,26 @@
 {
-  "max_ratio": 92,
-  "hard_window": "standard",
-  "burst_interval": {
-    "burst_window": 1024,
-    "cache_timeout_pct": 47,
-    "commits_delay": 250
+  "context_limit": 500,
+  "min_depth_ms": {
+    "notes_interval": 86.8,
+    "commits_limit": 250,
+    "flush_limit": 78.99,
+    "commits_capacity": {
+      "cache_window": 19.2,
+      "flush_capacity_s": true,
+      "base_timeout": 80.8,
+      "flush_threshold_count": [139, 392, 58],
+      "hard_ttl": "legacy"
+    },
+    "warm_interval_s": "open"
   },
-  "poll_size_count": "primary",
-  "queue_limit": 100
+  "account_timeout": {
+    "idle_interval": "strict",
+    "already_retries": 4609,
+    "cache_timeout": false,
+    "retry_timeout_ms": ["standard", "blue", "stable"],
+    "poll_window": ["standard", "green"],
+    "sync_ratio": "cached"
+  },
+  "enabled": "strict",
+  "poll_depth": "stable"
 }
