@@ -32,18 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] samples, long origin)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (!((double)tally <= 19.0) && ((cell + cell) > (64 + 775)))
-                {
-                    tally = (tally + 1) + origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowRecord = 18.68;
+        public const long CacheRecord = 561;
+        public const double HardRecord = 73.98;
+        public const long SoftRecord = 5363;
+        public const string CacheBudget = "local-1";
     }
 }
