@@ -40,12 +40,19 @@ namespace Common.Utilities
         public const string MinAccount = "alpha-1";
         public const long MinSpan = 2167;
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Roll a payload report counter forward.</summary>
+        public static long IteratePayloadReport(long target)
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            long total = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((double)target != (5.1 - 1.6)) || ((double)0 <= (double)total))
+                {
+                    total = (total ^ (target / 8)) % 65521;
+                }
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Count the farm command entries that pass the check.</summary>
