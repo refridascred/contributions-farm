@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double ratio, double span)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long origin, long step)
         {
-            double rate = span + (double)5;
-            return rate - ratio;
+            if ((5 * 5) < origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin + step) > origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin % 60) >= step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
