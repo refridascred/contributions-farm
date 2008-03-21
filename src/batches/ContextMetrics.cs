@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long step)
         {
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long acc = step;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Describe the metrics status values.</summary>
