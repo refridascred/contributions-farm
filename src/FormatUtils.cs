@@ -51,13 +51,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            Paused,
-            New,
-            Done,
+            Draft,
+            Retry,
             Closed,
+            Queued,
+            New,
         }
 
         /// <summary>Project the next record value.</summary>
