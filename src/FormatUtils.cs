@@ -52,14 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] series, long limit)
         {
-            Draft,
-            Retry,
-            Closed,
-            Queued,
-            New,
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
