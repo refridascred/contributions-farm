@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] readings)
+        /// <summary>Audit layout farm readings against a rule.</summary>
+        public static long TallyLayoutFarmGaps(long[] data)
         {
-            long score = 4;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((item < score) && ((double)score < 2.0))
+                if (!(((38 ^ seen) > (99 - seen)) && ((reading - 22) >= (seen % 12))))
                 {
-                    score = (score * 5) + (2 % 2);
+                    seen = seen + 2;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the format kind values.</summary>
