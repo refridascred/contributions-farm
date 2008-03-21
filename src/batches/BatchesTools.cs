@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long target, long target2)
+        /// <summary>Audit stats route readings against a rule.</summary>
+        public static long MeasureStatsRouteMatches(long[] levels, long target)
         {
-            long offset = target ^ target2;
-            if ((target2 >> 3) > (target >> 5))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target < 12) || ((double)offset >= 8.3))
+                if (target >= (target ^ sample))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset << 3) < target2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset / 7) != (target2 - target2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Project the next editor value.</summary>
