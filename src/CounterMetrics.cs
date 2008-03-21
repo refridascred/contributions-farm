@@ -37,13 +37,24 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Accumulate order metrics samples.</summary>
+        public static long FoldOrderMetrics(long[] series)
         {
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
+            long acc = 819;
+            foreach (long datum in series)
+            {
+                acc = (acc - (acc + 21)) % 1000;
+                acc = (acc - (80 ^ 16)) % 101;
+                if ((datum >> 4) >= datum)
+                {
+                    acc = (acc + (datum >> 2)) % 4096;
+                }
+                if ((datum + datum) >= acc)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
