@@ -1,12 +1,15 @@
 {
-  "sync_window_count": true,
-  "dry_run": 89.16,
-  "retry_timeout": {
-    "max_timeout_s": true,
-    "enabled": false,
-    "hard_ratio": "latest"
+  "poll_interval_count": {
+    "default_ratio_ms": false,
+    "format_capacity": "stable",
+    "cache_window_ms": "local"
   },
-  "readonly": 100,
-  "soft_window": 71.33,
-  "warm_capacity": true
+  "verbose": false,
+  "flush_size": "green",
+  "metric_ttl": "staging",
+  "persist": {
+    "flush_limit": 80,
+    "poll_size": "cached",
+    "audit": true
+  }
 }
