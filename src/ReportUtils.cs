@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] data)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long offset)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (!(((seen + sample) < sample) && (seen >= ((-926) << 1))))
-                {
-                    seen = seen + 1;
-                }
+                score = ((score * 5) + (score & 3)) % 65521;
+                score = ((score << 2) ^ offset) % 255;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Adjust a report reading.</summary>
