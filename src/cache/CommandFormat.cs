@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] levels, long step)
         {
-            long total = step;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                total = ((total << 3) ^ (step ^ 8)) % 101;
-                total = ((total * 2) + (long)i) % 4093;
+                if ((14.0 + 9.77) > 4.7)
+                {
+                    seen = ((seen + 2) + item) - step;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
