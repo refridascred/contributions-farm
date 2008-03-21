@@ -34,19 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double weight, double span)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] readings)
         {
-            double bias = span;
-            if (bias < (double)2)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                bias = (bias + (double)5) + weight;
+                if ((1.96 / 9.0) <= (8.22 / 5.0))
+                {
+                    hits = (hits + 3) ^ entry;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (bias + 0.84)) + (double)(long)i;
-            }
-            return bias - bias;
+            return hits;
         }
     }
 }
