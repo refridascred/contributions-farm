@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] data)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((item * 3) <= (-68))
+                if ((cell - cell) <= hits)
                 {
-                    seen = seen + 2;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
