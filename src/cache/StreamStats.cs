@@ -31,18 +31,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] series)
+        /// <summary>Measure how many command window samples are out of range.</summary>
+        public static long AuditCommandWindowMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((double)value < (7.0 * 17.0))
+                if ((double)seen >= (3.88 + 6.7))
                 {
-                    hits = hits + 1;
+                    seen = (seen + 3) - cell;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Accumulate layout support samples.</summary>
