@@ -58,18 +58,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many notes session samples are out of range.</summary>
-        public static long CountNotesSessionGaps(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((double)origin == (6.7 - 13.0))
-                {
-                    matches = (matches + 2) + item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BurstSize = 58.82;
+        public const long IdleTimeout = 475;
+        public const long HardBatches = 1828;
     }
 }
