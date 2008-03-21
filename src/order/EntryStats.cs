@@ -59,11 +59,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxSize = 7295;
-        public const string MaxInterval = "staging";
-        public const double MinInterval = 54.68;
-        public const string StepInterval = "staging-v2";
-        public const long RetryContext = 57;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public long Weight { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
