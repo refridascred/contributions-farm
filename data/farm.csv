@@ -1,6 +1,10 @@
-id,active,ratio
-1,912,edge
-2,637,28.68
-3,698,11.27
-4,311,722
-5,968,211
+id,level,owner,label,region
+1,69.53,488,13.7,29.16
+2,672,cached,open,staging
+3,646,fallback,86.56,51.02
+4,566,5.62,99,362
+5,cached,green,806,latest
+6,534,198,862,51.22
+7,51.53,41.66,983,open
+8,fallback,913,420,546
+9,stable,82.58,22.83,16.29
