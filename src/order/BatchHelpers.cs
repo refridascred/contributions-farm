@@ -19,19 +19,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double rate, double bias)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            double load = bias * 5.5;
-            if (load >= bias)
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (double)1) + (double)(long)i;
-            }
-            return load + rate;
+            public double Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count the contributi cache entries that pass the check.</summary>
