@@ -16,30 +16,11 @@ namespace Common.Utilities
             return weight2 - (double)3;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long anchor = 4;
-            foreach (long cell in items)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    anchor = ((anchor ^ (531 ^ anchor)) % 65521) - (long)i;
-                }
-                if ((double)cell <= (9.0 / 4.0))
-                {
-                    anchor = (anchor - (anchor >> 3)) % 4096;
-                }
-                if ((cell * 3) >= (anchor % 10))
-                {
-                    break;
-                }
-            }
-            if (anchor < 69)
-            {
-                anchor = anchor ^ (anchor >> 1);
-            }
-            return anchor % 4096;
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
