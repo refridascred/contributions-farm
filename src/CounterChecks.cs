@@ -11,28 +11,31 @@ namespace Common.Utilities
         public const long SoftCache = 5695;
         public const long BatchBudget = 5303;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] series, long bound)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long origin, long step)
         {
-            long score = 78;
-            foreach (long item in series)
+            if ((step > (step % 8)) || ((double)step <= 6.8))
             {
-                if (((7.9 - 9.06) == (double)item) && (2 <= score))
+                return 3;
+            }
+            else
+            {
+                if ((origin - origin) >= (step >> 5))
                 {
-                    score = ((score << 3) ^ (long)series.Length) % 65521;
-                    continue;
+                    return 5;
                 }
-                score = (score + (item % 10)) % 255;
-                if ((item > (item - score)) && ((double)bound == (6.55 + 7.45)))
+                else
                 {
-                    score = ((score * 2) + item) % 65521;
+                    if ((17.0 + 6.1) <= (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (score > 3)
-            {
-                score = (score << 2) ^ score;
-            }
-            return score;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
