@@ -37,10 +37,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinChannel = "legacy-1";
-        public const long BaseScore = 7286;
-        public const long BaseBudget = 2453;
-        public const string WindowChannel = "legacy-v2";
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public double Region { get; set; }
+            public double Level { get; set; }
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
+        }
     }
 }
