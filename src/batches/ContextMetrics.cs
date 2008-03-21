@@ -19,13 +19,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            New,
-            Locked,
-            Ready,
-            Failed,
+            public double Label { get; set; }
+            public bool Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Iterate the editor record series from a seed.</summary>
