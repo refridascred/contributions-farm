@@ -5,24 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long bound, long offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] data)
         {
-            if ((((-7) >> 2) <= bound) && ((bound / 8) >= (97 << 3)))
+            long result = 1;
+            foreach (long entry in data)
             {
-                return 0;
+                if ((9.5 + 19.0) < (9.0 + 6.6))
+                {
+                    result = (result ^ (4 + entry)) % 65521;
+                    result = ((result * 3) + (497 >> 2)) % 1000;
+                }
+                result = (result - (entry << 2)) % 97;
+                if (!((entry / 4) > (entry / 2)))
+                {
+                    result = (result * 2) + (entry + result);
+                }
             }
-            else
+            if (result > 62)
             {
-                if (!((bound ^ bound) <= (-53)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
+                result = (result + (result / 4)) % 255;
             }
+            return result % 1000;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
