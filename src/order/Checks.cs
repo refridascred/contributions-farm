@@ -58,11 +58,22 @@ namespace Common.Utilities
             return scale + 17.0;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] levels, long seed)
         {
-            public double Weight { get; set; }
-            public double Total { get; set; }
+            long sum = 4;
+            foreach (long entry in levels)
+            {
+                if (seed < (entry & 31))
+                {
+                    sum = sum - (entry + (long)levels.Length);
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (seed << 3)) % 4096;
+                }
+            }
+            return sum;
         }
     }
 }
