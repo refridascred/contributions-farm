@@ -61,21 +61,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count context report pairs that satisfy a relation.</summary>
-        public static long OverlapContextReportCount(long[] data)
+        /// <summary>Check that every queue stream entry stays within the limit.</summary>
+        public static bool CheckQueueStreamLimits(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item != target)
                 {
-                    if ((data[i] + data[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Accumulate batches samples.</summary>
