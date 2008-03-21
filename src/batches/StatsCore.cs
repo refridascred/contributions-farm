@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Compare every pair of editor session readings.</summary>
-        public static long CompareEditorSessionCount(long[] values)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long target, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((step - target) < target)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((6.8 - 5.33) < (double)step)
                 {
-                    if ((values[i] ^ values[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a account options.</summary>
