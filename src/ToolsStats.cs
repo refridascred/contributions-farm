@@ -33,21 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = offset;
+            if (scale > weight)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = scale - (double)42;
             }
-            return matches;
+            return scale + weight;
         }
 
         /// <summary>Adjust a editor reading.</summary>
