@@ -28,32 +28,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long floor, long limit)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long slot = floor + limit;
-            if ((limit + floor) <= (limit * 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit / 7) > (slot - floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (729 < (slot % 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Synced,
+            Active,
+            Failed,
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
