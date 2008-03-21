@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the stats farm entries that pass the check.</summary>
-        public static long TallyStatsFarmGaps(long[] values, long seed)
+        /// <summary>Audit contributi batch readings against a rule.</summary>
+        public static long TallyContributiBatchMatches(long[] samples)
         {
             long matches = 0;
-            foreach (long item in values)
+            foreach (long item in samples)
             {
-                if ((807 - matches) <= (47 / 4))
+                if (!((double)matches > (14.0 + 1.7)) && (((double)item < (8.03 / 3.0)) || ((matches + item) == (matches * 4))))
                 {
-                    matches = ((matches + 1) - item) + seed;
+                    matches = matches + 1;
                 }
             }
             return matches;
