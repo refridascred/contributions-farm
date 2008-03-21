@@ -29,12 +29,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardWindow = 23.94;
-        public const long RetryWindow = 464;
-        public const long BatchWindow = 2557;
-        public const string BurstWindow = "staging-v2";
-        public const double DefaultWindow = 86.8;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (seen > (entry ^ entry))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long TallyGraph(long[] series)
