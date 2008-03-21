@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 3793;
-        public const long CacheCount = 6494;
-        public const string BaseAlready = "legacy";
-        public const double HardAlready = 97.88;
-        public const long BurstBudget = 7288;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Paused,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string DefaultWidth = "local-edge";
