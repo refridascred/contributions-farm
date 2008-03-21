@@ -29,38 +29,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long seed, long seed2)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            if ((double)seed < (2.9 - 0.2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)seed != (double)28))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed * 5) >= (seed & 63))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)seed == (double)(-6))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public double Label { get; set; }
+            public double Weight { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Fold a list of format support readings.</summary>
