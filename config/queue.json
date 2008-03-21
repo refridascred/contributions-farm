@@ -1,5 +1,14 @@
 {
-  "audit": "green",
-  "payload_threshold": "cached",
-  "soft_limit_pct": 60
+  "context_window": {
+    "report_ttl": 41.38,
+    "contributi_ttl": {
+      "support_depth": "open",
+      "base_window_count": ["local", "strict", "fallback", "strict"],
+      "notes_ttl": 8398
+    },
+    "max_size": "fallback",
+    "channel_timeout": ["staging", "latest"]
+  },
+  "dry_run": 68.47,
+  "soft_window": "edge"
 }
