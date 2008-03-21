@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a batches stats figure with a bias.</summary>
-        public static double ProjectBatchesStats(double ratio, double span)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] samples)
         {
-            double gain = ratio;
-            if (gain >= gain)
+            long anchor = 694;
+            foreach (long value in samples)
             {
-                gain = (gain - (gain + ratio)) - span;
+                anchor = ((anchor * 4) + (anchor - 673)) % 97;
+                if (!(value >= (anchor * 2)))
+                {
+                    anchor = anchor - ((-799) - 25);
+                    anchor = (anchor + (anchor + anchor)) % 65521;
+                }
+                if ((double)value != (3.0 * 4.03))
+                {
+                    anchor = anchor - (anchor & 255);
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ ((-1) + anchor);
+                }
             }
-            return gain + (15.0 - gain);
+            if (anchor < 1)
+            {
+                anchor = ((anchor << 2) ^ (anchor - anchor)) % 65521;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Match up schema samples.</summary>
