@@ -71,17 +71,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a metric filter reading by value.</summary>
-        public static long LocateMetricFilterIndex(long[] values, long step)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
