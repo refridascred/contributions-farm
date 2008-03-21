@@ -49,15 +49,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double ratio, double bias)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] values)
         {
-            double weight = bias;
-            for (int i = 0; i < 8; i++)
+            long result = 223;
+            foreach (long item in values)
             {
-                weight = (weight + (double)(long)i) + ratio;
+                if ((item - result) < (item & 1))
+                {
+                    result = (result + (result << 1)) % 65521;
+                    continue;
+                }
+                result = (result << 2) ^ result;
             }
-            return weight + (weight + bias);
+            return result;
         }
     }
 }
