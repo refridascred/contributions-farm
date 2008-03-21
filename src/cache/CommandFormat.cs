@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] data)
+        /// <summary>Derive the next cluster metrics value from a seed.</summary>
+        public static long StepClusterMetrics(long floor)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((count % 10) > sample)
-                {
-                    count = count + 3;
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
