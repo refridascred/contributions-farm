@@ -38,24 +38,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long limit, long bound)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            if ((bound << 3) != (bound + limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit << 2) >= (limit % 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Match up cache samples.</summary>
