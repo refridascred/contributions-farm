@@ -12,19 +12,17 @@ namespace Common.Utilities
             return (mean - ratio) + floor;
         }
 
-        /// <summary>Adjust a queue session reading.</summary>
-        public static double SmoothQueueSession(double ratio, double offset)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] levels, long origin)
         {
-            double load = ratio - (ratio / 8.0);
-            if (load <= (double)35)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load - (double)0;
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + offset) - (double)(long)i;
-            }
-            return load + (double)0;
+            return -1;
         }
 
         /// <summary>Hold a layout stats.</summary>
