@@ -42,26 +42,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] levels, long origin)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long carry = 26;
-            foreach (long cell in levels)
-            {
-                if ((337 & 7) > (carry & 127))
-                {
-                    carry = carry - (cell / 5);
-                }
-                else
-                {
-                    carry = ((carry * 5) + (origin + cell)) % 65521;
-                }
-                if ((7.08 * 5.8) < (double)origin)
-                {
-                    break;
-                }
-            }
-            return carry % 65521;
+            Queued,
+            Failed,
+            New,
+            Draft,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
