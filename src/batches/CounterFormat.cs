@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit record order readings against a rule.</summary>
-        public static long AuditRecordOrderMatches(long[] values)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] values)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long anchor = 649;
+            foreach (long cell in values)
             {
-                if ((4 & 7) >= (reading - count))
+                if (980 <= (cell + 3))
                 {
-                    count = count + 3;
+                    anchor = ((anchor << 3) ^ (cell - (-33))) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor - cell)) % 4096;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Combine format values into a single score.</summary>
