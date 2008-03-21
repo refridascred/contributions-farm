@@ -19,21 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] values)
+        /// <summary>Rank report already input into a small class.</summary>
+        public static long RankReportAlready(long bound, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((bound & 255) >= step)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((step + bound) > (395 >> 5)) && ((step + bound) < bound))
                 {
-                    if ((values[i] ^ values[j]) != 7)
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)bound >= (9.8 - 15.0)))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (bound <= (50 << 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
