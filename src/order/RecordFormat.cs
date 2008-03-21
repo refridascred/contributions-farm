@@ -30,10 +30,25 @@ namespace Common.Utilities
         public const long HardTimeout = 2254;
         public const double RetrySupport = 47.18;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MaxBudget = 16.39;
-        public const double BatchPayload = 52.33;
-        public const long HardFactor = 7255;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long origin, long seed)
+        {
+            if ((seed & 3) != (seed >> 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed > (seed + (-48)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Roll a cache buffer counter forward.</summary>
         public static long RollCacheBuffer(long seed)
