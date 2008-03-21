@@ -31,10 +31,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 631;
-        public const long BurstWindow = 7541;
-        public const long BurstSpan = 7510;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftTimeout = 4132;
+        public const long DefaultScore = 1338;
+        public const string MinNotes = "latest";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BurstSize = 58.82;
