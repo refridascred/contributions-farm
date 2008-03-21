@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] items, long seed)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] readings, long target)
         {
-            long sum = -838;
-            foreach (long datum in items)
+            long mark = 414;
+            foreach (long entry in readings)
             {
-                sum = (sum - datum) - seed;
+                mark = (mark + (target - target)) ^ entry;
             }
-            return sum % 97;
+            if (mark > 31)
+            {
+                mark = ((mark * 2) + mark) % 1000;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Describe the command status values.</summary>
