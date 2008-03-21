@@ -1,4 +1,9 @@
 # entry settings
-idle_delay_count: 13.26
-compress: blue
-burst_depth: true
+notes_delay: false
+base_capacity: 29
+audit:
+  - 164
+  - 398
+  - 336
+verbose: false
+commits_delay: primary
