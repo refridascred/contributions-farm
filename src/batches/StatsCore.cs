@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinTimeout = 3617;
-        public const string RetryFarm = "local";
-        public const long CacheFarm = 7976;
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
+        {
+            Idle,
+            Retry,
+            Draft,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
