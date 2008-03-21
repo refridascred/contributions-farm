@@ -37,22 +37,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] items, long offset)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (10.0 < (double)offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 2) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] - samples[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
