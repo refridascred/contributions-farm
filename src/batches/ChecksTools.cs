@@ -52,31 +52,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a order context value against two limits.</summary>
-        public static long RankOrderContext(long floor, long seed)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] items)
         {
-            if ((91 * 4) >= (floor >> 2))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor >= seed)
+                if (((cell % 8) < (cell >> 4)) || (((cell % 16) >= 7) || ((matches >> 1) > matches)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed - floor) < (seed ^ floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
