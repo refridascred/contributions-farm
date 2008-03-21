@@ -33,18 +33,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] series)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long total = -11;
+            foreach (long entry in samples)
             {
-                if (((double)reading == (5.0 + 5.0)) || ((seen > reading) && ((3.0 - 6.96) >= (9.0 + 9.2))))
-                {
-                    seen = seen + 3;
-                }
+                total = (total ^ (entry - 44)) + target;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Match up support samples.</summary>
