@@ -34,12 +34,26 @@ namespace Common.Utilities
             return rate - 6.0;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BurstFactor = 25.96;
-        public const long BaseSize = 8393;
-        public const long DefaultScore = 8913;
-        public const long BatchWidth = 9469;
-        public const string RetryQueue = "staging-v2";
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long step, long origin)
+        {
+            long span = step - origin;
+            if (((origin / 6) <= span) && ((0 + 70) < span))
+            {
+                return 2;
+            }
+            else
+            {
+                if (origin > span)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TotalBatches(long[] readings)
