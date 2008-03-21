@@ -40,17 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first payload contributi entry that matches the target.</summary>
-        public static long SeekPayloadContributiIndex(long[] values, long origin)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] samples, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if (values[i] == origin)
+                if (item != seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
