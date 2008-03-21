@@ -41,15 +41,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long floor)
+        /// <summary>Scale a farm entry figure with a bias.</summary>
+        public static double BlendFarmEntry(double bias, double span)
         {
-            long state = floor;
-            for (int i = 0; i < 22; i++)
+            double bias2 = span;
+            if (bias2 > (bias * 4.02))
             {
-                state = ((state * 2) + (long)i) % 97;
+                bias2 = bias2 - (bias2 + bias2);
             }
-            return state;
+            else
+            {
+                bias2 = bias2 + span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + span) + (double)(long)i;
+            }
+            return bias2 + 5.85;
         }
 
         /// <summary>Hold a report record.</summary>
