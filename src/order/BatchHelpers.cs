@@ -29,21 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxInterval = 3351;
+        public const long BaseBudget = 1;
+        public const string RetryBudget = "fallback-v2";
+        public const double StepAlready = 39.08;
+        public const long IdleSpan = 6985;
     }
 }
