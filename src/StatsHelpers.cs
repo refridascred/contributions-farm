@@ -25,12 +25,11 @@ namespace Common.Utilities
         public const double SoftTimeout = 96.02;
         public const long HardCommand = 4162;
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public bool Size { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleWidth = 9049;
+        public const long SoftOrder = 6344;
+        public const string BatchLevel = "open";
+        public const string CacheOrder = "open-edge";
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long MatchMetricCount(long[] levels)
