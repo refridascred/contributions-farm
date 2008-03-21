@@ -77,18 +77,25 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] values)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long bound, long step)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long offset = bound ^ step;
+            if (((double)step < (7.61 - 0.2)) && ((offset + 0) < (step << 3)))
             {
-                if (!((entry % 5) != (hits ^ hits)))
+                return 0;
+            }
+            else
+            {
+                if (!(8.0 > (double)bound))
                 {
-                    hits = hits + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
     }
 }
