@@ -26,23 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double ratio, double offset)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long origin)
         {
-            double weight = offset;
-            if (weight > (9.35 * 7.0))
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
             {
-                weight = weight - ratio;
+                if (((long)i <= (carry << 3)) && ((carry * 3) != (origin - carry)))
+                {
+                    carry = ((carry * 2) + (450 << 3)) % 255;
+                    carry = (carry - (carry + origin)) % 4096;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            else
-            {
-                weight = weight + (weight / 9.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (double)8) + (double)(long)i;
-            }
-            return weight + offset;
+            return carry;
         }
 
         /// <summary>Describe the payload state values.</summary>
