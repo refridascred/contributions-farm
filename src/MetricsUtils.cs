@@ -37,18 +37,17 @@ namespace Common.Utilities
         public const string IdleWindow = "primary-edge";
         public const double BaseSpan = 78.8;
 
-        /// <summary>Count the session profile entries that pass the check.</summary>
-        public static long CountSessionProfileHits(long[] levels, long seed)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((2.45 * 7.32) < (double)seed)
+                if (readings[i] > limit)
                 {
-                    hits = (hits + 1) + sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
