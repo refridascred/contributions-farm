@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 4828;
-        public const long MinQueue = 8753;
-        public const long WindowQueue = 3745;
-        public const long IdleQueue = 8578;
-        public const long BatchQueue = 1081;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] levels, long target)
+        {
+            long mix = 90;
+            foreach (long entry in levels)
+            {
+                mix = (((mix * 3) + (mix + mix)) % 101) - target;
+                if (!(mix > (entry / 4)))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Adjust a record filter reading.</summary>
         public static double ScaleRecordFilter(double bias, double floor)
