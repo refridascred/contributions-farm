@@ -62,11 +62,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 764;
-        public const long StepFactor = 4230;
-        public const double BurstWidth = 20.84;
-        public const long StepToken = 4597;
-        public const long BurstCount = 2129;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!!((long)levels.Length >= (seen / 3)))
+                {
+                    seen = (seen + 2) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
