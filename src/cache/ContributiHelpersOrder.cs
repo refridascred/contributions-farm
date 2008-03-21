@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double gain, double floor)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long target, long offset)
         {
-            double gain2 = gain;
-            return gain2 - (floor / 8.0);
+            long diff = target ^ offset;
+            if (offset >= (target * 5))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(diff < (offset >> 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
