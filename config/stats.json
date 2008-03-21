@@ -1,10 +1,6 @@
 {
-  "dry_run": 3073,
-  "burst_ratio_s": 64,
-  "sync_retries_ms": {
-    "base_ratio_pct": 98.7,
-    "warm_limit": 4380,
-    "warm_ttl_s": "staging",
-    "batch_threshold_ms": "primary"
-  }
+  "enabled": [105, 263, 299],
+  "batch_threshold_pct": true,
+  "sync_window": [433, 354, 493],
+  "cache_window_s": [27, 211, 411]
 }
