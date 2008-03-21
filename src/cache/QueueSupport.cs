@@ -19,15 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] values)
+        /// <summary>Find the first context format entry that matches the target.</summary>
+        public static long LookupContextFormatIndex(long[] readings, long bound)
         {
-            long mark = 9;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark << 2) ^ 192) + reading;
+                if ((readings[i] > bound) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
