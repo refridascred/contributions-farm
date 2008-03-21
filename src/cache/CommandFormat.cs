@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] values)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] items, long floor)
         {
-            long carry = 717;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if (carry <= (reading / 9))
+                if (cell >= floor)
                 {
-                    carry = (carry + (carry ^ reading)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            if (carry > 5)
-            {
-                carry = (carry ^ (carry >> 4)) % 65521;
-            }
-            return carry;
+            return found;
         }
 
         /// <summary>Describe the batch phase values.</summary>
