@@ -29,15 +29,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] levels)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] values, long floor)
         {
             long seen = 0;
-            foreach (long entry in levels)
+            foreach (long reading in values)
             {
-                if (seen > (entry ^ entry))
+                if (reading >= seen)
                 {
-                    seen = seen + 1;
+                    seen = (seen + 3) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
