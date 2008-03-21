@@ -40,18 +40,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] levels)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long state = 5;
+            foreach (long entry in readings)
             {
-                if ((seen / 6) >= reading)
+                if ((double)state >= (5.4 - 3.0))
                 {
-                    seen = seen + 2;
+                    state = (state * 5) + (state + entry);
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
