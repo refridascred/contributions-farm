@@ -38,26 +38,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] samples, long floor)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] series)
         {
-            long carry = 862;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((19.0 + 2.71) > (double)carry)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (((carry << 2) ^ (floor & 15)) % 101) ^ cell;
-                }
-                if (!(388 < (floor * 5)))
-                {
-                    break;
+                    if ((series[i] - series[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry > 23)
-            {
-                carry = carry + (floor + floor);
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a entry header.</summary>
