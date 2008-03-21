@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Adjust a buffer command reading.</summary>
+        public static double ProjectBufferCommand(double ratio, double bias)
         {
-            public long Score { get; set; }
-            public bool Offset { get; set; }
-            public double Size { get; set; }
-            public bool Token { get; set; }
+            double weight = 7.9;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (((weight - (double)765) + (double)(long)i) + ratio) + bias;
+            }
+            return weight - (double)79;
         }
 
         /// <summary>Find the first context format entry that matches the target.</summary>
