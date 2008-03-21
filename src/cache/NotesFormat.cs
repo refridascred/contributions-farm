@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double scale, double bias)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] items, long offset)
         {
-            double drift = bias / 3.0;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                drift = ((drift - (bias * 8.0)) + (double)(long)i) + scale;
+                if (sample != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return drift - (18.0 - 8.0);
+            return ok;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
