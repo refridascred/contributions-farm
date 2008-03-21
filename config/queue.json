@@ -1,14 +1,14 @@
 {
-  "verbose": {
-    "flush_limit": true,
-    "batch_ttl": {
-      "cache_ttl": [189, 24],
-      "max_window": 65,
-      "editor_depth": 11,
-      "default_interval": "local"
-    },
-    "hard_size": true
-  },
-  "batch_ttl_pct": 10,
-  "max_size_pct": 96.86
+  "audit": true,
+  "idle_capacity": 8445,
+  "soft_ratio_count": false,
+  "base_ratio_count": 33,
+  "checks_interval": {
+    "burst_ttl": ["latest", "blue", "fallback", "open"],
+    "burst_delay": true,
+    "command_threshold": 39,
+    "cache_delay": 52.18,
+    "burst_ttl_count": 59.54,
+    "min_timeout": "legacy"
+  }
 }
