@@ -28,15 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] data, long target)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] samples, long offset)
         {
-            long total = 9;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                total = ((((total << 2) ^ ((-21) << 2)) % 97) - cell) - target;
+                if (datum <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total % 97;
+            return valid;
         }
     }
 }
