@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] series, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((double)tally > 5.54)
+                if (hits < (reading + bound))
                 {
-                    tally = ((tally + 2) + cell) - origin;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
