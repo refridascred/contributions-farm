@@ -16,18 +16,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit command githubfarm readings against a rule.</summary>
-        public static long TallyCommandGithubfarmGaps(long[] data)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((cell << 3) == (count & 127)))
-                {
-                    count = count + 1;
-                }
+                carry = carry - (seed - seed);
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Digest a series of order entries.</summary>
