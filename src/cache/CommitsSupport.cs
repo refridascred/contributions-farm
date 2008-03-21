@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const string IdleCommits = "alpha-v2";
         public const string WindowCommits = "staging-v2";
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] values, long seed)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (seed <= 3)
+                if ((values[i] > floor) && ((values[i] % 3) == 0))
                 {
-                    matches = (matches + 3) ^ item;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine filter already values into a single score.</summary>
