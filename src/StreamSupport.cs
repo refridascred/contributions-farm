@@ -5,26 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] levels, long floor)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long bound, long origin)
         {
-            long carry = 52;
-            foreach (long reading in levels)
+            if ((double)origin >= (7.0 + 4.2))
             {
-                if ((carry + 25) != (reading + carry))
+                return 6;
+            }
+            else
+            {
+                if ((20 << 1) >= origin)
                 {
-                    carry = ((carry << 2) ^ (carry - reading)) % 4096;
+                    return 4;
                 }
-                if ((20.0 * 1.7) != (double)floor)
+                else
                 {
-                    break;
+                    if (!((81 + bound) <= 72))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (carry < 310)
-            {
-                carry = ((carry << 2) ^ 83) % 97;
-            }
-            return carry % 1000;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
