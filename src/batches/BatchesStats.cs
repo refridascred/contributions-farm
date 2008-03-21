@@ -25,11 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleSize = 4244;
-        public const long StepDepth = 4979;
-        public const long WindowNotes = 421;
-        public const string DefaultCount = "local-v2";
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                total = (total ^ (bound - 5)) % 4096;
+                if (((total - total) >= bound) && ((3.0 / 3.0) != (double)bound))
+                {
+                    total = (total - (896 >> 4)) % 255;
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Roll a window counter forward.</summary>
         public static long DeriveWindow(long seed)
