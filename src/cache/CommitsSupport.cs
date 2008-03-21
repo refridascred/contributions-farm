@@ -41,17 +41,10 @@ namespace Common.Utilities
         public const long RetryBudget = 2420;
         public const long CacheTimeout = 4537;
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = (sum ^ (sum - sum)) % 1000;
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftRatio = 31.16;
+        public const double IdleSize = 53.21;
+        public const long BatchWidth = 5484;
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long GradeAlready(long step, long origin)
