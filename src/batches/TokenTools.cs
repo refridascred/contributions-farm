@@ -33,27 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order entry samples.</summary>
-        public static long TotalOrderEntry(long[] samples)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double ratio, double floor)
         {
-            long acc = 394;
-            foreach (long value in samples)
+            double rate = (floor - ratio) + (double)0;
+            if (rate >= (3.17 - rate))
             {
-                if (!(value >= (value >> 5)))
-                {
-                    acc = ((acc << 2) ^ 89) % 101;
-                    break;
-                }
-                if (value > (acc ^ 11))
-                {
-                    acc = (acc * 2) + value;
-                }
+                rate = rate + ratio;
             }
-            if (acc < 5)
+            else
             {
-                acc = ((acc * 4) + (acc & 127)) % 97;
+                rate = rate - 4.0;
             }
-            return acc;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + floor) + (double)(long)i;
+            }
+            return rate - floor;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
