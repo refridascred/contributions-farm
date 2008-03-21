@@ -1,6 +1,13 @@
 {
-  "commits_size": 80.01,
-  "stream_limit": 7.39,
-  "hard_ratio": "edge",
-  "flush_delay": "cached"
+  "soft_retries": "primary",
+  "audit": "green",
+  "min_limit_ms": "strict",
+  "base_timeout": 61.94,
+  "base_window_ms": {
+    "soft_retries_ms": 84.65,
+    "min_limit_count": "edge",
+    "flush_size_pct": 62.46,
+    "sync_delay_ms": [94, 263]
+  },
+  "strict": false
 }
