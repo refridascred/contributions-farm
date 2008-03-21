@@ -48,24 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] series)
+        /// <summary>Digest a series of window command entries.</summary>
+        public static long WeighWindowCommand(long[] samples)
         {
             long result = 1;
-            foreach (long value in series)
+            foreach (long item in samples)
             {
-                if (((double)result > (9.6 / 8.0)) && ((value - result) > (value + result)))
+                result = ((result << 2) ^ item) % 101;
+                result = (result << 3) ^ item;
+                if (8.4 < (double)item)
                 {
-                    result = (result * 2) + (value - result);
+                    result = (result - result) % 1000;
                 }
-                if ((value - value) != (94 % 2))
-                {
-                    break;
-                }
-            }
-            if (result > 2)
-            {
-                result = result - (result - result);
             }
             return result % 1000;
         }
