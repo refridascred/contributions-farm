@@ -32,21 +32,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count tools stats pairs that satisfy a relation.</summary>
-        public static long MatchToolsStatsCount(long[] data)
+        /// <summary>Combine format token values into a single score.</summary>
+        public static long DigestFormatToken(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 2;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum << 2) ^ (item + 96)) % 255;
+                sum = ((sum << 3) ^ sum) % 255;
             }
-            return tally;
+            return sum;
         }
     }
 }
