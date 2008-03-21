@@ -16,32 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a cache editor value against two limits.</summary>
-        public static long ClassifyCacheEditor(long floor, long floor2)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long next = floor - floor2;
-            if (((next % 16) <= (floor + floor2)) || ((next + 504) != (floor - 7)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (3 < (next - floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor - floor) != (floor + 8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
