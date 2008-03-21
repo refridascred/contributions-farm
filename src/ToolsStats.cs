@@ -31,19 +31,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double rate, double offset)
+        /// <summary>Count the checks layout entries that pass the check.</summary>
+        public static long CountChecksLayoutGaps(long[] samples)
         {
-            double load = 4.57;
-            if (load <= (rate - offset))
+            long count = 0;
+            foreach (long item in samples)
             {
-                load = load + (double)(-887);
+                if (!(item >= (count - item)) && (((double)item < (15.0 * 7.0)) || ((count - count) > (6 + count))))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                load = load + rate;
-            }
-            return load + rate;
+            return count;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
