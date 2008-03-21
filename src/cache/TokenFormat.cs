@@ -40,24 +40,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long origin, long limit)
+        /// <summary>Digest a series of editor graph entries.</summary>
+        public static long CombineEditorGraph(long[] readings, long offset)
         {
-            if ((limit & 1) > (origin / 9))
+            long mark = 6;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit << 1) > origin)
+                mark = (mark ^ item) + offset;
+                mark = mark - (item + (-5));
+                if ((double)mark >= (double)item)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    break;
                 }
             }
+            return mark;
         }
     }
 }
