@@ -22,10 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitScore = 9942;
-        public const long RetryPayload = 5692;
-        public const string WindowPayload = "open-1";
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((offset / 8) >= 281)
+                {
+                    score = score - offset;
+                    score = ((score << 2) ^ (score % 10)) % 1000;
+                    break;
+                }
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long DeriveContributi(long bound)
