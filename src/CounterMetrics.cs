@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            Stale,
-            Paused,
-            Locked,
-            New,
-            Active,
+            public double Mode { get; set; }
+            public long Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Compare every pair of window readings.</summary>
