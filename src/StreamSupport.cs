@@ -38,21 +38,12 @@ namespace Common.Utilities
         public const long CacheSpan = 8891;
         public const long HardCounter = 8385;
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] series)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public double Label { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
