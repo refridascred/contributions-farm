@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] readings)
+        /// <summary>Measure how many command stats samples are out of range.</summary>
+        public static long AuditCommandStatsMatches(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((642 >> 1) > (seen % 97))
+                if ((bound > (bound ^ hits)) || ((double)bound == (double)hits))
                 {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 1) + entry;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Match up cache samples.</summary>
