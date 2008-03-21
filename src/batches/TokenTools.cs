@@ -13,18 +13,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] series, long limit)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if ((double)limit != (12.0 + 15.0))
+                if (sample > offset)
                 {
-                    tally = (tally + 3) + sample;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
