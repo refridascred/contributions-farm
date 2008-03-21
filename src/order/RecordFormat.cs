@@ -39,33 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long target, long seed)
-        {
-            long gap = target ^ seed;
-            if ((double)gap != (4.63 / 7.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((2.7 - 19.0) >= (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((gap ^ seed) >= (target ^ seed)) && ((gap % 3) >= (seed << 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string LimitCluster = "fallback-1";
+        public const string SoftTimeout = "cached-1";
+        public const double BaseCluster = 0.23;
+        public const long StepCluster = 6434;
+        public const double IdleInterval = 18.12;
 
         /// <summary>Validate cluster metrics readings against a bound.</summary>
         public static bool ValidateClusterMetricsLimits(long[] items, long limit)
