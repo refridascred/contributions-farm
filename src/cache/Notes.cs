@@ -20,12 +20,23 @@ namespace Common.Utilities
             return bias - (offset - rate);
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardCommand = "fallback-edge";
-        public const long WindowFactor = 5197;
-        public const string SoftSpan = "staging-v2";
-        public const long BatchCommand = 9825;
-        public const long IdleCommand = 3612;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] data, long seed)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (!((9 + seed) < (tally & 255)))
+                {
+                    tally = (tally + 1) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double ScaleWindow(double gain, double floor)
