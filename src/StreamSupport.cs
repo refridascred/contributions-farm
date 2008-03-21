@@ -50,12 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsRange(long[] data, long target)
         {
-            Active,
-            Failed,
-            Stale,
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
