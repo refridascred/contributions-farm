@@ -1,4 +1,16 @@
 # entry settings
-warm_depth_ms: 89.25
-route_timeout: 69.43
-soft_window_s: 100
+persist: stable
+dry_run: false
+retry_ttl_pct: stable
+retry_timeout:
+  compress: 21
+  persist: 68
+  cache_timeout:
+    soft_size_pct: false
+    enabled: true
+    sync_interval_pct: 30
+    max_size: cached
+  warm_depth: latest
+  poll_ratio_s: 28.18
+readonly: false
+sync_depth_s: standard
