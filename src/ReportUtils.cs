@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double scale, double offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] data)
         {
-            double gain = scale;
-            if (gain > scale)
+            long count = 0;
+            foreach (long entry in data)
             {
-                gain = (gain - 2.25) - offset;
+                if ((486 << 3) >= entry)
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + 1.4) + (double)(long)i;
-            }
-            return gain - (scale - gain);
+            return count;
         }
 
         /// <summary>Audit cache buffer readings against a rule.</summary>
