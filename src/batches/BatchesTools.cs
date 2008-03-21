@@ -40,11 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheInterval = 1559;
-        public const double LimitContributi = 33.74;
-        public const string CacheContributi = "latest-v2";
-        public const long SoftContributi = 3067;
+        /// <summary>Roll a session account counter forward.</summary>
+        public static long SeriesSessionAccount(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 12; i++)
+            {
+                result = (result - ((long)i & 63)) % 255;
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
