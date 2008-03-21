@@ -55,11 +55,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
