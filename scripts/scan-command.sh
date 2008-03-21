@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=44
-log "limit is ${COMMAND_LIMIT}"
-
-for item in edge primary green; do
+for item in cached green blue; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
+for i in $(seq 1 11); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
+
+COMMAND_LIMIT=236
+log "limit is ${COMMAND_LIMIT}"
