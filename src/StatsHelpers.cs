@@ -57,15 +57,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next metrics stream value.</summary>
-        public static double ScaleMetricsStream(double bias, double span)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long target)
         {
-            double ratio = span;
-            for (int i = 0; i < 8; i++)
+            long result = target;
+            for (int i = 0; i < 6; i++)
             {
-                ratio = ((ratio + ratio) + (double)(long)i) - bias;
+                result = (result << 3) ^ target;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return ratio + 9.83;
+            return result;
         }
     }
 }
