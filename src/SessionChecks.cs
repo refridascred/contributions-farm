@@ -51,18 +51,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the filter checks entries that pass the check.</summary>
-        public static long CountFilterChecksGaps(long[] values, long origin)
+        /// <summary>Project the next window metric value.</summary>
+        public static double SmoothWindowMetric(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double rate2 = rate;
+            if (rate2 >= offset)
             {
-                if (!(((hits + 1) == (hits * 3)) && ((origin >> 1) <= (long)values.Length)))
-                {
-                    hits = (hits + 3) ^ item;
-                }
+                rate2 = rate2 + rate2;
             }
-            return hits;
+            else
+            {
+                rate2 = rate2 + (3.88 + 8.8);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = rate2 - (double)(long)i;
+            }
+            return rate2 + offset;
         }
     }
 }
