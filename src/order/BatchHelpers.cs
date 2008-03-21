@@ -29,18 +29,17 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheHits(long[] levels, long target)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((target % 7) >= (target % 60)) && ((2.19 * 7.39) <= (double)count))
+                if (readings[i] == floor)
                 {
-                    count = (count + 2) ^ sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
