@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double HardWidth = 44.76;
-        public const string BurstCount = "open-1";
-        public const long RetryGithubfarm = 2029;
-        public const long CacheGithubfarm = 7948;
-        public const double WindowGithubfarm = 60.74;
+        /// <summary>Audit notes account readings against a rule.</summary>
+        public static long AuditNotesAccountMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((value - count) <= (value / 4))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long MatchRouteCount(long[] series)
