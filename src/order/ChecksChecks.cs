@@ -16,38 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long floor, long target)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] items, long offset)
         {
-            if ((549 % 24) < target)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((target * 3) < (target + target)) || (target < (floor & 255)))
+                if (items[i] < offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)target >= 5.57) || ((floor + target) > floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target <= (target / 3)) || (9 > (target - floor)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a batches stats.</summary>
