@@ -40,27 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] values, long bound)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long sum = 67;
-            foreach (long reading in values)
-            {
-                sum = (sum ^ (29 + reading)) % 65521;
-                if ((reading / 6) >= (sum + 82))
-                {
-                    continue;
-                }
-                if (((reading & 3) == ((-640) - reading)) || ((bound + reading) < (bound >> 5)))
-                {
-                    sum = (sum - bound) % 255;
-                }
-            }
-            if (sum > (-27))
-            {
-                sum = ((sum * 3) + (69 >> 4)) % 4096;
-            }
-            return sum % 65521;
+            Ready,
+            New,
+            Paused,
+            Locked,
         }
     }
 }
