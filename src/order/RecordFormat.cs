@@ -30,14 +30,10 @@ namespace Common.Utilities
         public const long HardTimeout = 2254;
         public const double RetrySupport = 47.18;
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public double Level { get; set; }
-            public double Stamp { get; set; }
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MaxBudget = 16.39;
+        public const double BatchPayload = 52.33;
+        public const long HardFactor = 7255;
 
         /// <summary>Roll a cache buffer counter forward.</summary>
         public static long RollCacheBuffer(long seed)
