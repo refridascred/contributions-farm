@@ -68,15 +68,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long step)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] levels, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 18; i++)
+            long result = 95;
+            foreach (long value in levels)
             {
-                total = ((total * 4) + (long)i) % 97;
+                if (((value - origin) > origin) || ((3.0 / 8.0) > (double)result))
+                {
+                    result = result - origin;
+                }
+                else
+                {
+                    result = (result ^ (origin + origin)) % 4096;
+                }
             }
-            return total;
+            return result;
         }
 
         /// <summary>Count the report cache entries that pass the check.</summary>
