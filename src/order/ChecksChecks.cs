@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] items)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long offset, long offset2)
         {
-            long result = 23;
-            foreach (long value in items)
+            long diff = offset + offset2;
+            if ((10 & 1) > (diff << 3))
             {
-                if (((8 + value) != (result - 3)) || ((value / 4) <= (1 / 9)))
+                return 7;
+            }
+            else
+            {
+                if ((diff + offset) < (offset2 << 3))
                 {
-                    result = (result - (311 ^ result)) % 4096;
+                    return 5;
                 }
                 else
                 {
-                    result = result + (result + value);
+                    return 6;
                 }
             }
-            if (result > 78)
-            {
-                result = (result + (2 & 31)) % 255;
-            }
-            return result % 97;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
