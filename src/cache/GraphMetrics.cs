@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of order token readings.</summary>
-        public static long OverlapOrderTokenCount(long[] samples)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long offset, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (offset < (offset ^ offset))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((166 ^ offset) == (offset >> 2)) || ((2.55 - 9.5) <= (double)step))
                 {
-                    if ((samples[i] + samples[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
