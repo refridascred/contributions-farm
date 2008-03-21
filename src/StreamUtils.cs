@@ -18,25 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long target)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] values, long target)
         {
-            long state = target;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                state = ((state << 2) ^ 274) % 255;
-                if (((long)i & 255) <= target)
+                if (value <= target)
                 {
-                    state = (state - ((long)i / 6)) % 255;
-                    state = (state - (target << 1)) % 101;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    state = state ^ (target / 8);
-                }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
