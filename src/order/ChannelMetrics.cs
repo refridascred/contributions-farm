@@ -39,18 +39,10 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 9347;
         public const long StepGithubfarm = 5181;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] data, long step)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((datum << 2) >= hits)
-                {
-                    hits = (hits + 3) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxToken = 14.37;
+        public const long StepCount = 9361;
+        public const long RetryDepth = 507;
+        public const double LimitToken = 19.88;
     }
 }
