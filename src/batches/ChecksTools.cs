@@ -12,15 +12,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double weight, double floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] items)
         {
-            double load = (weight * 9.54) - (double)365;
-            if (load <= 4.0)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                load = (load - load) - floor;
+                if ((cell & 63) > matches)
+                {
+                    matches = matches + 2;
+                }
             }
-            return load + (double)692;
+            return matches;
         }
 
         /// <summary>Derive the next cache contributi value from a seed.</summary>
