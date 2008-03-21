@@ -58,16 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = carry + (2 >> 2);
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            New,
+            Paused,
+            Locked,
         }
 
         /// <summary>Locate a notes reading by value.</summary>
