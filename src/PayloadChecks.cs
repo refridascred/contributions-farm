@@ -71,21 +71,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] levels)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] readings, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 44;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((0 + floor) != (24 / 8))
                 {
-                    if ((levels[i] ^ levels[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result - (floor - 5)) % 1000) - entry;
                 }
             }
-            return matches;
+            return result % 97;
         }
     }
 }
