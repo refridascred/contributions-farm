@@ -68,9 +68,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstScore = 55.33;
-        public const long BurstEntry = 9761;
-        public const long LimitEntry = 6297;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((hits - datum) >= (5 >> 5))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
