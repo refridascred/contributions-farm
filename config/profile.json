@@ -1,6 +1,14 @@
 {
-  "base_capacity_ms": [482, 106, 184, 384],
-  "soft_window_s": [337, 225, 336, 345],
-  "default_depth": false,
-  "warm_timeout_ms": true
+  "default_ttl_count": [183, 130, 50],
+  "persist": "local",
+  "cache_capacity_pct": {
+    "min_size_count": 69,
+    "account_delay": "primary",
+    "batch_size_ms": [246, 159, 92, 351],
+    "cache_delay": false,
+    "verbose": "primary",
+    "default_timeout_count": "blue"
+  },
+  "strict": "legacy",
+  "idle_ratio_s": 94
 }
