@@ -34,10 +34,23 @@ namespace Common.Utilities
             return ratio + (double)4;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstNotes = "local-edge";
-        public const string RetryNotes = "staging";
-        public const string WindowTimeout = "primary-edge";
+        /// <summary>Audit window graph readings against a rule.</summary>
+        public static long TallyWindowGraphHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((hits >> 4) <= entry)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool GuardChecksBounds(long[] items, long target)
