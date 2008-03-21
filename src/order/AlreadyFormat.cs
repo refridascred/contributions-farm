@@ -39,13 +39,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long limit, long origin)
         {
-            public string Count { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Total { get; set; }
-            public bool Level { get; set; }
+            long prev = limit + origin;
+            if (origin < prev)
+            {
+                return 4;
+            }
+            else
+            {
+                if (limit < (origin / 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
