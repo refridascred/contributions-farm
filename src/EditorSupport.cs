@@ -53,25 +53,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((long)i != (seed ^ total))
-                {
-                    break;
-                }
-                else
-                {
-                    long delta = 35 - (seed & 31);
-                    total = (total ^ (total + delta)) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryTimeout = 22.5;
+        public const long RetryWidth = 1284;
+        public const long StepOrder = 7844;
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long SortAlready(long limit, long origin)
