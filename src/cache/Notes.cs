@@ -41,19 +41,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] readings, long offset)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Rank context format input into a small class.</summary>
