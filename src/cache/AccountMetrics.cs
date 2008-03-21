@@ -91,15 +91,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] data, long floor)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long total = 8;
-            foreach (long item in data)
-            {
-                total = (((total ^ (total - total)) % 97) ^ item) - floor;
-            }
-            return total % 1000;
+            public double Offset { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
