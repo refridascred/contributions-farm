@@ -1,6 +1,8 @@
 {
-  "sync_timeout_pct": "open",
-  "metrics_threshold": 43.46,
-  "poll_ratio": "eu-west",
-  "poll_window_s": 40
+  "retry_depth": true,
+  "strict": "cached",
+  "max_capacity_s": false,
+  "poll_window": "open",
+  "verbose": "primary",
+  "soft_delay": 48.23
 }
