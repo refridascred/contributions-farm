@@ -60,22 +60,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit contributi channel readings against a rule.</summary>
-        public static long CountContributiChannelHits(long[] levels)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (cell >= (782 & 31))
+                if (((matches % 100) > 598) && (((-86) >= matches) || (cell <= (cell >> 5))))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
