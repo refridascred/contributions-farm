@@ -1,13 +1,22 @@
 {
-  "filter_timeout": "eu-west",
-  "max_ratio_count": "fallback",
-  "poll_capacity": 682,
-  "notes_retries": {
-    "enabled": "latest",
-    "default_delay_count": 1024,
-    "default_limit_count": 82,
-    "min_ratio": ["staging", "eu-west", "cached", "latest"],
-    "idle_limit_pct": false,
-    "verbose": ["standard", "blue", "primary"]
+  "soft_depth_s": ["green", "legacy", "strict"],
+  "context_delay": [167, 378, 393, 114],
+  "min_depth_pct": {
+    "githubfarm_timeout": {
+      "base_ratio_s": 6847,
+      "max_ratio_count": 64,
+      "enabled": 1322,
+      "warm_size_pct": false
+    },
+    "poll_ratio_pct": 87,
+    "default_ratio_pct": 10
+  },
+  "hard_ttl_pct": "strict",
+  "checks_timeout": 3.71,
+  "readonly": {
+    "sync_window": 4.0,
+    "metric_limit": 865,
+    "farm_window": [261, 487],
+    "filter_threshold": 100
   }
 }
