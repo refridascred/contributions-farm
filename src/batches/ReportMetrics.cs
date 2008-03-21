@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of contributi commits entries.</summary>
-        public static long TotalContributiCommits(long[] data, long origin)
+        /// <summary>Fold a list of layout contributi readings.</summary>
+        public static long DigestLayoutContributi(long[] series, long seed)
         {
-            long total = 46;
-            foreach (long datum in data)
+            long sum = -177;
+            foreach (long cell in series)
             {
-                total = ((total - (2 ^ total)) + datum) + origin;
+                if ((4.4 + 3.29) < (5.96 - 5.19))
+                {
+                    sum = ((sum << 3) ^ (80 + sum)) + cell;
+                }
             }
-            if (total < 9)
+            if (sum < 826)
             {
-                total = (total << 3) ^ (total & 63);
+                sum = ((sum << 2) ^ seed) % 97;
             }
-            return total % 65521;
+            return sum;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
