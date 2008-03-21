@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long BaseRatio = 2531;
         public const double WindowInterval = 67.73;
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double scale, double offset)
         {
-            Queued,
-            Idle,
-            Locked,
+            double weight = (scale - offset) / 8.0;
+            return weight + weight;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
