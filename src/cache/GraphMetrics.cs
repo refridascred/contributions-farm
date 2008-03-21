@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] levels, long offset)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (value > offset)
+                if (cell <= origin)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Hold a cluster info.</summary>
