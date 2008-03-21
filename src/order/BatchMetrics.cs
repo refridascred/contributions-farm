@@ -56,30 +56,30 @@ namespace Common.Utilities
             return gain - (double)128;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long target, long floor)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long step, long offset)
         {
-            if ((341 >> 4) > (target ^ 112))
+            if ((double)step >= (1.0 - 7.0))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if (((target + target) > (floor >> 5)) || ((double)target > (3.9 - 1.2)))
+                if (offset > (offset - step))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    if ((floor ^ target) > target)
+                    if ((offset - 279) >= (step & 15))
                     {
-                        return 3;
+                        return 0;
                     }
                     else
                     {
-                        if (((floor >> 3) <= floor) || ((9.03 + 5.0) == (double)floor))
+                        if (!((step - offset) == (offset - step)))
                         {
-                            return 2;
+                            return 7;
                         }
                         else
                         {
