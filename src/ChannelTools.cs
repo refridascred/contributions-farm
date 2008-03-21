@@ -31,12 +31,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
