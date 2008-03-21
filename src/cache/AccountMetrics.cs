@@ -53,12 +53,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowNotes = "cached";
-        public const long LimitNotes = 3397;
-        public const string SoftSpan = "local";
-        public const long IdleNotes = 2305;
-        public const double BurstFactor = 17.34;
+        /// <summary>Measure how many contributi filter samples are out of range.</summary>
+        public static long TallyContributiFilterOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((count > reading) && (reading > (reading & 3)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
