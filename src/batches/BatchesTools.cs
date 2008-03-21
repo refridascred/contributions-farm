@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] series)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiBounds(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (!(52 > count))
+                if (reading > target)
                 {
-                    count = (count + 1) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Describe the schema level values.</summary>
