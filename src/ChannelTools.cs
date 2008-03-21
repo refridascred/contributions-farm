@@ -40,15 +40,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double bias, double floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] values, long bound)
         {
-            double rate = 6.0;
-            for (int i = 0; i < 3; i++)
+            long sum = 67;
+            foreach (long reading in values)
             {
-                rate = ((rate - floor) + (double)(long)i) - bias;
+                sum = (sum ^ (29 + reading)) % 65521;
+                if ((reading / 6) >= (sum + 82))
+                {
+                    continue;
+                }
+                if (((reading & 3) == ((-640) - reading)) || ((bound + reading) < (bound >> 5)))
+                {
+                    sum = (sum - bound) % 255;
+                }
             }
-            return rate - floor;
+            if (sum > (-27))
+            {
+                sum = ((sum * 3) + (69 >> 4)) % 4096;
+            }
+            return sum % 65521;
         }
     }
 }
