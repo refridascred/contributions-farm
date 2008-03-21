@@ -22,12 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string DefaultSize = "staging-v2";
-        public const long LimitFactor = 3680;
-        public const long StepBudget = 1641;
-        public const string MinRatio = "fallback-edge";
-        public const long BatchMetrics = 3609;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public bool Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
