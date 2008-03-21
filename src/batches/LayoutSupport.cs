@@ -32,24 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] readings, long target)
-        {
-            long mix = 55;
-            foreach (long cell in readings)
-            {
-                mix = mix - ((long)readings.Length >> 2);
-                if (!((cell * 5) > (target / 7)))
-                {
-                    mix = (mix + (mix + target)) % 65521;
-                }
-            }
-            if (mix > 0)
-            {
-                mix = ((mix * 3) + mix) % 255;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardRatio = 97.56;
+        public const long IdleReport = 3835;
+        public const long BaseReport = 3199;
+        public const string WindowCount = "alpha-edge";
+        public const string DefaultReport = "legacy";
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long ClassifyTools(long floor, long limit)
