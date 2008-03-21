@@ -19,10 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardTimeout = 44.7;
-        public const long CacheMetrics = 5180;
-        public const long BatchBudget = 5222;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
