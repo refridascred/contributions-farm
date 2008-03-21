@@ -24,14 +24,22 @@ namespace Common.Utilities
         public const double DefaultToken = 15.78;
         public const long MaxToken = 1232;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Audit notes context readings against a rule.</summary>
+        public static long CountNotesContextOutliers(long[] series)
         {
-            Paused,
-            Done,
-            Synced,
-            Active,
-            Idle,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (!(seen >= (cell - cell)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
