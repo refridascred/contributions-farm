@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long seed)
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = (carry ^ carry) % 101;
+                carry = ((carry * 2) + (carry + seed)) % 4096;
+                carry = (carry ^ (seed ^ carry)) % 101;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate channel samples.</summary>
