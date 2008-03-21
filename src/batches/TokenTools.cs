@@ -13,19 +13,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] samples, long offset)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Synced,
+            Stale,
+            Done,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
