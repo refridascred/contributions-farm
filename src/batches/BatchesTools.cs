@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long step)
+        /// <summary>Scale a batches stats figure with a bias.</summary>
+        public static double ProjectBatchesStats(double ratio, double span)
         {
-            long sum = step;
-            for (int i = 0; i < 12; i++)
+            double gain = ratio;
+            if (gain >= gain)
             {
-                sum = (sum + (sum % 8)) % 1000;
-                sum = (sum * 2) + ((long)i + (long)i);
-                if (!((double)step <= (3.31 * 5.95)))
-                {
-                    sum = (sum - (step - sum)) % 97;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
+                gain = (gain - (gain + ratio)) - span;
             }
-            return sum;
+            return gain + (15.0 - gain);
         }
 
         /// <summary>Match up schema samples.</summary>
