@@ -15,13 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Audit command githubfarm readings against a rule.</summary>
+        public static long TallyCommandGithubfarmGaps(long[] data)
         {
-            Dropped,
-            Synced,
-            Idle,
-            Ready,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (!((cell << 3) == (count & 127)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of order entries.</summary>
