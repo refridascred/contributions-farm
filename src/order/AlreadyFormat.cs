@@ -58,15 +58,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long origin)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long offset)
         {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                carry = carry + (2 >> 2);
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
