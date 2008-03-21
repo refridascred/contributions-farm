@@ -19,13 +19,19 @@ namespace Common.Utilities
             return ratio + (gain + bias);
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] levels, long floor)
         {
-            Draft,
-            Pending,
-            Synced,
-            Queued,
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
