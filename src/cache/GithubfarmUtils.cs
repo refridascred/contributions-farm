@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of account queue entries.</summary>
-        public static long ScoreAccountQueue(long[] data)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] items, long offset)
         {
-            long score = 203;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long datum in items)
             {
-                score = ((score * 2) + (cell * 5)) % 97;
+                if (32 < count)
+                {
+                    count = ((count + 2) + datum) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
