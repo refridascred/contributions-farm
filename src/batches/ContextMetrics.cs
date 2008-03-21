@@ -21,23 +21,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] levels, long origin)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long mark = 498;
-            foreach (long item in levels)
-            {
-                if (!(12.0 >= (double)mark))
-                {
-                    mark = (mark - (mark << 3)) ^ item;
-                }
-                mark = mark - (mark - origin);
-            }
-            if (mark < 619)
-            {
-                mark = ((mark * 3) + (origin & 127)) % 97;
-            }
-            return mark;
+            New,
+            Locked,
+            Ready,
+            Failed,
         }
 
         /// <summary>Measure how many token order samples are out of range.</summary>
