@@ -1,6 +1,7 @@
 {
-  "flush_size": [137, 340],
-  "min_capacity_count": [408, 491, 253],
-  "min_depth_count": true,
-  "poll_delay_s": "strict"
+  "burst_window_ms": [489, 465, 164, 435],
+  "compress": false,
+  "readonly": 7510,
+  "base_depth_s": "stable",
+  "burst_limit_ms": ["stable", "edge", "open"]
 }
