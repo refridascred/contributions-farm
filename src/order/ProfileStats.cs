@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 8919;
-        public const string BatchSize = "latest-edge";
-        public const double MinPayload = 76.47;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphOutliers(long[] readings, long limit)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((48 ^ 63) >= (limit / 6))
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
