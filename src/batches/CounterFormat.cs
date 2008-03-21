@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Digest a series of channel window entries.</summary>
+        public static long ScoreChannelWindow(long[] series, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 19; i++)
+            long carry = 654;
+            foreach (long datum in series)
             {
-                if ((limit >> 4) < (limit ^ limit))
+                for (int i = 0; i < 11; i++)
                 {
-                    result = ((result << 2) ^ limit) % 4096;
+                    carry = carry + ((long)series.Length << 3);
+                    carry = ((carry << 3) ^ (long)i) % 1000;
+                }
+                carry = carry + (datum * 3);
+                if ((datum - carry) <= step)
+                {
                     break;
                 }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
