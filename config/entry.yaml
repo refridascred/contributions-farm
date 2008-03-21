@@ -1,20 +1,13 @@
 # entry settings
-flush_size_s:
-  session_interval: open
-  max_window_count:
-    default_retries: false
-    report_retries: 16.32
-    hard_retries_ms: 1024
-  report_ttl: local
-  min_interval_s: latest
-  batch_interval_pct: 63.34
-idle_depth_count: 42.5
-poll_interval_s: true
-min_retries:
-  hard_capacity_pct: 60
-  tools_capacity:
-    - eu-west
-    - local
-    - strict
-    - cached
-  dry_run: 229
+warm_depth_ms: latest
+idle_window: true
+stream_retries: 92
+persist: 97.56
+cluster_delay:
+  order_window: true
+  poll_ttl: false
+  base_retries_s:
+    - standard
+    - staging
+    - green
+  soft_capacity_ms: stable
