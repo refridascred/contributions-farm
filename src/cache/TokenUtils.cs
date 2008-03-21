@@ -13,17 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] samples, long seed)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] data, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if (samples[i] > seed)
+                if (cell >= origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
