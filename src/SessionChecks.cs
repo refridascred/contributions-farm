@@ -36,17 +36,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] series, long offset)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
