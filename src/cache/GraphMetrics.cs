@@ -44,14 +44,17 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Locate a notes batch reading by value.</summary>
+        public static long LocateNotesBatchIndex(long[] samples, long seed)
         {
-            Active,
-            Dropped,
-            Stale,
-            Synced,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up cache samples.</summary>
