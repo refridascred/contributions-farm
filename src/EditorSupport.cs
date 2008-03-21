@@ -42,21 +42,16 @@ namespace Common.Utilities
             return mean + (offset / 3.0);
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] samples)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = (total ^ (total + 3)) % 4096;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
