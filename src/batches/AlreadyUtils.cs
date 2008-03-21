@@ -23,16 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] levels, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                carry = carry - (seed - seed);
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (cell < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Digest a series of order entries.</summary>
