@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] levels, long seed)
         {
-            Closed,
-            Queued,
-            Done,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (((count + 98) < (count * 2)) || (entry > (262 & 127)))
+                {
+                    count = (count + 1) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
