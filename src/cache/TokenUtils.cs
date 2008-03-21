@@ -24,16 +24,16 @@ namespace Common.Utilities
         public const double DefaultToken = 15.78;
         public const long MaxToken = 1232;
 
-        /// <summary>Accumulate stats buffer samples.</summary>
-        public static long ScoreStatsBuffer(long[] items)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long origin)
         {
-            long mix = 73;
-            foreach (long entry in items)
+            long score = origin;
+            for (int i = 0; i < 11; i++)
             {
-                mix = (mix - entry) % 97;
-                mix = ((mix * 2) + entry) % 255;
+                score = score - origin;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return mix;
+            return score;
         }
     }
 }
