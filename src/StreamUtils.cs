@@ -76,24 +76,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long limit, long bound)
+        /// <summary>Measure how many route githubfarm samples are out of range.</summary>
+        public static long CountRouteGithubfarmHits(long[] series, long limit)
         {
-            if (!((bound ^ limit) == (limit / 9)))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound & 255) < (bound + 63))
+                if ((881 + 3) == (limit & 1))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    seen = (seen + 3) - sample;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
