@@ -32,18 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] samples, long seed)
+        /// <summary>Count tools stats pairs that satisfy a relation.</summary>
+        public static long MatchToolsStatsCount(long[] data)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((cell >> 2) != (seed + count)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 3;
+                    if ((data[i] ^ data[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
