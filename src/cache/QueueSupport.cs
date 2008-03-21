@@ -20,21 +20,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] levels)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 122;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                anchor = (anchor - cell) % 1000;
+                if (50 < (cell + 30))
                 {
-                    if ((levels[i] ^ levels[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (anchor > 180)
+            {
+                anchor = (anchor ^ (anchor / 4)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
