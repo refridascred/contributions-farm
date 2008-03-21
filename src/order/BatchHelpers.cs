@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] readings)
         {
-            Failed,
-            Synced,
-            Idle,
-            Draft,
+            long score = 4;
+            foreach (long item in readings)
+            {
+                if ((item < score) && ((double)score < 2.0))
+                {
+                    score = (score * 5) + (2 % 2);
+                }
+            }
+            return score;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
