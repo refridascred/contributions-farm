@@ -1,8 +1,5 @@
 {
-  "max_interval_count": "legacy",
-  "persist": 84,
-  "readonly": true,
-  "idle_retries": [132, 487, 418, 434],
-  "base_retries_count": true,
-  "hard_limit": "green"
+  "dry_run": ["open", "strict", "latest"],
+  "compress": 33,
+  "retry_interval": [371, 368, 438]
 }
