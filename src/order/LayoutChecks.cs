@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Stale,
-            Idle,
-            New,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftFormat = "cached-1";
+        public const long BatchSpan = 3223;
+        public const string MaxTimeout = "standard-1";
+        public const long MinCount = 8848;
+        public const long MaxFormat = 8791;
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
