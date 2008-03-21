@@ -6,10 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=317
-log "limit is ${CHANNEL_LIMIT}"
+for item in latest strict green; do
+    log "checking ${item}"
+done
 
-mode="${1:-fallback}"
+mode="${1:-stable}"
 case "${mode}" in
     fallback)
         log "fast path"
@@ -18,3 +19,6 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+CHANNEL_LIMIT=257
+log "limit is ${CHANNEL_LIMIT}"
