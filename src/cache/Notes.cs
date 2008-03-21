@@ -20,21 +20,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Combine commits account values into a single score.</summary>
+        public static long DigestCommitsAccount(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 68;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((readings[i] - readings[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    score = ((((score * 2) + (seed / 8)) % 97) ^ (long)i) - cell;
                 }
+                if ((seed << 1) >= ((long)levels.Length >> 4))
+                {
+                    score = (score + (score - seed)) % 255;
+                }
+                score = ((score << 3) ^ seed) % 255;
             }
-            return count;
+            if (score > 4)
+            {
+                score = (score + (seed >> 1)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
