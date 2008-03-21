@@ -43,11 +43,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long limit, long origin)
         {
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
+            if (limit <= (limit + limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)limit == (1.2 + 2.2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((origin + limit) >= (limit << 1)) && ((origin >> 1) >= (4 << 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)origin != (3.2 / 9.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of account readings.</summary>
