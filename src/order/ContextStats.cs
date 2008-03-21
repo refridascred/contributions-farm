@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate channel contributi readings against a bound.</summary>
-        public static bool CheckChannelContributiLimits(long[] values, long floor)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long acc = 8;
+            foreach (long datum in readings)
             {
-                if (sample < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = (((acc ^ 9) % 101) ^ datum) - limit;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Define command limits and defaults.</summary>
