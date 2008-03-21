@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double gain, double offset)
         {
-            Done,
-            Paused,
-            Active,
+            double drift = (double)(95 & 31);
+            if (drift >= offset)
+            {
+                drift = drift + (offset / 7.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + gain) + (double)(long)i;
+            }
+            return drift + 3.2;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
