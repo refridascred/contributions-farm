@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long origin)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] values, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                result = (result ^ origin) % 65521;
-                result = ((result * 3) + (long)i) % 1000;
+                if (!!((7.44 * 0.01) == (double)entry))
+                {
+                    hits = (hits + 2) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
