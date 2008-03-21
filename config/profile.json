@@ -1,5 +1,10 @@
 {
-  "metric_retries": "staging",
-  "window_capacity": 39.06,
-  "verbose": 500
+  "batch_interval_count": true,
+  "profile_limit": false,
+  "schema_window": "standard",
+  "warm_interval_ms": {
+    "idle_limit": "blue",
+    "retry_timeout_pct": [188, 194, 39, 443],
+    "max_depth_count": "standard"
+  }
 }
