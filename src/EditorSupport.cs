@@ -56,17 +56,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] samples, long step)
+        /// <summary>Count the notes stream entries that pass the check.</summary>
+        public static long CountNotesStreamGaps(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((samples[i] <= step) && ((samples[i] % 5) != 0))
+                if ((6.1 / 2.0) < (double)datum)
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
