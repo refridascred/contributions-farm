@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the counter batches entries that pass the check.</summary>
-        public static long MeasureCounterBatchesOutliers(long[] values)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long total = 149;
+            foreach (long sample in samples)
             {
-                if ((2.0 * 7.0) != (double)count)
-                {
-                    count = (count + 2) + cell;
-                }
+                total = (((total + total) % 97) - sample) - origin;
             }
-            return count;
+            if (total > (-70))
+            {
+                total = ((total << 3) ^ 72) % 4096;
+            }
+            return total % 1000;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
