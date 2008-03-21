@@ -32,23 +32,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] readings, long limit)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long offset, long step)
         {
-            long mix = 68;
-            foreach (long item in readings)
+            long gap = offset ^ step;
+            if ((step ^ 17) >= (offset ^ 341))
             {
-                mix = ((mix << 3) ^ (mix - limit)) % 97;
-                if ((item + 239) < limit)
+                return 7;
+            }
+            else
+            {
+                if ((offset - step) <= (offset % 8))
                 {
-                    mix = ((mix << 3) ^ limit) % 101;
+                    return 5;
+                }
+                else
+                {
+                    if ((gap ^ step) >= step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step << 2) != (gap >> 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (mix > 104)
-            {
-                mix = ((mix * 2) + (mix % 2)) % 97;
-            }
-            return mix % 65521;
         }
     }
 }
