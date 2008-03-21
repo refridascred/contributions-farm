@@ -1,11 +1,12 @@
 # Command notes
 
-Keep cache and channel names short and lowercase.
-The profile report groups every graph by entry.
+A editor that stays idle for too long is moved to the payload list.
+Use command settings to tune how often context data is refreshed.
+Keep commits and cache names short and lowercase.
 
 ## Guidelines
 
-- Validate buffer input early
-- Prefer context defaults
-- Log every cache change
-- Review account limits each release
+- Log every record change
+- Keep route values small
+- Review format limits each release
+- Prefer command defaults
