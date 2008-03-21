@@ -23,39 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long bound, long origin)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] items, long floor)
         {
-            long cur = bound + origin;
-            if ((origin + bound) == (cur * 5))
+            bool valid = true;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((origin << 3) >= (bound + origin)) || ((bound ^ bound) < (origin % 16)))
+                if (value != floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((8.1 + 13.0) >= (double)cur)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((9.6 * 8.81) <= (double)origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Project the next metrics value.</summary>
