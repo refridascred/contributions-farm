@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] data)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 7;
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (9.5 >= (double)item)
                 {
-                    if ((data[i] - data[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = score + (score ^ score);
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the metrics status values.</summary>
