@@ -23,26 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of notes report readings.</summary>
-        public static long CombineNotesReport(long[] items, long offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] readings, long seed)
         {
-            long sum = 4;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                for (int i = 0; i < 11; i++)
+                if (cell >= seed)
                 {
-                    sum = sum ^ (offset + (long)i);
-                }
-                if ((3 >> 1) >= (sum + (-505)))
-                {
-                    sum = ((sum * 4) + (item >> 4)) % 1000;
-                }
-                else
-                {
-                    sum = (sum - 532) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Describe the commits status values.</summary>
