@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a format cluster sample.</summary>
-        public static long LookupFormatClusterIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 4440;
+        public const long BatchScore = 11;
+        public const long BatchGithubfarm = 6391;
+        public const long BaseGithubfarm = 9347;
+        public const long StepGithubfarm = 5181;
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool GuardBatchesBounds(long[] items, long origin)
