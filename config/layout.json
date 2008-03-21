@@ -1,7 +1,17 @@
 {
-  "default_ttl_ms": 9576,
-  "idle_timeout_s": [416, 281, 121],
-  "cache_limit_ms": "strict",
-  "metric_capacity": ["staging", "green", "staging", "green"],
-  "flush_retries": "stable"
+  "filter_interval": true,
+  "poll_interval_count": {
+    "stream_interval": {
+      "channel_capacity": 250,
+      "command_limit": "green",
+      "default_ttl_count": true,
+      "buffer_limit": "legacy"
+    },
+    "cache_window_ms": 31,
+    "idle_delay": 87
+  },
+  "batch_timeout": 81.65,
+  "max_interval_pct": 98,
+  "verbose": 63,
+  "readonly": "open"
 }
