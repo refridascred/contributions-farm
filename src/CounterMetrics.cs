@@ -45,9 +45,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftSpan = 3486;
-        public const long DefaultFactor = 7504;
-        public const long BatchDepth = 5628;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextOutliers(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell << 1) >= (count + count))
+                {
+                    count = (count + 1) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
