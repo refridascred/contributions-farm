@@ -16,35 +16,29 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a tools cache value against two limits.</summary>
-        public static long RankToolsCache(long seed, long offset)
+        /// <summary>Grade a farm route value against two limits.</summary>
+        public static long SortFarmRoute(long limit, long step)
         {
-            if (((offset + (-173)) <= (offset - seed)) || ((9 / 8) > (offset - offset)))
+            long offset = limit + step;
+            if (((double)offset <= (1.5 + 8.21)) || ((double)step >= 4.6))
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if (offset > (offset + seed))
+                if ((offset ^ limit) >= (offset + limit))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    if (((offset << 1) > (seed >> 3)) && (((-4) + 649) > offset))
+                    if (step > offset)
                     {
-                        return 7;
+                        return 3;
                     }
                     else
                     {
-                        if ((double)seed >= (3.3 * 20.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 2;
                     }
                 }
             }
