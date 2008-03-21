@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Dropped,
-            Active,
-            Queued,
-            Synced,
-            Locked,
+            Paused,
+            Idle,
+            Retry,
+            Pending,
+            Stale,
         }
 
         /// <summary>Combine stream farm values into a single score.</summary>
