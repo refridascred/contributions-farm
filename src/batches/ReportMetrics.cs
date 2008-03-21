@@ -22,40 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long floor, long origin)
-        {
-            long next = floor ^ origin;
-            if ((origin > (floor - next)) || ((next ^ 4) < floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if (next >= origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((7.59 * 4.0) > (double)next) && (origin >= 19))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)floor != (9.0 * 2.8)) || (next <= (floor % 12)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 8759;
+        public const double RetryDepth = 41.02;
+        public const long WindowRatio = 3590;
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double AdjustContributi(double bias, double offset)
