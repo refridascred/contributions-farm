@@ -39,20 +39,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] data, long target)
-        {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 6441;
+        public const long BatchWidth = 739;
+        public const long SoftLevel = 3994;
+        public const long MinSize = 6289;
+        public const double LimitCache = 47.06;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long FoldContext(long[] readings)
