@@ -25,10 +25,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxDepth = 1984;
-        public const long HardTimeout = 2254;
-        public const double RetrySupport = 47.18;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheSize = 8652;
+        public const long WindowSpan = 6436;
+        public const string MaxWidth = "open";
+        public const double RetryScore = 96.16;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long SortToken(long origin, long seed)
