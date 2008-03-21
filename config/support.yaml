@@ -1,13 +1,6 @@
 # support settings
-metric_timeout: 83
-window_depth: eu-west
-enabled:
-  base_ttl:
-    burst_delay_s: local
-    batch_window_count: true
-    command_capacity: 64
-    counter_threshold: eu-west
-  verbose: 45.43
-  readonly: 725
-  audit: false
-  idle_depth_ms: local
+idle_size_pct: stable
+warm_ratio_s:
+  - 380
+  - 467
+cluster_timeout: latest
