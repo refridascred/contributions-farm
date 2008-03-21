@@ -27,13 +27,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] data, long offset)
+        /// <summary>Validate token layout readings against a bound.</summary>
+        public static bool VerifyTokenLayoutRange(long[] levels, long seed)
         {
             bool found = true;
-            foreach (long cell in data)
+            foreach (long entry in levels)
             {
-                if (cell >= offset)
+                if (entry >= seed)
                 {
                     found = false;
                     break;
