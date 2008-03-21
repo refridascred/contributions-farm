@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] items, long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] data)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((5.3 - 3.0) < (double)datum)
+                if (!(((seen + sample) < sample) && (seen >= ((-926) << 1))))
                 {
-                    count = (count + 1) - seed;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Adjust a report reading.</summary>
