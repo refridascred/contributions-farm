@@ -30,13 +30,17 @@ namespace Common.Utilities
         public const long BatchAlready = 2355;
         public const double CacheInterval = 41.65;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] readings, long limit)
         {
-            Closed,
-            Done,
-            Stale,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
