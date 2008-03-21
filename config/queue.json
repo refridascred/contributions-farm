@@ -1,10 +1,5 @@
 {
-  "already_delay": [176, 46, 138],
-  "window_retries": "stable",
-  "warm_timeout": {
-    "audit": "primary",
-    "soft_depth_s": false,
-    "cache_interval": "stable",
-    "compress": 3271
-  }
+  "readonly": "strict",
+  "flush_timeout_count": 7581,
+  "retry_size_count": "strict"
 }
