@@ -24,12 +24,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double IdleChecks = 25.93;
-        public const long RetryLevel = 9481;
-        public const long LimitChecks = 4343;
-        public const double WindowChecks = 35.65;
-        public const string HardChecks = "local-v2";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftCount = 9534;
+        public const long WindowDepth = 1410;
+        public const long BaseSize = 4331;
+        public const double BaseLevel = 71.35;
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long CompareSessionCount(long[] items)
