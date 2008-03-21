@@ -56,22 +56,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] series)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((count + reading) <= count)
+                if (reading > offset)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
