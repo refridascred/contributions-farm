@@ -58,19 +58,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] items, long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] data, long origin)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (reading > offset)
+                if ((origin + matches) < sample)
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
