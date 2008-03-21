@@ -40,24 +40,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long bound, long floor)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long target)
         {
-            if ((floor << 3) < floor)
+            long mix = target;
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
+                mix = (mix + 40) % 101;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((2.0 * 10.0) < (double)(-68))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
