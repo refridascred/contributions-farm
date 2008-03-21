@@ -15,26 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine stream farm values into a single score.</summary>
-        public static long DigestStreamFarm(long[] readings)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] series, long floor)
         {
-            long sum = 359;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((reading >= (sum + reading)) && ((sum + sum) < (sum >> 2)))
+                if ((double)9 >= (double)seen)
                 {
-                    sum = (sum * 4) + (reading ^ reading);
-                }
-                if (!((0.8 - 14.0) > (double)reading))
-                {
-                    break;
+                    seen = ((seen + 1) - datum) - floor;
                 }
             }
-            if (sum < 23)
-            {
-                sum = ((sum << 3) ^ sum) % 97;
-            }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Look up the position of a tools checks sample.</summary>
