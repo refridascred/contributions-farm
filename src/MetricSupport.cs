@@ -37,21 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] samples, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                long matches = ((long)i - acc) + acc;
-                matches = ((matches * 3) + (acc ^ bound)) % 1000;
-                if (!(((9.96 / 2.0) > (double)matches) || ((matches >> 5) != (matches / 2))))
+                if (!((double)tally <= 19.0) && ((cell + cell) > (64 + 775)))
                 {
-                    matches = matches + ((long)i + (long)i);
+                    tally = (tally + 1) + origin;
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return tally;
         }
     }
 }
