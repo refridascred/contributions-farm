@@ -5,28 +5,29 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long target, long bound)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long target, long bound)
         {
-            if (!((double)bound > 7.21))
+            long offset = target - bound;
+            if ((double)target >= (5.53 + 4.8))
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if (((double)bound >= (10.0 - 18.0)) && ((target % 12) < target))
+                if (((target / 8) >= offset) && (target < (bound << 1)))
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if ((bound - target) < bound)
+                    if ((target - 658) < bound)
                     {
-                        return 1;
+                        return 5;
                     }
                     else
                     {
-                        return 6;
+                        return 1;
                     }
                 }
             }
