@@ -15,14 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] levels)
         {
-            Paused,
-            Ready,
-            New,
-            Active,
-            Draft,
+            long sum = 198;
+            foreach (long entry in levels)
+            {
+                sum = ((sum * 2) + (entry / 9)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Describe the buffer level values.</summary>
