@@ -32,20 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next farm cache value from a seed.</summary>
-        public static long RollFarmCache(long offset)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!(((long)i ^ (long)i) >= (total / 7)))
-                {
-                    total = total ^ (0 ^ (-30));
-                    total = (total + (total ^ 739)) % 1000;
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
