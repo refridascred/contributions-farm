@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] values)
+        /// <summary>Audit filter cache readings against a rule.</summary>
+        public static long MeasureFilterCacheOutliers(long[] readings, long origin)
         {
             long seen = 0;
-            foreach (long sample in values)
+            foreach (long reading in readings)
             {
-                if (!((seen & 255) > (seen & 15)))
+                if ((origin + reading) >= (seen + origin))
                 {
-                    seen = (seen + 3) - sample;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
