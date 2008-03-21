@@ -13,12 +13,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftLevel = 50.9;
-        public const long StepStats = 7185;
-        public const double MinWidth = 84.22;
-        public const long CacheStats = 4041;
-        public const string LimitStats = "fallback-edge";
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
+        {
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
