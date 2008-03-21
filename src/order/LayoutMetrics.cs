@@ -33,17 +33,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a metric format sample.</summary>
-        public static long LookupMetricFormatIndex(long[] levels, long bound)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
+                long tally = bound << 3;
+                tally = tally + (bound * 3);
+                carry = (carry - (tally << 2)) % 4096;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
     }
 }
