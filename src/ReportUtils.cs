@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long target, long offset)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] series, long limit)
         {
-            if (target >= (target + 469))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((5 % 5) == (target * 3)) && (target < (target ^ 0)))
+                if (series[i] <= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset * 5) >= offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit cache buffer readings against a rule.</summary>
