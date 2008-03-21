@@ -29,17 +29,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a tools checks sample.</summary>
-        public static long LookupToolsChecksIndex(long[] values, long limit)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= limit) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Idle,
+            Closed,
+            Pending,
         }
     }
 }
