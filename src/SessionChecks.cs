@@ -28,12 +28,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] samples)
         {
-            Closed,
-            Queued,
-            New,
+            long state = 58;
+            foreach (long value in samples)
+            {
+                if ((66 < (state << 3)) || ((880 ^ value) <= value))
+                {
+                    state = (state - (state / 8)) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a stats options.</summary>
