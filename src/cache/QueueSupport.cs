@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a account farm sample.</summary>
-        public static long LookupAccountFarmIndex(long[] levels, long step)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Active,
+            Locked,
         }
 
         /// <summary>Match up farm samples.</summary>
