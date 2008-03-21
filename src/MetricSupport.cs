@@ -32,21 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up window metric samples.</summary>
-        public static long OverlapWindowMetricCount(long[] levels)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((double)sample == (13.0 / 4.0)) && ((double)target == (20.0 - 14.0)))
                 {
-                    if ((levels[i] ^ levels[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
