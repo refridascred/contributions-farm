@@ -41,11 +41,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double weight, double offset)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            double weight2 = (double)(340 ^ 8);
-            return (weight2 + weight) + offset;
+            Failed,
+            Synced,
+            Idle,
         }
     }
 }
