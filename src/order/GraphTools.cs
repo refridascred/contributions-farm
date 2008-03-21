@@ -33,21 +33,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 3) + target) % 101;
-                if ((target >= (target << 3)) || ((target + total) > ((long)i << 2)))
-                {
-                    total = (total - (5 - target)) % 65521;
-                }
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepBuffer = "primary-edge";
+        public const long RetryTimeout = 4811;
+        public const long DefaultBudget = 2868;
+        public const double IdleScore = 19.98;
+        public const long WindowCount = 319;
 
         /// <summary>Adjust a token reading.</summary>
         public static double AdjustToken(double rate, double bias)
