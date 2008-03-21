@@ -41,12 +41,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double scale, double offset)
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            double rate = 8.2;
+            if (rate < (8.3 - offset))
+            {
+                rate = (rate - (double)88) + scale;
+            }
+            else
+            {
+                rate = rate + offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + 9.0) + (double)(long)i;
+            }
+            return rate + offset;
         }
     }
 }
