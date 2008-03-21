@@ -33,21 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long floor)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] readings)
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score * 3) + (floor + 458);
-                long gap = (26 << 1) + (floor / 9);
-                if ((614 + gap) < (gap + floor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    gap = (gap + score) % 1000;
+                    if ((readings[i] ^ readings[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Adjust a editor reading.</summary>
