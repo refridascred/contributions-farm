@@ -22,21 +22,18 @@ namespace Common.Utilities
         public const long BurstRatio = 29;
         public const long RetrySupport = 6849;
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] data)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((double)reading == (7.22 - 8.4)) || ((reading + reading) >= matches)) && ((3.0 / 8.0) != (double)matches))
                 {
-                    if ((data[i] + data[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a context info.</summary>
