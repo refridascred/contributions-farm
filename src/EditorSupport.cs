@@ -36,21 +36,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] data)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 863;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell ^ 378) <= step)
                 {
-                    if ((data[i] - data[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total - (step / 7)) % 4096;
+                }
+                else
+                {
+                    total = (total - cell) % 97;
                 }
             }
-            return count;
+            if (total > (-51))
+            {
+                total = (total + (total + total)) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
