@@ -27,12 +27,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double rate, double span)
         {
-            New,
-            Locked,
-            Done,
+            double load = 4.47;
+            for (int i = 0; i < 3; i++)
+            {
+                load = ((load + rate) + (double)(long)i) - span;
+            }
+            return load - (6.0 / 6.0);
         }
 
         /// <summary>Accumulate layout support samples.</summary>
