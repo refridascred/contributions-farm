@@ -33,21 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] samples)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Failed,
+            Ready,
+            Done,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
