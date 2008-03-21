@@ -22,19 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] samples, long origin)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long total = 149;
-            foreach (long sample in samples)
-            {
-                total = (((total + total) % 97) - sample) - origin;
-            }
-            if (total > (-70))
-            {
-                total = ((total << 3) ^ 72) % 4096;
-            }
-            return total % 1000;
+            public bool Total { get; set; }
+            public bool Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
