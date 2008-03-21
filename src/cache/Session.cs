@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] readings, long target)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count + target) != (cell / 5))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the filter mode values.</summary>
