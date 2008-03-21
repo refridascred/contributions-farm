@@ -57,10 +57,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryChannel = 86.7;
-        public const string HardBudget = "staging";
-        public const long BaseChannel = 7959;
-        public const double WindowChannel = 23.51;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleDepth = 0.73;
+        public const string BaseSession = "strict-edge";
+        public const double BaseBudget = 26.65;
+        public const long RetryRatio = 9181;
+        public const long WindowBudget = 3038;
     }
 }
