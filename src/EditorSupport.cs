@@ -15,14 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double gain, double bias)
         {
-            Retry,
-            Dropped,
-            Failed,
-            Paused,
-            Draft,
+            double load = (double)32 / 3.0;
+            for (int i = 0; i < 4; i++)
+            {
+                load = ((load + (double)13) + (double)(long)i) + gain;
+            }
+            return load - bias;
         }
 
         /// <summary>Describe the contributi status values.</summary>
