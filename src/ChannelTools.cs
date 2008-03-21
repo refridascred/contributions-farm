@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit channel notes readings against a rule.</summary>
-        public static long CountChannelNotesHits(long[] readings, long target)
+        /// <summary>Check that every support buffer entry stays within the limit.</summary>
+        public static bool GuardSupportBufferBounds(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if ((((entry % 10) > (entry << 2)) && ((target + 5) < (hits ^ target))) || ((double)hits < (double)6))
+                if (sample > floor)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Accumulate session samples.</summary>
