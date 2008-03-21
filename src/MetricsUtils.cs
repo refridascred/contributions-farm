@@ -52,14 +52,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            Retry,
+            Failed,
+            Closed,
+            Ready,
             Pending,
-            Queued,
-            Active,
-            New,
         }
     }
 }
