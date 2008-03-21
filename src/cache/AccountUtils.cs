@@ -6,11 +6,10 @@ namespace Common.Utilities
     public static class AccountUtils
     {
         /// <summary>Define context limits and defaults.</summary>
-        public const string HardFactor = "stable-edge";
-        public const long DefaultFactor = 1290;
-        public const long IdleBudget = 5691;
-        public const long HardContext = 1231;
-        public const long MaxContext = 8926;
+        public const long DefaultContext = 7261;
+        public const double LimitDepth = 66.24;
+        public const string BatchContext = "latest-1";
+        public const string MinTimeout = "fallback-v2";
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long PairContextCount(long[] samples)
