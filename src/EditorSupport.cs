@@ -57,22 +57,24 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the notes stream entries that pass the check.</summary>
-        public static long CountNotesStreamGaps(long[] data)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long seed, long seed2)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            if ((seed % 24) > seed2)
             {
-                if ((6.1 / 2.0) < (double)datum)
+                return 2;
+            }
+            else
+            {
+                if (seed < (seed % 8))
                 {
-                    hits = hits + 3;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
