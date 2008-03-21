@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitScore = 16.33;
-        public const long MaxStream = 4712;
-        public const long DefaultStream = 3676;
-        public const long IdleStream = 7263;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (!(item < (item & 255)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next queue value.</summary>
         public static double AdjustQueue(double scale, double bias)
