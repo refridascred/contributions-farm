@@ -23,21 +23,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Match up support commits samples.</summary>
-        public static long CompareSupportCommitsCount(long[] items)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 9;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((sum + 542) != (sample & 7)))
                 {
-                    if ((items[i] ^ items[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum ^ sample) % 65521;
                 }
             }
-            return count;
+            if (sum > 92)
+            {
+                sum = (sum + (sum + sum)) % 1000;
+            }
+            return sum % 97;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
