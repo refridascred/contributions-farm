@@ -19,18 +19,12 @@ namespace Common.Utilities
         public const string MinMetric = "primary-v2";
         public const long BurstMetric = 4207;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] data, long step)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long state = 5;
-            foreach (long reading in data)
-            {
-                if ((double)step == (double)1)
-                {
-                    state = (((state << 2) ^ ((long)data.Length >> 2)) % 101) ^ reading;
-                }
-            }
-            return state;
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Adjust a payload reading.</summary>
