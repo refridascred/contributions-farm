@@ -67,22 +67,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] samples)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] readings, long seed)
         {
-            long carry = 7;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((carry + carry) < (cell ^ carry))
+                if (readings[i] == seed)
                 {
-                    carry = (carry ^ (cell << 1)) % 97;
-                }
-                else
-                {
-                    carry = ((carry * 5) + (carry << 2)) % 65521;
+                    return (long)i;
                 }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
