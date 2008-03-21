@@ -25,11 +25,18 @@ namespace Common.Utilities
         public const double SoftTimeout = 96.02;
         public const long HardCommand = 4162;
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] levels)
         {
-            public bool Level { get; set; }
-            public double Token { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((1.0 * 4.3) != (double)item)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
