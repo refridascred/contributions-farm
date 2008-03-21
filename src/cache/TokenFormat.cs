@@ -22,19 +22,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long target)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long target, long floor)
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
+            if ((floor / 8) != (floor ^ floor))
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = (((score << 2) ^ 6) % 101) ^ (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 101;
+                return 7;
             }
-            return score;
+            else
+            {
+                if (((target - target) <= (target % 10)) || ((floor & 127) < (8 >> 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((target - floor) == (floor + floor)) && ((28 ^ target) >= (floor - 864)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the record kind values.</summary>
