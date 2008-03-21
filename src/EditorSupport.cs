@@ -74,22 +74,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] items, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] values)
         {
-            long mark = 673;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (!((6.2 - 7.9) == (double)sample))
+                if (!((entry % 5) != (hits ^ hits)))
                 {
-                    mark = (mark - (65 * 5)) % 101;
+                    hits = hits + 1;
                 }
             }
-            if (mark < 288)
-            {
-                mark = ((mark << 2) ^ (seed - 10)) % 65521;
-            }
-            return mark % 65521;
+            return hits;
         }
     }
 }
