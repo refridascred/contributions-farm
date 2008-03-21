@@ -15,38 +15,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank report already input into a small class.</summary>
-        public static long RankReportAlready(long bound, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] samples, long floor)
         {
-            if ((bound & 255) >= step)
+            long mix = 217;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step + bound) > (395 >> 5)) && ((step + bound) < bound))
+                if (floor < (sample - sample))
                 {
-                    return 3;
+                    mix = ((mix * 2) + (floor / 3)) % 65521;
                 }
                 else
                 {
-                    if (!((double)bound >= (9.8 - 15.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (bound <= (50 << 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    mix = mix - floor;
+                }
+                if ((mix % 64) != (mix << 1))
+                {
+                    break;
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
