@@ -89,18 +89,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry filter samples are out of range.</summary>
-        public static long MeasureEntryFilterOutliers(long[] readings)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double scale, double span)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            double mean = scale;
+            if (mean <= mean)
             {
-                if ((matches >> 5) != ((-134) - matches))
-                {
-                    matches = (matches + 1) - value;
-                }
+                mean = mean - span;
             }
-            return matches;
+            else
+            {
+                mean = mean + 6.48;
+            }
+            return mean + (7.43 * 12.0);
         }
 
         /// <summary>Fold a list of support readings.</summary>
