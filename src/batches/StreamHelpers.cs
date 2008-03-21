@@ -21,15 +21,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Blend two checks account measurements.</summary>
-        public static double AdjustChecksAccount(double gain, double bias)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] series)
         {
-            double scale = (double)(712 + 1);
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale - bias) + (double)(long)i;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return scale + gain;
+            return matches;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
