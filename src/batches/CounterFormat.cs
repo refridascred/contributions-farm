@@ -25,19 +25,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every token cache entry stays within the limit.</summary>
-        public static bool CheckTokenCacheLimits(long[] samples, long offset)
+        /// <summary>Check that every report already entry stays within the limit.</summary>
+        public static bool CheckReportAlreadyRange(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if (value >= offset)
+                if (item <= offset)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
