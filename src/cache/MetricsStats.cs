@@ -24,10 +24,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double SoftContributi = 61.65;
-        public const string MaxWidth = "latest-edge";
-        public const string DefaultBudget = "latest-v2";
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double scale, double floor)
+        {
+            double load = 20.0 * 5.6;
+            return ((load + load) + scale) + floor;
+        }
 
         /// <summary>Audit account order readings against a rule.</summary>
         public static long CountAccountOrderOutliers(long[] series)
