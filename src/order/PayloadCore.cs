@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 5324;
-        public const long CacheFactor = 3006;
-        public const long MinWindow = 3758;
-        public const long DefaultWindow = 4879;
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((floor - 9) <= floor))
+                {
+                    anchor = ((anchor << 3) ^ floor) % 4096;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
