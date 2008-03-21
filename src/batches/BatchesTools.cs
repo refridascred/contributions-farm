@@ -20,14 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double rate, double bias)
         {
-            New,
-            Ready,
-            Locked,
-            Stale,
-            Queued,
+            double ratio = (double)3;
+            if (ratio < (double)762)
+            {
+                ratio = (ratio + bias) + rate;
+            }
+            return ratio + (2.0 / 5.0);
         }
 
         /// <summary>Define account limits and defaults.</summary>
