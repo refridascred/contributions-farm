@@ -27,22 +27,39 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit window graph readings against a rule.</summary>
-        public static long TallyWindowGraphHits(long[] levels)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long floor, long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long offset = floor ^ seed;
+            if ((double)seed <= (2.4 * 3.4))
             {
-                if ((hits >> 4) <= entry)
+                return 1;
+            }
+            else
+            {
+                if ((2.6 + 3.8) > (double)seed)
                 {
-                    hits = hits + 2;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((floor >> 4) > seed) || ((offset - floor) < (seed & 1)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((5.4 * 7.3) > (double)seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
