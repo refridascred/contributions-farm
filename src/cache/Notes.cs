@@ -52,30 +52,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank context format input into a small class.</summary>
-        public static long BucketContextFormat(long origin, long target)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long bound, long seed)
         {
-            long slot = origin - target;
-            if ((double)7 == (double)target)
+            long step = bound ^ seed;
+            if (bound < seed)
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((slot << 3) >= (5 + 2))
+                if ((double)step > (double)seed)
                 {
                     return 7;
                 }
                 else
                 {
-                    if (35 < slot)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 2;
                 }
             }
         }
