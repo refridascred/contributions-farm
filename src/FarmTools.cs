@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] values, long offset)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] series)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading <= offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] ^ series[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Describe the commits class values.</summary>
