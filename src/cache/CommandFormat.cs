@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long target, long bound)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            if (!((double)bound > 7.21))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)bound >= (10.0 - 18.0)) && ((target % 12) < target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound - target) < bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every already layout entry stays within the limit.</summary>
