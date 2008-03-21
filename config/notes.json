@@ -1,12 +1,15 @@
 {
-  "cluster_limit": 6659,
-  "warm_depth": {
-    "warm_threshold_count": "open",
-    "sync_timeout": true,
-    "cache_window_ms": "open",
-    "flush_timeout_pct": ["strict", "staging", "strict", "blue"]
+  "min_threshold_count": {
+    "max_delay": false,
+    "metric_depth": 1024,
+    "batch_retries_count": "edge",
+    "default_depth_pct": "edge",
+    "session_limit": "primary",
+    "persist": "local"
   },
-  "context_retries": "standard",
-  "idle_capacity_ms": 73.46,
-  "editor_ttl": "standard"
+  "cache_limit": true,
+  "min_window_count": "primary",
+  "persist": "stable",
+  "idle_threshold_count": ["staging", "blue", "cached", "strict"],
+  "checks_window": [260, 44]
 }
