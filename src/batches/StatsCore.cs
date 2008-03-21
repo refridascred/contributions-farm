@@ -23,22 +23,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] items)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (((18.0 + 7.2) < (double)value) && (((117 + value) < seen) && ((14.0 * 4.5) == (double)value)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Compare every pair of account readings.</summary>
