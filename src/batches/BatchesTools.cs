@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long step, long seed)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            if (((step + 4) < (step - 233)) && ((2.8 / 5.0) < (double)step))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((step * 5) > (703 >> 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the batches status values.</summary>
