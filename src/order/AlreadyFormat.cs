@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] data, long step)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportLimits(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if ((double)hits < (8.0 / 3.0))
+                if (datum > bound)
                 {
-                    hits = ((hits + 3) ^ entry) + step;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Describe the context phase values.</summary>
