@@ -47,20 +47,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] series, long limit)
-        {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double RetryCache = 92.97;
+        public const double BatchCache = 21.18;
+        public const double BaseCount = 34.26;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double MaxRatio = 76.76;
