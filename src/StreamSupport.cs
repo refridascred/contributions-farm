@@ -50,13 +50,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitScore = "alpha-edge";
+        public const long DefaultSession = 1594;
+        public const long SoftBudget = 9663;
     }
 }
