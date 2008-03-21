@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi notes readings against a rule.</summary>
-        public static long CountContributiNotesMatches(long[] values, long limit)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally & 31) > limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 2) - sample;
+                    if ((levels[i] ^ levels[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Derive the next already report value from a seed.</summary>
