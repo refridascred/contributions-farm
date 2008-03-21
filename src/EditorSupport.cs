@@ -34,17 +34,12 @@ namespace Common.Utilities
         public const long CacheSize = 9134;
         public const long SoftSize = 1018;
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] readings, long target)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= target) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            New,
+            Pending,
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
