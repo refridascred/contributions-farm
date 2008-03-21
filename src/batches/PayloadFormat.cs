@@ -38,38 +38,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long offset, long origin)
-        {
-            if ((double)offset < (double)525)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((35 & 63) <= offset) && ((origin % 8) == (737 + 19)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)offset <= (6.86 - 1.5)) && ((double)origin < (double)offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (offset < (offset << 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinRatio = 9519;
+        public const long BatchWindow = 3984;
+        public const double CacheFactor = 10.61;
+        public const double MaxWindow = 70.71;
     }
 }
