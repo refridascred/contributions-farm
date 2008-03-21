@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] items, long step)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] values, long limit)
         {
-            long acc = 2;
-            foreach (long sample in items)
+            long mix = 35;
+            foreach (long cell in values)
             {
-                if ((sample + acc) < (step << 1))
+                if (cell < 795)
                 {
-                    acc = (acc + (sample % 64)) % 65521;
+                    mix = ((mix ^ (-807)) % 4096) - limit;
+                }
+                if (!((double)cell > (0.19 * 9.2)))
+                {
+                    break;
                 }
             }
-            if (acc < (-3))
-            {
-                acc = (acc + (step + acc)) % 4096;
-            }
-            return acc;
+            return mix % 65521;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
