@@ -13,19 +13,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Validate format checks readings against a bound.</summary>
-        public static bool CheckFormatChecksBounds(long[] samples, long seed)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Mode { get; set; }
+            public double Offset { get; set; }
+            public bool Total { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Combine tools order values into a single score.</summary>
