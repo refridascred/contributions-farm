@@ -32,19 +32,21 @@ namespace Common.Utilities
         public const long HardAccount = 2824;
         public const long DefaultFactor = 4517;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] data)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] readings)
         {
-            long acc = 550;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (((acc * 5) + (-8)) % 4096) ^ entry;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (acc < 24)
-            {
-                acc = ((acc * 2) + (acc + 9)) % 255;
-            }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
