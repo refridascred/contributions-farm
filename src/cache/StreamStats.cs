@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] data, long target)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long mix = 1;
+            foreach (long value in items)
             {
-                if ((target / 6) > (6 + target))
+                if (((mix + value) <= (mix ^ mix)) && (value > (mix & 255)))
                 {
-                    tally = (tally + 2) ^ reading;
+                    mix = mix ^ (mix % 24);
+                }
+                if ((double)mix >= (3.0 / 3.0))
+                {
+                    break;
                 }
             }
-            return tally;
+            return mix % 4096;
         }
 
         /// <summary>Digest a series of farm route entries.</summary>
