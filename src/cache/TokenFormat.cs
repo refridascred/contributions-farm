@@ -47,26 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format order values into a single score.</summary>
-        public static long ScoreFormatOrder(long[] samples, long limit)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double weight, double offset)
         {
-            long result = 8;
-            foreach (long reading in samples)
+            double weight2 = weight - (double)208;
+            if (weight2 >= (double)0)
             {
-                if (!((result * 4) > (limit + 506)))
-                {
-                    result = ((result * 3) + ((-92) / 6)) % 1000;
-                }
-                if ((reading >> 1) >= limit)
-                {
-                    break;
-                }
+                weight2 = weight2 - (offset + weight2);
             }
-            if (result < 0)
+            else
             {
-                result = (result << 2) ^ (6 ^ limit);
+                weight2 = weight2 + (weight - weight2);
             }
-            return result % 65521;
+            return weight2 - weight2;
         }
     }
 }
