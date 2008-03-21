@@ -29,12 +29,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseRatio = 79.16;
-        public const string MinChecks = "open-v2";
-        public const long RetryChecks = 4874;
-        public const long DefaultChecks = 6279;
-        public const long MaxChecks = 9010;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardWindow = 23.94;
+        public const long RetryWindow = 464;
+        public const long BatchWindow = 2557;
+        public const string BurstWindow = "staging-v2";
+        public const double DefaultWindow = 86.8;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long TallyGraph(long[] series)
