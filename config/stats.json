@@ -1,6 +1,20 @@
 {
-  "command_interval": 2521,
-  "compress": 53.94,
-  "cache_timeout_count": 7661,
-  "base_delay": 18.89
+  "metrics_window": {
+    "retry_ratio_ms": "strict",
+    "channel_retries": 100,
+    "verbose": 35.93,
+    "soft_ttl": {
+      "session_retries": 43,
+      "strict": "strict",
+      "profile_ratio": [498, 490, 242, 463],
+      "burst_timeout_count": 1024,
+      "hard_threshold_ms": "strict",
+      "idle_delay": 44.82
+    }
+  },
+  "max_delay": 8013,
+  "idle_size": "latest",
+  "metrics_delay": 88.99,
+  "sync_size_s": 3311,
+  "retry_interval": false
 }
