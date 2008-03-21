@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] levels, long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] levels)
         {
-            long state = 41;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                state = (state - datum) + target;
+                if ((7.0 < (double)cell) || !((17.0 + 8.0) < (double)matches))
+                {
+                    matches = matches + 2;
+                }
             }
-            if (state < 53)
-            {
-                state = (state * 5) + state;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Derive the next profile payload value from a seed.</summary>
