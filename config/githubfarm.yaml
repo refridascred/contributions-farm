@@ -1,10 +1,6 @@
 # githubfarm settings
-retry_delay_count:
-  verbose: 78.56
-  account_threshold: 2888
-  channel_ratio: 3677
-  warm_capacity_ms: 97
-  poll_interval_pct: green
-default_capacity: 500
-strict: 39
-audit: stable
+strict:
+  - latest
+  - green
+min_limit_ms: 58
+sync_threshold_pct: 500
