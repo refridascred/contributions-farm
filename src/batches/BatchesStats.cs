@@ -13,21 +13,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                total = (total ^ (bound - 5)) % 4096;
-                if (((total - total) >= bound) && ((3.0 / 3.0) != (double)bound))
-                {
-                    total = (total - (896 >> 4)) % 255;
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstFactor = "alpha-v2";
+        public const long CacheRatio = 4290;
+        public const long MinTimeout = 325;
+        public const long HardRatio = 949;
+        public const long IdleSession = 9645;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long DeriveWindow(long seed)
