@@ -56,12 +56,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] data, long bound)
         {
-            public long Region { get; set; }
-            public bool Limit { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((9.0 * 16.0) >= (double)bound)
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
         }
     }
 }
