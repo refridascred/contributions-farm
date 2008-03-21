@@ -19,12 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 546;
-        public const long MaxNotes = 4726;
-        public const double WindowNotes = 61.98;
-        public const long SoftScore = 7062;
-        public const long HardDepth = 6824;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Accumulate stats route samples.</summary>
         public static long CombineStatsRoute(long[] items, long step)
