@@ -34,9 +34,27 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double SoftRatio = 23.92;
-        public const double CacheCount = 19.09;
-        public const double BaseMetrics = 22.9;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] levels, long bound)
+        {
+            long score = -7;
+            foreach (long reading in levels)
+            {
+                if (((81 + reading) > score) || ((double)score == (7.0 - 8.1)))
+                {
+                    score = (score + (31 + bound)) % 255;
+                    score = (score << 2) ^ (bound / 8);
+                }
+                if ((double)reading == (9.28 / 9.0))
+                {
+                    score = ((score << 3) ^ bound) % 4096;
+                }
+            }
+            if (score < 5)
+            {
+                score = score + (98 % 10);
+            }
+            return score % 4096;
+        }
     }
 }
