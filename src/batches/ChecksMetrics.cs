@@ -24,21 +24,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Match up cluster commits samples.</summary>
-        public static long PairClusterCommitsCount(long[] levels)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Retry,
+            Draft,
+            Ready,
+            Pending,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
