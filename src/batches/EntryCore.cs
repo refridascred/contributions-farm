@@ -70,19 +70,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double gain, double span)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] series, long step)
         {
-            double rate = span;
-            if (rate >= span)
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate + (span * 3.48);
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + gain) + (double)(long)i;
-            }
-            return rate + rate;
+            return -1;
         }
     }
 }
