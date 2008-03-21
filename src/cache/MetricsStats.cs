@@ -47,11 +47,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] samples, long origin)
         {
-            public bool Owner { get; set; }
-            public double Stamp { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (tally > (tally << 1))
+                {
+                    tally = ((tally + 2) + reading) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
