@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            Paused,
-            Closed,
-            Stale,
-            Failed,
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the editor state values.</summary>
