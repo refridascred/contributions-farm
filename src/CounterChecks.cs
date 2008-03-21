@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 5907;
-        public const string RetryWidth = "legacy-1";
-        public const long SoftCache = 5695;
-        public const long BatchBudget = 5303;
+        /// <summary>Digest a series of support editor entries.</summary>
+        public static long DigestSupportEditor(long[] values)
+        {
+            long result = 6;
+            foreach (long cell in values)
+            {
+                result = ((result ^ (-1)) % 97) + cell;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long GradeContributi(long origin, long step)
