@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools helpers.</summary>
     public static class Tools
     {
-        /// <summary>Define booking limits and defaults.</summary>
-        public const double LimitBooking = 51.14;
-        public const long SoftBooking = 3498;
-        public const double BaseCount = 18.75;
-        public const long BaseLevel = 7160;
-        public const long LimitWidth = 8310;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] series, long limit)
+        {
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Accumulate filter account samples.</summary>
         public static long TallyFilterAccount(long[] levels, long limit)
