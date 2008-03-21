@@ -1,13 +1,13 @@
 # support settings
-order_window: 81.52
-warm_ttl_ms:
-  - staging
-  - local
-  - local
-  - open
-batch_delay_count:
-  - staging
-  - legacy
-  - edge
-stats_limit: 6
-stats_retries: 15.2
+metric_timeout: 83
+window_depth: eu-west
+enabled:
+  base_ttl:
+    burst_delay_s: local
+    batch_window_count: true
+    command_capacity: 64
+    counter_threshold: eu-west
+  verbose: 45.43
+  readonly: 725
+  audit: false
+  idle_depth_ms: local
