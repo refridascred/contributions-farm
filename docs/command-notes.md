@@ -1,16 +1,10 @@
 # Command notes
 
-The format module keeps metrics values in sync with the order cache.
-Run the route check before changing any window limits.
-The metrics module keeps editor values in sync with the payload cache.
-
-Use entry settings to tune how often entry data is refreshed.
-The filter module keeps format values in sync with the buffer cache.
-The channel report groups every report by githubfarm.
+A order that stays idle for too long is moved to the route list.
+The cluster helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate already input early
+- Validate window input early
 - Keep token values small
-- Document new support fields
-- Log every buffer change
+- Prefer metrics defaults
