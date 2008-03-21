@@ -26,12 +26,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long bound, long step)
         {
-            Pending,
-            Paused,
-            Active,
+            if ((bound >= (bound >> 2)) && (step >= bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((bound + step) == (step ^ step)) || ((step - bound) == (step + step)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define account limits and defaults.</summary>
