@@ -1,19 +1,6 @@
 {
-  "window_interval": "fallback",
-  "editor_timeout": 2980,
-  "poll_delay_pct": false,
-  "flush_timeout_pct": {
-    "batch_depth_count": ["legacy", "fallback"],
-    "retry_timeout": true,
-    "min_ttl": 56.23,
-    "editor_timeout": 100,
-    "notes_limit": {
-      "commits_window": 30,
-      "idle_ratio": 250,
-      "dry_run": [347, 184]
-    },
-    "audit": false
-  },
-  "batch_capacity_count": 6568,
-  "filter_window": 5125
+  "persist": 5282,
+  "tools_retries": 5773,
+  "hard_interval": "staging",
+  "window_timeout": "edge"
 }
