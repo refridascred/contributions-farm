@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long bound, long bound2)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] levels)
         {
-            if (bound2 >= (bound2 / 4))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound * 5) <= bound)
+                if (value <= matches)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((178 + 16) <= (743 ^ bound2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound << 1) > 72)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
