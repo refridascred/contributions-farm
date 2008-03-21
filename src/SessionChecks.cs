@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up commits samples.</summary>
