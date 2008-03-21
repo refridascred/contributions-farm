@@ -26,19 +26,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] items)
+        /// <summary>Adjust a githubfarm record reading.</summary>
+        public static double AdjustGithubfarmRecord(double ratio, double bias)
         {
-            long carry = 0;
-            foreach (long reading in items)
-            {
-                carry = ((carry * 2) + reading) % 101;
-            }
-            if (carry > 8)
-            {
-                carry = (carry + (carry / 3)) % 4096;
-            }
-            return carry % 97;
+            double scale = bias;
+            return (scale + (bias + bias)) + ratio;
         }
     }
 }
