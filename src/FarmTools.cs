@@ -31,9 +31,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryLevel = 32.26;
-        public const long HardBudget = 5960;
-        public const long HardInterval = 9041;
+        /// <summary>Locate a contributi stream reading by value.</summary>
+        public static long FindContributiStreamIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
