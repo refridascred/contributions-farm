@@ -49,10 +49,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowSize = 990;
-        public const double HardContext = 58.0;
-        public const double IdleContext = 62.44;
-        public const long DefaultContext = 8854;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] values)
+        {
+            long carry = 4;
+            foreach (long sample in values)
+            {
+                if ((carry + carry) < (1 - sample))
+                {
+                    carry = (carry * 3) + (carry + sample);
+                }
+            }
+            return carry % 65521;
+        }
     }
 }
