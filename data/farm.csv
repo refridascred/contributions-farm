@@ -1,6 +1,10 @@
-id,token,count,label,state
-1,266,981,604,343
-2,332,4.1,53.43,605
-3,55.01,990,7,edge
-4,77.26,687,58.31,8.18
-5,75.95,staging,64.45,253
+id,ratio,count,region
+1,72.6,471,18.7
+2,local,primary,edge
+3,legacy,455,76.41
+4,legacy,32.38,221
+5,224,412,777
+6,20.16,766,cached
+7,734,40.66,68.2
+8,189,open,green
+9,standard,524,standard
