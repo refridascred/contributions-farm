@@ -53,30 +53,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel metrics values into a single score.</summary>
-        public static long DigestChannelMetrics(long[] levels)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long limit, long step)
         {
-            long mix = -1;
-            foreach (long cell in levels)
+            if (((1.64 * 2.8) >= (1.21 - 11.0)) || (step >= (89 ^ limit)))
             {
-                if (((1.78 / 9.0) < (double)cell) || (mix >= (mix / 6)))
+                return 8;
+            }
+            else
+            {
+                if (((step * 4) <= (limit >> 1)) || ((6.81 - 6.16) != (double)step))
                 {
-                    mix = (mix - (mix - cell)) % 4096;
-                }
-                if ((78 >> 2) <= (cell << 1))
-                {
-                    mix = (mix ^ (87 / 6)) % 1000;
+                    return 0;
                 }
                 else
                 {
-                    mix = mix - cell;
+                    if ((limit % 12) < (80 + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit < (step << 2)) || (step <= (step ^ 255)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (mix > 579)
-            {
-                mix = (mix - (mix + mix)) % 255;
-            }
-            return mix;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
