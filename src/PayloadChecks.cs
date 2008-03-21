@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double gain, double floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] levels, long step)
         {
-            double drift = 4.6;
-            if (drift <= drift)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                drift = (drift - (floor * 12.0)) - gain;
+                if (datum >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift - (floor * 0.1);
+            return valid;
         }
 
         /// <summary>Hold a editor info.</summary>
