@@ -52,11 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double RetryCache = 84.89;
-        public const string WindowTimeout = "open-1";
-        public const string MaxCache = "fallback-v2";
-        public const double StepInterval = 13.28;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((reading & 15) != (2 % 12))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmMatches(long[] levels)
