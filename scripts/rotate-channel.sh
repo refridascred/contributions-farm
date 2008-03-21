@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green latest eu-west standard; do
+for item in open legacy cached; do
     log "checking ${item}"
 done
 
-mode="${1:-edge}"
+CHANNEL_LIMIT=246
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-staging}"
 case "${mode}" in
-    standard)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
