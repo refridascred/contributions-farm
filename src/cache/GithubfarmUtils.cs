@@ -40,11 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double gain, double floor)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            double drift = gain;
-            return (drift - 2.0) + floor;
+            Draft,
+            Retry,
+            Closed,
+            Pending,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
