@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long StepSize = 8601;
         public const long BurstCommits = 2653;
 
-        /// <summary>Audit record checks readings against a rule.</summary>
-        public static long TallyRecordChecksHits(long[] series)
+        /// <summary>Look up the position of a contributi stream sample.</summary>
+        public static long FindContributiStreamIndex(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((85 + 27) >= tally)
+                if (items[i] >= floor)
                 {
-                    tally = (tally + 2) ^ sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
