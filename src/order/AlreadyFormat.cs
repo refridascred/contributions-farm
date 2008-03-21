@@ -33,18 +33,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of format support readings.</summary>
-        public static long ScoreFormatSupport(long[] levels, long floor)
+        /// <summary>Look up the position of a stats channel sample.</summary>
+        public static long SeekStatsChannelIndex(long[] samples, long seed)
         {
-            long carry = 9;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)sample != (14.0 - 3.0))
+                if ((samples[i] == seed) && ((samples[i] % 5) == 0))
                 {
-                    carry = (((carry << 2) ^ (sample % 12)) % 101) - floor;
+                    return (long)i;
                 }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Hold a graph info.</summary>
