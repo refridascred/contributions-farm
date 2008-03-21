@@ -58,9 +58,19 @@ namespace Common.Utilities
             return scale + 17.0;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepLayout = 53.61;
-        public const long StepRatio = 9323;
-        public const double LimitLayout = 53.79;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] series, long offset)
+        {
+            long carry = 366;
+            foreach (long item in series)
+            {
+                carry = carry ^ (carry + offset);
+                if (!((offset / 5) == ((long)series.Length ^ item)))
+                {
+                    carry = ((carry << 2) ^ (item + item)) % 65521;
+                }
+            }
+            return carry;
+        }
     }
 }
