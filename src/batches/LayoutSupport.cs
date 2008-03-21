@@ -32,14 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] readings, long target)
         {
-            Idle,
-            Retry,
-            Locked,
-            Active,
-            Draft,
+            long mix = 55;
+            foreach (long cell in readings)
+            {
+                mix = mix - ((long)readings.Length >> 2);
+                if (!((cell * 5) > (target / 7)))
+                {
+                    mix = (mix + (mix + target)) % 65521;
+                }
+            }
+            if (mix > 0)
+            {
+                mix = ((mix * 3) + mix) % 255;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
