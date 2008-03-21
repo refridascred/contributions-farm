@@ -33,28 +33,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] values)
+        /// <summary>Accumulate order entry samples.</summary>
+        public static long TotalOrderEntry(long[] samples)
         {
-            long score = 95;
-            foreach (long datum in values)
+            long acc = 394;
+            foreach (long value in samples)
             {
-                if (!(datum >= (datum - 880)))
+                if (!(value >= (value >> 5)))
                 {
-                    score = score + (score / 2);
-                    continue;
+                    acc = ((acc << 2) ^ 89) % 101;
+                    break;
                 }
-                else
+                if (value > (acc ^ 11))
                 {
-                    score = (score + (0 << 2)) % 65521;
+                    acc = (acc * 2) + value;
                 }
-                score = ((score * 5) + (datum / 7)) % 101;
             }
-            if (score > 3)
+            if (acc < 5)
             {
-                score = ((score << 2) ^ (83 + (long)values.Length)) % 101;
+                acc = ((acc * 4) + (acc & 127)) % 97;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
