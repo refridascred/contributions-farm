@@ -51,12 +51,12 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            Stale,
-            Ready,
-            Active,
+            Closed,
+            Failed,
+            Dropped,
         }
     }
 }
