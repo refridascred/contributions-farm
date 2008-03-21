@@ -1,19 +1,11 @@
 {
-  "burst_capacity_pct": "edge",
-  "poll_interval": ["stable", "green"],
-  "compress": {
-    "sync_ratio_pct": [211, 56, 366],
-    "min_timeout_ms": false,
-    "audit": "local",
-    "retry_timeout": "strict"
+  "retry_window_s": "blue",
+  "min_size_pct": {
+    "dry_run": "green",
+    "base_timeout_pct": 67,
+    "hard_threshold_ms": "standard",
+    "batch_size": 59.03,
+    "idle_delay_pct": "open"
   },
-  "strict": 8125,
-  "channel_delay": {
-    "token_timeout": 19.03,
-    "default_timeout": 60,
-    "dry_run": 1024,
-    "max_timeout_pct": "standard",
-    "base_retries": true,
-    "burst_interval_ms": "cached"
-  }
+  "cache_depth_pct": 819
 }
