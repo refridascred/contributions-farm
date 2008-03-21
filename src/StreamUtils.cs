@@ -40,11 +40,12 @@ namespace Common.Utilities
         public const long MinSize = 6289;
         public const double LimitCache = 47.06;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinFactor = 2542;
-        public const double BaseGithubfarm = 48.46;
-        public const string StepFactor = "fallback-1";
-        public const long BurstSpan = 354;
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
+        {
+            public string Level { get; set; } = "";
+            public bool Region { get; set; }
+        }
 
         /// <summary>Compare every pair of farm session readings.</summary>
         public static long OverlapFarmSessionCount(long[] values)
