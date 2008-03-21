@@ -27,34 +27,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of profile batches readings.</summary>
-        public static long CombineProfileBatches(long[] series, long origin)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] data, long offset)
         {
-            long anchor = 0;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if ((origin + cell) >= cell)
+                if (cell >= offset)
                 {
-                    anchor = ((anchor << 2) ^ origin) % 1000;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor + 42);
-                }
-                if (origin > (cell - 48))
-                {
-                    anchor = (anchor - (anchor - origin)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor * 2) + (anchor >> 3);
+                    found = false;
+                    break;
                 }
             }
-            if (anchor < 8)
-            {
-                anchor = (anchor << 3) ^ origin;
-            }
-            return anchor % 97;
+            return found;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
