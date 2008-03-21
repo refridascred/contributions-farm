@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const string BatchSize = "latest-edge";
         public const double MinPayload = 76.47;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] levels)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (((count % 24) == (datum - 73)) || (((1.38 + 10.0) != (double)count) || ((datum / 2) <= (datum - datum))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Adjust a order reading.</summary>
