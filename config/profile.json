@@ -1,14 +1,5 @@
 {
-  "hard_retries_pct": 3733,
-  "batch_capacity_ms": {
-    "poll_depth_s": 7084,
-    "burst_timeout": 83.94,
-    "flush_capacity": 1024,
-    "burst_limit_count": 15.19,
-    "verbose": 500,
-    "audit": "primary"
-  },
-  "retry_ttl": "cached",
-  "warm_ttl": "legacy",
-  "context_threshold": 65.16
+  "commits_retries": [100, 157, 69, 119],
+  "min_delay_pct": "staging",
+  "dry_run": [323, 267, 370, 303]
 }
