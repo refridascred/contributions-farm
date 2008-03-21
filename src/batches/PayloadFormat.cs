@@ -26,17 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] values, long origin)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double ratio, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = offset;
+            if (weight > (9.35 * 7.0))
             {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
+                weight = weight - ratio;
             }
-            return -1;
+            else
+            {
+                weight = weight + (weight / 9.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (double)8) + (double)(long)i;
+            }
+            return weight + offset;
         }
 
         /// <summary>Describe the payload state values.</summary>
