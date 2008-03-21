@@ -1,13 +1,8 @@
 {
-  "compress": "strict",
-  "hard_limit": {
-    "batch_ttl": "green",
-    "tools_ratio": false,
-    "strict": 250,
-    "warm_window": 72,
-    "flush_interval": 51.54
-  },
-  "retry_window_pct": false,
-  "flush_retries_count": ["standard", "green", "local", "open"],
-  "cache_size": "cached"
+  "burst_retries_count": "standard",
+  "contributi_size": [317, 261],
+  "min_ttl_pct": true,
+  "verbose": "edge",
+  "burst_capacity_s": false,
+  "dry_run": "fallback"
 }
