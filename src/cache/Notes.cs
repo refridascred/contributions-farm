@@ -19,12 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] items, long bound)
         {
-            public bool Level { get; set; }
-            public string Label { get; set; } = "";
-            public double Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the schema phase values.</summary>
