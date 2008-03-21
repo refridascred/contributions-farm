@@ -44,12 +44,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
-        {
-            Draft,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftFilter = 5.52;
+        public const long BaseWidth = 9516;
+        public const string WindowFilter = "latest-1";
+        public const long BaseTimeout = 4642;
     }
 }
