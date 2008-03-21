@@ -24,12 +24,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double bias, double floor)
-        {
-            double weight = (double)(176 & 15);
-            return (weight + (floor + weight)) + bias;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardDepth = "local-v2";
+        public const string MaxAlready = "cached-edge";
+        public const long BatchAlready = 2355;
+        public const double CacheInterval = 41.65;
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
