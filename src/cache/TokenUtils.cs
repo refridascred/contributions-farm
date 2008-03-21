@@ -26,18 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter editor readings against a rule.</summary>
-        public static long MeasureFilterEditorHits(long[] readings)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell >= tally)
+                if (samples[i] < limit)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
