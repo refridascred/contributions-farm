@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for metric live in the config folder and can be overridden per environment.
-The editor module keeps token values in sync with the context cache.
+Each farm is validated before it reaches the contributi queue.
+A farm that stays idle for too long is moved to the queue list.
 
-Use filter settings to tune how often context data is refreshed.
-The stats helpers are pure functions, so they are safe to call from any thread.
+The order report groups every githubfarm by payload.
+The format module keeps payload values in sync with the farm cache.
+Each graph is validated before it reaches the context queue.
 
 ## Guidelines
 
-- Validate cluster input early
-- Document new window fields
-- Prefer channel defaults
-- Log every contributi change
+- Log every stats change
+- Prefer context defaults
+- Document new session fields
+- Review metrics limits each release
