@@ -47,14 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
+            Dropped,
+            Synced,
+            Pending,
             Paused,
-            Locked,
-            Stale,
-            New,
-            Done,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
