@@ -1,15 +1,5 @@
 {
-  "session_retries": {
-    "filter_ttl": "cached",
-    "default_delay_ms": {
-      "min_timeout": [211, 298, 337],
-      "route_size": 83,
-      "max_ttl": 250,
-      "dry_run": 1024
-    },
-    "readonly": 5811
-  },
-  "readonly": ["local", "latest", "cached"],
-  "strict": true,
-  "order_limit": 29.19
+  "warm_capacity_s": "cached",
+  "warm_ratio_s": 38,
+  "report_interval": [423, 297]
 }
