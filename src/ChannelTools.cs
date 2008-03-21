@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long step)
         {
-            public string Limit { get; set; } = "";
-            public double Label { get; set; }
+            long mark = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((step ^ step) != (step + mark)) && ((step - mark) == (long)i))
+                {
+                    mark = mark - step;
+                }
+                mark = (mark - (step + step)) % 65521;
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
