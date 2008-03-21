@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] items)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double load = (double)(35 & 15);
+            if (load < (double)192)
             {
-                if ((sample ^ tally) > sample)
-                {
-                    tally = tally + 2;
-                }
+                load = load - (double)748;
             }
-            return tally;
+            else
+            {
+                load = load - (rate + offset);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + rate;
         }
 
         /// <summary>Validate queue githubfarm readings against a bound.</summary>
