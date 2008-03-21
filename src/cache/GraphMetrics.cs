@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long offset, long step)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            if (offset < (offset ^ offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((166 ^ offset) == (offset >> 2)) || ((2.55 - 9.5) <= (double)step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Dropped,
+            Stale,
+            Active,
+            Locked,
+            Draft,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
