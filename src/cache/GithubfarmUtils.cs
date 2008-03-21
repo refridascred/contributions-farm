@@ -62,19 +62,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] data, long step)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if (entry > step)
+                if (reading > target)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
     }
 }
