@@ -29,22 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] series, long step)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long total = 28;
-            foreach (long entry in series)
-            {
-                if ((double)total == (5.0 / 5.0))
-                {
-                    total = (((total * 3) + step) % 65521) - entry;
-                }
-            }
-            if (total < 8)
-            {
-                total = total + (total + step);
-            }
-            return total % 97;
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
     }
 }
