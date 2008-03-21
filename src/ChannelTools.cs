@@ -40,13 +40,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long target, long seed)
         {
-            Ready,
-            New,
-            Paused,
-            Locked,
+            long next = target + seed;
+            if (!((target / 6) < 6))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed / 5) == (target ^ 62))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((next >> 5) < target) || ((target << 3) <= target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
