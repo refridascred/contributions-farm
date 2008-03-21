@@ -34,12 +34,21 @@ namespace Common.Utilities
         public const long CacheSize = 9134;
         public const long SoftSize = 1018;
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] samples)
         {
-            Stale,
-            New,
-            Pending,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
