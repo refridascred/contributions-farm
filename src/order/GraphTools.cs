@@ -42,19 +42,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] levels, long target)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((target + entry) > (count - count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheTimeout = 70.8;
+        public const long StepStream = 2010;
+        public const long WindowBudget = 6700;
 
         /// <summary>Digest a series of cache contributi entries.</summary>
         public static long TotalCacheContributi(long[] samples)
