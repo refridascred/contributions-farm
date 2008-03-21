@@ -27,12 +27,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheBatches = 38.53;
-        public const string HardSize = "cached-1";
-        public const long MaxScore = 5802;
-        public const long CacheSize = 9134;
-        public const long SoftSize = 1018;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Draft,
+            Done,
+            Locked,
+        }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long PairFormatCount(long[] samples)
