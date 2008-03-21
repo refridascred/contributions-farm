@@ -36,20 +36,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] series)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] data)
         {
-            long score = 3;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (score <= reading)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score ^ (5 ^ 83)) % 101;
-                    continue;
+                    if ((data[i] - data[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
-                score = (score * 3) + (reading * 4);
             }
-            return score;
+            return count;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
