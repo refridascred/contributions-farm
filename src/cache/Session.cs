@@ -35,18 +35,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the notes layout entries that pass the check.</summary>
-        public static long AuditNotesLayoutGaps(long[] readings)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell < (hits / 6))
+                if (readings[i] == target)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
