@@ -33,22 +33,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] data, long floor)
+        /// <summary>Look up the position of a report entry sample.</summary>
+        public static long LocateReportEntryIndex(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((datum % 97) <= (seen - 101)) || ((4.66 * 3.05) < (double)datum))
+                if ((values[i] >= step) && ((values[i] % 5) == 0))
                 {
-                    seen = (seen + 1) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
