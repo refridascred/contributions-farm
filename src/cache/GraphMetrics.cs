@@ -44,11 +44,14 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
+            Active,
+            Dropped,
+            Stale,
+            Synced,
+            Locked,
         }
 
         /// <summary>Match up cache samples.</summary>
