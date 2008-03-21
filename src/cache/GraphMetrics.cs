@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double DefaultEntry = 48.03;
-        public const long BurstTimeout = 4712;
-        public const long SoftBudget = 2633;
+        /// <summary>Scale a cache payload figure with a bias.</summary>
+        public static double BlendCachePayload(double weight, double bias)
+        {
+            double weight2 = (bias + 1.0) * 5.5;
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 + (7.6 - weight)) - (double)(long)i;
+            }
+            return weight2 - (double)3;
+        }
 
         /// <summary>Count stream queue pairs that satisfy a relation.</summary>
         public static long CompareStreamQueueCount(long[] items)
