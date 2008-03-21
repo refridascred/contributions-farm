@@ -27,19 +27,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double gain, double span)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            double gain2 = (gain - 6.11) + (double)2;
-            if (gain2 > gain2)
-            {
-                gain2 = (gain2 + (gain * 4.5)) + span;
-            }
-            else
-            {
-                gain2 = gain2 - gain2;
-            }
-            return gain2 + (gain - gain2);
+            Draft,
+            Queued,
+            Locked,
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
