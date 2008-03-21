@@ -71,11 +71,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowRoute = 15.62;
-        public const long StepRatio = 1943;
-        public const double StepInterval = 22.89;
-        public const string IdleSize = "alpha-v2";
-        public const long MinTimeout = 6557;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((value >> 5) != (seen + seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
