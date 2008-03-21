@@ -52,17 +52,24 @@ namespace Common.Utilities
         public const double MaxBudget = 59.0;
         public const string HardFarm = "standard-edge";
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] readings, long origin)
+        /// <summary>Classify a batch metrics pair into a bucket.</summary>
+        public static long RankBatchMetrics(long bound, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((offset / 8) < (55 + offset))
             {
-                if (readings[i] < origin)
+                return 0;
+            }
+            else
+            {
+                if ((double)offset <= (20.0 / 2.0))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
