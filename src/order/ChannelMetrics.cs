@@ -5,28 +5,36 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a support tools pair into a bucket.</summary>
-        public static long RankSupportTools(long floor, long floor2)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long bound, long step)
         {
-            if ((7.85 + 3.1) >= (double)floor2)
+            long offset = bound - step;
+            if ((double)offset < (3.0 / 8.0))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if ((floor - floor) < (floor & 31))
+                if (((double)step >= (double)327) && ((step + 1) <= (step + step)))
                 {
                     return 2;
                 }
                 else
                 {
-                    if (floor >= (floor2 & 63))
+                    if (((5 + bound) <= (offset + offset)) || (2.0 > (double)step))
                     {
-                        return 6;
+                        return 8;
                     }
                     else
                     {
-                        return 0;
+                        if ((step + (-450)) <= (914 & 7))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
