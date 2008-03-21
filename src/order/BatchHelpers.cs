@@ -34,17 +34,22 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] readings, long floor)
+        /// <summary>Count the contributi cache entries that pass the check.</summary>
+        public static long AuditContributiCacheMatches(long[] readings, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (readings[i] == floor)
+                if ((step + value) > (count ^ 50))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
