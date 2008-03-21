@@ -14,22 +14,14 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit window record readings against a rule.</summary>
-        public static long MeasureWindowRecordOutliers(long[] data, long target)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (!((4.16 / 9.0) <= (double)target))
-                {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Closed,
+            Idle,
+            Queued,
+            New,
+            Ready,
         }
 
         /// <summary>Define account limits and defaults.</summary>
