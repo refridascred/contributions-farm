@@ -44,21 +44,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] readings)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = target;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                total = ((total * 3) + target) % 101;
+                if ((target >= (target << 3)) || ((target + total) > ((long)i << 2)))
                 {
-                    if ((readings[i] ^ readings[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total - (5 - target)) % 65521;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Adjust a token reading.</summary>
