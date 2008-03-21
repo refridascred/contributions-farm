@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftSession = "strict";
-        public const string HardSession = "legacy-v2";
-        public const double DefaultScore = 24.43;
-        public const long CacheSession = 5146;
+        /// <summary>Look up the position of a filter report sample.</summary>
+        public static long SeekFilterReportIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > step) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long CombineQueue(long[] items, long offset)
