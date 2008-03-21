@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 4;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((7 ^ sample) < 46)
                 {
-                    if ((items[i] - items[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry + sample) - origin;
                 }
             }
-            return count;
+            if (carry > 27)
+            {
+                carry = ((carry * 5) + ((-156) & 63)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the context phase values.</summary>
