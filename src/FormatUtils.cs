@@ -26,17 +26,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] values, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (values[i] >= offset)
+                if ((tally ^ 28) == (sample << 2))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
