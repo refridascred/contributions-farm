@@ -31,11 +31,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
