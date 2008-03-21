@@ -14,13 +14,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] values)
         {
-            Paused,
-            Synced,
-            Dropped,
-            Stale,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((((matches + matches) < (cell ^ matches)) || (((long)values.Length << 2) == (34 >> 3))) || ((double)matches == (3.66 / 6.0)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
