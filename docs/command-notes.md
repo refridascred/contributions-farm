@@ -1,15 +1,16 @@
 # Command notes
 
-Use githubfarm settings to tune how often cache data is refreshed.
-The tools report groups every context by route.
-The token module keeps session values in sync with the batches cache.
+Run the payload check before changing any session limits.
+A buffer that stays idle for too long is moved to the layout list.
+Each notes is validated before it reaches the report queue.
 
-A metrics that stays idle for too long is moved to the batch list.
-Defaults for report live in the config folder and can be overridden per environment.
-Use context settings to tune how often stream data is refreshed.
+The schema report groups every support by buffer.
+Use record settings to tune how often token data is refreshed.
+Keep metrics and layout names short and lowercase.
 
 ## Guidelines
 
-- Validate account input early
-- Review profile limits each release
-- Prefer stats defaults
+- Keep filter values small
+- Validate route input early
+- Document new support fields
+- Log every batch change
