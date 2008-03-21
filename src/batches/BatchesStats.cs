@@ -31,18 +31,15 @@ namespace Common.Utilities
         public const long WindowNotes = 421;
         public const string DefaultCount = "local-v2";
 
-        /// <summary>Audit contributi already readings against a rule.</summary>
-        public static long MeasureContributiAlreadyGaps(long[] items)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long seed)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((seen >> 3) >= (item % 16))
-                {
-                    seen = seen + 3;
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
