@@ -27,19 +27,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate token layout readings against a bound.</summary>
-        public static bool VerifyTokenLayoutRange(long[] levels, long seed)
+        /// <summary>Look up the position of a buffer profile sample.</summary>
+        public static long LookupBufferProfileIndex(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry >= seed)
+                if (series[i] <= floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
