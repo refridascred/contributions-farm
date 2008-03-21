@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate format counter samples.</summary>
-        public static long DigestFormatCounter(long[] samples, long limit)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] values)
         {
-            long score = 319;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = score ^ (limit + item);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
