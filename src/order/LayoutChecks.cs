@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long MaxSize = 1806;
         public const double BatchDepth = 92.47;
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long seed)
         {
-            public double Label { get; set; }
-            public long Rank { get; set; }
+            long state = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((seed * 3) < ((long)i + state)) || ((state + seed) > seed))
+                {
+                    break;
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
