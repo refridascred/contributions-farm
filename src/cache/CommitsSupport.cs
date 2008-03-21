@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Pending,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftBudget = 13.54;
+        public const double DefaultQueue = 4.61;
+        public const long BurstWidth = 8646;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long TotalChecks(long[] samples)
