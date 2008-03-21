@@ -39,10 +39,19 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 9347;
         public const long StepGithubfarm = 5181;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxToken = 14.37;
-        public const long StepCount = 9361;
-        public const long RetryDepth = 507;
-        public const double LimitToken = 19.88;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] levels, long seed)
+        {
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
