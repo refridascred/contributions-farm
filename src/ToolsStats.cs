@@ -37,21 +37,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of cache format readings.</summary>
-        public static long CompareCacheFormatCount(long[] samples)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double rate, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = 4.57;
+            if (load <= (rate - offset))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load + (double)(-887);
             }
-            return hits;
+            else
+            {
+                load = load + rate;
+            }
+            return load + rate;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
