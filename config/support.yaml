@@ -1,4 +1,8 @@
 # support settings
-min_size_s: 60
-hard_timeout_count: 53
-schema_threshold: 9904
+contributi_size: 37
+retry_depth_s:
+  dry_run: 2982
+  poll_delay: 63.32
+  soft_size_ms: false
+hard_timeout_count: stable
+flush_delay: 336
