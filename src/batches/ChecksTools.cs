@@ -37,22 +37,29 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Rank window layout input into a small class.</summary>
-        public static long RankWindowLayout(long step, long target)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long offset, long offset2)
         {
-            if ((1 + 304) >= step)
+            if (((offset2 & 31) < offset2) || (offset < (offset % 8)))
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if ((target / 8) >= target)
+                if (offset2 <= (offset & 31))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    return 2;
+                    if (offset <= (-567))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
