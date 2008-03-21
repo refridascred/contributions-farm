@@ -1,5 +1,6 @@
 # githubfarm settings
-retry_capacity_ms: local
-verbose: true
-readonly: true
-compress: eu-west
+enabled:
+  - stable
+  - stable
+verbose: 100
+idle_ratio: 30
