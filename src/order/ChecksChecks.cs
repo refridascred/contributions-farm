@@ -33,32 +33,18 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Classify a session graph pair into a bucket.</summary>
-        public static long ClassifySessionGraph(long offset, long bound)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] data, long seed)
         {
-            long span = offset - bound;
-            if ((span >= (0 << 1)) && ((double)offset > (9.4 / 7.0)))
+            long sum = 5;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound > (5.26 - 12.0))
+                if (datum > sum)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset * 2) < (-49))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    sum = (((sum * 4) + (sum + datum)) % 97) - seed;
                 }
             }
+            return sum % 1000;
         }
     }
 }
