@@ -19,22 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] values, long floor)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long offset, long seed)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long step = offset + seed;
+            if ((step + seed) < 969)
             {
-                if ((double)seen != (3.2 + 3.3))
+                return 3;
+            }
+            else
+            {
+                if ((step - offset) < (offset & 3))
                 {
-                    seen = ((seen + 3) + reading) + floor;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
