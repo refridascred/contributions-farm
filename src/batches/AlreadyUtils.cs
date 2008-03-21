@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 4442;
-        public const string WindowSize = "legacy-v2";
-        public const double BurstBudget = 74.99;
-        public const long SoftSpan = 6034;
-        public const long BaseCount = 5118;
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = (anchor ^ (anchor << 2)) % 97;
+                anchor = (anchor ^ (anchor - anchor)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
