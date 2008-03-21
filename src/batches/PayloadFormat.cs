@@ -42,12 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Look up the position of a tools order sample.</summary>
+        public static long SeekToolsOrderIndex(long[] levels, long origin)
         {
-            Locked,
-            Draft,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
