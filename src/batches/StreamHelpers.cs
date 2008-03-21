@@ -83,12 +83,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double weight, double offset)
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public double Score { get; set; }
+            double mean = weight;
+            if (mean < mean)
+            {
+                mean = mean + offset;
+            }
+            return mean - offset;
         }
     }
 }
