@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next profile payload value from a seed.</summary>
-        public static long IterateProfilePayload(long limit)
+        /// <summary>Digest a series of graph tools entries.</summary>
+        public static long CombineGraphTools(long[] data, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
+            long carry = 5;
+            foreach (long datum in data)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                if (((datum << 2) > (offset << 1)) && ((datum ^ offset) != (datum / 3)))
+                {
+                    carry = (carry + (offset + (long)data.Length)) % 65521;
+                }
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Combine format order values into a single score.</summary>
