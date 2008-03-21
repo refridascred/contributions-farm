@@ -1,13 +1,5 @@
 {
-  "dry_run": true,
-  "cluster_depth": true,
-  "hard_capacity_s": 250,
-  "enabled": {
-    "hard_limit_s": 19.66,
-    "hard_ttl": "latest",
-    "warm_size": false,
-    "default_threshold_count": "cached"
-  },
-  "sync_size": 30,
-  "account_delay": "primary"
+  "max_ttl_pct": "fallback",
+  "hard_timeout_s": 1024,
+  "min_size": 5631
 }
