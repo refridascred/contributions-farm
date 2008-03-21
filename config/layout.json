@@ -1,8 +1,18 @@
 {
-  "idle_depth_s": [29, 196],
-  "graph_ratio": 53,
-  "flush_threshold": "legacy",
-  "context_ratio": [1, 419, 433, 346],
-  "burst_size": "blue",
-  "githubfarm_delay": ["stable", "cached", "staging"]
+  "base_window_ms": "staging",
+  "max_depth_count": {
+    "retry_ratio_count": {
+      "max_limit_s": "blue",
+      "enabled": 16,
+      "hard_delay_ms": ["green", "stable", "blue"],
+      "graph_window": "open"
+    },
+    "persist": "stable",
+    "audit": 9275,
+    "max_ratio_count": 250,
+    "retry_capacity": 15.45,
+    "min_ttl": 42
+  },
+  "cache_depth_pct": 80,
+  "compress": "strict"
 }
