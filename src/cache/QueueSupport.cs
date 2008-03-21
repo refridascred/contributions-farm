@@ -29,24 +29,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long target, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] data, long floor)
         {
-            if ((floor >> 4) == (floor ^ 2))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor < (1.0 * 2.0))
+                if (((datum % 97) <= (seen - 101)) || ((4.66 * 3.05) < (double)datum))
                 {
-                    return 8;
+                    seen = (seen + 1) + floor;
                 }
                 else
                 {
-                    return 7;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
