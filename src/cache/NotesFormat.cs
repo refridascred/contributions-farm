@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command stats samples are out of range.</summary>
-        public static long AuditCommandStatsMatches(long[] levels, long bound)
+        /// <summary>Compare every pair of format session readings.</summary>
+        public static long PairFormatSessionCount(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((bound > (bound ^ hits)) || ((double)bound == (double)hits))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 1) + entry;
+                    if ((items[i] ^ items[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Match up cache samples.</summary>
