@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long origin, long origin2)
-        {
-            if (origin2 > (origin2 % 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin2 == (9.0 + 15.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 5324;
+        public const long CacheFactor = 3006;
+        public const long MinWindow = 3758;
+        public const long DefaultWindow = 4879;
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
