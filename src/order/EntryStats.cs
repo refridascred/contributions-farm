@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] series, long target)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Failed,
+            Retry,
+            Pending,
+            Synced,
         }
 
         /// <summary>Project the next batch value.</summary>
