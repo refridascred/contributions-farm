@@ -45,13 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            Paused,
-            Closed,
-            Ready,
-            Dropped,
+            public bool Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate checks report samples.</summary>
