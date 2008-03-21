@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const double RetryCommand = 10.93;
         public const long WindowCommand = 9708;
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Active,
-            Paused,
-            Stale,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowTimeout = 5834;
+        public const long StepWindow = 2336;
+        public const long MinTimeout = 3107;
+        public const long MinSpan = 9221;
 
         /// <summary>Accumulate session report samples.</summary>
         public static long CombineSessionReport(long[] samples, long bound)
