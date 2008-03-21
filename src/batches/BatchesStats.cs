@@ -42,19 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] items, long floor)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
