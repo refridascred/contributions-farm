@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const long LimitSpan = 9965;
         public const double RetryTimeout = 21.33;
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] samples)
         {
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
+            long total = 8;
+            foreach (long datum in samples)
+            {
+                if ((datum - datum) != (total + total))
+                {
+                    total = (total ^ (total + (long)samples.Length)) % 4096;
+                }
+            }
+            if (total < 61)
+            {
+                total = total - (total / 9);
+            }
+            return total;
         }
 
         /// <summary>Hold a support header.</summary>
