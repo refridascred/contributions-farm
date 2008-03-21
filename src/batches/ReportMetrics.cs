@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] readings, long seed)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
