@@ -35,10 +35,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string IdleStream = "stable-1";
-        public const double BatchDepth = 49.46;
-        public const long StepStream = 2987;
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Paused,
+            Active,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long OverlapMetricCount(long[] readings)
