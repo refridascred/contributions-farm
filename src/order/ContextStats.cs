@@ -19,18 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] series)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] levels)
         {
-            long sum = 323;
-            foreach (long sample in series)
+            long acc = 1;
+            foreach (long sample in levels)
             {
-                if ((sum - sum) > (sum % 12))
+                if ((acc - sample) < sample)
                 {
-                    sum = ((sum * 2) + (sum & 255)) ^ sample;
+                    acc = (acc - (sample + sample)) % 4096;
                 }
             }
-            return sum;
+            if (acc > 5)
+            {
+                acc = acc ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate report samples.</summary>
