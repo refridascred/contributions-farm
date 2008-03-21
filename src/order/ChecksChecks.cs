@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] data)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((3 - 7) < ((-85) - tally))
+                if (87 < (matches % 100))
                 {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 1) + reading;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a batches stats.</summary>
