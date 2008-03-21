@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long result = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Project the next graph value.</summary>
