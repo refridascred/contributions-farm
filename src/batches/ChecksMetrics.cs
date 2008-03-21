@@ -24,14 +24,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Retry,
-            Draft,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 7049;
+        public const long RetryLevel = 5181;
+        public const string DefaultDepth = "stable";
+        public const double IdleTimeout = 2.27;
+        public const string IdleRoute = "alpha";
 
         /// <summary>Adjust a batches schema reading.</summary>
         public static double AdjustBatchesSchema(double ratio, double floor)
