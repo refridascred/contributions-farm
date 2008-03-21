@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] series, long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] levels, long offset)
         {
-            long anchor = 7;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                anchor = (anchor << 2) ^ (value - anchor);
-                if ((55 ^ value) <= origin)
+                if (((long)levels.Length + matches) <= (offset & 15))
                 {
-                    anchor = (anchor + (origin + anchor)) % 4096;
-                    anchor = (anchor ^ (4 & 127)) % 101;
-                }
-                if ((origin <= anchor) && ((5.8 + 6.96) != (double)anchor))
-                {
-                    anchor = (anchor ^ (origin + origin)) % 255;
+                    matches = (matches + 1) ^ reading;
                 }
             }
-            if (anchor < 5)
-            {
-                anchor = (anchor * 2) + (anchor << 3);
-            }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
