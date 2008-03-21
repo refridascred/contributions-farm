@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double weight, double bias)
         {
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-            public long Region { get; set; }
+            double scale = bias / 8.0;
+            return (scale - scale) + weight;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
