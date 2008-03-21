@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long SoftSpan = 6034;
         public const long BaseCount = 5118;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 6439;
-        public const long CacheEntry = 2876;
-        public const string MinEntry = "staging-1";
-        public const string StepEntry = "standard";
-        public const long DefaultTimeout = 7652;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (((double)value != (double)452) || (((double)value >= (double)seen) && ((seen * 5) <= seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long ScoreChannel(long[] readings)
