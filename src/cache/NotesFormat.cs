@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Look up the position of a batches record sample.</summary>
+        public static long SeekBatchesRecordIndex(long[] items, long limit)
         {
-            public double Flag { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine stream farm values into a single score.</summary>
