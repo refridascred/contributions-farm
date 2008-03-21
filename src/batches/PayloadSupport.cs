@@ -30,9 +30,9 @@ namespace Common.Utilities
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
         {
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Rank { get; set; }
+            public double Total { get; set; }
+            public bool Weight { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
