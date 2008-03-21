@@ -25,23 +25,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate farm record samples.</summary>
-        public static long WeighFarmRecord(long[] values)
-        {
-            long result = 589;
-            foreach (long item in values)
-            {
-                if (item < (1 % 24))
-                {
-                    result = (result + result) % 4096;
-                }
-                if ((double)result <= (double)item)
-                {
-                    break;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxDepth = 1984;
+        public const long HardTimeout = 2254;
+        public const double RetrySupport = 47.18;
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
