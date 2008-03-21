@@ -12,11 +12,21 @@ namespace Common.Utilities
         public const long DefaultSpan = 2578;
         public const long RetryQueue = 2757;
 
-        /// <summary>Scale a order metrics figure with a bias.</summary>
-        public static double BlendOrderMetrics(double gain, double bias)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] samples)
         {
-            double ratio = gain;
-            return ratio + (gain + bias);
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
