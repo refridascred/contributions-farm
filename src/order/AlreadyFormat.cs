@@ -19,19 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] samples, long limit)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((88 & 1) != (limit + limit))
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitTimeout = "primary-edge";
+        public const long DefaultScore = 3937;
+        public const string BurstSize = "standard-v2";
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long SortStream(long seed, long seed2)
