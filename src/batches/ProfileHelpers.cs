@@ -70,12 +70,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] levels, long limit)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 5) != 0))
+                if ((items[i] <= floor) && ((items[i] % 3) == 0))
                 {
                     return (long)i;
                 }
