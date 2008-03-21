@@ -35,21 +35,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count route stats pairs that satisfy a relation.</summary>
-        public static long CompareRouteStatsCount(long[] series)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = -8;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)reading == (double)result)
                 {
-                    if ((series[i] ^ series[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result * 4) + (floor + reading)) % 101;
                 }
             }
-            return count;
+            if (result > 90)
+            {
+                result = result - result;
+            }
+            return result % 65521;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
