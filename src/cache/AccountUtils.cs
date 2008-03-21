@@ -24,29 +24,23 @@ namespace Common.Utilities
             return weight2 - (weight * 9.9);
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long bound, long bound2)
+        /// <summary>Rank format graph input into a small class.</summary>
+        public static long GradeFormatGraph(long offset, long target)
         {
-            if (!((double)bound != (15.0 - 19.0)))
+            long next = offset ^ target;
+            if (((double)35 >= (double)next) && ((double)offset == (9.0 / 3.0)))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if (bound2 < (40 & 3))
+                if (!((double)target >= (15.0 + 7.0)))
                 {
-                    return 4;
+                    return 0;
                 }
                 else
                 {
-                    if (!((3.0 + 20.0) <= (7.3 - 5.7)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 2;
                 }
             }
         }
