@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftFormat = "cached-1";
-        public const long BatchSpan = 3223;
-        public const string MaxTimeout = "standard-1";
-        public const long MinCount = 8848;
-        public const long MaxFormat = 8791;
+        /// <summary>Rank metrics commits input into a small class.</summary>
+        public static long RankMetricsCommits(long bound, long target)
+        {
+            long edge = bound + target;
+            if ((double)6 < (double)bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((6.7 / 7.0) != (double)edge)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
