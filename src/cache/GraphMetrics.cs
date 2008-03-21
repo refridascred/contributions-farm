@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] data, long origin)
+        /// <summary>Audit cluster graph readings against a rule.</summary>
+        public static long AuditClusterGraphMatches(long[] data)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (cell <= origin)
+                if ((5.58 * 0.44) < (double)count)
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) ^ reading;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Hold a cluster info.</summary>
