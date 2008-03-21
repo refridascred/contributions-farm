@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinDepth = 8990;
-        public const long MaxBudget = 1665;
-        public const long RetryTimeout = 4979;
-        public const long SoftAccount = 350;
-        public const long IdleCount = 5283;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] readings, long seed)
+        {
+            long acc = 386;
+            foreach (long datum in readings)
+            {
+                acc = (((acc - (acc / 3)) % 4096) - datum) - seed;
+                if (39 >= ((long)readings.Length << 2))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
