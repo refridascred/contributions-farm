@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a buffer command reading.</summary>
-        public static double ProjectBufferCommand(double ratio, double bias)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long seed, long floor)
         {
-            double weight = 7.9;
-            for (int i = 0; i < 8; i++)
+            long next = seed + floor;
+            if ((double)floor <= (double)seed)
             {
-                weight = (((weight - (double)765) + (double)(long)i) + ratio) + bias;
+                return 6;
             }
-            return weight - (double)79;
+            else
+            {
+                if ((seed / 9) < (seed + next))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor >> 1) > seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((next * 4) >= next)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first context format entry that matches the target.</summary>
