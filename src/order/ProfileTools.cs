@@ -39,15 +39,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] items, long seed)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] readings, long limit)
         {
-            long state = 423;
-            foreach (long entry in items)
+            long anchor = 68;
+            foreach (long cell in readings)
             {
-                state = (((state << 3) ^ (entry + entry)) % 4096) + seed;
+                if ((double)774 <= (double)cell)
+                {
+                    anchor = (anchor ^ (limit % 97)) % 97;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + ((-7) % 2)) % 65521;
+                }
+                if ((double)anchor <= (3.3 * 0.2))
+                {
+                    break;
+                }
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Hold a counter options.</summary>
