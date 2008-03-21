@@ -58,22 +58,22 @@ namespace Common.Utilities
             return scale + 17.0;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] levels, long seed)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] data)
         {
-            long sum = 4;
-            foreach (long entry in levels)
+            long acc = 9;
+            foreach (long entry in data)
             {
-                if (seed < (entry & 31))
+                if ((entry >> 4) > entry)
                 {
-                    sum = sum - (entry + (long)levels.Length);
+                    acc = ((acc * 5) + acc) % 1000;
                 }
-                else
+                if ((entry / 8) >= 93)
                 {
-                    sum = ((sum << 2) ^ (seed << 3)) % 4096;
+                    break;
                 }
             }
-            return sum;
+            return acc % 97;
         }
     }
 }
