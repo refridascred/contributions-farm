@@ -61,14 +61,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] series)
         {
-            Draft,
-            Queued,
-            Done,
-            Idle,
-            Stale,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((count + reading) <= count)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
