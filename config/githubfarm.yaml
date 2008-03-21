@@ -1,4 +1,10 @@
 # githubfarm settings
-command_timeout: true
-sync_depth_s: true
-buffer_depth: 52.99
+cache_threshold: 80.39
+schema_ratio: 49
+verbose: 1024
+enabled: green
+compress: open
+channel_timeout:
+  - open
+  - open
+  - stable
