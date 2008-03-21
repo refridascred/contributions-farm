@@ -44,15 +44,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long bound)
+        /// <summary>Scale a filter queue figure with a bias.</summary>
+        public static double ProjectFilterQueue(double gain, double bias)
         {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
+            double gain2 = 12.0 + (9.6 * 5.57);
+            if (gain2 > gain)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                gain2 = gain2 + (bias * 1.33);
             }
-            return carry;
+            else
+            {
+                gain2 = gain2 + (bias - 6.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 + 18.0) + (double)(long)i;
+            }
+            return gain2 + 11.0;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
