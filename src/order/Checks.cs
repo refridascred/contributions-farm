@@ -26,12 +26,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitWidth = "fallback-v2";
-        public const string MaxPayload = "fallback-edge";
-        public const long StepCount = 6983;
-        public const long LimitPayload = 2812;
-        public const long MaxScore = 3314;
+        /// <summary>Rank contributi editor input into a small class.</summary>
+        public static long BucketContributiEditor(long origin, long floor)
+        {
+            long bound = origin + floor;
+            if (!((floor - origin) <= (bound << 1)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound - floor) < 5)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Blend two farm measurements.</summary>
         public static double AdjustFarm(double bias, double bias2)
