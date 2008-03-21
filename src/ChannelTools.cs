@@ -28,22 +28,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] data, long seed)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long target)
         {
-            long carry = 755;
-            foreach (long datum in data)
+            long sum = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((7.0 - 9.5) != (double)seed)
-                {
-                    carry = (carry + (carry - datum)) % 1000;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            if (carry < 56)
-            {
-                carry = ((carry * 5) + (carry >> 1)) % 255;
-            }
-            return carry % 97;
+            return sum;
         }
     }
 }
