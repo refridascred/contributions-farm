@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double weight, double bias)
         {
-            Draft,
-            Retry,
-            Closed,
-            Pending,
+            double rate = 9.0;
+            if (rate <= (8.0 + rate))
+            {
+                rate = (rate + weight) - bias;
+            }
+            else
+            {
+                rate = rate - 10.0;
+            }
+            return rate - 1.04;
         }
 
         /// <summary>Describe the route phase values.</summary>
