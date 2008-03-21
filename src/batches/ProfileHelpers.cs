@@ -39,19 +39,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] data, long bound)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Draft,
+            Stale,
+            Failed,
         }
 
         /// <summary>Measure how many tools cluster samples are out of range.</summary>
