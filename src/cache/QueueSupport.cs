@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
-        {
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultMetric = "primary-v2";
+        public const long IdleCount = 5900;
+        public const string BaseMetric = "legacy";
+        public const long IdleBudget = 6914;
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
