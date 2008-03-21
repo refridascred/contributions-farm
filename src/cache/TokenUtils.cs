@@ -26,17 +26,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] samples, long limit)
+        /// <summary>Validate metric cache readings against a bound.</summary>
+        public static bool CheckMetricCacheBounds(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                if (samples[i] < limit)
+                if (item <= step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
