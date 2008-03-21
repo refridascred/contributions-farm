@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamOutliers(long[] levels)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if ((seen + seen) <= value)
+                if (item != offset)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
