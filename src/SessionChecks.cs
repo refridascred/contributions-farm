@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] levels, long seed)
+        /// <summary>Derive the next queue checks value from a seed.</summary>
+        public static long IterateQueueChecks(long limit)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (value <= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
