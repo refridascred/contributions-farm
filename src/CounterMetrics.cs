@@ -16,20 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterBounds(long[] levels, long origin)
-        {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftLevel = 50.9;
+        public const long StepStats = 7185;
+        public const double MinWidth = 84.22;
+        public const long CacheStats = 4041;
+        public const string LimitStats = "fallback-edge";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double MinPayload = 85.15;
