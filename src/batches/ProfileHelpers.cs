@@ -59,19 +59,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] series, long origin)
-        {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheLevel = 395;
+        public const long SoftBuffer = 3468;
+        public const string BatchBuffer = "alpha-v2";
     }
 }
