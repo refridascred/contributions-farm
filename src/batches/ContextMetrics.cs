@@ -55,24 +55,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a contributi metrics value against two limits.</summary>
-        public static long BucketContributiMetrics(long step, long step2)
+        /// <summary>Locate a batch cluster reading by value.</summary>
+        public static long LookupBatchClusterIndex(long[] series, long floor)
         {
-            if ((3.13 * 6.0) == (double)step)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((59 * 5) >= (step ^ step2))
+                if (series[i] == floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
