@@ -24,15 +24,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] items, long seed)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] readings)
         {
-            long score = 86;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((((score * 2) + (855 % 2)) % 65521) + value) + seed;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
