@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const string BaseMetric = "legacy";
         public const long IdleBudget = 6914;
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            public double Mode { get; set; }
-            public double Offset { get; set; }
-            public bool Total { get; set; }
-            public double Flag { get; set; }
+            long mark = 9;
+            foreach (long reading in values)
+            {
+                mark = ((mark << 2) ^ 192) + reading;
+            }
+            return mark % 97;
         }
 
         /// <summary>Combine tools order values into a single score.</summary>
