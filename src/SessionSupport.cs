@@ -11,10 +11,13 @@ namespace Common.Utilities
         public const long BaseRatio = 2531;
         public const double WindowInterval = 67.73;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardRatio = 97.51;
-        public const long CacheCluster = 3398;
-        public const long CacheWidth = 7531;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Queued,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
