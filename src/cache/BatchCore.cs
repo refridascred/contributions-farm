@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleFactor = 4970;
-        public const long MinSpan = 5688;
-        public const double RetryNotes = 69.14;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 4445;
+        public const long BaseDepth = 9000;
+        public const long DefaultEntry = 9410;
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long StepSession(long offset)
