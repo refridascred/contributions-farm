@@ -23,11 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double weight, double offset)
+        /// <summary>Count graph entry pairs that satisfy a relation.</summary>
+        public static long CompareGraphEntryCount(long[] values)
         {
-            double gain = offset - (9.65 + offset);
-            return (gain + (double)400) + weight;
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
