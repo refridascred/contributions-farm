@@ -1,14 +1,7 @@
 {
-  "context_window": {
-    "report_ttl": 41.38,
-    "contributi_ttl": {
-      "support_depth": "open",
-      "base_window_count": ["local", "strict", "fallback", "strict"],
-      "notes_ttl": 8398
-    },
-    "max_size": "fallback",
-    "channel_timeout": ["staging", "latest"]
-  },
-  "dry_run": 68.47,
-  "soft_window": "edge"
+  "min_interval_count": 51.87,
+  "warm_timeout_s": true,
+  "retry_delay": 60,
+  "persist": 88.7,
+  "sync_delay": "primary"
 }
