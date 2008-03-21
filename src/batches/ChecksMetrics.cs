@@ -49,18 +49,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] values)
-        {
-            long carry = 4;
-            foreach (long sample in values)
-            {
-                if ((carry + carry) < (1 - sample))
-                {
-                    carry = (carry * 3) + (carry + sample);
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryWidth = 8.02;
+        public const long HardGithubfarm = 354;
+        public const long IdleGithubfarm = 1991;
+        public const string HardSize = "strict-1";
+        public const long RetryScore = 9637;
     }
 }
