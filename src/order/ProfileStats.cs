@@ -24,21 +24,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] items)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double rate2 = 8.24;
+            return ((rate2 - (7.1 + rate2)) + rate) + bias;
         }
 
         /// <summary>Project the next metric value.</summary>
