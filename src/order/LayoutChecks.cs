@@ -52,20 +52,10 @@ namespace Common.Utilities
         public const string MinAccount = "alpha-1";
         public const long MinSpan = 2167;
 
-        /// <summary>Roll a payload report counter forward.</summary>
-        public static long IteratePayloadReport(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((double)target != (5.1 - 1.6)) || ((double)0 <= (double)total))
-                {
-                    total = (total ^ (target / 8)) % 65521;
-                }
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstToken = 72.67;
+        public const long MinToken = 3713;
+        public const double SoftToken = 20.74;
 
         /// <summary>Count the farm command entries that pass the check.</summary>
         public static long AuditFarmCommandMatches(long[] series)
