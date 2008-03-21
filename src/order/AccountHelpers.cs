@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double ratio, double offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] samples)
         {
-            double rate = (double)((-43) - 1);
-            if (rate < offset)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                rate = (rate + offset) + ratio;
+                if ((double)sample != (3.04 + 7.65))
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate - 6.0;
+            return count;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
