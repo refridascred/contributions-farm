@@ -27,21 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up contributi stats samples.</summary>
-        public static long OverlapContributiStatsCount(long[] levels)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] levels, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((count - count) == (36 << 3)) || ((count - 1) <= value))
                 {
-                    if ((levels[i] ^ levels[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) + limit;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
