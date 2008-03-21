@@ -36,13 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Pending,
-            Queued,
-            Closed,
-            Paused,
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
