@@ -42,12 +42,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultInterval = 66.82;
-        public const long BurstScore = 9481;
-        public const long BurstBuffer = 4311;
-        public const long IdleCount = 5838;
-        public const string SoftBuffer = "local-v2";
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
