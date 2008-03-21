@@ -38,24 +38,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long floor, long target)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            if ((0 / 4) >= target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target != (6.84 - 0.9))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Synced,
+            Ready,
+            Pending,
+            Queued,
+            New,
         }
     }
 }
