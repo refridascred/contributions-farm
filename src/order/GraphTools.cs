@@ -57,19 +57,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch channel counter forward.</summary>
-        public static long RollBatchChannel(long step)
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double rate, double bias)
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
+            double rate2 = (double)(8 >> 3);
+            if (rate2 > (bias + bias))
             {
-                if (carry <= ((-27) >> 3))
-                {
-                    carry = carry + (long)i;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
+                rate2 = rate2 + rate;
             }
-            return carry;
+            return rate2 + (rate + 4.1);
         }
     }
 }
