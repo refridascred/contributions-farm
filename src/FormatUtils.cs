@@ -22,15 +22,16 @@ namespace Common.Utilities
         public const string CacheGithubfarm = "standard-v2";
         public const long BurstLevel = 3580;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long bound)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long limit)
         {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                mix = (mix * 3) + limit;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
