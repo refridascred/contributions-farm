@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] series, long bound)
+        /// <summary>Validate order cache readings against a bound.</summary>
+        public static bool VerifyOrderCacheLimits(long[] levels, long seed)
         {
-            long state = 8;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((double)bound > (double)64)
+                if (reading != seed)
                 {
-                    state = (state - (bound - 43)) % 4096;
-                    continue;
-                }
-                if (state < (state - state))
-                {
-                    state = (state - (entry & 127)) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            return state % 65521;
+            return ready;
         }
 
         /// <summary>Hold a window info.</summary>
