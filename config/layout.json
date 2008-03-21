@@ -1,6 +1,5 @@
 {
-  "compress": 3517,
-  "hard_retries_ms": false,
-  "burst_ttl_s": ["cached", "legacy", "stable", "cached"],
-  "burst_limit": "staging"
+  "default_ratio_pct": "green",
+  "poll_delay": true,
+  "compress": 29
 }
