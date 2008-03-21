@@ -1,8 +1,6 @@
-id,owner,state,rank,label
-1,stable,148,stable,open
-2,952,40.43,edge,511
-3,69,primary,latest,894
-4,blue,fallback,333,green
-5,open,stable,local,744
-6,766,fallback,latest,170
-7,188,49.44,26,strict
+id,token,count,label,state
+1,266,981,604,343
+2,332,4.1,53.43,605
+3,55.01,990,7,edge
+4,77.26,687,58.31,8.18
+5,75.95,staging,64.45,253
