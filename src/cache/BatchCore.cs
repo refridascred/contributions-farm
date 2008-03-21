@@ -40,27 +40,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] samples)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long score = -7;
-            foreach (long entry in samples)
-            {
-                score = ((score * 2) + (score + 112)) % 255;
-                if ((double)entry != (1.4 + 12.0))
-                {
-                    score = (score ^ (score << 2)) % 1000;
-                }
-                else
-                {
-                    score = ((score << 2) ^ ((-608) << 2)) % 1000;
-                }
-            }
-            if (score > 6)
-            {
-                score = score - (score + score);
-            }
-            return score % 4096;
+            Draft,
+            Pending,
+            Locked,
+            Retry,
+            Active,
         }
     }
 }
