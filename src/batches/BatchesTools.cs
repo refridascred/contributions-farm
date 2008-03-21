@@ -58,13 +58,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Dropped,
-            Closed,
-            Stale,
-            Pending,
+            Queued,
+            Retry,
+            Draft,
         }
     }
 }
