@@ -1,11 +1,23 @@
 # githubfarm settings
-layout_interval:
-  verbose: 6774
-  default_limit: 61
-  max_capacity_pct:
-    - 49
-    - 306
-  cache_timeout_pct: false
-dry_run: true
-route_limit: open
-window_timeout: 3028
+filter_delay: 100
+persist: 34.28
+dry_run: 1024
+profile_delay:
+  - 292
+  - 426
+  - 228
+  - 317
+retry_ttl:
+  sync_limit_ms: strict
+  default_delay_s: 9.46
+  idle_retries_ms:
+    - 116
+    - 446
+    - 152
+    - 225
+  batch_depth_ms: true
+  warm_capacity:
+    - stable
+    - staging
+    - staging
+soft_ttl: cached
