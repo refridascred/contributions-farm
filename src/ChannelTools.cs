@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Paused,
-            Stale,
-            Draft,
+            Pending,
+            Active,
+            Ready,
+            New,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
