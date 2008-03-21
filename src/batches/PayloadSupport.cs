@@ -16,19 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsLimits(long[] levels, long floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long carry = 29;
+            foreach (long reading in samples)
             {
-                if (entry <= floor)
+                if (!(reading >= (reading / 7)))
                 {
-                    found = false;
-                    break;
+                    carry = carry + (carry ^ reading);
                 }
             }
-            return found;
+            if (carry < 9)
+            {
+                carry = ((carry * 2) + (carry + 1)) % 255;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a layout stats.</summary>
