@@ -44,17 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] items, long floor)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Dropped,
+            Failed,
         }
     }
 }
