@@ -38,19 +38,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of order commits entries.</summary>
-        public static long FoldOrderCommits(long[] values)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long bound)
         {
-            long sum = 9;
-            foreach (long value in values)
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
             {
-                sum = sum - (value - 803);
+                long matches = ((long)i - acc) + acc;
+                matches = ((matches * 3) + (acc ^ bound)) % 1000;
+                if (!(((9.96 / 2.0) > (double)matches) || ((matches >> 5) != (matches / 2))))
+                {
+                    matches = matches + ((long)i + (long)i);
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            if (sum < 13)
-            {
-                sum = (sum - (sum + sum)) % 255;
-            }
-            return sum;
+            return acc;
         }
     }
 }
