@@ -77,17 +77,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] series, long bound)
+        /// <summary>Combine counter cluster values into a single score.</summary>
+        public static long CombineCounterCluster(long[] series, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 466;
+            foreach (long cell in series)
             {
-                if (series[i] > bound)
+                if ((double)result >= (3.0 * 0.2))
                 {
-                    return (long)i;
+                    result = (((result ^ (74 ^ result)) % 101) ^ cell) - seed;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
