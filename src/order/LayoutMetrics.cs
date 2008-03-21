@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a cache githubfarm value against two limits.</summary>
-        public static long ClassifyCacheGithubfarm(long seed, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsOutliers(long[] values)
         {
-            long gap = seed - step;
-            if ((step + step) >= step)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step - seed) >= (seed % 8))
+                if (matches > (matches / 2))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((3 * 5) == (gap + gap))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = (matches + 2) + sample;
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up stream samples.</summary>
