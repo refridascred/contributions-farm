@@ -17,21 +17,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up checks commits samples.</summary>
-        public static long PairChecksCommitsCount(long[] readings)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long limit, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((((-36) / 3) >= (offset - offset)) || ((double)limit <= (6.3 / 2.0)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((offset * 2) != ((-45) + offset))
                 {
-                    if ((readings[i] ^ readings[j]) == 3)
+                    return 5;
+                }
+                else
+                {
+                    if ((offset % 12) >= 98)
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
