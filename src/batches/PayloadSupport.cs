@@ -37,12 +37,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] samples, long bound)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] samples, long target)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] >= bound)
+                if (samples[i] < target)
                 {
                     return (long)i;
                 }
