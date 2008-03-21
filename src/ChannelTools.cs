@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string StepSupport = "fallback-v2";
-        public const long CacheFactor = 5388;
-        public const double HardSupport = 93.29;
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Idle,
+            Queued,
+            New,
+            Stale,
+        }
 
         /// <summary>Measure how many stats commits samples are out of range.</summary>
         public static long TallyStatsCommitsMatches(long[] series, long seed)
