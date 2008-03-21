@@ -37,13 +37,18 @@ namespace Common.Utilities
         public const string IdleWindow = "primary-edge";
         public const double BaseSpan = 78.8;
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Count the session profile entries that pass the check.</summary>
+        public static long CountSessionProfileHits(long[] levels, long seed)
         {
-            public string Limit { get; set; } = "";
-            public double Count { get; set; }
-            public bool Size { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((2.45 * 7.32) < (double)seed)
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
