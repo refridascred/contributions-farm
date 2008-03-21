@@ -1,17 +1,6 @@
 {
-  "filter_interval": true,
-  "poll_interval_count": {
-    "stream_interval": {
-      "channel_capacity": 250,
-      "command_limit": "green",
-      "default_ttl_count": true,
-      "buffer_limit": "legacy"
-    },
-    "cache_window_ms": 31,
-    "idle_delay": 87
-  },
-  "batch_timeout": 81.65,
-  "max_interval_pct": 98,
-  "verbose": 63,
-  "readonly": "open"
+  "commits_size": 80.01,
+  "stream_limit": 7.39,
+  "hard_ratio": "edge",
+  "flush_delay": "cached"
 }
