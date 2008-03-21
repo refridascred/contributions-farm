@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a cache payload figure with a bias.</summary>
-        public static double BlendCachePayload(double weight, double bias)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] levels, long offset)
         {
-            double weight2 = (bias + 1.0) * 5.5;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                weight2 = (weight2 + (7.6 - weight)) - (double)(long)i;
+                if (value > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return weight2 - (double)3;
+            return flag;
         }
 
         /// <summary>Hold a cluster info.</summary>
