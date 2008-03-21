@@ -37,13 +37,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] values)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((2.3 - 18.0) != (double)datum)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
