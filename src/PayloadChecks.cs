@@ -71,14 +71,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] levels)
         {
-            Retry,
-            Paused,
-            Synced,
-            Locked,
-            Stale,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
