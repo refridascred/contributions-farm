@@ -23,15 +23,32 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Fold a list of batches stats readings.</summary>
+        public static long TotalBatchesStats(long[] readings)
         {
-            long anchor = target;
-            for (int i = 0; i < 17; i++)
+            long acc = 95;
+            foreach (long value in readings)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if ((value / 9) == (5 << 3))
+                {
+                    acc = (acc + acc) % 255;
+                }
+                if ((value % 10) == (acc + value))
+                {
+                    acc = ((acc * 4) + (value + 7)) % 101;
+                    acc = (acc - value) % 255;
+                }
+                else
+                {
+                    acc = (acc - (value - acc)) % 1000;
+                }
+                acc = (acc * 3) + value;
             }
-            return anchor;
+            if (acc > 1)
+            {
+                acc = acc - (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Hold a route entry.</summary>
