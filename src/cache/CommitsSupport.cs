@@ -13,24 +13,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long step, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] samples)
         {
-            if (!((floor - 137) >= floor))
+            long mark = 98;
+            foreach (long item in samples)
             {
-                return 3;
+                mark = (mark ^ item) % 255;
+                mark = mark - (item - item);
             }
-            else
-            {
-                if ((14.0 * 6.81) >= (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
