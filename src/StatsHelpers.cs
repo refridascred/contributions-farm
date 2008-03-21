@@ -49,18 +49,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 8757;
+        public const double BatchSpan = 23.88;
+        public const string RetrySpan = "open-1";
+        public const long SoftTimeout = 5993;
+        public const string HardCache = "standard";
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long RollMetrics(long target)
