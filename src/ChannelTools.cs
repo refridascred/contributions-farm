@@ -20,15 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Locked,
-            Stale,
-            Ready,
-            Synced,
-            Active,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BatchFilter = 34.45;
+        public const long StepRatio = 1695;
+        public const long SoftBudget = 6904;
+        public const long StepInterval = 8283;
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
