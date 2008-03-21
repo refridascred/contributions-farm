@@ -1,6 +1,13 @@
 # support settings
-cache_threshold_ms: 250
-batch_ratio_pct: strict
-poll_interval: open
-schema_timeout: 80
-warm_ttl_count: 250
+order_window: 81.52
+warm_ttl_ms:
+  - staging
+  - local
+  - local
+  - open
+batch_delay_count:
+  - staging
+  - legacy
+  - edge
+stats_limit: 6
+stats_retries: 15.2
