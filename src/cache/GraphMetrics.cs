@@ -40,14 +40,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long floor, long target)
         {
-            Active,
-            Dropped,
-            Failed,
-            New,
-            Pending,
+            long span = floor + target;
+            if ((double)target >= (12.0 / 4.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target << 2) > ((-874) - 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((842 > (span ^ floor)) && ((2.7 * 6.0) < (double)target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(span >= (span + floor)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
