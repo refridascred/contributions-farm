@@ -24,13 +24,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] items, long origin)
         {
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((sample / 9) == (sample << 3))
+                {
+                    seen = (seen + 2) + origin;
+                }
+            }
+            return seen;
         }
     }
 }
