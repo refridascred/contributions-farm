@@ -32,12 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardRatio = 97.56;
-        public const long IdleReport = 3835;
-        public const long BaseReport = 3199;
-        public const string WindowCount = "alpha-edge";
-        public const string DefaultReport = "legacy";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 5644;
+        public const long WindowBudget = 7798;
+        public const long IdleRatio = 756;
+        public const double BatchLevel = 36.49;
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long ClassifyTools(long floor, long limit)
