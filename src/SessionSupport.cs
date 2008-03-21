@@ -31,21 +31,19 @@ namespace Common.Utilities
         public const long CacheCluster = 3398;
         public const long CacheWidth = 7531;
 
-        /// <summary>Count schema metric pairs that satisfy a relation.</summary>
-        public static long PairSchemaMetricCount(long[] values)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double gain, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = (offset * 15.0) - gain;
+            if (mean <= mean)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean + (3.63 / 5.0);
             }
-            return matches;
+            else
+            {
+                mean = mean + (gain + mean);
+            }
+            return mean + (1.85 / 9.0);
         }
     }
 }
