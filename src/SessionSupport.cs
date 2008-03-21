@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const string MinCount = "open-v2";
         public const string BatchSize = "stable";
 
-        /// <summary>Measure how many stats window samples are out of range.</summary>
-        public static long CountStatsWindowHits(long[] values)
+        /// <summary>Audit checks metric readings against a rule.</summary>
+        public static long AuditChecksMetricOutliers(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((4.3 / 5.0) < (double)matches)
+                if ((reading >> 4) <= 0)
                 {
-                    matches = (matches + 1) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 1) - target;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
