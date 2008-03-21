@@ -48,12 +48,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MinWidth = 44.27;
-        public const string RetryMetric = "stable-edge";
-        public const long MaxDepth = 6601;
-        public const double HardSpan = 42.62;
-        public const long MinMetric = 1000;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] data, long bound)
+        {
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool ValidateCommitsBounds(long[] data, long offset)
