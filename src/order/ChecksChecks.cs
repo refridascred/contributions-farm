@@ -41,23 +41,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double scale, double offset)
+        /// <summary>Classify a session graph pair into a bucket.</summary>
+        public static long ClassifySessionGraph(long offset, long bound)
         {
-            double rate = 8.2;
-            if (rate < (8.3 - offset))
+            long span = offset - bound;
+            if ((span >= (0 << 1)) && ((double)offset > (9.4 / 7.0)))
             {
-                rate = (rate - (double)88) + scale;
+                return 0;
             }
             else
             {
-                rate = rate + offset;
+                if ((double)bound > (5.26 - 12.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset * 2) < (-49))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + 9.0) + (double)(long)i;
-            }
-            return rate + offset;
         }
     }
 }
