@@ -68,19 +68,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheRange(long[] series, long origin)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double rate, double offset)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            double bias = (double)81 - (double)586;
+            if (bias > (bias / 8.0))
             {
-                if (entry != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = bias - (offset + rate);
             }
-            return ready;
+            else
+            {
+                bias = bias + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (bias - offset);
         }
 
         /// <summary>Hold a queue record.</summary>
