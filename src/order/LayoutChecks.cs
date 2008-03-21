@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long BaseProfile = 7163;
         public const long IdleProfile = 8245;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((seed * 3) < ((long)i + state)) || ((state + seed) > seed))
-                {
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinDepth = 9806;
+        public const long SoftEditor = 1322;
+        public const double BurstEditor = 29.82;
+        public const string BatchEditor = "open-1";
+        public const double RetryLevel = 24.76;
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
