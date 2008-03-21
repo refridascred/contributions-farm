@@ -12,22 +12,13 @@ namespace Common.Utilities
             return (weight + (double)10) + offset;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] readings, long origin)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (4.0 >= (double)sample)
-                {
-                    hits = (hits + 3) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Paused,
+            Queued,
+            Locked,
+            Ready,
         }
 
         /// <summary>Describe the graph phase values.</summary>
