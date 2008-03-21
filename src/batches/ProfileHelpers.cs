@@ -57,14 +57,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] series, long origin)
         {
-            New,
-            Pending,
-            Closed,
-            Paused,
-            Retry,
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
