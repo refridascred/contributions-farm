@@ -30,20 +30,10 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] levels, long step)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheBudget = 7823;
+        public const long BurstReport = 9144;
+        public const long HardReport = 9461;
 
         /// <summary>Fold a list of stats payload readings.</summary>
         public static long TallyStatsPayload(long[] series)
