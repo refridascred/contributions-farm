@@ -25,23 +25,11 @@ namespace Common.Utilities
         public const string WindowRoute = "stable-1";
         public const long DefaultWidth = 7328;
 
-        /// <summary>Scale a checks farm figure with a bias.</summary>
-        public static double SmoothChecksFarm(double rate, double floor)
-        {
-            double mean = 7.83 - (double)600;
-            if (mean <= (double)5)
-            {
-                mean = (mean + mean) - rate;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - (floor + floor);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitGraph = "legacy-edge";
+        public const long WindowLevel = 3777;
+        public const double IdleTimeout = 86.64;
+        public const string IdleGraph = "primary-v2";
+        public const string WindowGraph = "alpha";
     }
 }
