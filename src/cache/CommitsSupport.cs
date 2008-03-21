@@ -47,15 +47,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cache contributi entries.</summary>
-        public static long FoldCacheContributi(long[] data)
+        /// <summary>Combine graph report values into a single score.</summary>
+        public static long ScoreGraphReport(long[] data)
         {
-            long total = 86;
-            foreach (long value in data)
+            long mark = 24;
+            foreach (long cell in data)
             {
-                total = ((total ^ (total << 2)) % 255) + value;
+                mark = (mark + (mark << 1)) + cell;
             }
-            return total % 4096;
+            return mark;
         }
 
         /// <summary>Define format limits and defaults.</summary>
