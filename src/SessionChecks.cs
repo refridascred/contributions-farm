@@ -34,19 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] values)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] items, long target)
         {
-            long sum = 370;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                sum = (sum ^ (cell + sum)) % 101;
+                if (!((sample + target) >= matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (sum > 4)
-            {
-                sum = (sum - (5 % 16)) % 255;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
