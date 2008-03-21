@@ -21,31 +21,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long limit, long origin)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            if ((limit << 2) > origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((3.66 + 0.7) <= (double)limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit << 2) >= limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public double Label { get; set; }
         }
     }
 }
