@@ -34,11 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double weight, double floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] series, long bound)
         {
-            double ratio = (double)(97 - (-588));
-            return ((ratio + ratio) + weight) + floor;
+            long carry = -87;
+            foreach (long cell in series)
+            {
+                if ((carry & 63) <= (43 ^ cell))
+                {
+                    carry = carry ^ (bound * 3);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
