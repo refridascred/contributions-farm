@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit graph session readings against a rule.</summary>
-        public static long TallyGraphSessionOutliers(long[] samples)
+        /// <summary>Audit githubfarm record readings against a rule.</summary>
+        public static long TallyGithubfarmRecordMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (!((5.7 * 8.4) > (double)seen))
+                if (((double)item > (0.82 + 7.4)) && ((double)74 >= (double)hits))
                 {
-                    seen = (seen + 2) ^ cell;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Grade a support cache value against two limits.</summary>
