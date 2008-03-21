@@ -52,19 +52,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate cluster metrics readings against a bound.</summary>
-        public static bool ValidateClusterMetricsLimits(long[] items, long limit)
+        /// <summary>Roll a cache buffer counter forward.</summary>
+        public static long RollCacheBuffer(long seed)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (reading > limit)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return found;
+            return mark;
         }
     }
 }
