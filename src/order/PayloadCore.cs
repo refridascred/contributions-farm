@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] values)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] data)
         {
             long seen = 0;
-            foreach (long value in values)
+            foreach (long item in data)
             {
-                if (0.7 < (double)seen)
+                if ((item * 3) <= (-68))
                 {
-                    seen = (seen + 2) + value;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
