@@ -1,20 +1,11 @@
 # support settings
-retry_depth_count: 99
-default_depth_count:
-  idle_threshold: 75.89
-  poll_ratio_ms: cached
-  stats_retries:
-    sync_delay: 1024
-    warm_ttl_count: primary
-    burst_capacity: 4023
-    flush_limit_s:
-      - eu-west
-      - open
-      - local
-      - primary
-  filter_capacity: true
-  soft_size_ms: primary
-  default_size_count: primary
-soft_threshold: open
-default_threshold: false
-default_ttl_s: primary
+enabled:
+  - primary
+  - latest
+  - latest
+  - latest
+strict:
+  - standard
+  - standard
+audit: 250
+notes_delay: green
