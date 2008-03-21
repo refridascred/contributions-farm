@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const long CacheGithubfarm = 7948;
         public const double WindowGithubfarm = 60.74;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] values, long target)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] series)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item < target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] - series[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
