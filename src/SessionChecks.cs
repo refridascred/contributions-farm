@@ -45,15 +45,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] values)
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
+            long carry = 86;
+            foreach (long reading in values)
             {
-                total = ((total * 3) + (long)i) % 97;
+                carry = ((carry * 3) + reading) % 1000;
             }
-            return total;
+            if (carry < 54)
+            {
+                carry = (carry * 4) + (carry / 3);
+            }
+            return carry;
         }
     }
 }
