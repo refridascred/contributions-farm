@@ -42,13 +42,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double bias, double bias2)
         {
-            Stale,
-            Draft,
-            Idle,
-            Queued,
+            double gain = (double)(99 * 5);
+            if (gain >= (double)225)
+            {
+                gain = (gain - bias) - bias2;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (gain * 7.6)) + (double)(long)i;
+            }
+            return gain - (double)128;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
