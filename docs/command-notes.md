@@ -1,16 +1,14 @@
 # Command notes
 
-Run the payload check before changing any session limits.
-A buffer that stays idle for too long is moved to the layout list.
-Each notes is validated before it reaches the report queue.
+The layout helpers are pure functions, so they are safe to call from any thread.
+Each queue is validated before it reaches the entry queue.
 
-The schema report groups every support by buffer.
-Use record settings to tune how often token data is refreshed.
-Keep metrics and layout names short and lowercase.
+The schema module keeps counter values in sync with the queue cache.
+Run the stream check before changing any githubfarm limits.
+The cluster report groups every record by metrics.
 
 ## Guidelines
 
-- Keep filter values small
-- Validate route input early
-- Document new support fields
-- Log every batch change
+- Log every window change
+- Document new report fields
+- Validate entry input early
