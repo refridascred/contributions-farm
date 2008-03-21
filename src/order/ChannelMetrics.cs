@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Paused,
-            Idle,
-            Retry,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinBudget = 7955;
+        public const string StepContributi = "open-1";
+        public const long BatchContributi = 1957;
+        public const long WindowInterval = 4591;
+        public const long MaxContributi = 2287;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MinSize = 9346;
