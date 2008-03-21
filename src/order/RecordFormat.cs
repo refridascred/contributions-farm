@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultMetric = 48.35;
-        public const string BurstTimeout = "cached";
-        public const long BatchInterval = 2435;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            New,
+            Dropped,
+            Idle,
+            Active,
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
