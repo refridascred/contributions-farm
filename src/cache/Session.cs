@@ -35,20 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next notes buffer value from a seed.</summary>
-        public static long DeriveNotesBuffer(long offset)
+        /// <summary>Count the notes layout entries that pass the check.</summary>
+        public static long AuditNotesLayoutGaps(long[] readings)
         {
-            long mix = offset;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (!(4 > (12 ^ (long)i)))
+                if (cell < (hits / 6))
                 {
-                    mix = (mix ^ (offset >> 4)) % 101;
-                    mix = (mix ^ (offset * 4)) % 1000;
+                    hits = hits + 1;
                 }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
