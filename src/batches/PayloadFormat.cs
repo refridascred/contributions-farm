@@ -13,19 +13,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double ratio, double floor)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] series, long target)
         {
-            double load = floor / 5.0;
-            if (load >= (16.0 - load))
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load + (9.0 / 4.0)) + ratio;
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - 7.2) + (double)(long)i;
-            }
-            return load + (double)(-69);
+            return -1;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
