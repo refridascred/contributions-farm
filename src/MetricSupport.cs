@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] levels, long floor)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long mix = 19;
-            foreach (long sample in levels)
-            {
-                if (((double)floor < (6.1 - 4.0)) && (mix < (floor / 2)))
-                {
-                    mix = (((mix << 2) ^ ((-20) << 1)) % 1000) + sample;
-                }
-            }
-            return mix % 97;
+            New,
+            Dropped,
+            Active,
+            Locked,
         }
 
         /// <summary>Locate a route stream reading by value.</summary>
