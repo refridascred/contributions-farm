@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long origin, long target)
         {
-            public bool Offset { get; set; }
-            public double Owner { get; set; }
-            public double Size { get; set; }
+            long step = origin ^ target;
+            if ((target >= step) || ((double)82 != (double)step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((7.1 - 4.13) == (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step == (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
