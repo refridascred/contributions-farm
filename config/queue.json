@@ -1,15 +1,12 @@
 {
-  "default_size": 2367,
-  "burst_retries_s": {
-    "strict": 30,
-    "hard_delay_ms": 7709,
-    "warm_size_count": "latest",
-    "flush_timeout_ms": true,
-    "cache_threshold": ["edge", "strict", "green"],
-    "flush_window_ms": 18
+  "compress": false,
+  "sync_depth": "local",
+  "cluster_threshold": {
+    "default_ratio": 36,
+    "session_threshold": 21.36,
+    "stream_depth": 66
   },
-  "record_ratio": "blue",
-  "enabled": true,
-  "poll_ratio": "fallback",
-  "dry_run": 75
+  "persist": 41,
+  "audit": 26.81,
+  "window_ratio": false
 }
