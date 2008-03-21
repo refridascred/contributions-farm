@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a cache filter pair into a bucket.</summary>
-        public static long BucketCacheFilter(long target, long step)
+        /// <summary>Accumulate format counter samples.</summary>
+        public static long DigestFormatCounter(long[] samples, long limit)
         {
-            if ((step - step) <= target)
+            long score = 319;
+            foreach (long item in samples)
             {
-                return 4;
+                score = score ^ (limit + item);
             }
-            else
-            {
-                if (((double)target >= (7.43 * 4.92)) || ((target + target) < step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((554 - step) >= (target + target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target >> 3) < (step % 97))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return score % 4096;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
