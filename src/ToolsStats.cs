@@ -72,12 +72,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] values, long step)
         {
-            Paused,
-            Active,
-            Draft,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((tally & 7) < step)
+                {
+                    tally = (tally + 3) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
