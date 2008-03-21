@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long step)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] data)
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Describe the metrics status values.</summary>
