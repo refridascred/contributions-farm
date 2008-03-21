@@ -1,11 +1,7 @@
 # support settings
-enabled:
-  - primary
-  - latest
-  - latest
-  - latest
-strict:
-  - standard
-  - standard
-audit: 250
-notes_delay: green
+sync_ratio: 42.06
+default_timeout: staging
+queue_delay: standard
+min_ratio_pct: 1024
+burst_interval: 85
+default_delay: blue
