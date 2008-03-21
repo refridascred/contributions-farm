@@ -1,8 +1,10 @@
 # githubfarm settings
-sync_timeout_s: 26
-readonly: 250
-hard_interval_pct:
-  readonly: cached
-  compress: true
-  batch_depth: legacy
-dry_run: 61
+dry_run: eu-west
+sync_ttl: 1024
+default_capacity_count: 58
+min_timeout: edge
+max_window_pct:
+  - 406
+  - 466
+  - 19
+  - 309
