@@ -19,22 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of counter filter readings.</summary>
-        public static long PairCounterFilterCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double LimitScore = 16.33;
+        public const long MaxStream = 4712;
+        public const long DefaultStream = 3676;
+        public const long IdleStream = 7263;
 
         /// <summary>Project the next queue value.</summary>
         public static double AdjustQueue(double scale, double bias)
