@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] readings, long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (((hits + sample) >= sample) || (sample <= (limit << 1)))
+                if (sample <= seed)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
