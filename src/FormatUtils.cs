@@ -23,22 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count graph entry pairs that satisfy a relation.</summary>
-        public static long CompareGraphEntryCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepLevel = "staging-1";
+        public const string BatchBudget = "staging-v2";
+        public const string CacheGithubfarm = "standard-v2";
+        public const long BurstLevel = 3580;
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long RollQueue(long bound)
