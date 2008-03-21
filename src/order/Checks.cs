@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 317;
-        public const long DefaultSize = 2758;
-        public const long BatchScore = 5137;
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Draft,
+            Closed,
+            Ready,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
