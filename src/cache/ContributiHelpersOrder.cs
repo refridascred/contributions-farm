@@ -44,12 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Measure how many queue cache samples are out of range.</summary>
+        public static long CountQueueCacheHits(long[] levels)
         {
-            public double Ratio { get; set; }
-            public bool Score { get; set; }
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (828 < sample)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
