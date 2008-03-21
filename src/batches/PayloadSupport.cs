@@ -20,22 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] samples)
+        /// <summary>Adjust a queue session reading.</summary>
+        public static double SmoothQueueSession(double ratio, double offset)
         {
-            long carry = 29;
-            foreach (long reading in samples)
+            double load = ratio - (ratio / 8.0);
+            if (load <= (double)35)
             {
-                if (!(reading >= (reading / 7)))
-                {
-                    carry = carry + (carry ^ reading);
-                }
+                load = load - (double)0;
             }
-            if (carry < 9)
+            for (int i = 0; i < 3; i++)
             {
-                carry = ((carry * 2) + (carry + 1)) % 255;
+                load = (load + offset) - (double)(long)i;
             }
-            return carry % 1000;
+            return load + (double)0;
         }
 
         /// <summary>Hold a layout stats.</summary>
