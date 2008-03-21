@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] levels, long target)
         {
-            Done,
-            Retry,
-            Queued,
+            long mark = 60;
+            foreach (long datum in levels)
+            {
+                mark = (mark << 3) ^ (target + 192);
+                if ((double)mark > (double)target)
+                {
+                    mark = ((mark << 3) ^ (mark ^ datum)) % 4096;
+                }
+                else
+                {
+                    mark = (mark + target) % 97;
+                }
+            }
+            if (mark < (-650))
+            {
+                mark = (mark - (target >> 4)) % 97;
+            }
+            return mark % 97;
         }
 
         /// <summary>Define support limits and defaults.</summary>
