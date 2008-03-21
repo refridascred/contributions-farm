@@ -60,17 +60,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] readings, long bound)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 53;
+            foreach (long datum in levels)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry + (carry - carry)) % 1000) - datum;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Fold a list of route readings.</summary>
