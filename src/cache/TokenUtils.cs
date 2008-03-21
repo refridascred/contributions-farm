@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] levels)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (value <= matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Locked,
+            Paused,
+            Active,
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
