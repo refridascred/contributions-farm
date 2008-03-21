@@ -78,19 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long floor)
+        /// <summary>Check that every profile record entry stays within the limit.</summary>
+        public static bool GuardProfileRecordLimits(long[] values, long offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (reading >= offset)
                 {
-                    sum = ((sum ^ (211 - sum)) % 255) - (long)i2;
+                    stale = false;
+                    break;
                 }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return stale;
         }
     }
 }
