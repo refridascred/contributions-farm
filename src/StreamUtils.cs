@@ -40,13 +40,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] levels)
         {
-            Idle,
-            Failed,
-            Retry,
-            Queued,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((seen / 6) >= reading)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
