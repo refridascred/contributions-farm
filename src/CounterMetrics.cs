@@ -15,12 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] series)
         {
-            public long Score { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
