@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] levels, long target)
+        /// <summary>Grade a cache githubfarm value against two limits.</summary>
+        public static long ClassifyCacheGithubfarm(long seed, long step)
         {
-            long mix = 90;
-            foreach (long entry in levels)
+            long gap = seed - step;
+            if ((step + step) >= step)
             {
-                mix = (((mix * 3) + (mix + mix)) % 101) - target;
-                if (!(mix > (entry / 4)))
+                return 7;
+            }
+            else
+            {
+                if ((step - seed) >= (seed % 8))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((3 * 5) == (gap + gap))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Adjust a record filter reading.</summary>
