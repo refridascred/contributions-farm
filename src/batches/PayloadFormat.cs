@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long bound, long step)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long offset)
         {
-            long cur = bound + step;
-            if ((bound + cur) <= (cur - bound))
+            long result = offset;
+            for (int i = 0; i < 5; i++)
             {
-                return 2;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((0 % 12) > cur)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return result;
         }
 
         /// <summary>Project the next graph value.</summary>
