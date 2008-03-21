@@ -25,12 +25,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Closed,
-            Done,
-            Ready,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseTimeout = 6188;
+        public const long BaseFilter = 9404;
+        public const string MaxFilter = "standard-edge";
     }
 }
