@@ -56,38 +56,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long target, long target2)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] levels)
         {
-            if (8.5 <= (double)target2)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(target2 < (target2 + 597)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((4 & 3) >= (target % 3)))
+                    if ((levels[i] - levels[j]) == 3)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (target2 > (target2 + target2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the layout kind values.</summary>
