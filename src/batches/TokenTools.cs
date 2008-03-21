@@ -15,14 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenOutliers(long[] series, long limit)
         {
-            Retry,
-            Synced,
-            Idle,
-            Closed,
-            Dropped,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((double)limit != (12.0 + 15.0))
+                {
+                    tally = (tally + 3) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
