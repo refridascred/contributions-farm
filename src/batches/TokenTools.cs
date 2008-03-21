@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many account layout samples are out of range.</summary>
-        public static long AuditAccountLayoutOutliers(long[] values, long offset)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((offset + offset) == (matches + offset))
-                {
-                    matches = (matches + 3) - reading;
-                }
-            }
-            return matches;
+            Active,
+            Pending,
+            Dropped,
+            Done,
+            Closed,
         }
 
         /// <summary>Describe the editor state values.</summary>
