@@ -25,12 +25,14 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 7049;
-        public const long RetryLevel = 5181;
-        public const string DefaultDepth = "stable";
-        public const double IdleTimeout = 2.27;
-        public const string IdleRoute = "alpha";
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public double Label { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
