@@ -12,17 +12,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] values, long floor)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long step, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (!((floor - 137) >= floor))
             {
-                if ((values[i] > floor) && ((values[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((14.0 * 6.81) >= (double)step)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a graph record.</summary>
