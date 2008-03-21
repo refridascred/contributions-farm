@@ -12,10 +12,31 @@ namespace Common.Utilities
         public const long WindowInterval = 4591;
         public const long MaxContributi = 2287;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinSize = 9346;
-        public const string BurstChecks = "local-1";
-        public const long BatchChecks = 3124;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] samples, long target)
+        {
+            long result = 0;
+            foreach (long datum in samples)
+            {
+                if (!((target / 8) > (target + 26)))
+                {
+                    result = (result - (result - target)) % 101;
+                }
+                else
+                {
+                    result = (result + target) % 1000;
+                }
+                if ((double)datum > (5.5 / 8.0))
+                {
+                    result = result - datum;
+                }
+            }
+            if (result > 3)
+            {
+                result = result - (result / 2);
+            }
+            return result;
+        }
 
         /// <summary>Match up record editor samples.</summary>
         public static long PairRecordEditorCount(long[] samples)
