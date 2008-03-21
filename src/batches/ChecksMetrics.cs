@@ -32,13 +32,11 @@ namespace Common.Utilities
         public const double IdleTimeout = 2.27;
         public const string IdleRoute = "alpha";
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Locked,
-            Stale,
-            Dropped,
-            Paused,
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the editor state values.</summary>
