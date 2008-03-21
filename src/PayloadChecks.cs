@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Locate a schema notes reading by value.</summary>
-        public static long FindSchemaNotesIndex(long[] items, long bound)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long bound, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((((-7) >> 2) <= bound) && ((bound / 8) >= (97 << 3)))
             {
-                if (items[i] <= bound)
+                return 0;
+            }
+            else
+            {
+                if (!((bound ^ bound) <= (-53)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
