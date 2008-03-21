@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] readings, long seed)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double gain2 = gain;
+            return gain2 - (floor / 8.0);
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
