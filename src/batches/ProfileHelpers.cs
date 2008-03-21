@@ -39,13 +39,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
             public double Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many tools cluster samples are out of range.</summary>
