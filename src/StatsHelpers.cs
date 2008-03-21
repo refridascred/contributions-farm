@@ -43,21 +43,39 @@ namespace Common.Utilities
         public const double SoftTimeout = 96.02;
         public const long HardCommand = 4162;
 
-        /// <summary>Match up githubfarm contributi samples.</summary>
-        public static long CompareGithubfarmContributiCount(long[] samples)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long floor, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long bound = floor ^ origin;
+            if ((bound & 255) != (origin + floor))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)96 != (double)origin)
                 {
-                    if ((samples[i] - samples[j]) < 17)
+                    return 0;
+                }
+                else
+                {
+                    if (((4.8 * 8.92) <= (double)floor) && ((floor - origin) >= (floor - 722)))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (origin >= (floor & 127))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Project the next metrics stream value.</summary>
