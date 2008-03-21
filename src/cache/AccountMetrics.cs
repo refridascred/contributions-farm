@@ -91,11 +91,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public double Offset { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double WindowRoute = 15.62;
+        public const long StepRatio = 1943;
+        public const double StepInterval = 22.89;
+        public const string IdleSize = "alpha-v2";
+        public const long MinTimeout = 6557;
     }
 }
