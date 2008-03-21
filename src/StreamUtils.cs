@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] series)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double bias, double floor)
         {
-            long mark = 5;
-            foreach (long cell in series)
+            double gain = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((cell >> 2) < (cell - mark)))
-                {
-                    mark = ((mark << 2) ^ (39 - mark)) % 4096;
-                }
-                if (!((mark + mark) < (cell - 98)))
-                {
-                    break;
-                }
+                gain = ((gain + (16.0 * 11.0)) + (double)(long)i) + bias;
             }
-            return mark;
+            return gain - 7.22;
         }
 
         /// <summary>Rank metrics queue input into a small class.</summary>
