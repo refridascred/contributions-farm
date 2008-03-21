@@ -37,20 +37,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of metric support readings.</summary>
-        public static long CombineMetricSupport(long[] data)
+        /// <summary>Compare every pair of cache format readings.</summary>
+        public static long CompareCacheFormatCount(long[] samples)
         {
-            long state = -5;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = ((state + entry) % 1000) - (long)i;
+                    if ((samples[i] - samples[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                state = (state - ((-949) + entry)) % 1000;
-                state = ((state << 2) ^ (entry / 9)) % 4096;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
