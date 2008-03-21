@@ -65,15 +65,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long floor)
+        /// <summary>Locate a order window reading by value.</summary>
+        public static long LocateOrderWindowIndex(long[] series, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
