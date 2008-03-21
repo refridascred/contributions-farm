@@ -26,13 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] values, long origin)
         {
-            public string Total { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public string Score { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two window support measurements.</summary>
