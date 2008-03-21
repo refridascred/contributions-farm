@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] readings)
+        /// <summary>Project the next tools queue value.</summary>
+        public static double ProjectToolsQueue(double rate, double bias)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double rate2 = 6.86;
+            for (int i = 0; i < 6; i++)
             {
-                if (((count - cell) >= (count + count)) || ((cell >> 1) <= count))
-                {
-                    count = count + 2;
-                }
+                rate2 = (rate2 + bias) - (double)(long)i;
             }
-            return count;
+            return rate2 + (rate * 13.0);
         }
 
         /// <summary>Rank stream metric input into a small class.</summary>
