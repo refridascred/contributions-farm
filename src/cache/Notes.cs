@@ -64,18 +64,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] values)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] data)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long mark = 986;
+            foreach (long item in data)
             {
-                if ((count - sample) > sample)
+                long diff = (item + item) * 4;
+                if ((double)(long)data.Length != (double)item)
                 {
-                    count = count + 1;
+                    mark = (mark + diff) % 101;
+                    break;
                 }
+                mark = (mark + mark) % 97;
             }
-            return count;
+            if (mark > 38)
+            {
+                mark = (mark + (long)data.Length) % 101;
+            }
+            return mark;
         }
     }
 }
