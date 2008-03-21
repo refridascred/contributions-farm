@@ -48,11 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string LimitToken = "primary-edge";
-        public const double MinToken = 43.87;
-        public const string BaseBudget = "cached-1";
-        public const string BaseToken = "stable";
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double RetryChannel = 86.7;
