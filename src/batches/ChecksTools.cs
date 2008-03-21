@@ -22,19 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] items)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double weight, double floor)
         {
-            long score = 564;
-            foreach (long value in items)
+            double load = (weight * 9.54) - (double)365;
+            if (load <= 4.0)
             {
-                score = ((score + (score / 4)) % 255) ^ value;
+                load = (load - load) - floor;
             }
-            if (score < 77)
-            {
-                score = ((score << 3) ^ (score - score)) % 255;
-            }
-            return score;
+            return load + (double)692;
         }
 
         /// <summary>Derive the next cache contributi value from a seed.</summary>
