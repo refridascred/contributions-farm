@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const string MinCount = "open-v2";
         public const string BatchSize = "stable";
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] series, long step)
+        /// <summary>Measure how many stats window samples are out of range.</summary>
+        public static long CountStatsWindowHits(long[] values)
         {
-            long carry = 936;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                carry = (carry ^ (step >> 1)) + cell;
+                if ((4.3 / 5.0) < (double)matches)
+                {
+                    matches = (matches + 1) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry % 1000;
+            return matches;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
