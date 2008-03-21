@@ -26,24 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long bound, long step)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            if ((bound >= (bound >> 2)) && (step >= bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((bound + step) == (step ^ step)) || ((step - bound) == (step + step)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
