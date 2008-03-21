@@ -32,12 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Queued,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchAccount = "fallback-v2";
+        public const double IdleScore = 5.55;
+        public const double WindowScore = 39.71;
+        public const long CacheSize = 9481;
+        public const double StepSize = 44.04;
     }
 }
