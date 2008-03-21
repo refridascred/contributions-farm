@@ -43,10 +43,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double RetryCache = 92.97;
-        public const double BatchCache = 21.18;
-        public const double BaseCount = 34.26;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] samples, long target)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (!(target >= (6 << 3)))
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double MaxRatio = 76.76;
