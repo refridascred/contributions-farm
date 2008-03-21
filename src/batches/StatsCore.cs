@@ -77,17 +77,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] items)
         {
-            long result = step;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                result = (result - result) % 4096;
-                result = ((result * 3) + step) % 255;
-                result = ((result * 2) + (long)i) % 101;
+                if ((3 >> 1) >= (seen * 5))
+                {
+                    seen = (seen + 2) + cell;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
