@@ -29,23 +29,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double bias, double floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long target, long floor)
         {
-            double mean = 7.2;
-            if (mean > (bias - bias))
+            if ((floor >> 4) == (floor ^ 2))
             {
-                mean = mean + (double)476;
+                return 2;
             }
             else
             {
-                mean = mean + (2.7 * 9.0);
+                if ((double)floor < (1.0 * 2.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + floor) + (double)(long)i;
-            }
-            return mean - (floor - bias);
         }
     }
 }
