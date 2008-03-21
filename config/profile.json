@@ -1,8 +1,6 @@
 {
-  "burst_retries_count": "standard",
-  "contributi_size": [317, 261],
-  "min_ttl_pct": true,
-  "verbose": "edge",
-  "burst_capacity_s": false,
-  "dry_run": "fallback"
+  "poll_threshold_ms": true,
+  "base_capacity_pct": 6133,
+  "poll_size_count": 60,
+  "batch_window": 8459
 }
