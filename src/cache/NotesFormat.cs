@@ -19,21 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] items)
+        /// <summary>Combine stream farm values into a single score.</summary>
+        public static long DigestStreamFarm(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 359;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((reading >= (sum + reading)) && ((sum + sum) < (sum >> 2)))
                 {
-                    if ((items[i] + items[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum * 4) + (reading ^ reading);
+                }
+                if (!((0.8 - 14.0) > (double)reading))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (sum < 23)
+            {
+                sum = ((sum << 3) ^ sum) % 97;
+            }
+            return sum % 97;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
