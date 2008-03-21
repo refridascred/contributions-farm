@@ -28,12 +28,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] values, long floor)
         {
-            Synced,
-            Active,
-            Failed,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((3.1 > 6.3) || ((double)45 >= (double)tally))
+                {
+                    tally = ((tally + 2) + sample) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate format samples.</summary>
