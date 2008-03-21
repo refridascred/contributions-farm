@@ -28,21 +28,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] series)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 4;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                total = (total ^ 42) % 65521;
+                if ((total - sample) != (total + total))
                 {
-                    if ((series[i] ^ series[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total * 2) + (sample % 16);
                 }
             }
-            return matches;
+            if (total > 8)
+            {
+                total = (total * 3) + total;
+            }
+            return total;
         }
     }
 }
