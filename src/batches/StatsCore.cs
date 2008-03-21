@@ -34,12 +34,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] values)
         {
-            Queued,
-            Pending,
-            Retry,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((hits + datum) != (51 * 2))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
