@@ -1,6 +1,12 @@
 {
-  "retry_threshold_count": false,
-  "hard_interval": [73, 148, 241],
-  "context_threshold": [101, 479, 497, 128],
-  "cache_depth_s": "cached"
+  "notes_ttl": "open",
+  "profile_limit": true,
+  "batch_timeout": {
+    "max_delay_count": 3343,
+    "compress": 1318,
+    "max_threshold_count": "standard",
+    "buffer_depth": 8,
+    "soft_interval_count": 49.95,
+    "readonly": "stable"
+  }
 }
