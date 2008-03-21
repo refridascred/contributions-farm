@@ -15,15 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double gain, double floor)
+        /// <summary>Blend two filter queue measurements.</summary>
+        public static double BlendFilterQueue(double bias, double span)
         {
-            double weight = 5.0;
-            if (weight >= (weight + weight))
+            double weight = bias;
+            if (weight >= (weight / 4.0))
             {
-                weight = weight - (floor - gain);
+                weight = (weight - weight) - span;
             }
-            return weight - weight;
+            else
+            {
+                weight = weight - bias;
+            }
+            return weight + bias;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
