@@ -14,33 +14,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank metrics queue input into a small class.</summary>
-        public static long BucketMetricsQueue(long step, long step2)
-        {
-            long step3 = step ^ step2;
-            if ((step3 < (step2 >> 3)) && (step2 < (step2 - step3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step3 / 7) < step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (step3 >= (step % 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSpan = 2182;
+        public const long BaseSupport = 9363;
+        public const string CacheCount = "staging-v2";
+        public const string LimitBudget = "latest-edge";
+        public const long WindowFactor = 9621;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long AuditReportOutliers(long[] data)
