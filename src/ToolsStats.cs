@@ -71,15 +71,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] items, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
+            long result = 8;
+            foreach (long datum in items)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                result = ((result << 3) ^ (result - origin)) % 65521;
+                if ((71 + origin) <= (datum + datum))
+                {
+                    result = (result - (96 + result)) % 1000;
+                }
             }
-            return acc;
+            return result;
         }
     }
 }
