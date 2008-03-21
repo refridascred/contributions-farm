@@ -14,24 +14,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long seed, long offset)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            if ((double)seed >= (9.0 - 1.06))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((4.0 * 2.9) <= (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            New,
+            Idle,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
