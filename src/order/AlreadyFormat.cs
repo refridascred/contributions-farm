@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] items, long origin)
+        /// <summary>Count the checks format entries that pass the check.</summary>
+        public static long TallyChecksFormatHits(long[] series, long floor)
         {
-            long carry = 4;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((7 ^ sample) < 46)
+                if ((double)hits < (4.0 - 6.7))
                 {
-                    carry = (carry + sample) - origin;
+                    hits = ((hits + 2) ^ item) - floor;
                 }
             }
-            if (carry > 27)
-            {
-                carry = ((carry * 5) + ((-156) & 63)) % 1000;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the context phase values.</summary>
