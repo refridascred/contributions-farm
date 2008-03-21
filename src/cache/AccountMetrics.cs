@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] readings)
+        /// <summary>Find the first report editor entry that matches the target.</summary>
+        public static long SeekReportEditorIndex(long[] levels, long offset)
         {
-            long score = 978;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (score >= (datum - datum))
+                if (levels[i] == offset)
                 {
-                    score = (score * 4) + score;
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Project the next cluster value.</summary>
