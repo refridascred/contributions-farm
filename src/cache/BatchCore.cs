@@ -46,22 +46,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] items, long limit)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long score = -7;
+            foreach (long entry in samples)
             {
-                if (matches <= (matches & 31))
+                score = ((score * 2) + (score + 112)) % 255;
+                if ((double)entry != (1.4 + 12.0))
                 {
-                    matches = ((matches + 2) ^ cell) + limit;
+                    score = (score ^ (score << 2)) % 1000;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    score = ((score << 2) ^ ((-608) << 2)) % 1000;
                 }
             }
-            return matches;
+            if (score > 6)
+            {
+                score = score - (score + score);
+            }
+            return score % 4096;
         }
     }
 }
