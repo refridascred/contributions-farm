@@ -45,27 +45,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] series, long step)
+        /// <summary>Grade a batch contributi value against two limits.</summary>
+        public static long RankBatchContributi(long bound, long origin)
         {
-            long state = 427;
-            foreach (long sample in series)
+            long span = bound ^ origin;
+            if (!((16.0 + 4.1) > (double)bound))
             {
-                if (1 >= (state + sample))
+                return 4;
+            }
+            else
+            {
+                if (((bound + span) < (span & 7)) || (bound >= (origin + origin)))
                 {
-                    continue;
+                    return 6;
                 }
-                state = state + (step / 2);
-                if ((double)state == (6.2 + 2.85))
+                else
                 {
-                    break;
+                    return 0;
                 }
             }
-            if (state > 0)
-            {
-                state = (state + (state - step)) % 97;
-            }
-            return state;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
