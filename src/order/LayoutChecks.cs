@@ -52,18 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] values)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((reading & 15) != (2 % 12))
+                if ((matches < value) && ((matches + target) == (matches * 4)))
                 {
-                    seen = seen + 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
