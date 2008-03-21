@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] series)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long result = -88;
-            foreach (long value in series)
-            {
-                if ((result > 90) || (782 > (result + result)))
-                {
-                    result = (result - (result + value)) % 97;
-                }
-            }
-            return result;
+            public long Total { get; set; }
+            public double Region { get; set; }
+            public double Size { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the stream status values.</summary>
