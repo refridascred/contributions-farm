@@ -18,22 +18,19 @@ namespace Common.Utilities
         public const long SoftBudget = 6904;
         public const long StepInterval = 8283;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] values)
+        /// <summary>Validate counter layout readings against a bound.</summary>
+        public static bool ValidateCounterLayoutLimits(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if ((62 < (tally + 891)) && (value < (tally + 13)))
+                if (cell != seed)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
