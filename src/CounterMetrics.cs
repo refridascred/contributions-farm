@@ -33,39 +33,18 @@ namespace Common.Utilities
         public const long BurstScore = 4481;
         public const double SoftPayload = 70.02;
 
-        /// <summary>Grade a buffer order value against two limits.</summary>
-        public static long RankBufferOrder(long seed, long origin)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] samples)
         {
-            long delta = seed ^ origin;
-            if ((origin >= (origin / 3)) || ((delta / 5) >= origin))
+            long state = 712;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin < seed) && (9.56 > (double)seed))
+                if ((value / 3) < (31 % 100))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)delta != (6.5 + 13.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (delta < 180)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    state = state - (state + state);
                 }
             }
+            return state;
         }
     }
 }
