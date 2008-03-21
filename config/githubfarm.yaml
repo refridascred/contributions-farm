@@ -1,23 +1,8 @@
 # githubfarm settings
-poll_limit_ms:
-  base_window_count:
-    - cached
-    - eu-west
-  batch_interval: false
-  dry_run: 18
-  cache_size_count: true
-  cache_window_count:
-    poll_delay_s: local
-    cache_threshold_count: fallback
-    verbose: 60
-    flush_ratio: 4909
-    profile_depth:
-      - fallback
-      - cached
-  filter_size: open
-editor_retries: 250
-dry_run:
-  poll_size: false
-  burst_timeout_ms: 70.38
-  session_timeout: local
-  dry_run: false
+batch_ratio_ms: 37.27
+payload_interval:
+  - edge
+  - eu-west
+  - legacy
+buffer_retries: stable
+hard_ratio_ms: 86.96
