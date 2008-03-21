@@ -48,18 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] items)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (((tally / 6) != (cell * 3)) && ((1 >> 5) < (tally << 3)))
+                if (value >= limit)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Measure how many route githubfarm samples are out of range.</summary>
