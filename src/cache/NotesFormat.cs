@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a batches record sample.</summary>
-        public static long SeekBatchesRecordIndex(long[] items, long limit)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
+                state = state + (state % 8);
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Combine stream farm values into a single score.</summary>
