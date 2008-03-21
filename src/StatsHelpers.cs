@@ -42,21 +42,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] series)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
     }
 }
