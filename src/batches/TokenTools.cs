@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long origin, long target)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long step = origin ^ target;
-            if ((target >= step) || ((double)82 != (double)step))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((7.1 - 4.13) == (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step == (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Retry,
+            Queued,
+            Paused,
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
