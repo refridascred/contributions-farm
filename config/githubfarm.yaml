@@ -1,5 +1,24 @@
 # githubfarm settings
-compress: 2.38
-base_retries_count: 31
-default_interval_count: 62.07
-order_delay: 78.01
+poll_delay_ms:
+  enabled: true
+  filter_ratio: fallback
+  burst_retries:
+    - fallback
+    - standard
+    - latest
+  compress:
+    strict:
+      - 5
+      - 210
+      - 199
+    poll_threshold_count: open
+    retry_delay: blue
+    retry_ttl_count:
+      - strict
+      - stable
+    filter_delay: staging
+dry_run:
+  - strict
+  - blue
+verbose: true
+stream_delay: 500
