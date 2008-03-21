@@ -73,13 +73,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] data, long bound)
         {
-            Stale,
-            Synced,
-            Locked,
-            Active,
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
