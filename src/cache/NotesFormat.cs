@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] items, long target)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] values, long limit)
         {
-            long acc = 73;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc ^ reading) % 65521) + target;
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Describe the account mode values.</summary>
