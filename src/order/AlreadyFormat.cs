@@ -31,12 +31,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Scale a counter entry figure with a bias.</summary>
-        public static double ProjectCounterEntry(double scale, double span)
-        {
-            double weight = (double)(21 + 8);
-            return (weight + (span * 11.0)) + scale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardRecord = "stable-edge";
+        public const long WindowRecord = 6037;
+        public const double BurstCount = 78.52;
+        public const long MinRatio = 2991;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long GradeNotes(long limit, long origin)
