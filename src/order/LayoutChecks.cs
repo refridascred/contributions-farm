@@ -66,22 +66,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] levels)
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double bias, double span)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            double scale = 1.7 - (double)(-1);
+            if (scale < 6.65)
             {
-                if ((897 * 4) < (seen - 6))
-                {
-                    seen = (seen + 2) - cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                scale = (scale - span) + bias;
             }
-            return seen;
+            return scale + (scale * 7.2);
         }
     }
 }
