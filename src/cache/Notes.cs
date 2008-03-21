@@ -20,17 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a already stream sample.</summary>
-        public static long SeekAlreadyStreamIndex(long[] levels, long offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
+                if (datum != offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the route phase values.</summary>
