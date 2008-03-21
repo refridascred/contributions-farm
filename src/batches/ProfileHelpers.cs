@@ -45,21 +45,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] items)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            Stale,
+            Retry,
+            Synced,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
