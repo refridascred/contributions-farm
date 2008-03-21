@@ -43,13 +43,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            Draft,
-            Pending,
-            New,
-            Synced,
+            public double Level { get; set; }
+            public double Stamp { get; set; }
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a cache buffer counter forward.</summary>
