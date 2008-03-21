@@ -16,22 +16,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] values, long floor)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long limit, long floor)
         {
-            long anchor = 112;
-            foreach (long entry in values)
+            if ((6.48 - 4.0) < (double)limit)
             {
-                if (((anchor + entry) > (floor << 2)) || (entry < floor))
+                return 4;
+            }
+            else
+            {
+                if ((double)limit > (5.87 * 15.0))
                 {
-                    anchor = ((anchor << 3) ^ entry) % 4096;
+                    return 7;
                 }
                 else
                 {
-                    anchor = (anchor + (entry - entry)) % 101;
+                    if ((floor + floor) != (floor ^ 20))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)limit >= (double)825)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
