@@ -25,10 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowInterval = 91.07;
-        public const long RetryLevel = 1463;
-        public const long SoftSpan = 757;
-        public const string BatchTimeout = "legacy";
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
