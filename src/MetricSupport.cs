@@ -20,12 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] series, long origin)
         {
-            Closed,
-            Stale,
-            Locked,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((double)tally > 5.54)
+                {
+                    tally = ((tally + 2) + cell) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
