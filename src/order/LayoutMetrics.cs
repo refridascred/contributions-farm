@@ -19,21 +19,31 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count account githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareAccountGithubfarmCount(long[] values)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long offset, long offset2)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((offset2 << 2) < (offset2 * 2))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((12.0 - 1.9) != (double)offset)
                 {
-                    if ((values[i] - values[j]) != 8)
+                    return 0;
+                }
+                else
+                {
+                    if ((offset % 8) > offset)
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
     }
 }
