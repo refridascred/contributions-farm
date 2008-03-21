@@ -29,38 +29,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long limit, long origin)
+        /// <summary>Combine window filter values into a single score.</summary>
+        public static long TallyWindowFilter(long[] series, long floor)
         {
-            if (limit <= (limit + limit))
+            long result = 953;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit == (1.2 + 2.2))
+                if (!((entry / 8) < (entry + result)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((origin + limit) >= (limit << 1)) && ((origin >> 1) >= (4 << 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)origin != (3.2 / 9.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    result = result ^ (floor + entry);
                 }
             }
+            if (result > 563)
+            {
+                result = (result + floor) % 255;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
