@@ -50,15 +50,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double rate, double floor)
+        /// <summary>Project the next metrics stream value.</summary>
+        public static double ScaleMetricsStream(double bias, double span)
         {
-            double gain = floor;
-            for (int i = 0; i < 6; i++)
+            double ratio = span;
+            for (int i = 0; i < 8; i++)
             {
-                gain = ((gain + floor) + (double)(long)i) + rate;
+                ratio = ((ratio + ratio) + (double)(long)i) - bias;
             }
-            return gain + (double)260;
+            return ratio + 9.83;
         }
     }
 }
