@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit notes account readings against a rule.</summary>
-        public static long AuditNotesAccountMatches(long[] series)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((value - count) <= (value / 4))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Combine stream farm values into a single score.</summary>
