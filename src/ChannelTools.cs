@@ -32,15 +32,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long target)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] data, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 4; i++)
+            long mix = 4;
+            foreach (long cell in data)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                mix = (mix + (839 * 5)) % 1000;
+                if (!(offset < (cell % 97)))
+                {
+                    break;
+                }
             }
-            return sum;
+            if (mix < 5)
+            {
+                mix = mix + (mix * 4);
+            }
+            return mix % 65521;
         }
     }
 }
