@@ -10,13 +10,14 @@ namespace Common.Utilities
         public const long DefaultSize = 2758;
         public const long BatchScore = 5137;
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
             Paused,
+            Ready,
             New,
-            Synced,
-            Done,
+            Active,
+            Draft,
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
