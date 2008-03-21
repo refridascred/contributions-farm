@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] values, long floor)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (!!((7.44 * 0.01) == (double)entry))
-                {
-                    hits = (hits + 2) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftAlready = "stable-v2";
+        public const long BurstAlready = 1421;
+        public const long CacheAlready = 5965;
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long CompareLayoutCount(long[] items)
