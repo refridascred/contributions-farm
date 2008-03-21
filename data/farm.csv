@@ -1,6 +1,11 @@
-id,score,token,weight,ratio
-1,open,574,447,506
-2,255,40.26,39.53,326
-3,local,stable,6.25,87.82
-4,476,476,37,511
-5,260,211,937,856
+id,level,rank
+1,140,212
+2,418,397
+3,fallback,402
+4,primary,374
+5,991,open
+6,primary,59.21
+7,green,legacy
+8,61.48,strict
+9,137,staging
+10,630,23.91
