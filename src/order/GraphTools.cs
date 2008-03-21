@@ -35,13 +35,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            Paused,
-            Active,
-            Pending,
-            Dropped,
+            public double Weight { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
