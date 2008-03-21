@@ -41,22 +41,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] items, long step)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long target)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long total = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((cell >> 5) >= ((long)items.Length ^ cell))
-                {
-                    count = (count + 2) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
     }
 }
