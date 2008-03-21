@@ -1,9 +1,8 @@
-id,label,count,state
-1,205,68.84,legacy
-2,289,57.81,422
-3,51.21,918,623
-4,local,577,891
-5,591,staging,205
-6,704,blue,733
-7,eu-west,latest,legacy
-8,92.07,fallback,344
+id,active,rank
+1,944,836
+2,staging,56
+3,cached,683
+4,36.08,789
+5,edge,31.8
+6,33.21,open
+7,standard,eu-west
