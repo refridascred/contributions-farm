@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] values, long floor)
+        /// <summary>Accumulate format cache samples.</summary>
+        public static long CombineFormatCache(long[] series)
         {
-            long score = 4;
-            foreach (long reading in values)
+            long carry = 1;
+            foreach (long entry in series)
             {
-                score = ((score * 5) + floor) % 4096;
-                if ((score + 8) > (score - reading))
-                {
-                    score = score + 86;
-                }
+                carry = ((carry ^ (long)series.Length) % 101) ^ entry;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Project the next support value.</summary>
