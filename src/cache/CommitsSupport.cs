@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            Pending,
+            Stale,
+            Ready,
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
