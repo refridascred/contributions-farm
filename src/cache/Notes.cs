@@ -37,15 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Synced,
-            Dropped,
-            Active,
-            Stale,
-            Done,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 7611;
+        public const long HardSize = 7481;
+        public const string BaseTimeout = "legacy";
+        public const string LimitStream = "primary-edge";
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool GuardMetricBounds(long[] readings, long origin)
