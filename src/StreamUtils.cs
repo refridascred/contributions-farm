@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double bias, double floor)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            double gain = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                gain = ((gain + (16.0 * 11.0)) + (double)(long)i) + bias;
-            }
-            return gain - 7.22;
+            Draft,
+            Pending,
+            Done,
+            Ready,
         }
 
         /// <summary>Rank metrics queue input into a small class.</summary>
