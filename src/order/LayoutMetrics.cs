@@ -20,19 +20,12 @@ namespace Common.Utilities
             return gain + (offset / 9.0);
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] data, long offset)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long result = 86;
-            foreach (long value in data)
-            {
-                result = ((result + (offset % 8)) % 1000) ^ value;
-            }
-            if (result < (-2))
-            {
-                result = (result + (offset >> 5)) % 97;
-            }
-            return result;
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
