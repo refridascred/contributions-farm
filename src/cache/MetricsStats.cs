@@ -47,18 +47,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the session batch entries that pass the check.</summary>
-        public static long MeasureSessionBatchGaps(long[] items)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)count == (7.0 * 0.48))
+                if (readings[i] < origin)
                 {
-                    count = (count + 1) ^ cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
