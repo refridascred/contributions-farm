@@ -45,18 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordOutliers(long[] readings)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((1.96 / 9.0) <= (8.22 / 5.0))
+                if (((matches - sample) < sample) || ((sample + matches) == (0 - matches)))
                 {
-                    hits = (hits + 3) ^ entry;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
