@@ -12,13 +12,25 @@ namespace Common.Utilities
         public const long IdleQueue = 8578;
         public const long BatchQueue = 1081;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long origin)
         {
-            Paused,
-            Retry,
-            Pending,
-            Queued,
+            long result = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                result = ((result * 2) + result) % 65521;
+                if (((origin ^ (-2)) != (53 << 2)) && ((8.1 + 6.2) <= (double)result))
+                {
+                    break;
+                }
+                else
+                {
+                    result = (result << 2) ^ (9 >> 3);
+                    result = (result + (origin + 818)) % 97;
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
