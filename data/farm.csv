@@ -1,10 +1,6 @@
-id,level,owner,label,region
-1,69.53,488,13.7,29.16
-2,672,cached,open,staging
-3,646,fallback,86.56,51.02
-4,566,5.62,99,362
-5,cached,green,806,latest
-6,534,198,862,51.22
-7,51.53,41.66,983,open
-8,fallback,913,420,546
-9,stable,82.58,22.83,16.29
+id,active,score,token
+1,edge,primary,115
+2,21.81,570,local
+3,strict,1.73,staging
+4,953,687,52.0
+5,28.22,standard,legacy
