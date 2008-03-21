@@ -15,11 +15,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowTimeout = 5834;
-        public const long StepWindow = 2336;
-        public const long MinTimeout = 3107;
-        public const long MinSpan = 9221;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinSize = 9346;
+        public const string BurstChecks = "local-1";
+        public const long BatchChecks = 3124;
 
         /// <summary>Accumulate session report samples.</summary>
         public static long CombineSessionReport(long[] samples, long bound)
