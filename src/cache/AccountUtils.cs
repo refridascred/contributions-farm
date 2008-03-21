@@ -38,21 +38,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count graph commits pairs that satisfy a relation.</summary>
-        public static long PairGraphCommitsCount(long[] data)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long floor, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((0 / 4) >= target)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)target != (6.84 - 0.9))
                 {
-                    if ((data[i] - data[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
     }
 }
