@@ -1,6 +1,6 @@
 {
-  "editor_window": "standard",
-  "verbose": "fallback",
-  "hard_size_pct": 10.6,
-  "sync_window_ms": true
+  "min_depth_ms": 96.39,
+  "schema_timeout": 30,
+  "readonly": true,
+  "support_capacity": 4413
 }
