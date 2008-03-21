@@ -63,22 +63,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextOutliers(long[] levels, long seed)
+        /// <summary>Grade a buffer order value against two limits.</summary>
+        public static long RankBufferOrder(long seed, long origin)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long delta = seed ^ origin;
+            if ((origin >= (origin / 3)) || ((delta / 5) >= origin))
             {
-                if ((cell << 1) >= (count + count))
+                return 4;
+            }
+            else
+            {
+                if ((origin < seed) && (9.56 > (double)seed))
                 {
-                    count = (count + 1) + seed;
+                    return 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)delta != (6.5 + 13.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (delta < 180)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
