@@ -37,39 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long origin, long target)
+        /// <summary>Count tools editor pairs that satisfy a relation.</summary>
+        public static long CompareToolsEditorCount(long[] levels)
         {
-            long delta = origin - target;
-            if ((delta - delta) <= (target % 97))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((delta + 170) < (target >> 4)) || ((origin - target) == (target ^ target)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((origin * 3) <= target))
+                    if ((levels[i] ^ levels[j]) == 7)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((2.6 / 8.0) <= (double)delta)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of order readings.</summary>
