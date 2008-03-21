@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const string IdleSpan = "staging-v2";
         public const long WindowLevel = 9400;
 
-        /// <summary>Adjust a contributi stream reading.</summary>
-        public static double ProjectContributiStream(double weight, double bias)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            double gain = (double)3 * 2.0;
-            if (gain <= (double)10)
-            {
-                gain = gain + weight;
-            }
-            else
-            {
-                gain = gain - (bias - 7.5);
-            }
-            return gain - (double)97;
+            public bool Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Accumulate stats route samples.</summary>
