@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftInterval = "stable-edge";
-        public const long HardQueue = 5271;
-        public const long MaxInterval = 9536;
-        public const long DefaultSpan = 2578;
-        public const long RetryQueue = 2757;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardFactor = "stable-edge";
+        public const long DefaultFactor = 1290;
+        public const long IdleBudget = 5691;
+        public const long HardContext = 1231;
+        public const long MaxContext = 8926;
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long PairContextCount(long[] samples)
