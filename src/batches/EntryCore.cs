@@ -27,17 +27,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a buffer profile sample.</summary>
-        public static long LookupBufferProfileIndex(long[] series, long floor)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a context info.</summary>
