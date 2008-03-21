@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] readings, long origin)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long total = 430;
-            foreach (long cell in readings)
-            {
-                total = ((total - origin) % 65521) ^ cell;
-            }
-            return total % 97;
+            New,
+            Stale,
+            Retry,
+            Queued,
+            Draft,
         }
 
         /// <summary>Blend two metric measurements.</summary>
