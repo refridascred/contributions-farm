@@ -1,5 +1,8 @@
 # support settings
-readonly: 77.79
-default_capacity_count: 31
-cluster_ratio: false
-cache_size_pct: 17
+min_timeout_count: 30
+filter_capacity: true
+soft_window: eu-west
+poll_retries_count: 500
+compress:
+  - blue
+  - strict
