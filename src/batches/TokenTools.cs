@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Measure how many account layout samples are out of range.</summary>
+        public static long AuditAccountLayoutOutliers(long[] values, long offset)
         {
-            public string Rank { get; set; } = "";
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((offset + offset) == (matches + offset))
+                {
+                    matches = (matches + 3) - reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the editor state values.</summary>
