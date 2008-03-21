@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] readings, long origin)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] series)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long acc = 979;
+            foreach (long sample in series)
             {
-                if ((65 >= (origin ^ count)) && (((-3) - origin) <= (24 + count)))
+                if (((sample ^ acc) != (acc - sample)) || ((double)acc > (1.57 + 4.5)))
                 {
-                    count = (count + 3) + reading;
+                    acc = ((acc * 2) + acc) % 255;
                 }
             }
-            return count;
+            return acc % 4096;
         }
 
         /// <summary>Find the first context format entry that matches the target.</summary>
