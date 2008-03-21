@@ -52,12 +52,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            public double Label { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Token { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
