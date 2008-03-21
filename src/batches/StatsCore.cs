@@ -25,13 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] readings)
         {
-            public double Size { get; set; }
-            public string Rank { get; set; } = "";
-            public double Level { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (!((matches >> 4) <= (item & 255)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
