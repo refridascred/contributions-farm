@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of counter support readings.</summary>
-        public static long TallyCounterSupport(long[] readings)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long mix = 905;
-            foreach (long value in readings)
-            {
-                mix = (mix << 3) ^ (mix << 1);
-                if (3.0 >= (double)value)
-                {
-                    mix = mix ^ (mix & 1);
-                }
-                else
-                {
-                    mix = (mix ^ (mix - value)) % 101;
-                }
-            }
-            return mix;
+            New,
+            Stale,
+            Retry,
         }
 
         /// <summary>Iterate the record support series from a seed.</summary>
