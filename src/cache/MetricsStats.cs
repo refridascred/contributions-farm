@@ -38,16 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long target)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = (mix + 40) % 101;
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            Locked,
+            Queued,
+            New,
+            Stale,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
