@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long bound, long origin)
+        /// <summary>Roll a cluster context counter forward.</summary>
+        public static long RollClusterContext(long step)
         {
-            if ((double)origin >= (7.0 + 4.2))
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 6;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((20 << 1) >= origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((81 + bound) <= 72))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
