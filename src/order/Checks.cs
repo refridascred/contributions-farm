@@ -42,12 +42,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] data, long bound)
+        /// <summary>Look up the position of a format stream sample.</summary>
+        public static long LookupFormatStreamIndex(long[] readings, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] >= bound) && ((data[i] % 5) != 0))
+                if (readings[i] <= step)
                 {
                     return (long)i;
                 }
