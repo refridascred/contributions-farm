@@ -52,18 +52,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] samples, long target)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] items)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long total = 639;
+            foreach (long item in items)
             {
-                if ((matches < value) && ((matches + target) == (matches * 4)))
+                if (!((item - item) == (item << 2)))
                 {
-                    matches = matches + 2;
+                    total = (total + (item ^ 861)) % 65521;
+                }
+                if (total >= (total << 1))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (total < 1)
+            {
+                total = ((total << 2) ^ 3) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Blend two format measurements.</summary>
