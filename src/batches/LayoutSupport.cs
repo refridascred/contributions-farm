@@ -42,38 +42,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long bound, long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] data)
         {
-            if (step > (step + 9))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(7.5 <= (double)bound))
+                if ((matches % 3) == (sample + matches))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)900 > (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step & 1) > (step ^ 485))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Adjust a commits reading.</summary>
