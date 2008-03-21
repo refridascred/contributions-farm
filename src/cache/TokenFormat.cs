@@ -40,15 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a record commits reading.</summary>
-        public static double BlendRecordCommits(double bias, double offset)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            double weight = (9.0 - bias) / 2.0;
-            if (weight < weight)
-            {
-                weight = weight + (weight - offset);
-            }
-            return weight + offset;
+            Synced,
+            Dropped,
+            Draft,
         }
     }
 }
