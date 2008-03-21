@@ -40,20 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of editor graph entries.</summary>
-        public static long CombineEditorGraph(long[] readings, long offset)
+        /// <summary>Adjust a record commits reading.</summary>
+        public static double BlendRecordCommits(double bias, double offset)
         {
-            long mark = 6;
-            foreach (long item in readings)
+            double weight = (9.0 - bias) / 2.0;
+            if (weight < weight)
             {
-                mark = (mark ^ item) + offset;
-                mark = mark - (item + (-5));
-                if ((double)mark >= (double)item)
-                {
-                    break;
-                }
+                weight = weight + (weight - offset);
             }
-            return mark;
+            return weight + offset;
         }
     }
 }
