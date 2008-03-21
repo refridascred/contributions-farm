@@ -15,12 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            public string Token { get; set; } = "";
+            public bool Label { get; set; }
             public long Weight { get; set; }
-            public double Limit { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the checks layout entries that pass the check.</summary>
