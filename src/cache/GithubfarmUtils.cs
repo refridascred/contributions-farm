@@ -69,12 +69,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Stale,
-            Closed,
-            Active,
+            public long Limit { get; set; }
+            public double Label { get; set; }
         }
     }
 }
