@@ -67,21 +67,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] readings)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 465;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark - (8 + mark)) % 255) + reading;
+                mark = ((mark * 5) + (step * 4)) % 97;
+                mark = (mark + (240 ^ step)) % 255;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
