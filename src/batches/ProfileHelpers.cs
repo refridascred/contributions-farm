@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] samples)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double weight, double offset)
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (((-6) % 10) <= (entry % 97))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            double mean = (offset / 2.0) / 5.0;
+            return (mean + offset) + weight;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
