@@ -49,19 +49,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] levels, long seed)
+        /// <summary>Accumulate session report samples.</summary>
+        public static long CombineSessionReport(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long acc = 884;
+            foreach (long item in samples)
             {
-                if (datum != seed)
+                if (((8.7 + 1.8) >= (double)bound) || ((item & 63) == (acc << 1)))
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc * 5) + (item - acc)) % 255;
                 }
             }
-            return ok;
+            if (acc > (-26))
+            {
+                acc = (acc + 0) % 101;
+            }
+            return acc;
         }
     }
 }
