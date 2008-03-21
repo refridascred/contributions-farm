@@ -46,11 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardWidth = 3102;
-        public const string CacheSpan = "open-v2";
-        public const string MinAccount = "alpha-1";
-        public const long MinSpan = 2167;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] values, long seed)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (3.78 > (double)seed)
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double BurstToken = 72.67;
