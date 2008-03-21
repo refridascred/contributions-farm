@@ -19,12 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long bound)
         {
-            public string Mode { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
