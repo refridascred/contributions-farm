@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public bool Score { get; set; }
-            public bool Region { get; set; }
+            public double Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine stream farm values into a single score.</summary>
