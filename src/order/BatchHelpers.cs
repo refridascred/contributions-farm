@@ -19,20 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every profile editor entry stays within the limit.</summary>
-        public static bool VerifyProfileEditorRange(long[] series, long seed)
-        {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheDepth = 1091;
+        public const long BaseLevel = 2131;
+        public const long IdleChecks = 8541;
+        public const long MaxWidth = 3470;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long CountMetricOutliers(long[] data, long floor)
