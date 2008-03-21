@@ -61,18 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many tools cluster samples are out of range.</summary>
-        public static long CountToolsClusterOutliers(long[] series)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (!(((49 - (long)series.Length) != (307 / 4)) && (tally >= (reading / 4))))
+                if ((double)item <= (2.87 * 6.8))
                 {
-                    tally = tally + 3;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
