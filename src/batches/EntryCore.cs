@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public double Level { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstDepth = "standard-1";
+        public const double MaxRoute = 33.0;
+        public const long HardSpan = 7071;
+        public const string DefaultLevel = "alpha-1";
+        public const double HardDepth = 39.04;
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
