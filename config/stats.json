@@ -1,14 +1,6 @@
 {
-  "layout_threshold": true,
-  "support_limit": true,
-  "strict": [254, 296, 328, 219],
-  "poll_retries_count": "cached",
-  "persist": 3153,
-  "sync_size_count": {
-    "warm_limit_pct": ["stable", "cached", "open"],
-    "route_threshold": 51,
-    "cache_retries": [464, 455, 423, 5],
-    "verbose": "stable",
-    "flush_timeout": "latest"
-  }
+  "editor_window": "standard",
+  "verbose": "fallback",
+  "hard_size_pct": 10.6,
+  "sync_window_ms": true
 }
