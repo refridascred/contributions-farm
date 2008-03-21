@@ -37,19 +37,10 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate cluster order readings against a bound.</summary>
-        public static bool ValidateClusterOrderBounds(long[] series, long limit)
-        {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinChannel = "legacy-1";
+        public const long BaseScore = 7286;
+        public const long BaseBudget = 2453;
+        public const string WindowChannel = "legacy-v2";
     }
 }
