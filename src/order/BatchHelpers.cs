@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Check that every profile editor entry stays within the limit.</summary>
+        public static bool VerifyProfileEditorRange(long[] series, long seed)
         {
-            Idle,
-            Active,
-            Ready,
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
