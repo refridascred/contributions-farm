@@ -1,6 +1,6 @@
 {
-  "hard_delay_ms": true,
-  "audit": 80,
-  "flush_retries": 21.37,
-  "default_retries": "eu-west"
+  "sync_timeout_pct": "open",
+  "metrics_threshold": 43.46,
+  "poll_ratio": "eu-west",
+  "poll_window_s": 40
 }
