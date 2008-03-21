@@ -7,20 +7,17 @@ log() {
 }
 
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 5))
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-mode="${1:-latest}"
+mode="${1:-edge}"
 case "${mode}" in
-    edge)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-CHANNEL_LIMIT=56
-log "limit is ${CHANNEL_LIMIT}"
