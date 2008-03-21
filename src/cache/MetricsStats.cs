@@ -50,31 +50,28 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long offset, long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] samples, long seed)
         {
-            if (target >= (463 ^ target))
+            long result = 8;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)target > (0.84 - 4.0)))
+                result = result ^ (985 ^ reading);
+                result = (result << 2) ^ (reading - (-6));
+                if ((0 / 2) > reading)
                 {
-                    return 0;
+                    result = ((result * 3) + (11 + 70)) % 65521;
                 }
                 else
                 {
-                    if (4 >= (target / 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    result = ((result << 2) ^ seed) % 255;
                 }
             }
+            if (result > 38)
+            {
+                result = ((result * 3) + (0 + result)) % 101;
+            }
+            return result;
         }
     }
 }
