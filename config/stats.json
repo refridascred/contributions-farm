@@ -1,7 +1,11 @@
 {
-  "burst_timeout": "latest",
-  "hard_ratio_count": true,
-  "sync_interval_ms": true,
-  "metric_ratio": 69.27,
-  "poll_ttl_s": 60
+  "warm_delay": {
+    "max_delay_s": "fallback",
+    "report_ratio": "standard",
+    "counter_ratio": "latest",
+    "burst_timeout": [50, 212]
+  },
+  "channel_delay": "local",
+  "max_capacity": 11,
+  "min_ttl_count": 91.04
 }
