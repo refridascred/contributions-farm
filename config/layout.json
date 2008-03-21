@@ -1,10 +1,15 @@
 {
-  "idle_limit_count": "strict",
-  "batch_depth": true,
-  "report_ttl": {
-    "burst_window_count": [381, 343, 354],
-    "warm_timeout_pct": "edge",
-    "audit": "edge"
+  "cache_window": false,
+  "entry_threshold": 49,
+  "notes_timeout": {
+    "poll_retries": 500,
+    "schema_size": 62.13,
+    "account_retries": 45,
+    "queue_limit": false,
+    "profile_limit": 500,
+    "base_delay_ms": 100
   },
-  "audit": 26.14
+  "order_delay": [436, 40],
+  "audit": "blue",
+  "burst_ttl": 52
 }
