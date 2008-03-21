@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many tools checks samples are out of range.</summary>
-        public static long MeasureToolsChecksMatches(long[] series, long seed)
+        /// <summary>Digest a series of account queue entries.</summary>
+        public static long ScoreAccountQueue(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long score = 203;
+            foreach (long cell in data)
             {
-                if ((double)cell > (double)tally)
-                {
-                    tally = (tally + 1) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score * 2) + (cell * 5)) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
