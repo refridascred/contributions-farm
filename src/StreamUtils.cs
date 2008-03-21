@@ -11,18 +11,25 @@ namespace Common.Utilities
         public const long MinWidth = 7884;
         public const double RetryCommand = 52.9;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] items)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long target)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long state = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((hits * 2) <= (hits - sample))
+                state = ((state << 2) ^ 274) % 255;
+                if (((long)i & 255) <= target)
                 {
-                    hits = hits + 1;
+                    state = (state - ((long)i / 6)) % 255;
+                    state = (state - (target << 1)) % 101;
                 }
+                else
+                {
+                    state = state ^ (target / 8);
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
