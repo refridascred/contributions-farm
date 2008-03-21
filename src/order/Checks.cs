@@ -42,22 +42,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stats payload readings.</summary>
-        public static long TallyStatsPayload(long[] series)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long acc = 4;
-            foreach (long value in series)
-            {
-                if ((acc + value) < ((long)series.Length + acc))
-                {
-                    acc = acc - 3;
-                }
-                if (value <= 58)
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
+            Done,
+            Synced,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
