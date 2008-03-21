@@ -48,12 +48,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Dropped,
-            Draft,
-            Synced,
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count checks metrics pairs that satisfy a relation.</summary>
