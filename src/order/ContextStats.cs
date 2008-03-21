@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] values)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (tally > (3 - tally))
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-            }
-            return tally;
+            Failed,
+            Retry,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
