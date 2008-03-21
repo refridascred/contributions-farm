@@ -19,19 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long target)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
-            {
-                if (target >= (total * 3))
-                {
-                    total = total ^ (total * 4);
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            Locked,
+            Ready,
+            Stale,
+            Paused,
+            New,
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
