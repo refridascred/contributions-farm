@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Audit record checks readings against a rule.</summary>
+        public static long TallyRecordChecksHits(long[] series)
         {
-            Locked,
-            Ready,
-            New,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((85 + 27) >= tally)
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
