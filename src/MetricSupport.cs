@@ -20,11 +20,22 @@ namespace Common.Utilities
             return scale - (floor - 7.0);
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] series)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((hits ^ sample) <= (hits - hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of order commits entries.</summary>
