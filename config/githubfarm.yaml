@@ -1,11 +1,4 @@
 # githubfarm settings
-compress: true
-min_timeout:
-  min_size: legacy
-  max_delay: 53.53
-  dry_run: 79
-  retry_timeout_pct: false
-  graph_interval: blue
-  cache_limit_s: 500
-burst_threshold_pct: 69.36
-burst_depth: 1024
+command_timeout: true
+sync_depth_s: true
+buffer_depth: 52.99
