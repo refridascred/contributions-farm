@@ -40,12 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public double Offset { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxSize = 79.37;
+        public const long IdleBudget = 9358;
+        public const double MaxBudget = 59.0;
+        public const string HardFarm = "standard-edge";
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long LocateMetricIndex(long[] readings, long origin)
