@@ -1,5 +1,12 @@
 {
-  "soft_capacity_ms": 1024,
-  "queue_size": "open",
-  "audit": false
+  "cache_ratio": [286, 497, 108, 360],
+  "hard_delay_count": 7431,
+  "support_retries": [473, 299, 226],
+  "poll_retries_ms": "strict",
+  "verbose": {
+    "audit": "blue",
+    "batch_depth": ["cached", "staging"],
+    "already_ttl": 97
+  },
+  "burst_ratio": "stable"
 }
