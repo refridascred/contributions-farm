@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every support buffer entry stays within the limit.</summary>
-        public static bool GuardSupportBufferBounds(long[] samples, long floor)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Limit { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
