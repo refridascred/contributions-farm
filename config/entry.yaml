@@ -1,4 +1,10 @@
 # entry settings
-batches_retries: 250
-warm_ratio_s: 30
-editor_timeout: fallback
+audit: 30
+token_size: true
+min_threshold_pct:
+  counter_threshold: 19.3
+  entry_threshold: 87
+  cache_delay_s: 20.42
+  warm_limit_count: 49
+graph_limit: false
+max_size: 60
