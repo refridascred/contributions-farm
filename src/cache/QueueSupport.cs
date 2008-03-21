@@ -30,26 +30,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine tools order values into a single score.</summary>
-        public static long TotalToolsOrder(long[] series)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] samples, long seed)
         {
-            long carry = 4;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (!((cell + carry) != (cell - cell)))
+                if (!((cell >> 2) != (seed + count)))
                 {
-                    carry = ((carry << 2) ^ cell) % 97;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (8 - carry);
+                    count = count + 3;
                 }
             }
-            if (carry < 247)
-            {
-                carry = ((carry * 5) + (4 / 7)) % 101;
-            }
-            return carry % 4096;
+            return count;
         }
     }
 }
