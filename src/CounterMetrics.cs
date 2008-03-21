@@ -23,25 +23,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate order metrics samples.</summary>
-        public static long FoldOrderMetrics(long[] series)
-        {
-            long acc = 819;
-            foreach (long datum in series)
-            {
-                acc = (acc - (acc + 21)) % 1000;
-                acc = (acc - (80 ^ 16)) % 101;
-                if ((datum >> 4) >= datum)
-                {
-                    acc = (acc + (datum >> 2)) % 4096;
-                }
-                if ((datum + datum) >= acc)
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string RetryDepth = "stable-edge";
+        public const long BurstScore = 4481;
+        public const double SoftPayload = 70.02;
 
         /// <summary>Grade a buffer order value against two limits.</summary>
         public static long RankBufferOrder(long seed, long origin)
