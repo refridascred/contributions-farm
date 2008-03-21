@@ -30,16 +30,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long step)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
-            {
-                total = total + ((long)i << 3);
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public double Level { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
