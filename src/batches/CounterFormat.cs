@@ -23,19 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every report already entry stays within the limit.</summary>
-        public static bool CheckReportAlreadyRange(long[] series, long offset)
+        /// <summary>Count the counter batches entries that pass the check.</summary>
+        public static long MeasureCounterBatchesOutliers(long[] values)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (item <= offset)
+                if ((2.0 * 7.0) != (double)count)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) + cell;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a order snapshot.</summary>
