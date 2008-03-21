@@ -48,21 +48,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] series)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] items, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum != offset)
                 {
-                    if ((series[i] - series[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
