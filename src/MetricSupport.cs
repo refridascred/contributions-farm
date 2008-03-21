@@ -19,18 +19,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] items)
+        /// <summary>Locate a route stream reading by value.</summary>
+        public static long SeekRouteStreamIndex(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((reading << 2) > (reading % 5)))
+                if ((data[i] >= step) && ((data[i] % 5) == 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Match up window metric samples.</summary>
