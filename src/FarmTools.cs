@@ -20,15 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next commits editor value from a seed.</summary>
-        public static long IterateCommitsEditor(long floor)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            Idle,
+            Active,
+            Draft,
+            Synced,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
