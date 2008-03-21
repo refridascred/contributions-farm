@@ -20,11 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double scale, double span)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            double bias = 20.0 + (span - span);
-            return (bias - (bias + span)) + scale;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a schema options.</summary>
