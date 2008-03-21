@@ -39,25 +39,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank stream payload input into a small class.</summary>
-        public static long ClassifyStreamPayload(long offset, long limit)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] series)
         {
-            long offset2 = offset - limit;
-            if ((limit + limit) > (limit - 614))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((1.5 / 3.0) > (double)offset2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    if ((series[i] ^ series[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine counter cluster values into a single score.</summary>
