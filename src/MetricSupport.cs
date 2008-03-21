@@ -19,22 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] series)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits ^ sample) <= (hits - hits))
+                if (data[i] <= step)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
