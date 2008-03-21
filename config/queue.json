@@ -1,5 +1,5 @@
 {
-  "cluster_retries": [3, 194, 328],
-  "stats_ttl": 76.94,
-  "profile_ttl": "primary"
+  "audit": "green",
+  "payload_threshold": "cached",
+  "soft_limit_pct": 60
 }
