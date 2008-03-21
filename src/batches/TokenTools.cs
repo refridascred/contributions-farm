@@ -29,18 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] values, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (((count << 3) >= (origin - 6)) && ((9.01 + 1.94) > (double)count))
+                if (604 <= (datum / 3))
                 {
-                    count = (count + 1) + cell;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
