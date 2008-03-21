@@ -34,17 +34,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] readings, long origin)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < origin) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Idle,
+            Queued,
+            Active,
+            Synced,
         }
 
         /// <summary>Fold a list of window readings.</summary>
