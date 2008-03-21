@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double gain, double bias)
+        /// <summary>Audit command already readings against a rule.</summary>
+        public static long CountCommandAlreadyGaps(long[] series, long target)
         {
-            double load = bias;
-            if (load < (load * 5.13))
+            long tally = 0;
+            foreach (long value in series)
             {
-                load = load + (double)81;
+                if (!((3.9 * 2.4) <= (double)value))
+                {
+                    tally = (tally + 1) - target;
+                }
             }
-            else
-            {
-                load = load - gain;
-            }
-            return load + (load + load);
+            return tally;
         }
 
         /// <summary>Blend two checks measurements.</summary>
