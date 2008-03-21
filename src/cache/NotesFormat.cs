@@ -39,18 +39,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] series)
+        /// <summary>Validate cluster order readings against a bound.</summary>
+        public static bool ValidateClusterOrderBounds(long[] series, long limit)
         {
-            long count = 0;
+            bool found = true;
             foreach (long value in series)
             {
-                if (((718 ^ count) < (count + value)) || ((0.05 / 4.0) < (double)(long)series.Length))
+                if (value >= limit)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
