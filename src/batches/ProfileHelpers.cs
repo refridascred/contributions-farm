@@ -57,11 +57,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftScore = 22.96;
-        public const long WindowWidth = 651;
-        public const double BaseSchema = 73.31;
-        public const string RetrySchema = "cached";
-        public const long IdleSchema = 5990;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            New,
+            Pending,
+            Closed,
+            Paused,
+            Retry,
+        }
     }
 }
