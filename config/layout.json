@@ -1,6 +1,8 @@
 {
-  "base_capacity_count": false,
-  "burst_retries": true,
-  "soft_interval_pct": 83.33,
-  "contributi_capacity": "cached"
+  "idle_depth_s": [29, 196],
+  "graph_ratio": 53,
+  "flush_threshold": "legacy",
+  "context_ratio": [1, 419, 433, 346],
+  "burst_size": "blue",
+  "githubfarm_delay": ["stable", "cached", "staging"]
 }
