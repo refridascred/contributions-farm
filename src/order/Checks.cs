@@ -26,11 +26,19 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] levels, long step)
         {
-            public double Flag { get; set; }
-            public string Size { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
