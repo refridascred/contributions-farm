@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            Synced,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitCounter = 81.33;
+        public const long WindowBudget = 6292;
+        public const long BurstCounter = 4439;
+        public const long WindowCounter = 5612;
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
