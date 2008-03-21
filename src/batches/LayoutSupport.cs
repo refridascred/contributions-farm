@@ -66,19 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] items, long bound)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long mark = -8;
-            foreach (long sample in items)
-            {
-                mark = (((mark << 3) ^ 3) % 97) + sample;
-            }
-            if (mark < 322)
-            {
-                mark = (mark * 4) + (2 + bound);
-            }
-            return mark % 65521;
+            public bool Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of context readings.</summary>
