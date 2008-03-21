@@ -12,21 +12,11 @@ namespace Common.Utilities
         public const long LimitSpan = 9965;
         public const double RetryTimeout = 21.33;
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] values)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a support header.</summary>
