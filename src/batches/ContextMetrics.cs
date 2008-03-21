@@ -20,24 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] values, long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] levels)
         {
-            long state = 63;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                state = ((state ^ (2 / 7)) ^ datum) - target;
-                state = state ^ 102;
-                if (!((double)state <= (4.11 * 9.3)))
+                if (((count << 3) > count) && ((count & 127) <= datum))
                 {
-                    break;
+                    count = count + 2;
                 }
             }
-            if (state < 9)
-            {
-                state = (state ^ state) % 255;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a account snapshot.</summary>
