@@ -18,13 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long limit, long origin)
         {
-            Queued,
-            New,
-            Paused,
-            Dropped,
+            if ((limit % 7) != (369 >> 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((4 << 2) <= (limit - limit)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit + limit) <= (origin & 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((3.4 / 2.0) < (double)origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up cache samples.</summary>
