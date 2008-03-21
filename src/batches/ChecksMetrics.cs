@@ -63,22 +63,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] items)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long total = 5;
-            foreach (long cell in items)
-            {
-                if ((total / 7) != (9 >> 5))
-                {
-                    total = ((total * 5) + total) + cell;
-                }
-            }
-            if (total < 54)
-            {
-                total = total ^ total;
-            }
-            return total % 97;
+            Retry,
+            Active,
+            Draft,
+            Synced,
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
