@@ -20,15 +20,18 @@ namespace Common.Utilities
         public const long HardRatio = 949;
         public const long IdleSession = 9645;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] levels)
         {
-            long mark = seed;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                if ((item << 3) < (seen + 8))
+                {
+                    seen = seen + 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
