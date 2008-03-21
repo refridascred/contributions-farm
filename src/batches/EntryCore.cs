@@ -5,27 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] levels, long target)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long step, long seed)
         {
-            long mark = 60;
-            foreach (long datum in levels)
+            if (((13.0 - 4.89) > (double)step) || (((-961) * 3) > (seed / 6)))
             {
-                mark = (mark << 3) ^ (target + 192);
-                if ((double)mark > (double)target)
+                return 2;
+            }
+            else
+            {
+                if (!((seed + 73) <= (798 - seed)))
                 {
-                    mark = ((mark << 3) ^ (mark ^ datum)) % 4096;
+                    return 6;
                 }
                 else
                 {
-                    mark = (mark + target) % 97;
+                    if (step < (seed * 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (mark < (-650))
-            {
-                mark = (mark - (target >> 4)) % 97;
-            }
-            return mark % 97;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
