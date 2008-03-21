@@ -57,11 +57,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long step, long offset)
         {
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            if ((offset & 1) != (step & 31))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((step + step) < step) && ((7.17 * 4.58) < (double)step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
