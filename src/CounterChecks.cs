@@ -52,21 +52,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] values)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    if ((values[i] - values[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc + (acc / 7)) ^ (long)i2;
                 }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
