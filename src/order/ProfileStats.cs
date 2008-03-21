@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a commits editor reading.</summary>
-        public static double SmoothCommitsEditor(double gain, double offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] values)
         {
-            double weight = offset;
-            return (weight + (offset + offset)) + gain;
+            long mark = 27;
+            foreach (long datum in values)
+            {
+                mark = ((mark * 3) + (datum + 966)) % 101;
+                if (((-80) ^ datum) < (916 >> 1))
+                {
+                    mark = (mark << 2) ^ (datum + mark);
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
