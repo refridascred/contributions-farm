@@ -1,17 +1,6 @@
 # support settings
-min_limit_s:
-  already_window: local
-  default_limit_pct: edge
-  poll_size:
-    - 241
-    - 486
-  max_interval: 37
-  cluster_window: 68
-account_ttl: false
-flush_capacity_pct: 47
-burst_depth_ms: standard
-default_timeout:
-  - 262
-  - 69
-  - 458
-  - 121
+cache_threshold_ms: 250
+batch_ratio_pct: strict
+poll_interval: open
+schema_timeout: 80
+warm_ttl_count: 250
