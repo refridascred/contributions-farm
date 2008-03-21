@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine stats tools values into a single score.</summary>
-        public static long ScoreStatsTools(long[] levels)
-        {
-            long result = 47;
-            foreach (long entry in levels)
-            {
-                result = (result << 3) ^ (entry & 7);
-                if ((double)entry > 20.0)
-                {
-                    result = (result + entry) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleFormat = "primary-1";
+        public const long WindowFormat = 5488;
+        public const long MinWidth = 6755;
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
