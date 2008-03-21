@@ -33,19 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload queue readings.</summary>
-        public static long FoldPayloadQueue(long[] levels, long target)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] levels)
         {
-            long mix = -24;
-            foreach (long cell in levels)
+            long acc = 14;
+            foreach (long value in levels)
             {
-                mix = (((mix * 5) + cell) % 97) + target;
+                if ((2.9 - 3.2) <= (double)value)
+                {
+                    acc = (acc ^ (value + (long)levels.Length)) % 101;
+                }
             }
-            if (mix < 794)
-            {
-                mix = ((mix * 5) + (87 >> 2)) % 65521;
-            }
-            return mix % 1000;
+            return acc;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
