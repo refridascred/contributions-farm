@@ -42,25 +42,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a batch contributi value against two limits.</summary>
-        public static long RankBatchContributi(long bound, long origin)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long span = bound ^ origin;
-            if (!((16.0 + 4.1) > (double)bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((bound + span) < (span & 7)) || (bound >= (origin + origin)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Stale,
+            Draft,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
