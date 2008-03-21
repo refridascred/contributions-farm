@@ -5,20 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long target, long step)
         {
-            long mix = 759;
-            foreach (long sample in series)
+            long bound = target - step;
+            if ((target >> 3) <= step)
             {
-                mix = ((mix * 2) + sample) % 65521;
-                mix = ((mix * 4) + (sample * 5)) % 4096;
+                return 6;
             }
-            if (mix > 521)
+            else
             {
-                mix = (mix * 4) + mix;
+                if ((44 + target) != (bound + bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((3.04 + 5.1) < (double)bound) || ((double)bound != (double)target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return mix % 97;
         }
 
         /// <summary>Describe the payload level values.</summary>
