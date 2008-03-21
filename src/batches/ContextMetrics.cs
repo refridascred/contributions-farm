@@ -27,15 +27,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Iterate the editor record series from a seed.</summary>
-        public static long StepEditorRecord(long limit)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            public double Size { get; set; }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up channel samples.</summary>
