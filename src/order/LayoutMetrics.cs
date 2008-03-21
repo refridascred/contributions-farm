@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long IdleQueue = 8578;
         public const long BatchQueue = 1081;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] values)
+        /// <summary>Adjust a record filter reading.</summary>
+        public static double ScaleRecordFilter(double bias, double floor)
         {
-            long sum = 7;
-            foreach (long datum in values)
+            double load = bias;
+            if (load >= (double)845)
             {
-                if ((1.6 - 4.4) == (double)sum)
-                {
-                    sum = ((sum << 2) ^ (sum / 5)) % 255;
-                }
-                else
-                {
-                    sum = sum + (sum + datum);
-                }
+                load = load + bias;
             }
-            return sum;
+            else
+            {
+                load = load + (double)20;
+            }
+            return load - (floor * 6.3);
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
