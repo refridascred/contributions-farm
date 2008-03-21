@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] samples, long floor)
+        /// <summary>Audit contributi notes readings against a rule.</summary>
+        public static long CountContributiNotesMatches(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (datum >= floor)
+                if ((tally & 31) > limit)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) - sample;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Look up the position of a report entry sample.</summary>
