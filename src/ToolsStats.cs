@@ -78,12 +78,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Draft,
-            Stale,
-            Done,
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define checks limits and defaults.</summary>
