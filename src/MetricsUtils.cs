@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long origin)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] levels)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((double)(long)i == (2.51 * 20.0))
+                if ((value + matches) > (value - matches))
                 {
-                    anchor = (anchor + ((long)i << 1)) % 65521;
+                    matches = matches + 2;
                 }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (anchor + (long)i)) % 4096;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
