@@ -58,17 +58,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] readings, long seed)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] items, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if (readings[i] == seed)
+                if (reading > offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
