@@ -50,22 +50,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate graph cluster samples.</summary>
-        public static long ScoreGraphCluster(long[] readings)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long bound)
         {
-            long result = -193;
-            foreach (long reading in readings)
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((reading + result) <= (reading * 5))
-                {
-                    result = ((result * 3) + result) % 4096;
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            if (result < 288)
-            {
-                result = result + (572 >> 4);
-            }
-            return result % 4096;
+            return carry;
         }
 
         /// <summary>Audit account editor readings against a rule.</summary>
