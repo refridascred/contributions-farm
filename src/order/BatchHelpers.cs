@@ -29,11 +29,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] series, long step)
         {
-            public long Token { get; set; }
-            public double Label { get; set; }
+            long total = 28;
+            foreach (long entry in series)
+            {
+                if ((double)total == (5.0 / 5.0))
+                {
+                    total = (((total * 3) + step) % 65521) - entry;
+                }
+            }
+            if (total < 8)
+            {
+                total = total + (total + step);
+            }
+            return total % 97;
         }
     }
 }
