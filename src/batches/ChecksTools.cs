@@ -25,23 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cache contributi value from a seed.</summary>
-        public static long StepCacheContributi(long bound)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] samples, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((6.88 * 0.1) > (double)acc)
+                if (samples[i] > seed)
                 {
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    acc = ((acc << 3) ^ (bound * 4)) % 101;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Audit graph payload readings against a rule.</summary>
