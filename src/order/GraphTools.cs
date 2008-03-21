@@ -37,15 +37,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double scale, double floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] samples)
         {
-            double rate = floor + (scale - scale);
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                rate = (rate - (13.0 / 3.0)) - (double)(long)i;
+                if (matches >= 9)
+                {
+                    matches = (matches + 1) + sample;
+                }
             }
-            return rate + floor;
+            return matches;
         }
 
         /// <summary>Adjust a token reading.</summary>
