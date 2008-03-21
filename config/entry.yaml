@@ -1,12 +1,21 @@
 # entry settings
-idle_timeout_count: 4404
-queue_depth:
-  - green
-  - cached
-burst_retries_s: 7261
-already_size:
-  - stable
-  - cached
-  - standard
-  - fallback
-base_retries_pct: stable
+flush_retries:
+  - 49
+  - 463
+  - 167
+sync_threshold_count:
+  min_threshold_s: open
+  sync_size:
+    soft_window_s:
+      - 453
+      - 39
+      - 152
+    batch_threshold_count: 2236
+    poll_threshold: eu-west
+  channel_retries:
+    - legacy
+    - blue
+    - eu-west
+  batch_ttl_ms: 98.33
+report_interval: 8047
+format_window: cached
