@@ -93,15 +93,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double weight, double offset)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] readings)
         {
-            double mean = weight;
-            if (mean < mean)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean + offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean - offset;
+            return seen;
         }
     }
 }
