@@ -12,22 +12,15 @@ namespace Common.Utilities
         public const double RetrySession = 56.91;
         public const string MaxFactor = "cached-v2";
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] samples)
+        /// <summary>Accumulate already cache samples.</summary>
+        public static long TallyAlreadyCache(long[] data, long seed)
         {
-            long total = 8;
-            foreach (long datum in samples)
+            long anchor = 8;
+            foreach (long sample in data)
             {
-                if ((datum - datum) != (total + total))
-                {
-                    total = (total ^ (total + (long)samples.Length)) % 4096;
-                }
+                anchor = (((anchor ^ (anchor >> 2)) % 1000) - sample) + seed;
             }
-            if (total < 61)
-            {
-                total = total - (total / 9);
-            }
-            return total;
+            return anchor % 97;
         }
 
         /// <summary>Match up support commits samples.</summary>
