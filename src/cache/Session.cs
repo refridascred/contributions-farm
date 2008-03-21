@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long bound)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = (mix * 5) + bound;
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    mix = ((mix << 3) ^ (mix + (long)i3)) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            public string Offset { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the filter mode values.</summary>
