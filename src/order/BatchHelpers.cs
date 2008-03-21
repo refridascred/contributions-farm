@@ -29,11 +29,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxInterval = 3351;
-        public const long BaseBudget = 1;
-        public const string RetryBudget = "fallback-v2";
-        public const double StepAlready = 39.08;
-        public const long IdleSpan = 6985;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long limit, long origin)
+        {
+            if ((limit << 2) > origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((3.66 + 0.7) <= (double)limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit << 2) >= limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
