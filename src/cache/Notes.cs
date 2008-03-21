@@ -27,22 +27,26 @@ namespace Common.Utilities
         public const long BatchCommand = 9825;
         public const long IdleCommand = 3612;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] readings)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] series)
         {
-            long acc = 3;
-            foreach (long reading in readings)
+            long acc = 0;
+            foreach (long reading in series)
             {
-                if (((reading - acc) < (acc ^ 39)) && ((reading + acc) == (reading & 255)))
+                if ((double)(long)series.Length >= (8.0 - 3.6))
                 {
-                    acc = (acc - 0) % 97;
+                    acc = acc + (reading / 4);
                 }
-                if (((acc + acc) >= (830 / 5)) || ((double)(long)readings.Length == (9.39 / 3.0)))
+                if ((acc >> 3) < (acc * 3))
                 {
-                    break;
+                    acc = ((acc * 5) + reading) % 101;
                 }
             }
-            return acc % 1000;
+            if (acc > 170)
+            {
+                acc = acc - (82 + acc);
+            }
+            return acc;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
