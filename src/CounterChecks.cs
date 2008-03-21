@@ -68,15 +68,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long step)
+        /// <summary>Audit account editor readings against a rule.</summary>
+        public static long TallyAccountEditorGaps(long[] data)
         {
-            long sum = step;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                if (datum <= matches)
+                {
+                    matches = matches + 2;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Combine session contributi values into a single score.</summary>
