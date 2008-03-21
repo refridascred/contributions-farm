@@ -1,5 +1,6 @@
 {
-  "soft_limit_pct": [266, 162, 403],
-  "base_size_ms": false,
-  "base_retries_ms": 30
+  "retry_interval_s": 14.77,
+  "soft_depth_s": 67.76,
+  "audit": true,
+  "default_window_ms": 7440
 }
