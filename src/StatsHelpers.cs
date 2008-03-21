@@ -33,13 +33,21 @@ namespace Common.Utilities
         public const double SoftTimeout = 96.02;
         public const long HardCommand = 4162;
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Match up githubfarm contributi samples.</summary>
+        public static long CompareGithubfarmContributiCount(long[] samples)
         {
-            public string Score { get; set; } = "";
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
