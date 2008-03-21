@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long seed, long floor)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long next = seed + floor;
-            if ((double)floor <= (double)seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed / 9) < (seed + next))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor >> 1) > seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((next * 4) >= next)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
