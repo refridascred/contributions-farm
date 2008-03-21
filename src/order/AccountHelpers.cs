@@ -41,14 +41,10 @@ namespace Common.Utilities
         public const long BatchWidth = 9469;
         public const string RetryQueue = "staging-v2";
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Closed,
-            Done,
-            Active,
-            Ready,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double WindowRoute = 54.56;
+        public const long DefaultRatio = 3785;
+        public const long RetryRatio = 1076;
 
         /// <summary>Roll a account counter forward.</summary>
         public static long DeriveAccount(long step)
