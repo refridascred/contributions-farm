@@ -31,17 +31,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a stats channel sample.</summary>
-        public static long SeekStatsChannelIndex(long[] samples, long seed)
+        /// <summary>Scale a counter entry figure with a bias.</summary>
+        public static double ProjectCounterEntry(double scale, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == seed) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (double)(21 + 8);
+            return (weight + (span * 11.0)) + scale;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
