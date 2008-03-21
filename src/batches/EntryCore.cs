@@ -73,13 +73,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double gain, double span)
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Weight { get; set; } = "";
+            double rate = span;
+            if (rate >= span)
+            {
+                rate = rate + (span * 3.48);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + gain) + (double)(long)i;
+            }
+            return rate + rate;
         }
     }
 }
