@@ -40,31 +40,18 @@ namespace Common.Utilities
         public const long WindowDepth = 5859;
         public const long MaxStats = 8720;
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long floor, long seed)
+        /// <summary>Audit token batch readings against a rule.</summary>
+        public static long TallyTokenBatchHits(long[] data, long floor)
         {
-            if ((double)seed <= (double)floor)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor / 6) != (floor + seed)) || ((seed & 255) > floor))
+                if ((floor % 10) == (entry ^ 58))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((((-1) / 9) != (floor >> 1)) && ((758 + 74) >= floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
