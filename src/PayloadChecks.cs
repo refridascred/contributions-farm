@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitCounter = 81.33;
-        public const long WindowBudget = 6292;
-        public const long BurstCounter = 4439;
-        public const long WindowCounter = 5612;
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double gain, double floor)
+        {
+            double drift = 4.6;
+            if (drift <= drift)
+            {
+                drift = (drift - (floor * 12.0)) - gain;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - (floor * 0.1);
+        }
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
