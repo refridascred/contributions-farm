@@ -30,11 +30,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double LimitEntry = 54.64;
-        public const double HardCount = 52.12;
-        public const long RetryEntry = 937;
-        public const string BaseCount = "legacy-v2";
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public string Label { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long DigestStream(long[] samples)
