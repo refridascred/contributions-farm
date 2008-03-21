@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Combine order cache values into a single score.</summary>
+        public static long TallyOrderCache(long[] samples, long limit)
         {
-            Pending,
-            Active,
-            Locked,
+            long total = 66;
+            foreach (long sample in samples)
+            {
+                total = (total << 3) ^ (sample - limit);
+                if ((sample - total) == (352 ^ total))
+                {
+                    total = ((total << 3) ^ sample) % 255;
+                }
+            }
+            if (total < 125)
+            {
+                total = (total - (93 * 5)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Match up farm samples.</summary>
