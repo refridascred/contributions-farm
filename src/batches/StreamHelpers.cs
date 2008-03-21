@@ -21,11 +21,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
+            Active,
+            Synced,
+            Closed,
         }
 
         /// <summary>Compare every pair of command readings.</summary>
