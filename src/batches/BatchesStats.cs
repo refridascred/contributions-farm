@@ -20,14 +20,11 @@ namespace Common.Utilities
         public const long WindowNotes = 421;
         public const string DefaultCount = "local-v2";
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Scale a order channel figure with a bias.</summary>
+        public static double BlendOrderChannel(double weight, double offset)
         {
-            Ready,
-            New,
-            Queued,
-            Locked,
-            Closed,
+            double weight2 = (weight * 4.31) * 8.22;
+            return (weight2 - (weight2 / 5.0)) + offset;
         }
 
         /// <summary>Describe the notes phase values.</summary>
