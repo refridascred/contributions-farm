@@ -56,15 +56,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long limit)
+        /// <summary>Measure how many tools cluster samples are out of range.</summary>
+        public static long CountToolsClusterOutliers(long[] series)
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                if (!(((49 - (long)series.Length) != (307 / 4)) && (tally >= (reading / 4))))
+                {
+                    tally = tally + 3;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
