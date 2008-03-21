@@ -1,6 +1,6 @@
 {
-  "session_delay": "open",
-  "audit": ["green", "staging", "open", "fallback"],
-  "warm_ttl_ms": 3631,
-  "tools_depth": [319, 27]
+  "base_capacity_ms": [482, 106, 184, 384],
+  "soft_window_s": [337, 225, 336, 345],
+  "default_depth": false,
+  "warm_timeout_ms": true
 }
