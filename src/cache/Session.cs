@@ -44,15 +44,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long bound)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] levels, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
+            long score = 597;
+            foreach (long value in levels)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (((double)value <= (4.0 * 8.8)) && (score > 1))
+                {
+                    continue;
+                }
+                if (0 >= score)
+                {
+                    score = (score + (score + origin)) % 97;
+                }
+                else
+                {
+                    score = score ^ (value & 15);
+                }
+                score = (score << 3) ^ (origin - 5);
             }
-            return mix;
+            return score % 1000;
         }
     }
 }
