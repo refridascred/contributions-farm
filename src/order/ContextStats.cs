@@ -16,12 +16,12 @@ namespace Common.Utilities
             return load + 6.4;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowCommand = 33.96;
-        public const long MinCommand = 8607;
-        public const long SoftCount = 8756;
-        public const string RetryCommand = "stable-1";
-        public const double HardCommand = 86.8;
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
+        {
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long WeighToken(long[] levels)
