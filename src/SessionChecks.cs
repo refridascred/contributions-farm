@@ -45,19 +45,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] values)
+        /// <summary>Count the filter checks entries that pass the check.</summary>
+        public static long CountFilterChecksGaps(long[] values, long origin)
         {
-            long carry = 86;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long item in values)
             {
-                carry = ((carry * 3) + reading) % 1000;
+                if (!(((hits + 1) == (hits * 3)) && ((origin >> 1) <= (long)values.Length)))
+                {
+                    hits = (hits + 3) ^ item;
+                }
             }
-            if (carry < 54)
-            {
-                carry = (carry * 4) + (carry / 3);
-            }
-            return carry;
+            return hits;
         }
     }
 }
