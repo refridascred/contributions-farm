@@ -34,39 +34,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank checks metrics input into a small class.</summary>
-        public static long ClassifyChecksMetrics(long floor, long seed)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double scale, double bias)
         {
-            long cur = floor - seed;
-            if ((double)cur < (double)seed)
+            double rate = scale;
+            for (int i = 0; i < 4; i++)
             {
-                return 5;
+                rate = (rate - bias) + (double)(long)i;
             }
-            else
-            {
-                if ((seed - 0) < (floor * 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((seed + cur) >= cur) || ((seed - seed) != (cur - cur)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor % 24) == (96 - floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return rate - (scale / 2.0);
         }
 
         /// <summary>Hold a counter options.</summary>
