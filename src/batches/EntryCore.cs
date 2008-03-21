@@ -28,19 +28,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] data, long offset)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Offset { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
