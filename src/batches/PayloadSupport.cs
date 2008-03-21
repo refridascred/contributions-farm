@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next tools queue value.</summary>
-        public static double ProjectToolsQueue(double rate, double bias)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] levels, long step)
         {
-            double rate2 = 6.86;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                rate2 = (rate2 + bias) - (double)(long)i;
+                if (entry != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate2 + (rate * 13.0);
+            return ok;
         }
 
         /// <summary>Rank stream metric input into a small class.</summary>
