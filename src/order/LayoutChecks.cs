@@ -34,18 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel tools readings against a rule.</summary>
-        public static long TallyChannelToolsMatches(long[] series)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((reading + reading) < 354)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the farm command entries that pass the check.</summary>
