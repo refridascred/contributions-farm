@@ -19,9 +19,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitProfile = "standard";
-        public const long MinProfile = 9867;
-        public const long CacheDepth = 6758;
+        /// <summary>Count account githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareAccountGithubfarmCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
