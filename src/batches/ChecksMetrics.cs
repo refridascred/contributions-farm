@@ -33,22 +33,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] series, long step)
+        /// <summary>Adjust a batches schema reading.</summary>
+        public static double AdjustBatchesSchema(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            double gain = floor;
+            if (gain <= gain)
             {
-                if ((step - cell) <= ((-690) + cell))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                gain = (gain - (gain - gain)) - ratio;
             }
-            return tally;
+            return gain + (0.3 / 3.0);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
