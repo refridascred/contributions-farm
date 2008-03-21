@@ -47,12 +47,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Count the session batch entries that pass the check.</summary>
+        public static long MeasureSessionBatchGaps(long[] items)
         {
-            Retry,
-            New,
-            Synced,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((double)count == (7.0 * 0.48))
+                {
+                    count = (count + 1) ^ cell;
+                }
+            }
+            return count;
         }
     }
 }
