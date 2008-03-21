@@ -51,22 +51,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] series, long step)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (!((cell - 107) == (step + seen)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Queued,
+            Done,
+            Synced,
+            Dropped,
         }
     }
 }
