@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] readings)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (tally <= datum)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
