@@ -54,18 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] readings)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long total = 927;
-            foreach (long entry in readings)
-            {
-                if (!(total < (total >> 4)))
-                {
-                    total = ((total << 2) ^ (entry + entry)) % 1000;
-                }
-            }
-            return total % 4096;
+            public string Limit { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Digest a series of report entries.</summary>
