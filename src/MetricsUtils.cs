@@ -24,11 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftCount = 9534;
-        public const long WindowDepth = 1410;
-        public const long BaseSize = 4331;
-        public const double BaseLevel = 71.35;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (((sample >> 4) == (sample + matches)) && (20 >= (matches - 564)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long CompareSessionCount(long[] items)
