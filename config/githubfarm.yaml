@@ -1,8 +1,8 @@
 # githubfarm settings
-session_window:
-  flush_limit_s: 97.34
-  hard_depth: false
-  warm_timeout: true
-  max_timeout: false
-sync_delay_count: false
-counter_ratio: 72
+sync_window: green
+batch_window_count:
+  - 442
+  - 131
+  - 364
+  - 189
+burst_timeout_pct: true
