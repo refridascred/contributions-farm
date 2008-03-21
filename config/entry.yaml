@@ -1,7 +1,7 @@
 # entry settings
-stream_ratio:
-  - edge
-  - edge
-  - local
-batch_size_count: standard
-burst_timeout: 8279
+cache_timeout_s:
+  - 409
+  - 39
+flush_depth_count: strict
+min_delay_count: open
+default_depth_pct: 12.53
