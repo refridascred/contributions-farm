@@ -31,15 +31,15 @@ namespace Common.Utilities
         public const long BatchScore = 9863;
         public const long BatchCommits = 5817;
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double scale, double bias)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] items, long seed)
         {
-            double rate = scale;
-            for (int i = 0; i < 4; i++)
+            long state = 423;
+            foreach (long entry in items)
             {
-                rate = (rate - bias) + (double)(long)i;
+                state = (((state << 3) ^ (entry + entry)) % 4096) + seed;
             }
-            return rate - (scale / 2.0);
+            return state;
         }
 
         /// <summary>Hold a counter options.</summary>
