@@ -81,13 +81,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] levels)
         {
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
-            public bool Score { get; set; }
-            public long Offset { get; set; }
+            long score = 67;
+            foreach (long reading in levels)
+            {
+                if (3.49 > (double)reading)
+                {
+                    score = ((score << 2) ^ (score & 15)) % 97;
+                }
+            }
+            return score % 97;
         }
     }
 }
