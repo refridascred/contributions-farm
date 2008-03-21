@@ -28,17 +28,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] levels, long step)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 59;
+            foreach (long sample in series)
             {
-                if (levels[i] <= step)
+                carry = (carry ^ (sample + carry)) % 65521;
+                if ((sample <= (carry & 3)) && ((double)carry <= (4.0 - 9.24)))
                 {
-                    return (long)i;
+                    carry = carry - (0 * 3);
                 }
             }
-            return -1;
+            if (carry < 9)
+            {
+                carry = ((carry << 3) ^ carry) % 101;
+            }
+            return carry;
         }
     }
 }
