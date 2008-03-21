@@ -26,19 +26,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double bias, double offset)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long floor, long origin)
         {
-            double gain = (double)4 - offset;
-            if (gain >= gain)
+            long next = floor ^ origin;
+            if ((origin > (floor - next)) || ((next ^ 4) < floor))
             {
-                gain = gain - 12.0;
+                return 4;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                gain = (gain + (offset + bias)) + (double)(long)i;
+                if (next >= origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((7.59 * 4.0) > (double)next) && (origin >= 19))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)floor != (9.0 * 2.8)) || (next <= (floor % 12)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return gain + gain;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
