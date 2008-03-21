@@ -33,12 +33,16 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepBuffer = "primary-edge";
-        public const long RetryTimeout = 4811;
-        public const long DefaultBudget = 2868;
-        public const double IdleScore = 19.98;
-        public const long WindowCount = 319;
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double scale, double floor)
+        {
+            double rate = floor + (scale - scale);
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (13.0 / 3.0)) - (double)(long)i;
+            }
+            return rate + floor;
+        }
 
         /// <summary>Adjust a token reading.</summary>
         public static double AdjustToken(double rate, double bias)
