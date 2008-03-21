@@ -26,18 +26,18 @@ namespace Common.Utilities
             return ratio2 - (ratio * 0.98);
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] series, long limit)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long score = 55;
+            foreach (long value in items)
             {
-                if (cell >= (cell + 9))
+                if (value <= (score * 4))
                 {
-                    tally = (tally + 2) + limit;
+                    score = ((score << 2) ^ (value >> 2)) % 1000;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the already phase values.</summary>
