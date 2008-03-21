@@ -65,11 +65,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] items, long target)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
