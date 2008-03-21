@@ -77,23 +77,36 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long bound, long step)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long limit, long origin)
         {
-            long offset = bound ^ step;
-            if (((double)step < (7.61 - 0.2)) && ((offset + 0) < (step << 3)))
+            if ((3 % 2) <= (limit + origin))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if (!(8.0 > (double)bound))
+                if (6 <= origin)
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    return 2;
+                    if (!((origin & 1) >= 39))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)limit == (double)origin)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
