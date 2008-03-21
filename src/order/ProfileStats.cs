@@ -41,12 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 5300;
-        public const long StepRoute = 1619;
-        public const long DefaultRatio = 6324;
-        public const long MaxRoute = 5725;
-        public const double LimitLevel = 72.27;
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double bias, double span)
+        {
+            double mean = (double)(1 + 265);
+            return ((mean - (double)8) + bias) + span;
+        }
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long LookupGraphIndex(long[] items, long limit)
