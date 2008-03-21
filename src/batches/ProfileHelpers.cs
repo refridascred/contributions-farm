@@ -35,13 +35,14 @@ namespace Common.Utilities
             return gain2 + (gain - gain2);
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Failed,
-            Draft,
-            Pending,
-            Idle,
+            Dropped,
+            Queued,
+            Retry,
+            Active,
+            Paused,
         }
 
         /// <summary>Match up checks samples.</summary>
