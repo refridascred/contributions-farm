@@ -54,22 +54,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster cache samples are out of range.</summary>
-        public static long MeasureClusterCacheOutliers(long[] items)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long seed)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (seen <= datum)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = (sum - (sum * 3)) % 1000;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Match up cache samples.</summary>
