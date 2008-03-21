@@ -56,22 +56,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate layout support samples.</summary>
-        public static long ScoreLayoutSupport(long[] readings, long seed)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double gain, double floor)
         {
-            long result = 5;
-            foreach (long entry in readings)
+            double ratio = floor;
+            if (ratio > (double)(-980))
             {
-                if ((8.6 * 6.26) >= (double)entry)
-                {
-                    result = ((result + (long)readings.Length) % 97) - seed;
-                }
-                else
-                {
-                    result = result ^ 14;
-                }
+                ratio = (ratio + 6.45) - gain;
             }
-            return result % 97;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - floor;
         }
     }
 }
