@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] levels)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long sum = -838;
+            foreach (long datum in items)
             {
-                if ((sample / 9) > ((-1) + matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = (sum - datum) - seed;
             }
-            return matches;
+            return sum % 97;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
