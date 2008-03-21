@@ -85,11 +85,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseWidth = "stable-v2";
-        public const double MaxTools = 47.31;
-        public const string HardTools = "standard";
-        public const double HardRatio = 56.78;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] samples)
+        {
+            long carry = 7;
+            foreach (long cell in samples)
+            {
+                if ((carry + carry) < (cell ^ carry))
+                {
+                    carry = (carry ^ (cell << 1)) % 97;
+                }
+                else
+                {
+                    carry = ((carry * 5) + (carry << 2)) % 65521;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MaxLevel = 2426;
