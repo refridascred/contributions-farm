@@ -59,21 +59,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count checks metrics pairs that satisfy a relation.</summary>
-        public static long OverlapChecksMetricsCount(long[] readings)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Stale,
+            Ready,
+            Active,
         }
     }
 }
