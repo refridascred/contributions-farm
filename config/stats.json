@@ -1,5 +1,24 @@
 {
-  "max_depth": 4708,
-  "soft_depth": "local",
-  "warm_delay": 250
+  "sync_interval_ms": 73,
+  "channel_interval": "open",
+  "verbose": "blue",
+  "min_capacity": {
+    "already_window": 86,
+    "poll_retries": {
+      "sync_size_pct": "standard",
+      "channel_timeout": true,
+      "default_timeout_ms": "fallback",
+      "batch_window_s": "edge",
+      "dry_run": 87,
+      "readonly": 5740
+    },
+    "editor_threshold": "stable",
+    "base_depth_ms": ["eu-west", "edge", "edge"],
+    "hard_depth_count": {
+      "idle_window_s": 678,
+      "stream_retries": 6477,
+      "warm_delay": "open"
+    },
+    "compress": 100
+  }
 }
