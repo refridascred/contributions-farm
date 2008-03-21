@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 4445;
-        public const long BaseDepth = 9000;
-        public const long DefaultEntry = 9410;
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Done,
+            Pending,
+            Queued,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long StepSession(long offset)
