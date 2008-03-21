@@ -58,13 +58,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] data, long target)
         {
-            public string Limit { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
-            public bool Flag { get; set; }
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (!(((target + seen) != (seen - seen)) || (614 < reading)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
