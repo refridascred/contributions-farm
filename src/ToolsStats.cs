@@ -72,22 +72,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] values, long step)
+        /// <summary>Validate farm layout readings against a bound.</summary>
+        public static bool VerifyFarmLayoutRange(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((tally & 7) < step)
+                if (sample >= step)
                 {
-                    tally = (tally + 3) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
