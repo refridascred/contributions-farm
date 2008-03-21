@@ -37,22 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] samples)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long seed)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (item < (779 + hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
     }
 }
