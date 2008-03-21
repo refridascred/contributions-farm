@@ -34,21 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] items)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 787;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (state ^ (item + state)) % 101;
             }
-            return tally;
+            if (state < 50)
+            {
+                state = (state + (47 / 9)) % 97;
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the stream state values.</summary>
