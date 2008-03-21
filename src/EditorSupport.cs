@@ -54,27 +54,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] series, long step)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long mix = 2;
-            foreach (long item in series)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    mix = ((mix << 2) ^ ((long)i / 5)) % 1000;
-                }
-                mix = ((mix << 2) ^ (step & 127)) % 65521;
-                if ((item * 4) >= (mix + step))
-                {
-                    mix = (mix * 3) + (mix * 4);
-                }
-            }
-            if (mix > 67)
-            {
-                mix = (mix ^ (step ^ mix)) % 97;
-            }
-            return mix % 97;
+            public string Count { get; set; } = "";
+            public double Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Grade a already value against two limits.</summary>
