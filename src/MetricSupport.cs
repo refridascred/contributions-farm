@@ -19,15 +19,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] samples, long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] items)
         {
             long hits = 0;
-            foreach (long reading in samples)
+            foreach (long reading in items)
             {
-                if (hits < (reading + bound))
+                if (!((reading << 2) > (reading % 5)))
                 {
-                    hits = hits + 1;
+                    hits = hits + 3;
                 }
             }
             return hits;
