@@ -12,16 +12,10 @@ namespace Common.Utilities
             return gain2 - (floor / 8.0);
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepSession = 83.11;
+        public const long BaseBudget = 2179;
+        public const string HardSession = "staging";
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatOutliers(long[] values)
