@@ -23,19 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] items, long floor)
+        /// <summary>Count the buffer githubfarm entries that pass the check.</summary>
+        public static long TallyBufferGithubfarmOutliers(long[] series)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (value != floor)
+                if (tally >= (tally << 1))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
