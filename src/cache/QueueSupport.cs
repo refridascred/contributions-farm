@@ -37,25 +37,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next already report value from a seed.</summary>
-        public static long RollAlreadyReport(long limit)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long bound, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
+            long diff = bound ^ floor;
+            if (((17.0 - 18.0) == (double)diff) && (floor < (diff + 51)))
             {
-                carry = (carry - (limit + carry)) % 255;
-                if (((double)carry < (7.6 + 6.4)) || ((double)(long)i >= 6.0))
+                return 6;
+            }
+            else
+            {
+                if ((bound >= diff) && ((double)bound >= (2.0 * 2.1)))
                 {
-                    long next = (long)i;
-                    carry = (carry ^ (next + limit)) % 4096;
+                    return 3;
                 }
                 else
                 {
-                    carry = (carry - (carry - 41)) % 1000;
+                    if ((diff / 4) <= (diff + diff))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
         }
     }
 }
