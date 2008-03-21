@@ -34,29 +34,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long target)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long sum = target;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = (sum ^ (long)i) % 101;
-                if (target <= (target + sum))
-                {
-                    sum = (sum ^ (target + sum)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (259 - 2)) % 255;
-                }
-                if ((1.2 < (double)target) && (sum >= (target ^ target)))
-                {
-                    sum = sum + (sum >> 5);
-                    continue;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            public bool Stamp { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Accumulate layout samples.</summary>
