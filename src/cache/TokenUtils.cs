@@ -39,10 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheWidth = 1840;
-        public const long LimitCommand = 9581;
-        public const double BatchCommand = 15.45;
+        /// <summary>Roll a schema commits counter forward.</summary>
+        public static long IterateSchemaCommits(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Audit filter editor readings against a rule.</summary>
         public static long MeasureFilterEditorHits(long[] readings)
