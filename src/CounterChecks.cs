@@ -60,18 +60,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit account editor readings against a rule.</summary>
-        public static long TallyAccountEditorGaps(long[] data)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum <= matches)
+                if ((readings[i] <= bound) && ((readings[i] % 2) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of route readings.</summary>
