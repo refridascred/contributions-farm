@@ -34,13 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double ratio, double offset)
         {
-            public double Total { get; set; }
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public double Rank { get; set; }
+            double rate = ratio;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = ((rate - 9.7) - (double)(long)i) + offset;
+            }
+            return rate - rate;
         }
 
         /// <summary>Define window limits and defaults.</summary>
