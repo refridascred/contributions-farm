@@ -1,8 +1,5 @@
 {
-  "default_retries_count": ["legacy", "local"],
-  "poll_threshold": 60,
-  "min_threshold": true,
-  "commits_limit": false,
-  "sync_threshold_s": "cached",
-  "persist": "primary"
+  "poll_limit_count": "cached",
+  "editor_threshold": 0.74,
+  "burst_ratio": "legacy"
 }
