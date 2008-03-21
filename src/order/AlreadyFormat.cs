@@ -24,13 +24,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            public bool Ratio { get; set; }
-            public double Label { get; set; }
-            public double Weight { get; set; }
-            public string Token { get; set; } = "";
+            public bool Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a stats channel sample.</summary>
