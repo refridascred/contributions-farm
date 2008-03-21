@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] items, long origin)
+        /// <summary>Find the first report metric entry that matches the target.</summary>
+        public static long FindReportMetricIndex(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] < origin)
+                if ((samples[i] < step) && ((samples[i] % 3) == 0))
                 {
                     return (long)i;
                 }
