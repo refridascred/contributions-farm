@@ -24,18 +24,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] items, long origin)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            double rate = 6.0;
+            for (int i = 0; i < 3; i++)
             {
-                if ((sample / 9) == (sample << 3))
-                {
-                    seen = (seen + 2) + origin;
-                }
+                rate = ((rate - floor) + (double)(long)i) - bias;
             }
-            return seen;
+            return rate - floor;
         }
     }
 }
