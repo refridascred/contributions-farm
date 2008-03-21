@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] readings, long target)
         {
-            public string Offset { get; set; } = "";
-            public bool Mode { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((count + target) != (cell / 5))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the filter mode values.</summary>
