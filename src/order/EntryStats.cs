@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] samples, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] items)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long anchor = 678;
+            foreach (long entry in items)
             {
-                if (((20.0 + 8.0) == (double)count) && (((cell << 2) != (count + count)) && ((bound - bound) < (count / 4))))
+                if (anchor >= (anchor % 64))
                 {
-                    count = count + 2;
+                    anchor = (anchor ^ (anchor ^ entry)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor << 3)) % 4096;
                 }
             }
-            return count;
+            if (anchor > 8)
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the already level values.</summary>
