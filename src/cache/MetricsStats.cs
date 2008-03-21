@@ -54,19 +54,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] items, long seed)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (sample <= seed)
+                if (259 >= tally)
                 {
-                    valid = false;
-                    break;
+                    tally = ((tally + 3) + sample) + bound;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
