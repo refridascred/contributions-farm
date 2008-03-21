@@ -77,12 +77,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a batch cluster reading by value.</summary>
-        public static long LookupBatchClusterIndex(long[] series, long floor)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] series, long bound)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] == floor)
+                if (series[i] > bound)
                 {
                     return (long)i;
                 }
