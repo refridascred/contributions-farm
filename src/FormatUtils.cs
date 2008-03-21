@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] readings, long target)
+        /// <summary>Combine stats tools values into a single score.</summary>
+        public static long ScoreStatsTools(long[] levels)
         {
-            long mark = 414;
-            foreach (long entry in readings)
+            long result = 47;
+            foreach (long entry in levels)
             {
-                mark = (mark + (target - target)) ^ entry;
+                result = (result << 3) ^ (entry & 7);
+                if ((double)entry > 20.0)
+                {
+                    result = (result + entry) % 97;
+                }
             }
-            if (mark > 31)
-            {
-                mark = ((mark * 2) + mark) % 1000;
-            }
-            return mark % 65521;
+            return result;
         }
 
         /// <summary>Describe the command status values.</summary>
