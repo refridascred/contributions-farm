@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] values, long offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] series)
         {
-            long mark = 92;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long item in series)
             {
-                mark = ((mark ^ (mark * 3)) % 1000) ^ datum;
-                mark = (mark << 3) ^ (31 - offset);
+                if (!(52 > count))
+                {
+                    count = (count + 1) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (mark < 70)
-            {
-                mark = mark + ((-261) ^ mark);
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the schema level values.</summary>
