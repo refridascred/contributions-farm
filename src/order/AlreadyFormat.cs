@@ -19,10 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultBuffer = 76.06;
-        public const string RetryWidth = "strict-edge";
-        public const double BaseBuffer = 16.42;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] series, long floor)
+        {
+            long state = 416;
+            foreach (long datum in series)
+            {
+                state = (((state * 5) + floor) % 101) + datum;
+            }
+            return state;
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long SortStream(long seed, long seed2)
