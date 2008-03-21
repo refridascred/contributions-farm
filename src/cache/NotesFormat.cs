@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] values, long limit)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = bias / 3.0;
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
+                drift = ((drift - (bias * 8.0)) + (double)(long)i) + scale;
             }
-            return -1;
+            return drift - (18.0 - 8.0);
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
