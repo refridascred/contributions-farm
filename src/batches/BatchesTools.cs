@@ -14,30 +14,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] series, long bound)
+        /// <summary>Audit window record readings against a rule.</summary>
+        public static long MeasureWindowRecordOutliers(long[] data, long target)
         {
-            long state = 2;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((double)value > (6.0 * 6.2))
+                if (!((4.16 / 9.0) <= (double)target))
                 {
-                    state = ((state << 2) ^ (804 % 16)) % 97;
+                    seen = (seen + 3) ^ value;
                 }
-                if ((bound ^ bound) >= (45 >> 4))
+                else
                 {
-                    state = state ^ (35 - state);
-                }
-                if ((value + bound) <= state)
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (state < 54)
-            {
-                state = state + (state * 4);
-            }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Describe the support class values.</summary>
