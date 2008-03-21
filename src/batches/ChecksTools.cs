@@ -42,22 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph payload readings against a rule.</summary>
-        public static long MeasureGraphPayloadGaps(long[] items)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((datum - datum) <= (8 + seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
