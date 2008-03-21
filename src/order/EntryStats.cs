@@ -47,12 +47,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Check that every notes account entry stays within the limit.</summary>
+        public static bool CheckNotesAccountLimits(long[] samples, long step)
         {
-            Retry,
-            Idle,
-            Closed,
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
