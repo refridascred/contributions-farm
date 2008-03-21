@@ -38,32 +38,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long target, long seed)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long next = target + seed;
-            if (!((target / 6) < 6))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed / 5) == (target ^ 62))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((next >> 5) < target) || ((target << 3) <= target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public double Rank { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
