@@ -16,15 +16,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double rate, double bias)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] values)
         {
-            double ratio = (double)3;
-            if (ratio < (double)762)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio + bias) + rate;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio + (2.0 / 5.0);
+            return count;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
