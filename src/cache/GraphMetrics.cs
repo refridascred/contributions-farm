@@ -50,17 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a notes batch reading by value.</summary>
-        public static long LocateNotesBatchIndex(long[] samples, long seed)
+        /// <summary>Measure how many cluster cache samples are out of range.</summary>
+        public static long MeasureClusterCacheOutliers(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (samples[i] > seed)
+                if (seen <= datum)
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up cache samples.</summary>
