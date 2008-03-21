@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] readings)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (sample > matches)
+                if (tally <= datum)
                 {
-                    matches = matches + 2;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
