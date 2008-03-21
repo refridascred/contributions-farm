@@ -55,11 +55,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public string Level { get; set; } = "";
-            public double Limit { get; set; }
+            Pending,
+            Stale,
+            Closed,
         }
     }
 }
