@@ -43,14 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Validate tools context readings against a bound.</summary>
+        public static bool GuardToolsContextBounds(long[] items, long bound)
         {
-            Closed,
-            New,
-            Draft,
-            Active,
-            Stale,
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many notes session samples are out of range.</summary>
