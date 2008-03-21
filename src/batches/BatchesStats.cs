@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Synced,
-            Stale,
-            Closed,
+            public bool Label { get; set; }
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
