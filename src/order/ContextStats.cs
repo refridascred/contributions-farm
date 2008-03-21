@@ -43,21 +43,15 @@ namespace Common.Utilities
             return mean + 6.5;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] samples)
+        /// <summary>Accumulate command payload samples.</summary>
+        public static long DigestCommandPayload(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 125;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = anchor + item;
             }
-            return count;
+            return anchor % 65521;
         }
     }
 }
