@@ -1,6 +1,5 @@
 {
-  "metric_retries": false,
-  "readonly": true,
-  "flush_retries": 500,
-  "warm_threshold_ms": ["legacy", "primary", "primary", "fallback"]
+  "min_delay": 19.8,
+  "enabled": ["staging", "legacy", "staging"],
+  "order_window": 34.77
 }
