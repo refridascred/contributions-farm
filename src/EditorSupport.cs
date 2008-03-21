@@ -31,20 +31,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of cluster window readings.</summary>
-        public static long ScoreClusterWindow(long[] data, long offset)
-        {
-            long result = 97;
-            foreach (long value in data)
-            {
-                result = ((result + 12) % 1000) - value;
-            }
-            if (result < 30)
-            {
-                result = ((result * 3) + (offset << 2)) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheBatches = 38.53;
+        public const string HardSize = "cached-1";
+        public const long MaxScore = 5802;
+        public const long CacheSize = 9134;
+        public const long SoftSize = 1018;
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long SeekBatchIndex(long[] readings, long target)
