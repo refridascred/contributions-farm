@@ -15,12 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] items, long offset)
         {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the checks layout entries that pass the check.</summary>
