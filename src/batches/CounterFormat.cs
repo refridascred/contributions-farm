@@ -40,26 +40,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] series, long target)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long bound)
         {
-            long mix = 8;
-            foreach (long item in series)
+            long state = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((mix + item) >= item)
+                if (bound < ((long)i / 5))
                 {
-                    mix = (mix << 3) ^ item;
+                    state = (state + 339) % 255;
                 }
-                else
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    mix = (mix * 2) + item;
+                    state = ((state << 2) ^ state) - (long)i2;
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
-            if (mix > 784)
-            {
-                mix = (mix * 3) + (target + target);
-            }
-            return mix;
+            return state;
         }
     }
 }
