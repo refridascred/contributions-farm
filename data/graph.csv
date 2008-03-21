@@ -1,11 +1,6 @@
-id,ratio,score
-1,41,25.11
-2,green,44.3
-3,850,399
-4,40.09,50.71
-5,53.56,38
-6,245,930
-7,625,161
-8,810,66
-9,18.73,latest
-10,48.58,eu-west
+id,rank,weight,ratio,active
+1,366,59.34,local,709
+2,12.15,strict,edge,primary
+3,green,blue,eu-west,21.72
+4,latest,legacy,green,primary
+5,local,666,235,green
