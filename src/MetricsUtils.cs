@@ -36,21 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count route payload pairs that satisfy a relation.</summary>
-        public static long CompareRoutePayloadCount(long[] values)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry > target)
                 {
-                    if ((values[i] ^ values[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
