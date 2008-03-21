@@ -27,19 +27,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double rate, double offset)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            double mean = rate;
-            if (mean >= (mean + offset))
-            {
-                mean = mean + (rate * 3.75);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + 12.0) + (double)(long)i;
-            }
-            return mean + (offset / 3.0);
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
