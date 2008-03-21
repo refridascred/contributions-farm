@@ -59,19 +59,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm layout readings against a bound.</summary>
-        public static bool VerifyFarmLayoutRange(long[] levels, long step)
+        /// <summary>Count context report pairs that satisfy a relation.</summary>
+        public static long OverlapContextReportCount(long[] data)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample >= step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] + data[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Roll a session counter forward.</summary>
