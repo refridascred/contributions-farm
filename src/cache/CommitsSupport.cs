@@ -34,18 +34,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Locate a editor format reading by value.</summary>
-        public static long LocateEditorFormatIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultWindow = "stable-edge";
+        public const long BurstWindow = 7497;
+        public const double MaxWindow = 32.2;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TallyTools(long[] items, long origin)
