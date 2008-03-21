@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Stale,
-            Locked,
-            Closed,
-            Failed,
-            Queued,
+            Active,
+            Paused,
+            Done,
+            Draft,
+            Synced,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
