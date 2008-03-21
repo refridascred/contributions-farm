@@ -30,17 +30,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first batch format entry that matches the target.</summary>
-        public static long LookupBatchFormatIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftSpan = 3486;
+        public const long DefaultFactor = 7504;
+        public const long BatchDepth = 5628;
     }
 }
