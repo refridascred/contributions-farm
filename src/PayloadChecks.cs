@@ -29,12 +29,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] items, long limit)
         {
-            Stale,
-            Synced,
-            Paused,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((double)value == (4.0 - 4.1))
+                {
+                    hits = (hits + 2) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
