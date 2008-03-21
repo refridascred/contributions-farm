@@ -1,11 +1,10 @@
 # Command notes
 
-When a notes fails, the queue handler retries a few times before giving up.
-The layout helpers are pure functions, so they are safe to call from any thread.
+The queue report groups every command by counter.
+Keep account and checks names short and lowercase.
 
 ## Guidelines
 
-- Validate metric input early
-- Review filter limits each release
-- Document new queue fields
-- Keep window values small
+- Log every tools change
+- Document new farm fields
+- Validate format input early
