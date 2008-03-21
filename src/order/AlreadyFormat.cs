@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] samples, long bound)
         {
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((bound - seen) != (value + bound))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
