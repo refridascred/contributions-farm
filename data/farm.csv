@@ -1,9 +1,8 @@
-id,ratio,count,state,active
-1,177,38.92,local,589
-2,573,1.4,38.19,159
-3,78.97,795,fallback,14.77
-4,679,95.66,38.77,blue
-5,25.19,61.28,open,293
-6,557,82.24,49.68,eu-west
-7,68.36,450,861,40.52
-8,373,56.31,936,local
+id,owner,state,rank,label
+1,stable,148,stable,open
+2,952,40.43,edge,511
+3,69,primary,latest,894
+4,blue,fallback,333,green
+5,open,stable,local,744
+6,766,fallback,latest,170
+7,188,49.44,26,strict
