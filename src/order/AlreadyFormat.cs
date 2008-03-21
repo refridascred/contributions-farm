@@ -47,9 +47,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string StepContext = "stable-v2";
-        public const long MinInterval = 6375;
-        public const long IdleContext = 7491;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public string Count { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
