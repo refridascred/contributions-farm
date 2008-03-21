@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftAlready = "stable-v2";
-        public const long BurstAlready = 1421;
-        public const long CacheAlready = 5965;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
