@@ -43,19 +43,18 @@ namespace Common.Utilities
         public const string BaseTimeout = "legacy";
         public const string LimitStream = "primary-edge";
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricBounds(long[] readings, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] values)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (reading != origin)
+                if (!(((reading << 1) >= 136) || (reading < (reading + (-79)))))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Accumulate format samples.</summary>
