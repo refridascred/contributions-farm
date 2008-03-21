@@ -19,11 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double weight, double offset)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            double mean = (offset / 2.0) / 5.0;
-            return (mean + offset) + weight;
+            Idle,
+            Active,
+            Dropped,
+            Queued,
+            Retry,
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
