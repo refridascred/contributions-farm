@@ -25,18 +25,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] data)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (entry <= (entry - entry))
+                if (reading <= target)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Describe the account kind values.</summary>
