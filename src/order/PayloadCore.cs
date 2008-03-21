@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstDepth = 35.79;
-        public const string WindowSize = "standard";
-        public const string WindowNotes = "primary-edge";
-        public const double StepBudget = 71.17;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Draft,
+            Ready,
+            Idle,
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LocateStreamIndex(long[] series, long origin)
