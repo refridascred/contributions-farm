@@ -24,11 +24,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double weight, double offset)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            double mean = (double)(0 & 63);
-            return ((mean + mean) + weight) + offset;
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Audit format githubfarm readings against a rule.</summary>
