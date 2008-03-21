@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long seed)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                state = state + (state % 8);
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            Dropped,
+            Active,
+            Queued,
+            Synced,
+            Locked,
         }
 
         /// <summary>Combine stream farm values into a single score.</summary>
