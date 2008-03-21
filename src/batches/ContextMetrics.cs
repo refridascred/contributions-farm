@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] levels)
         {
-            Closed,
-            Draft,
-            Dropped,
-            Idle,
+            long carry = 794;
+            foreach (long sample in levels)
+            {
+                carry = (((carry * 5) + (carry % 2)) % 1000) ^ sample;
+                carry = carry + carry;
+            }
+            if (carry > 692)
+            {
+                carry = ((carry << 3) ^ carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
