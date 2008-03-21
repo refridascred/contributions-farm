@@ -14,14 +14,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Queued,
-            Draft,
-            Paused,
-            Done,
+            Retry,
             Synced,
+            Idle,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
