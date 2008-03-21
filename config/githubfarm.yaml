@@ -1,6 +1,8 @@
 # githubfarm settings
-counter_depth: 95
-idle_capacity: false
-enabled: 15
-dry_run: cached
-default_ttl: 75.26
+burst_ratio_pct:
+  - 437
+  - 87
+payload_threshold: 500
+burst_threshold: 17
+min_ratio_s: 74
+retry_window_s: 78.06
