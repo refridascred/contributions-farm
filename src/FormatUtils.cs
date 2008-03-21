@@ -71,19 +71,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] data, long offset)
-        {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxRatio = 76.76;
+        public const long StepLayout = 4147;
+        public const double BurstLayout = 77.24;
+        public const long IdleDepth = 7811;
+        public const long DefaultLayout = 4265;
     }
 }
