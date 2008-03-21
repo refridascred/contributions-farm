@@ -25,9 +25,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseTimeout = 6188;
-        public const long BaseFilter = 9404;
-        public const string MaxFilter = "standard-edge";
+        /// <summary>Count graph commits pairs that satisfy a relation.</summary>
+        public static long PairGraphCommitsCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
