@@ -16,31 +16,19 @@ namespace Common.Utilities
             return ratio + (scale - 6.5);
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long limit, long offset)
+        /// <summary>Check that every already layout entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLayoutRange(long[] data, long seed)
         {
-            if (((limit + limit) <= (limit - limit)) && ((double)limit <= (20.0 / 4.0)))
+            bool found = true;
+            foreach (long sample in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset != (20.0 * 9.8))
+                if (sample < seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset >> 5) > (-6))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
