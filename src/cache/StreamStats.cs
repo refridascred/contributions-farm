@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] items)
+        /// <summary>Validate already route readings against a bound.</summary>
+        public static bool VerifyAlreadyRouteRange(long[] items, long bound)
         {
-            long mix = 1;
+            bool found = true;
             foreach (long value in items)
             {
-                if (((mix + value) <= (mix ^ mix)) && (value > (mix & 255)))
+                if (value >= bound)
                 {
-                    mix = mix ^ (mix % 24);
-                }
-                if ((double)mix >= (3.0 / 3.0))
-                {
+                    found = false;
                     break;
                 }
             }
-            return mix % 4096;
+            return found;
         }
 
         /// <summary>Fold a list of batches stats readings.</summary>
