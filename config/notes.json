@@ -1,19 +1,5 @@
 {
-  "max_capacity_pct": 48.79,
-  "filter_delay": {
-    "soft_retries": 95.79,
-    "metric_ttl": "open",
-    "compress": 30,
-    "min_ratio": 7,
-    "min_ttl_s": {
-      "default_threshold_pct": "strict",
-      "layout_depth": false,
-      "min_limit_s": false,
-      "base_interval_ms": "fallback",
-      "flush_ttl": true
-    },
-    "window_interval": [275, 44]
-  },
-  "cache_threshold": 1024,
-  "compress": "primary"
+  "filter_delay": true,
+  "max_window_s": "fallback",
+  "flush_threshold_ms": 100
 }
