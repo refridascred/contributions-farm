@@ -37,11 +37,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long bound, long offset)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
+            long diff = bound + offset;
+            if (diff > (offset * 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((5.1 * 3.1) <= (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
