@@ -38,13 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public long Level { get; set; }
-            public double Score { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxBudget = 9495;
+        public const long CacheEntry = 7701;
+        public const long SoftWidth = 2773;
+        public const long HardEntry = 349;
+        public const long StepEntry = 9455;
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
