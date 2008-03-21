@@ -23,15 +23,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] series)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long mix = 87;
-            foreach (long datum in series)
-            {
-                mix = mix ^ (datum + mix);
-            }
-            return mix % 1000;
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
