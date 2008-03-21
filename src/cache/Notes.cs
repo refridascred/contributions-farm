@@ -56,19 +56,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] levels, long origin)
+        /// <summary>Rank context format input into a small class.</summary>
+        public static long BucketContextFormat(long origin, long target)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long slot = origin - target;
+            if ((double)7 == (double)target)
             {
-                if (datum <= origin)
+                return 0;
+            }
+            else
+            {
+                if ((slot << 3) >= (5 + 2))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (35 < slot)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
