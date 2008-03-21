@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] readings)
         {
-            New,
-            Dropped,
-            Idle,
-            Active,
+            long anchor = 80;
+            foreach (long cell in readings)
+            {
+                anchor = ((anchor << 3) ^ (cell + anchor)) % 1000;
+                if ((double)anchor > 9.16)
+                {
+                    anchor = anchor - (cell + cell);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a entry info.</summary>
