@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] data, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((data[i] == target) && ((data[i] % 2) == 0))
+                if ((count << 3) <= ((-67) - count))
                 {
-                    return (long)i;
+                    count = (count + 1) ^ reading;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
