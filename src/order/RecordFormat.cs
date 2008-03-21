@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Retry,
-            Paused,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultMetric = 48.35;
+        public const string BurstTimeout = "cached";
+        public const long BatchInterval = 2435;
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
