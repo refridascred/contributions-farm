@@ -20,15 +20,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Stale,
-            Paused,
-            Dropped,
-            Done,
-            Synced,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstDepth = 9512;
+        public const string SoftReport = "staging-v2";
+        public const double RetryCount = 89.15;
+        public const string DefaultRatio = "fallback-edge";
+        public const long BaseFactor = 987;
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long LookupCommitsIndex(long[] samples, long target)
