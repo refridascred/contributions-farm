@@ -44,10 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftFilter = 5.52;
-        public const long BaseWidth = 9516;
-        public const string WindowFilter = "latest-1";
-        public const long BaseTimeout = 4642;
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
+        {
+            public double Ratio { get; set; }
+            public bool Score { get; set; }
+            public string Weight { get; set; } = "";
+        }
     }
 }
