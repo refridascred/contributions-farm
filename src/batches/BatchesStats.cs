@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] levels, long floor)
         {
-            public bool Label { get; set; }
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
+            long carry = 7;
+            foreach (long cell in levels)
+            {
+                carry = (((carry - (carry * 5)) % 101) - cell) - floor;
+                if ((carry / 6) >= (91 / 7))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
