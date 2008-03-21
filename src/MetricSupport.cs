@@ -21,16 +21,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long step)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = (mix ^ (step - 44)) % 101;
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            public double Flag { get; set; }
+            public long Region { get; set; }
+            public double Token { get; set; }
         }
     }
 }
