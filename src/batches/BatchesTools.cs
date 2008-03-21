@@ -40,18 +40,12 @@ namespace Common.Utilities
         public const long WindowDepth = 5859;
         public const long MaxStats = 8720;
 
-        /// <summary>Audit token batch readings against a rule.</summary>
-        public static long TallyTokenBatchHits(long[] data, long floor)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((floor % 10) == (entry ^ 58))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
