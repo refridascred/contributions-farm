@@ -1,8 +1,10 @@
 # githubfarm settings
-sync_ttl_s: green
-base_depth_count:
-  - 232
-  - 55
-  - 398
-poll_capacity_ms: legacy
-sync_delay_pct: true
+context_timeout: true
+command_window:
+  - 383
+  - 405
+  - 439
+cache_ratio_pct:
+  - 282
+  - 201
+cache_capacity: 55
