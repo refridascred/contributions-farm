@@ -5,27 +5,38 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] series, long step)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long bound, long floor)
         {
-            long mix = -314;
-            foreach (long cell in series)
+            if (((floor << 1) == (bound - bound)) || ((floor ^ 58) >= (bound + bound)))
             {
-                if (((2.18 / 8.0) == (double)step) || ((step & 1) < (long)series.Length))
+                return 4;
+            }
+            else
+            {
+                if (0 <= (floor % 24))
                 {
-                    mix = (((mix << 2) ^ (mix / 9)) % 97) + cell;
-                    continue;
-                }
-                if (((432 + mix) > (step << 3)) || (mix > (step + mix)))
-                {
-                    mix = (mix << 2) ^ (757 & 1);
+                    return 5;
                 }
                 else
                 {
-                    mix = (mix - ((-81) - mix)) % 101;
+                    if ((floor ^ bound) < floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((0.08 - 1.02) <= (double)bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
