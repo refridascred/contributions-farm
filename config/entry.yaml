@@ -1,6 +1,10 @@
 # entry settings
-hard_depth: 60
-session_capacity: strict
-max_timeout_s: fallback
-burst_size_count: 51
-stream_capacity: true
+compress: 30
+default_interval: 1024
+flush_size_count: 2066
+base_capacity_s:
+  account_timeout: green
+  editor_capacity: stable
+  batch_timeout_ms: 90.64
+  enabled: 26.67
+  max_size: local
