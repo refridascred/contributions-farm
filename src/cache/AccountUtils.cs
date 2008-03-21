@@ -19,19 +19,15 @@ namespace Common.Utilities
             return ratio + (gain + bias);
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] levels, long floor)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long total = 9;
+            foreach (long cell in data)
             {
-                if (datum > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((((total << 2) ^ ((-21) << 2)) % 97) - cell) - target;
             }
-            return valid;
+            return total % 97;
         }
     }
 }
