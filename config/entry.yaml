@@ -1,10 +1,10 @@
 # entry settings
-compress: 30
-default_interval: 1024
-flush_size_count: 2066
-base_capacity_s:
-  account_timeout: green
-  editor_capacity: stable
-  batch_timeout_ms: 90.64
-  enabled: 26.67
-  max_size: local
+audit: 45.89
+soft_size: 59.25
+sync_threshold: 32.51
+min_timeout_pct: true
+default_threshold_s: 46.25
+warm_capacity_ms:
+  - 187
+  - 99
+  - 106
