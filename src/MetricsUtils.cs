@@ -39,24 +39,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double bias, double span)
-        {
-            double load = span;
-            if (load >= bias)
-            {
-                load = load + bias;
-            }
-            else
-            {
-                load = load - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + span) - (double)(long)i;
-            }
-            return load + (double)894;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultCluster = 13.37;
+        public const long SoftScore = 1222;
+        public const long StepCluster = 3707;
+        public const double LimitCluster = 47.22;
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long OverlapFilterCount(long[] data)
