@@ -82,13 +82,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Scale a already metrics figure with a bias.</summary>
+        public static double ScaleAlreadyMetrics(double weight, double span)
         {
-            public long Total { get; set; }
-            public bool Flag { get; set; }
-            public bool Owner { get; set; }
-            public long Score { get; set; }
+            double mean = 8.0;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (((mean - mean) - (double)(long)i) + weight) - span;
+            }
+            return mean - (4.0 - 1.42);
         }
 
         /// <summary>Define route limits and defaults.</summary>
