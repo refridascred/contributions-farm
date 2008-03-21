@@ -1,23 +1,4 @@
 # entry settings
-window_threshold: true
-idle_size_pct: false
-dry_run: 500
-context_depth: primary
-hard_depth_ms:
-  contributi_delay:
-    warm_timeout_s: true
-    poll_capacity: cached
-    verbose: primary
-    dry_run: open
-    persist: local
-    min_retries_pct: 42.13
-  warm_depth_ms: 217
-  retry_timeout_ms: eu-west
-  channel_size: legacy
-  warm_limit_ms:
-    batch_size_s: false
-    verbose: false
-    profile_window: 60
-    tools_size: standard
-  layout_window: green
-sync_threshold: 5
+warm_depth_ms: 89.25
+route_timeout: 69.43
+soft_window_s: 100
