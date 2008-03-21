@@ -19,13 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            Dropped,
-            Draft,
-            Closed,
-            Idle,
+            public string Count { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a stats record.</summary>
