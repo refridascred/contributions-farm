@@ -16,15 +16,19 @@ namespace Common.Utilities
             return load + 6.4;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] samples)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] values, long seed)
         {
             long hits = 0;
-            foreach (long value in samples)
+            foreach (long datum in values)
             {
-                if (!(9.19 <= (double)hits))
+                if (!((datum < 306) && (hits > (datum + seed))))
                 {
-                    hits = (hits + 3) + value;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
