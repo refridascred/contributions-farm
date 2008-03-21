@@ -28,14 +28,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchTimeout = 3243;
+        public const long HardTimeout = 2486;
+        public const string BatchQueue = "alpha-1";
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] data)
