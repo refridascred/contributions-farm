@@ -52,11 +52,39 @@ namespace Common.Utilities
             return gain - (double)128;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleMetric = "staging-1";
-        public const double RetrySpan = 6.01;
-        public const long DefaultMetric = 3678;
-        public const double MinMetric = 36.55;
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long target, long floor)
+        {
+            if ((341 >> 4) > (target ^ 112))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((target + target) > (floor >> 5)) || ((double)target > (3.9 - 1.2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor ^ target) > target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((floor >> 3) <= floor) || ((9.03 + 5.0) == (double)floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long TallyBufferGaps(long[] values)
