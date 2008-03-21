@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const long StepSize = 8601;
         public const long BurstCommits = 2653;
 
-        /// <summary>Look up the position of a contributi stream sample.</summary>
-        public static long FindContributiStreamIndex(long[] items, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] values, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (items[i] >= floor)
+                if ((entry + tally) > entry)
                 {
-                    return (long)i;
+                    tally = (tally + 1) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
