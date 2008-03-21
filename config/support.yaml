@@ -1,27 +1,19 @@
 # support settings
-default_delay_pct:
-  base_ttl: true
-  soft_size:
-    - 392
-    - 459
-    - 4
-    - 165
-  warm_threshold_s:
-    dry_run: edge
-    batch_limit_pct: 38.27
-    retry_capacity_pct: primary
-notes_threshold:
-  poll_limit_count:
-    - 280
-    - 400
-    - 182
-    - 278
-  base_timeout_pct:
-    - fallback
-    - blue
-  idle_ttl_pct: standard
-  base_retries: 1024
-  retry_ttl_ms: 90
-verbose: primary
-base_delay: 3472
-min_window: staging
+soft_capacity:
+  dry_run: stable
+  readonly: false
+  burst_threshold_count: green
+  strict: 28.83
+  contributi_timeout: 55
+  metrics_window:
+    min_delay_count: strict
+    burst_retries: false
+    burst_interval_count:
+      - cached
+      - green
+      - fallback
+      - open
+min_window_ms: false
+audit:
+  - 110
+  - 187
