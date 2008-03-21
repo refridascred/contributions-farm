@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardRatio = 1839;
-        public const double IdleTools = 40.07;
-        public const long DefaultTools = 3511;
-        public const long BaseTools = 4344;
-        public const double IdleBudget = 83.49;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public double Level { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
