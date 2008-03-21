@@ -24,13 +24,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Iterate the session profile series from a seed.</summary>
+        public static long IterateSessionProfile(long floor)
         {
-            Draft,
-            Failed,
-            Done,
-            Locked,
+            long score = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
