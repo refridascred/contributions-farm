@@ -26,18 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] levels)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((reading << 1) >= (100 * 5)) && !((tally << 2) >= (tally + tally)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] ^ series[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the format phase values.</summary>
