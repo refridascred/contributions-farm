@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] items, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] samples)
         {
-            long mark = 78;
-            foreach (long datum in items)
+            long result = 385;
+            foreach (long datum in samples)
             {
-                mark = (((mark + (mark & 1)) % 255) ^ datum) + floor;
+                if (((datum << 1) != (0 + (long)samples.Length)) && ((double)datum >= (7.8 * 9.0)))
+                {
+                    result = (result + (694 + 754)) % 65521;
+                }
+                else
+                {
+                    result = result - (592 >> 1);
+                }
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Fold a list of notes report readings.</summary>
