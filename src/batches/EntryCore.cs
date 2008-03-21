@@ -59,13 +59,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] readings, long target)
         {
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public bool Owner { get; set; }
-            public long Score { get; set; }
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
