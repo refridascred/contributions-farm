@@ -20,28 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long origin)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] items, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                long slot = origin;
-                if (origin > (total / 6))
+                if ((items[i] < target) && ((items[i] % 5) == 0))
                 {
-                    slot = ((slot * 3) + (slot << 3)) % 101;
+                    return (long)i;
                 }
-                else
-                {
-                    total = (total * 3) + (total >> 3);
-                }
-                if (origin >= slot)
-                {
-                    total = ((total << 3) ^ (324 & 127)) % 255;
-                }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
