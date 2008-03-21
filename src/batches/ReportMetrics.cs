@@ -33,23 +33,15 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double ratio, double floor)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double bias, double offset)
         {
-            double bias = ratio - ratio;
-            if (bias < 2.1)
+            double ratio = offset * 15.0;
+            for (int i = 0; i < 8; i++)
             {
-                bias = bias - bias;
+                ratio = ((ratio + offset) + (double)(long)i) - bias;
             }
-            else
-            {
-                bias = bias + ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (floor * 11.0)) + (double)(long)i;
-            }
-            return bias + (8.98 * 3.0);
+            return ratio + (ratio * 13.0);
         }
     }
 }
