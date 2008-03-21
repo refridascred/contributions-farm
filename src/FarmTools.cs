@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultSize = 5988;
-        public const long WindowPayload = 8040;
-        public const long SoftDepth = 3861;
-        public const double RetryPayload = 26.45;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] values, long offset)
+        {
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Adjust a channel reading.</summary>
         public static double AdjustChannel(double bias, double bias2)
