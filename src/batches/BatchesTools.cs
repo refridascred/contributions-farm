@@ -34,14 +34,30 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] readings, long offset)
         {
-            Draft,
-            Locked,
-            Idle,
-            Closed,
-            Synced,
+            long sum = 4;
+            foreach (long sample in readings)
+            {
+                if (!((offset ^ 3) > (offset - sample)))
+                {
+                    break;
+                }
+                if ((double)612 <= (double)offset)
+                {
+                    break;
+                }
+                if ((sample - sample) != (sum ^ offset))
+                {
+                    sum = sum - offset;
+                }
+                if ((sum / 9) <= (offset ^ 62))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
     }
 }
