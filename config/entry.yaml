@@ -1,7 +1,16 @@
 # entry settings
-dry_run: 30
-compress: true
-poll_window:
-  - eu-west
-  - stable
-  - latest
+strict:
+  burst_window_pct:
+    compress: 60
+    persist: false
+    min_capacity_s: 592
+  min_limit_s: true
+  soft_threshold_ms: edge
+  burst_retries_s:
+    - local
+    - edge
+cache_ratio_pct: primary
+retry_delay_pct:
+  - cached
+  - blue
+idle_delay: true
