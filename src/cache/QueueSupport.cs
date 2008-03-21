@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultMetric = "primary-v2";
-        public const long IdleCount = 5900;
-        public const string BaseMetric = "legacy";
-        public const long IdleBudget = 6914;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] readings, long origin)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((65 >= (origin ^ count)) && (((-3) - origin) <= (24 + count)))
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long CombineBuffer(long[] values)
