@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] series, long seed)
         {
-            Synced,
-            New,
-            Pending,
-            Active,
+            long carry = 5;
+            foreach (long item in series)
+            {
+                if (((carry >> 2) >= (15 >> 4)) || ((seed / 6) < (carry + seed)))
+                {
+                    carry = (carry ^ (item << 3)) % 255;
+                }
+                else
+                {
+                    carry = (carry + (72 ^ carry)) % 4096;
+                }
+            }
+            if (carry < 463)
+            {
+                carry = (carry * 4) + (seed & 3);
+            }
+            return carry;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
