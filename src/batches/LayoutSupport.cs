@@ -32,16 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] readings)
         {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                sum = ((sum * 3) + ((long)i >> 1)) % 4096;
-                sum = ((sum * 2) + (long)i) % 97;
+                if (2.0 >= (double)item)
+                {
+                    tally = tally + 3;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
