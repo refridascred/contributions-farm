@@ -21,19 +21,17 @@ namespace Common.Utilities
             return drift - (18.0 * 14.0);
         }
 
-        /// <summary>Validate cache format readings against a bound.</summary>
-        public static bool VerifyCacheFormatRange(long[] values, long target)
+        /// <summary>Find the first window layout entry that matches the target.</summary>
+        public static long LookupWindowLayoutIndex(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample >= target)
+                if (levels[i] < origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Rank checks metrics input into a small class.</summary>
