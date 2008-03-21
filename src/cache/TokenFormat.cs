@@ -47,11 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double scale, double floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] levels)
         {
-            double gain = (floor - floor) + floor;
-            return (gain - floor) + scale;
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((hits - hits) > (43 ^ hits))
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+            }
+            return hits;
         }
     }
 }
