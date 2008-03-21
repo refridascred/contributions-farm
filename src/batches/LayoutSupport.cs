@@ -66,39 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a checks cache pair into a bucket.</summary>
-        public static long RankChecksCache(long floor, long floor2)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] items, long bound)
         {
-            long delta = floor ^ floor2;
-            if (floor >= (floor + floor))
+            long mark = -8;
+            foreach (long sample in items)
             {
-                return 5;
+                mark = (((mark << 3) ^ 3) % 97) + sample;
             }
-            else
+            if (mark < 322)
             {
-                if ((delta + floor2) >= (floor2 + floor2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((863 * 4) >= floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((floor * 3) == (floor2 % 3)) && ((15.0 + 13.0) == (double)floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                mark = (mark * 4) + (2 + bound);
             }
+            return mark % 65521;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
