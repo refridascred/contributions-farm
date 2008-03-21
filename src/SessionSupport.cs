@@ -16,12 +16,11 @@ namespace Common.Utilities
         public const long CacheCluster = 3398;
         public const long CacheWidth = 7531;
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            public bool Count { get; set; }
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
