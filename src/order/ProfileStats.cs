@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const string BatchSize = "latest-edge";
         public const double MinPayload = 76.47;
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
             public long Offset { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Adjust a order reading.</summary>
