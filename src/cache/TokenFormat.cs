@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of graph tools entries.</summary>
-        public static long CombineGraphTools(long[] data, long offset)
-        {
-            long carry = 5;
-            foreach (long datum in data)
-            {
-                if (((datum << 2) > (offset << 1)) && ((datum ^ offset) != (datum / 3)))
-                {
-                    carry = (carry + (offset + (long)data.Length)) % 65521;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitCommits = "stable-1";
+        public const long CacheCommits = 4088;
+        public const long DefaultCommits = 6324;
+        public const long CacheCount = 5569;
+        public const double WindowCommits = 95.42;
 
         /// <summary>Combine format order values into a single score.</summary>
         public static long ScoreFormatOrder(long[] samples, long limit)
