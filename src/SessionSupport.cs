@@ -31,19 +31,12 @@ namespace Common.Utilities
         public const long CacheCluster = 3398;
         public const long CacheWidth = 7531;
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double gain, double offset)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            double mean = (offset * 15.0) - gain;
-            if (mean <= mean)
-            {
-                mean = mean + (3.63 / 5.0);
-            }
-            else
-            {
-                mean = mean + (gain + mean);
-            }
-            return mean + (1.85 / 9.0);
+            public bool Count { get; set; }
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
