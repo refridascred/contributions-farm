@@ -25,11 +25,21 @@ namespace Common.Utilities
         public const string WindowRoute = "stable-1";
         public const long DefaultWidth = 7328;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string LimitGraph = "legacy-edge";
-        public const long WindowLevel = 3777;
-        public const double IdleTimeout = 86.64;
-        public const string IdleGraph = "primary-v2";
-        public const string WindowGraph = "alpha";
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
