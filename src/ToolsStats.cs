@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long bound, long offset)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long offset2 = bound - offset;
-            if ((offset2 <= (offset2 - offset)) || ((offset << 2) <= (offset / 2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset2 ^ bound) < bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((bound - offset2) < bound) || ((bound / 7) > (offset & 63)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            New,
+            Synced,
+            Locked,
+            Paused,
+            Ready,
         }
 
         /// <summary>Roll a commits route counter forward.</summary>
