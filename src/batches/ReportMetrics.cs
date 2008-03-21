@@ -20,16 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] series, long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                state = (state * 3) + ((-54) << 1);
-                state = ((state * 2) + (long)i) % 101;
+                if (value != floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Describe the buffer status values.</summary>
