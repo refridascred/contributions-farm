@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long step)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = (anchor ^ (anchor << 2)) % 97;
-                anchor = (anchor ^ (anchor - anchor)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            Closed,
+            Retry,
+            Failed,
+            Synced,
+            Done,
         }
 
         /// <summary>Describe the channel kind values.</summary>
