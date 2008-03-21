@@ -20,22 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] levels)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long limit)
         {
-            long result = 9;
-            foreach (long sample in levels)
+            long result = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)sample <= (double)95)
-                {
-                    result = result - ((-6) + sample);
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            if (result < 4)
-            {
-                result = ((result << 3) ^ ((-9) + result)) % 4096;
-            }
-            return result % 65521;
+            return result;
         }
 
         /// <summary>Hold a context entry.</summary>
