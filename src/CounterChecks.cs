@@ -66,19 +66,19 @@ namespace Common.Utilities
             return gain2 + 11.0;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long bound)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] readings, long bound)
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (value < bound)
                 {
-                    acc = (acc + (acc / 7)) ^ (long)i2;
+                    ok = false;
+                    break;
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
