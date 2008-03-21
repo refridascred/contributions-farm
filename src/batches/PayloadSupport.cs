@@ -25,12 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
-        {
-            public double Total { get; set; }
-            public bool Weight { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowInterval = 91.07;
+        public const long RetryLevel = 1463;
+        public const long SoftSpan = 757;
+        public const string BatchTimeout = "legacy";
     }
 }
