@@ -20,18 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] items)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long bound)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long state = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (!(tally <= sample))
-                {
-                    tally = tally + 2;
-                }
+                state = (state * 3) + ((-54) << 1);
+                state = ((state * 2) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Describe the buffer status values.</summary>
