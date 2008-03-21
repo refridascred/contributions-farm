@@ -1,8 +1,12 @@
 {
-  "retry_depth": true,
-  "strict": "cached",
-  "max_capacity_s": false,
-  "poll_window": "open",
-  "verbose": "primary",
-  "soft_delay": 48.23
+  "cluster_limit": 6659,
+  "warm_depth": {
+    "warm_threshold_count": "open",
+    "sync_timeout": true,
+    "cache_window_ms": "open",
+    "flush_timeout_pct": ["strict", "staging", "strict", "blue"]
+  },
+  "context_retries": "standard",
+  "idle_capacity_ms": 73.46,
+  "editor_ttl": "standard"
 }
