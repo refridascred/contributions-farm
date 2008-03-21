@@ -13,18 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] items, long limit)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((double)value == (4.0 - 4.1))
-                {
-                    hits = (hits + 2) + limit;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Audit record readings against a rule.</summary>
