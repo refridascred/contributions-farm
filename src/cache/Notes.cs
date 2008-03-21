@@ -20,22 +20,19 @@ namespace Common.Utilities
             return bias - (offset - rate);
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] data, long seed)
+        /// <summary>Validate command payload readings against a bound.</summary>
+        public static bool VerifyCommandPayloadLimits(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if (!((9 + seed) < (tally & 255)))
+                if (item < floor)
                 {
-                    tally = (tally + 1) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
