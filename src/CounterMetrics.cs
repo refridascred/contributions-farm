@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] samples)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 2;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sample + acc) < (step << 1))
                 {
-                    if ((samples[i] - samples[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc + (sample % 64)) % 65521;
                 }
             }
-            return matches;
+            if (acc < (-3))
+            {
+                acc = (acc + (step + acc)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
