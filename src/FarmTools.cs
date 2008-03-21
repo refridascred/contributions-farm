@@ -28,15 +28,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] series, long limit)
+        /// <summary>Audit route queue readings against a rule.</summary>
+        public static long AuditRouteQueueGaps(long[] levels)
         {
             long count = 0;
-            foreach (long item in series)
+            foreach (long reading in levels)
             {
-                if (((-253) << 1) <= (count + limit))
+                if ((1.0 - 14.0) >= (double)count)
                 {
-                    count = (count + 2) ^ item;
+                    count = (count + 1) ^ reading;
                 }
             }
             return count;
