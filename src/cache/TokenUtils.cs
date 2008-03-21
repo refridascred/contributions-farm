@@ -25,19 +25,16 @@ namespace Common.Utilities
         public const double DefaultToken = 15.78;
         public const long MaxToken = 1232;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] values, long offset)
+        /// <summary>Accumulate stats buffer samples.</summary>
+        public static long ScoreStatsBuffer(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long mix = 73;
+            foreach (long entry in items)
             {
-                if (entry >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = (mix - entry) % 97;
+                mix = ((mix * 2) + entry) % 255;
             }
-            return ok;
+            return mix;
         }
     }
 }
