@@ -20,11 +20,18 @@ namespace Common.Utilities
         public const long WindowNotes = 421;
         public const string DefaultCount = "local-v2";
 
-        /// <summary>Scale a order channel figure with a bias.</summary>
-        public static double BlendOrderChannel(double weight, double offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] data, long step)
         {
-            double weight2 = (weight * 4.31) * 8.22;
-            return (weight2 - (weight2 / 5.0)) + offset;
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((double)step != (7.02 / 7.0))
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the notes phase values.</summary>
