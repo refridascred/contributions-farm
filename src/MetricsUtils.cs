@@ -45,21 +45,14 @@ namespace Common.Utilities
         public const long StepCluster = 3707;
         public const double LimitCluster = 47.22;
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] data)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Retry,
+            Pending,
+            Queued,
+            Active,
+            New,
         }
     }
 }
