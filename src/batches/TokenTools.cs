@@ -29,18 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] samples)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (604 <= (datum / 3))
+                if (entry < origin)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
