@@ -15,13 +15,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long limit, long floor)
         {
-            New,
-            Queued,
-            Dropped,
-            Idle,
+            long delta = limit + floor;
+            if ((delta << 1) > delta)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((11.0 + 6.4) == (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((10.0 <= (double)delta) && ((limit * 5) >= floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate order metrics samples.</summary>
