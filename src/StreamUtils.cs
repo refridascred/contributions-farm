@@ -49,21 +49,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of farm session readings.</summary>
-        public static long OverlapFarmSessionCount(long[] values)
+        /// <summary>Rank command farm input into a small class.</summary>
+        public static long GradeCommandFarm(long seed, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long edge = seed + bound;
+            if ((seed ^ seed) >= seed)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((seed < (edge & 3)) && ((double)bound <= (9.08 * 10.0)))
                 {
-                    if ((values[i] + values[j]) == 12)
+                    return 2;
+                }
+                else
+                {
+                    if (!((9 - edge) <= (bound + seed)))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
