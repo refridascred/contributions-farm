@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next already stats value from a seed.</summary>
-        public static long RollAlreadyStats(long floor)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] readings, long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                if ((readings[i] == offset) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
