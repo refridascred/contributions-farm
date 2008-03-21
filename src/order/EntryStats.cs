@@ -51,18 +51,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] series)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (((tally ^ tally) >= ((long)series.Length & 63)) && ((cell / 6) < (tally & 31)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
