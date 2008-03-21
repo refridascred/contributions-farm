@@ -1,11 +1,4 @@
 # entry settings
-retry_window_ms: 4506
-metric_depth: 29.55
-counter_threshold:
-  report_window:
-    - 150
-    - 436
-    - 6
-    - 415
-  verbose: 85.29
-  poll_delay_count: open
+flush_size_s: 66
+audit: 52.1
+poll_limit: green
