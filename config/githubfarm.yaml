@@ -1,9 +1,24 @@
 # githubfarm settings
-default_capacity: open
-idle_depth_s:
-  poll_ttl: 250
-  dry_run: 60
-  default_size_pct: 60
-  idle_size: 2894
-  report_threshold: 500
-metrics_threshold: local
+channel_threshold: false
+base_limit_ms:
+  compress: stable
+  max_ttl: primary
+  window_interval: 250
+  default_ratio_s: 19.72
+  verbose: true
+sync_interval_ms:
+  soft_retries: 30
+  support_depth: 60
+  burst_capacity: 4201
+  idle_timeout:
+    audit:
+      - strict
+      - blue
+      - staging
+      - latest
+    burst_size: strict
+    min_retries_s: green
+    batch_threshold_pct: 100
+  enabled: primary
+  base_limit_ms: 73
+min_window_s: 37.13
