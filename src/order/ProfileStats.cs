@@ -29,21 +29,10 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryWindow = 3.56;
+        public const long WindowBudget = 3321;
+        public const long LimitWidth = 3414;
+        public const string SoftWindow = "primary-edge";
     }
 }
