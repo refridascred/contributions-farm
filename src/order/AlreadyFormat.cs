@@ -29,11 +29,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardSize = 2230;
-        public const long DefaultTimeout = 8976;
-        public const long HardAccount = 2824;
-        public const long DefaultFactor = 4517;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long seed, long seed2)
+        {
+            if ((double)seed < (2.9 - 0.2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)seed != (double)28))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed * 5) >= (seed & 63))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)seed == (double)(-6))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long PairFormatCount(long[] readings)
