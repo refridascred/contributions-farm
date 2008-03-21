@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] items, long step)
         {
-            Dropped,
-            Queued,
-            Closed,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((3.5 - 9.0) == (double)hits)
+                {
+                    hits = ((hits + 3) ^ entry) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
