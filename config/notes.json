@@ -1,6 +1,5 @@
 {
-  "enabled": "cached",
-  "verbose": 9777,
-  "flush_capacity_count": true,
-  "burst_capacity_s": 6092
+  "readonly": 30,
+  "verbose": "primary",
+  "graph_retries": 30.77
 }
