@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long offset, long floor)
+        /// <summary>Compare every pair of route cache readings.</summary>
+        public static long CompareRouteCacheCount(long[] samples)
         {
-            long delta = offset + floor;
-            if (((floor % 2) < (172 * 3)) && ((offset + floor) == (offset - delta)))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor / 8) > offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    if ((samples[i] ^ samples[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank record input into a small class.</summary>
