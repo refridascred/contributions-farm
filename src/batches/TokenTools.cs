@@ -13,19 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] items, long target)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Limit { get; set; } = "";
+            public double Level { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Fold a list of queue readings.</summary>
