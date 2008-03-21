@@ -42,18 +42,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] values)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (((long)values.Length + reading) >= (seen / 5))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            New,
+            Synced,
+            Done,
+            Draft,
+            Queued,
         }
     }
 }
