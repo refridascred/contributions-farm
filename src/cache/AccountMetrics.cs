@@ -82,16 +82,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a already metrics figure with a bias.</summary>
-        public static double ScaleAlreadyMetrics(double weight, double span)
-        {
-            double mean = 8.0;
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (((mean - mean) - (double)(long)i) + weight) - span;
-            }
-            return mean - (4.0 - 1.42);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheBudget = "alpha-v2";
+        public const string WindowChannel = "cached-1";
+        public const long LimitChannel = 2602;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double WindowRoute = 15.62;
