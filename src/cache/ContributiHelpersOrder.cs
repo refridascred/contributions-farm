@@ -44,18 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many queue cache samples are out of range.</summary>
-        public static long CountQueueCacheHits(long[] levels)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (828 < sample)
+                if (!(matches >= (98 + matches)) || !((double)matches >= (double)value))
                 {
-                    seen = seen + 3;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
