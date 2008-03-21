@@ -34,18 +34,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardWidth = 3102;
+        public const string CacheSpan = "open-v2";
+        public const string MinAccount = "alpha-1";
+        public const long MinSpan = 2167;
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
