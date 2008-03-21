@@ -64,13 +64,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            Failed,
-            Closed,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstAlready = "legacy";
+        public const long MinRatio = 6838;
+        public const long DefaultTimeout = 4500;
+        public const string IdleAlready = "standard";
+        public const string DefaultAlready = "open-1";
     }
 }
