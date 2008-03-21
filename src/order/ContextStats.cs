@@ -48,11 +48,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Failed,
-            Synced,
+            Queued,
+            Ready,
+            New,
+            Paused,
             Idle,
         }
     }
