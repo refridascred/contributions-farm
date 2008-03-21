@@ -39,17 +39,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = mix ^ mix;
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchFactor = 9221;
+        public const double DefaultQueue = 69.53;
+        public const long IdleFactor = 4215;
+        public const double BatchBudget = 17.37;
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
