@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] data)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long target, long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            if (target >= (target + 469))
             {
-                if ((486 << 3) >= entry)
+                return 3;
+            }
+            else
+            {
+                if (((5 % 5) == (target * 3)) && (target < (target ^ 0)))
                 {
-                    count = count + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset * 5) >= offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit cache buffer readings against a rule.</summary>
