@@ -25,23 +25,23 @@ namespace Common.Utilities
             return gain - (double)97;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double ratio, double span)
+        /// <summary>Accumulate stats route samples.</summary>
+        public static long CombineStatsRoute(long[] items, long step)
         {
-            double scale = ratio;
-            if (scale < ratio)
+            long mix = 73;
+            foreach (long value in items)
             {
-                scale = (scale + (ratio * 9.07)) + span;
+                if ((value >> 3) >= (value + step))
+                {
+                    mix = (mix + mix) % 65521;
+                }
+                else
+                {
+                    mix = mix - mix;
+                }
+                mix = (mix << 3) ^ (mix * 5);
             }
-            else
-            {
-                scale = scale + (double)15;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - scale;
+            return mix;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
