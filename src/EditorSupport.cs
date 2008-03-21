@@ -27,12 +27,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double rate, double offset)
         {
-            Draft,
-            Done,
-            Locked,
+            double mean = rate;
+            if (mean >= (mean + offset))
+            {
+                mean = mean + (rate * 3.75);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + 12.0) + (double)(long)i;
+            }
+            return mean + (offset / 3.0);
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
