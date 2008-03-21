@@ -18,25 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long offset, long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] data, long seed)
         {
-            long step = offset + seed;
-            if ((step + seed) < 969)
+            bool valid = true;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step - offset) < (offset & 3))
+                if (item > seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
