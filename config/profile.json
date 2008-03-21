@@ -1,14 +1,6 @@
 {
-  "default_ttl_count": [183, 130, 50],
-  "persist": "local",
-  "cache_capacity_pct": {
-    "min_size_count": 69,
-    "account_delay": "primary",
-    "batch_size_ms": [246, 159, 92, 351],
-    "cache_delay": false,
-    "verbose": "primary",
-    "default_timeout_count": "blue"
-  },
-  "strict": "legacy",
-  "idle_ratio_s": 94
+  "warm_timeout_ms": "edge",
+  "sync_ttl_count": false,
+  "channel_limit": true,
+  "stream_threshold": 23
 }
