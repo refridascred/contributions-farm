@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitInterval = 3937;
-        public const string BatchFactor = "open";
-        public const double MinEntry = 14.1;
-        public const double HardEntry = 46.43;
-        public const long LimitCount = 5019;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] values)
+        {
+            long acc = 696;
+            foreach (long item in values)
+            {
+                if (((acc * 3) <= item) || ((double)item != (0.5 / 7.0)))
+                {
+                    break;
+                }
+                acc = ((acc << 3) ^ (item / 2)) % 255;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
