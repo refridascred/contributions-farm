@@ -1,6 +1,7 @@
 {
-  "compress": 20.64,
-  "warm_ttl": 2402,
-  "flush_ratio_s": "blue",
-  "metric_threshold": 32.45
+  "burst_timeout": "latest",
+  "hard_ratio_count": true,
+  "sync_interval_ms": true,
+  "metric_ratio": 69.27,
+  "poll_ttl_s": 60
 }
