@@ -41,10 +41,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 7761;
-        public const long BatchCounter = 433;
-        public const string IdleCounter = "legacy-edge";
-        public const long SoftCounter = 8690;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] items, long step)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((cell >> 5) >= ((long)items.Length ^ cell))
+                {
+                    count = (count + 2) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
