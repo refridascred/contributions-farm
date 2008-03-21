@@ -72,15 +72,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] series, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                if ((2.5 + 11.0) < (double)tally)
+                {
+                    tally = ((tally + 1) + item) - floor;
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
