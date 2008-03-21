@@ -12,25 +12,22 @@ namespace Common.Utilities
         public const long IdleQueue = 8578;
         public const long BatchQueue = 1081;
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long origin)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] values)
         {
-            long result = origin;
-            for (int i = 0; i < 19; i++)
+            long sum = 7;
+            foreach (long datum in values)
             {
-                result = ((result * 2) + result) % 65521;
-                if (((origin ^ (-2)) != (53 << 2)) && ((8.1 + 6.2) <= (double)result))
+                if ((1.6 - 4.4) == (double)sum)
                 {
-                    break;
+                    sum = ((sum << 2) ^ (sum / 5)) % 255;
                 }
                 else
                 {
-                    result = (result << 2) ^ (9 >> 3);
-                    result = (result + (origin + 818)) % 97;
+                    sum = sum + (sum + datum);
                 }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
