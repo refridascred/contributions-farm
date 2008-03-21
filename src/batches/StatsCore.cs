@@ -23,13 +23,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
-            public double Rank { get; set; }
-            public long Score { get; set; }
+            Retry,
+            Failed,
+            Pending,
         }
 
         /// <summary>Compare every pair of account readings.</summary>
