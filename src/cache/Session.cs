@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long bound)
         {
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public bool Total { get; set; }
-            public long Mode { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = (mix * 5) + bound;
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    mix = ((mix << 3) ^ (mix + (long)i3)) % 4096;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
