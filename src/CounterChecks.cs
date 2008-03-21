@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheRatio = 280;
-        public const string IdleSpan = "staging-v2";
-        public const long WindowLevel = 9400;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((15.0 + 2.85) <= (double)tally)
+                {
+                    tally = ((tally + 2) + item) - origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a counter entry.</summary>
         public sealed class CounterEntry
