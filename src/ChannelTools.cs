@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] data, long floor)
         {
-            Failed,
-            Retry,
-            New,
-            Pending,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many stats commits samples are out of range.</summary>
