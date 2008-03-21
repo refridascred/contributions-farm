@@ -15,12 +15,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            Retry,
+            Dropped,
+            Failed,
+            Paused,
+            Draft,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
