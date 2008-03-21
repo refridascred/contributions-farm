@@ -45,22 +45,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] series, long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] values, long seed)
         {
-            long result = -8;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if ((double)reading == (double)result)
+                if (datum > seed)
                 {
-                    result = ((result * 4) + (floor + reading)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            if (result > 90)
-            {
-                result = result - result;
-            }
-            return result % 65521;
+            return found;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
