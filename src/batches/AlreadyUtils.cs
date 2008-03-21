@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepCache = 38.82;
-        public const double MinCache = 35.54;
-        public const long WindowCache = 77;
-        public const double BatchCache = 5.35;
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Locked,
+            Active,
+            Failed,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
