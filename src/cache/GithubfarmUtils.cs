@@ -55,11 +55,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] readings)
         {
-            public long Rank { get; set; }
-            public bool Count { get; set; }
+            long mix = 36;
+            foreach (long reading in readings)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    mix = (mix + (mix + reading)) ^ (long)i;
+                }
+                if (((41 >> 3) <= (reading << 2)) || (mix <= (reading + 60)))
+                {
+                    mix = ((mix << 3) ^ (mix & 1)) % 65521;
+                }
+            }
+            return mix % 4096;
         }
     }
 }
