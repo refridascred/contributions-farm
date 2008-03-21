@@ -33,13 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
-        {
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 1771;
+        public const long IdleSize = 8689;
+        public const string MinMetric = "primary-v2";
+        public const long BurstMetric = 4207;
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
