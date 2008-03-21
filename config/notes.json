@@ -1,11 +1,15 @@
 {
-  "sync_delay_s": false,
-  "persist": {
-    "githubfarm_timeout": 60.55,
-    "max_limit_count": true,
-    "warm_window_pct": "standard",
-    "already_retries": [389, 209, 10]
+  "session_retries": {
+    "filter_ttl": "cached",
+    "default_delay_ms": {
+      "min_timeout": [211, 298, 337],
+      "route_size": 83,
+      "max_ttl": 250,
+      "dry_run": 1024
+    },
+    "readonly": 5811
   },
-  "default_retries_pct": 7398,
-  "base_retries_pct": 7039
+  "readonly": ["local", "latest", "cached"],
+  "strict": true,
+  "order_limit": 29.19
 }
