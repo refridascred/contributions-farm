@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 3410;
-        public const long BurstTimeout = 9132;
-        public const double RetryCommand = 10.93;
-        public const long WindowCommand = 9708;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Paused,
+            Idle,
+            Retry,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long WindowTimeout = 5834;
