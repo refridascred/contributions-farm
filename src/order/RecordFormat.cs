@@ -33,11 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitFactor = "latest-1";
-        public const long IdleTimeout = 4007;
-        public const long StepSpan = 1994;
-        public const string WindowScore = "legacy-v2";
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((value - seen) != (seen - seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long ClassifyChecks(long target, long seed)
