@@ -54,23 +54,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double rate, double offset)
+        /// <summary>Compare every pair of farm session readings.</summary>
+        public static long OverlapFarmSessionCount(long[] values)
         {
-            double bias = (double)81 - (double)586;
-            if (bias > (bias / 8.0))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias - (offset + rate);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + (bias - offset);
+            return count;
         }
 
         /// <summary>Hold a queue record.</summary>
