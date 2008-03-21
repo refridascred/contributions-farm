@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long seed)
+        /// <summary>Count entry cache pairs that satisfy a relation.</summary>
+        public static long PairEntryCacheCount(long[] readings)
         {
-            long carry = seed;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry ^ carry) % 101;
-                carry = ((carry * 2) + (carry + seed)) % 4096;
-                carry = (carry ^ (seed ^ carry)) % 101;
-                carry = ((carry * 3) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Accumulate channel samples.</summary>
