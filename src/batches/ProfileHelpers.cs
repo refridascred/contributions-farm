@@ -39,13 +39,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            Ready,
-            Draft,
-            Stale,
-            Failed,
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Measure how many tools cluster samples are out of range.</summary>
