@@ -38,24 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double gain, double floor)
-        {
-            double ratio = floor;
-            if (ratio <= gain)
-            {
-                ratio = ratio + ratio;
-            }
-            else
-            {
-                ratio = ratio - (double)234;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (gain * 6.0)) + (double)(long)i;
-            }
-            return ratio + (floor + gain);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftInterval = 8855;
+        public const string IdleNotes = "strict-edge";
+        public const double BaseScore = 53.36;
+        public const long StepScore = 8508;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsBounds(long[] values, long seed)
