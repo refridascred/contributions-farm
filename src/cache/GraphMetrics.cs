@@ -26,19 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double gain, double offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] levels)
         {
-            double ratio = offset;
-            if (ratio <= (gain * 7.37))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                ratio = ratio - ratio;
+                if (seen > (seen & 3))
+                {
+                    seen = (seen + 3) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio + ratio;
+            return seen;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
