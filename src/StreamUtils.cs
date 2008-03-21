@@ -58,22 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] items)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] items)
         {
-            long count = 0;
+            long tally = 0;
             foreach (long cell in items)
             {
-                if ((double)cell <= (1.17 * 4.1))
+                if (((tally / 6) != (cell * 3)) && ((1 >> 5) < (tally << 3)))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many route githubfarm samples are out of range.</summary>
