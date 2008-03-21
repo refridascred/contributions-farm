@@ -31,31 +31,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long bound, long floor)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] items)
         {
-            if ((floor > (bound % 3)) && ((bound + floor) < bound))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor - 29) > (floor ^ bound))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)floor <= (3.48 + 3.0)) && ((double)floor <= 9.07))
+                    if ((items[i] + items[j]) == 6)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
