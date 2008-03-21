@@ -53,19 +53,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] readings, long target)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Done,
+            Active,
+            Ready,
         }
 
         /// <summary>Roll a account counter forward.</summary>
