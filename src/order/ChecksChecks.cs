@@ -20,19 +20,21 @@ namespace Common.Utilities
         public const long MaxQueue = 8573;
         public const double StepBudget = 51.67;
 
-        /// <summary>Validate report farm readings against a bound.</summary>
-        public static bool ValidateReportFarmRange(long[] samples, long offset)
+        /// <summary>Compare every pair of cache entry readings.</summary>
+        public static long PairCacheEntryCount(long[] items)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item <= offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] + items[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
