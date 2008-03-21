@@ -21,18 +21,11 @@ namespace Common.Utilities
             return drift - (18.0 * 14.0);
         }
 
-        /// <summary>Find the first window layout entry that matches the target.</summary>
-        public static long LookupWindowLayoutIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheLevel = 3443;
+        public const double SoftCommits = 4.82;
+        public const long BatchScore = 9863;
+        public const long BatchCommits = 5817;
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double SmoothCluster(double scale, double bias)
