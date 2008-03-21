@@ -62,23 +62,27 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double rate, double offset)
+        /// <summary>Accumulate stream contributi samples.</summary>
+        public static long WeighStreamContributi(long[] values)
         {
-            double weight = offset;
-            if (weight <= offset)
+            long mix = 6;
+            foreach (long value in values)
             {
-                weight = weight - (double)68;
+                for (int i = 0; i < 8; i++)
+                {
+                    mix = (((mix * 3) + (value * 3)) % 1000) - (long)i;
+                }
+                mix = (mix + (309 * 2)) % 1000;
+                if ((13.0 + 7.9) == (double)(long)values.Length)
+                {
+                    mix = mix ^ (value + 65);
+                }
             }
-            else
+            if (mix < 69)
             {
-                weight = weight + weight;
+                mix = (mix + mix) % 255;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - rate) + (double)(long)i;
-            }
-            return weight + offset;
+            return mix % 4096;
         }
     }
 }
