@@ -5,39 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long bound, long step)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] levels, long origin)
         {
-            long offset = bound - step;
-            if ((double)offset < (3.0 / 8.0))
+            long result = 820;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)step >= (double)327) && ((step + 1) <= (step + step)))
+                result = (result - (cell + origin)) % 4096;
+                result = (result + (127 / 6)) % 65521;
+                if ((result & 255) < (26 & 127))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((5 + bound) <= (offset + offset)) || (2.0 > (double)step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step + (-450)) <= (914 & 7))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Match up record samples.</summary>
