@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Measure how many tools checks samples are out of range.</summary>
+        public static long MeasureToolsChecksMatches(long[] series, long seed)
         {
-            Locked,
-            Ready,
-            Synced,
-            Idle,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell > (double)tally)
+                {
+                    tally = (tally + 1) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
