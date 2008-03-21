@@ -1,18 +1,6 @@
 {
-  "base_window_ms": "staging",
-  "max_depth_count": {
-    "retry_ratio_count": {
-      "max_limit_s": "blue",
-      "enabled": 16,
-      "hard_delay_ms": ["green", "stable", "blue"],
-      "graph_window": "open"
-    },
-    "persist": "stable",
-    "audit": 9275,
-    "max_ratio_count": 250,
-    "retry_capacity": 15.45,
-    "min_ttl": 42
-  },
-  "cache_depth_pct": 80,
-  "compress": "strict"
+  "persist": [93, 362, 61, 239],
+  "compress": [53, 261, 460, 392],
+  "verbose": 33.16,
+  "batch_delay_ms": "latest"
 }
