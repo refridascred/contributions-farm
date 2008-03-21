@@ -21,12 +21,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
+            Locked,
             Active,
             Synced,
-            Closed,
         }
 
         /// <summary>Count the order session entries that pass the check.</summary>
