@@ -52,11 +52,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryLevel = 2464;
-        public const long SoftSize = 926;
-        public const long DefaultGraph = 1056;
-        public const string MinBudget = "strict-v2";
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long TallyMetricsMatches(long[] values)
