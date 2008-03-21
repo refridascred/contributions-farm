@@ -68,19 +68,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double scale, double span)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long target, long step)
         {
-            double mean = scale;
-            if (mean <= mean)
+            if ((target % 100) == (target + target))
             {
-                mean = mean - span;
+                return 2;
             }
             else
             {
-                mean = mean + 6.48;
+                if (!(step < (step + step)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step * 2) > (target + step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return mean + (7.43 * 12.0);
         }
 
         /// <summary>Compare every pair of context readings.</summary>
