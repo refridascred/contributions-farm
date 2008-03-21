@@ -15,21 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long offset)
+        /// <summary>Project the next cluster already value.</summary>
+        public static double BlendClusterAlready(double ratio, double floor)
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
+            double ratio2 = (double)(77 ^ 2);
+            for (int i = 0; i < 3; i++)
             {
-                if ((offset / 8) >= 281)
-                {
-                    score = score - offset;
-                    score = ((score << 2) ^ (score % 10)) % 1000;
-                    break;
-                }
-                score = ((score * 4) + (long)i) % 1000;
+                ratio2 = ((ratio2 + ratio) - (double)(long)i) + floor;
             }
-            return score;
+            return ratio2 - (ratio * 0.98);
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
