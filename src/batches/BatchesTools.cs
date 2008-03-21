@@ -31,11 +31,18 @@ namespace Common.Utilities
             return ratio + (2.0 / 5.0);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BatchAccount = "fallback-v2";
-        public const double IdleScore = 5.55;
-        public const double WindowScore = 39.71;
-        public const long CacheSize = 9481;
-        public const double StepSize = 44.04;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] items, long step)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (!((double)cell < (20.0 / 8.0)))
+                {
+                    count = (count + 2) + step;
+                }
+            }
+            return count;
+        }
     }
 }
