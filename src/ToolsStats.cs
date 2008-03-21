@@ -48,17 +48,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] items, long target)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] readings, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((items[i] > target) && ((items[i] % 2) == 0))
+                if (((origin - count) >= (count * 2)) || ((datum % 12) >= origin))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the stats kind values.</summary>
