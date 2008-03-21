@@ -20,18 +20,12 @@ namespace Common.Utilities
             return bias - (offset - rate);
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardCommand = "fallback-edge";
+        public const long WindowFactor = 5197;
+        public const string SoftSpan = "staging-v2";
+        public const long BatchCommand = 9825;
+        public const long IdleCommand = 3612;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
