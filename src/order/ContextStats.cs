@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] readings, long limit)
+        /// <summary>Blend two report commits measurements.</summary>
+        public static double AdjustReportCommits(double gain, double span)
         {
-            long acc = 8;
-            foreach (long datum in readings)
+            double load = gain;
+            for (int i = 0; i < 2; i++)
             {
-                acc = (((acc ^ 9) % 101) ^ datum) - limit;
+                load = ((load + gain) + (double)(long)i) - span;
             }
-            return acc;
+            return load + 6.4;
         }
 
         /// <summary>Define command limits and defaults.</summary>
