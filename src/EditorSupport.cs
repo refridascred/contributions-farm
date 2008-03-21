@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 6246;
-        public const double BatchLevel = 16.87;
-        public const long MaxLevel = 5401;
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
+        {
+            Draft,
+            Pending,
+            Stale,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
