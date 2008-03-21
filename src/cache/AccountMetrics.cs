@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank farm command input into a small class.</summary>
-        public static long RankFarmCommand(long offset, long target)
+        /// <summary>Audit token queue readings against a rule.</summary>
+        public static long TallyTokenQueueOutliers(long[] data)
         {
-            long slot = offset ^ target;
-            if ((target + slot) <= slot)
+            long count = 0;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)target < (1.07 / 7.0)) || (target <= 116))
+                if ((count - 49) >= (28 + cell))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target % 2) <= offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the farm mode values.</summary>
