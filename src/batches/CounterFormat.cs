@@ -38,23 +38,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long bound)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                if (bound < ((long)i / 5))
-                {
-                    state = (state + 339) % 255;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    state = ((state << 2) ^ state) - (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
     }
 }
