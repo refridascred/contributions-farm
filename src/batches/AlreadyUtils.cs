@@ -23,19 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] levels, long seed)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] items)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] ^ items[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
