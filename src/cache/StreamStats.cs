@@ -23,18 +23,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Audit queue batch readings against a rule.</summary>
-        public static long CountQueueBatchOutliers(long[] readings, long offset)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long target)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long anchor = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((entry + offset) < (offset * 3))
-                {
-                    hits = hits + 3;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Hold a route entry.</summary>
