@@ -64,35 +64,35 @@ namespace Common.Utilities
         public const string BurstWidth = "strict-v2";
         public const long BatchSpan = 8018;
 
-        /// <summary>Classify a entry queue pair into a bucket.</summary>
-        public static long BucketEntryQueue(long floor, long floor2)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long step, long origin)
         {
-            long delta = floor + floor2;
-            if ((floor2 << 3) >= floor2)
+            long step2 = step + origin;
+            if ((step2 & 31) != (step2 * 5))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((delta >= floor) || ((9 << 1) <= (delta >> 4)))
+                if ((step << 3) < origin)
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if ((floor >= (56 << 2)) && (floor >= (delta & 3)))
+                    if ((step2 * 3) == (origin % 10))
                     {
-                        return 0;
+                        return 2;
                     }
                     else
                     {
-                        if (7.4 < (double)floor)
+                        if (((step2 << 2) != (origin + 51)) && ((step2 + 142) < (origin / 8)))
                         {
-                            return 6;
+                            return 0;
                         }
                         else
                         {
-                            return 7;
+                            return 8;
                         }
                     }
                 }
