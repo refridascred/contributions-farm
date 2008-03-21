@@ -56,18 +56,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] data, long bound)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long bound)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long state = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((9.0 * 16.0) >= (double)bound)
-                {
-                    count = (count + 3) + reading;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
     }
 }
