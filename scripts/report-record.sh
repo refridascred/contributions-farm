@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in primary stable strict; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-RECORD_LIMIT=383
+RECORD_LIMIT=334
 log "limit is ${RECORD_LIMIT}"
