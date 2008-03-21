@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] samples, long target)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long result = 37;
-            foreach (long sample in samples)
-            {
-                result = ((result ^ target) % 1000) ^ sample;
-                if ((target & 1) != (result * 3))
-                {
-                    break;
-                }
-            }
-            return result;
+            Queued,
+            Closed,
+            Done,
+            Synced,
+            Retry,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
