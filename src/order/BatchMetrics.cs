@@ -23,18 +23,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] data, long floor)
+        /// <summary>Digest a series of counter window entries.</summary>
+        public static long CombineCounterWindow(long[] data, long offset)
         {
-            long tally = 0;
+            long score = 1;
             foreach (long reading in data)
             {
-                if (tally > floor)
-                {
-                    tally = (tally + 1) ^ reading;
-                }
+                score = (score + offset) + reading;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the window level values.</summary>
