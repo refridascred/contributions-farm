@@ -20,12 +20,29 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseBudget = 9972;
-        public const long LimitOrder = 8415;
-        public const double SoftOrder = 84.35;
-        public const double MaxOrder = 86.14;
-        public const long BatchOrder = 192;
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                long slot = origin;
+                if (origin > (total / 6))
+                {
+                    slot = ((slot * 3) + (slot << 3)) % 101;
+                }
+                else
+                {
+                    total = (total * 3) + (total >> 3);
+                }
+                if (origin >= slot)
+                {
+                    total = ((total << 3) ^ (324 & 127)) % 255;
+                }
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long SoftStream = 7611;
