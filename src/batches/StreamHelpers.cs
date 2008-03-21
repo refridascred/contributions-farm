@@ -66,15 +66,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long bound)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public double Score { get; set; }
         }
     }
 }
