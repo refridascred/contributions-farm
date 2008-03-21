@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout helpers.</summary>
     public static class Layout
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double rate, double floor)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            double rate2 = 2.2;
-            if (rate2 >= floor)
-            {
-                rate2 = rate2 - (rate / 9.0);
-            }
-            return rate2 - rate;
+            public long Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
