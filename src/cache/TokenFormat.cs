@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 904;
+        public const long MinRatio = 1607;
+        public const long CacheWindow = 602;
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
