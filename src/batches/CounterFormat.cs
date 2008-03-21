@@ -19,13 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public bool Total { get; set; }
-            public bool Weight { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 1903;
+        public const string IdleRoute = "local-v2";
+        public const string WindowRoute = "stable-1";
+        public const long DefaultWidth = 7328;
 
         /// <summary>Scale a checks farm figure with a bias.</summary>
         public static double SmoothChecksFarm(double rate, double floor)
