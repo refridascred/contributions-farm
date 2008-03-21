@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] data)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] items)
         {
-            long sum = 7;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = ((((sum * 4) + (sum + 9)) % 255) + (long)i) + sample;
+                    if ((items[i] + items[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = (sum - 62) % 1000;
             }
-            if (sum < 4)
-            {
-                sum = (sum << 2) ^ (sum << 2);
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Describe the context state values.</summary>
