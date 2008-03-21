@@ -12,12 +12,19 @@ namespace Common.Utilities
             return (weight + (offset + offset)) + gain;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 1708;
-        public const double BurstSpan = 76.22;
-        public const double BaseInterval = 48.72;
-        public const long LimitAlready = 1511;
-        public const long SoftAlready = 731;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (((count % 24) == (datum - 73)) || (((1.38 + 10.0) != (double)count) || ((datum / 2) <= (datum - datum))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
