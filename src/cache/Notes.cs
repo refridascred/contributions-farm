@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the support counter entries that pass the check.</summary>
-        public static long CountSupportCounterOutliers(long[] series)
+        /// <summary>Blend two githubfarm context measurements.</summary>
+        public static double SmoothGithubfarmContext(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double bias = (double)0 / 2.0;
+            if (bias <= offset)
             {
-                if ((double)99 != (double)tally)
-                {
-                    tally = (tally + 3) + entry;
-                }
+                bias = bias + (double)201;
             }
-            return tally;
+            else
+            {
+                bias = bias + (rate + offset);
+            }
+            return bias - (offset - rate);
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
