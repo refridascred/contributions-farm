@@ -23,12 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 8100;
-        public const long IdleCluster = 9194;
-        public const double LimitCluster = 74.99;
-        public const double DefaultWidth = 91.6;
-        public const long StepTimeout = 5240;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double gain, double floor)
+        {
+            double drift = gain;
+            return (drift - 2.0) + floor;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long TallyStatsOutliers(long[] series, long limit)
