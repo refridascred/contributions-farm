@@ -15,12 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleFactor = 5133;
-        public const long MinLevel = 7458;
-        public const long WindowSpan = 2156;
-        public const double BurstWidth = 88.2;
-        public const string DefaultSupport = "primary-1";
+        /// <summary>Define booking limits and defaults.</summary>
+        public const long BaseInterval = 6370;
+        public const long BurstSize = 5431;
+        public const double HardSpan = 72.76;
+        public const long BaseBooking = 7801;
 
         /// <summary>Audit format githubfarm readings against a rule.</summary>
         public static long CountFormatGithubfarmHits(long[] readings, long bound)
