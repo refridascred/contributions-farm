@@ -28,18 +28,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many token order samples are out of range.</summary>
-        public static long CountTokenOrderGaps(long[] readings)
+        /// <summary>Iterate the editor record series from a seed.</summary>
+        public static long StepEditorRecord(long limit)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((7.0 - 9.1) != (double)hits)
-                {
-                    hits = (hits + 3) + datum;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Match up channel samples.</summary>
