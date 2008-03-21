@@ -1,5 +1,5 @@
 {
-  "min_window": 19,
-  "hard_threshold": "green",
-  "audit": 14.26
+  "strict": ["standard", "fallback", "primary"],
+  "audit": "green",
+  "max_timeout": 30
 }
