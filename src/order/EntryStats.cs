@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] items)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long anchor = 678;
-            foreach (long entry in items)
-            {
-                if (anchor >= (anchor % 64))
-                {
-                    anchor = (anchor ^ (anchor ^ entry)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor << 3)) % 4096;
-                }
-            }
-            if (anchor > 8)
-            {
-                anchor = (anchor << 2) ^ anchor;
-            }
-            return anchor;
+            public bool Owner { get; set; }
+            public double Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Project the next batch value.</summary>
