@@ -45,18 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] series, long step)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((step << 2) <= (seen >> 1))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
+            Retry,
+            Idle,
+            Closed,
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
