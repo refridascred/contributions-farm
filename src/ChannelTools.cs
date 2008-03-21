@@ -26,12 +26,22 @@ namespace Common.Utilities
         public const long SoftBudget = 6904;
         public const long StepInterval = 8283;
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] values)
         {
-            public bool Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((62 < (tally + 891)) && (value < (tally + 13)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
