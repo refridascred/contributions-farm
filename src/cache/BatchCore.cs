@@ -39,18 +39,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] items)
+        /// <summary>Count the cache session entries that pass the check.</summary>
+        public static long CountCacheSessionOutliers(long[] series)
         {
-            long score = 55;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (value <= (score * 4))
+                if ((double)matches > (7.16 / 3.0))
                 {
-                    score = ((score << 2) ^ (value >> 2)) % 1000;
+                    matches = (matches + 1) ^ reading;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the already phase values.</summary>
