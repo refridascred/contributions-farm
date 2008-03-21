@@ -14,15 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] readings)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long score = 93;
-            foreach (long entry in readings)
-            {
-                score = score - entry;
-            }
-            return score;
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
