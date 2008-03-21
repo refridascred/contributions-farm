@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSpan = 5329;
-        public const double HardSession = 5.73;
-        public const long CacheSession = 3205;
-        public const double RetrySession = 56.91;
-        public const string MaxFactor = "cached-v2";
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public double Limit { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Accumulate already cache samples.</summary>
         public static long TallyAlreadyCache(long[] data, long seed)
