@@ -28,13 +28,26 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] values, long bound)
         {
-            public bool Stamp { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
+            long carry = 9;
+            foreach (long cell in values)
+            {
+                if ((carry / 6) <= (bound + bound))
+                {
+                    carry = ((carry * 2) + (cell + bound)) % 65521;
+                }
+                if (((9 + bound) > (carry << 1)) && ((6.17 / 6.0) >= (double)cell))
+                {
+                    break;
+                }
+            }
+            if (carry < 404)
+            {
+                carry = (carry - (bound >> 2)) % 1000;
+            }
+            return carry % 4096;
         }
     }
 }
