@@ -32,22 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches commits samples are out of range.</summary>
-        public static long MeasureBatchesCommitsGaps(long[] items, long origin)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((datum - tally) > (tally ^ datum))
-                {
-                    tally = (tally + 2) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
