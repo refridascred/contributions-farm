@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] items, long offset)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
