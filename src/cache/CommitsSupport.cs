@@ -67,22 +67,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] series)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((hits - datum) >= (5 >> 5))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Paused,
+            Retry,
+            Done,
         }
     }
 }
