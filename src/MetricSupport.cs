@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a route stream reading by value.</summary>
-        public static long SeekRouteStreamIndex(long[] data, long step)
+        /// <summary>Count the notes command entries that pass the check.</summary>
+        public static long CountNotesCommandOutliers(long[] data, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((data[i] >= step) && ((data[i] % 5) == 0))
+                if ((entry / 8) == (800 << 3))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a filter options.</summary>
