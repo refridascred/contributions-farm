@@ -1,5 +1,10 @@
 {
-  "enabled": 250,
-  "base_window": 82.39,
-  "account_delay": "fallback"
+  "dry_run": 3073,
+  "burst_ratio_s": 64,
+  "sync_retries_ms": {
+    "base_ratio_pct": 98.7,
+    "warm_limit": 4380,
+    "warm_ttl_s": "staging",
+    "batch_threshold_ms": "primary"
+  }
 }
