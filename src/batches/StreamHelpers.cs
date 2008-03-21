@@ -81,12 +81,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Active,
-            Queued,
-            New,
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public long Count { get; set; }
         }
     }
 }
