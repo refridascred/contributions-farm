@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] values)
+        /// <summary>Derive the next counter account value from a seed.</summary>
+        public static long SeriesCounterAccount(long origin)
         {
-            long acc = 696;
-            foreach (long item in values)
+            long result = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (((acc * 3) <= item) || ((double)item != (0.5 / 7.0)))
-                {
-                    break;
-                }
-                acc = ((acc << 3) ^ (item / 2)) % 255;
+                result = (result + (0 - origin)) % 97;
+                result = result + ((long)i << 3);
+                result = ((result << 3) ^ (origin << 3)) % 101;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
