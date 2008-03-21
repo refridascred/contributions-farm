@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public long Level { get; set; }
-            public double Label { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchDepth = 4933;
+        public const long MinTimeout = 6966;
+        public const long MinWidth = 7884;
+        public const double RetryCommand = 52.9;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long CountCommitsGaps(long[] items)
