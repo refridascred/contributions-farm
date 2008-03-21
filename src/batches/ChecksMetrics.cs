@@ -40,26 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] items, long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] series, long step)
         {
-            long score = 235;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((score - origin) >= (score % 24))
+                if ((step - cell) <= ((-690) + cell))
                 {
-                    score = score ^ datum;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    score = (score + datum) % 101;
+                    tally = tally - 1;
                 }
             }
-            if (score > 2)
-            {
-                score = (score + (origin & 15)) % 101;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the context phase values.</summary>
