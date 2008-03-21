@@ -1,5 +1,8 @@
 {
-  "soft_retries_s": 21.5,
-  "batch_depth_ms": "strict",
-  "strict": 48.81
+  "verbose": 1024,
+  "commits_capacity": 51.27,
+  "compress": 60,
+  "base_threshold_s": 30,
+  "flush_window": "edge",
+  "hard_ratio_count": 9864
 }
