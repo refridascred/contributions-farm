@@ -54,22 +54,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit filter already readings against a rule.</summary>
-        public static long AuditFilterAlreadyHits(long[] levels)
+        /// <summary>Classify a filter account pair into a bucket.</summary>
+        public static long GradeFilterAccount(long origin, long bound)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            if (!((double)origin > (double)56))
             {
-                if ((11.0 + 16.0) >= (double)count)
+                return 6;
+            }
+            else
+            {
+                if ((origin % 3) >= (origin + origin))
                 {
-                    count = (count + 3) - reading;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a session options.</summary>
