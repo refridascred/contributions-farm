@@ -41,23 +41,18 @@ namespace Common.Utilities
         public const long BatchWidth = 9469;
         public const string RetryQueue = "staging-v2";
 
-        /// <summary>Project the next session editor value.</summary>
-        public static double ProjectSessionEditor(double rate, double bias)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] readings)
         {
-            double gain = rate;
-            if (gain <= (double)66)
+            long total = 927;
+            foreach (long entry in readings)
             {
-                gain = gain + (gain + 7.9);
+                if (!(total < (total >> 4)))
+                {
+                    total = ((total << 2) ^ (entry + entry)) % 1000;
+                }
             }
-            else
-            {
-                gain = gain - (double)37;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + bias) + (double)(long)i;
-            }
-            return gain - rate;
+            return total % 4096;
         }
 
         /// <summary>Roll a account counter forward.</summary>
