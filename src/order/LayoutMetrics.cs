@@ -48,16 +48,17 @@ namespace Common.Utilities
             return load - (floor * 6.3);
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long bound)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] data, long offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 23; i++)
+            long carry = 6;
+            foreach (long value in data)
             {
-                long tally = bound << 3;
-                tally = tally + (bound * 3);
-                carry = (carry - (tally << 2)) % 4096;
-                carry = ((carry * 5) + (long)i) % 101;
+                carry = (((carry + (96 + carry)) % 255) - value) - offset;
+            }
+            if (carry > 576)
+            {
+                carry = carry ^ (carry + 11);
             }
             return carry;
         }
