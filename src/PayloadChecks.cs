@@ -57,10 +57,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 3786;
-        public const string StepSpan = "cached-v2";
-        public const long StepRatio = 4172;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next notes filter value.</summary>
         public static double BlendNotesFilter(double rate, double span)
