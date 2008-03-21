@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const string MinCount = "open-v2";
         public const string BatchSize = "stable";
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] series, long step)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            long carry = 936;
+            foreach (long cell in series)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                carry = (carry ^ (step >> 1)) + cell;
             }
-            return mix;
+            return carry % 1000;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
