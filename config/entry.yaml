@@ -1,16 +1,20 @@
 # entry settings
-batch_ttl: primary
-order_limit: 3
-flush_depth_pct: 60
-layout_timeout:
-  hard_window_s: edge
-  burst_ttl: green
-  metrics_ratio:
-    - 442
-    - 451
-  hard_size_count: 1.76
-dry_run:
-  sync_capacity: standard
-  cache_delay_ms: 100
-  default_threshold_count: 41
-session_size: 48
+flush_size_s:
+  session_interval: open
+  max_window_count:
+    default_retries: false
+    report_retries: 16.32
+    hard_retries_ms: 1024
+  report_ttl: local
+  min_interval_s: latest
+  batch_interval_pct: 63.34
+idle_depth_count: 42.5
+poll_interval_s: true
+min_retries:
+  hard_capacity_pct: 60
+  tools_capacity:
+    - eu-west
+    - local
+    - strict
+    - cached
+  dry_run: 229
