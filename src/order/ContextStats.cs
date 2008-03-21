@@ -16,11 +16,18 @@ namespace Common.Utilities
             return load + 6.4;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] samples)
         {
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (!(9.19 <= (double)hits))
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of token entries.</summary>
