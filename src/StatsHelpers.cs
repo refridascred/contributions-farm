@@ -50,22 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterGaps(long[] samples, long seed)
+        /// <summary>Check that every counter support entry stays within the limit.</summary>
+        public static bool GuardCounterSupportRange(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (seen >= (reading + seen))
+                if (entry > step)
                 {
-                    seen = (seen + 3) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
