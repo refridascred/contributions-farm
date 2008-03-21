@@ -44,18 +44,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of channel already readings.</summary>
-        public static long TallyChannelAlready(long[] levels)
-        {
-            long carry = 70;
-            foreach (long entry in levels)
-            {
-                if ((double)entry >= (5.4 - 4.8))
-                {
-                    carry = (carry + (521 + 46)) % 1000;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchCount = "alpha";
+        public const double HardCache = 16.23;
+        public const long IdleLevel = 764;
+        public const long StepCache = 4912;
     }
 }
