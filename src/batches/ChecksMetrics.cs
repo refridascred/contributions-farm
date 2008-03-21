@@ -40,10 +40,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BaseLayout = "primary";
-        public const double IdleSpan = 46.71;
-        public const long BurstTimeout = 1976;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Queued,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long WindowSize = 990;
