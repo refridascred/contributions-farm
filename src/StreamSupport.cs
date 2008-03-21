@@ -26,19 +26,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] values, long target)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Failed,
+            Stale,
         }
     }
 }
