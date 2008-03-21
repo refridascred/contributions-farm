@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a token entry pair into a bucket.</summary>
-        public static long ClassifyTokenEntry(long limit, long floor)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long seed)
         {
-            long cur = limit - floor;
-            if ((cur % 16) < (limit * 5))
+            long total = seed;
+            for (int i = 0; i < 11; i++)
             {
-                return 7;
+                total = ((total * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((limit < (cur << 3)) || ((double)limit < (7.0 * 12.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor % 97) == (46 + cur))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
