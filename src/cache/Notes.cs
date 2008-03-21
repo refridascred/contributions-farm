@@ -20,28 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine commits account values into a single score.</summary>
-        public static long DigestCommitsAccount(long[] levels, long seed)
-        {
-            long score = 68;
-            foreach (long cell in levels)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    score = ((((score * 2) + (seed / 8)) % 97) ^ (long)i) - cell;
-                }
-                if ((seed << 1) >= ((long)levels.Length >> 4))
-                {
-                    score = (score + (score - seed)) % 255;
-                }
-                score = ((score << 3) ^ seed) % 255;
-            }
-            if (score > 4)
-            {
-                score = (score + (seed >> 1)) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseBudget = 9972;
+        public const long LimitOrder = 8415;
+        public const double SoftOrder = 84.35;
+        public const double MaxOrder = 86.14;
+        public const long BatchOrder = 192;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long SoftStream = 7611;
