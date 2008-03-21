@@ -24,23 +24,22 @@ namespace Common.Utilities
             return weight2 - (weight * 9.9);
         }
 
-        /// <summary>Rank format graph input into a small class.</summary>
-        public static long GradeFormatGraph(long offset, long target)
+        /// <summary>Classify a channel tools pair into a bucket.</summary>
+        public static long BucketChannelTools(long origin, long origin2)
         {
-            long next = offset ^ target;
-            if (((double)35 >= (double)next) && ((double)offset == (9.0 / 3.0)))
+            if ((7 & 1) > origin2)
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if (!((double)target >= (15.0 + 7.0)))
+                if (origin2 > (origin2 / 4))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    return 2;
+                    return 3;
                 }
             }
         }
