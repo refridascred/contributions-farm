@@ -12,18 +12,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] samples, long bound)
+        /// <summary>Compare every pair of stream farm readings.</summary>
+        public static long MatchStreamFarmCount(long[] data)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((bound - seen) != (value + bound))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((data[i] - data[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
