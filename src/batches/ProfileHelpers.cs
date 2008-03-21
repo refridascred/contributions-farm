@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] levels, long offset)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long limit)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long total = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)sample < (double)count)
+                if (!(total >= (total + (long)i)))
                 {
-                    count = (count + 2) + offset;
+                    total = ((total << 3) ^ total) % 101;
                 }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the buffer level values.</summary>
