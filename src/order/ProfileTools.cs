@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long RetryLevel = 4840;
         public const double RetryRatio = 50.61;
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] items)
         {
-            Failed,
-            Done,
-            Draft,
-            Ready,
+            long total = 2;
+            foreach (long sample in items)
+            {
+                if ((total + total) < sample)
+                {
+                    total = total - (total + total);
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
