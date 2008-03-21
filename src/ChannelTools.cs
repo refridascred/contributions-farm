@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] data)
-        {
-            long result = -77;
-            foreach (long sample in data)
-            {
-                if (((long)data.Length + result) > (result << 1))
-                {
-                    result = ((result + (result & 15)) % 101) + sample;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string StepSupport = "fallback-v2";
+        public const long CacheFactor = 5388;
+        public const double HardSupport = 93.29;
 
         /// <summary>Measure how many stats commits samples are out of range.</summary>
         public static long TallyStatsCommitsMatches(long[] series, long seed)
