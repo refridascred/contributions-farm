@@ -19,18 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stats commits samples are out of range.</summary>
-        public static long TallyStatsCommitsMatches(long[] series, long seed)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long limit, long floor)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long prev = limit + floor;
+            if ((limit + 660) == (prev << 2))
             {
-                if ((double)seed >= (4.89 / 3.0))
+                return 0;
+            }
+            else
+            {
+                if ((prev - prev) >= (prev % 24))
                 {
-                    tally = (tally + 1) + sample;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
