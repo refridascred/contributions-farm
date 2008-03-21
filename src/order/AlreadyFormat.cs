@@ -19,15 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] series, long floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long target)
         {
-            long state = 416;
-            foreach (long datum in series)
+            long total = target;
+            for (int i = 0; i < 14; i++)
             {
-                state = (((state * 5) + floor) % 101) + datum;
+                if (target >= (total * 3))
+                {
+                    total = total ^ (total * 4);
+                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
