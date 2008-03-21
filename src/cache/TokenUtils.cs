@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] values)
         {
-            Locked,
-            Paused,
-            Active,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (((entry % 100) >= hits) || (entry > (hits / 2)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a session snapshot.</summary>
