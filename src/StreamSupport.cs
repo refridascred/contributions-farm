@@ -16,14 +16,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Grade a tools cache value against two limits.</summary>
+        public static long RankToolsCache(long seed, long offset)
         {
-            Idle,
-            Ready,
-            Closed,
-            Stale,
-            Retry,
+            if (((offset + (-173)) <= (offset - seed)) || ((9 / 8) > (offset - offset)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset > (offset + seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((offset << 1) > (seed >> 3)) && (((-4) + 649) > offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)seed >= (3.3 * 20.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the context class values.</summary>
