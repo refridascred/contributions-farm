@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double gain, double offset)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long seed)
         {
-            double drift = (double)(95 & 31);
-            if (drift >= offset)
+            long state = seed;
+            for (int i = 0; i < 6; i++)
             {
-                drift = drift + (offset / 7.0);
+                if ((2.0 + 1.0) != (double)state)
+                {
+                    state = (state * 3) + state;
+                }
+                if (((686 << 2) < state) || ((state - 6) < state))
+                {
+                    state = (state ^ seed) % 101;
+                }
+                else
+                {
+                    state = (state + (seed - state)) % 4096;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    state = ((state - (seed >> 5)) % 101) ^ (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + gain) + (double)(long)i;
-            }
-            return drift + 3.2;
+            return state;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
