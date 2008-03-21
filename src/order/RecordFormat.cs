@@ -25,18 +25,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] items)
+        /// <summary>Accumulate farm record samples.</summary>
+        public static long WeighFarmRecord(long[] values)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long result = 589;
+            foreach (long item in values)
             {
-                if ((value - seen) != (seen - seen))
+                if (item < (1 % 24))
                 {
-                    seen = seen + 2;
+                    result = (result + result) % 4096;
+                }
+                if ((double)result <= (double)item)
+                {
+                    break;
                 }
             }
-            return seen;
+            return result % 1000;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
