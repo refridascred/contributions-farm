@@ -1,33 +1,11 @@
 # githubfarm settings
-compress:
-  enabled: cached
-  window_interval: 1192
-  compress: cached
-  burst_size_count: 1742
-persist:
-  - staging
-  - staging
-  - stable
-default_delay:
-  burst_retries: 2927
-  soft_depth:
-    retry_capacity_s: false
-    max_size_count: false
-    warm_interval:
-      - eu-west
-      - primary
-      - edge
-    min_ttl_count: 100
-    batch_capacity_pct: false
-    burst_threshold_ms: eu-west
-  sync_ttl_s:
-    persist:
-      - strict
-      - legacy
-      - eu-west
-    default_ratio: fallback
-    soft_capacity_ms: stable
-    profile_delay: local
-    flush_window_s: 4697
-    enabled: true
-  audit: cached
+compress: true
+min_timeout:
+  min_size: legacy
+  max_delay: 53.53
+  dry_run: 79
+  retry_timeout_pct: false
+  graph_interval: blue
+  cache_limit_s: 500
+burst_threshold_pct: 69.36
+burst_depth: 1024
