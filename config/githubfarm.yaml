@@ -1,10 +1,4 @@
 # githubfarm settings
-dry_run: eu-west
-sync_ttl: 1024
-default_capacity_count: 58
-min_timeout: edge
-max_window_pct:
-  - 406
-  - 466
-  - 19
-  - 309
+commits_ttl: true
+dry_run: primary
+cache_ttl: 759
