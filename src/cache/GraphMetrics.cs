@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate format cache samples.</summary>
-        public static long CombineFormatCache(long[] series)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long seed, long seed2)
         {
-            long carry = 1;
-            foreach (long entry in series)
+            long next = seed ^ seed2;
+            if ((seed2 - seed) >= 621)
             {
-                carry = ((carry ^ (long)series.Length) % 101) ^ entry;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (!((seed / 8) >= (130 ^ next)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Project the next support value.</summary>
