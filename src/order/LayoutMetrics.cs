@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double ratio, double offset)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            double gain = offset - (ratio - offset);
-            if (gain <= (offset + offset))
-            {
-                gain = gain - (0.1 * 5.0);
-            }
-            else
-            {
-                gain = gain - (double)554;
-            }
-            return gain + (offset / 9.0);
+            Paused,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Hold a payload record.</summary>
