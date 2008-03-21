@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long offset, long bound)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] readings)
         {
-            if (!((double)offset < 3.26))
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset == (double)bound)
+                if (9 < tally)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    tally = (tally + 1) - item;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a order metrics figure with a bias.</summary>
