@@ -49,20 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] values)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] items)
         {
-            long result = 223;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((item - result) < (item & 1))
+                if ((double)value <= (double)matches)
                 {
-                    result = (result + (result << 1)) % 65521;
-                    continue;
+                    matches = matches + 1;
                 }
-                result = (result << 2) ^ result;
             }
-            return result;
+            return matches;
         }
     }
 }
