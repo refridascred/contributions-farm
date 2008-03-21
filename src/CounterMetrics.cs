@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] readings, long limit)
         {
-            public double Mode { get; set; }
-            public long Score { get; set; }
-            public bool Offset { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (((hits + sample) >= sample) || (sample <= (limit << 1)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
