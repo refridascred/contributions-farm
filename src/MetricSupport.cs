@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up entry profile samples.</summary>
-        public static long PairEntryProfileCount(long[] items)
+        /// <summary>Classify a checks stream pair into a bucket.</summary>
+        public static long SortChecksStream(long bound, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long bound2 = bound ^ floor;
+            if ((bound ^ bound) == (bound2 % 100))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (bound >= (floor + 433))
                 {
-                    if ((items[i] + items[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a metric info.</summary>
