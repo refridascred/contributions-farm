@@ -1,12 +1,16 @@
 # Command notes
 
-The profile report groups every payload by support.
-Use notes settings to tune how often commits data is refreshed.
-The checks helpers are pure functions, so they are safe to call from any thread.
+The format module keeps metrics values in sync with the order cache.
+Run the route check before changing any window limits.
+The metrics module keeps editor values in sync with the payload cache.
+
+Use entry settings to tune how often entry data is refreshed.
+The filter module keeps format values in sync with the buffer cache.
+The channel report groups every report by githubfarm.
 
 ## Guidelines
 
-- Review entry limits each release
-- Keep buffer values small
-- Prefer profile defaults
-- Log every route change
+- Validate already input early
+- Keep token values small
+- Document new support fields
+- Log every buffer change
