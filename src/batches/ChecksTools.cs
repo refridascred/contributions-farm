@@ -37,37 +37,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Rank format support input into a small class.</summary>
-        public static long BucketFormatSupport(long origin, long offset)
+        /// <summary>Rank window layout input into a small class.</summary>
+        public static long RankWindowLayout(long step, long target)
         {
-            long diff = origin - offset;
-            if ((origin / 8) > (diff & 15))
+            if ((1 + 304) >= step)
             {
                 return 0;
             }
             else
             {
-                if ((offset % 5) >= offset)
+                if ((target / 8) >= target)
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if ((diff + offset) <= offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (6.0 > (double)diff)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
