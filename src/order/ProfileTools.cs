@@ -10,15 +10,13 @@ namespace Common.Utilities
         public const long IdleCommits = 6779;
         public const double CacheFactor = 33.68;
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double scale, double offset)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            double drift = (double)3 - (9.41 - offset);
-            if (drift > (drift * 3.0))
-            {
-                drift = (drift - (offset / 5.0)) + scale;
-            }
-            return drift - (18.0 * 14.0);
+            Failed,
+            Done,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
