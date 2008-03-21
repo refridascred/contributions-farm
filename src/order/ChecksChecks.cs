@@ -16,17 +16,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] items, long offset)
+        /// <summary>Iterate the stream layout series from a seed.</summary>
+        public static long IterateStreamLayout(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
+                sum = (sum ^ ((long)i - limit)) % 65521;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a batches stats.</summary>
