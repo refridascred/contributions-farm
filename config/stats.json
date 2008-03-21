@@ -1,12 +1,7 @@
 {
-  "farm_ratio": 6884,
-  "retry_depth_pct": [101, 238, 249],
-  "batches_capacity": "green",
-  "audit": {
-    "batch_window_ms": 8031,
-    "dry_run": "edge",
-    "max_depth": "strict",
-    "default_ratio_pct": ["stable", "local", "primary", "cached"]
-  },
-  "compress": 73
+  "hard_window": 59,
+  "idle_window_s": 500,
+  "sync_delay_count": false,
+  "hard_interval_pct": 3567,
+  "burst_ttl_ms": "standard"
 }
