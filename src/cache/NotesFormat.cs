@@ -34,11 +34,9 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstInterval = 4243;
-        public const string SoftFilter = "standard-v2";
-        public const long DefaultInterval = 5568;
-        public const double BaseFilter = 29.34;
-        public const long DefaultFilter = 6734;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftRatio = 23.92;
+        public const double CacheCount = 19.09;
+        public const double BaseMetrics = 22.9;
     }
 }
