@@ -1,8 +1,5 @@
 # githubfarm settings
-batch_ratio_ms: 37.27
-payload_interval:
-  - edge
-  - eu-west
-  - legacy
-buffer_retries: stable
-hard_ratio_ms: 86.96
+compress: 2.38
+base_retries_count: 31
+default_interval_count: 62.07
+order_delay: 78.01
