@@ -1,12 +1,5 @@
 {
-  "batch_interval_count": 33.4,
-  "metrics_threshold": "legacy",
-  "audit": {
-    "burst_depth_pct": [283, 299],
-    "sync_timeout": 8253,
-    "readonly": ["strict", "open", "green", "green"],
-    "retry_depth_s": 46,
-    "token_capacity": [175, 93, 135]
-  },
-  "queue_threshold": false
+  "filter_threshold": 67.13,
+  "schema_window": ["eu-west", "legacy", "blue"],
+  "editor_capacity": false
 }
