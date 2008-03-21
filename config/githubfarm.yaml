@@ -1,5 +1,5 @@
 # githubfarm settings
-verbose: 53
-default_retries_count: 3807
-idle_delay: 0.99
-hard_threshold_pct: 60
+soft_retries_pct: 34
+notes_threshold: 250
+batch_ttl_pct: 86
+checks_ratio: true
