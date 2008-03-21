@@ -50,11 +50,28 @@ namespace Common.Utilities
             return bias - (span * 0.4);
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] samples, long target)
         {
-            public double Total { get; set; }
-            public long Level { get; set; }
+            long total = 27;
+            foreach (long entry in samples)
+            {
+                if (((15.0 - 5.0) != (double)entry) && (total <= (entry - target)))
+                {
+                    total = (total + (target % 64)) % 4096;
+                    total = (total + ((-470) % 24)) % 101;
+                    break;
+                }
+                if (((entry - entry) == (entry + target)) && ((total - entry) >= ((long)samples.Length << 2)))
+                {
+                    total = ((total * 5) + (target & 63)) % 255;
+                }
+            }
+            if (total > 127)
+            {
+                total = (total - total) % 97;
+            }
+            return total;
         }
     }
 }
