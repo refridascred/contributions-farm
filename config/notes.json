@@ -1,5 +1,8 @@
 {
-  "dry_run": ["open", "strict", "latest"],
-  "compress": 33,
-  "retry_interval": [371, 368, 438]
+  "stream_retries": 8985,
+  "strict": "staging",
+  "dry_run": false,
+  "flush_window": false,
+  "commits_size": 32,
+  "warm_capacity_count": 192
 }
