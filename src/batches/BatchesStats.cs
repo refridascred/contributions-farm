@@ -13,12 +13,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstFactor = "alpha-v2";
-        public const long CacheRatio = 4290;
-        public const long MinTimeout = 325;
-        public const long HardRatio = 949;
-        public const long IdleSession = 9645;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] readings, long bound)
+        {
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsGaps(long[] levels)
