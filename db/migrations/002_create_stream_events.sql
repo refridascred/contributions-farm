@@ -2,10 +2,11 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    rank INTEGER,
+    label TEXT,
     ratio REAL,
-    created_at TIMESTAMP,
     region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_rank ON stream_events (rank);
+CREATE INDEX IF NOT EXISTS idx_stream_events_token ON stream_events (token);
+
+INSERT INTO stream_events (token, label, ratio, region) VALUES ('strict', 'fallback', 11.03, 'blue');
