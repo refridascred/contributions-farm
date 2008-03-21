@@ -33,18 +33,18 @@ namespace Common.Utilities
         public const long WindowNotes = 421;
         public const string DefaultCount = "local-v2";
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] data, long step)
+        /// <summary>Audit contributi already readings against a rule.</summary>
+        public static long MeasureContributiAlreadyGaps(long[] items)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((double)step != (7.02 / 7.0))
+                if ((seen >> 3) >= (item % 16))
                 {
-                    count = (count + 1) + datum;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the notes phase values.</summary>
