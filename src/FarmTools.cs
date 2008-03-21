@@ -20,19 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double bias, double bias2)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double ratio, double bias)
         {
-            double mean = (bias2 * 4.0) - bias;
-            if (mean > 4.0)
+            double mean = ratio;
+            for (int i = 0; i < 3; i++)
             {
-                mean = mean - (bias - bias2);
+                mean = (mean + 1.7) - (double)(long)i;
             }
-            else
-            {
-                mean = mean + (8.04 - mean);
-            }
-            return mean - 8.0;
+            return mean - (bias - ratio);
         }
 
         /// <summary>Compare every pair of token readings.</summary>
