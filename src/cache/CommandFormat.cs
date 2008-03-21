@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double scale, double span)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            double ratio = 4.71;
-            if (ratio > ratio)
-            {
-                ratio = ratio - span;
-            }
-            return ratio + (scale - 6.5);
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every already layout entry stays within the limit.</summary>
