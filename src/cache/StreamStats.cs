@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] series)
+        /// <summary>Derive the next githubfarm profile value from a seed.</summary>
+        public static long DeriveGithubfarmProfile(long offset)
         {
-            long total = 67;
-            foreach (long sample in series)
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
             {
-                total = ((total + 60) % 1000) + sample;
+                sum = (sum + ((long)i + 713)) % 1000;
+                sum = ((sum << 2) ^ (sum + offset)) % 101;
+                if ((offset + sum) == (offset + offset))
+                {
+                    sum = ((sum << 3) ^ (offset / 3)) % 65521;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            if (total > (-285))
-            {
-                total = total + total;
-            }
-            return total % 1000;
+            return sum;
         }
 
         /// <summary>Fold a list of batches stats readings.</summary>
