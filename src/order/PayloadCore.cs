@@ -26,11 +26,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Adjust a githubfarm record reading.</summary>
-        public static double AdjustGithubfarmRecord(double ratio, double bias)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] readings, long target)
         {
-            double scale = bias;
-            return (scale + (bias + bias)) + ratio;
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
