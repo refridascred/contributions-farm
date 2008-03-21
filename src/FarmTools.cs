@@ -28,18 +28,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit route queue readings against a rule.</summary>
-        public static long AuditRouteQueueGaps(long[] levels)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((1.0 - 14.0) >= (double)count)
+                if ((readings[i] >= seed) && ((readings[i] % 3) != 0))
                 {
-                    count = (count + 1) ^ reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
