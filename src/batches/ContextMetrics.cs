@@ -63,18 +63,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route cache readings against a rule.</summary>
-        public static long MeasureRouteCacheHits(long[] values)
+        /// <summary>Rank stream payload input into a small class.</summary>
+        public static long ClassifyStreamPayload(long offset, long limit)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long offset2 = offset - limit;
+            if ((limit + limit) > (limit - 614))
             {
-                if ((reading & 127) == (497 - reading))
+                return 5;
+            }
+            else
+            {
+                if (!((1.5 / 3.0) > (double)offset2))
                 {
-                    tally = tally + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine counter cluster values into a single score.</summary>
