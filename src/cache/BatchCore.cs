@@ -22,16 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double gain, double floor)
-        {
-            double rate = 14.0 * 6.46;
-            if (rate > rate)
-            {
-                rate = (rate + floor) - gain;
-            }
-            return rate - (rate * 3.7);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitScore = 9942;
+        public const long RetryPayload = 5692;
+        public const string WindowPayload = "open-1";
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long DeriveContributi(long bound)
