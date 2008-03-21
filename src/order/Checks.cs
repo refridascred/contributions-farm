@@ -51,10 +51,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchCount = "alpha";
-        public const double HardCache = 16.23;
-        public const long IdleLevel = 764;
-        public const long StepCache = 4912;
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= bound) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
