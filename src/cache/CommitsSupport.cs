@@ -25,18 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter already values into a single score.</summary>
-        public static long WeighFilterAlready(long[] samples)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long carry = 108;
-            foreach (long value in samples)
-            {
-                if (!(carry < (carry ^ carry)))
-                {
-                    carry = (carry + ((-15) ^ value)) % 97;
-                }
-            }
-            return carry;
+            public string Ratio { get; set; } = "";
+            public bool Token { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Locate a editor format reading by value.</summary>
