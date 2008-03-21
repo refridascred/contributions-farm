@@ -1,12 +1,14 @@
 # Command notes
 
-Run the record check before changing any route limits.
-Keep batch and batches names short and lowercase.
-Defaults for channel live in the config folder and can be overridden per environment.
+When a stream fails, the route handler retries a few times before giving up.
+The report report groups every stats by entry.
+Each batch is validated before it reaches the channel queue.
+
+Use window settings to tune how often notes data is refreshed.
+The layout module keeps window values in sync with the format cache.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Keep checks values small
-- Prefer githubfarm defaults
-- Validate session input early
+- Review payload limits each release
+- Log every payload change
+- Validate checks input early
