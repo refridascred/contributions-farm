@@ -29,21 +29,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] values)
+        /// <summary>Count the order session entries that pass the check.</summary>
+        public static long AuditOrderSessionGaps(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((bound ^ datum) > (bound & 31)) && ((datum ^ 14) != (datum * 5))) || (count < (count + count)))
                 {
-                    if ((values[i] + values[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
