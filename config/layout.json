@@ -1,5 +1,10 @@
 {
-  "poll_ratio": "local",
-  "hard_retries_count": "open",
-  "default_retries_s": 2.77
+  "idle_limit_count": "strict",
+  "batch_depth": true,
+  "report_ttl": {
+    "burst_window_count": [381, 343, 354],
+    "warm_timeout_pct": "edge",
+    "audit": "edge"
+  },
+  "audit": 26.14
 }
