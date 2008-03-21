@@ -1,8 +1,9 @@
 # support settings
-contributi_size: 37
-retry_depth_s:
-  dry_run: 2982
-  poll_delay: 63.32
-  soft_size_ms: false
-hard_timeout_count: stable
-flush_delay: 336
+profile_window:
+  - 199
+  - 188
+  - 42
+  - 227
+entry_window: standard
+burst_ratio: 40
+dry_run: false
