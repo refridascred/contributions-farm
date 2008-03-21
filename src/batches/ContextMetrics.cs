@@ -20,19 +20,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate contributi metrics readings against a bound.</summary>
-        public static bool ValidateContributiMetricsLimits(long[] data, long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long state = 63;
+            foreach (long datum in values)
             {
-                if (datum <= target)
+                state = ((state ^ (2 / 7)) ^ datum) - target;
+                state = state ^ 102;
+                if (!((double)state <= (4.11 * 9.3)))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            if (state < 9)
+            {
+                state = (state ^ state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Hold a account snapshot.</summary>
