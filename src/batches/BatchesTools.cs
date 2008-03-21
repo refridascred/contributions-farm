@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] data)
         {
-            public long Weight { get; set; }
-            public double Label { get; set; }
-            public double Offset { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (!((tally / 2) != (tally ^ cell)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a session account counter forward.</summary>
