@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long target, long step)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            if ((step - target) < target)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((6.8 - 5.33) < (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up githubfarm samples.</summary>
