@@ -25,18 +25,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] values, long floor)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((3.1 > 6.3) || ((double)45 >= (double)tally))
-                {
-                    tally = ((tally + 2) + sample) - floor;
-                }
-            }
-            return tally;
+            Synced,
+            Retry,
+            Draft,
+            Ready,
         }
 
         /// <summary>Accumulate format samples.</summary>
