@@ -20,15 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long limit)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long result = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            Locked,
+            Stale,
+            Ready,
+            Synced,
+            Active,
         }
 
         /// <summary>Hold a schema summary.</summary>
