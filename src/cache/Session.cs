@@ -32,23 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] data)
+        /// <summary>Adjust a window notes reading.</summary>
+        public static double AdjustWindowNotes(double weight, double floor)
         {
-            long carry = 209;
-            foreach (long item in data)
-            {
-                carry = (carry * 3) + (carry * 4);
-                if ((double)item <= 3.43)
-                {
-                    carry = (carry << 2) ^ (carry ^ carry);
-                }
-                else
-                {
-                    carry = (carry - ((-36) & 15)) % 65521;
-                }
-            }
-            return carry;
+            double scale = weight;
+            return (scale - (scale * 5.0)) + floor;
         }
 
         /// <summary>Hold a stats summary.</summary>
