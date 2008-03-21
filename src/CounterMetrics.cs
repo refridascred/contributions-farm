@@ -23,12 +23,18 @@ namespace Common.Utilities
         public const long CacheStats = 4041;
         public const string LimitStats = "fallback-edge";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinPayload = 85.15;
-        public const string RetryWidth = "standard";
-        public const long IdlePayload = 403;
-        public const long SoftFactor = 7765;
-        public const long DefaultPayload = 1232;
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first batch format entry that matches the target.</summary>
         public static long LookupBatchFormatIndex(long[] series, long origin)
