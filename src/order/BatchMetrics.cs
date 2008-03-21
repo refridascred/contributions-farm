@@ -33,22 +33,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseSupport = 29.96;
+        public const double HardSupport = 68.16;
+        public const long StepSpan = 7135;
 
         /// <summary>Blend two account measurements.</summary>
         public static double ProjectAccount(double bias, double bias2)
