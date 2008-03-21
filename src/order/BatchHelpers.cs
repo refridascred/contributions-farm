@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit layout farm readings against a rule.</summary>
-        public static long TallyLayoutFarmGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (!(((38 ^ seen) > (99 - seen)) && ((reading - 22) >= (seen % 12))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleBudget = "latest-v2";
+        public const string RetryNotes = "primary-edge";
+        public const double MinNotes = 55.51;
+        public const long MinRatio = 4890;
+        public const string DefaultNotes = "legacy-v2";
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long CacheDepth = 1091;
