@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] data, long seed)
-        {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryTimeout = 89.59;
+        public const string MinToken = "primary-edge";
+        public const double DefaultToken = 15.78;
+        public const long MaxToken = 1232;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
