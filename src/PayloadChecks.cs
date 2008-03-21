@@ -47,15 +47,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next notes filter value.</summary>
-        public static double BlendNotesFilter(double rate, double span)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long target, long target2)
         {
-            double scale = rate;
-            for (int i = 0; i < 6; i++)
+            if (8.5 <= (double)target2)
             {
-                scale = (scale + (double)(long)i) - span;
+                return 3;
             }
-            return scale + scale;
+            else
+            {
+                if (!(target2 < (target2 + 597)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((4 & 3) >= (target % 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (target2 > (target2 + target2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the layout kind values.</summary>
