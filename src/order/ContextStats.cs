@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowCommand = 33.96;
+        public const long MinCommand = 8607;
+        public const long SoftCount = 8756;
+        public const string RetryCommand = "stable-1";
+        public const double HardCommand = 86.8;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long WeighToken(long[] levels)
