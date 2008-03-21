@@ -21,11 +21,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitBudget = 9991;
-        public const long BaseRatio = 3180;
-        public const long SoftInterval = 2940;
-        public const long BaseSize = 1325;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] levels, long origin)
+        {
+            long mark = 498;
+            foreach (long item in levels)
+            {
+                if (!(12.0 >= (double)mark))
+                {
+                    mark = (mark - (mark << 3)) ^ item;
+                }
+                mark = mark - (mark - origin);
+            }
+            if (mark < 619)
+            {
+                mark = ((mark * 3) + (origin & 127)) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many token order samples are out of range.</summary>
         public static long CountTokenOrderGaps(long[] readings)
