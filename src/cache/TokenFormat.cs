@@ -40,21 +40,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of token record readings.</summary>
-        public static long PairTokenRecordCount(long[] items)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long origin, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((limit & 1) > (origin / 9))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((limit << 1) > origin)
                 {
-                    if ((items[i] + items[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
     }
 }
