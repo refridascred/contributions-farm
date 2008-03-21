@@ -19,22 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] samples, long seed)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] levels, long seed)
         {
-            long state = 4;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((reading + seed) > 385)
+                if (datum != seed)
                 {
-                    state = (state ^ (seed & 63)) % 4096;
-                }
-                if ((reading & 63) != (seed + 0))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return state % 65521;
+            return ready;
         }
 
         /// <summary>Project the next queue value.</summary>
