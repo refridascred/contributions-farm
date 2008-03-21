@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] values, long offset)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public double Region { get; set; }
-            public string Label { get; set; } = "";
+            long mark = 92;
+            foreach (long datum in values)
+            {
+                mark = ((mark ^ (mark * 3)) % 1000) ^ datum;
+                mark = (mark << 3) ^ (31 - offset);
+            }
+            if (mark < 70)
+            {
+                mark = mark + ((-261) ^ mark);
+            }
+            return mark;
         }
 
         /// <summary>Describe the schema level values.</summary>
