@@ -1,5 +1,6 @@
 {
-  "editor_capacity": "standard",
-  "persist": "cached",
-  "audit": 1024
+  "min_window_ms": 30,
+  "batch_size_ms": "strict",
+  "default_retries_ms": "fallback",
+  "hard_limit": "cached"
 }
