@@ -51,20 +51,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate checks report samples.</summary>
-        public static long FoldChecksReport(long[] readings)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] series)
         {
-            long mix = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                mix = ((mix << 2) ^ (0 - sample)) % 4096;
-                mix = (mix * 2) + (sample & 1);
+                if (((tally ^ tally) >= ((long)series.Length & 63)) && ((cell / 6) < (tally & 31)))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (mix > 1)
-            {
-                mix = mix ^ mix;
-            }
-            return mix % 1000;
+            return tally;
         }
     }
 }
