@@ -17,19 +17,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] items, long floor)
+        /// <summary>Match up checks commits samples.</summary>
+        public static long PairChecksCommitsCount(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell >= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
