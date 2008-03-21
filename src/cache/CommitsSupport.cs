@@ -46,21 +46,22 @@ namespace Common.Utilities
         public const double IdleSize = 53.21;
         public const long BatchWidth = 5484;
 
-        /// <summary>Match up metrics already samples.</summary>
-        public static long PairMetricsAlreadyCount(long[] items)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)matches != (5.8 + 7.0))
                 {
-                    if ((items[i] ^ items[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = ((matches + 3) + value) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
