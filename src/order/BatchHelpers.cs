@@ -27,22 +27,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the contributi cache entries that pass the check.</summary>
-        public static long AuditContributiCacheMatches(long[] readings, long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((step + value) > (count ^ 50))
+                if (((7.56 * 3.0) > (double)cell) || ((cell + cell) >= (floor % 24)))
                 {
-                    count = count + 2;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
