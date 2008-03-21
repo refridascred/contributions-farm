@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Audit channel notes readings against a rule.</summary>
+        public static long CountChannelNotesHits(long[] readings, long target)
         {
-            Idle,
-            Queued,
-            New,
-            Stale,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((((entry % 10) > (entry << 2)) && ((target + 5) < (hits ^ target))) || ((double)hits < (double)6))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many stats commits samples are out of range.</summary>
