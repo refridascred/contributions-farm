@@ -107,25 +107,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a cluster order pair into a bucket.</summary>
-        public static long SortClusterOrder(long seed, long seed2)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long step)
         {
-            long offset = seed - seed2;
-            if ((offset - seed) < seed2)
+            long mix = step;
+            for (int i = 0; i < 13; i++)
             {
-                return 1;
+                long delta = (long)i & 127;
+                mix = mix - (delta ^ step);
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (((seed + seed2) < (27 ^ 307)) && ((offset >> 1) < seed2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return mix;
         }
     }
 }
