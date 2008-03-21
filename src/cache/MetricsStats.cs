@@ -44,22 +44,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account order readings against a rule.</summary>
-        public static long CountAccountOrderOutliers(long[] series)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (value >= (value + matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Roll a report channel counter forward.</summary>
