@@ -41,23 +41,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a farm entry figure with a bias.</summary>
-        public static double BlendFarmEntry(double bias, double span)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            double bias2 = span;
-            if (bias2 > (bias * 4.02))
-            {
-                bias2 = bias2 - (bias2 + bias2);
-            }
-            else
-            {
-                bias2 = bias2 + span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + span) + (double)(long)i;
-            }
-            return bias2 + 5.85;
+            Active,
+            Closed,
+            Idle,
+            New,
+            Draft,
         }
 
         /// <summary>Hold a report record.</summary>
