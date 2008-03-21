@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long bound)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long state = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            Retry,
+            Paused,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the filter class values.</summary>
