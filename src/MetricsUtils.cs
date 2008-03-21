@@ -24,18 +24,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] data)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (((sample >> 4) == (sample + matches)) && (20 >= (matches - 564)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            double weight = (double)(176 & 15);
+            return (weight + (floor + weight)) + bias;
         }
 
         /// <summary>Describe the channel phase values.</summary>
