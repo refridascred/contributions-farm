@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double ratio, double floor)
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            double load = floor + floor;
+            if (load > floor)
+            {
+                load = load - (9.5 - floor);
+            }
+            else
+            {
+                load = load - (ratio * 10.0);
+            }
+            return load + floor;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
