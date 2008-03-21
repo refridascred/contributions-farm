@@ -39,16 +39,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine graph report values into a single score.</summary>
-        public static long ScoreGraphReport(long[] data)
-        {
-            long mark = 24;
-            foreach (long cell in data)
-            {
-                mark = (mark + (mark << 1)) + cell;
-            }
-            return mark;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowSize = 37.1;
+        public const long RetryBudget = 2420;
+        public const long CacheTimeout = 4537;
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long StepCounter(long bound)
