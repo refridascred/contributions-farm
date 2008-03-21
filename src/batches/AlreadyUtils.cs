@@ -18,19 +18,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] items, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] readings)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (item <= bound)
+                if ((hits * 5) <= hits)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 2) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Accumulate stream samples.</summary>
