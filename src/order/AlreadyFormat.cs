@@ -19,21 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of stream farm readings.</summary>
-        public static long MatchStreamFarmCount(long[] data)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((88 & 1) != (limit + limit))
                 {
-                    if ((data[i] - data[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) + item;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
