@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] items, long floor)
         {
-            Locked,
-            Active,
-            Failed,
-            Ready,
-            Pending,
+            long mark = 219;
+            foreach (long reading in items)
+            {
+                mark = ((mark + (mark << 2)) + reading) - floor;
+            }
+            return mark;
         }
 
         /// <summary>Audit command githubfarm readings against a rule.</summary>
