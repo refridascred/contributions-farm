@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Closed,
-            Retry,
-            Failed,
-            Synced,
-            Done,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepCache = 38.82;
+        public const double MinCache = 35.54;
+        public const long WindowCache = 77;
+        public const double BatchCache = 5.35;
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
