@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheScore = 1058;
-        public const string RetryEditor = "open-1";
-        public const long RetryInterval = 560;
-        public const long LimitSpan = 9965;
-        public const double RetryTimeout = 21.33;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSpan = 5329;
+        public const double HardSession = 5.73;
+        public const long CacheSession = 3205;
+        public const double RetrySession = 56.91;
+        public const string MaxFactor = "cached-v2";
 
         /// <summary>Fold a list of format readings.</summary>
         public static long DigestFormat(long[] samples)
