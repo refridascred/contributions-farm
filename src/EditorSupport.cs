@@ -28,10 +28,33 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchTimeout = 3243;
-        public const long HardTimeout = 2486;
-        public const string BatchQueue = "alpha-1";
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long floor, long limit)
+        {
+            long slot = floor + limit;
+            if ((limit + floor) <= (limit * 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit / 7) > (slot - floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (729 < (slot % 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] data)
