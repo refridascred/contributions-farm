@@ -35,18 +35,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] data, long offset)
+        /// <summary>Blend two window support measurements.</summary>
+        public static double ProjectWindowSupport(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long sample in data)
+            double mean = (double)((-187) % 64);
+            for (int i = 0; i < 7; i++)
             {
-                if ((20.0 >= (double)offset) && ((661 >> 5) != (count + 811)))
-                {
-                    count = (count + 1) + sample;
-                }
+                mean = ((mean - ratio) + (double)(long)i) - offset;
             }
-            return count;
+            return mean + (mean / 2.0);
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
