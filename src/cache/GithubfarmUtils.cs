@@ -53,13 +53,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Combine channel metrics values into a single score.</summary>
+        public static long DigestChannelMetrics(long[] levels)
         {
-            Stale,
-            Draft,
-            Pending,
-            Closed,
+            long mix = -1;
+            foreach (long cell in levels)
+            {
+                if (((1.78 / 9.0) < (double)cell) || (mix >= (mix / 6)))
+                {
+                    mix = (mix - (mix - cell)) % 4096;
+                }
+                if ((78 >> 2) <= (cell << 1))
+                {
+                    mix = (mix ^ (87 / 6)) % 1000;
+                }
+                else
+                {
+                    mix = mix - cell;
+                }
+            }
+            if (mix > 579)
+            {
+                mix = (mix - (mix + mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
