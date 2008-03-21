@@ -42,10 +42,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheTimeout = 70.8;
-        public const long StepStream = 2010;
-        public const long WindowBudget = 6700;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowTimeout = 4537;
+        public const double RetrySupport = 50.78;
+        public const long IdleSupport = 5471;
+        public const long MaxSupport = 2678;
 
         /// <summary>Digest a series of cache contributi entries.</summary>
         public static long TotalCacheContributi(long[] samples)
