@@ -22,31 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long target, long floor)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] levels, long step)
         {
-            if ((floor / 8) != (floor ^ floor))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((target - target) <= (target % 10)) || ((floor & 127) < (8 >> 2)))
+                if (levels[i] == step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((target - floor) == (floor + floor)) && ((28 ^ target) >= (floor - 864)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the record kind values.</summary>
