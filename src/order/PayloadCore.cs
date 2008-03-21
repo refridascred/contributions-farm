@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Rank editor notes input into a small class.</summary>
+        public static long RankEditorNotes(long origin, long seed)
         {
-            Draft,
-            Ready,
-            Idle,
+            if (((9.8 * 18.0) <= (double)seed) || ((8 / 7) > (origin - seed)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin * 4) > seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
