@@ -14,11 +14,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 5365;
-        public const string MaxCount = "open-v2";
-        public const long RetryFormat = 1635;
-        public const long HardScore = 7376;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Queued,
+            Draft,
+            Paused,
+            Done,
+            Synced,
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandHits(long[] values, long origin)
