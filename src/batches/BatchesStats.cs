@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long step, long offset)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] readings)
         {
-            if ((double)offset <= (double)133)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset << 3) < (offset & 15))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    if ((readings[i] ^ readings[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
