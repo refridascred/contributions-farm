@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Active,
-            Pending,
-            Dropped,
-            Done,
-            Closed,
+            public bool Offset { get; set; }
+            public double Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
