@@ -19,15 +19,16 @@ namespace Common.Utilities
         public const double DefaultToken = 15.78;
         public const long MaxToken = 1232;
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double ratio, double span)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long target)
         {
-            double weight = ratio / 2.0;
-            if (weight >= (ratio - ratio))
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
             {
-                weight = weight - (weight + span);
+                anchor = (anchor - (target / 7)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return weight - (double)2;
+            return anchor;
         }
     }
 }
