@@ -42,17 +42,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a tools order sample.</summary>
-        public static long SeekToolsOrderIndex(long[] levels, long origin)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 8;
+            foreach (long datum in readings)
             {
-                if (levels[i] == origin)
+                if (seed > datum)
                 {
-                    return (long)i;
+                    result = (result + ((-67) << 3)) % 255;
                 }
             }
-            return -1;
+            if (result < 93)
+            {
+                result = (result * 4) + ((long)readings.Length + seed);
+            }
+            return result;
         }
     }
 }
