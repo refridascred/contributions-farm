@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] levels, long origin)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] samples)
         {
-            long result = 820;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result - (cell + origin)) % 4096;
-                result = (result + (127 / 6)) % 65521;
-                if ((result & 255) < (26 & 127))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] ^ samples[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Match up record samples.</summary>
