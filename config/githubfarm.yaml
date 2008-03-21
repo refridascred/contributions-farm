@@ -1,5 +1,7 @@
 # githubfarm settings
-soft_retries_pct: 34
-notes_threshold: 250
-batch_ttl_pct: 86
-checks_ratio: true
+max_limit_count: primary
+batch_depth_pct: 2766
+idle_threshold_pct: 57
+entry_retries: 500
+profile_timeout: 6698
+readonly: 60
