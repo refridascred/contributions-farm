@@ -37,32 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long bound, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] data, long origin)
         {
-            long diff = bound ^ floor;
-            if (((17.0 - 18.0) == (double)diff) && (floor < (diff + 51)))
+            long count = 0;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound >= diff) && ((double)bound >= (2.0 * 2.1)))
+                if ((count % 12) != (count * 4))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((diff / 4) <= (diff + diff))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = ((count + 3) + reading) + origin;
                 }
             }
+            return count;
         }
     }
 }
