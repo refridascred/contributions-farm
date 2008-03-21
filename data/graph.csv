@@ -1,6 +1,8 @@
-id,rank,weight,ratio,active
-1,366,59.34,local,709
-2,12.15,strict,edge,primary
-3,green,blue,eu-west,21.72
-4,latest,legacy,green,primary
-5,local,666,235,green
+id,active,weight,level
+1,784,140,standard
+2,legacy,52.68,44.65
+3,855,standard,547
+4,34.92,111,60.24
+5,45.88,cached,81.23
+6,42.75,staging,351
+7,834,standard,347
