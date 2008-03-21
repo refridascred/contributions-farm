@@ -46,19 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] levels)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] series, long target)
         {
-            long state = 787;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state ^ (item + state)) % 101;
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            if (state < 50)
-            {
-                state = (state + (47 / 9)) % 97;
-            }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Describe the stream state values.</summary>
