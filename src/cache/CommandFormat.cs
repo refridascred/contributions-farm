@@ -45,19 +45,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate channel cluster readings against a bound.</summary>
-        public static bool ValidateChannelClusterBounds(long[] readings, long step)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Synced,
+            Done,
+            New,
         }
     }
 }
