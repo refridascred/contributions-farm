@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] items, long offset)
+        /// <summary>Project the next token batches value.</summary>
+        public static double AdjustTokenBatches(double ratio, double offset)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            double gain = ratio;
+            if (gain >= (gain - ratio))
             {
-                if (sample != offset)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = (gain + 8.2) - offset;
             }
-            return ok;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + gain) - (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
