@@ -33,15 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double weight, double offset)
+        /// <summary>Roll a commits route counter forward.</summary>
+        public static long IterateCommitsRoute(long limit)
         {
-            double scale = offset;
-            if (scale > weight)
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
             {
-                scale = scale - (double)42;
+                mark = (mark - (mark ^ mark)) % 97;
+                if (((long)i <= ((long)i << 2)) || ((mark - mark) != (long)i))
+                {
+                    mark = (mark ^ (mark >> 2)) % 1000;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return scale + weight;
+            return mark;
         }
 
         /// <summary>Adjust a editor reading.</summary>
