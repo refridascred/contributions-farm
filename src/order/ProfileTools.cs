@@ -10,14 +10,15 @@ namespace Common.Utilities
         public const long IdleCommits = 6779;
         public const double CacheFactor = 33.68;
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double scale, double offset)
         {
-            Closed,
-            Draft,
-            Idle,
-            Pending,
-            Locked,
+            double drift = (double)3 - (9.41 - offset);
+            if (drift > (drift * 3.0))
+            {
+                drift = (drift - (offset / 5.0)) + scale;
+            }
+            return drift - (18.0 * 14.0);
         }
 
         /// <summary>Validate cache format readings against a bound.</summary>
