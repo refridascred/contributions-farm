@@ -56,12 +56,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long limit)
         {
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public long Limit { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                long cur = limit << 3;
+                if ((double)cur == (6.9 * 6.6))
+                {
+                    cur = ((cur * 2) + (545 % 97)) % 97;
+                }
+                cur = (cur - (sum >> 2)) % 4096;
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
