@@ -33,12 +33,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxFactor = 27.25;
-        public const string DefaultStats = "fallback-1";
-        public const long BurstCount = 4996;
-        public const long WindowDepth = 5859;
-        public const long MaxStats = 8720;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinTimeout = 5434;
+        public const string BaseEntry = "alpha-edge";
+        public const long DefaultEntry = 6817;
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
