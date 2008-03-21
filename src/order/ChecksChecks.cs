@@ -14,11 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 5413;
-        public const long HardFactor = 6645;
-        public const long MaxQueue = 8573;
-        public const double StepBudget = 51.67;
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of cache entry readings.</summary>
         public static long PairCacheEntryCount(long[] items)
