@@ -32,19 +32,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] data, long floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long carry = 209;
+            foreach (long item in data)
             {
-                if (sample != floor)
+                carry = (carry * 3) + (carry * 4);
+                if ((double)item <= 3.43)
                 {
-                    ok = false;
-                    break;
+                    carry = (carry << 2) ^ (carry ^ carry);
+                }
+                else
+                {
+                    carry = (carry - ((-36) & 15)) % 65521;
                 }
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Hold a stats summary.</summary>
