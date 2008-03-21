@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsOutliers(long[] values)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double gain = offset - (ratio - offset);
+            if (gain <= (offset + offset))
             {
-                if (matches > (matches / 2))
-                {
-                    matches = (matches + 2) + sample;
-                }
+                gain = gain - (0.1 * 5.0);
             }
-            return matches;
+            else
+            {
+                gain = gain - (double)554;
+            }
+            return gain + (offset / 9.0);
         }
 
         /// <summary>Combine support values into a single score.</summary>
