@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] series, long target)
         {
-            public bool Owner { get; set; }
-            public double Region { get; set; }
-            public string Mode { get; set; } = "";
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Project the next batch value.</summary>
