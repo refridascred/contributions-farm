@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank metrics commits input into a small class.</summary>
-        public static long RankMetricsCommits(long bound, long target)
-        {
-            long edge = bound + target;
-            if ((double)6 < (double)bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((6.7 / 7.0) != (double)edge)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 1078;
+        public const string BaseReport = "latest-v2";
+        public const string RetrySize = "strict-1";
+        public const long MaxSize = 1806;
+        public const double BatchDepth = 92.47;
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
