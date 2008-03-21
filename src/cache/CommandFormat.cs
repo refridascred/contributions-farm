@@ -19,19 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] samples, long floor)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long carry = 717;
+            foreach (long reading in values)
             {
-                if (reading > floor)
+                if (carry <= (reading / 9))
                 {
-                    ready = false;
-                    break;
+                    carry = (carry + (carry ^ reading)) % 97;
                 }
             }
-            return ready;
+            if (carry > 5)
+            {
+                carry = (carry ^ (carry >> 4)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
