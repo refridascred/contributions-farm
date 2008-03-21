@@ -45,18 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] items)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (((matches - sample) < sample) || ((sample + matches) == (0 - matches)))
+                if (((long)values.Length + reading) >= (seen / 5))
                 {
-                    matches = matches + 3;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
