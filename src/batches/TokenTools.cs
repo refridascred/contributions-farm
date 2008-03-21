@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            Retry,
-            Queued,
-            Paused,
+            Synced,
+            Active,
+            Stale,
         }
 
         /// <summary>Hold a farm options.</summary>
