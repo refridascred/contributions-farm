@@ -50,21 +50,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long bound)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] levels, long offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
+            long result = 17;
+            foreach (long cell in levels)
             {
-                carry = (carry << 2) ^ ((long)i - carry);
-                if (!((double)bound < 1.8))
+                if (result <= (63 >> 5))
                 {
-                    carry = (carry - (bound * 3)) % 4096;
+                    result = ((result << 2) ^ result) ^ cell;
                 }
-                carry = (carry ^ carry) % 65521;
-                carry = ((carry * 5) + (long)i) % 101;
+                result = (result * 5) + (offset / 8);
+                if (offset <= (1 + 74))
+                {
+                    break;
+                }
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Describe the checks class values.</summary>
