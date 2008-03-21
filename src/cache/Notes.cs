@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two githubfarm context measurements.</summary>
-        public static double SmoothGithubfarmContext(double rate, double offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] values, long target)
         {
-            double bias = (double)0 / 2.0;
-            if (bias <= offset)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                bias = bias + (double)201;
+                if (datum > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + (rate + offset);
-            }
-            return bias - (offset - rate);
+            return valid;
         }
 
         /// <summary>Validate command payload readings against a bound.</summary>
