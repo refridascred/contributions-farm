@@ -44,22 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] readings, long seed)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long result = 8;
-            foreach (long datum in readings)
-            {
-                if (seed > datum)
-                {
-                    result = (result + ((-67) << 3)) % 255;
-                }
-            }
-            if (result < 93)
-            {
-                result = (result * 4) + ((long)readings.Length + seed);
-            }
-            return result;
+            public string Mode { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
