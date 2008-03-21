@@ -22,10 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 8759;
-        public const double RetryDepth = 41.02;
-        public const long WindowRatio = 3590;
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double AdjustContributi(double bias, double offset)
