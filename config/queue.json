@@ -1,6 +1,6 @@
 {
-  "retry_interval_s": 14.77,
-  "soft_depth_s": 67.76,
-  "audit": true,
-  "default_window_ms": 7440
+  "notes_capacity": 88.07,
+  "batch_depth_count": "primary",
+  "sync_ttl": 250,
+  "hard_interval": ["edge", "stable"]
 }
