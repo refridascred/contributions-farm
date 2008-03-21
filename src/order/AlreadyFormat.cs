@@ -14,15 +14,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Locked,
-            Ready,
-            Stale,
-            Paused,
-            New,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardSchema = "standard";
+        public const long DefaultSchema = 3742;
+        public const long DefaultFactor = 1354;
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
