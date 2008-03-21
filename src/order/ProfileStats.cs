@@ -24,19 +24,21 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Validate queue githubfarm readings against a bound.</summary>
-        public static bool ValidateQueueGithubfarmBounds(long[] data, long bound)
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] ^ items[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
