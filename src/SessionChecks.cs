@@ -51,23 +51,25 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Project the next window metric value.</summary>
-        public static double SmoothWindowMetric(double rate, double offset)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long floor, long origin)
         {
-            double rate2 = rate;
-            if (rate2 >= offset)
+            long diff = floor - origin;
+            if ((diff - floor) != (820 ^ floor))
             {
-                rate2 = rate2 + rate2;
+                return 0;
             }
             else
             {
-                rate2 = rate2 + (3.88 + 8.8);
+                if (origin >= (diff >> 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = rate2 - (double)(long)i;
-            }
-            return rate2 + offset;
         }
     }
 }
