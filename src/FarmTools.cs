@@ -20,26 +20,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] values, long bound)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] items, long seed)
         {
-            long carry = 9;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((carry / 6) <= (bound + bound))
+                if ((items[i] >= seed) && ((items[i] % 3) != 0))
                 {
-                    carry = ((carry * 2) + (cell + bound)) % 65521;
-                }
-                if (((9 + bound) > (carry << 1)) && ((6.17 / 6.0) >= (double)cell))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry < 404)
-            {
-                carry = (carry - (bound >> 2)) % 1000;
-            }
-            return carry % 4096;
+            return -1;
         }
     }
 }
