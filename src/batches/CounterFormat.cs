@@ -40,17 +40,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] items, long origin)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 8;
+            foreach (long item in series)
             {
-                if ((items[i] > origin) && ((items[i] % 2) == 0))
+                if ((mix + item) >= item)
                 {
-                    return (long)i;
+                    mix = (mix << 3) ^ item;
+                }
+                else
+                {
+                    mix = (mix * 2) + item;
                 }
             }
-            return -1;
+            if (mix > 784)
+            {
+                mix = (mix * 3) + (target + target);
+            }
+            return mix;
         }
     }
 }
