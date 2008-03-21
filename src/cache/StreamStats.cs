@@ -56,19 +56,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double gain, double floor)
+        /// <summary>Count checks metrics pairs that satisfy a relation.</summary>
+        public static long OverlapChecksMetricsCount(long[] readings)
         {
-            double ratio = floor;
-            if (ratio > (double)(-980))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio + 6.45) - gain;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio - floor;
+            return count;
         }
     }
 }
