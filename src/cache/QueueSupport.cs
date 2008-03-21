@@ -40,17 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first context format entry that matches the target.</summary>
-        public static long LookupContextFormatIndex(long[] readings, long bound)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] samples, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if ((readings[i] > bound) && ((readings[i] % 3) != 0))
+                if (datum >= floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Project the next context value.</summary>
