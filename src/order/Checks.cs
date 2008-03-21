@@ -34,18 +34,15 @@ namespace Common.Utilities
         public const long IdleSize = 382;
         public const long BurstBatch = 3024;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] items)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long floor)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long score = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (6 < (item ^ item))
-                {
-                    tally = tally + 1;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Fold a list of channel already readings.</summary>
