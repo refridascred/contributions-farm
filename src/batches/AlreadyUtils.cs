@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const long BurstAlready = 1421;
         public const long CacheAlready = 5965;
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] items)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Done,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
