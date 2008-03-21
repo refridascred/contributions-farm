@@ -15,12 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] data, long target)
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public double Rank { get; set; }
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate counter layout readings against a bound.</summary>
