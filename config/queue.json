@@ -1,8 +1,13 @@
 {
-  "filter_threshold": "latest",
-  "idle_timeout_ms": 500,
-  "base_delay_ms": [196, 478, 19],
-  "poll_window_count": "blue",
-  "burst_timeout_ms": [7, 283, 446],
-  "session_depth": "local"
+  "enabled": 48.67,
+  "batch_ttl_s": {
+    "retry_retries_count": 9528,
+    "readonly": 95.93,
+    "default_depth_count": ["edge", "blue", "cached", "staging"]
+  },
+  "compress": {
+    "batch_depth_ms": "strict",
+    "default_size_pct": false,
+    "retry_retries": true
+  }
 }
