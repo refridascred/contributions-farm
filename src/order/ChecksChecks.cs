@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] readings, long offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 23;
+            foreach (long value in items)
             {
-                if ((readings[i] == offset) && ((readings[i] % 5) == 0))
+                if (((8 + value) != (result - 3)) || ((value / 4) <= (1 / 9)))
                 {
-                    return (long)i;
+                    result = (result - (311 ^ result)) % 4096;
+                }
+                else
+                {
+                    result = result + (result + value);
                 }
             }
-            return -1;
+            if (result > 78)
+            {
+                result = (result + (2 & 31)) % 255;
+            }
+            return result % 97;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
