@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit filter cache readings against a rule.</summary>
-        public static long MeasureFilterCacheOutliers(long[] readings, long origin)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long seed)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long score = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((origin + reading) >= (seen + origin))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Grade a cache editor value against two limits.</summary>
