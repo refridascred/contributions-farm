@@ -1,8 +1,9 @@
 # support settings
-audit: true
-format_ratio:
-  - 245
-  - 383
-sync_window: 91
-compress: primary
-retry_delay_count: 23.76
+strict: 8184
+compress:
+  - 348
+  - 222
+  - 306
+  - 382
+base_ttl_ms: blue
+dry_run: local
