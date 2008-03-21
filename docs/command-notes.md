@@ -1,15 +1,15 @@
 # Command notes
 
-Each farm is validated before it reaches the contributi queue.
-A farm that stays idle for too long is moved to the queue list.
+The batches report groups every metrics by cache.
+A channel that stays idle for too long is moved to the command list.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
-The order report groups every githubfarm by payload.
-The format module keeps payload values in sync with the farm cache.
-Each graph is validated before it reaches the context queue.
+The entry report groups every farm by account.
+A account that stays idle for too long is moved to the checks list.
 
 ## Guidelines
 
-- Log every stats change
-- Prefer context defaults
-- Document new session fields
-- Review metrics limits each release
+- Validate command input early
+- Log every githubfarm change
+- Document new already fields
+- Prefer buffer defaults
