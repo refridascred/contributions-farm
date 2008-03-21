@@ -1,6 +1,6 @@
 {
-  "poll_threshold_ms": true,
-  "base_capacity_pct": 6133,
-  "poll_size_count": 60,
-  "batch_window": 8459
+  "session_delay": "open",
+  "audit": ["green", "staging", "open", "fallback"],
+  "warm_ttl_ms": 3631,
+  "tools_depth": [319, 27]
 }
