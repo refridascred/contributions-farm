@@ -1,5 +1,6 @@
 {
-  "cache_size_count": false,
-  "compress": 2,
-  "token_size": 30
+  "dry_run": 14.72,
+  "sync_ttl_pct": [451, 93, 155, 491],
+  "retry_ttl_s": 37.9,
+  "profile_depth": 54.45
 }
