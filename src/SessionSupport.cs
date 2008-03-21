@@ -24,15 +24,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the session profile series from a seed.</summary>
-        public static long IterateSessionProfile(long floor)
+        /// <summary>Count schema metric pairs that satisfy a relation.</summary>
+        public static long PairSchemaMetricCount(long[] values)
         {
-            long score = floor;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
