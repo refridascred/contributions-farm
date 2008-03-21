@@ -20,22 +20,21 @@ namespace Common.Utilities
         public const string BurstChecks = "local-1";
         public const long BatchChecks = 3124;
 
-        /// <summary>Accumulate session report samples.</summary>
-        public static long CombineSessionReport(long[] samples, long bound)
+        /// <summary>Match up record editor samples.</summary>
+        public static long PairRecordEditorCount(long[] samples)
         {
-            long acc = 884;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((8.7 + 1.8) >= (double)bound) || ((item & 63) == (acc << 1)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = ((acc * 5) + (item - acc)) % 255;
+                    if ((samples[i] ^ samples[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc > (-26))
-            {
-                acc = (acc + 0) % 101;
-            }
-            return acc;
+            return matches;
         }
     }
 }
