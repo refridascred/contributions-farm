@@ -50,11 +50,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 7129;
-        public const double StepInterval = 36.59;
-        public const string BurstWidth = "strict-v2";
-        public const long BatchSpan = 8018;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = (sum ^ (sum - sum)) % 1000;
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long GradeAlready(long step, long origin)
