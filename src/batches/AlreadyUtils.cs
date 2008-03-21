@@ -21,19 +21,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] readings)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] items, long seed)
         {
-            long mix = 6;
-            foreach (long reading in readings)
+            long score = 86;
+            foreach (long value in items)
             {
-                mix = mix - (reading & 255);
+                score = ((((score * 2) + (855 % 2)) % 65521) + value) + seed;
             }
-            if (mix < 5)
-            {
-                mix = (mix ^ mix) % 65521;
-            }
-            return mix % 65521;
+            return score;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
