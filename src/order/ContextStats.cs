@@ -38,15 +38,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] samples, long target)
+        /// <summary>Blend two schema channel measurements.</summary>
+        public static double AdjustSchemaChannel(double rate, double offset)
         {
-            long total = -11;
-            foreach (long entry in samples)
+            double mean = 18.0 - offset;
+            if (mean < (offset + offset))
             {
-                total = (total ^ (entry - 44)) + target;
+                mean = (mean + offset) + rate;
             }
-            return total;
+            else
+            {
+                mean = mean - 9.1;
+            }
+            return mean + 6.5;
         }
 
         /// <summary>Match up support samples.</summary>
