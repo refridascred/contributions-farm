@@ -28,11 +28,20 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftWidth = 70.07;
-        public const long MinSupport = 8600;
-        public const long BurstRatio = 29;
-        public const long RetrySupport = 6849;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] samples, long offset)
+        {
+            long sum = -8;
+            foreach (long item in samples)
+            {
+                sum = ((sum + (sum + sum)) % 65521) + offset;
+                if (((double)sum <= (7.7 / 5.0)) && ((item % 8) != (sum * 2)))
+                {
+                    sum = (sum << 3) ^ (16 & 127);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
