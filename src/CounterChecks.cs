@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of support editor entries.</summary>
-        public static long DigestSupportEditor(long[] values)
-        {
-            long result = 6;
-            foreach (long cell in values)
-            {
-                result = ((result ^ (-1)) % 97) + cell;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheRatio = 280;
+        public const string IdleSpan = "staging-v2";
+        public const long WindowLevel = 9400;
 
         /// <summary>Adjust a contributi stream reading.</summary>
         public static double ProjectContributiStream(double weight, double bias)
