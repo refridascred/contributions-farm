@@ -1,16 +1,12 @@
 {
-  "soft_capacity_count": "eu-west",
-  "schema_limit": 100,
-  "format_ttl": 60,
-  "dry_run": {
-    "batch_retries": false,
-    "hard_ttl": ["primary", "staging", "edge"],
-    "readonly": {
-      "hard_interval_pct": [303, 211, 420, 284],
-      "poll_ttl_s": "cached",
-      "filter_interval": "edge"
-    },
-    "contributi_retries": "local"
+  "sync_window_count": true,
+  "dry_run": 89.16,
+  "retry_timeout": {
+    "max_timeout_s": true,
+    "enabled": false,
+    "hard_ratio": "latest"
   },
-  "cache_size": true
+  "readonly": 100,
+  "soft_window": 71.33,
+  "warm_capacity": true
 }
