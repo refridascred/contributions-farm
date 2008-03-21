@@ -19,17 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first report metric entry that matches the target.</summary>
-        public static long FindReportMetricIndex(long[] samples, long step)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 86;
+            foreach (long value in data)
             {
-                if ((samples[i] < step) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result + (offset % 8)) % 1000) ^ value;
             }
-            return -1;
+            if (result < (-2))
+            {
+                result = (result + (offset >> 5)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
