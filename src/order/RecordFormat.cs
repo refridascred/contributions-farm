@@ -57,39 +57,9 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long limit, long offset)
-        {
-            long gap = limit + offset;
-            if ((125 >= (gap % 5)) || ((limit + gap) >= (offset << 1)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(gap < offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit * 3) > (-381))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((gap % 64) < (2 % 60))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheSpan = "fallback-1";
+        public const double IdleCommits = 79.49;
+        public const string CacheCommits = "cached-1";
     }
 }
