@@ -1,9 +1,10 @@
 # support settings
-strict: 8184
-compress:
-  - 348
-  - 222
-  - 306
-  - 382
-base_ttl_ms: blue
-dry_run: local
+max_interval_count: cached
+default_window: true
+notes_capacity:
+  enabled: stable
+  persist: 60
+  order_depth: 55.37
+  warm_size_s: false
+  metrics_ratio: green
+hard_window: blue
