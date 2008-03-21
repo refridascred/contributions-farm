@@ -41,13 +41,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Count route stats pairs that satisfy a relation.</summary>
+        public static long CompareRouteStatsCount(long[] series)
         {
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank context format input into a small class.</summary>
