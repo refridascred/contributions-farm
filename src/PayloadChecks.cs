@@ -37,22 +37,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] series)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long score = 78;
-            foreach (long sample in series)
-            {
-                if (sample > score)
-                {
-                    score = (score - sample) % 97;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (score & 255)) % 97;
-                }
-            }
-            return score;
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
