@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 7876;
-        public const long HardSpan = 893;
-        public const string MaxCommand = "fallback-1";
-        public const long MaxRatio = 7061;
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            Pending,
+            Done,
+            Synced,
+        }
 
         /// <summary>Hold a payload record.</summary>
         public sealed class PayloadRecord
