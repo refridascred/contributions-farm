@@ -84,18 +84,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] data)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (((item + (-313)) > item) || ((2.0 * 5.75) <= (double)item))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Queued,
+            Failed,
+            Synced,
+            Stale,
         }
     }
 }
