@@ -32,17 +32,19 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] readings, long target)
+        /// <summary>Validate schema farm readings against a bound.</summary>
+        public static bool ValidateSchemaFarmRange(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if ((readings[i] < target) && ((readings[i] % 3) != 0))
+                if (reading > floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the session level values.</summary>
