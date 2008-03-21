@@ -94,21 +94,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] levels)
+        /// <summary>Accumulate graph githubfarm samples.</summary>
+        public static long CombineGraphGithubfarm(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -627;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((mark / 2) > (mark << 2)) || ((mark + mark) > 54))
                 {
-                    if ((levels[i] + levels[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark + (4 >> 4)) ^ reading;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Classify a cluster order pair into a bucket.</summary>
