@@ -49,12 +49,32 @@ namespace Common.Utilities
         public const long StepSpan = 1994;
         public const string WindowScore = "legacy-v2";
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long target, long seed)
         {
-            public bool Size { get; set; }
-            public bool Level { get; set; }
-            public long Score { get; set; }
+            long gap = target ^ seed;
+            if ((double)gap != (4.63 / 7.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((2.7 - 19.0) >= (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((gap ^ seed) >= (target ^ seed)) && ((gap % 3) >= (seed << 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
