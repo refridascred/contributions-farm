@@ -16,21 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count entry farm pairs that satisfy a relation.</summary>
-        public static long OverlapEntryFarmCount(long[] data)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            New,
+            Active,
+            Locked,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
