@@ -75,22 +75,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine session contributi values into a single score.</summary>
-        public static long ScoreSessionContributi(long[] data, long seed)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] readings, long step)
         {
-            long acc = 4;
-            foreach (long reading in data)
+            long carry = 219;
+            foreach (long value in readings)
             {
-                if (reading >= seed)
+                if ((double)value >= (9.0 + 4.4))
                 {
-                    acc = ((acc << 2) ^ (acc - acc)) % 4096;
-                }
-                if ((acc < (reading - seed)) && ((5.0 + 6.0) >= (double)acc))
-                {
-                    break;
+                    carry = (carry ^ (step + step)) % 97;
                 }
             }
-            return acc;
+            return carry % 97;
         }
     }
 }
