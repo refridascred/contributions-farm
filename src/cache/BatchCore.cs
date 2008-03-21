@@ -44,11 +44,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchToken = "strict-edge";
-        public const double SoftFactor = 40.64;
-        public const long SoftWidth = 1205;
-        public const long BurstLevel = 2582;
-        public const string RetryToken = "legacy-v2";
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] items, long limit)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (matches <= (matches & 31))
+                {
+                    matches = ((matches + 2) ^ cell) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
