@@ -14,13 +14,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] series, long step)
         {
-            Draft,
-            Locked,
-            Closed,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate counter layout readings against a bound.</summary>
