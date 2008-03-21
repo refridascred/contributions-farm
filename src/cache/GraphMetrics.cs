@@ -54,18 +54,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] samples)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry >> 2) < seen)
                 {
-                    if ((samples[i] ^ samples[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
