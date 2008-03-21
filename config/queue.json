@@ -1,8 +1,21 @@
 {
-  "persist": "edge",
-  "dry_run": "legacy",
-  "contributi_delay": 9902,
-  "compress": "primary",
-  "batch_delay": 500,
-  "order_interval": 100
+  "batch_ratio_ms": true,
+  "persist": 8772,
+  "schema_ratio": 13.08,
+  "min_timeout_s": {
+    "retry_retries_count": {
+      "flush_depth_ms": 936,
+      "idle_capacity": true,
+      "readonly": 94.83,
+      "support_size": 1024
+    },
+    "max_interval_ms": {
+      "cache_threshold_count": 3015,
+      "command_ratio": 2892,
+      "audit": ["staging", "eu-west", "eu-west", "staging"]
+    },
+    "flush_delay": "edge",
+    "batch_capacity": 1024,
+    "compress": true
+  }
 }
