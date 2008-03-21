@@ -21,12 +21,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] data, long floor)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] values, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((data[i] >= floor) && ((data[i] % 2) != 0))
+                if (values[i] <= step)
                 {
                     return (long)i;
                 }
