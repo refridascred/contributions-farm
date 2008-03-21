@@ -66,17 +66,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string StepContext = "stable-v2";
+        public const long MinInterval = 6375;
+        public const long IdleContext = 7491;
     }
 }
