@@ -35,21 +35,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] data)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
     }
 }
