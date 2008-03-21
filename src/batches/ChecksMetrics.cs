@@ -47,19 +47,18 @@ namespace Common.Utilities
         public const double IdleSpan = 46.71;
         public const long BurstTimeout = 1976;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] series, long target)
+        /// <summary>Measure how many batches account samples are out of range.</summary>
+        public static long AuditBatchesAccountMatches(long[] readings)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (sample <= target)
+                if ((4.8 / 5.0) < (double)entry)
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
