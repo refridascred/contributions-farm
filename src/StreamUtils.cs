@@ -14,12 +14,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSpan = 2182;
-        public const long BaseSupport = 9363;
-        public const string CacheCount = "staging-v2";
-        public const string LimitBudget = "latest-edge";
-        public const long WindowFactor = 9621;
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long AuditReportOutliers(long[] data)
