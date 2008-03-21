@@ -16,31 +16,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long origin, long step)
+        /// <summary>Adjust a contributi stream reading.</summary>
+        public static double ProjectContributiStream(double weight, double bias)
         {
-            if ((step > (step % 8)) || ((double)step <= 6.8))
+            double gain = (double)3 * 2.0;
+            if (gain <= (double)10)
             {
-                return 3;
+                gain = gain + weight;
             }
             else
             {
-                if ((origin - origin) >= (step >> 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((17.0 + 6.1) <= (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                gain = gain - (bias - 7.5);
             }
+            return gain - (double)97;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
