@@ -53,18 +53,31 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many contributi filter samples are out of range.</summary>
-        public static long TallyContributiFilterOutliers(long[] series)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long limit, long limit2)
         {
-            long count = 0;
-            foreach (long reading in series)
+            if ((limit >> 2) > limit)
             {
-                if ((count > reading) && (reading > (reading & 3)))
+                return 7;
+            }
+            else
+            {
+                if (limit2 >= (limit2 + limit2))
                 {
-                    count = count + 2;
+                    return 2;
+                }
+                else
+                {
+                    if (limit >= (limit + 628))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the queue phase values.</summary>
