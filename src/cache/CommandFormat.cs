@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] items, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] items, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (items[i] >= seed)
+                if ((9.9 / 5.0) < (double)tally)
                 {
-                    return (long)i;
+                    tally = ((tally + 1) + reading) - seed;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
