@@ -13,17 +13,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] samples, long origin)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsLimits(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (samples[i] <= origin)
+                if (entry <= floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a window summary.</summary>
