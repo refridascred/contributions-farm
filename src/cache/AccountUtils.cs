@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] values)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((count / 4) <= item)
                 {
-                    if ((values[i] - values[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many session graph samples are out of range.</summary>
