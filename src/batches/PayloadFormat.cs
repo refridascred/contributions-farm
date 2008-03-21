@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long seed)
         {
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
-            public double Rank { get; set; }
+            long total = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
