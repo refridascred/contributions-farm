@@ -1,12 +1,5 @@
 # support settings
-poll_retries: 26.8
-metrics_interval: 2915
-cache_timeout:
-  cache_ttl_count: green
-  warm_ratio: 1024
-  order_timeout: open
-  dry_run:
-    - eu-west
-    - edge
-    - standard
-    - stable
+readonly: 77.79
+default_capacity_count: 31
+cluster_ratio: false
+cache_size_pct: 17
