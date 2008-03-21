@@ -20,19 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next report checks value from a seed.</summary>
-        public static long SeriesReportChecks(long bound)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long score = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    score = ((score ^ (score - bound)) % 255) + (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            Dropped,
+            Paused,
+            Synced,
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
