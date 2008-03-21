@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] items, long seed)
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((5.3 - 3.0) < (double)datum)
+                {
+                    count = (count + 1) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a report reading.</summary>
