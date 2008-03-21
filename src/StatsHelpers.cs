@@ -32,12 +32,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public double Owner { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchTimeout = 7474;
+        public const long StepProfile = 6274;
+        public const long CacheProfile = 4903;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long StepCache = 8757;
