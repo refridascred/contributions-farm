@@ -1,5 +1,7 @@
 {
-  "poll_ratio_pct": ["blue", "blue", "cached"],
-  "compress": 1024,
-  "verbose": 21.25
+  "default_ttl_ms": 9576,
+  "idle_timeout_s": [416, 281, 121],
+  "cache_limit_ms": "strict",
+  "metric_capacity": ["staging", "green", "staging", "green"],
+  "flush_retries": "stable"
 }
