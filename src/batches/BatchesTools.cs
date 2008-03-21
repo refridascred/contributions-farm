@@ -23,16 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a session account counter forward.</summary>
-        public static long SeriesSessionAccount(long step)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] readings, long origin)
         {
-            long result = step;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                result = (result - ((long)i & 63)) % 255;
-                result = ((result * 3) + (long)i) % 1000;
+                if (4.0 >= (double)sample)
+                {
+                    hits = (hits + 3) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the graph phase values.</summary>
