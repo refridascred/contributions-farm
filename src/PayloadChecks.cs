@@ -71,18 +71,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] readings, long floor)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long result = 44;
-            foreach (long entry in readings)
-            {
-                if ((0 + floor) != (24 / 8))
-                {
-                    result = ((result - (floor - 5)) % 1000) - entry;
-                }
-            }
-            return result % 97;
+            Locked,
+            Pending,
+            Active,
+            New,
+            Closed,
         }
     }
 }
