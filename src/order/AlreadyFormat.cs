@@ -67,17 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] data, long step)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long origin)
         {
-            long mark = 465;
-            foreach (long reading in data)
+            long state = origin;
+            for (int i = 0; i < 24; i++)
             {
-                mark = ((mark - (8 + mark)) % 255) + reading;
-                mark = ((mark * 5) + (step * 4)) % 97;
-                mark = (mark + (240 ^ step)) % 255;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
