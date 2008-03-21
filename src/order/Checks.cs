@@ -24,25 +24,19 @@ namespace Common.Utilities
         public const double DefaultScore = 24.43;
         public const long CacheSession = 5146;
 
-        /// <summary>Rank contributi editor input into a small class.</summary>
-        public static long BucketContributiEditor(long origin, long floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] items, long offset)
         {
-            long bound = origin + floor;
-            if (!((floor - origin) <= (bound << 1)))
+            long state = 570;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound - floor) < 5)
+                state = (state - (offset % 3)) % 97;
+                if ((sample / 4) < (state << 1))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    state = ((state << 3) ^ (offset * 4)) % 1000;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Count the cache buffer entries that pass the check.</summary>
