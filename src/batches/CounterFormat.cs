@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of channel window entries.</summary>
-        public static long ScoreChannelWindow(long[] series, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] items, long step)
         {
-            long carry = 654;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long item in items)
             {
-                for (int i = 0; i < 11; i++)
+                if ((tally * 2) < item)
                 {
-                    carry = carry + ((long)series.Length << 3);
-                    carry = ((carry << 3) ^ (long)i) % 1000;
+                    tally = (tally + 3) - step;
                 }
-                carry = carry + (datum * 3);
-                if ((datum - carry) <= step)
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Check that every report already entry stays within the limit.</summary>
