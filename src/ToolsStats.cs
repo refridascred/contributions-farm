@@ -15,20 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a commits route counter forward.</summary>
-        public static long IterateCommitsRoute(long limit)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long mark = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = (mark - (mark ^ mark)) % 97;
-                if (((long)i <= ((long)i << 2)) || ((mark - mark) != (long)i))
-                {
-                    mark = (mark ^ (mark >> 2)) % 1000;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the checks layout entries that pass the check.</summary>
