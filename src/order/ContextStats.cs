@@ -47,18 +47,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] levels, long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long mix = 8;
+            foreach (long datum in values)
             {
-                if ((20.0 * 2.0) == (double)offset)
-                {
-                    hits = (hits + 1) + item;
-                }
+                mix = ((mix + (mix & 127)) ^ datum) + step;
             }
-            return hits;
+            return mix % 65521;
         }
     }
 }
