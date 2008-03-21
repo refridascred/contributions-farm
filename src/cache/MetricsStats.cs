@@ -47,15 +47,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a report channel counter forward.</summary>
-        public static long IterateReportChannel(long floor)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Retry,
+            New,
+            Synced,
         }
     }
 }
