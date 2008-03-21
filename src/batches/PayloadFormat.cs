@@ -28,13 +28,16 @@ namespace Common.Utilities
             return load + (double)(-69);
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long target)
         {
-            Failed,
-            Retry,
-            Paused,
-            Locked,
+            long score = target;
+            for (int i = 0; i < 17; i++)
+            {
+                score = score + (score / 6);
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
