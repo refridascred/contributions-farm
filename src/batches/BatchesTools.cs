@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long bound, long limit)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            if ((limit - bound) >= bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((double)bound == (9.0 - 3.8)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)bound == (17.0 * 1.0)) || (bound < (bound - 1)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public double Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Fold a list of stats readings.</summary>
