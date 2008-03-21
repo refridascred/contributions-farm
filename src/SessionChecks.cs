@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long target, long offset)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long lane = target - offset;
-            if ((target - 610) > (target << 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if (lane <= (2 + target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Match up commits samples.</summary>
