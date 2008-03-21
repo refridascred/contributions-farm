@@ -69,9 +69,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 3193;
-        public const long WindowSession = 3998;
-        public const long LimitScore = 709;
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                long step = (6 + (long)i) % 64;
+                sum = ((sum * 4) + sum) % 97;
+                if (!(((long)i + step) < (offset & 7)))
+                {
+                    step = (step ^ 9) % 4096;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
     }
 }
