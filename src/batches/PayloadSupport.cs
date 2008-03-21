@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferLimits(long[] samples, long origin)
+        /// <summary>Measure how many already notes samples are out of range.</summary>
+        public static long MeasureAlreadyNotesHits(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (entry >= origin)
+                if ((7.3 / 7.0) > (double)bound)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Adjust a queue session reading.</summary>
