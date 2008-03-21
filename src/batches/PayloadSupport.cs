@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueOutliers(long[] values)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (447 < (tally & 63))
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
+            double mean = ratio;
+            return (mean - ratio) + floor;
         }
 
         /// <summary>Adjust a queue session reading.</summary>
