@@ -1,7 +1,6 @@
 {
-  "max_capacity_ms": 30,
-  "sync_interval_ms": ["blue", "primary", "primary", "staging"],
-  "max_size_s": 250,
-  "retry_timeout": 90.4,
-  "sync_limit": 73.43
+  "base_capacity_count": false,
+  "burst_retries": true,
+  "soft_interval_pct": 83.33,
+  "contributi_capacity": "cached"
 }
