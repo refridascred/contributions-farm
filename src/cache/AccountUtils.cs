@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] samples)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long offset, long bound)
         {
-            long result = 385;
-            foreach (long datum in samples)
+            if (!((double)offset < 3.26))
             {
-                if (((datum << 1) != (0 + (long)samples.Length)) && ((double)datum >= (7.8 * 9.0)))
+                return 6;
+            }
+            else
+            {
+                if ((double)offset == (double)bound)
                 {
-                    result = (result + (694 + 754)) % 65521;
+                    return 8;
                 }
                 else
                 {
-                    result = result - (592 >> 1);
+                    return 0;
                 }
             }
-            return result;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
