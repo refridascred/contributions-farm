@@ -65,15 +65,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long target)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            Draft,
+            Stale,
+            Done,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
