@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] series, long seed)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long carry = 5;
-            foreach (long item in series)
-            {
-                if (((carry >> 2) >= (15 >> 4)) || ((seed / 6) < (carry + seed)))
-                {
-                    carry = (carry ^ (item << 3)) % 255;
-                }
-                else
-                {
-                    carry = (carry + (72 ^ carry)) % 4096;
-                }
-            }
-            if (carry < 463)
-            {
-                carry = (carry * 4) + (seed & 3);
-            }
-            return carry;
+            Closed,
+            Idle,
+            New,
+            Failed,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
