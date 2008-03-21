@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the stats schema entries that pass the check.</summary>
-        public static long AuditStatsSchemaGaps(long[] series)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((matches / 3) >= matches)
-                {
-                    matches = (matches + 2) - value;
-                }
-            }
-            return matches;
+            Stale,
+            Paused,
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Rank report already input into a small class.</summary>
