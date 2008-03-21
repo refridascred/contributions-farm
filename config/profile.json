@@ -1,5 +1,22 @@
 {
-  "filter_threshold": 67.13,
-  "schema_window": ["eu-west", "legacy", "blue"],
-  "editor_capacity": false
+  "hard_window": false,
+  "poll_interval_s": 98.15,
+  "min_interval_pct": [433, 398, 424, 16],
+  "max_retries": {
+    "verbose": 67.08,
+    "cache_threshold_s": {
+      "soft_depth_s": 100,
+      "batch_retries_count": "strict",
+      "cache_ratio_ms": "open"
+    },
+    "batch_ratio_ms": 4567,
+    "cache_window_pct": [56, 408, 156, 189],
+    "flush_limit_s": 1024,
+    "metric_ttl": {
+      "flush_window": "blue",
+      "retry_depth_count": "edge",
+      "max_threshold_ms": "blue",
+      "soft_window": 30
+    }
+  }
 }
