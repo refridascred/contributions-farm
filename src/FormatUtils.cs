@@ -30,13 +30,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] items)
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
