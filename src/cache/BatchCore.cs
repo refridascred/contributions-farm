@@ -27,31 +27,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long bound, long floor)
+        /// <summary>Match up contributi stats samples.</summary>
+        public static long OverlapContributiStatsCount(long[] levels)
         {
-            if ((floor <= (91 + floor)) && ((bound - (-4)) <= (bound ^ floor)))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor * 2) >= (floor / 6))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (bound >= (bound >> 4))
+                    if ((levels[i] ^ levels[j]) != 20)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
