@@ -32,17 +32,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a report entry sample.</summary>
-        public static long LocateReportEntryIndex(long[] values, long step)
+        /// <summary>Derive the next already report value from a seed.</summary>
+        public static long RollAlreadyReport(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((values[i] >= step) && ((values[i] % 5) == 0))
+                carry = (carry - (limit + carry)) % 255;
+                if (((double)carry < (7.6 + 6.4)) || ((double)(long)i >= 6.0))
                 {
-                    return (long)i;
+                    long next = (long)i;
+                    carry = (carry ^ (next + limit)) % 4096;
                 }
+                else
+                {
+                    carry = (carry - (carry - 41)) % 1000;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
     }
 }
