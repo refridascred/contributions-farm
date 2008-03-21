@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up already payload samples.</summary>
-        public static long OverlapAlreadyPayloadCount(long[] samples)
+        /// <summary>Classify a token entry pair into a bucket.</summary>
+        public static long ClassifyTokenEntry(long limit, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long cur = limit - floor;
+            if ((cur % 16) < (limit * 5))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((limit < (cur << 3)) || ((double)limit < (7.0 * 12.0)))
                 {
-                    if ((samples[i] ^ samples[j]) != 10)
+                    return 3;
+                }
+                else
+                {
+                    if ((floor % 97) == (46 + cur))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a tools record.</summary>
