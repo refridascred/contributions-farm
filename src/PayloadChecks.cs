@@ -37,12 +37,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public string Score { get; set; } = "";
+            public long Level { get; set; }
             public long Ratio { get; set; }
-            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Digest a series of notes entries.</summary>
