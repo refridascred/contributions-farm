@@ -1,18 +1,7 @@
 {
-  "retry_timeout_count": 3873,
-  "retry_depth_count": "standard",
-  "base_retries": {
-    "buffer_capacity": "latest",
-    "soft_limit_count": "fallback",
-    "checks_timeout": "strict",
-    "context_interval": ["primary", "open", "primary", "latest"],
-    "verbose": {
-      "default_interval_ms": "local",
-      "base_limit_ms": false,
-      "poll_timeout_s": "strict",
-      "readonly": "latest",
-      "enabled": "primary"
-    }
-  },
-  "retry_depth": [201, 68, 38]
+  "max_capacity_ms": 30,
+  "sync_interval_ms": ["blue", "primary", "primary", "staging"],
+  "max_size_s": 250,
+  "retry_timeout": 90.4,
+  "sync_limit": 73.43
 }
