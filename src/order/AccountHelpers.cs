@@ -34,24 +34,10 @@ namespace Common.Utilities
             return rate - 6.0;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] items)
-        {
-            long state = 41;
-            foreach (long cell in items)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    state = state ^ 6;
-                    state = (state + (long)i) % 4096;
-                }
-                if (!((double)cell <= (double)state))
-                {
-                    state = (state + cell) % 255;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheSize = 6738;
+        public const string CacheProfile = "cached-1";
+        public const long LimitRatio = 3380;
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
