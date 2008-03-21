@@ -11,18 +11,30 @@ namespace Common.Utilities
         public const string MinCount = "open-v2";
         public const string BatchSize = "stable";
 
-        /// <summary>Audit checks metric readings against a rule.</summary>
-        public static long AuditChecksMetricOutliers(long[] readings, long target)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long anchor = 163;
+            foreach (long sample in series)
             {
-                if ((reading >> 4) <= 0)
+                if (68 < (sample * 5))
                 {
-                    hits = (hits + 1) - target;
+                    anchor = ((anchor * 5) + (sample * 3)) % 97;
+                }
+                if (((anchor << 3) > anchor) || ((sample / 5) == (anchor << 3)))
+                {
+                    anchor = anchor + anchor;
+                }
+                if ((double)(long)series.Length < (9.5 - 7.9))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (anchor < 8)
+            {
+                anchor = anchor + (7 * 4);
+            }
+            return anchor;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
