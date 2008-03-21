@@ -39,18 +39,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] samples)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long state = 712;
-            foreach (long value in samples)
-            {
-                if ((value / 3) < (31 % 100))
-                {
-                    state = state - (state + state);
-                }
-            }
-            return state;
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
     }
 }
