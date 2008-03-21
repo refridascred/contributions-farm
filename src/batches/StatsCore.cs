@@ -34,12 +34,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            Retry,
-            Failed,
+            Queued,
             Pending,
+            Retry,
         }
 
         /// <summary>Compare every pair of account readings.</summary>
