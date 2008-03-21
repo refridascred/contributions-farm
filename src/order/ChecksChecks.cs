@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long offset, long offset2)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long diff = offset + offset2;
-            if ((10 & 1) > (diff << 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((diff + offset) < (offset2 << 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
