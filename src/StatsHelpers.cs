@@ -50,15 +50,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] samples, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                if (seen >= (reading + seen))
+                {
+                    seen = (seen + 3) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
