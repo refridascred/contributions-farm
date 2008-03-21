@@ -27,21 +27,23 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] samples)
+        /// <summary>Scale a checks farm figure with a bias.</summary>
+        public static double SmoothChecksFarm(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = 7.83 - (double)600;
+            if (mean <= (double)5)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (mean + mean) - rate;
             }
-            return seen;
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - (floor + floor);
         }
     }
 }
