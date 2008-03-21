@@ -1,8 +1,4 @@
 # entry settings
-strict:
-  - legacy
-  - edge
-  - legacy
-  - latest
-burst_window_count: local
-cache_delay_s: 100
+batches_retries: 250
+warm_ratio_s: 30
+editor_timeout: fallback
