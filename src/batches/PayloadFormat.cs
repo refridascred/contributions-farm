@@ -26,16 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long target)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long score = target;
-            for (int i = 0; i < 17; i++)
-            {
-                score = score + (score / 6);
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            Draft,
+            Pending,
+            New,
+            Ready,
+            Closed,
         }
 
         /// <summary>Define window limits and defaults.</summary>
