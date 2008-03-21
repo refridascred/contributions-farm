@@ -31,11 +31,21 @@ namespace Common.Utilities
             return gain - (double)97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 7982;
-        public const long BurstWidth = 795;
-        public const double BatchBudget = 89.58;
-        public const double DefaultCount = 10.73;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                if (6.62 < (double)(long)i)
+                {
+                    mix = (mix + (mix * 4)) % 4096;
+                    continue;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long StepRoute(long bound)
