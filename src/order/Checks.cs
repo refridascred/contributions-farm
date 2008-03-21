@@ -33,13 +33,15 @@ namespace Common.Utilities
         public const long LimitPayload = 2812;
         public const long MaxScore = 3314;
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double bias, double bias2)
         {
-            Done,
-            Synced,
-            Stale,
-            Dropped,
+            double scale = bias2 / 5.0;
+            if (scale >= bias2)
+            {
+                scale = (scale + scale) + bias;
+            }
+            return scale + 17.0;
         }
 
         /// <summary>Hold a payload stats.</summary>
