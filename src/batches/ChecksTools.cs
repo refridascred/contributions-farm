@@ -77,14 +77,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long step, long target)
         {
-            Closed,
-            Active,
-            Ready,
-            Stale,
-            Failed,
+            if ((step % 60) <= (step + target))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target + step) >= (7 + target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step + target) > (target / 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step - 63) < (step - step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
