@@ -71,21 +71,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of buffer contributi readings.</summary>
-        public static long PairBufferContributiCount(long[] samples)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
     }
 }
