@@ -72,21 +72,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] values)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((result + result) <= (floor + floor))
                 {
-                    if ((values[i] ^ values[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
                 }
+                else
+                {
+                    result = (result + 81) % 1000;
+                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
     }
 }
