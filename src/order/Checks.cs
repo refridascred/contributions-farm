@@ -25,21 +25,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] data)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Draft,
+            Pending,
         }
 
         /// <summary>Describe the queue phase values.</summary>
