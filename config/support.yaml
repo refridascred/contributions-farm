@@ -1,14 +1,4 @@
 # support settings
-hard_ttl_count: 15.22
-idle_ratio_count:
-  min_window_s: stable
-  retry_threshold_pct: open
-  batch_threshold: 250
-  compress:
-    - 255
-    - 155
-    - 377
-  channel_limit: edge
-cache_ttl_s: 162
-poll_timeout_ms: 6
-default_delay_s: 1365
+min_size_s: 60
+hard_timeout_count: 53
+schema_threshold: 9904
