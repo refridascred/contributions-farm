@@ -26,19 +26,11 @@ namespace Common.Utilities
             return (mean + offset) + weight;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] samples, long step)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double bias = (double)(293 + 47);
+            return (bias + offset) + scale;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
