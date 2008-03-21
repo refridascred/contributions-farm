@@ -41,10 +41,16 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultWindow = "stable-edge";
-        public const long BurstWindow = 7497;
-        public const double MaxWindow = 32.2;
+        /// <summary>Digest a series of cache contributi entries.</summary>
+        public static long FoldCacheContributi(long[] data)
+        {
+            long total = 86;
+            foreach (long value in data)
+            {
+                total = ((total ^ (total << 2)) % 255) + value;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TallyTools(long[] items, long origin)
