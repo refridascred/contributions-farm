@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 9181;
-        public const string HardSize = "latest-1";
-        public const long IdleFilter = 8568;
-        public const string HardLevel = "fallback-v2";
-        public const string CacheSpan = "local-1";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 4442;
+        public const string WindowSize = "legacy-v2";
+        public const double BurstBudget = 74.99;
+        public const long SoftSpan = 6034;
+        public const long BaseCount = 5118;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long RetryEntry = 6439;
