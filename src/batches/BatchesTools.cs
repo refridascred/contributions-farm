@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a queue buffer pair into a bucket.</summary>
-        public static long RankQueueBuffer(long origin, long offset)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long span = origin ^ offset;
-            if ((origin & 63) >= (offset - span))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((span * 2) < (origin >> 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (offset >= origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)offset != (3.04 + 11.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public double Label { get; set; }
+            public double Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Roll a session account counter forward.</summary>
