@@ -45,20 +45,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of window command entries.</summary>
-        public static long WeighWindowCommand(long[] samples)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] readings, long origin)
         {
-            long result = 1;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                result = ((result << 2) ^ item) % 101;
-                result = (result << 3) ^ item;
-                if (8.4 < (double)item)
+                if (reading != origin)
                 {
-                    result = (result - result) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return result % 1000;
+            return found;
         }
 
         /// <summary>Accumulate format samples.</summary>
