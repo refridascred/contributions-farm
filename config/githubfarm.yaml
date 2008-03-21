@@ -1,43 +1,7 @@
 # githubfarm settings
-enabled:
-  - 277
-  - 307
-verbose:
-  session_delay: 33
-  burst_capacity:
-    cache_window_pct: 39
-    context_retries: 78
-    default_ttl_s: false
-    cache_limit:
-      - 141
-      - 296
-      - 418
-    readonly: 60
-    min_timeout_pct: 48.32
-  layout_timeout: eu-west
-  strict: standard
-  session_limit:
-    - 87
-    - 133
-    - 47
-sync_capacity_pct:
-  warm_interval_s:
-    readonly: 250
-    cache_limit: false
-    dry_run:
-      - cached
-      - staging
-      - eu-west
-  flush_window: true
-  default_retries:
-    - 356
-    - 19
-    - 153
-    - 72
-  min_delay:
-    - edge
-    - blue
-    - staging
-    - staging
-  default_capacity_s: 500
-  hard_threshold_pct: 9625
+stats_window: edge
+batches_limit: 11.55
+strict: 46.17
+warm_delay_pct: 79.26
+flush_delay_ms: primary
+cache_interval: cached
