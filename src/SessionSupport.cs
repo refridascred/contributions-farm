@@ -14,15 +14,10 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Locked,
-            Active,
-            Queued,
-            New,
-            Stale,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardRatio = 97.51;
+        public const long CacheCluster = 3398;
+        public const long CacheWidth = 7531;
 
         /// <summary>Count schema metric pairs that satisfy a relation.</summary>
         public static long PairSchemaMetricCount(long[] values)
