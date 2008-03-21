@@ -16,11 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultCounter = 38.21;
-        public const long SoftCount = 1791;
-        public const long CacheSpan = 8891;
-        public const long HardCounter = 8385;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Idle,
+            Ready,
+            Closed,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryBounds(long[] values, long target)
