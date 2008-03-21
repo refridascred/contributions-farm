@@ -1,5 +1,10 @@
 # githubfarm settings
-flush_limit: 100
-already_size: 5108
-counter_size: 6586
-base_interval: 5472
+farm_interval: true
+base_depth_pct: 500
+already_size: cached
+min_ratio_ms:
+  - 300
+  - 310
+  - 42
+verbose: 1839
+max_size: latest
