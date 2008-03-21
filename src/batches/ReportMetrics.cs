@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a editor metrics reading by value.</summary>
-        public static long LookupEditorMetricsIndex(long[] series, long bound)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long offset, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long delta = offset + floor;
+            if (((floor % 2) < (172 * 3)) && ((offset + floor) == (offset - delta)))
             {
-                if ((series[i] < bound) && ((series[i] % 5) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((floor / 8) > offset)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
