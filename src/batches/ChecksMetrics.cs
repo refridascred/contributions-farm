@@ -30,11 +30,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Match up support commits samples.</summary>
+        public static long CompareSupportCommitsCount(long[] items)
         {
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
