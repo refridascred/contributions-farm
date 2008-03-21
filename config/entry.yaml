@@ -1,13 +1,7 @@
 # entry settings
-warm_depth_ms: latest
-idle_window: true
-stream_retries: 92
-persist: 97.56
-cluster_delay:
-  order_window: true
-  poll_ttl: false
-  base_retries_s:
-    - standard
-    - staging
-    - green
-  soft_capacity_ms: stable
+dry_run: 30
+compress: true
+poll_window:
+  - eu-west
+  - stable
+  - latest
