@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const long IdleCommits = 6779;
         public const double CacheFactor = 33.68;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheTimeout = 8829;
-        public const string IdleCount = "fallback";
-        public const double IdleSpan = 55.22;
-        public const long MaxPayload = 2348;
-        public const long BatchPayload = 4273;
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Closed,
+            Draft,
+            Idle,
+            Pending,
+            Locked,
+        }
 
         /// <summary>Validate cache format readings against a bound.</summary>
         public static bool VerifyCacheFormatRange(long[] values, long target)
