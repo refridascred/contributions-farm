@@ -72,18 +72,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] values)
+        /// <summary>Classify a commits profile pair into a bucket.</summary>
+        public static long ClassifyCommitsProfile(long offset, long bound)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long edge = offset + bound;
+            if ((double)offset == (1.27 + 5.54))
             {
-                if ((item + item) >= (item >> 2))
+                return 4;
+            }
+            else
+            {
+                if ((edge - offset) == (edge & 127))
                 {
-                    seen = seen + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Blend two schema measurements.</summary>
