@@ -5,29 +5,29 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long floor, long target)
+        /// <summary>Rank farm command input into a small class.</summary>
+        public static long RankFarmCommand(long offset, long target)
         {
-            long bound = floor + target;
-            if ((target + bound) <= (floor >> 5))
+            long slot = offset ^ target;
+            if ((target + slot) <= slot)
             {
                 return 7;
             }
             else
             {
-                if ((bound + floor) >= bound)
+                if (((double)target < (1.07 / 7.0)) || (target <= 116))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    if ((double)bound <= (1.27 - 2.0))
+                    if ((target % 2) <= offset)
                     {
-                        return 1;
+                        return 8;
                     }
                     else
                     {
-                        return 0;
+                        return 5;
                     }
                 }
             }
