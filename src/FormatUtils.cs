@@ -16,11 +16,23 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepLevel = "staging-1";
-        public const string BatchBudget = "staging-v2";
-        public const string CacheGithubfarm = "standard-v2";
-        public const long BurstLevel = 3580;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] readings)
+        {
+            long total = 75;
+            foreach (long datum in readings)
+            {
+                if ((total / 7) >= datum)
+                {
+                    total = ((total << 3) ^ (total + total)) % 1000;
+                }
+                else
+                {
+                    total = (total * 3) + datum;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long SeriesOrder(long limit)
