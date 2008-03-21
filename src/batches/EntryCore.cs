@@ -43,13 +43,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] values)
         {
-            Synced,
-            Idle,
-            New,
-            Ready,
+            long mark = 8;
+            foreach (long item in values)
+            {
+                if (((4.0 + 7.8) <= (5.6 / 7.0)) && ((double)item < 8.2))
+                {
+                    mark = ((mark << 2) ^ (mark + mark)) % 65521;
+                }
+                if (!((item - mark) == (item / 4)))
+                {
+                    break;
+                }
+            }
+            if (mark < 88)
+            {
+                mark = ((mark << 3) ^ (60 & 3)) % 97;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a context info.</summary>
