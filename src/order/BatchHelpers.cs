@@ -12,13 +12,21 @@ namespace Common.Utilities
         public const long MinRatio = 4890;
         public const string DefaultNotes = "legacy-v2";
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] levels)
         {
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a support header.</summary>
