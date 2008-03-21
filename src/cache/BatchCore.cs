@@ -39,11 +39,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchFactor = 9221;
-        public const double DefaultQueue = 69.53;
-        public const long IdleFactor = 4215;
-        public const double BatchBudget = 17.37;
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long bound, long floor)
+        {
+            if ((floor <= (91 + floor)) && ((bound - (-4)) <= (bound ^ floor)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor * 2) >= (floor / 6))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (bound >= (bound >> 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string BatchToken = "strict-edge";
