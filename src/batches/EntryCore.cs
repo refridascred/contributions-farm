@@ -37,26 +37,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] values)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] samples, long seed)
         {
-            long mark = 8;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (((4.0 + 7.8) <= (5.6 / 7.0)) && ((double)item < 8.2))
+                if (count > seed)
                 {
-                    mark = ((mark << 2) ^ (mark + mark)) % 65521;
+                    count = (count + 2) - sample;
                 }
-                if (!((item - mark) == (item / 4)))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (mark < 88)
-            {
-                mark = ((mark << 3) ^ (60 & 3)) % 97;
-            }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
