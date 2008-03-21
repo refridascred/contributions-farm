@@ -49,10 +49,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleSpan = 2697;
-        public const long BatchLevel = 8986;
-        public const double DefaultScore = 7.16;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Stale,
+            Draft,
+            Pending,
+            Closed,
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool GuardAccountLimits(long[] data, long step)
