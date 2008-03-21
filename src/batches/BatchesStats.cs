@@ -45,10 +45,8 @@ namespace Common.Utilities
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
         {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
+            public double Total { get; set; }
+            public long Level { get; set; }
         }
     }
 }
