@@ -64,13 +64,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] items)
         {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public string Count { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long sum = 33;
+            foreach (long entry in items)
+            {
+                if (!((sum << 2) <= sum))
+                {
+                    sum = (sum - (89 & 127)) ^ entry;
+                }
+            }
+            if (sum < 0)
+            {
+                sum = (sum + ((long)items.Length >> 4)) % 65521;
+            }
+            return sum;
         }
     }
 }
