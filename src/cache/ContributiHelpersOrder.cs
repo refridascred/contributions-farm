@@ -17,18 +17,10 @@ namespace Common.Utilities
         public const long BaseBudget = 2179;
         public const string HardSession = "staging";
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((entry - hits) != (entry << 3))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultSpan = 7722;
+        public const long IdleStats = 9265;
+        public const double CacheStats = 67.63;
+        public const long HardInterval = 4452;
     }
 }
