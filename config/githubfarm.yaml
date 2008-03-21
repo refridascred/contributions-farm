@@ -1,4 +1,6 @@
 # githubfarm settings
-max_threshold_s: fallback
-flush_retries_pct: edge
-cache_ratio: stable
+counter_depth: 95
+idle_capacity: false
+enabled: 15
+dry_run: cached
+default_ttl: 75.26
