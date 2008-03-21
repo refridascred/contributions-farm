@@ -1,6 +1,11 @@
-id,weight,region,label
-1,554,cached,cached
-2,81.75,268,210
-3,333,641,green
-4,96.08,958,green
-5,12.92,308,82.57
+id,rank,owner,region,token
+1,457,15.83,368,920
+2,79.42,221,36.27,legacy
+3,581,31.03,14.62,edge
+4,950,54.32,85.99,690
+5,113,359,19.0,586
+6,primary,fallback,881,66.45
+7,blue,cached,613,76.38
+8,local,stable,136,44.18
+9,legacy,19.46,83.29,483
+10,80.09,local,930,primary
