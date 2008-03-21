@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] items)
+        /// <summary>Match up format schema samples.</summary>
+        public static long MatchFormatSchemaCount(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((items[i] - items[j]) < 5)
+                    if ((data[i] ^ data[j]) < 0)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the command status values.</summary>
