@@ -34,15 +34,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long target)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long mark = target;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Ready,
+            Stale,
+            Active,
+            Paused,
+            Draft,
         }
 
         /// <summary>Check that every order metrics entry stays within the limit.</summary>
