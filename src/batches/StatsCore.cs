@@ -43,18 +43,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] values)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((hits + datum) != (51 * 2))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Compare every pair of account readings.</summary>
