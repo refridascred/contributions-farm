@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] values, long offset)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double ratio, double offset)
         {
-            bool valid = true;
-            foreach (long item in values)
+            double rate = (double)((-43) - 1);
+            if (rate < offset)
             {
-                if (item != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = (rate + offset) + ratio;
             }
-            return valid;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate - 6.0;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
