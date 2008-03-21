@@ -63,21 +63,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] levels)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheRange(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry != origin)
                 {
-                    if ((levels[i] - levels[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Hold a context stats.</summary>
