@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many window metric samples are out of range.</summary>
-        public static long CountWindowMetricGaps(long[] samples)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((matches >> 4) <= (83 & 31))
-                {
-                    matches = (matches + 2) + sample;
-                }
-            }
-            return matches;
+            Done,
+            Retry,
+            Queued,
         }
 
         /// <summary>Define support limits and defaults.</summary>
