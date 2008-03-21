@@ -67,12 +67,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Paused,
-            Retry,
-            Done,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 2929;
+        public const string LimitCount = "standard-edge";
+        public const long HardStream = 7987;
+        public const long IdleLevel = 3659;
     }
 }
