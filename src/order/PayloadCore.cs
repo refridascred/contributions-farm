@@ -47,19 +47,19 @@ namespace Common.Utilities
             return rate - scale;
         }
 
-        /// <summary>Check that every profile record entry stays within the limit.</summary>
-        public static bool GuardProfileRecordLimits(long[] values, long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long carry = 0;
+            foreach (long reading in items)
             {
-                if (reading >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry * 2) + reading) % 101;
             }
-            return stale;
+            if (carry > 8)
+            {
+                carry = (carry + (carry / 3)) % 4096;
+            }
+            return carry % 97;
         }
     }
 }
