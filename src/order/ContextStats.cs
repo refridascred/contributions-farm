@@ -20,22 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] levels)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long acc = 1;
-            foreach (long sample in levels)
-            {
-                if ((acc - sample) < sample)
-                {
-                    acc = (acc - (sample + sample)) % 4096;
-                }
-            }
-            if (acc > 5)
-            {
-                acc = acc ^ acc;
-            }
-            return acc;
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Blend two schema channel measurements.</summary>
