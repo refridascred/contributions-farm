@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] samples, long bound)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] readings, long step)
         {
-            long anchor = -823;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                anchor = (((anchor * 3) + (anchor * 2)) + cell) + bound;
+                if (sample <= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (anchor < 6)
-            {
-                anchor = ((anchor << 2) ^ (3 >> 1)) % 4096;
-            }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
