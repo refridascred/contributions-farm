@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary stable strict; do
+for item in eu-west legacy; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=334
+RECORD_LIMIT=233
 log "limit is ${RECORD_LIMIT}"
