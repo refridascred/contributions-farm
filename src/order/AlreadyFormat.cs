@@ -24,11 +24,15 @@ namespace Common.Utilities
         public const long DefaultSchema = 3742;
         public const long DefaultFactor = 1354;
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] values, long limit)
         {
-            public bool Total { get; set; }
-            public long Size { get; set; }
+            long state = 86;
+            foreach (long item in values)
+            {
+                state = (state - limit) + item;
+            }
+            return state;
         }
 
         /// <summary>Define record limits and defaults.</summary>
