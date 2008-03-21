@@ -1,7 +1,6 @@
 # entry settings
-min_threshold: 21.01
-flush_interval_count: 69.87
-retry_limit_count: latest
-retry_ttl: fallback
-compress: 3364
-verbose: 25.81
+commits_ratio: green
+poll_ttl:
+  - stable
+  - cached
+persist: stable
