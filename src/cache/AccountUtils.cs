@@ -45,14 +45,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            Synced,
-            Ready,
-            Pending,
-            Queued,
-            New,
+            public double Label { get; set; }
+            public double Score { get; set; }
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
