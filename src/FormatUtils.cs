@@ -26,16 +26,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long limit)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] values, long offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix * 3) + limit;
-                mix = ((mix * 4) + (long)i) % 1000;
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
