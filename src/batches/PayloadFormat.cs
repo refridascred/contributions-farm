@@ -16,14 +16,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
             Stale,
-            Ready,
-            Locked,
-            Dropped,
-            Active,
+            Synced,
+            Closed,
         }
 
         /// <summary>Locate a schema reading by value.</summary>
