@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] samples)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
