@@ -32,12 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 4440;
-        public const long BatchScore = 11;
-        public const long BatchGithubfarm = 6391;
-        public const long BaseGithubfarm = 9347;
-        public const long StepGithubfarm = 5181;
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Ready,
+            Draft,
+            Paused,
+            Idle,
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool GuardCacheBounds(long[] levels, long seed)
