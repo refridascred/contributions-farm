@@ -1,8 +1,6 @@
 # entry settings
-idle_limit:
-  - cached
-  - latest
-  - standard
-retry_retries_ms: 9.81
-hard_ttl_count: 250
-readonly: true
+sync_interval: primary
+verbose: 5217
+enabled: fallback
+hard_delay_count: eu-west
+min_threshold_s: 40
