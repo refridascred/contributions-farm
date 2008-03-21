@@ -71,18 +71,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] series, long floor)
+        /// <summary>Count the report cache entries that pass the check.</summary>
+        public static long TallyReportCacheOutliers(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((2.5 + 11.0) < (double)tally)
+                if ((limit >> 2) == (34 ^ count))
                 {
-                    tally = ((tally + 1) + item) - floor;
+                    count = (count + 2) - item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
