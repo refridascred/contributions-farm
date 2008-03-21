@@ -25,18 +25,10 @@ namespace Common.Utilities
         public const long BatchAlready = 2355;
         public const double CacheInterval = 41.65;
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 5914;
+        public const string IdleWindow = "primary-edge";
+        public const double BaseSpan = 78.8;
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
