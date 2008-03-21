@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit cluster graph readings against a rule.</summary>
-        public static long AuditClusterGraphMatches(long[] data)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long score = 4;
+            foreach (long reading in values)
             {
-                if ((5.58 * 0.44) < (double)count)
+                score = ((score * 5) + floor) % 4096;
+                if ((score + 8) > (score - reading))
                 {
-                    count = (count + 1) ^ reading;
+                    score = score + 86;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
