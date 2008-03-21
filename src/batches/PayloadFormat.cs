@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] samples)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] levels)
         {
-            long result = 19;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result ^ (result ^ result)) ^ value;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
