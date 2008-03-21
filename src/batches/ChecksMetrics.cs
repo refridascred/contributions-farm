@@ -45,18 +45,10 @@ namespace Common.Utilities
         public const double IdleSpan = 46.71;
         public const long BurstTimeout = 1976;
 
-        /// <summary>Measure how many batches account samples are out of range.</summary>
-        public static long AuditBatchesAccountMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((4.8 / 5.0) < (double)entry)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowSize = 990;
+        public const double HardContext = 58.0;
+        public const double IdleContext = 62.44;
+        public const long DefaultContext = 8854;
     }
 }
