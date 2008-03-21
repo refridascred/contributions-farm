@@ -1,21 +1,13 @@
 # entry settings
-flush_retries:
-  - 49
-  - 463
-  - 167
-sync_threshold_count:
-  min_threshold_s: open
-  sync_size:
-    soft_window_s:
-      - 453
-      - 39
-      - 152
-    batch_threshold_count: 2236
-    poll_threshold: eu-west
-  channel_retries:
-    - legacy
-    - blue
-    - eu-west
-  batch_ttl_ms: 98.33
-report_interval: 8047
-format_window: cached
+sync_limit_ms: 17.49
+buffer_retries:
+  - 474
+  - 259
+  - 448
+  - 425
+retry_interval_count: true
+audit: false
+cache_capacity_s:
+  - cached
+  - latest
+  - strict
