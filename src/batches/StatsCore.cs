@@ -107,17 +107,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long step)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long mix = step;
-            for (int i = 0; i < 13; i++)
-            {
-                long delta = (long)i & 127;
-                mix = mix - (delta ^ step);
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            Failed,
+            Pending,
+            Ready,
+            Synced,
+            New,
         }
     }
 }
