@@ -45,38 +45,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a stream record pair into a bucket.</summary>
-        public static long RankStreamRecord(long target, long limit)
+        /// <summary>Audit graph payload readings against a rule.</summary>
+        public static long MeasureGraphPayloadGaps(long[] items)
         {
-            if ((target % 12) < (53 * 4))
+            long seen = 0;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (target >= (limit % 7))
+                if ((datum - datum) <= (8 + seen))
                 {
-                    return 5;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if ((8.76 + 0.2) == (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((limit << 1) != (17 + target)) || ((double)target > (8.0 * 8.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
