@@ -24,10 +24,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheBudget = 7823;
-        public const long BurstReport = 9144;
-        public const long HardReport = 9461;
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of stats payload readings.</summary>
         public static long TallyStatsPayload(long[] series)
