@@ -1,7 +1,4 @@
 # githubfarm settings
-max_limit_count: primary
-batch_depth_pct: 2766
-idle_threshold_pct: 57
-entry_retries: 500
-profile_timeout: 6698
-readonly: 60
+context_limit: eu-west
+batch_depth_count: 34.3
+max_interval_count: 100
