@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double scale, double offset)
-        {
-            double load = (double)(7 & 127);
-            if (load <= (offset / 2.0))
-            {
-                load = (load - load) - scale;
-            }
-            return load - offset;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 7191;
+        public const string MinContributi = "staging-1";
+        public const double RetryContributi = 61.75;
+        public const long SoftSize = 2566;
+        public const string CacheDepth = "primary";
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
