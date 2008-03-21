@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            public double Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public string Count { get; set; } = "";
             public long Size { get; set; }
-            public long Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate already cache samples.</summary>
