@@ -81,13 +81,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Failed,
-            Done,
-            Dropped,
-            Paused,
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
