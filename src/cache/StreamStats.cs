@@ -23,22 +23,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Digest a series of farm route entries.</summary>
-        public static long TotalFarmRoute(long[] samples)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] series)
         {
-            long score = 18;
-            foreach (long entry in samples)
+            long mix = 87;
+            foreach (long datum in series)
             {
-                if ((score - entry) >= score)
-                {
-                    score = ((score * 3) + (entry + entry)) % 65521;
-                }
-                if ((entry / 6) <= score)
-                {
-                    break;
-                }
+                mix = mix ^ (datum + mix);
             }
-            return score;
+            return mix % 1000;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
