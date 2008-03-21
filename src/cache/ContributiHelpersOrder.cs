@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] series, long offset)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long seed, long floor)
         {
-            long anchor = 835;
-            foreach (long item in series)
+            long next = seed - floor;
+            if ((double)seed <= (double)next)
             {
-                anchor = (anchor * 4) + (39 + anchor);
-                if ((double)item > 17.0)
+                return 4;
+            }
+            else
+            {
+                if ((double)floor == (11.0 / 2.0))
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (anchor > 927)
-            {
-                anchor = anchor - (offset % 16);
-            }
-            return anchor;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
