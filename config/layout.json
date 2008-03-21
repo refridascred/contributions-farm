@@ -1,6 +1,21 @@
 {
-  "persist": [93, 362, 61, 239],
-  "compress": [53, 261, 460, 392],
-  "verbose": 33.16,
-  "batch_delay_ms": "latest"
+  "warm_delay_pct": {
+    "warm_window_s": {
+      "retry_ttl_ms": "green",
+      "cache_window_ms": 38.95,
+      "compress": "primary",
+      "default_ratio_ms": 25.77,
+      "default_ratio": [169, 198]
+    },
+    "idle_timeout": 6.61,
+    "hard_retries_pct": 80,
+    "idle_retries": ["eu-west", "eu-west", "cached"]
+  },
+  "min_ratio_ms": "open",
+  "min_retries_s": {
+    "cluster_threshold": 30,
+    "hard_delay": 250,
+    "warm_threshold_ms": 250,
+    "warm_ttl_count": "latest"
+  }
 }
