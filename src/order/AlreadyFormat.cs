@@ -19,10 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitTimeout = "primary-edge";
-        public const long DefaultScore = 3937;
-        public const string BurstSize = "standard-v2";
+        /// <summary>Count the githubfarm graph entries that pass the check.</summary>
+        public static long CountGithubfarmGraphGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((5 >= tally) && (9.8 < (6.0 + 9.2)))
+                {
+                    tally = (tally + 3) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long SortStream(long seed, long seed2)
