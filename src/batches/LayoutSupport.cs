@@ -61,12 +61,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Measure how many entry filter samples are out of range.</summary>
+        public static long MeasureEntryFilterOutliers(long[] readings)
         {
-            Failed,
-            Synced,
-            Draft,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((matches >> 5) != ((-134) - matches))
+                {
+                    matches = (matches + 1) - value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
