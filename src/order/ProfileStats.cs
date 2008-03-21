@@ -19,11 +19,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 8331;
-        public const long CacheWindow = 1251;
-        public const long SoftSpan = 3371;
-        public const long HardWindow = 1262;
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Failed,
+            Done,
+            Dropped,
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MinWidth = 1307;
