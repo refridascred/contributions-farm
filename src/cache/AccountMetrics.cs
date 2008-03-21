@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] data, long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 17; i++)
+            long state = 0;
+            foreach (long item in data)
             {
-                long hits = (offset >> 1) + (acc >> 3);
-                if (((acc * 3) != (hits + offset)) || ((hits + acc) < hits))
+                if ((state & 255) > (seed ^ 848))
                 {
-                    hits = hits + (offset + offset);
+                    state = ((state << 3) ^ state) - item;
                 }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    long hits2 = (offset + offset) + offset;
-                    acc = ((acc * 5) + (offset - hits2)) ^ (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Match up order samples.</summary>
