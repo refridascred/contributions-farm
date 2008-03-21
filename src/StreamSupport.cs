@@ -22,15 +22,19 @@ namespace Common.Utilities
         public const long CacheSpan = 8891;
         public const long HardCounter = 8385;
 
-        /// <summary>Blend two format report measurements.</summary>
-        public static double BlendFormatReport(double weight, double bias)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] values, long target)
         {
-            double scale = (weight / 7.0) / 9.0;
-            for (int i = 0; i < 2; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                scale = (scale - (bias - bias)) - (double)(long)i;
+                if (sample <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return scale + (bias * 6.0);
+            return ok;
         }
     }
 }
