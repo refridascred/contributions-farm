@@ -45,13 +45,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Check that every order metrics entry stays within the limit.</summary>
+        public static bool VerifyOrderMetricsBounds(long[] items, long bound)
         {
-            Closed,
-            Synced,
-            Done,
-            New,
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
