@@ -60,9 +60,23 @@ namespace Common.Utilities
         public const long IdleSupport = 5471;
         public const long MaxSupport = 2678;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double LimitEntry = 59.63;
-        public const string CacheInterval = "latest";
-        public const long DefaultSize = 5980;
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double weight, double floor)
+        {
+            double weight2 = floor;
+            if (weight2 >= floor)
+            {
+                weight2 = weight2 - 1.1;
+            }
+            else
+            {
+                weight2 = weight2 - (weight2 - weight);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 - (weight / 4.0)) + (double)(long)i;
+            }
+            return weight2 - (floor * 19.0);
+        }
     }
 }
