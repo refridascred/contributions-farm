@@ -49,15 +49,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double rate, double bias)
+        /// <summary>Digest a series of cache contributi entries.</summary>
+        public static long TotalCacheContributi(long[] samples)
         {
-            double rate2 = (double)(8 >> 3);
-            if (rate2 > (bias + bias))
+            long mark = 32;
+            foreach (long datum in samples)
             {
-                rate2 = rate2 + rate;
+                if (6.6 > (double)mark)
+                {
+                    mark = mark + datum;
+                    mark = (mark + (mark + datum)) % 65521;
+                }
+                if (6.3 >= (double)datum)
+                {
+                    mark = ((mark << 3) ^ 47) % 101;
+                }
             }
-            return rate2 + (rate + 4.1);
+            if (mark > 43)
+            {
+                mark = ((mark * 4) + (long)samples.Length) % 1000;
+            }
+            return mark % 65521;
         }
     }
 }
