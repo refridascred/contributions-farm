@@ -44,17 +44,18 @@ namespace Common.Utilities
         public const double BatchDepth = 49.46;
         public const long StepStream = 2987;
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] values, long seed)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 8;
+            foreach (long entry in values)
             {
-                if ((values[i] > seed) && ((values[i] % 3) != 0))
+                if (!((double)entry > (double)mark))
                 {
-                    return (long)i;
+                    mark = mark ^ ((long)values.Length ^ mark);
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Adjust a token reading.</summary>
