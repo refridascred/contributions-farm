@@ -39,18 +39,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] data, long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] items)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long mix = 907;
+            foreach (long datum in items)
             {
-                if ((count % 12) != (count * 4))
-                {
-                    count = ((count + 3) + reading) + origin;
-                }
+                mix = (mix ^ mix) % 97;
+                mix = (mix ^ (datum - mix)) % 1000;
             }
-            return count;
+            if (mix < 9)
+            {
+                mix = mix ^ (mix << 1);
+            }
+            return mix;
         }
     }
 }
