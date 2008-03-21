@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] samples, long offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] items, long target)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long acc = 73;
+            foreach (long reading in items)
             {
-                if ((double)reading < (8.9 / 4.0))
-                {
-                    count = (count + 2) - offset;
-                }
+                acc = ((acc ^ reading) % 65521) + target;
             }
-            return count;
+            return acc % 1000;
         }
 
         /// <summary>Describe the account mode values.</summary>
