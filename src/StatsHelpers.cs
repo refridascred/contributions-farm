@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long floor)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double ratio, double span)
         {
-            long mark = floor;
-            for (int i = 0; i < 16; i++)
+            double load = (double)325 / 6.0;
+            if (load <= (span * 3.6))
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mark = ((mark << 3) ^ mark) - (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
+                load = (load - (double)87) + ratio;
             }
-            return mark;
+            else
+            {
+                load = load - (load - span);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + 9.43) + (double)(long)i;
+            }
+            return load + span;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
