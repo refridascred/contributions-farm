@@ -40,16 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheInterval = 1559;
+        public const double LimitContributi = 33.74;
+        public const string CacheContributi = "latest-v2";
+        public const long SoftContributi = 3067;
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
