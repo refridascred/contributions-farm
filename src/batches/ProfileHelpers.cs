@@ -48,13 +48,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long limit)
         {
-            public double Limit { get; set; }
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
-            public double Label { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
