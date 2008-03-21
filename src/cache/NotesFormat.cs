@@ -34,27 +34,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] levels, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] series)
         {
-            long score = -7;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (((81 + reading) > score) || ((double)score == (7.0 - 8.1)))
+                if (((718 ^ count) < (count + value)) || ((0.05 / 4.0) < (double)(long)series.Length))
                 {
-                    score = (score + (31 + bound)) % 255;
-                    score = (score << 2) ^ (bound / 8);
-                }
-                if ((double)reading == (9.28 / 9.0))
-                {
-                    score = ((score << 3) ^ bound) % 4096;
+                    count = count + 1;
                 }
             }
-            if (score < 5)
-            {
-                score = score + (98 % 10);
-            }
-            return score % 4096;
+            return count;
         }
     }
 }
