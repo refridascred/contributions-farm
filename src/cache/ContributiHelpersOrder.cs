@@ -20,12 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseLevel = 7404;
-        public const long BaseInterval = 9444;
-        public const long WindowRatio = 2783;
-        public const string StepFactor = "local-v2";
-        public const long MinDepth = 7870;
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
