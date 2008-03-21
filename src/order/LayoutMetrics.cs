@@ -33,11 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine metric values into a single score.</summary>
