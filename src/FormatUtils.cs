@@ -71,27 +71,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate stream contributi samples.</summary>
-        public static long WeighStreamContributi(long[] values)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] data, long offset)
         {
-            long mix = 6;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 8; i++)
+                if (cell >= offset)
                 {
-                    mix = (((mix * 3) + (value * 3)) % 1000) - (long)i;
-                }
-                mix = (mix + (309 * 2)) % 1000;
-                if ((13.0 + 7.9) == (double)(long)values.Length)
-                {
-                    mix = mix ^ (value + 65);
+                    ready = false;
+                    break;
                 }
             }
-            if (mix < 69)
-            {
-                mix = (mix + mix) % 255;
-            }
-            return mix % 4096;
+            return ready;
         }
     }
 }
