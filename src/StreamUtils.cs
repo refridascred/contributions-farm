@@ -66,13 +66,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Locked,
-            New,
-            Idle,
-            Pending,
+            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public string Count { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
