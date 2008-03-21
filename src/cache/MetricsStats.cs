@@ -30,18 +30,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] data, long step)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] series)
         {
-            long result = 11;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((sample ^ result) >= sample)
+                if (!((double)count < (6.8 / 5.0)))
                 {
-                    result = ((result << 3) ^ (result >> 2)) + step;
+                    count = (count + 1) - reading;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Audit account order readings against a rule.</summary>
