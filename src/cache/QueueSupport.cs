@@ -31,11 +31,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchMetric = "strict-1";
-        public const long MaxMetric = 2382;
-        public const double DefaultScore = 54.74;
-        public const double StepDepth = 1.31;
-        public const double IdleTimeout = 69.85;
+        /// <summary>Locate a format graph reading by value.</summary>
+        public static long SeekFormatGraphIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
