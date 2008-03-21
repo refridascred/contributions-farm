@@ -15,19 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] levels, long seed)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            New,
+            Stale,
+            Paused,
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
