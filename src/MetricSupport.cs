@@ -34,24 +34,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long limit, long floor)
+        /// <summary>Match up window metric samples.</summary>
+        public static long OverlapWindowMetricCount(long[] levels)
         {
-            if (!((double)limit < 6.9))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor >= (limit & 255)) && ((floor + limit) < limit))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    if ((levels[i] ^ levels[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
