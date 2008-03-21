@@ -22,21 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] samples)
+        /// <summary>Measure how many session graph samples are out of range.</summary>
+        public static long TallySessionGraphHits(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(count < (count - cell)))
                 {
-                    if ((samples[i] - samples[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) + limit;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
