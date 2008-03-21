@@ -50,20 +50,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every notes account entry stays within the limit.</summary>
-        public static bool CheckNotesAccountLimits(long[] samples, long step)
-        {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultInterval = 66.82;
+        public const long BurstScore = 9481;
+        public const long BurstBuffer = 4311;
+        public const long IdleCount = 5838;
+        public const string SoftBuffer = "local-v2";
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
