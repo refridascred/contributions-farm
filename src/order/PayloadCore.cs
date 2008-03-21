@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long origin, long origin2)
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
+            if (origin2 > (origin2 % 3))
             {
-                score = (score - (score >> 4)) % 4096;
-                score = ((score << 2) ^ (offset - offset)) % 97;
-                score = ((score * 2) + (long)i) % 4093;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((double)origin2 == (9.0 + 15.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
