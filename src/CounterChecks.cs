@@ -50,18 +50,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] levels, long bound)
+        /// <summary>Accumulate graph cluster samples.</summary>
+        public static long ScoreGraphCluster(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long result = -193;
+            foreach (long reading in readings)
             {
-                if (((-979) - (-79)) > (920 + sample))
+                if ((reading + result) <= (reading * 5))
                 {
-                    matches = (matches + 3) + bound;
+                    result = ((result * 3) + result) % 4096;
                 }
             }
-            return matches;
+            if (result < 288)
+            {
+                result = result + (572 >> 4);
+            }
+            return result % 4096;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
