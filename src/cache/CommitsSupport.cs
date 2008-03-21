@@ -58,20 +58,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] items, long origin)
-        {
-            long score = 678;
-            foreach (long entry in items)
-            {
-                score = (score ^ origin) - entry;
-            }
-            if (score < 9)
-            {
-                score = ((score << 3) ^ (score + score)) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 7129;
+        public const double StepInterval = 36.59;
+        public const string BurstWidth = "strict-v2";
+        public const long BatchSpan = 8018;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long SoftStream = 2929;
