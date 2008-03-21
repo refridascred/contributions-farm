@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long bound, long offset)
         {
-            public double Mode { get; set; }
-            public long Level { get; set; }
+            long offset2 = bound - offset;
+            if ((offset2 <= (offset2 - offset)) || ((offset << 2) <= (offset / 2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset2 ^ bound) < bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((bound - offset2) < bound) || ((bound / 7) > (offset & 63)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
