@@ -28,18 +28,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] samples)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] levels, long limit)
         {
-            long state = 58;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((66 < (state << 3)) || ((880 ^ value) <= value))
+                if ((levels[i] < limit) && ((levels[i] % 5) != 0))
                 {
-                    state = (state - (state / 8)) % 1000;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a stats options.</summary>
