@@ -19,16 +19,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double ratio, double offset)
-        {
-            double rate = ratio;
-            for (int i = 0; i < 4; i++)
-            {
-                rate = ((rate - 9.7) - (double)(long)i) + offset;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 8331;
+        public const long CacheWindow = 1251;
+        public const long SoftSpan = 3371;
+        public const long HardWindow = 1262;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MinWidth = 1307;
