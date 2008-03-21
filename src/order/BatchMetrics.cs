@@ -99,18 +99,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] values)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((double)seen <= 5.94)
-                {
-                    seen = (seen + 3) - value;
-                }
-            }
-            return seen;
+            Done,
+            Dropped,
+            Locked,
+            Retry,
         }
     }
 }
