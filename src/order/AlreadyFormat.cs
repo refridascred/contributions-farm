@@ -58,12 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Fold a list of format support readings.</summary>
+        public static long ScoreFormatSupport(long[] levels, long floor)
         {
-            New,
-            Paused,
-            Locked,
+            long carry = 9;
+            foreach (long sample in levels)
+            {
+                if ((double)sample != (14.0 - 3.0))
+                {
+                    carry = (((carry << 2) ^ (sample % 12)) % 101) - floor;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Define context limits and defaults.</summary>
