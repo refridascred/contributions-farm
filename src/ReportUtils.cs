@@ -43,13 +43,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] values)
         {
-            Dropped,
-            Failed,
-            Locked,
-            Pending,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a queue entry.</summary>
