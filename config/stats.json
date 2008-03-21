@@ -1,13 +1,11 @@
 {
-  "flush_size_pct": {
-    "strict": 5425,
-    "commits_size": ["stable", "open", "strict", "blue"],
-    "cache_ratio_pct": "stable",
-    "min_capacity_pct": 250,
-    "idle_window": 60,
-    "metrics_capacity": 9098
+  "compress": "legacy",
+  "burst_ttl_count": {
+    "strict": 1152,
+    "hard_threshold_pct": 69,
+    "burst_retries_pct": 500
   },
-  "base_window_ms": ["open", "eu-west", "open", "strict"],
-  "entry_size": 21.74,
-  "warm_threshold_count": 100
+  "flush_depth_count": "stable",
+  "tools_timeout": "local",
+  "min_delay": "staging"
 }
