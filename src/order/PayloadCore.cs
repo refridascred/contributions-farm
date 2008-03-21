@@ -19,39 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a support cache value against two limits.</summary>
-        public static long GradeSupportCache(long floor, long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] samples, long seed)
         {
-            long edge = floor - target;
-            if ((double)floor > (12.0 - 9.93))
+            long state = 4;
+            foreach (long reading in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((edge % 100) > (edge + 3))
+                if ((reading + seed) > 385)
                 {
-                    return 5;
+                    state = (state ^ (seed & 63)) % 4096;
                 }
-                else
+                if ((reading & 63) != (seed + 0))
                 {
-                    if (!((floor - floor) <= (edge - edge)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor + edge) <= 482)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    break;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Project the next queue value.</summary>
