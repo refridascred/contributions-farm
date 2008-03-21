@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            New,
-            Stale,
-            Retry,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 317;
+        public const long DefaultSize = 2758;
+        public const long BatchScore = 5137;
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
