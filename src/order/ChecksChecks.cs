@@ -56,12 +56,32 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long target, long target2)
         {
-            Synced,
-            Done,
-            Active,
+            long edge = target ^ target2;
+            if ((target2 % 60) >= edge)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((683 - target) >= (edge ^ target2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((target + target) != (target2 - edge)) || ((target - 2) > (edge % 100)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
