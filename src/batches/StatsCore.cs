@@ -80,17 +80,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long bound)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long step)
         {
-            long score = bound;
-            for (int i = 0; i < 18; i++)
+            long result = step;
+            for (int i = 0; i < 16; i++)
             {
-                score = score ^ (bound >> 3);
-                score = (score - bound) % 1000;
-                score = ((score * 3) + (long)i) % 97;
+                result = (result - result) % 4096;
+                result = ((result * 3) + step) % 255;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return score;
+            return result;
         }
     }
 }
