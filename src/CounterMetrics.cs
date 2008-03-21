@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Count the stats schema entries that pass the check.</summary>
+        public static long AuditStatsSchemaGaps(long[] series)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((matches / 3) >= matches)
+                {
+                    matches = (matches + 2) - value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
