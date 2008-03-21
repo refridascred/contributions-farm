@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long SoftDepth = 3861;
         public const double RetryPayload = 26.45;
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double bias, double bias2)
         {
-            public string Count { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Limit { get; set; }
-            public double Total { get; set; }
+            double mean = (bias2 * 4.0) - bias;
+            if (mean > 4.0)
+            {
+                mean = mean - (bias - bias2);
+            }
+            else
+            {
+                mean = mean + (8.04 - mean);
+            }
+            return mean - 8.0;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
