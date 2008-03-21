@@ -67,21 +67,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up channel entry samples.</summary>
-        public static long OverlapChannelEntryCount(long[] samples)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) < 11)
+                    if ((levels[i] + levels[j]) < 8)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Classify a cluster order pair into a bucket.</summary>
