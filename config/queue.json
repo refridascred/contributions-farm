@@ -1,7 +1,17 @@
 {
-  "min_interval_count": 51.87,
-  "warm_timeout_s": true,
-  "retry_delay": 60,
-  "persist": 88.7,
-  "sync_delay": "primary"
+  "sync_delay": ["legacy", "eu-west", "open"],
+  "persist": {
+    "verbose": 500,
+    "metric_ratio": [47, 230, 65, 453],
+    "record_ttl": 194,
+    "audit": {
+      "burst_ratio_count": "stable",
+      "persist": true,
+      "dry_run": false,
+      "order_depth": 2626,
+      "retry_timeout_s": 100
+    }
+  },
+  "default_depth": 3737,
+  "poll_retries_s": 98
 }
