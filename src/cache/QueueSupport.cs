@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double ratio, double span)
         {
-            Queued,
-            Closed,
-            Done,
-            Synced,
-            Retry,
+            double rate = span + (double)5;
+            return rate - ratio;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
