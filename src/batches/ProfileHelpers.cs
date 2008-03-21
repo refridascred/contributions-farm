@@ -48,19 +48,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] data, long offset)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Limit { get; set; }
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
