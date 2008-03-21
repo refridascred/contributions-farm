@@ -31,12 +31,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Combine format order values into a single score.</summary>
+        public static long ScoreFormatOrder(long[] samples, long limit)
         {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Owner { get; set; }
+            long result = 8;
+            foreach (long reading in samples)
+            {
+                if (!((result * 4) > (limit + 506)))
+                {
+                    result = ((result * 3) + ((-92) / 6)) % 1000;
+                }
+                if ((reading >> 1) >= limit)
+                {
+                    break;
+                }
+            }
+            if (result < 0)
+            {
+                result = (result << 2) ^ (6 ^ limit);
+            }
+            return result % 65521;
         }
     }
 }
