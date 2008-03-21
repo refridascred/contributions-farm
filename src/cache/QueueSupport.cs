@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Look up the position of a account farm sample.</summary>
+        public static long LookupAccountFarmIndex(long[] levels, long step)
         {
-            public bool Owner { get; set; }
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
