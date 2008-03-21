@@ -57,17 +57,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryGithubfarm = 26.78;
+        public const long SoftLevel = 2788;
+        public const double StepRatio = 74.54;
     }
 }
