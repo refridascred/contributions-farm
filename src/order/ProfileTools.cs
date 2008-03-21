@@ -22,14 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] readings, long bound)
         {
-            Failed,
-            Paused,
-            Active,
-            Ready,
-            Idle,
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a channel info.</summary>
