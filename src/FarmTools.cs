@@ -28,21 +28,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] items)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Draft,
+            Closed,
+            Idle,
         }
 
         /// <summary>Locate a support reading by value.</summary>
