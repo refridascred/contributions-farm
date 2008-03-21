@@ -58,10 +58,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double RetryTimeout = 22.5;
-        public const long RetryWidth = 1284;
-        public const long StepOrder = 7844;
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= step) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long SortAlready(long limit, long origin)
