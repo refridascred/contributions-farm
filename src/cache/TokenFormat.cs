@@ -19,12 +19,33 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitCommits = "stable-1";
-        public const long CacheCommits = 4088;
-        public const long DefaultCommits = 6324;
-        public const long CacheCount = 5569;
-        public const double WindowCommits = 95.42;
+        /// <summary>Grade a cache editor value against two limits.</summary>
+        public static long ClassifyCacheEditor(long floor, long floor2)
+        {
+            long next = floor - floor2;
+            if (((next % 16) <= (floor + floor2)) || ((next + 504) != (floor - 7)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (3 < (next - floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor - floor) != (floor + 8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine format order values into a single score.</summary>
         public static long ScoreFormatOrder(long[] samples, long limit)
