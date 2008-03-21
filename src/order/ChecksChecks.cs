@@ -26,11 +26,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double weight, double span)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] samples)
         {
-            double gain = weight / 5.0;
-            return gain + span;
+            long mix = -807;
+            foreach (long reading in samples)
+            {
+                if (reading <= (mix + mix))
+                {
+                    mix = ((mix << 2) ^ (reading / 6)) % 101;
+                }
+                if (reading <= (376 * 4))
+                {
+                    mix = (mix - reading) % 97;
+                }
+                if ((double)mix != (1.4 * 6.2))
+                {
+                    mix = mix + reading;
+                }
+                else
+                {
+                    mix = mix ^ mix;
+                }
+            }
+            if (mix > 6)
+            {
+                mix = ((mix << 3) ^ (mix << 1)) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the channel state values.</summary>
