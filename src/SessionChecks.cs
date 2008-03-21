@@ -36,18 +36,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] items, long target)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksBounds(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if (!((sample + target) >= matches))
+                if (sample >= target)
                 {
-                    matches = matches + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
