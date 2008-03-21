@@ -30,22 +30,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmMatches(long[] series)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((tally ^ 28) == (sample << 2))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
