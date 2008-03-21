@@ -18,38 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long limit, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] readings)
         {
-            if ((limit % 7) != (369 >> 1))
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((4 << 2) <= (limit - limit)))
+                if ((642 >> 1) > (seen % 97))
                 {
-                    return 2;
+                    seen = (seen + 3) + reading;
                 }
                 else
                 {
-                    if ((limit + limit) <= (origin & 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((3.4 / 2.0) < (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up cache samples.</summary>
