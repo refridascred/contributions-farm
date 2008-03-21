@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long target, long offset)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long prev = target - offset;
-            if (target >= (offset >> 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset << 2) > prev)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (offset > (prev & 63))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((prev - 22) > (offset - 489))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public double Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the metrics status values.</summary>
