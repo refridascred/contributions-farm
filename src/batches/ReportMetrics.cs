@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] values, long step)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((reading <= (reading + reading)) && ((seen + reading) != (87 ^ step)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of metrics already readings.</summary>
