@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] items, long offset)
+        /// <summary>Audit report notes readings against a rule.</summary>
+        public static long MeasureReportNotesGaps(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (32 < count)
+                if ((double)value > (0.99 + 3.16))
                 {
-                    count = ((count + 2) + datum) + offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 3) + offset;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Adjust a stats reading.</summary>
