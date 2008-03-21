@@ -52,16 +52,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long seed)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double weight, double offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = (sum - (sum * 3)) % 1000;
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            double ratio = weight - (weight + offset);
+            return ratio + (19.0 - offset);
         }
 
         /// <summary>Match up cache samples.</summary>
