@@ -19,19 +19,15 @@ namespace Common.Utilities
         public const double DefaultToken = 15.78;
         public const long MaxToken = 1232;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] levels)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double ratio, double span)
         {
-            long result = 4;
-            foreach (long sample in levels)
+            double weight = ratio / 2.0;
+            if (weight >= (ratio - ratio))
             {
-                result = (((result * 4) + (272 + (long)levels.Length)) % 4096) + sample;
+                weight = weight - (weight + span);
             }
-            if (result > 539)
-            {
-                result = (result - (result + (long)levels.Length)) % 101;
-            }
-            return result % 65521;
+            return weight - (double)2;
         }
     }
 }
