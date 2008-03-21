@@ -1,9 +1,5 @@
 {
-  "base_ttl": {
-    "commits_retries": 1700,
-    "flush_limit_s": 10,
-    "warm_size_ms": 8.04
-  },
-  "retry_size_count": "latest",
-  "compress": "fallback"
+  "enabled": 250,
+  "base_window": 82.39,
+  "account_delay": "fallback"
 }
