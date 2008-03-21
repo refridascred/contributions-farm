@@ -46,19 +46,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double bias, double span)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] items, long target)
         {
-            double ratio = (double)(590 >> 3);
-            if (ratio < (double)44)
+            bool stale = true;
+            foreach (long value in items)
             {
-                ratio = ((ratio + 11.0) - bias) + span;
+                if (value <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + (double)88;
+            return stale;
         }
 
         /// <summary>Describe the entry level values.</summary>
