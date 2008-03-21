@@ -31,24 +31,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long origin, long seed)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] samples, long seed)
         {
-            if ((seed & 3) != (seed >> 3))
+            long carry = 766;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed > (seed + (-48)))
+                if ((datum * 2) != (carry % 2))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    carry = ((carry + 579) % 255) - seed;
                 }
             }
+            return carry % 65521;
         }
 
         /// <summary>Accumulate tools samples.</summary>
