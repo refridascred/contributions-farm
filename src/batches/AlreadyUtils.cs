@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long SoftSpan = 6034;
         public const long BaseCount = 5118;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiHits(long[] items)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (((double)value != (double)452) || (((double)value >= (double)seen) && ((seen * 5) <= seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Synced,
+            Idle,
+            Ready,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
