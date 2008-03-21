@@ -1,5 +1,25 @@
 {
-  "graph_capacity": 39,
-  "record_delay": 5498,
-  "counter_timeout": true
+  "retry_size": 4909,
+  "hard_ratio": {
+    "persist": 9325,
+    "max_window": {
+      "max_ttl_ms": 15.64,
+      "cache_ratio_s": "legacy",
+      "metric_timeout": ["stable", "stable", "fallback"],
+      "order_depth": 95,
+      "warm_depth_ms": 5683
+    },
+    "buffer_timeout": 100,
+    "max_interval": {
+      "burst_capacity": 36.28,
+      "retry_limit": "legacy",
+      "min_size_pct": 22.9,
+      "burst_delay_ms": 1024,
+      "flush_size": 2053
+    },
+    "burst_retries_ms": "green",
+    "min_ratio": 5065
+  },
+  "counter_ratio": 70.33,
+  "enabled": 9174
 }
