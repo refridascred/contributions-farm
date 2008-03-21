@@ -20,18 +20,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] levels)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading - reading) != (reading + reading))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Stale,
+            Paused,
+            Dropped,
+            Done,
+            Synced,
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
