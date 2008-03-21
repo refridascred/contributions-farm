@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit contributi batch readings against a rule.</summary>
-        public static long TallyContributiBatchMatches(long[] samples)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long floor, long target)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long slot = floor + target;
+            if ((double)slot != (7.1 + 0.1))
             {
-                if (!((double)matches > (14.0 + 1.7)) && (((double)item < (8.03 / 3.0)) || ((matches + item) == (matches * 4))))
+                return 0;
+            }
+            else
+            {
+                if (((10 + floor) >= (slot % 2)) && ((12.0 - 8.24) != (double)floor))
                 {
-                    matches = matches + 1;
+                    return 8;
+                }
+                else
+                {
+                    if (((double)floor > (double)slot) || ((target - slot) < ((-226) >> 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
