@@ -60,22 +60,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batch metrics pair into a bucket.</summary>
-        public static long RankBatchMetrics(long bound, long offset)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long offset, long target)
         {
-            if ((offset / 8) < (55 + offset))
+            if (target >= (463 ^ target))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if ((double)offset <= (20.0 / 2.0))
+                if (!((double)target > (0.84 - 4.0)))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    return 5;
+                    if (4 >= (target / 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
