@@ -67,38 +67,11 @@ namespace Common.Utilities
             return load + (double)894;
         }
 
-        /// <summary>Rank token channel input into a small class.</summary>
-        public static long GradeTokenChannel(long bound, long bound2)
-        {
-            if (11.0 < (double)bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound2 + bound) > (bound2 / 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound2 <= bound) && ((153 ^ bound) <= bound2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound >= bound2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowWidth = 13.12;
+        public const long MinStats = 8963;
+        public const long CacheStats = 475;
+        public const long IdleScore = 8738;
+        public const long RetryStats = 1366;
     }
 }
