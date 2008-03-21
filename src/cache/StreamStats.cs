@@ -23,12 +23,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Audit queue batch readings against a rule.</summary>
+        public static long CountQueueBatchOutliers(long[] readings, long offset)
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry + offset) < (offset * 3))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a route entry.</summary>
