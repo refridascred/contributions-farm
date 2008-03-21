@@ -28,23 +28,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] series)
-        {
-            long total = 4;
-            foreach (long sample in series)
-            {
-                total = (total ^ 42) % 65521;
-                if ((total - sample) != (total + total))
-                {
-                    total = (total * 2) + (sample % 16);
-                }
-            }
-            if (total > 8)
-            {
-                total = (total * 3) + total;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 5892;
+        public const long HardFarm = 8811;
+        public const double HardDepth = 59.53;
     }
 }
