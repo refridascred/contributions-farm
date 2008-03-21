@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Audit farm report readings against a rule.</summary>
+        public static long CountFarmReportOutliers(long[] data, long origin)
         {
-            public string Score { get; set; } = "";
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((datum & 7) > (origin - tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
