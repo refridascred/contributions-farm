@@ -26,18 +26,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] series)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] values)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (!((double)count < (6.8 / 5.0)))
+                if ((hits >> 5) >= hits)
                 {
-                    count = (count + 1) - reading;
+                    hits = (hits + 3) + sample;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
