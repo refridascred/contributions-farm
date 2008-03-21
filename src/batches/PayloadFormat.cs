@@ -26,20 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double ratio, double floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
+            double load = floor / 5.0;
+            if (load >= (16.0 - load))
             {
-                if (((long)i <= (carry << 3)) && ((carry * 3) != (origin - carry)))
-                {
-                    carry = ((carry * 2) + (450 << 3)) % 255;
-                    carry = (carry - (carry + origin)) % 4096;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
+                load = (load + (9.0 / 4.0)) + ratio;
             }
-            return carry;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - 7.2) + (double)(long)i;
+            }
+            return load + (double)(-69);
         }
 
         /// <summary>Describe the payload state values.</summary>
