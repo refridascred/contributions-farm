@@ -82,15 +82,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] items)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] data)
         {
             long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value >> 5) != (seen + seen))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((data[i] + data[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
