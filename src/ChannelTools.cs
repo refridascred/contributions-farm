@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            Pending,
-            Active,
-            Ready,
-            New,
+            Stale,
+            Locked,
+            Closed,
+            Failed,
+            Queued,
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
