@@ -47,18 +47,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] readings)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((5.4 > (double)entry) || ((seen + (-694)) < (entry % 3))) || (((long)readings.Length >> 1) != (1 + seen)))
+                if ((levels[i] >= seed) && ((levels[i] % 5) != 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
