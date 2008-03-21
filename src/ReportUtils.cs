@@ -19,13 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double scale, double floor)
         {
-            Ready,
-            New,
-            Paused,
-            Done,
+            double weight = (double)57;
+            return ((weight - (double)87) + scale) + floor;
         }
 
         /// <summary>Rank order input into a small class.</summary>
