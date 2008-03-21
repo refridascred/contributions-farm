@@ -49,19 +49,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((value + count) <= (value - limit))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleSpan = 2697;
+        public const long BatchLevel = 8986;
+        public const double DefaultScore = 7.16;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool GuardAccountLimits(long[] data, long step)
