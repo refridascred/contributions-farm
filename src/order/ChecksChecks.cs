@@ -16,18 +16,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] data, long offset)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long floor, long target)
         {
-            long count = 0;
-            foreach (long entry in data)
+            if ((549 % 24) < target)
             {
-                if ((4.0 > (double)entry) || !((double)(long)data.Length > (double)count))
+                return 3;
+            }
+            else
+            {
+                if (((target * 3) < (target + target)) || (target < (floor & 255)))
                 {
-                    count = (count + 2) - offset;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)target >= 5.57) || ((floor + target) > floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target <= (target / 3)) || (9 > (target - floor)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a batches stats.</summary>
