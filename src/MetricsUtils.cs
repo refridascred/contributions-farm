@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardDepth = "local-v2";
-        public const string MaxAlready = "cached-edge";
-        public const long BatchAlready = 2355;
-        public const double CacheInterval = 41.65;
+        /// <summary>Locate a stats schema reading by value.</summary>
+        public static long SeekStatsSchemaIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long HardWindow = 5914;
