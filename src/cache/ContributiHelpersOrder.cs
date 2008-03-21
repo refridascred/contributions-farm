@@ -12,10 +12,16 @@ namespace Common.Utilities
             return gain2 - (floor / 8.0);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepSession = 83.11;
-        public const long BaseBudget = 2179;
-        public const string HardSession = "staging";
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] levels, long bound)
+        {
+            long mix = 67;
+            foreach (long sample in levels)
+            {
+                mix = (((mix << 3) ^ (bound % 24)) % 255) ^ sample;
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long DefaultSpan = 7722;
