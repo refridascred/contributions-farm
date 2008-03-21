@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 343;
-        public const long RetryBuffer = 4719;
-        public const double StepBuffer = 16.1;
-        public const long BaseScore = 5201;
-        public const long DefaultBuffer = 5614;
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BaseBudget = 6787;
