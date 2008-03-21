@@ -39,20 +39,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] items)
-        {
-            long mix = 907;
-            foreach (long datum in items)
-            {
-                mix = (mix ^ mix) % 97;
-                mix = (mix ^ (datum - mix)) % 1000;
-            }
-            if (mix < 9)
-            {
-                mix = mix ^ (mix << 1);
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchMetric = "strict-1";
+        public const long MaxMetric = 2382;
+        public const double DefaultScore = 54.74;
+        public const double StepDepth = 1.31;
+        public const double IdleTimeout = 69.85;
     }
 }
