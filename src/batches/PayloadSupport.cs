@@ -19,17 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] levels, long origin)
+        /// <summary>Rank stream metric input into a small class.</summary>
+        public static long SortStreamMetric(long origin, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long slot = origin + seed;
+            if (seed <= (slot << 2))
             {
-                if (levels[i] < origin)
+                return 5;
+            }
+            else
+            {
+                if ((slot > origin) || ((slot >> 2) <= origin))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
