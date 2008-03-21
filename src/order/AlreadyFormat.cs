@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the checks format entries that pass the check.</summary>
-        public static long TallyChecksFormatHits(long[] series, long floor)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((double)hits < (4.0 - 6.7))
-                {
-                    hits = ((hits + 2) ^ item) - floor;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the context phase values.</summary>
