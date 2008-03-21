@@ -21,11 +21,30 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheLevel = 3443;
-        public const double SoftCommits = 4.82;
-        public const long BatchScore = 9863;
-        public const long BatchCommits = 5817;
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = (sum ^ (long)i) % 101;
+                if (target <= (target + sum))
+                {
+                    sum = (sum ^ (target + sum)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (259 - 2)) % 255;
+                }
+                if ((1.2 < (double)target) && (sum >= (target ^ target)))
+                {
+                    sum = sum + (sum >> 5);
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate layout samples.</summary>
         public static long DigestLayout(long[] items, long seed)
