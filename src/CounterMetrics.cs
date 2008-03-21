@@ -46,22 +46,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] levels)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long seed)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (((long)levels.Length - 871) < (cell ^ hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
     }
 }
