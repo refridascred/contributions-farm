@@ -24,17 +24,22 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] levels, long origin)
+        /// <summary>Audit context batch readings against a rule.</summary>
+        public static long CountContextBatchGaps(long[] data, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (levels[i] < origin)
+                if (8 < ((-9) - floor))
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
