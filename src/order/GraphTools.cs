@@ -57,10 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitTools = "open-1";
-        public const long SoftTools = 4700;
-        public const long DefaultWidth = 9843;
-        public const long CacheDepth = 7779;
+        /// <summary>Roll a batch channel counter forward.</summary>
+        public static long RollBatchChannel(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 11; i++)
+            {
+                if (carry <= ((-27) >> 3))
+                {
+                    carry = carry + (long)i;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
