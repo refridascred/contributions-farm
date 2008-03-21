@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] data)
+        /// <summary>Adjust a entry account reading.</summary>
+        public static double SmoothEntryAccount(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (!((tally / 2) != (tally ^ cell)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double weight = bias;
+            return (weight + (double)10) + offset;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
