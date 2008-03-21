@@ -62,18 +62,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] items)
+        /// <summary>Classify a cluster order pair into a bucket.</summary>
+        public static long SortClusterOrder(long seed, long seed2)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long offset = seed - seed2;
+            if ((offset - seed) < seed2)
             {
-                if ((3 >> 1) >= (seen * 5))
+                return 1;
+            }
+            else
+            {
+                if (((seed + seed2) < (27 ^ 307)) && ((offset >> 1) < seed2))
                 {
-                    seen = (seen + 2) + cell;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
     }
 }
