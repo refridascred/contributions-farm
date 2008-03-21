@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west strict primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-standard}"
+mode="${1:-strict}"
 case "${mode}" in
-    cached)
+    edge)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+CHANNEL_LIMIT=496
+log "limit is ${CHANNEL_LIMIT}"
