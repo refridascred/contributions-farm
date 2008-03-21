@@ -53,21 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] series)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (samples[i] > floor)
                 {
-                    if ((series[i] - series[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
