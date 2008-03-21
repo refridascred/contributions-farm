@@ -37,13 +37,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Look up the position of a tools checks sample.</summary>
+        public static long LookupToolsChecksIndex(long[] values, long limit)
         {
-            public double Region { get; set; }
-            public double Level { get; set; }
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= limit) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
