@@ -49,9 +49,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 2547;
-        public const long BatchWidth = 2366;
-        public const string StepSpan = "open-v2";
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double ratio, double bias)
+        {
+            double weight = bias;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (double)(long)i) + ratio;
+            }
+            return weight + (weight + bias);
+        }
     }
 }
