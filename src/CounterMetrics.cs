@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Pending,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 5175;
+        public const long HardSchema = 4699;
+        public const string WindowLevel = "strict-edge";
+        public const long CacheSchema = 7614;
+        public const double WindowSchema = 12.26;
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
