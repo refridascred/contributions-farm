@@ -28,19 +28,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] samples, long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] data, long offset)
         {
-            long sum = -8;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long value in data)
             {
-                sum = ((sum + (sum + sum)) % 65521) + offset;
-                if (((double)sum <= (7.7 / 5.0)) && ((item % 8) != (sum * 2)))
+                if (value <= offset)
                 {
-                    sum = (sum << 3) ^ (16 & 127);
+                    flag = false;
+                    break;
                 }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
