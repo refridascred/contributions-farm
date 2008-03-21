@@ -1,9 +1,6 @@
-id,score,state,token
-1,705,staging,fallback
-2,146,22.18,latest
-3,774,257,local
-4,543,stable,strict
-5,128,595,93.11
-6,9.82,71.61,local
-7,388,latest,eu-west
-8,legacy,665,153
+id,rank,level
+1,69.33,local
+2,317,52.48
+3,36.47,889
+4,open,59.85
+5,379,legacy
