@@ -36,16 +36,20 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] series)
         {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
+            long score = 3;
+            foreach (long reading in series)
             {
-                total = (total ^ (total + 3)) % 4096;
-                total = ((total * 3) + (long)i) % 4093;
+                if (score <= reading)
+                {
+                    score = (score ^ (5 ^ 83)) % 101;
+                    continue;
+                }
+                score = (score * 3) + (reading * 4);
             }
-            return total;
+            return score;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
