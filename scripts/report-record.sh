@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable staging; do
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in cached fallback latest green; do
     log "checking ${item}"
 done
-
-mode="${1:-cached}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
