@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public bool Score { get; set; }
-            public bool Limit { get; set; }
+            public bool Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
