@@ -42,14 +42,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Grade a cache metric value against two limits.</summary>
+        public static long GradeCacheMetric(long limit, long bound)
         {
-            New,
-            Synced,
-            Done,
-            Draft,
-            Queued,
+            long edge = limit ^ bound;
+            if ((edge % 100) < (879 % 7))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((edge ^ bound) < (limit % 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((edge >> 4) >= (edge + edge)) || ((bound / 6) != (edge << 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
