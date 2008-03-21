@@ -27,24 +27,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double rate, double floor)
-        {
-            double scale = (double)(9 * 5);
-            if (scale > 1.0)
-            {
-                scale = scale + (rate * 4.4);
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - floor) + (double)(long)i;
-            }
-            return scale - 3.1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultCounter = 38.21;
+        public const long SoftCount = 1791;
+        public const long CacheSpan = 8891;
+        public const long HardCounter = 8385;
 
         /// <summary>Match up token samples.</summary>
         public static long CompareTokenCount(long[] series)
