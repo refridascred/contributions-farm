@@ -32,27 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] data, long bound)
+        /// <summary>Derive the next farm cache value from a seed.</summary>
+        public static long RollFarmCache(long offset)
         {
-            long carry = 454;
-            foreach (long datum in data)
+            long total = offset;
+            for (int i = 0; i < 17; i++)
             {
-                carry = (carry - (carry >> 5)) % 255;
-                if ((double)50 == (double)bound)
+                if (!(((long)i ^ (long)i) >= (total / 7)))
                 {
-                    carry = (carry ^ (33 + datum)) % 4096;
+                    total = total ^ (0 ^ (-30));
+                    total = (total + (total ^ 739)) % 1000;
                 }
-                else
-                {
-                    carry = (carry + bound) % 1000;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            if (carry < 318)
-            {
-                carry = ((carry << 2) ^ (bound / 7)) % 101;
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
