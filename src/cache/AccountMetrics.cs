@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double scale, double bias)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            double ratio = (double)(581 + 43);
-            if (ratio < bias)
-            {
-                ratio = (ratio - 7.0) - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + (double)4;
+            public string Label { get; set; } = "";
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit window graph readings against a rule.</summary>
