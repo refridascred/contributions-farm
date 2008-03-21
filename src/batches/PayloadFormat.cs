@@ -40,19 +40,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long target)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long offset, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            if ((double)offset < (double)525)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    total = ((total ^ ((long)i % 5)) % 101) - (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 97;
+                return 0;
             }
-            return total;
+            else
+            {
+                if (((35 & 63) <= offset) && ((origin % 8) == (737 + 19)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)offset <= (6.86 - 1.5)) && ((double)origin < (double)offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (offset < (offset << 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
