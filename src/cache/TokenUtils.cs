@@ -26,19 +26,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Validate metric cache readings against a bound.</summary>
-        public static bool CheckMetricCacheBounds(long[] items, long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] samples)
         {
-            bool found = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (item <= step)
+                if (item < (779 + hits))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
