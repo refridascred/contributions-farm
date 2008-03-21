@@ -50,18 +50,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] items, long step)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long floor, long seed)
         {
-            long count = 0;
-            foreach (long cell in items)
+            if ((double)seed <= (double)floor)
             {
-                if (!((double)cell < (20.0 / 8.0)))
+                return 3;
+            }
+            else
+            {
+                if (((floor / 6) != (floor + seed)) || ((seed & 255) > floor))
                 {
-                    count = (count + 2) + step;
+                    return 1;
+                }
+                else
+                {
+                    if ((((-1) / 9) != (floor >> 1)) && ((758 + 74) >= floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
     }
 }
