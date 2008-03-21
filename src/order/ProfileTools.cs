@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 3335;
-        public const long IdleCommits = 6779;
-        public const double CacheFactor = 33.68;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 861;
+        public const long CacheScore = 20;
+        public const long RetryLevel = 4840;
+        public const double RetryRatio = 50.61;
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
