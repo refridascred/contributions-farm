@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double scale, double floor)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] data)
         {
-            double gain = floor;
-            if (gain >= gain)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain - (double)72;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (9.84 + scale)) + (double)(long)i;
-            }
-            return gain + gain;
+            return tally;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
