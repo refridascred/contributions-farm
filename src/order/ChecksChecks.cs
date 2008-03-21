@@ -33,18 +33,12 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] data, long seed)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long sum = 5;
-            foreach (long datum in data)
-            {
-                if (datum > sum)
-                {
-                    sum = (((sum * 4) + (sum + datum)) % 97) - seed;
-                }
-            }
-            return sum % 1000;
+            Synced,
+            Done,
+            Active,
         }
     }
 }
