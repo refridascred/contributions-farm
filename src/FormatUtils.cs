@@ -30,21 +30,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] items)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = ratio;
+            if (scale > (scale + scale))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = scale - ratio;
             }
-            return tally;
+            return scale + (scale + offset);
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
