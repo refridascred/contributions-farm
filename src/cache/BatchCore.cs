@@ -33,22 +33,16 @@ namespace Common.Utilities
             return rate - (rate * 3.7);
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] values, long seed)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long bound)
         {
-            long mark = 502;
-            foreach (long reading in values)
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (mark >= seed)
-                {
-                    mark = mark + (reading << 1);
-                }
+                mix = mix ^ mix;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            if (mark < 75)
-            {
-                mark = (mark + ((long)values.Length % 100)) % 4096;
-            }
-            return mark;
+            return mix;
         }
 
         /// <summary>Describe the report class values.</summary>
