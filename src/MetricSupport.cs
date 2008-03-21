@@ -22,18 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes command entries that pass the check.</summary>
-        public static long CountNotesCommandOutliers(long[] data, long seed)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((entry / 8) == (800 << 3))
-                {
-                    hits = (hits + 1) - seed;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Combine batch values into a single score.</summary>
