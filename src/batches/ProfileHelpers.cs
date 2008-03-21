@@ -35,13 +35,13 @@ namespace Common.Utilities
             return gain2 + (gain - gain2);
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            public double Level { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            Failed,
+            Draft,
+            Pending,
+            Idle,
         }
 
         /// <summary>Match up checks samples.</summary>
