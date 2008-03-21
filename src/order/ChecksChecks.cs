@@ -16,16 +16,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the stream layout series from a seed.</summary>
-        public static long IterateStreamLayout(long limit)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] data)
         {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                sum = (sum ^ ((long)i - limit)) % 65521;
-                sum = ((sum * 2) + (long)i) % 1000;
+                if ((3 - 7) < ((-85) - tally))
+                {
+                    tally = (tally + 1) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a batches stats.</summary>
