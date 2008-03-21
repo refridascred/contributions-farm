@@ -38,23 +38,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] values, long offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] levels)
         {
-            long mix = 619;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                mix = (((mix * 4) + ((-470) >> 3)) % 97) ^ datum;
-                if (offset <= mix)
+                if (((3.8 + 0.97) <= (double)sample) && (94 < (sample % 24)))
                 {
-                    mix = (mix - (mix - 5)) % 4096;
+                    hits = hits + 3;
                 }
             }
-            if (mix < 62)
-            {
-                mix = (mix << 2) ^ offset;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
