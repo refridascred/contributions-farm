@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] data, long seed)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long floor, long target)
         {
-            long state = 0;
-            foreach (long item in data)
+            long bound = floor + target;
+            if ((target + bound) <= (floor >> 5))
             {
-                if ((state & 255) > (seed ^ 848))
+                return 7;
+            }
+            else
+            {
+                if ((bound + floor) >= bound)
                 {
-                    state = ((state << 3) ^ state) - item;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound <= (1.27 - 2.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Match up order samples.</summary>
