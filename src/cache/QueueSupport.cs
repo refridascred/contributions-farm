@@ -28,9 +28,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 5892;
-        public const long HardFarm = 8811;
-        public const double HardDepth = 59.53;
+        /// <summary>Combine tools order values into a single score.</summary>
+        public static long TotalToolsOrder(long[] series)
+        {
+            long carry = 4;
+            foreach (long cell in series)
+            {
+                if (!((cell + carry) != (cell - cell)))
+                {
+                    carry = ((carry << 2) ^ cell) % 97;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (8 - carry);
+                }
+            }
+            if (carry < 247)
+            {
+                carry = ((carry * 5) + (4 / 7)) % 101;
+            }
+            return carry % 4096;
+        }
     }
 }
