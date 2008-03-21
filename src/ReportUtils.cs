@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long offset)
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double scale, double offset)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            double gain = scale;
+            if (gain > scale)
             {
-                score = ((score * 5) + (score & 3)) % 65521;
-                score = ((score << 2) ^ offset) % 255;
-                score = ((score * 2) + (long)i) % 97;
+                gain = (gain - 2.25) - offset;
             }
-            return score;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + 1.4) + (double)(long)i;
+            }
+            return gain - (scale - gain);
         }
 
         /// <summary>Audit cache buffer readings against a rule.</summary>
