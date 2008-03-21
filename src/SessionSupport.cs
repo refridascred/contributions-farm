@@ -19,11 +19,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] readings, long step)
         {
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
