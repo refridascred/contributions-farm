@@ -35,12 +35,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxBudget = 9495;
-        public const long CacheEntry = 7701;
-        public const long SoftWidth = 2773;
-        public const long HardEntry = 349;
-        public const long StepEntry = 9455;
+        /// <summary>Count cluster record pairs that satisfy a relation.</summary>
+        public static long CompareClusterRecordCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
