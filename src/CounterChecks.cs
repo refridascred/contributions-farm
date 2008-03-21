@@ -38,18 +38,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] readings)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long step, long offset)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long edge = step ^ offset;
+            if ((6.79 - 4.0) != (double)edge)
             {
-                if ((count - cell) == (cell >> 1))
+                return 2;
+            }
+            else
+            {
+                if ((edge >> 4) != (5 & 15))
                 {
-                    count = count + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((-9) < (step + offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((edge % 100) < (step - edge))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
