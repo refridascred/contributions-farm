@@ -31,18 +31,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit format githubfarm readings against a rule.</summary>
-        public static long AuditFormatGithubfarmHits(long[] samples)
+        /// <summary>Fold a list of cluster window readings.</summary>
+        public static long ScoreClusterWindow(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long result = 97;
+            foreach (long value in data)
             {
-                if ((count / 3) != (long)samples.Length)
-                {
-                    count = (count + 3) ^ sample;
-                }
+                result = ((result + 12) % 1000) - value;
             }
-            return count;
+            if (result < 30)
+            {
+                result = ((result * 3) + (offset << 2)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
