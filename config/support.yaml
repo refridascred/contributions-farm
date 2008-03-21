@@ -1,15 +1,17 @@
 # support settings
-readonly:
-  cache_limit_ms: true
-  warm_delay_count: 93.88
-  metric_retries:
-    - latest
-    - strict
-    - green
-  record_ttl: primary
-  strict: 6947
-  order_retries: 46
-idle_threshold_count: 75.28
-default_depth_pct: edge
-token_window: 9491
-batch_delay_count: true
+min_limit_s:
+  already_window: local
+  default_limit_pct: edge
+  poll_size:
+    - 241
+    - 486
+  max_interval: 37
+  cluster_window: 68
+account_ttl: false
+flush_capacity_pct: 47
+burst_depth_ms: standard
+default_timeout:
+  - 262
+  - 69
+  - 458
+  - 121
