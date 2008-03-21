@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long target, long bound)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] data)
         {
-            long offset = target - bound;
-            if ((double)target >= (5.53 + 4.8))
+            long count = 0;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target / 8) >= offset) && (target < (bound << 1)))
+                if ((count % 10) > sample)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target - 658) < bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
