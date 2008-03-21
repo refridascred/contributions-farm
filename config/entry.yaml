@@ -1,16 +1,6 @@
 # entry settings
-strict:
-  burst_window_pct:
-    compress: 60
-    persist: false
-    min_capacity_s: 592
-  min_limit_s: true
-  soft_threshold_ms: edge
-  burst_retries_s:
-    - local
-    - edge
-cache_ratio_pct: primary
-retry_delay_pct:
-  - cached
-  - blue
-idle_delay: true
+hard_depth: 60
+session_capacity: strict
+max_timeout_s: fallback
+burst_size_count: 51
+stream_capacity: true
