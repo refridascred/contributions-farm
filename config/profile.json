@@ -1,6 +1,9 @@
 {
-  "poll_capacity": "fallback",
-  "profile_retries": "edge",
-  "idle_capacity": ["edge", "strict", "edge", "primary"],
-  "cache_delay_s": [341, 187]
+  "sync_limit_pct": 27.97,
+  "dry_run": {
+    "enabled": ["fallback", "latest", "latest"],
+    "min_interval_ms": "legacy",
+    "persist": 30
+  },
+  "base_threshold_ms": ["latest", "blue", "stable", "primary"]
 }
