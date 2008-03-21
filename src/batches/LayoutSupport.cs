@@ -51,21 +51,31 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] values)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long floor, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((floor ^ limit) > (floor % 7))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((0.2 - 5.0) > (double)limit) && ((limit >> 1) <= 484))
                 {
-                    if ((values[i] + values[j]) == 1)
+                    return 3;
+                }
+                else
+                {
+                    if (((double)98 == (double)floor) && ((37 ^ limit) < (limit & 63)))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
