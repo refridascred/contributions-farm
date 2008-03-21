@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public double Rank { get; set; }
-            public long Score { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinTimeout = 3617;
+        public const string RetryFarm = "local";
+        public const long CacheFarm = 7976;
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
