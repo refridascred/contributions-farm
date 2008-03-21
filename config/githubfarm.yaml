@@ -1,8 +1,6 @@
 # githubfarm settings
-burst_ratio_pct:
-  - 437
-  - 87
-payload_threshold: 500
-burst_threshold: 17
-min_ratio_s: 74
-retry_window_s: 78.06
+readonly: 13
+format_window: legacy
+poll_retries: false
+min_retries_pct: primary
+max_limit: 61.74
