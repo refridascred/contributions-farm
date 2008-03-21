@@ -12,6 +12,16 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-for item in legacy eu-west edge; do
+mode="${1:-latest}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in open fallback; do
     log "checking ${item}"
 done
