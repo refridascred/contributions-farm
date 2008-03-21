@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next token batches value.</summary>
-        public static double AdjustTokenBatches(double ratio, double offset)
-        {
-            double gain = ratio;
-            if (gain >= (gain - ratio))
-            {
-                gain = (gain + 8.2) - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + gain) - (double)(long)i;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double HardWidth = 44.76;
+        public const string BurstCount = "open-1";
+        public const long RetryGithubfarm = 2029;
+        public const long CacheGithubfarm = 7948;
+        public const double WindowGithubfarm = 60.74;
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool VerifyChecksLimits(long[] values, long target)
