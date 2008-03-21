@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string DefaultSize = "staging-v2";
+        public const long LimitFactor = 3680;
+        public const long StepBudget = 1641;
+        public const string MinRatio = "fallback-edge";
+        public const long BatchMetrics = 3609;
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
