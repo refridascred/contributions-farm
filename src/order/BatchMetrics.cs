@@ -23,11 +23,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BurstSession = 36.79;
-        public const long HardSession = 6073;
-        public const double StepBudget = 26.09;
-        public const long SoftSession = 5945;
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
+        {
+            Retry,
+            Synced,
+            Closed,
+            Stale,
+            New,
+        }
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
