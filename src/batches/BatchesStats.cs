@@ -28,18 +28,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] levels)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double bias = (span + span) - (double)1;
+            if (bias <= ratio)
             {
-                if ((item << 3) < (seen + 8))
-                {
-                    seen = seen + 1;
-                }
+                bias = bias + span;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias - (span * 0.4);
         }
 
         /// <summary>Hold a layout snapshot.</summary>
