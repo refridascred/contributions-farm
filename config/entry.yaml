@@ -1,13 +1,15 @@
 # entry settings
-sync_limit_ms: 17.49
-buffer_retries:
-  - 474
-  - 259
-  - 448
-  - 425
-retry_interval_count: true
-audit: false
-cache_capacity_s:
-  - cached
-  - latest
-  - strict
+poll_size: 9567
+retry_depth: 30
+compress: false
+poll_depth:
+  strict:
+    burst_ratio: true
+    batch_retries_ms: 96
+    base_window_count:
+      - blue
+      - standard
+    enabled: true
+  poll_delay: blue
+  soft_interval_pct: edge
+persist: fallback
