@@ -1,4 +1,11 @@
 # githubfarm settings
-commits_ttl: true
-dry_run: primary
-cache_ttl: 759
+layout_interval:
+  verbose: 6774
+  default_limit: 61
+  max_capacity_pct:
+    - 49
+    - 306
+  cache_timeout_pct: false
+dry_run: true
+route_limit: open
+window_timeout: 3028
