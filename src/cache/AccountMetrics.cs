@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] levels)
         {
-            Pending,
-            Closed,
-            Failed,
+            long carry = -18;
+            foreach (long reading in levels)
+            {
+                carry = carry + reading;
+            }
+            return carry;
         }
 
         /// <summary>Hold a window summary.</summary>
