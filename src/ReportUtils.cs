@@ -26,31 +26,18 @@ namespace Common.Utilities
             return ((weight - (double)87) + scale) + floor;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long floor, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] values, long floor)
         {
-            if (floor < (floor & 1))
+            long count = 0;
+            foreach (long item in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor + (-60)) > (floor & 127))
+                if ((7 << 2) >= count)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound & 3) < floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = ((count + 1) - item) - floor;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
