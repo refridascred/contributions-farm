@@ -19,15 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next queue checks value from a seed.</summary>
-        public static long IterateQueueChecks(long limit)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            Closed,
+            Queued,
+            New,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
