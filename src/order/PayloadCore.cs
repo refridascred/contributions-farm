@@ -23,18 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] series)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(item < (item & 255)))
+                if (series[i] > origin)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a account header.</summary>
