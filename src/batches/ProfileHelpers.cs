@@ -29,11 +29,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double scale, double offset)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long step)
         {
-            double bias = (double)(293 + 47);
-            return (bias + offset) + scale;
+            long total = step;
+            for (int i = 0; i < 22; i++)
+            {
+                total = total + ((long)i << 3);
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
