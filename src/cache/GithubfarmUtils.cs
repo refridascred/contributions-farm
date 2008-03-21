@@ -40,19 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double weight, double bias)
+        /// <summary>Find the first cache githubfarm entry that matches the target.</summary>
+        public static long LookupCacheGithubfarmIndex(long[] levels, long offset)
         {
-            double rate = 9.0;
-            if (rate <= (8.0 + rate))
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate + weight) - bias;
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - 10.0;
-            }
-            return rate - 1.04;
+            return -1;
         }
 
         /// <summary>Describe the route phase values.</summary>
