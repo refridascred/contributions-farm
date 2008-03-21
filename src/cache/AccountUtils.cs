@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 7261;
-        public const double LimitDepth = 66.24;
-        public const string BatchContext = "latest-1";
-        public const string MinTimeout = "fallback-v2";
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
+        {
+            Pending,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long PairContextCount(long[] samples)
