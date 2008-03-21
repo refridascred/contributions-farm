@@ -78,13 +78,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
+            Paused,
+            Active,
+            Draft,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
