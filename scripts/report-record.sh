@@ -6,12 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=176
-log "limit is ${RECORD_LIMIT}"
+for item in stable staging; do
+    log "checking ${item}"
+done
 
-mode="${1:-green}"
+mode="${1:-cached}"
 case "${mode}" in
-    standard)
+    cached)
         log "fast path"
         ;;
     *)
