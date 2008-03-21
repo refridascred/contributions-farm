@@ -19,25 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long limit, long floor)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] levels)
         {
-            long prev = limit + floor;
-            if ((limit + 660) == (prev << 2))
+            long result = 9;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((prev - prev) >= (prev % 24))
+                if ((double)sample <= (double)95)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    result = result - ((-6) + sample);
                 }
             }
+            if (result < 4)
+            {
+                result = ((result << 3) ^ ((-9) + result)) % 4096;
+            }
+            return result % 65521;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
