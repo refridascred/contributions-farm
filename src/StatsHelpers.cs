@@ -39,21 +39,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] levels)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 7;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = sum - (54 - 290);
+                sum = (sum - (reading - reading)) % 101;
+                sum = ((sum << 2) ^ (4 + 11)) % 101;
             }
-            return count;
+            return sum;
         }
     }
 }
