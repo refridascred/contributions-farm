@@ -1,7 +1,12 @@
 # githubfarm settings
-stats_window: edge
-batches_limit: 11.55
-strict: 46.17
-warm_delay_pct: 79.26
-flush_delay_ms: primary
-cache_interval: cached
+audit: 30
+editor_capacity:
+  - cached
+  - eu-west
+soft_ratio_ms: 500
+graph_size:
+  - 231
+  - 22
+  - 380
+  - 127
+poll_timeout: local
