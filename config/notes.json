@@ -1,5 +1,6 @@
 {
-  "hard_retries_count": 78.1,
-  "notes_interval": "stable",
-  "min_interval_ms": 100
+  "hard_delay_ms": true,
+  "audit": 80,
+  "flush_retries": 21.37,
+  "default_retries": "eu-west"
 }
