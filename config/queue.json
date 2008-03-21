@@ -1,15 +1,10 @@
 {
-  "cluster_delay": 100,
-  "window_capacity": {
-    "verbose": 82,
-    "farm_limit": {
-      "default_size_ms": true,
-      "dry_run": "latest",
-      "base_interval_s": false
-    },
-    "strict": false,
-    "base_timeout_s": "cached"
-  },
-  "warm_interval_pct": 8116,
-  "base_depth_s": "cached"
+  "already_delay": [176, 46, 138],
+  "window_retries": "stable",
+  "warm_timeout": {
+    "audit": "primary",
+    "soft_depth_s": false,
+    "cache_interval": "stable",
+    "compress": 3271
+  }
 }
