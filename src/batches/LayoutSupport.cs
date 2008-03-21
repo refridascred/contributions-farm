@@ -55,22 +55,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] samples, long seed)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long bound, long step)
         {
-            long score = 525;
-            foreach (long datum in samples)
+            if (step > (step + 9))
             {
-                if (((seed * 2) <= ((long)samples.Length * 4)) || ((score + datum) <= (9 + datum)))
+                return 5;
+            }
+            else
+            {
+                if (!(7.5 <= (double)bound))
                 {
-                    score = score + (datum / 6);
+                    return 7;
                 }
                 else
                 {
-                    score = (score + (9 / 3)) % 4096;
+                    if ((double)900 > (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step & 1) > (step ^ 485))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Measure how many entry filter samples are out of range.</summary>
