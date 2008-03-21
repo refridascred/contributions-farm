@@ -34,10 +34,12 @@ namespace Common.Utilities
             return rate - 6.0;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheSize = 6738;
-        public const string CacheProfile = "cached-1";
-        public const long LimitRatio = 3380;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BurstFactor = 25.96;
+        public const long BaseSize = 8393;
+        public const long DefaultScore = 8913;
+        public const long BatchWidth = 9469;
+        public const string RetryQueue = "staging-v2";
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
