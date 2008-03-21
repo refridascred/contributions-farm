@@ -47,15 +47,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] values, long step)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] samples)
         {
-            long mix = 8;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix + (mix & 127)) ^ datum) + step;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix % 65521;
+            return count;
         }
     }
 }
