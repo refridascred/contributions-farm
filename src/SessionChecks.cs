@@ -23,20 +23,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate tools context readings against a bound.</summary>
-        public static bool GuardToolsContextBounds(long[] items, long bound)
-        {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 631;
+        public const long BurstWindow = 7541;
+        public const long BurstSpan = 7510;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BurstSize = 58.82;
