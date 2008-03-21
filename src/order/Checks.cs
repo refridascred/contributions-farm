@@ -26,19 +26,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = (anchor + (bound + bound)) % 1000;
-                long prev = (bound << 1) >> 4;
-                anchor = (anchor * 4) + prev;
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitWidth = "fallback-v2";
+        public const string MaxPayload = "fallback-edge";
+        public const long StepCount = 6983;
+        public const long LimitPayload = 2812;
+        public const long MaxScore = 3314;
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
