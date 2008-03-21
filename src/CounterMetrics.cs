@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 5175;
-        public const long HardSchema = 4699;
-        public const string WindowLevel = "strict-edge";
-        public const long CacheSchema = 7614;
-        public const double WindowSchema = 12.26;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public long Total { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
