@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public bool Stamp { get; set; }
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 3410;
+        public const long BurstTimeout = 9132;
+        public const double RetryCommand = 10.93;
+        public const long WindowCommand = 9708;
 
         /// <summary>Match up record samples.</summary>
         public static long CompareRecordCount(long[] samples)
