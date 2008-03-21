@@ -5,20 +5,39 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] levels)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long target, long offset)
         {
-            long carry = 794;
-            foreach (long sample in levels)
+            long prev = target - offset;
+            if (target >= (offset >> 5))
             {
-                carry = (((carry * 5) + (carry % 2)) % 1000) ^ sample;
-                carry = carry + carry;
+                return 4;
             }
-            if (carry > 692)
+            else
             {
-                carry = ((carry << 3) ^ carry) % 97;
+                if ((offset << 2) > prev)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (offset > (prev & 63))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((prev - 22) > (offset - 489))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return carry;
         }
 
         /// <summary>Describe the metrics status values.</summary>
