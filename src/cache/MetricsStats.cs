@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 6417;
-        public const long StepSize = 8601;
-        public const long BurstCommits = 2653;
+        /// <summary>Compare every pair of metrics notes readings.</summary>
+        public static long MatchMetricsNotesCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long MeasureFilterMatches(long[] values, long limit)
