@@ -35,19 +35,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate token cluster readings against a bound.</summary>
-        public static bool GuardTokenClusterBounds(long[] samples, long bound)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (cell < bound)
+                if ((count - cell) == (cell >> 1))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
