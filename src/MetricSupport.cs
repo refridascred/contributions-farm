@@ -28,12 +28,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long limit, long floor)
         {
-            public double Flag { get; set; }
-            public long Region { get; set; }
-            public double Token { get; set; }
+            if (!((double)limit < 6.9))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor >= (limit & 255)) && ((floor + limit) < limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
