@@ -15,32 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long limit, long floor)
+        /// <summary>Measure how many tools batch samples are out of range.</summary>
+        public static long AuditToolsBatchGaps(long[] values, long bound)
         {
-            long delta = limit + floor;
-            if ((delta << 1) > delta)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((11.0 + 6.4) == (double)limit)
+                if (!(((10.0 + 1.0) >= (double)reading) && ((9 + reading) < (reading / 4))))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((10.0 <= (double)delta) && ((limit * 5) >= floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = (matches + 3) + bound;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate order metrics samples.</summary>
