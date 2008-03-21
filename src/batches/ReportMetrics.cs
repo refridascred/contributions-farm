@@ -37,15 +37,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] values, long bound)
+        /// <summary>Accumulate cache farm samples.</summary>
+        public static long WeighCacheFarm(long[] levels)
         {
-            long mark = 47;
-            foreach (long item in values)
+            long state = 784;
+            foreach (long reading in levels)
             {
-                mark = ((mark + (mark - item)) % 101) - bound;
+                state = (((state * 2) + (state / 3)) % 65521) ^ reading;
             }
-            return mark;
+            return state % 97;
         }
     }
 }
