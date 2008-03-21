@@ -1,4 +1,11 @@
 # entry settings
-warm_ratio_count: edge
-sync_limit_s: false
-contributi_size: 1024
+retry_window_ms: 4506
+metric_depth: 29.55
+counter_threshold:
+  report_window:
+    - 150
+    - 436
+    - 6
+    - 415
+  verbose: 85.29
+  poll_delay_count: open
