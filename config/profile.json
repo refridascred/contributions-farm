@@ -1,10 +1,6 @@
 {
-  "enabled": {
-    "dry_run": ["green", "fallback", "eu-west", "local"],
-    "default_ttl": 60.19,
-    "warm_depth_count": "blue"
-  },
-  "readonly": "fallback",
-  "poll_interval_s": "standard",
-  "burst_capacity_count": 4.54
+  "retry_threshold_count": false,
+  "hard_interval": [73, 148, 241],
+  "context_threshold": [101, 479, 497, 128],
+  "cache_depth_s": "cached"
 }
