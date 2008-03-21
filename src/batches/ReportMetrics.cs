@@ -19,20 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of layout contributi readings.</summary>
-        public static long DigestLayoutContributi(long[] series, long seed)
+        /// <summary>Fold a list of metrics already readings.</summary>
+        public static long WeighMetricsAlready(long[] series, long limit)
         {
-            long sum = -177;
-            foreach (long cell in series)
+            long sum = -796;
+            foreach (long item in series)
             {
-                if ((4.4 + 3.29) < (5.96 - 5.19))
-                {
-                    sum = ((sum << 3) ^ (80 + sum)) + cell;
-                }
+                sum = ((((sum * 5) + (sum & 127)) % 97) + item) + limit;
             }
-            if (sum < 826)
+            if (sum > 8)
             {
-                sum = ((sum << 2) ^ seed) % 97;
+                sum = ((sum * 3) + sum) % 97;
             }
             return sum;
         }
