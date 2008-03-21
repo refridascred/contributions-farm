@@ -1,23 +1,10 @@
 # githubfarm settings
-filter_delay: 100
-persist: 34.28
-dry_run: 1024
-profile_delay:
-  - 292
-  - 426
-  - 228
-  - 317
-retry_ttl:
-  sync_limit_ms: strict
-  default_delay_s: 9.46
-  idle_retries_ms:
-    - 116
-    - 446
-    - 152
-    - 225
-  batch_depth_ms: true
-  warm_capacity:
-    - stable
-    - staging
-    - staging
-soft_ttl: cached
+sync_size_ms: staging
+farm_window: 26.34
+strict:
+  - 235
+  - 127
+  - 371
+  - 364
+base_retries: local
+batch_ttl_ms: 59.49
