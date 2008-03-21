@@ -81,13 +81,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            New,
-            Failed,
-            Queued,
-            Draft,
+            public long Total { get; set; }
+            public bool Flag { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
