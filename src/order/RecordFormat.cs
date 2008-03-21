@@ -25,12 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] values, long floor)
         {
-            Dropped,
-            Idle,
-            Queued,
+            long anchor = 112;
+            foreach (long entry in values)
+            {
+                if (((anchor + entry) > (floor << 2)) || (entry < floor))
+                {
+                    anchor = ((anchor << 3) ^ entry) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor + (entry - entry)) % 101;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
