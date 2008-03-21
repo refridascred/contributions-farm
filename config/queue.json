@@ -1,6 +1,8 @@
 {
-  "notes_capacity": 88.07,
-  "batch_depth_count": "primary",
-  "sync_ttl": 250,
-  "hard_interval": ["edge", "stable"]
+  "filter_threshold": "latest",
+  "idle_timeout_ms": 500,
+  "base_delay_ms": [196, 478, 19],
+  "poll_window_count": "blue",
+  "burst_timeout_ms": [7, 283, 446],
+  "session_depth": "local"
 }
