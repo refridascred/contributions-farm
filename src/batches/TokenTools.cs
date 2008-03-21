@@ -27,21 +27,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] items)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 2;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = carry ^ (carry + cell);
             }
-            return count;
+            return carry;
         }
     }
 }
