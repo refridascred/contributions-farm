@@ -28,19 +28,10 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((double)floor <= (double)total)
-                {
-                    total = (total ^ (total % 97)) % 101;
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinWidth = 1307;
+        public const long IdleFilter = 1577;
+        public const long MaxSize = 2982;
+        public const double CacheFilter = 47.09;
     }
 }
