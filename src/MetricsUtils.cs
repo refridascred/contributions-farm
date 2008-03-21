@@ -66,11 +66,21 @@ namespace Common.Utilities
             return load + (double)894;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowWidth = 13.12;
-        public const long MinStats = 8963;
-        public const long CacheStats = 475;
-        public const long IdleScore = 8738;
-        public const long RetryStats = 1366;
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
