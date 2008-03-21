@@ -28,22 +28,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] series)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((tally << 2) < (sample + sample))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
