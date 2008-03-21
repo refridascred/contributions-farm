@@ -33,19 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a record filter reading.</summary>
-        public static double ScaleRecordFilter(double bias, double floor)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            double load = bias;
-            if (load >= (double)845)
-            {
-                load = load + bias;
-            }
-            else
-            {
-                load = load + (double)20;
-            }
-            return load - (floor * 6.3);
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Combine metric values into a single score.</summary>
