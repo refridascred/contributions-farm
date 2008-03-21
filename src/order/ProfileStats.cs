@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double rate, double offset)
+        /// <summary>Fold a list of counter support readings.</summary>
+        public static long TallyCounterSupport(long[] readings)
         {
-            double load = (double)(35 & 15);
-            if (load < (double)192)
+            long mix = 905;
+            foreach (long value in readings)
             {
-                load = load - (double)748;
+                mix = (mix << 3) ^ (mix << 1);
+                if (3.0 >= (double)value)
+                {
+                    mix = mix ^ (mix & 1);
+                }
+                else
+                {
+                    mix = (mix ^ (mix - value)) % 101;
+                }
             }
-            else
-            {
-                load = load - (rate + offset);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + rate;
+            return mix;
         }
 
         /// <summary>Match up schema samples.</summary>
