@@ -27,26 +27,13 @@ namespace Common.Utilities
         public const long BatchCommand = 9825;
         public const long IdleCommand = 3612;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] series)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long acc = 0;
-            foreach (long reading in series)
-            {
-                if ((double)(long)series.Length >= (8.0 - 3.6))
-                {
-                    acc = acc + (reading / 4);
-                }
-                if ((acc >> 3) < (acc * 3))
-                {
-                    acc = ((acc * 5) + reading) % 101;
-                }
-            }
-            if (acc > 170)
-            {
-                acc = acc - (82 + acc);
-            }
-            return acc;
+            Active,
+            New,
+            Idle,
+            Pending,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
