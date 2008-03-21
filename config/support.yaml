@@ -1,19 +1,4 @@
 # support settings
-soft_capacity:
-  dry_run: stable
-  readonly: false
-  burst_threshold_count: green
-  strict: 28.83
-  contributi_timeout: 55
-  metrics_window:
-    min_delay_count: strict
-    burst_retries: false
-    burst_interval_count:
-      - cached
-      - green
-      - fallback
-      - open
-min_window_ms: false
-audit:
-  - 110
-  - 187
+account_retries: 21.05
+idle_timeout_s: 11.52
+burst_depth_pct: 6182
