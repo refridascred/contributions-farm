@@ -22,22 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheMatches(long[] values)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long target)
         {
-            long count = 0;
-            foreach (long item in values)
+            long score = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (((double)item == (double)count) && !((8.47 * 9.0) >= (double)count))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    count = count + 2;
+                    score = (((score << 2) ^ 6) % 101) ^ (long)i2;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Describe the record kind values.</summary>
