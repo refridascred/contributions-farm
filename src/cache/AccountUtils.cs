@@ -45,13 +45,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public double Label { get; set; }
-            public double Score { get; set; }
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
+            Draft,
+            Pending,
+            Synced,
+            Queued,
         }
     }
 }
