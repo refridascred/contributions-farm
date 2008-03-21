@@ -19,19 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Digest a series of checks entry entries.</summary>
+        public static long WeighChecksEntry(long[] data, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
+            long result = 669;
+            foreach (long entry in data)
             {
-                if ((double)(long)i != (6.5 + 9.9))
-                {
-                    acc = (acc - (602 % 8)) % 101;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
+                result = ((result << 2) ^ (entry + entry)) % 65521;
+                result = (result << 2) ^ (long)data.Length;
             }
-            return acc;
+            if (result > 79)
+            {
+                result = (result - (target % 60)) % 101;
+            }
+            return result % 65521;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
