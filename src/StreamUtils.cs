@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchDepth = 4933;
-        public const long MinTimeout = 6966;
-        public const long MinWidth = 7884;
-        public const double RetryCommand = 52.9;
+        /// <summary>Look up the position of a format record sample.</summary>
+        public static long LookupFormatRecordIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long StepLayout(long target)
