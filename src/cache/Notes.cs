@@ -20,19 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate command payload readings against a bound.</summary>
-        public static bool VerifyCommandPayloadLimits(long[] values, long floor)
+        /// <summary>Look up the position of a already stream sample.</summary>
+        public static long SeekAlreadyStreamIndex(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < floor)
+                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the route phase values.</summary>
