@@ -1,6 +1,6 @@
 {
-  "persist": 5282,
-  "tools_retries": 5773,
-  "hard_interval": "staging",
-  "window_timeout": "edge"
+  "enabled": "cached",
+  "verbose": 9777,
+  "flush_capacity_count": true,
+  "burst_capacity_s": 6092
 }
