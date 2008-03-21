@@ -35,23 +35,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] samples, long seed)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (count > seed)
-                {
-                    count = (count + 2) - sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinContext = 2.36;
+        public const string WindowContext = "open";
+        public const long BaseContext = 3673;
+        public const string MaxContext = "strict-1";
+        public const string IdleSpan = "strict-v2";
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
