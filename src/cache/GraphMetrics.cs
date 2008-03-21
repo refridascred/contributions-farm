@@ -20,15 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine entry tools values into a single score.</summary>
-        public static long TallyEntryTools(long[] series)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double gain, double offset)
         {
-            long state = 17;
-            foreach (long datum in series)
+            double ratio = offset;
+            if (ratio <= (gain * 7.37))
             {
-                state = (((state * 4) + (state & 255)) % 101) ^ datum;
+                ratio = ratio - ratio;
             }
-            return state;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
