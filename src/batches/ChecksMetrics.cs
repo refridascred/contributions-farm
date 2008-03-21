@@ -58,10 +58,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetrySpan = 85.35;
-        public const long RetryDepth = 9372;
-        public const double BaseLevel = 43.9;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] levels, long floor)
+        {
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool GuardMetricRange(long[] series, long target)
