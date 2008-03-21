@@ -25,21 +25,19 @@ namespace Common.Utilities
             return ((weight - (double)87) + scale) + floor;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long target)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] readings, long target)
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                state = state + (state * 5);
-                state = (state << 2) ^ ((long)i / 4);
-                for (int i2 = 0; i2 < 2; i2++)
+                if (value >= target)
                 {
-                    state = (state ^ (target + 92)) ^ (long)i2;
+                    ok = false;
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
