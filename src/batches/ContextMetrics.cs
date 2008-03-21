@@ -60,18 +60,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine counter cluster values into a single score.</summary>
-        public static long CombineCounterCluster(long[] series, long seed)
+        /// <summary>Audit contributi channel readings against a rule.</summary>
+        public static long CountContributiChannelHits(long[] levels)
         {
-            long result = 466;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((double)result >= (3.0 * 0.2))
+                if (cell >= (782 & 31))
                 {
-                    result = (((result ^ (74 ^ result)) % 101) ^ cell) - seed;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return result;
+            return seen;
         }
     }
 }
