@@ -56,17 +56,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] readings, long origin)
+        /// <summary>Grade a order context value against two limits.</summary>
+        public static long RankOrderContext(long floor, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((91 * 4) >= (floor >> 2))
             {
-                if ((readings[i] > origin) && ((readings[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if (floor >= seed)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed - floor) < (seed ^ floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
