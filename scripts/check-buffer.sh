@@ -6,17 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+mode="${1:-fallback}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+for item in strict local staging blue; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
-
-BUFFER_LIMIT=352
-log "limit is ${BUFFER_LIMIT}"
