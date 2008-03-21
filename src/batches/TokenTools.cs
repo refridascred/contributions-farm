@@ -33,23 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double ratio, double floor)
+        /// <summary>Fold a list of payload queue readings.</summary>
+        public static long FoldPayloadQueue(long[] levels, long target)
         {
-            double rate = (floor - ratio) + (double)0;
-            if (rate >= (3.17 - rate))
+            long mix = -24;
+            foreach (long cell in levels)
             {
-                rate = rate + ratio;
+                mix = (((mix * 5) + cell) % 97) + target;
             }
-            else
+            if (mix < 794)
             {
-                rate = rate - 4.0;
+                mix = ((mix * 5) + (87 >> 2)) % 65521;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + floor) + (double)(long)i;
-            }
-            return rate - floor;
+            return mix % 1000;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
