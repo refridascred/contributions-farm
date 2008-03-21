@@ -34,15 +34,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate cache farm samples.</summary>
-        public static long WeighCacheFarm(long[] levels)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long state = 784;
-            foreach (long reading in levels)
-            {
-                state = (((state * 2) + (state / 3)) % 65521) ^ reading;
-            }
-            return state % 97;
+            Ready,
+            Failed,
+            Done,
+            Stale,
         }
     }
 }
