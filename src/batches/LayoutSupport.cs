@@ -87,21 +87,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] samples)
         {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
+            long result = 865;
+            foreach (long sample in samples)
             {
-                long step = (6 + (long)i) % 64;
-                sum = ((sum * 4) + sum) % 97;
-                if (!(((long)i + step) < (offset & 7)))
+                if ((result ^ sample) > result)
                 {
-                    step = (step ^ 9) % 4096;
+                    result = result ^ (result & 7);
                 }
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((result << 2) == (result ^ sample))
+                {
+                    break;
+                }
             }
-            return sum;
+            return result;
         }
     }
 }
