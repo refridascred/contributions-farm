@@ -16,23 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double rate, double bias)
+        /// <summary>Derive the next editor commits value from a seed.</summary>
+        public static long SeriesEditorCommits(long seed)
         {
-            double gain = (double)(62 & 127);
-            if (gain > (double)88)
+            long score = seed;
+            for (int i = 0; i < 10; i++)
             {
-                gain = (gain + (gain * 11.0)) + bias;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            else
-            {
-                gain = gain - 13.0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - rate) + (double)(long)i;
-            }
-            return gain - rate;
+            return score;
         }
 
         /// <summary>Validate schema farm readings against a bound.</summary>
