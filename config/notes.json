@@ -1,5 +1,5 @@
 {
-  "readonly": 30,
-  "verbose": "primary",
-  "graph_retries": 30.77
+  "hard_retries_count": 78.1,
+  "notes_interval": "stable",
+  "min_interval_ms": 100
 }
