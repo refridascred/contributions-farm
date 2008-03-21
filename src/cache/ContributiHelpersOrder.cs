@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long seed, long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] data)
         {
-            long next = seed - floor;
-            if ((double)seed <= (double)next)
+            long count = 0;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor == (11.0 / 2.0))
+                if ((double)entry > 9.6)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
