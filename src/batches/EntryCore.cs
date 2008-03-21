@@ -22,18 +22,13 @@ namespace Common.Utilities
         public const long BurstRatio = 29;
         public const long RetrySupport = 6849;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] data)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((((double)reading == (7.22 - 8.4)) || ((reading + reading) >= matches)) && ((3.0 / 8.0) != (double)matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Synced,
+            Idle,
+            New,
+            Ready,
         }
 
         /// <summary>Hold a context info.</summary>
