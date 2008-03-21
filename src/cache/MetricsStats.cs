@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] readings, long seed)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] data)
         {
-            long acc = 386;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (((acc - (acc / 3)) % 4096) - datum) - seed;
-                if (39 >= ((long)readings.Length << 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] + data[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the graph class values.</summary>
