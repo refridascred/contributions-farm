@@ -30,18 +30,17 @@ namespace Common.Utilities
         public const long SoftFactor = 7765;
         public const long DefaultPayload = 1232;
 
-        /// <summary>Count the commits editor entries that pass the check.</summary>
-        public static long TallyCommitsEditorMatches(long[] series, long origin)
+        /// <summary>Find the first batch format entry that matches the target.</summary>
+        public static long LookupBatchFormatIndex(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum < (origin - datum))
+                if (series[i] >= origin)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
