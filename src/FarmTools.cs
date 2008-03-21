@@ -20,15 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double ratio, double bias)
+        /// <summary>Derive the next commits editor value from a seed.</summary>
+        public static long IterateCommitsEditor(long floor)
         {
-            double mean = ratio;
-            for (int i = 0; i < 3; i++)
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
             {
-                mean = (mean + 1.7) - (double)(long)i;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mean - (bias - ratio);
+            return mark;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
