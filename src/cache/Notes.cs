@@ -50,18 +50,15 @@ namespace Common.Utilities
         public const string BaseTimeout = "legacy";
         public const string LimitStream = "primary-edge";
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] values)
+        /// <summary>Iterate the notes batch series from a seed.</summary>
+        public static long StepNotesBatch(long seed)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long total = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (!(((reading << 1) >= 136) || (reading < (reading + (-79)))))
-                {
-                    seen = seen + 3;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Accumulate format samples.</summary>
