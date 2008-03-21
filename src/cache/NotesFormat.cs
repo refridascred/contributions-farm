@@ -27,15 +27,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstInterval = 4243;
+        public const string SoftFilter = "standard-v2";
+        public const long DefaultInterval = 5568;
+        public const double BaseFilter = 29.34;
+        public const long DefaultFilter = 6734;
     }
 }
