@@ -28,19 +28,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Blend two schema channel measurements.</summary>
-        public static double AdjustSchemaChannel(double rate, double offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] levels)
         {
-            double mean = 18.0 - offset;
-            if (mean < (offset + offset))
+            long mark = 767;
+            foreach (long sample in levels)
             {
-                mean = (mean + offset) + rate;
+                if ((sample >> 2) > (mark + mark))
+                {
+                    mark = mark + (mark % 5);
+                }
+                else
+                {
+                    mark = mark ^ mark;
+                }
             }
-            else
-            {
-                mean = mean - 9.1;
-            }
-            return mean + 6.5;
+            return mark;
         }
 
         /// <summary>Accumulate command payload samples.</summary>
