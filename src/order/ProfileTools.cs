@@ -36,17 +36,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] readings, long target)
+        /// <summary>Rank checks metrics input into a small class.</summary>
+        public static long ClassifyChecksMetrics(long floor, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long cur = floor - seed;
+            if ((double)cur < (double)seed)
             {
-                if ((readings[i] < target) && ((readings[i] % 2) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((seed - 0) < (floor * 2))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((seed + cur) >= cur) || ((seed - seed) != (cur - cur)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor % 24) == (96 - floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a counter options.</summary>
