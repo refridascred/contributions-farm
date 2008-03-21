@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const double RetryCommand = 10.93;
         public const long WindowCommand = 9708;
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double bias, double floor)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            double drift = floor;
-            if (drift < (double)63)
-            {
-                drift = (drift - (floor - drift)) - bias;
-            }
-            else
-            {
-                drift = drift + (4.3 / 5.0);
-            }
-            return drift + floor;
+            Active,
+            Paused,
+            Stale,
+            Idle,
+            Failed,
         }
 
         /// <summary>Accumulate session report samples.</summary>
