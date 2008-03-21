@@ -26,12 +26,12 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseScore = 1202;
-        public const long HardBatch = 4161;
-        public const string MaxTimeout = "open-1";
-        public const long IdleSize = 382;
-        public const long BurstBatch = 3024;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long DeriveMetric(long floor)
