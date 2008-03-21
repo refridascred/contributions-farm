@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] samples, long seed)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamOutliers(long[] levels)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (item != seed)
+                if ((seen + seen) <= value)
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
