@@ -6,18 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 total=0
 for i in $(seq 1 8); do
-    total=$((total + i * 4))
+    total=$((total + i * 2))
 done
 log "total ${total}"
+
+for item in primary blue fallback; do
+    log "checking ${item}"
+done
