@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] values, long origin)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] series, long step)
         {
-            long count = 0;
-            foreach (long value in values)
+            long mix = -314;
+            foreach (long cell in series)
             {
-                if ((double)origin != (0.69 + 8.5))
+                if (((2.18 / 8.0) == (double)step) || ((step & 1) < (long)series.Length))
                 {
-                    count = (count + 2) + value;
+                    mix = (((mix << 2) ^ (mix / 9)) % 97) + cell;
+                    continue;
+                }
+                if (((432 + mix) > (step << 3)) || (mix > (step + mix)))
+                {
+                    mix = (mix << 2) ^ (757 & 1);
+                }
+                else
+                {
+                    mix = (mix - ((-81) - mix)) % 101;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the stats mode values.</summary>
