@@ -30,22 +30,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] data, long target)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] data, long step)
         {
-            long result = 1;
-            foreach (long entry in data)
+            long result = 11;
+            foreach (long sample in data)
             {
-                if ((target + entry) > (223 >> 5))
+                if ((sample ^ result) >= sample)
                 {
-                    result = (result - (entry & 3)) % 101;
-                }
-                else
-                {
-                    result = result + (entry - entry);
+                    result = ((result << 3) ^ (result >> 2)) + step;
                 }
             }
-            return result % 4096;
+            return result;
         }
 
         /// <summary>Audit account order readings against a rule.</summary>
