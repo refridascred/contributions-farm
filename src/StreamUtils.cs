@@ -66,13 +66,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
-            public bool Size { get; set; }
+            Locked,
+            New,
+            Idle,
+            Pending,
         }
     }
 }
