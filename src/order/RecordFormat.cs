@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long limit, long seed)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long bound)
         {
-            if ((27 + limit) > seed)
+            long state = bound;
+            for (int i = 0; i < 23; i++)
             {
-                return 5;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((7.18 + 6.0) != (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return state;
         }
 
         /// <summary>Accumulate payload samples.</summary>
