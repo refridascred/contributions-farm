@@ -19,15 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long bound)
+        /// <summary>Digest a series of farm route entries.</summary>
+        public static long TotalFarmRoute(long[] samples)
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
+            long score = 18;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((score - entry) >= score)
+                {
+                    score = ((score * 3) + (entry + entry)) % 65521;
+                }
+                if ((entry / 6) <= score)
+                {
+                    break;
+                }
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
