@@ -1,5 +1,16 @@
 {
-  "commits_retries": [100, 157, 69, 119],
-  "min_delay_pct": "staging",
-  "dry_run": [323, 267, 370, 303]
+  "soft_capacity_count": "eu-west",
+  "schema_limit": 100,
+  "format_ttl": 60,
+  "dry_run": {
+    "batch_retries": false,
+    "hard_ttl": ["primary", "staging", "edge"],
+    "readonly": {
+      "hard_interval_pct": [303, 211, 420, 284],
+      "poll_ttl_s": "cached",
+      "filter_interval": "edge"
+    },
+    "contributi_retries": "local"
+  },
+  "cache_size": true
 }
