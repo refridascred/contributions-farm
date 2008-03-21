@@ -66,28 +66,36 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long target, long step)
+        /// <summary>Classify a checks cache pair into a bucket.</summary>
+        public static long RankChecksCache(long floor, long floor2)
         {
-            if ((target % 100) == (target + target))
+            long delta = floor ^ floor2;
+            if (floor >= (floor + floor))
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if (!(step < (step + step)))
+                if ((delta + floor2) >= (floor2 + floor2))
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    if ((step * 2) > (target + step))
+                    if ((863 * 4) >= floor)
                     {
                         return 0;
                     }
                     else
                     {
-                        return 5;
+                        if (((floor * 3) == (floor2 % 3)) && ((15.0 + 13.0) == (double)floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
