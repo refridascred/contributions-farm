@@ -40,22 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] readings)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] data, long step)
         {
-            long mix = 36;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 11; i++)
+                if (entry > step)
                 {
-                    mix = (mix + (mix + reading)) ^ (long)i;
-                }
-                if (((41 >> 3) <= (reading << 2)) || (mix <= (reading + 60)))
-                {
-                    mix = ((mix << 3) ^ (mix & 1)) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            return mix % 4096;
+            return valid;
         }
     }
 }
