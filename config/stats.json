@@ -1,13 +1,5 @@
 {
-  "soft_timeout": "stable",
-  "support_depth": "standard",
-  "strict": ["staging", "green", "latest"],
-  "order_threshold": {
-    "dry_run": 60,
-    "stream_interval": "eu-west",
-    "cache_ratio_count": false,
-    "base_window_count": [99, 361, 53, 172],
-    "default_window_pct": true
-  },
-  "soft_timeout_pct": "open"
+  "retry_window_pct": 4535,
+  "enabled": 54,
+  "min_ttl": false
 }
