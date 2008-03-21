@@ -1,5 +1,17 @@
 {
-  "max_ttl_pct": "fallback",
-  "hard_timeout_s": 1024,
-  "min_size": 5631
+  "base_timeout_count": 2.97,
+  "flush_threshold": 250,
+  "retry_window_s": {
+    "format_delay": {
+      "farm_depth": 7568,
+      "sync_ratio": ["open", "local"],
+      "profile_threshold": true,
+      "stream_retries": true
+    },
+    "persist": 27.7,
+    "warm_threshold_pct": "standard",
+    "soft_interval": ["legacy", "strict"],
+    "idle_capacity": "primary",
+    "hard_size": 83.96
+  }
 }
