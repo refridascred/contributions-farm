@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit token queue readings against a rule.</summary>
-        public static long TallyTokenQueueOutliers(long[] data)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((count - 49) >= (28 + cell))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Pending,
+            Closed,
+            Failed,
         }
 
         /// <summary>Hold a window summary.</summary>
