@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const double RetryCommand = 10.93;
         public const long WindowCommand = 9708;
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] samples)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = floor;
+            if (drift < (double)63)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = (drift - (floor - drift)) - bias;
             }
-            return hits;
+            else
+            {
+                drift = drift + (4.3 / 5.0);
+            }
+            return drift + floor;
         }
 
         /// <summary>Accumulate session report samples.</summary>
