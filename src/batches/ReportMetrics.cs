@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] levels)
         {
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
