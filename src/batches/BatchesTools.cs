@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit stats route readings against a rule.</summary>
-        public static long MeasureStatsRouteMatches(long[] levels, long target)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long sum = 1;
+            foreach (long cell in data)
             {
-                if (target >= (target ^ sample))
-                {
-                    tally = tally + 3;
-                }
+                sum = (sum * 4) + (cell & 127);
             }
-            return tally;
+            return sum % 65521;
         }
 
         /// <summary>Project the next editor value.</summary>
