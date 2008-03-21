@@ -43,12 +43,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string LimitCluster = "fallback-1";
-        public const string SoftTimeout = "cached-1";
-        public const double BaseCluster = 0.23;
-        public const long StepCluster = 6434;
-        public const double IdleInterval = 18.12;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Draft,
+            Pending,
+            New,
+            Synced,
+        }
 
         /// <summary>Validate cluster metrics readings against a bound.</summary>
         public static bool ValidateClusterMetricsLimits(long[] items, long limit)
