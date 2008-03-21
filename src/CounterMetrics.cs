@@ -15,18 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many tools batch samples are out of range.</summary>
-        public static long AuditToolsBatchGaps(long[] values, long bound)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (!(((10.0 + 1.0) >= (double)reading) && ((9 + reading) < (reading / 4))))
-                {
-                    matches = (matches + 3) + bound;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate order metrics samples.</summary>
