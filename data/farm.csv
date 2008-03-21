@@ -1,6 +1,10 @@
-id,count,level
-1,green,primary
-2,70.1,17.98
-3,edge,63.83
-4,349,713
-5,809,69.66
+id,ratio,rank,state,token
+1,blue,34.87,74.66,latest
+2,181,48.11,402,eu-west
+3,stable,730,35.12,stable
+4,518,505,edge,53.67
+5,29.75,blue,513,95.16
+6,blue,88.87,local,eu-west
+7,18.55,staging,225,green
+8,63.72,81.7,open,0.18
+9,930,408,staging,747
