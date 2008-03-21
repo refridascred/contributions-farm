@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] levels, long offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long limit)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long result = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (((long)levels.Length + matches) <= (offset & 15))
+                if ((limit >> 4) < (limit ^ limit))
                 {
-                    matches = (matches + 1) ^ reading;
+                    result = ((result << 2) ^ limit) % 4096;
+                    break;
                 }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
