@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 7635;
-        public const long LimitLevel = 6324;
-        public const long MinCommits = 7652;
-        public const string IdleCommits = "alpha-v2";
-        public const string WindowCommits = "staging-v2";
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public long Mode { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long FindProfileIndex(long[] values, long floor)
