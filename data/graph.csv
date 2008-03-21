@@ -1,9 +1,8 @@
-id,weight,region
-1,latest,staging
-2,legacy,618
-3,473,718
-4,cached,local
-5,blue,8.12
-6,legacy,standard
-7,strict,13.3
-8,strict,blue
+id,weight,score
+1,open,59.19
+2,edge,283
+3,452,442
+4,887,edge
+5,59,414
+6,187,edge
+7,standard,754
