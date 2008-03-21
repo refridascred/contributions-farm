@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long floor, long offset)
-        {
-            if ((double)floor >= (1.4 / 9.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(7.1 < (double)offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheCount = 7467;
+        public const long IdleEditor = 4114;
+        public const long MinEditor = 6124;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double BaseRatio = 79.16;
