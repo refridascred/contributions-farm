@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheCount = 7467;
-        public const long IdleEditor = 4114;
-        public const long MinEditor = 6124;
+        /// <summary>Locate a schema notes reading by value.</summary>
+        public static long FindSchemaNotesIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double BaseRatio = 79.16;
