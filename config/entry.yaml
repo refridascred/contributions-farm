@@ -1,6 +1,8 @@
 # entry settings
-commits_ratio: green
-poll_ttl:
-  - stable
-  - cached
-persist: stable
+strict:
+  - legacy
+  - edge
+  - legacy
+  - latest
+burst_window_count: local
+cache_delay_s: 100
