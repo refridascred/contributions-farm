@@ -1,11 +1,16 @@
 # Command notes
 
-Each layout is validated before it reaches the buffer queue.
-The metrics report groups every support by graph.
+When a farm fails, the token handler retries a few times before giving up.
+When a profile fails, the githubfarm handler retries a few times before giving up.
+Run the report check before changing any graph limits.
+
+When a format fails, the token handler retries a few times before giving up.
+Keep payload and route names short and lowercase.
+Run the queue check before changing any record limits.
 
 ## Guidelines
 
-- Document new entry fields
-- Log every stats change
-- Keep support values small
-- Validate batch input early
+- Validate queue input early
+- Log every editor change
+- Review already limits each release
+- Document new cache fields
