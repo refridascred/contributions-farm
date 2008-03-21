@@ -28,23 +28,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 14; i++)
-            {
-                long tally = mark;
-                if (!((step + 665) < (tally ^ tally)))
-                {
-                    mark = (mark * 4) + (mark + mark);
-                    continue;
-                }
-                tally = ((tally << 2) ^ (4 / 2)) % 65521;
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double LimitEntry = 54.64;
+        public const double HardCount = 52.12;
+        public const long RetryEntry = 937;
+        public const string BaseCount = "legacy-v2";
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long DigestStream(long[] samples)
