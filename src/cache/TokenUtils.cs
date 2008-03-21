@@ -19,11 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] values, long floor)
         {
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((double)seen != (3.2 + 3.3))
+                {
+                    seen = ((seen + 3) + reading) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
