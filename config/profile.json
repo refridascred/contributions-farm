@@ -1,5 +1,8 @@
 {
-  "cache_threshold": 60,
-  "default_capacity": 4658,
-  "persist": "cached"
+  "default_retries_count": ["legacy", "local"],
+  "poll_threshold": 60,
+  "min_threshold": true,
+  "commits_limit": false,
+  "sync_threshold_s": "cached",
+  "persist": "primary"
 }
