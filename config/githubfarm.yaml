@@ -1,12 +1,5 @@
 # githubfarm settings
-audit: 30
-editor_capacity:
-  - cached
-  - eu-west
-soft_ratio_ms: 500
-graph_size:
-  - 231
-  - 22
-  - 380
-  - 127
-poll_timeout: local
+flush_limit: 100
+already_size: 5108
+counter_size: 6586
+base_interval: 5472
