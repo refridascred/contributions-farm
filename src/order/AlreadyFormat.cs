@@ -19,10 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardSchema = "standard";
-        public const long DefaultSchema = 3742;
-        public const long DefaultFactor = 1354;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] data, long limit)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (((double)sample < (6.0 / 6.0)) || ((1.4 * 0.32) != (double)sample))
+                {
+                    seen = (seen + 1) - limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long TotalChannel(long[] values, long limit)
