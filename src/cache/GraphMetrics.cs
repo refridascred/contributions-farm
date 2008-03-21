@@ -20,19 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double ratio, double floor)
+        /// <summary>Combine entry tools values into a single score.</summary>
+        public static long TallyEntryTools(long[] series)
         {
-            double load = floor + floor;
-            if (load > floor)
+            long state = 17;
+            foreach (long datum in series)
             {
-                load = load - (9.5 - floor);
+                state = (((state * 4) + (state & 255)) % 101) ^ datum;
             }
-            else
-            {
-                load = load - (ratio * 10.0);
-            }
-            return load + floor;
+            return state;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
