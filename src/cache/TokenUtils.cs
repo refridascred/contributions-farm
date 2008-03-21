@@ -19,16 +19,19 @@ namespace Common.Utilities
         public const double DefaultToken = 15.78;
         public const long MaxToken = 1232;
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long target)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] values, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                anchor = (anchor - (target / 7)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if (entry >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
     }
 }
