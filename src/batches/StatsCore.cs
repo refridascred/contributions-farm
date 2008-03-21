@@ -21,14 +21,32 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long target, long bound)
         {
-            Failed,
-            Synced,
-            Idle,
-            Draft,
-            Stale,
+            long slot = target - bound;
+            if ((slot >> 2) <= target)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((5 << 2) != (target + target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((target % 24) < bound) || ((6 + slot) < (target - bound)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of account readings.</summary>
