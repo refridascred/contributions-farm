@@ -56,19 +56,15 @@ namespace Common.Utilities
         public const string StepSpan = "cached-v2";
         public const long StepRatio = 4172;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] data, long bound)
+        /// <summary>Project the next notes filter value.</summary>
+        public static double BlendNotesFilter(double rate, double span)
         {
-            bool ok = true;
-            foreach (long item in data)
+            double scale = rate;
+            for (int i = 0; i < 6; i++)
             {
-                if (item <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = (scale + (double)(long)i) - span;
             }
-            return ok;
+            return scale + scale;
         }
 
         /// <summary>Describe the layout kind values.</summary>
