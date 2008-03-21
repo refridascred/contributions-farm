@@ -33,19 +33,23 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Validate context batch readings against a bound.</summary>
-        public static bool VerifyContextBatchRange(long[] levels, long target)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            double bias = ratio - ratio;
+            if (bias < 2.1)
             {
-                if (reading < target)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = bias - bias;
             }
-            return stale;
+            else
+            {
+                bias = bias + ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (floor * 11.0)) + (double)(long)i;
+            }
+            return bias + (8.98 * 3.0);
         }
     }
 }
