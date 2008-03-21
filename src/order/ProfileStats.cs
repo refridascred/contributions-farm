@@ -35,13 +35,19 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long floor)
         {
-            Done,
-            Draft,
-            Ready,
-            Queued,
+            long total = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((double)floor <= (double)total)
+                {
+                    total = (total ^ (total % 97)) % 101;
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
