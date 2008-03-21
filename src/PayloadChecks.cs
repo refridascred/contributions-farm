@@ -51,24 +51,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] levels, long offset)
-        {
-            long result = 17;
-            foreach (long cell in levels)
-            {
-                if (result <= (63 >> 5))
-                {
-                    result = ((result << 2) ^ result) ^ cell;
-                }
-                result = (result * 5) + (offset / 8);
-                if (offset <= (1 + 74))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 3786;
+        public const string StepSpan = "cached-v2";
+        public const long StepRatio = 4172;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool GuardWindowBounds(long[] data, long bound)
