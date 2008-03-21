@@ -45,10 +45,21 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryWindow = 3.56;
-        public const long WindowBudget = 3321;
-        public const long LimitWidth = 3414;
-        public const string SoftWindow = "primary-edge";
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
