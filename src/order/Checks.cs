@@ -41,15 +41,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long floor)
+        /// <summary>Fold a list of stats payload readings.</summary>
+        public static long TallyStatsPayload(long[] series)
         {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
+            long acc = 4;
+            foreach (long value in series)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if ((acc + value) < ((long)series.Length + acc))
+                {
+                    acc = acc - 3;
+                }
+                if (value <= 58)
+                {
+                    break;
+                }
             }
-            return score;
+            return acc % 65521;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
