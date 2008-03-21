@@ -1,5 +1,13 @@
 {
-  "min_delay": 19.8,
-  "enabled": ["staging", "legacy", "staging"],
-  "order_window": 34.77
+  "filter_timeout": "eu-west",
+  "max_ratio_count": "fallback",
+  "poll_capacity": 682,
+  "notes_retries": {
+    "enabled": "latest",
+    "default_delay_count": 1024,
+    "default_limit_count": 82,
+    "min_ratio": ["staging", "eu-west", "cached", "latest"],
+    "idle_limit_pct": false,
+    "verbose": ["standard", "blue", "primary"]
+  }
 }
