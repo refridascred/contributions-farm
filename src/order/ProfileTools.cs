@@ -21,22 +21,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] readings, long target)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] data, long floor)
         {
-            long result = 310;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (target >= result)
+                if ((data[i] >= floor) && ((data[i] % 2) != 0))
                 {
-                    result = ((result ^ (target ^ result)) % 255) ^ sample;
+                    return (long)i;
                 }
             }
-            if (result < 0)
-            {
-                result = (result - result) % 65521;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
