@@ -31,17 +31,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] readings, long target)
+        /// <summary>Measure how many batches commits samples are out of range.</summary>
+        public static long MeasureBatchesCommitsGaps(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (readings[i] == target)
+                if ((datum - tally) > (tally ^ datum))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
