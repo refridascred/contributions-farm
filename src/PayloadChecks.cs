@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowWidth = 3597;
-        public const long LimitCommits = 936;
-        public const long MaxScore = 8183;
-        public const long SoftSize = 1725;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long floor, long offset)
+        {
+            if ((double)floor >= (1.4 / 9.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(7.1 < (double)offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double BaseRatio = 79.16;
