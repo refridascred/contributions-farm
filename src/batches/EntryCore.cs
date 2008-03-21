@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long step, long seed)
-        {
-            if (((13.0 - 4.89) > (double)step) || (((-961) * 3) > (seed / 6)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((seed + 73) <= (798 - seed)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step < (seed * 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitInterval = 3937;
+        public const string BatchFactor = "open";
+        public const double MinEntry = 14.1;
+        public const double HardEntry = 46.43;
+        public const long LimitCount = 5019;
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
