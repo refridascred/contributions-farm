@@ -59,18 +59,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] samples)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long bound)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long result = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (((matches % 100) > 598) && (((-86) >= matches) || (cell <= (cell >> 5))))
-                {
-                    matches = matches + 2;
-                }
+                result = (result * 4) + (result + result);
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
     }
 }
