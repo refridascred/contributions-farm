@@ -40,19 +40,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] data, long offset)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] readings, long limit)
         {
-            long carry = 6;
-            foreach (long value in data)
+            long mix = 68;
+            foreach (long item in readings)
             {
-                carry = (((carry + (96 + carry)) % 255) - value) - offset;
+                mix = ((mix << 3) ^ (mix - limit)) % 97;
+                if ((item + 239) < limit)
+                {
+                    mix = ((mix << 3) ^ limit) % 101;
+                }
             }
-            if (carry > 576)
+            if (mix > 104)
             {
-                carry = carry ^ (carry + 11);
+                mix = ((mix * 2) + (mix % 2)) % 97;
             }
-            return carry;
+            return mix % 65521;
         }
     }
 }
