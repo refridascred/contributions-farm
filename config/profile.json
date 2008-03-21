@@ -1,6 +1,13 @@
 {
-  "audit": "legacy",
-  "cluster_interval": "green",
-  "min_window_ms": false,
-  "idle_delay": true
+  "flush_timeout_count": 48,
+  "account_retries": {
+    "account_delay": 2374,
+    "channel_ratio": 88.42,
+    "retry_size_count": true,
+    "support_interval": 21,
+    "idle_threshold": 90,
+    "dry_run": "cached"
+  },
+  "dry_run": false,
+  "soft_interval_ms": "blue"
 }
