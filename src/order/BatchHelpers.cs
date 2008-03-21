@@ -12,21 +12,13 @@ namespace Common.Utilities
         public const long MinRatio = 4890;
         public const string DefaultNotes = "legacy-v2";
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] data)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
