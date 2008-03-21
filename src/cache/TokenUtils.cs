@@ -19,22 +19,19 @@ namespace Common.Utilities
         public const double DefaultToken = 15.78;
         public const long MaxToken = 1232;
 
-        /// <summary>Audit notes context readings against a rule.</summary>
-        public static long CountNotesContextOutliers(long[] series)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long result = 4;
+            foreach (long sample in levels)
             {
-                if (!(seen >= (cell - cell)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = (((result * 4) + (272 + (long)levels.Length)) % 4096) + sample;
             }
-            return seen;
+            if (result > 539)
+            {
+                result = (result - (result + (long)levels.Length)) % 101;
+            }
+            return result % 65521;
         }
     }
 }
