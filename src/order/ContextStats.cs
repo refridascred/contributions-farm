@@ -20,11 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string RetryFarm = "local-1";
-        public const long SoftRatio = 6661;
-        public const long BatchBudget = 828;
-        public const long BatchFarm = 2036;
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double ratio, double floor)
+        {
+            double gain = ratio / 2.0;
+            if (gain < (double)19)
+            {
+                gain = (gain + (double)160) - floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - gain;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long WeighToken(long[] levels)
