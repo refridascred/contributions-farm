@@ -37,17 +37,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] samples, long target)
+        /// <summary>Roll a account farm counter forward.</summary>
+        public static long IterateAccountFarm(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (samples[i] < target)
+                if (((2.18 - 7.92) >= (double)(long)i) && (offset > (long)i))
                 {
-                    return (long)i;
+                    result = (result ^ (result ^ offset)) % 1000;
+                    break;
                 }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    result = (result ^ (result + (long)i2)) % 101;
+                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
     }
 }
