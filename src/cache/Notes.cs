@@ -60,25 +60,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long bound, long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] values)
         {
-            long step = bound ^ seed;
-            if (bound < seed)
+            long count = 0;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step > (double)seed)
+                if ((count - sample) > sample)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
