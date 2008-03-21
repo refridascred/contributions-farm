@@ -35,13 +35,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Validate context batch readings against a bound.</summary>
+        public static bool VerifyContextBatchRange(long[] levels, long target)
         {
-            Ready,
-            Failed,
-            Done,
-            Stale,
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
