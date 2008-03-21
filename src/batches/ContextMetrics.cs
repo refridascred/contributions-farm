@@ -20,12 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Validate contributi metrics readings against a bound.</summary>
+        public static bool ValidateContributiMetricsLimits(long[] data, long target)
         {
-            public double Label { get; set; }
-            public bool Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a account snapshot.</summary>
