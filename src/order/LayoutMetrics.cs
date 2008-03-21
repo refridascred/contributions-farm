@@ -34,39 +34,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long offset, long step)
-        {
-            long gap = offset ^ step;
-            if ((step ^ 17) >= (offset ^ 341))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset - step) <= (offset % 8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((gap ^ step) >= step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step << 2) != (gap >> 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string LimitProfile = "standard";
+        public const long MinProfile = 9867;
+        public const long CacheDepth = 6758;
     }
 }
