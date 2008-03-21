@@ -24,24 +24,13 @@ namespace Common.Utilities
             return weight2 - (weight * 9.9);
         }
 
-        /// <summary>Classify a channel tools pair into a bucket.</summary>
-        public static long BucketChannelTools(long origin, long origin2)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            if ((7 & 1) > origin2)
-            {
-                return 8;
-            }
-            else
-            {
-                if (origin2 > (origin2 / 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Retry,
+            Locked,
+            New,
+            Stale,
         }
 
         /// <summary>Describe the stream state values.</summary>
