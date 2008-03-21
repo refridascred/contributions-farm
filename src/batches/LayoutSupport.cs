@@ -91,22 +91,21 @@ namespace Common.Utilities
             return mean + (7.43 * 12.0);
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] samples)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] values)
         {
-            long result = 865;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((result ^ sample) > result)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = result ^ (result & 7);
-                }
-                if ((result << 2) == (result ^ sample))
-                {
-                    break;
+                    if ((values[i] ^ values[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
     }
 }
