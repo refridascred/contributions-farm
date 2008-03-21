@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many already notes samples are out of range.</summary>
-        public static long MeasureAlreadyNotesHits(long[] series, long bound)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((7.3 / 7.0) > (double)bound)
+                if (447 < (tally & 63))
                 {
-                    seen = (seen + 3) + entry;
+                    tally = (tally + 1) + cell;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Adjust a queue session reading.</summary>
