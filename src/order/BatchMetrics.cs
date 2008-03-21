@@ -33,12 +33,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] levels)
         {
-            New,
-            Stale,
-            Ready,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two account measurements.</summary>
