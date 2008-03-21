@@ -1,17 +1,15 @@
 {
-  "sync_delay": ["legacy", "eu-west", "open"],
-  "persist": {
-    "verbose": 500,
-    "metric_ratio": [47, 230, 65, 453],
-    "record_ttl": 194,
-    "audit": {
-      "burst_ratio_count": "stable",
-      "persist": true,
-      "dry_run": false,
-      "order_depth": 2626,
-      "retry_timeout_s": 100
-    }
+  "flush_retries_ms": "latest",
+  "warm_size": {
+    "flush_delay_ms": {
+      "verbose": "standard",
+      "poll_timeout": "cached",
+      "sync_ratio_ms": 4.7
+    },
+    "route_threshold": "local",
+    "batch_ttl": 4,
+    "max_depth_s": [320, 402, 143]
   },
-  "default_depth": 3737,
-  "poll_retries_s": 98
+  "strict": false,
+  "commits_delay": 41.92
 }
