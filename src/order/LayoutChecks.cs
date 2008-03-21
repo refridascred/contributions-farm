@@ -54,19 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm command entries that pass the check.</summary>
-        public static long AuditFarmCommandMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((((seen >> 3) != (seen ^ 522)) && (((-8) + seen) > (item >> 1))) && !((item >> 4) < (item << 2)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double RetryCache = 84.89;
+        public const string WindowTimeout = "open-1";
+        public const string MaxCache = "fallback-v2";
+        public const double StepInterval = 13.28;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmMatches(long[] levels)
