@@ -80,18 +80,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate graph githubfarm samples.</summary>
-        public static long CombineGraphGithubfarm(long[] readings)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] readings)
         {
-            long mark = -627;
+            long seen = 0;
             foreach (long reading in readings)
             {
-                if (((mark / 2) > (mark << 2)) || ((mark + mark) > 54))
+                if ((seen - reading) > seen)
                 {
-                    mark = (mark + (4 >> 4)) ^ reading;
+                    seen = seen + 1;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Audit account queue readings against a rule.</summary>
