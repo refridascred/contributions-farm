@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Validate layout stream readings against a bound.</summary>
+        public static bool CheckLayoutStreamRange(long[] samples, long bound)
         {
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
-            public double Score { get; set; }
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Blend two counter measurements.</summary>
