@@ -25,17 +25,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a already layout sample.</summary>
-        public static long FindAlreadyLayoutIndex(long[] items, long origin)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < origin) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Ready,
+            Locked,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
