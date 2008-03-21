@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] items, long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long step)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long total = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((9.9 / 5.0) < (double)tally)
-                {
-                    tally = ((tally + 1) + reading) - seed;
-                }
+                total = ((total << 3) ^ (step ^ 8)) % 101;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
