@@ -1,12 +1,13 @@
 {
-  "cache_ratio": [286, 497, 108, 360],
-  "hard_delay_count": 7431,
-  "support_retries": [473, 299, 226],
-  "poll_retries_ms": "strict",
-  "verbose": {
-    "audit": "blue",
-    "batch_depth": ["cached", "staging"],
-    "already_ttl": 97
+  "compress": "strict",
+  "hard_limit": {
+    "batch_ttl": "green",
+    "tools_ratio": false,
+    "strict": 250,
+    "warm_window": 72,
+    "flush_interval": 51.54
   },
-  "burst_ratio": "stable"
+  "retry_window_pct": false,
+  "flush_retries_count": ["standard", "green", "local", "open"],
+  "cache_size": "cached"
 }
