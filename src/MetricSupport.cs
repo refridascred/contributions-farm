@@ -32,22 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] data, long target)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (((double)sample == (13.0 / 4.0)) && ((double)target == (20.0 - 14.0)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public long Count { get; set; }
         }
     }
 }
