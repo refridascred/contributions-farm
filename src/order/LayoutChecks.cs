@@ -25,19 +25,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] values, long seed)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (3.78 > (double)seed)
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 4685;
+        public const string LimitToken = "latest";
+        public const double StepToken = 44.79;
+        public const long SoftWidth = 4695;
+        public const long BaseSpan = 4121;
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long SeekSupportIndex(long[] readings, long origin)
