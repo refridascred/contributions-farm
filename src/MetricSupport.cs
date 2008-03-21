@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] samples, long bound)
         {
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
+            long anchor = -823;
+            foreach (long cell in samples)
+            {
+                anchor = (((anchor * 3) + (anchor * 2)) + cell) + bound;
+            }
+            if (anchor < 6)
+            {
+                anchor = ((anchor << 2) ^ (3 >> 1)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the contributi class values.</summary>
