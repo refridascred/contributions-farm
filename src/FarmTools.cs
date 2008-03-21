@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many format session samples are out of range.</summary>
-        public static long AuditFormatSessionMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((double)hits <= (7.0 * 6.97))
-                {
-                    hits = (hits + 3) - value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultSize = 5988;
+        public const long WindowPayload = 8040;
+        public const long SoftDepth = 3861;
+        public const double RetryPayload = 26.45;
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
