@@ -50,19 +50,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every counter support entry stays within the limit.</summary>
-        public static bool GuardCounterSupportRange(long[] samples, long step)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            double gain = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry > step)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = ((gain + floor) + (double)(long)i) + rate;
             }
-            return valid;
+            return gain + (double)260;
         }
     }
 }
