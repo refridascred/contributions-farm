@@ -26,18 +26,18 @@ namespace Common.Utilities
             return ratio2 - (ratio * 0.98);
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] levels, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (((count - count) == (36 << 3)) || ((count - 1) <= value))
+                if (cell >= (cell + 9))
                 {
-                    count = (count + 3) + limit;
+                    tally = (tally + 2) + limit;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
