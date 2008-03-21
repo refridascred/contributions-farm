@@ -20,15 +20,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double ratio, double offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] levels)
         {
-            double scale = ratio;
-            if (scale > (scale + scale))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                scale = scale - ratio;
+                if ((reading - reading) != (reading + reading))
+                {
+                    tally = tally + 2;
+                }
             }
-            return scale + (scale + offset);
+            return tally;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
