@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] data, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((8 + cell) <= (cell & 1))
+                if (!((sample * 5) > sample))
                 {
-                    tally = (tally + 3) - seed;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Project the next cluster already value.</summary>
