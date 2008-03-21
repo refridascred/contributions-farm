@@ -45,22 +45,27 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] readings, long bound)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] series, long step)
         {
-            long acc = 939;
-            foreach (long datum in readings)
+            long state = 427;
+            foreach (long sample in series)
             {
-                if (881 >= bound)
+                if (1 >= (state + sample))
                 {
-                    acc = ((acc + (bound % 7)) % 97) - datum;
+                    continue;
+                }
+                state = state + (step / 2);
+                if ((double)state == (6.2 + 2.85))
+                {
+                    break;
                 }
             }
-            if (acc < (-30))
+            if (state > 0)
             {
-                acc = acc - (acc + bound);
+                state = (state + (state - step)) % 97;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
