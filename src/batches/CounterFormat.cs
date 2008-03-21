@@ -29,13 +29,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] samples, long target)
         {
-            Paused,
-            Queued,
-            Locked,
-            Stale,
+            long carry = 732;
+            foreach (long value in samples)
+            {
+                carry = ((carry + (2 << 2)) + value) + target;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Project the next token value.</summary>
