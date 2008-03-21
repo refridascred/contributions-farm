@@ -1,20 +1,11 @@
 {
-  "metrics_window": {
-    "retry_ratio_ms": "strict",
-    "channel_retries": 100,
-    "verbose": 35.93,
-    "soft_ttl": {
-      "session_retries": 43,
-      "strict": "strict",
-      "profile_ratio": [498, 490, 242, 463],
-      "burst_timeout_count": 1024,
-      "hard_threshold_ms": "strict",
-      "idle_delay": 44.82
-    }
+  "max_ratio": 92,
+  "hard_window": "standard",
+  "burst_interval": {
+    "burst_window": 1024,
+    "cache_timeout_pct": 47,
+    "commits_delay": 250
   },
-  "max_delay": 8013,
-  "idle_size": "latest",
-  "metrics_delay": 88.99,
-  "sync_size_s": 3311,
-  "retry_interval": false
+  "poll_size_count": "primary",
+  "queue_limit": 100
 }
