@@ -40,19 +40,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] data, long step)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
     }
 }
