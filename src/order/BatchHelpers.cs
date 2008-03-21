@@ -21,11 +21,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double gain, double floor)
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
+            double gain2 = (gain - gain) * 4.3;
+            if (gain2 > gain2)
+            {
+                gain2 = gain2 - (floor - floor);
+            }
+            return gain2 - 0.29;
         }
     }
 }
