@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate order cache readings against a bound.</summary>
-        public static bool VerifyOrderCacheLimits(long[] levels, long seed)
-        {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 6246;
+        public const double BatchLevel = 16.87;
+        public const long MaxLevel = 5401;
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
