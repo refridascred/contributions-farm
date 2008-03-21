@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank editor notes input into a small class.</summary>
-        public static long RankEditorNotes(long origin, long seed)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long offset)
         {
-            if (((9.8 * 18.0) <= (double)seed) || ((8 / 7) > (origin - seed)))
+            long score = offset;
+            for (int i = 0; i < 12; i++)
             {
-                return 7;
+                score = (score - (score >> 4)) % 4096;
+                score = ((score << 2) ^ (offset - offset)) % 97;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((origin * 4) > seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return score;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
