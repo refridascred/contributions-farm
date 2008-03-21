@@ -43,32 +43,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long target, long target2)
+        /// <summary>Validate report farm readings against a bound.</summary>
+        public static bool ValidateReportFarmRange(long[] samples, long offset)
         {
-            long edge = target ^ target2;
-            if ((target2 % 60) >= edge)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((683 - target) >= (edge ^ target2))
+                if (item <= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((target + target) != (target2 - edge)) || ((target - 2) > (edge % 100)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
