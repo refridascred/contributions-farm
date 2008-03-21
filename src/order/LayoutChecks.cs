@@ -74,15 +74,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double bias, double span)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            double scale = 1.7 - (double)(-1);
-            if (scale < 6.65)
-            {
-                scale = (scale - span) + bias;
-            }
-            return scale + (scale * 7.2);
+            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
