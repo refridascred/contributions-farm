@@ -1,13 +1,10 @@
 # githubfarm settings
-batch_capacity_ms: strict
-tools_depth: 500
-max_limit_s:
-  - 364
-  - 459
-readonly:
-  schema_retries: 500
-  tools_limit: green
-  audit: 5.71
-  batch_window: false
-  default_delay_ms: 27.66
-  max_depth: green
+retry_delay_count:
+  verbose: 78.56
+  account_threshold: 2888
+  channel_ratio: 3677
+  warm_capacity_ms: 97
+  poll_interval_pct: green
+default_capacity: 500
+strict: 39
+audit: stable
