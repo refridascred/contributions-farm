@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] series, long seed)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
+                score = score ^ (237 >> 4);
+                score = ((score * 3) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
