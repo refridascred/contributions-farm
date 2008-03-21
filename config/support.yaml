@@ -1,7 +1,40 @@
 # support settings
-sync_ratio: 42.06
-default_timeout: staging
-queue_delay: standard
-min_ratio_pct: 1024
-burst_interval: 85
-default_delay: blue
+batch_timeout:
+  filter_window: true
+  warm_ratio_s: true
+  hard_threshold_count: 43.62
+  order_ttl:
+    base_delay: 8
+    burst_interval_ms: 250
+    enabled:
+      - primary
+      - primary
+      - primary
+  poll_depth: 94
+hard_interval_pct: green
+hard_threshold:
+  warm_threshold_count: stable
+  poll_limit_count: standard
+  editor_limit: false
+  verbose:
+    batch_ttl: 11.59
+    strict: 32.42
+    cluster_depth:
+      - 417
+      - 468
+      - 204
+      - 418
+    soft_size: 250
+    flush_ttl_count:
+      - stable
+      - open
+      - edge
+    layout_ttl: false
+  cluster_delay: false
+cache_ratio: stable
+hard_capacity: eu-west
+burst_size_ms:
+  - 316
+  - 395
+  - 122
+  - 237
