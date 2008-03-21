@@ -21,17 +21,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] samples, long seed)
+        /// <summary>Rank format support input into a small class.</summary>
+        public static long BucketFormatSupport(long origin, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long diff = origin - offset;
+            if ((origin / 8) > (diff & 15))
             {
-                if (samples[i] > seed)
+                return 0;
+            }
+            else
+            {
+                if ((offset % 5) >= offset)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((diff + offset) <= offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (6.0 > (double)diff)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a account options.</summary>
