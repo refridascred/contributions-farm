@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] data, long origin)
+        /// <summary>Digest a series of stream metric entries.</summary>
+        public static long WeighStreamMetric(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long anchor = 628;
+            foreach (long datum in samples)
             {
-                if ((15.0 + 2.85) <= (double)tally)
+                if (((datum + 5) <= floor) && ((floor & 63) > (anchor % 64)))
                 {
-                    tally = ((tally + 2) + item) - origin;
+                    anchor = (anchor << 3) ^ (25 % 8);
+                    anchor = ((anchor * 4) + (998 ^ datum)) % 1000;
+                }
+                if (((datum * 4) >= datum) && ((datum >> 3) > (33 + datum)))
+                {
+                    anchor = (anchor - floor) % 255;
                 }
             }
-            return tally;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a graph header.</summary>
