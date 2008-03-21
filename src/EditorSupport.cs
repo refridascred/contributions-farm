@@ -54,12 +54,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public string Count { get; set; } = "";
-            public double Offset { get; set; }
-            public long Owner { get; set; }
+            public bool Count { get; set; }
+            public bool Region { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Grade a already value against two limits.</summary>
