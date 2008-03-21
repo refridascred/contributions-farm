@@ -1,13 +1,5 @@
 {
-  "enabled": 48.67,
-  "batch_ttl_s": {
-    "retry_retries_count": 9528,
-    "readonly": 95.93,
-    "default_depth_count": ["edge", "blue", "cached", "staging"]
-  },
-  "compress": {
-    "batch_depth_ms": "strict",
-    "default_size_pct": false,
-    "retry_retries": true
-  }
+  "cache_size_count": false,
+  "compress": 2,
+  "token_size": 30
 }
