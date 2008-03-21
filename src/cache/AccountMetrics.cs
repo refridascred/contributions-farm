@@ -27,23 +27,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] series)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] samples)
         {
-            long total = 95;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                total = (total * 4) + sample;
-                if ((sample < (total >> 1)) || ((sample + sample) != (total << 3)))
+                if (tally >= (81 / 8))
                 {
-                    total = ((total * 3) + (sample - total)) % 255;
-                }
-                if (((16.0 + 12.0) >= (double)total) && ((sample << 3) >= (sample + total)))
-                {
-                    total = (total - total) % 65521;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
