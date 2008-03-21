@@ -37,11 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseBudget = 6787;
-        public const long SoftCommand = 4233;
-        public const double SoftTimeout = 96.02;
-        public const long HardCommand = 4162;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public double Owner { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long FindStatsIndex(long[] levels, long step)
