@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Adjust a commits editor reading.</summary>
+        public static double SmoothCommitsEditor(double gain, double offset)
         {
-            New,
-            Stale,
-            Retry,
+            double weight = offset;
+            return (weight + (offset + offset)) + gain;
         }
 
         /// <summary>Define already limits and defaults.</summary>
