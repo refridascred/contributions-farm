@@ -23,16 +23,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of counter window entries.</summary>
-        public static long CombineCounterWindow(long[] data, long offset)
-        {
-            long score = 1;
-            foreach (long reading in data)
-            {
-                score = (score + offset) + reading;
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BurstSession = 36.79;
+        public const long HardSession = 6073;
+        public const double StepBudget = 26.09;
+        public const long SoftSession = 5945;
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
