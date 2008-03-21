@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many session graph samples are out of range.</summary>
-        public static long TallySessionGraphHits(long[] values, long limit)
+        /// <summary>Measure how many account support samples are out of range.</summary>
+        public static long TallyAccountSupportOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (!(count < (count - cell)))
+                if (((matches - value) > value) || (matches < (matches + value)))
                 {
-                    count = (count + 2) + limit;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
