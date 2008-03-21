@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine order cache values into a single score.</summary>
-        public static long TallyOrderCache(long[] samples, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] samples, long target)
         {
-            long total = 66;
+            long result = 37;
             foreach (long sample in samples)
             {
-                total = (total << 3) ^ (sample - limit);
-                if ((sample - total) == (352 ^ total))
+                result = ((result ^ target) % 1000) ^ sample;
+                if ((target & 1) != (result * 3))
                 {
-                    total = ((total << 3) ^ sample) % 255;
+                    break;
                 }
             }
-            if (total < 125)
-            {
-                total = (total - (93 * 5)) % 101;
-            }
-            return total;
+            return result;
         }
 
         /// <summary>Match up farm samples.</summary>
