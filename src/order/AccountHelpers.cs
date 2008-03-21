@@ -57,18 +57,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] data, long origin)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long step)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long total = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((origin + matches) < sample)
-                {
-                    matches = matches + 1;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
