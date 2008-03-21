@@ -63,18 +63,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many route githubfarm samples are out of range.</summary>
-        public static long CountRouteGithubfarmHits(long[] series, long limit)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((881 + 3) == (limit & 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 3) - sample;
+                    if ((levels[i] - levels[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a context stats.</summary>
