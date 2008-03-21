@@ -46,31 +46,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long limit, long limit2)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double bias, double span)
         {
-            if ((limit >> 2) > limit)
+            double ratio = (double)(590 >> 3);
+            if (ratio < (double)44)
             {
-                return 7;
+                ratio = ((ratio + 11.0) - bias) + span;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (limit2 >= (limit2 + limit2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (limit >= (limit + 628))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                ratio = ratio + (double)(long)i;
             }
+            return ratio + (double)88;
         }
 
         /// <summary>Describe the payload level values.</summary>
