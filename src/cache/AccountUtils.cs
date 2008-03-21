@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a queue cache reading.</summary>
-        public static double ScaleQueueCache(double weight, double offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] items, long floor)
         {
-            double weight2 = (double)(-600) + (weight * 7.25);
-            if (weight2 < (weight * 4.0))
+            long mark = 78;
+            foreach (long datum in items)
             {
-                weight2 = (weight2 - weight2) + offset;
+                mark = (((mark + (mark & 1)) % 255) ^ datum) + floor;
             }
-            else
-            {
-                weight2 = weight2 + 6.87;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 - (weight2 / 6.0)) + (double)(long)i;
-            }
-            return weight2 - (weight * 9.9);
+            return mark;
         }
 
         /// <summary>Describe the filter phase values.</summary>
