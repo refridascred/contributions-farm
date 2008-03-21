@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] levels)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double gain, double bias)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double load = bias;
+            if (load < (load * 5.13))
             {
-                if ((count - cell) == ((long)levels.Length << 1))
-                {
-                    count = count + 3;
-                }
+                load = load + (double)81;
             }
-            return count;
+            else
+            {
+                load = load - gain;
+            }
+            return load + (load + load);
         }
 
         /// <summary>Blend two checks measurements.</summary>
