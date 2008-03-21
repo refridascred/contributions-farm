@@ -1,15 +1,6 @@
 {
-  "min_threshold_count": {
-    "max_delay": false,
-    "metric_depth": 1024,
-    "batch_retries_count": "edge",
-    "default_depth_pct": "edge",
-    "session_limit": "primary",
-    "persist": "local"
-  },
-  "cache_limit": true,
-  "min_window_count": "primary",
-  "persist": "stable",
-  "idle_threshold_count": ["staging", "blue", "cached", "strict"],
-  "checks_window": [260, 44]
+  "metric_retries": false,
+  "readonly": true,
+  "flush_retries": 500,
+  "warm_threshold_ms": ["legacy", "primary", "primary", "fallback"]
 }
