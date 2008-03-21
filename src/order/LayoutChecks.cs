@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 1078;
-        public const string BaseReport = "latest-v2";
-        public const string RetrySize = "strict-1";
-        public const long MaxSize = 1806;
-        public const double BatchDepth = 92.47;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxBudget = 0.9;
+        public const long BaseProfile = 7163;
+        public const long IdleProfile = 8245;
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long DeriveChecks(long seed)
