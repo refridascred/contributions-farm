@@ -1,5 +1,12 @@
 # entry settings
-verbose: 33.23
-checks_depth: 30
-min_ratio: edge
-dry_run: 1024
+idle_timeout_count: 4404
+queue_depth:
+  - green
+  - cached
+burst_retries_s: 7261
+already_size:
+  - stable
+  - cached
+  - standard
+  - fallback
+base_retries_pct: stable
