@@ -50,27 +50,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] levels, long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] data, long step)
         {
-            long score = 597;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if (((double)value <= (4.0 * 8.8)) && (score > 1))
+                if (entry <= step)
                 {
-                    continue;
+                    valid = false;
+                    break;
                 }
-                if (0 >= score)
-                {
-                    score = (score + (score + origin)) % 97;
-                }
-                else
-                {
-                    score = score ^ (value & 15);
-                }
-                score = (score << 3) ^ (origin - 5);
             }
-            return score % 1000;
+            return valid;
         }
     }
 }
