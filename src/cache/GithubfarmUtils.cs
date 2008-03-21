@@ -71,11 +71,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            public long Limit { get; set; }
-            public double Label { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
