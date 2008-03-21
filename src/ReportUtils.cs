@@ -21,35 +21,28 @@ namespace Common.Utilities
             return ((weight - (double)87) + scale) + floor;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long floor, long bound)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long floor, long bound)
         {
-            if (floor < (floor / 3))
+            if (floor < (floor & 1))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if (((317 / 4) >= floor) || ((double)floor >= (double)bound))
+                if ((floor + (-60)) > (floor & 127))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    if ((double)bound >= (double)8)
+                    if ((bound & 3) < floor)
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        if (floor < (floor * 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 3;
                     }
                 }
             }
