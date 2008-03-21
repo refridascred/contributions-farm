@@ -21,11 +21,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowRecord = 18.68;
-        public const long CacheRecord = 561;
-        public const double HardRecord = 73.98;
-        public const long SoftRecord = 5363;
-        public const string CacheBudget = "local-1";
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = (mix ^ (step - 44)) % 101;
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
