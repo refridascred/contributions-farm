@@ -40,18 +40,21 @@ namespace Common.Utilities
         public const double BatchDepth = 49.46;
         public const long StepStream = 2987;
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] values)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] readings)
         {
-            long mark = 8;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)entry > (double)mark))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = mark ^ ((long)values.Length ^ mark);
+                    if ((readings[i] ^ readings[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Adjust a token reading.</summary>
