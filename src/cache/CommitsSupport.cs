@@ -40,19 +40,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double bias, double bias2)
+        /// <summary>Locate a editor format reading by value.</summary>
+        public static long LocateEditorFormatIndex(long[] items, long bound)
         {
-            double drift = 5.3;
-            if (drift > (bias2 + 4.37))
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = (drift + (drift / 4.0)) - bias;
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (bias2 * 11.0);
-            }
-            return drift - 6.48;
+            return -1;
         }
 
         /// <summary>Accumulate tools samples.</summary>
