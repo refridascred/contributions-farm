@@ -49,16 +49,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                result = (result * 4) + (result + result);
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultCommand = "open-1";
+        public const long MinCommand = 7004;
+        public const long DefaultCount = 5477;
+        public const long BatchInterval = 1125;
     }
 }
