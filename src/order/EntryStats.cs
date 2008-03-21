@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] values)
         {
-            Closed,
-            Queued,
-            Draft,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (((hits * 5) != (hits << 1)) && ((item + (-4)) > (hits - hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the already level values.</summary>
