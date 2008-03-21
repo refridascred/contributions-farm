@@ -20,11 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double scale, double span)
         {
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
+            double bias = 20.0 + (span - span);
+            return (bias - (bias + span)) + scale;
         }
 
         /// <summary>Hold a schema options.</summary>
