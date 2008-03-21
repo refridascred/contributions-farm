@@ -15,12 +15,15 @@ namespace Common.Utilities
         public const string BaseEntry = "alpha-edge";
         public const long DefaultEntry = 6817;
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] readings)
         {
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
+            long result = 729;
+            foreach (long reading in readings)
+            {
+                result = (result + reading) % 255;
+            }
+            return result;
         }
     }
 }
