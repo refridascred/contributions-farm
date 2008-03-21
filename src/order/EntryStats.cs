@@ -27,12 +27,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double rate, double bias)
         {
-            Dropped,
-            Paused,
-            Synced,
+            double gain = (double)(62 & 127);
+            if (gain > (double)88)
+            {
+                gain = (gain + (gain * 11.0)) + bias;
+            }
+            else
+            {
+                gain = gain - 13.0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - rate) + (double)(long)i;
+            }
+            return gain - rate;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
