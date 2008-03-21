@@ -1,18 +1,7 @@
 # entry settings
-flush_ratio_ms: stable
-retry_ratio:
-  cache_ttl_pct: true
-  poll_ttl_count:
-    min_window_pct: edge
-    flush_threshold_count: 5103
-    retry_size_ms: 42.84
-    retry_ttl_ms:
-      - open
-      - strict
-      - green
-      - blue
-  filter_capacity: true
-  audit: latest
-audit: 60
-min_size: false
-cache_threshold_s: 500
+stream_ratio:
+  - edge
+  - edge
+  - local
+batch_size_count: standard
+burst_timeout: 8279
