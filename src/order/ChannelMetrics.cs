@@ -24,19 +24,18 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 9347;
         public const long StepGithubfarm = 5181;
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] items, long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (value != origin)
+                if ((datum << 2) >= hits)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) - step;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
