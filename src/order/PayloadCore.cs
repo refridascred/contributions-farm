@@ -74,11 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long floor)
         {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    sum = ((sum ^ (211 - sum)) % 255) - (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
