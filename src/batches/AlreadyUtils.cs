@@ -42,18 +42,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] values, long limit)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long anchor = 61;
+            foreach (long sample in readings)
             {
-                if ((value * 2) < limit)
+                if (!((1.51 + 6.67) < (double)target))
                 {
-                    seen = seen + 2;
+                    anchor = ((anchor << 2) ^ (sample / 2)) % 97;
+                }
+                else
+                {
+                    anchor = anchor + (282 - sample);
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the route state values.</summary>
