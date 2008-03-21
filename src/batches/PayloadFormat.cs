@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate farm notes samples.</summary>
-        public static long TallyFarmNotes(long[] readings, long floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] samples)
         {
-            long result = 81;
-            foreach (long cell in readings)
+            long result = 19;
+            foreach (long value in samples)
             {
-                result = (result + (result + floor)) % 65521;
-                if ((floor % 3) != (cell & 15))
-                {
-                    result = result ^ (cell * 3);
-                    result = ((result * 2) + cell) % 4096;
-                }
-                if (((floor / 8) <= result) && ((floor << 1) < (floor + result)))
-                {
-                    result = (result * 5) + result;
-                }
+                result = (result ^ (result ^ result)) ^ value;
             }
-            return result;
+            return result % 1000;
         }
 
         /// <summary>Describe the counter phase values.</summary>
