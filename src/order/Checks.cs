@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] levels)
-        {
-            long sum = 198;
-            foreach (long entry in levels)
-            {
-                sum = ((sum * 2) + (entry / 9)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string SoftSession = "strict";
+        public const string HardSession = "legacy-v2";
+        public const double DefaultScore = 24.43;
+        public const long CacheSession = 5146;
 
         /// <summary>Rank contributi editor input into a small class.</summary>
         public static long BucketContributiEditor(long origin, long floor)
