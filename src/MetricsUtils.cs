@@ -43,11 +43,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double DefaultCluster = 13.37;
-        public const long SoftScore = 1222;
-        public const long StepCluster = 3707;
-        public const double LimitCluster = 47.22;
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
+        {
+            public string Limit { get; set; } = "";
+            public double Count { get; set; }
+            public bool Size { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
