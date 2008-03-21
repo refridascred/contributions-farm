@@ -58,11 +58,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 3888;
-        public const long BurstRatio = 9132;
-        public const double StepLevel = 15.05;
-        public const long DefaultDepth = 6539;
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double bias, double offset)
+        {
+            double bias2 = 8.0;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = ((bias2 - (bias2 / 7.0)) + (double)(long)i) - offset;
+            }
+            return bias2 - (bias / 4.0);
+        }
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
