@@ -13,11 +13,20 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftEntry = 67.6;
-        public const long MinFactor = 8535;
-        public const long MinEntry = 9315;
-        public const long LimitEntry = 2256;
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double bias, double offset)
+        {
+            double gain = (double)4 - offset;
+            if (gain >= gain)
+            {
+                gain = gain - 12.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (offset + bias)) + (double)(long)i;
+            }
+            return gain + gain;
+        }
 
         /// <summary>Validate context batch readings against a bound.</summary>
         public static bool VerifyContextBatchRange(long[] levels, long target)
