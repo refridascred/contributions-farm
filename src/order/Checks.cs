@@ -26,12 +26,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long bound)
         {
-            Idle,
-            Draft,
-            Pending,
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = (anchor + (bound + bound)) % 1000;
+                long prev = (bound << 1) >> 4;
+                anchor = (anchor * 4) + prev;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the queue phase values.</summary>
