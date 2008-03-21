@@ -39,17 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] levels, long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((levels[i] < limit) && ((levels[i] % 5) != 0))
+                if (((reading << 1) >= (100 * 5)) && !((tally << 2) >= (tally + tally)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a stats options.</summary>
