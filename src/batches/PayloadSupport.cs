@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double weight, double bias)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long offset)
         {
-            double scale = bias / 8.0;
-            return (scale - scale) + weight;
+            long state = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
