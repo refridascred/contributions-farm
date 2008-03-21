@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public string Rank { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public long Region { get; set; }
+            Failed,
+            Closed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Accumulate already cache samples.</summary>
