@@ -32,13 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
+            Idle,
+            Retry,
+            Locked,
+            Active,
+            Draft,
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
