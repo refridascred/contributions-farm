@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] levels, long offset)
         {
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((offset - offset) > offset)
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
