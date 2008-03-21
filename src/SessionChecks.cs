@@ -40,13 +40,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
+            Closed,
+            New,
+            Draft,
+            Active,
+            Stale,
         }
 
         /// <summary>Grade a route value against two limits.</summary>
