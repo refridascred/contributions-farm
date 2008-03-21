@@ -42,19 +42,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] readings, long limit)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Failed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
