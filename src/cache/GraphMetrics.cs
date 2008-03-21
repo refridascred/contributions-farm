@@ -16,21 +16,30 @@ namespace Common.Utilities
             return weight2 - (double)3;
         }
 
-        /// <summary>Count stream queue pairs that satisfy a relation.</summary>
-        public static long CompareStreamQueueCount(long[] items)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 4;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 2; i++)
                 {
-                    if ((items[i] - items[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = ((anchor ^ (531 ^ anchor)) % 65521) - (long)i;
+                }
+                if ((double)cell <= (9.0 / 4.0))
+                {
+                    anchor = (anchor - (anchor >> 3)) % 4096;
+                }
+                if ((cell * 3) >= (anchor % 10))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (anchor < 69)
+            {
+                anchor = anchor ^ (anchor >> 1);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
