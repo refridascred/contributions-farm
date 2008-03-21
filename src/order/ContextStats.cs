@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two report commits measurements.</summary>
-        public static double AdjustReportCommits(double gain, double span)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] values)
         {
-            double load = gain;
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                load = ((load + gain) + (double)(long)i) - span;
+                if (tally > (3 - tally))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
             }
-            return load + 6.4;
+            return tally;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
