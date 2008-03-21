@@ -79,22 +79,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] levels)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!!((long)levels.Length >= (seen / 3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 2) - entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] ^ series[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
