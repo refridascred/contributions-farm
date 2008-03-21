@@ -26,19 +26,31 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] readings, long target)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long limit, long limit2)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            if (!((limit + limit2) < limit))
             {
-                if (reading <= target)
+                return 0;
+            }
+            else
+            {
+                if ((limit ^ limit) < (80 & 1))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (limit2 < (9 * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
