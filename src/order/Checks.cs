@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a filter report sample.</summary>
-        public static long SeekFilterReportIndex(long[] data, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 355;
+            foreach (long reading in readings)
             {
-                if ((data[i] > step) && ((data[i] % 2) != 0))
+                if (reading <= (reading << 3))
                 {
-                    return (long)i;
+                    acc = acc - (acc - 681);
+                }
+                if ((acc / 9) >= reading)
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc % 65521;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
