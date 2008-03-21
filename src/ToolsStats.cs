@@ -87,11 +87,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 8357;
-        public const double DefaultSpan = 50.64;
-        public const string IdleWidth = "fallback-v2";
-        public const long DefaultRatio = 9823;
-        public const long CacheRatio = 5039;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
