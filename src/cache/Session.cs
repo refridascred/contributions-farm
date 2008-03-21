@@ -48,18 +48,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] items)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long bound)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)value <= (double)matches)
-                {
-                    matches = matches + 1;
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
     }
 }
