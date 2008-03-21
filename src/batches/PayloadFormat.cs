@@ -26,21 +26,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count cluster record pairs that satisfy a relation.</summary>
-        public static long CompareClusterRecordCount(long[] readings)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] readings, long target)
         {
-            long hits = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((readings[i] < target) && ((readings[i] % 5) != 0))
                 {
-                    if ((readings[i] ^ readings[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a entry header.</summary>
