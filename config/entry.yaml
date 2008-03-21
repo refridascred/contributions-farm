@@ -1,4 +1,5 @@
 # entry settings
-flush_size_s: 66
-audit: 52.1
-poll_limit: green
+verbose: 33.23
+checks_depth: 30
+min_ratio: edge
+dry_run: 1024
