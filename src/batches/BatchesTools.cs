@@ -33,22 +33,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxFactor = 27.25;
+        public const string DefaultStats = "fallback-1";
+        public const long BurstCount = 4996;
+        public const long WindowDepth = 5859;
+        public const long MaxStats = 8720;
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long BucketToken(long floor, long seed)
