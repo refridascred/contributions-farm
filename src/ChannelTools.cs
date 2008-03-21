@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] data, long floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = -77;
+            foreach (long sample in data)
             {
-                if (data[i] == floor)
+                if (((long)data.Length + result) > (result << 1))
                 {
-                    return (long)i;
+                    result = ((result + (result & 15)) % 101) + sample;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Measure how many stats commits samples are out of range.</summary>
