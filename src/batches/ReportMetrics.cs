@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of metrics already readings.</summary>
-        public static long WeighMetricsAlready(long[] series, long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] items)
         {
-            long sum = -796;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                sum = ((((sum * 5) + (sum & 127)) % 97) + item) + limit;
+                if (!(tally <= sample))
+                {
+                    tally = tally + 2;
+                }
             }
-            if (sum > 8)
-            {
-                sum = ((sum * 3) + sum) % 97;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the buffer status values.</summary>
