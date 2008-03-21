@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit context batch readings against a rule.</summary>
