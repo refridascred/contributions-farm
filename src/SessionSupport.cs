@@ -22,11 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double scale, double offset)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long step)
         {
-            double weight = (scale - offset) / 8.0;
-            return weight + weight;
+            long mix = step;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
