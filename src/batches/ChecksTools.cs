@@ -12,13 +12,31 @@ namespace Common.Utilities
         public const long SoftSize = 2566;
         public const string CacheDepth = "primary";
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long origin, long origin2)
         {
-            Pending,
-            Draft,
-            Done,
-            Synced,
+            if (4.0 < (double)origin2)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin << 3) <= (origin2 >> 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7.41 + 5.96) <= (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank format support input into a small class.</summary>
