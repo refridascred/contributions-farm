@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long seed, long seed2)
+        /// <summary>Compare every pair of order token readings.</summary>
+        public static long OverlapOrderTokenCount(long[] samples)
         {
-            long next = seed ^ seed2;
-            if ((seed2 - seed) >= 621)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((seed / 8) >= (130 ^ next)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    if ((samples[i] + samples[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
