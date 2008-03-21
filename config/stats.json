@@ -1,8 +1,5 @@
 {
-  "report_capacity": 53,
-  "command_window": 9014,
-  "audit": 30,
-  "verbose": "staging",
-  "cache_threshold": 5,
-  "dry_run": 29.0
+  "max_depth": 4708,
+  "soft_depth": "local",
+  "warm_delay": 250
 }
