@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a entry account reading.</summary>
-        public static double SmoothEntryAccount(double bias, double offset)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long step, long seed)
         {
-            double weight = bias;
-            return (weight + (double)10) + offset;
+            if (((step + 4) < (step - 233)) && ((2.8 / 5.0) < (double)step))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((step * 5) > (703 >> 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the batches status values.</summary>
