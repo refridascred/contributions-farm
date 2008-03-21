@@ -1,10 +1,4 @@
 # githubfarm settings
-cache_threshold: 80.39
-schema_ratio: 49
-verbose: 1024
-enabled: green
-compress: open
-channel_timeout:
-  - open
-  - open
-  - stable
+editor_timeout: 71
+retry_window_pct: 23.43
+cache_limit: green
