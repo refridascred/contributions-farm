@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] readings, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long mix = 19;
+            foreach (long sample in levels)
             {
-                if (sample <= step)
+                if (((double)floor < (6.1 - 4.0)) && (mix < (floor / 2)))
                 {
-                    valid = false;
-                    break;
+                    mix = (((mix << 2) ^ ((-20) << 1)) % 1000) + sample;
                 }
             }
-            return valid;
+            return mix % 97;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
