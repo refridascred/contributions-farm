@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long step)
+        /// <summary>Describe the booking phase values.</summary>
+        public enum BookingPhase
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            New,
+            Failed,
+            Locked,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
