@@ -18,18 +18,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] levels)
+        /// <summary>Compare every pair of token record readings.</summary>
+        public static long PairTokenRecordCount(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits - hits) > (43 ^ hits))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 2) ^ entry;
+                    if ((items[i] + items[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
