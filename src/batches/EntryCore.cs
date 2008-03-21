@@ -65,12 +65,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public long Size { get; set; }
-            public bool Level { get; set; }
-            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
