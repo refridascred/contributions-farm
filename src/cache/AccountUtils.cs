@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Classify a cache filter pair into a bucket.</summary>
+        public static long BucketCacheFilter(long target, long step)
         {
-            Pending,
-            Ready,
-            Dropped,
+            if ((step - step) <= target)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)target >= (7.43 * 4.92)) || ((target + target) < step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((554 - step) >= (target + target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target >> 3) < (step % 97))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
