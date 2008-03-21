@@ -58,12 +58,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxSize = 7295;
+        public const string MaxInterval = "staging";
+        public const double MinInterval = 54.68;
+        public const string StepInterval = "staging-v2";
+        public const long RetryContext = 57;
     }
 }
