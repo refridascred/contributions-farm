@@ -1,11 +1,9 @@
 {
-  "compress": "legacy",
-  "burst_ttl_count": {
-    "strict": 1152,
-    "hard_threshold_pct": 69,
-    "burst_retries_pct": 500
+  "base_ttl": {
+    "commits_retries": 1700,
+    "flush_limit_s": 10,
+    "warm_size_ms": 8.04
   },
-  "flush_depth_count": "stable",
-  "tools_timeout": "local",
-  "min_delay": "staging"
+  "retry_size_count": "latest",
+  "compress": "fallback"
 }
