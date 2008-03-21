@@ -77,13 +77,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            Queued,
-            Failed,
-            Synced,
-            Stale,
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
