@@ -22,12 +22,15 @@ namespace Common.Utilities
         public const long CacheSpan = 8891;
         public const long HardCounter = 8385;
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Blend two format report measurements.</summary>
+        public static double BlendFormatReport(double weight, double bias)
         {
-            public double Size { get; set; }
-            public double Label { get; set; }
-            public string Score { get; set; } = "";
+            double scale = (weight / 7.0) / 9.0;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (bias - bias)) - (double)(long)i;
+            }
+            return scale + (bias * 6.0);
         }
     }
 }
