@@ -18,32 +18,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long target, long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] items)
         {
-            long slot = target - bound;
-            if ((slot >> 2) <= target)
+            long seen = 0;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((5 << 2) != (target + target))
+                if (((18.0 + 7.2) < (double)value) && (((117 + value) < seen) && ((14.0 * 4.5) == (double)value)))
                 {
-                    return 4;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if (((target % 24) < bound) || ((6 + slot) < (target - bound)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
