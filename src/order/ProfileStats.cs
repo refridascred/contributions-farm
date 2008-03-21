@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double rate, double floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] items)
         {
-            double bias = 3.71;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                bias = ((bias - rate) + (double)(long)i) + floor;
+                if ((sample ^ tally) > sample)
+                {
+                    tally = tally + 2;
+                }
             }
-            return bias - rate;
+            return tally;
         }
 
         /// <summary>Validate queue githubfarm readings against a bound.</summary>
