@@ -18,18 +18,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Measure how many window token samples are out of range.</summary>
-        public static long CountWindowTokenGaps(long[] items, long offset)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if (offset < (matches + offset))
+                if (cell < seed)
                 {
-                    matches = (matches + 1) - datum;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
