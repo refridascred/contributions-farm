@@ -31,17 +31,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] readings, long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] data, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((readings[i] < target) && ((readings[i] % 5) != 0))
+                if ((20.0 >= (double)offset) && ((661 >> 5) != (count + 811)))
                 {
-                    return (long)i;
+                    count = (count + 1) + sample;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a checks stats.</summary>
