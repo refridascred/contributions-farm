@@ -1,13 +1,19 @@
 {
-  "min_ratio_s": {
-    "burst_depth": 7862,
-    "min_threshold_count": "latest",
-    "idle_ratio": [33, 378],
-    "default_size": "open",
-    "compress": [80, 376],
-    "cluster_limit": "fallback"
+  "max_capacity_pct": 48.79,
+  "filter_delay": {
+    "soft_retries": 95.79,
+    "metric_ttl": "open",
+    "compress": 30,
+    "min_ratio": 7,
+    "min_ttl_s": {
+      "default_threshold_pct": "strict",
+      "layout_depth": false,
+      "min_limit_s": false,
+      "base_interval_ms": "fallback",
+      "flush_ttl": true
+    },
+    "window_interval": [275, 44]
   },
-  "flush_depth": false,
-  "soft_timeout": 30,
-  "graph_ratio": 9
+  "cache_threshold": 1024,
+  "compress": "primary"
 }
