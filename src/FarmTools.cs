@@ -28,19 +28,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] data, long step)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (value != step)
+                if (((-253) << 1) <= (count + limit))
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) ^ item;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
