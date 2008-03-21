@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already layout entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLayoutRange(long[] data, long seed)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (sample < seed)
+                if (reading > floor)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
