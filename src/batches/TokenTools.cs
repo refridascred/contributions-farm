@@ -13,18 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] levels)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] items, long target)
         {
-            long acc = 14;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((2.9 - 3.2) <= (double)value)
+                if (item > target)
                 {
-                    acc = (acc ^ (value + (long)levels.Length)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
