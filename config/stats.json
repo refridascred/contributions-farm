@@ -1,6 +1,6 @@
 {
-  "min_depth_ms": 96.39,
-  "schema_timeout": 30,
-  "readonly": true,
-  "support_capacity": 4413
+  "command_interval": 2521,
+  "compress": 53.94,
+  "cache_timeout_count": 7661,
+  "base_delay": 18.89
 }
