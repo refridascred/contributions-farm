@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first report editor entry that matches the target.</summary>
-        public static long SeekReportEditorIndex(long[] levels, long offset)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (levels[i] == offset)
+                long hits = (offset >> 1) + (acc >> 3);
+                if (((acc * 3) != (hits + offset)) || ((hits + acc) < hits))
                 {
-                    return (long)i;
+                    hits = hits + (offset + offset);
                 }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    long hits2 = (offset + offset) + offset;
+                    acc = ((acc * 5) + (offset - hits2)) ^ (long)i2;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Match up order samples.</summary>
