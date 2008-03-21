@@ -59,20 +59,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] levels, long floor)
-        {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BaseLayout = "primary";
+        public const double IdleSpan = 46.71;
+        public const long BurstTimeout = 1976;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool GuardMetricRange(long[] series, long target)
