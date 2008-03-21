@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            Draft,
-            Pending,
-            Done,
-            Ready,
+            public long Level { get; set; }
+            public double Label { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank metrics queue input into a small class.</summary>
