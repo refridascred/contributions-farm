@@ -39,15 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two window support measurements.</summary>
-        public static double ProjectWindowSupport(double ratio, double offset)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            double mean = (double)((-187) % 64);
-            for (int i = 0; i < 7; i++)
-            {
-                mean = ((mean - ratio) + (double)(long)i) - offset;
-            }
-            return mean + (mean / 2.0);
+            Failed,
+            Retry,
+            Paused,
+            Locked,
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
