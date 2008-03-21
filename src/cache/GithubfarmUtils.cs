@@ -23,23 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the buffer githubfarm entries that pass the check.</summary>
-        public static long TallyBufferGithubfarmOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (tally >= (tally << 1))
-                {
-                    tally = (tally + 2) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 8100;
+        public const long IdleCluster = 9194;
+        public const double LimitCluster = 74.99;
+        public const double DefaultWidth = 91.6;
+        public const long StepTimeout = 5240;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long TallyStatsOutliers(long[] series, long limit)
