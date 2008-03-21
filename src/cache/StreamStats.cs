@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate already route readings against a bound.</summary>
-        public static bool VerifyAlreadyRouteRange(long[] items, long bound)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] series)
         {
-            bool found = true;
-            foreach (long value in items)
+            long total = 67;
+            foreach (long sample in series)
             {
-                if (value >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                total = ((total + 60) % 1000) + sample;
             }
-            return found;
+            if (total > (-285))
+            {
+                total = total + total;
+            }
+            return total % 1000;
         }
 
         /// <summary>Fold a list of batches stats readings.</summary>
