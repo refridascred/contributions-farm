@@ -1,5 +1,7 @@
 {
-  "readonly": "strict",
-  "flush_timeout_count": 7581,
-  "retry_size_count": "strict"
+  "verbose": false,
+  "sync_timeout": [252, 157, 104, 24],
+  "compress": [38, 187, 248, 147],
+  "default_delay_s": "eu-west",
+  "min_threshold": "edge"
 }
