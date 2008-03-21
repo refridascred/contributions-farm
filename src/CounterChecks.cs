@@ -95,18 +95,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] readings, long step)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long carry = 219;
-            foreach (long value in readings)
-            {
-                if ((double)value >= (9.0 + 4.4))
-                {
-                    carry = (carry ^ (step + step)) % 97;
-                }
-            }
-            return carry % 97;
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
     }
 }
