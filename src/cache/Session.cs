@@ -21,14 +21,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            New,
+            Paused,
+            Synced,
             Dropped,
-            Failed,
-            Locked,
-            Active,
+            Stale,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
