@@ -14,17 +14,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] readings, long seed)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long seed, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)seed >= (9.0 - 1.06))
             {
-                if (readings[i] <= seed)
+                return 1;
+            }
+            else
+            {
+                if ((4.0 * 2.9) <= (double)seed)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
