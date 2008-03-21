@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long bound, long floor)
-        {
-            if (((floor << 1) == (bound - bound)) || ((floor ^ 58) >= (bound + bound)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (0 <= (floor % 24))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor ^ bound) < floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((0.08 - 1.02) <= (double)bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxScore = 5192;
+        public const long StepRoute = 1250;
+        public const long CacheDepth = 5589;
+        public const long SoftRoute = 3641;
+        public const double BurstWidth = 59.66;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long TallyChecksMatches(long[] levels)
