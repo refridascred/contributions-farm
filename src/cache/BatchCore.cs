@@ -45,10 +45,11 @@ namespace Common.Utilities
         public const long IdleFactor = 4215;
         public const double BatchBudget = 17.37;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheSize = 945;
-        public const long BaseNotes = 4385;
-        public const string CacheNotes = "legacy-edge";
-        public const long SoftNotes = 5389;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchToken = "strict-edge";
+        public const double SoftFactor = 40.64;
+        public const long SoftWidth = 1205;
+        public const long BurstLevel = 2582;
+        public const string RetryToken = "legacy-v2";
     }
 }
