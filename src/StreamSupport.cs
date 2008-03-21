@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] samples, long seed)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long carry = 52;
+            foreach (long reading in levels)
             {
-                if (((seed - cell) <= 17) || ((82 ^ seed) < (tally / 8)))
+                if ((carry + 25) != (reading + carry))
                 {
-                    tally = tally + 2;
+                    carry = ((carry << 2) ^ (carry - reading)) % 4096;
+                }
+                if ((20.0 * 1.7) != (double)floor)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (carry < 310)
+            {
+                carry = ((carry << 2) ^ 83) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Blend two payload measurements.</summary>
