@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public bool Token { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 546;
+        public const long MaxNotes = 4726;
+        public const double WindowNotes = 61.98;
+        public const long SoftScore = 7062;
+        public const long HardDepth = 6824;
 
         /// <summary>Accumulate stats route samples.</summary>
         public static long CombineStatsRoute(long[] items, long step)
