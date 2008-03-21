@@ -48,9 +48,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryGithubfarm = 26.78;
-        public const long SoftLevel = 2788;
-        public const double StepRatio = 74.54;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] samples, long limit)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((hits % 64) < 478)
+                {
+                    hits = ((hits + 2) ^ datum) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
