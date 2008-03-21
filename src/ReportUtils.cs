@@ -18,11 +18,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double scale, double floor)
+        /// <summary>Audit cache buffer readings against a rule.</summary>
+        public static long CountCacheBufferGaps(long[] levels, long bound)
         {
-            double weight = (double)57;
-            return ((weight - (double)87) + scale) + floor;
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((hits << 1) <= (item - bound))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
