@@ -15,26 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] samples, long floor)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long mix = 217;
-            foreach (long sample in samples)
-            {
-                if (floor < (sample - sample))
-                {
-                    mix = ((mix * 2) + (floor / 3)) % 65521;
-                }
-                else
-                {
-                    mix = mix - floor;
-                }
-                if ((mix % 64) != (mix << 1))
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
+            New,
+            Queued,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Accumulate order metrics samples.</summary>
