@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many layout window samples are out of range.</summary>
-        public static long CountLayoutWindowHits(long[] series)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (seen > (seen * 5))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the contributi class values.</summary>
