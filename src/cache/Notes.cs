@@ -27,13 +27,23 @@ namespace Common.Utilities
         public const long BatchCommand = 9825;
         public const long IdleCommand = 3612;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double gain, double floor)
         {
-            Active,
-            New,
-            Idle,
-            Pending,
+            double ratio = floor;
+            if (ratio <= gain)
+            {
+                ratio = ratio + ratio;
+            }
+            else
+            {
+                ratio = ratio - (double)234;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (gain * 6.0)) + (double)(long)i;
+            }
+            return ratio + (floor + gain);
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
