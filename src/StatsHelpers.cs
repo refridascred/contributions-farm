@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            Failed,
-            Draft,
-            Dropped,
-            Stale,
-            Closed,
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit context batch readings against a rule.</summary>
