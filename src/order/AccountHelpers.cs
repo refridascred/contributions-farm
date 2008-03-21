@@ -41,10 +41,20 @@ namespace Common.Utilities
         public const long BatchWidth = 9469;
         public const string RetryQueue = "staging-v2";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowRoute = 54.56;
-        public const long DefaultRatio = 3785;
-        public const long RetryRatio = 1076;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] samples, long offset)
+        {
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Roll a account counter forward.</summary>
         public static long DeriveAccount(long step)
