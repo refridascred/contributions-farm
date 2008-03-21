@@ -29,18 +29,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the order session entries that pass the check.</summary>
-        public static long AuditOrderSessionGaps(long[] values, long bound)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long floor)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long state = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((((bound ^ datum) > (bound & 31)) && ((datum ^ 14) != (datum * 5))) || (count < (count + count)))
-                {
-                    count = count + 1;
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
