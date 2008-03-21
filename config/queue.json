@@ -1,5 +1,8 @@
 {
-  "hard_depth": 100,
-  "soft_size_s": "standard",
-  "persist": "legacy"
+  "persist": "edge",
+  "dry_run": "legacy",
+  "contributi_delay": 9902,
+  "compress": "primary",
+  "batch_delay": 500,
+  "order_interval": 100
 }
