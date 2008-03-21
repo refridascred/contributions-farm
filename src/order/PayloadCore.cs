@@ -33,15 +33,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double scale, double bias)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long origin, long target)
         {
-            double rate = scale / 6.0;
-            if (rate < rate)
+            long delta = origin - target;
+            if ((delta - delta) <= (target % 97))
             {
-                rate = (rate + scale) - bias;
+                return 1;
             }
-            return rate - scale;
+            else
+            {
+                if (((delta + 170) < (target >> 4)) || ((origin - target) == (target ^ target)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((origin * 3) <= target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((2.6 / 8.0) <= (double)delta)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of order readings.</summary>
