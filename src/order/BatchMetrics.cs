@@ -57,19 +57,18 @@ namespace Common.Utilities
         public const long DefaultMetric = 3678;
         public const double MinMetric = 36.55;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphLimits(long[] readings, long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] values)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (reading >= target)
+                if ((double)seen <= 5.94)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) - value;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
