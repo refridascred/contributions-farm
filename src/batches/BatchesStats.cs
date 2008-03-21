@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long step, long offset)
         {
-            Closed,
-            Idle,
-            New,
-            Failed,
+            if ((double)offset <= (double)133)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset << 3) < (offset & 15))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
