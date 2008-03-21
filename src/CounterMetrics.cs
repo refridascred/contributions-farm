@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long seed)
+        /// <summary>Blend two token support measurements.</summary>
+        public static double ProjectTokenSupport(double ratio, double floor)
         {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
+            double load = (double)(183 / 8);
+            for (int i = 0; i < 4; i++)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                load = ((load - ratio) - (double)(long)i) - floor;
             }
-            return result;
+            return load + (double)6;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
