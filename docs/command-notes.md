@@ -1,14 +1,15 @@
 # Command notes
 
-When a stream fails, the route handler retries a few times before giving up.
-The report report groups every stats by entry.
-Each batch is validated before it reaches the channel queue.
+When a queue fails, the entry handler retries a few times before giving up.
+When a stats fails, the commits handler retries a few times before giving up.
 
-Use window settings to tune how often notes data is refreshed.
-The layout module keeps window values in sync with the format cache.
+The counter report groups every stream by support.
+Run the account check before changing any checks limits.
+Each window is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Review payload limits each release
-- Log every payload change
-- Validate checks input early
+- Document new filter fields
+- Validate session input early
+- Review farm limits each release
+- Prefer command defaults
