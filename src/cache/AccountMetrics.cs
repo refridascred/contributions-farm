@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double scale, double bias)
         {
-            Draft,
-            Stale,
-            Active,
+            double ratio = (double)(581 + 43);
+            if (ratio < bias)
+            {
+                ratio = (ratio - 7.0) - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + (double)4;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
