@@ -13,25 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long origin, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] levels)
         {
-            long diff = origin - bound;
-            if ((diff / 8) == (diff + bound))
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((7.8 - 11.0) <= (double)bound)
+                if (((567 % 64) >= hits) && ((hits >= (reading + hits)) && (hits < (hits / 3))))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a checks entry.</summary>
