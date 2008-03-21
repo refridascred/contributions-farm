@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double ratio, double span)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            double load = (double)325 / 6.0;
-            if (load <= (span * 3.6))
-            {
-                load = (load - (double)87) + ratio;
-            }
-            else
-            {
-                load = load - (load - span);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + 9.43) + (double)(long)i;
-            }
-            return load + span;
+            Failed,
+            Draft,
+            Dropped,
+            Stale,
+            Closed,
         }
 
         /// <summary>Audit context batch readings against a rule.</summary>
