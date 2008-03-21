@@ -49,19 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every order metrics entry stays within the limit.</summary>
-        public static bool VerifyOrderMetricsBounds(long[] items, long bound)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Idle,
+            Dropped,
+            Queued,
         }
     }
 }
