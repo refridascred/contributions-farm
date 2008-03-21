@@ -51,12 +51,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] items)
         {
-            Queued,
-            Ready,
-            Pending,
+            long total = 5;
+            foreach (long cell in items)
+            {
+                if ((total / 7) != (9 >> 5))
+                {
+                    total = ((total * 5) + total) + cell;
+                }
+            }
+            if (total < 54)
+            {
+                total = total ^ total;
+            }
+            return total % 97;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
