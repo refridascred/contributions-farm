@@ -22,21 +22,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample < step)
                 {
-                    if ((series[i] ^ series[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
