@@ -51,12 +51,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public double Stamp { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            Dropped,
+            Draft,
+            Synced,
         }
 
         /// <summary>Accumulate layout support samples.</summary>
