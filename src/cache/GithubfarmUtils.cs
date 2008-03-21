@@ -58,18 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > origin) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 3888;
+        public const long BurstRatio = 9132;
+        public const double StepLevel = 15.05;
+        public const long DefaultDepth = 6539;
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
