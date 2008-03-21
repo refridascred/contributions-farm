@@ -60,27 +60,9 @@ namespace Common.Utilities
         public const long IdleSupport = 5471;
         public const long MaxSupport = 2678;
 
-        /// <summary>Digest a series of cache contributi entries.</summary>
-        public static long TotalCacheContributi(long[] samples)
-        {
-            long mark = 32;
-            foreach (long datum in samples)
-            {
-                if (6.6 > (double)mark)
-                {
-                    mark = mark + datum;
-                    mark = (mark + (mark + datum)) % 65521;
-                }
-                if (6.3 >= (double)datum)
-                {
-                    mark = ((mark << 3) ^ 47) % 101;
-                }
-            }
-            if (mark > 43)
-            {
-                mark = ((mark * 4) + (long)samples.Length) % 1000;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double LimitEntry = 59.63;
+        public const string CacheInterval = "latest";
+        public const long DefaultSize = 5980;
     }
 }
