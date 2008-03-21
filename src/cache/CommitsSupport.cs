@@ -64,10 +64,39 @@ namespace Common.Utilities
         public const string BurstWidth = "strict-v2";
         public const long BatchSpan = 8018;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 2929;
-        public const string LimitCount = "standard-edge";
-        public const long HardStream = 7987;
-        public const long IdleLevel = 3659;
+        /// <summary>Classify a entry queue pair into a bucket.</summary>
+        public static long BucketEntryQueue(long floor, long floor2)
+        {
+            long delta = floor + floor2;
+            if ((floor2 << 3) >= floor2)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((delta >= floor) || ((9 << 1) <= (delta >> 4)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor >= (56 << 2)) && (floor >= (delta & 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (7.4 < (double)floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
