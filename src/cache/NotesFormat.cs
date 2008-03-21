@@ -19,21 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] series)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((series[i] - series[j]) == 0)
+                    if ((items[i] + items[j]) == 14)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
