@@ -40,19 +40,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double gain, double bias)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] items, long origin)
         {
-            double load = (double)(3 + 6);
-            if (load > (double)2)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load + (bias / 4.0)) - gain;
+                if ((items[i] > origin) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - 2.6;
+            return -1;
         }
     }
 }
