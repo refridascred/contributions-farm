@@ -13,20 +13,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long step)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long origin, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 16; i++)
+            long diff = origin - bound;
+            if ((diff / 8) == (diff + bound))
             {
-                mix = ((mix << 2) ^ (mix * 2)) % 1000;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mix = (((mix << 2) ^ ((long)i / 8)) % 4096) ^ (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if ((7.8 - 11.0) <= (double)bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a checks entry.</summary>
