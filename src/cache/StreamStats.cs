@@ -24,32 +24,12 @@ namespace Common.Utilities
         public const long CacheMetrics = 5180;
         public const long BatchBudget = 5222;
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long target, long origin)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long diff = target + origin;
-            if (1 >= (origin / 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if (diff <= (-7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)diff <= (6.2 / 3.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            New,
+            Locked,
+            Done,
         }
 
         /// <summary>Accumulate layout support samples.</summary>
