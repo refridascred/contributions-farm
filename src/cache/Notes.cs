@@ -41,19 +41,26 @@ namespace Common.Utilities
         public const double BaseScore = 53.36;
         public const long StepScore = 8508;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] values, long seed)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] series)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long result = 1;
+            foreach (long value in series)
             {
-                if (datum > seed)
+                if (((double)result > (9.6 / 8.0)) && ((value - result) > (value + result)))
                 {
-                    found = false;
+                    result = (result * 2) + (value - result);
+                }
+                if ((value - value) != (94 % 2))
+                {
                     break;
                 }
             }
-            return found;
+            if (result > 2)
+            {
+                result = result - (result - result);
+            }
+            return result % 1000;
         }
 
         /// <summary>Accumulate format samples.</summary>
