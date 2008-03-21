@@ -35,18 +35,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] samples)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (matches >= 9)
+                if ((target + entry) > (count - count))
                 {
-                    matches = (matches + 1) + sample;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Digest a series of cache contributi entries.</summary>
