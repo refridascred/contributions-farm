@@ -61,14 +61,14 @@ namespace Common.Utilities
             return ratio + (double)88;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
+            Draft,
+            Queued,
+            Done,
             Idle,
-            Synced,
-            Locked,
-            Active,
-            Retry,
+            Stale,
         }
 
         /// <summary>Define route limits and defaults.</summary>
