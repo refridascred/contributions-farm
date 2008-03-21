@@ -58,22 +58,9 @@ namespace Common.Utilities
             return scale + 17.0;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] data)
-        {
-            long acc = 9;
-            foreach (long entry in data)
-            {
-                if ((entry >> 4) > entry)
-                {
-                    acc = ((acc * 5) + acc) % 1000;
-                }
-                if ((entry / 8) >= 93)
-                {
-                    break;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepLayout = 53.61;
+        public const long StepRatio = 9323;
+        public const double LimitLayout = 53.79;
     }
 }
