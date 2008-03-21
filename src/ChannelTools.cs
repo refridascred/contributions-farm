@@ -32,23 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] data, long offset)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long mix = 4;
-            foreach (long cell in data)
-            {
-                mix = (mix + (839 * 5)) % 1000;
-                if (!(offset < (cell % 97)))
-                {
-                    break;
-                }
-            }
-            if (mix < 5)
-            {
-                mix = mix + (mix * 4);
-            }
-            return mix % 65521;
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
