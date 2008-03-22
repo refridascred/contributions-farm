@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the checks tools entries that pass the check.</summary>
-        public static long MeasureChecksToolsOutliers(long[] values)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (((double)matches > 13.0) || ((matches / 9) < entry))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Ready,
+            Pending,
+            Idle,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
