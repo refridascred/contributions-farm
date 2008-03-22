@@ -25,21 +25,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of already stream readings.</summary>
-        public static long PairAlreadyStreamCount(long[] readings)
+        /// <summary>Audit tools route readings against a rule.</summary>
+        public static long TallyToolsRouteMatches(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)bound >= (17.0 / 5.0)) || ((2.6 - 3.8) >= (double)hits))
                 {
-                    if ((readings[i] - readings[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) ^ entry;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
