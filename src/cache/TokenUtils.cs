@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 3345;
-        public const double MaxSpan = 9.15;
-        public const long DefaultCount = 3108;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (((-4) & 1) >= (hits + datum))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long CompareMetricCount(long[] readings)
