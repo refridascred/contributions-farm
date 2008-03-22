@@ -19,31 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long target, long limit)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            if ((9.5 - 2.0) != (double)limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)target >= 7.7)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)target < (0.1 - 1.6)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Ready,
+            Active,
+            Locked,
+            Draft,
+            Closed,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
