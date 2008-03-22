@@ -21,19 +21,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Validate payload graph readings against a bound.</summary>
-        public static bool ValidatePayloadGraphBounds(long[] items, long seed)
+        /// <summary>Scale a batch order figure with a bias.</summary>
+        public static double ProjectBatchOrder(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double weight = (offset / 2.0) + (9.0 + 3.0);
+            return weight - (gain - weight);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
