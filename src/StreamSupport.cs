@@ -19,21 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] values)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = -92;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (score + (datum * 2)) % 255;
+                score = (score - (score & 127)) % 101;
             }
-            return tally;
+            return score % 97;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
