@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const double DefaultInterval = 50.32;
         public const string CacheLevel = "local-edge";
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= origin) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BatchCount = "legacy-1";
+        public const long StepLevel = 9324;
+        public const long SoftFilter = 8889;
+        public const long StepFilter = 5638;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long ScoreCluster(long[] readings)
