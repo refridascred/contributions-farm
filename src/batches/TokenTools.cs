@@ -28,25 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next context editor value from a seed.</summary>
-        public static long StepContextEditor(long bound)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountBounds(long[] samples, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (!(acc > (long)i))
+                if (entry > floor)
                 {
-                    acc = acc ^ ((long)i ^ bound);
-                    acc = acc + bound;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    long bound2 = bound + acc;
-                    acc = acc + (bound2 & 127);
-                }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return flag;
         }
     }
 }
