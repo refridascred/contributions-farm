@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 1980;
-        public const long IdleInterval = 4524;
-        public const double BurstPayload = 98.0;
-        public const long RetryPayload = 5502;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long SortFormat(long step, long bound)
