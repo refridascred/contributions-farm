@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every layout metrics entry stays within the limit.</summary>
-        public static bool CheckLayoutMetricsRange(long[] readings, long floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] series)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (value > floor)
+                if ((hits - hits) != (hits & 15))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) ^ value;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Blend two channel measurements.</summary>
