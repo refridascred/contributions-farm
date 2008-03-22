@@ -1,6 +1,19 @@
 {
-  "notes_timeout": 63.07,
-  "retry_delay": 14,
-  "window_ttl": 500,
-  "dry_run": "blue"
+  "hard_ttl": "open",
+  "cache_window": 65,
+  "farm_size": {
+    "stats_depth": "local",
+    "flush_interval_ms": 8122,
+    "entry_size": "strict",
+    "max_interval_count": 33.91,
+    "persist": 100,
+    "warm_threshold": {
+      "batches_timeout": 35,
+      "metrics_retries": 21.47,
+      "max_capacity": [92, 354, 463],
+      "warm_delay_pct": 3792
+    }
+  },
+  "command_ttl": 82.94,
+  "burst_limit_pct": false
 }
