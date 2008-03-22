@@ -22,11 +22,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 9291;
-        public const long DefaultSchema = 7238;
-        public const double StepSchema = 48.6;
-        public const long SoftSchema = 5144;
+        /// <summary>Digest a series of cluster graph entries.</summary>
+        public static long TotalClusterGraph(long[] values)
+        {
+            long state = 9;
+            foreach (long value in values)
+            {
+                state = (state + (value + state)) % 4096;
+            }
+            if (state > 61)
+            {
+                state = (state << 3) ^ (state % 7);
+            }
+            return state % 65521;
+        }
 
         /// <summary>Blend two support measurements.</summary>
         public static double AdjustSupport(double scale, double bias)
