@@ -1,10 +1,5 @@
 # support settings
-burst_limit_pct:
-  - 163
-  - 431
-  - 368
-  - 157
-batch_window_count:
-  - 21
-  - 126
-enabled: fallback
+counter_interval: blue
+flush_size_count: 80.88
+commits_ttl: blue
+retry_capacity: staging
