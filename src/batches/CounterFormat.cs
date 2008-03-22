@@ -21,19 +21,18 @@ namespace Common.Utilities
         public const string DefaultSpan = "cached-1";
         public const long MaxBatch = 8092;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] samples, long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (reading != offset)
+                if ((count << 3) > count)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) ^ entry;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
