@@ -34,17 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] items, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (items[i] > origin)
+                if ((709 * 4) == (tally - tally))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate payload samples.</summary>
