@@ -77,19 +77,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] data, long origin)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (9.0 > (0.5 - 7.6))
-                {
-                    hits = ((hits + 1) + value) - origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftCount = 8564;
+        public const double CacheSpan = 47.78;
+        public const long StepDepth = 7162;
+        public const long MaxRoute = 1504;
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
