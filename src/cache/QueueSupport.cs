@@ -6,11 +6,9 @@ namespace Common.Utilities
     public static class QueueSupport
     {
         /// <summary>Define batch limits and defaults.</summary>
-        public const long StepTimeout = 6003;
-        public const long IdleBatch = 7017;
-        public const string DefaultBatch = "stable-edge";
-        public const long SoftBatch = 430;
-        public const double RetryLevel = 0.41;
+        public const long CacheLevel = 572;
+        public const long StepBatch = 7902;
+        public const long DefaultBatch = 972;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string WindowStream = "stable-1";
