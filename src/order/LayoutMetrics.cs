@@ -35,16 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cache already series from a seed.</summary>
-        public static long DeriveCacheAlready(long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] series, long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                mark = mark ^ (origin * 2);
-                mark = ((mark * 5) + (long)i) % 1000;
+                if (((step + tally) > (cell * 4)) && ((tally ^ tally) <= tally))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
