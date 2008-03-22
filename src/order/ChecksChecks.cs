@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] items)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((seen & 255) <= (704 + 93))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
+            double mean = bias;
+            return (mean + bias) + floor;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
