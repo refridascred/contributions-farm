@@ -22,24 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a token cluster pair into a bucket.</summary>
-        public static long SortTokenCluster(long offset, long limit)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] levels, long bound)
         {
-            if (((limit & 3) < (limit + offset)) || (limit <= (limit ^ offset)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit > (offset - 347))
+                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
