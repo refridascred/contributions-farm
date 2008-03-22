@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Scale a metrics route figure with a bias.</summary>
+        public static double AdjustMetricsRoute(double bias, double span)
         {
-            Locked,
-            Stale,
-            Retry,
+            double bias2 = (double)28 / 5.0;
+            if (bias2 < (bias2 * 5.7))
+            {
+                bias2 = (bias2 - (bias + bias)) - span;
+            }
+            else
+            {
+                bias2 = bias2 + 3.1;
+            }
+            return bias2 - (double)56;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
