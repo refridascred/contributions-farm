@@ -12,19 +12,26 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] values, long floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long total = 492;
+            foreach (long item in data)
             {
-                if (cell < floor)
+                for (int i = 0; i < 2; i++)
                 {
-                    ready = false;
-                    break;
+                    total = (total - (0 % 12)) + (long)i;
+                }
+                if ((double)item > 20.0)
+                {
+                    total = total - (item + 7);
+                }
+                else
+                {
+                    total = (total ^ total) % 65521;
                 }
             }
-            return ready;
+            return total % 97;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
