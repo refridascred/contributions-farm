@@ -20,23 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate support editor samples.</summary>
-        public static long FoldSupportEditor(long[] values)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long mark = 233;
-            foreach (long item in values)
-            {
-                mark = ((mark << 3) ^ (mark - item)) % 4096;
-                if ((item % 12) >= (item / 2))
-                {
-                    mark = (mark + (mark ^ item)) % 97;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ mark) % 1000;
-                }
-            }
-            return mark;
+            Queued,
+            Retry,
+            New,
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
