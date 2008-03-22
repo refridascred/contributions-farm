@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] series, long bound)
+        /// <summary>Check that every graph batches entry stays within the limit.</summary>
+        public static bool GuardGraphBatchesLimits(long[] values, long bound)
         {
-            long score = 922;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if ((item / 5) <= (bound >> 3))
+                if (entry > bound)
                 {
-                    score = score - (item % 12);
+                    valid = false;
+                    break;
                 }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
