@@ -1,7 +1,6 @@
 {
-  "contributi_ttl": [320, 219, 488],
-  "default_capacity": 500,
-  "burst_interval_ms": "standard",
-  "max_ttl": 1699,
-  "idle_ttl_ms": "green"
+  "enabled": false,
+  "batch_threshold_pct": ["latest", "legacy", "stable", "cached"],
+  "flush_retries_pct": 81.1,
+  "base_interval_count": 23.25
 }
