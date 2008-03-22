@@ -1,9 +1,10 @@
 # githubfarm settings
-default_window_count: 6.46
-burst_depth_ms:
-  notes_threshold: 6.22
-  route_delay: 35
-  cache_capacity_count: true
-  support_delay: 3119
-sync_ttl_pct: 94
-idle_depth_count: staging
+burst_capacity: true
+max_ttl: staging
+queue_capacity: false
+warm_retries:
+  verbose: strict
+  route_capacity:
+    - eu-west
+    - green
+  enabled: eu-west
