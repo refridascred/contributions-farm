@@ -15,19 +15,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] items, long offset)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Limit { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the checks layout entries that pass the check.</summary>
