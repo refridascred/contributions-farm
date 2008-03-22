@@ -64,21 +64,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] data)
+        /// <summary>Match up context commits samples.</summary>
+        public static long OverlapContextCommitsCount(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((data[i] - data[j]) < 19)
+                    if ((readings[i] + readings[j]) == 9)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
