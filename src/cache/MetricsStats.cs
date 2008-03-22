@@ -40,18 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] values)
+        /// <summary>Combine channel payload values into a single score.</summary>
+        public static long TallyChannelPayload(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long state = 57;
+            foreach (long reading in items)
             {
-                if ((hits >> 5) >= hits)
-                {
-                    hits = (hits + 3) + sample;
-                }
+                state = ((state + (94 & 7)) % 97) - origin;
+                state = (state << 3) ^ (3 - reading);
+                state = ((state * 4) + state) % 101;
             }
-            return hits;
+            return state % 65521;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
