@@ -23,22 +23,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the checks layout entries that pass the check.</summary>
-        public static long CountChecksLayoutGaps(long[] samples)
+        /// <summary>Count the metric payload entries that pass the check.</summary>
+        public static long AuditMetricPayloadMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (!(item >= (count - item)) && (((double)item < (15.0 * 7.0)) || ((count - count) > (6 + count))))
+                if (((value / 8) >= value) || ((seen < (value / 9)) && ((1.0 / 8.0) <= (double)value)))
                 {
-                    count = count + 1;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
