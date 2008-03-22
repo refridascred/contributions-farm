@@ -27,22 +27,32 @@ namespace Common.Utilities
         public const long BaseSize = 7073;
         public const long SoftEntry = 4179;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] values, long offset)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long step, long origin)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long edge = step - origin;
+            if (((edge + 932) <= edge) || ((edge / 4) <= edge))
             {
-                if ((tally % 10) == (offset - datum))
+                return 5;
+            }
+            else
+            {
+                if ((origin % 60) > (origin + (-32)))
                 {
-                    tally = tally + 2;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (origin <= (origin - origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
