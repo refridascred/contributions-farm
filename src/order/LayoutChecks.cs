@@ -89,18 +89,11 @@ namespace Common.Utilities
         public const long BaseMetric = 4236;
         public const long BurstSize = 7998;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] samples)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (!((21 ^ (-78)) != (datum & 15)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public long Size { get; set; }
         }
     }
 }
