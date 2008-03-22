@@ -20,19 +20,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double scale, double span)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] readings, long floor)
         {
-            double load = (7.45 - 5.7) - (double)990;
-            if (load > (7.38 - load))
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load - span) - scale;
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - 4.3;
+            return -1;
         }
 
         /// <summary>Hold a window header.</summary>
