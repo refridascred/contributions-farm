@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double scale, double bias)
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            double gain = (bias - 6.1) * 3.03;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (scale - scale)) + (double)(long)i;
+            }
+            return gain + (gain / 4.0);
         }
 
         /// <summary>Digest a series of record entries.</summary>
