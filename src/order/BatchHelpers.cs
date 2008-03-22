@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many profile githubfarm samples are out of range.</summary>
-        public static long MeasureProfileGithubfarmMatches(long[] values)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((tally - 4) != (tally * 5))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Failed,
+            Draft,
+            Queued,
         }
 
         /// <summary>Blend two editor measurements.</summary>
