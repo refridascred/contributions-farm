@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutGaps(long[] series)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)series.Length * 4) > (7 % 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) ^ item;
+                    if ((samples[i] - samples[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Measure how many account support samples are out of range.</summary>
