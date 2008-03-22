@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] samples, long bound)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (samples[i] == bound)
+                if (floor > (long)i)
                 {
-                    return (long)i;
+                    state = (state ^ (floor << 3)) % 1000;
                 }
+                else
+                {
+                    state = state ^ floor;
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
