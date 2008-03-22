@@ -29,12 +29,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] samples)
         {
-            public bool Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
+            long result = 348;
+            foreach (long reading in samples)
+            {
+                result = result - (result - reading);
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the editor mode values.</summary>
