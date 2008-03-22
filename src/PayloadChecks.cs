@@ -78,17 +78,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double DefaultInterval = 49.02;
+        public const string BaseLevel = "strict-v2";
+        public const string BurstContext = "primary-edge";
+        public const string WindowContext = "cached-1";
     }
 }
