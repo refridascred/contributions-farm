@@ -1,10 +1,8 @@
 {
-  "base_depth_pct": false,
-  "sync_delay": {
-    "cache_timeout_count": "open",
-    "editor_interval": 6751,
-    "flush_depth_ms": "fallback"
-  },
-  "retry_size": "cached",
-  "hard_delay_s": "edge"
+  "flush_window_ms": 94,
+  "poll_threshold": ["blue", "eu-west", "latest"],
+  "min_timeout_ms": "staging",
+  "sync_window_ms": 92.67,
+  "burst_delay_pct": ["local", "blue"],
+  "soft_limit_s": 76
 }
