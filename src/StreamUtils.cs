@@ -24,21 +24,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 13; i++)
-            {
-                long count = step;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    result = ((result ^ (count / 4)) % 1000) - (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 3159;
+        public const string LimitCluster = "alpha-edge";
+        public const double LimitDepth = 20.32;
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long LookupEditorIndex(long[] values, long limit)
