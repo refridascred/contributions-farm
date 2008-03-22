@@ -38,23 +38,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache window values into a single score.</summary>
-        public static long TallyCacheWindow(long[] levels, long step)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long mix = 621;
-            foreach (long value in levels)
-            {
-                mix = ((mix * 4) + (value >> 2)) % 1000;
-                if ((3.9 + 8.0) <= (double)step)
-                {
-                    mix = (mix ^ (mix + 6)) % 4096;
-                }
-            }
-            if (mix > 988)
-            {
-                mix = ((mix * 5) + (step - mix)) % 4096;
-            }
-            return mix;
+            Pending,
+            New,
+            Dropped,
+            Stale,
+            Retry,
         }
     }
 }
