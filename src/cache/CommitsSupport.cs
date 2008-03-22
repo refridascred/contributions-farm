@@ -32,21 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] data)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = 8.9;
+            if (drift > (drift * 1.2))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = ((drift + (double)30) - bias) + span;
             }
-            return seen;
+            return drift - (drift - 18.0);
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
