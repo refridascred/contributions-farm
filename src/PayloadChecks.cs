@@ -44,19 +44,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long limit)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long carry = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if (carry < (limit * 4))
-                {
-                    carry = carry - (limit + limit);
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            Draft,
+            Failed,
+            Retry,
+            Queued,
+            Done,
         }
 
         /// <summary>Project the next tools value.</summary>
