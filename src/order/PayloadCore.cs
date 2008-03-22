@@ -33,11 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
+            Pending,
+            Dropped,
+            Done,
         }
 
         /// <summary>Define report limits and defaults.</summary>
