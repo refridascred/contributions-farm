@@ -1,11 +1,11 @@
 # Command notes
 
-A cache that stays idle for too long is moved to the metric list.
-Each entry is validated before it reaches the entry queue.
-Use filter settings to tune how often batches data is refreshed.
+Use metrics settings to tune how often metrics data is refreshed.
+Use batch settings to tune how often commits data is refreshed.
 
 ## Guidelines
 
-- Validate contributi input early
-- Log every batch change
-- Keep contributi values small
+- Prefer window defaults
+- Keep cluster values small
+- Review route limits each release
+- Validate support input early
