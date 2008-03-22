@@ -34,13 +34,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            Idle,
+            Closed,
+            Pending,
         }
     }
 }
