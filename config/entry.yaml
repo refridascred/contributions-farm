@@ -1,12 +1,7 @@
 # entry settings
-verbose: blue
-soft_retries: 84
-max_depth:
-  dry_run:
-    - 155
-    - 289
-    - 18
-  idle_threshold_pct: 20.17
-  readonly: 1024
-  already_size: local
-batch_limit_count: 3565
+sync_size_pct: cached
+readonly: 8106
+notes_depth: latest
+max_delay_ms: 250
+strict: true
+entry_threshold: cached
