@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double bias, double floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] series)
         {
-            double mean = bias;
-            return (mean + bias) + floor;
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((0.5 - 7.2) <= (double)item)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
