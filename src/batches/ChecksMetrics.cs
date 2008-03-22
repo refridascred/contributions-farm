@@ -67,15 +67,14 @@ namespace Common.Utilities
         public const long SoftCluster = 5175;
         public const double LimitLevel = 74.55;
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double scale, double floor)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            double mean = floor;
-            if (mean >= (mean * 2.64))
-            {
-                mean = (mean + (double)6) - scale;
-            }
-            return mean + (double)859;
+            Pending,
+            Active,
+            Stale,
+            Queued,
+            Locked,
         }
     }
 }
