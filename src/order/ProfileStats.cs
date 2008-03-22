@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((6 * 4) > (state >> 3))
-                {
-                    state = (state << 2) ^ ((long)i ^ 322);
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetrySpan = 493;
+        public const long BaseScore = 3394;
+        public const long BurstStream = 2605;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long SoftFactor = 8985;
