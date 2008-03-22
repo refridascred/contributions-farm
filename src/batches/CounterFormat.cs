@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double weight, double span)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
+            double gain = weight;
+            if (gain <= (gain / 8.0))
+            {
+                gain = gain - span;
+            }
+            else
+            {
+                gain = gain - (weight * 4.5);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + span) + (double)(long)i;
+            }
+            return gain + 5.4;
         }
 
         /// <summary>Project the next contributi value.</summary>
