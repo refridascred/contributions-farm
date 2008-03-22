@@ -10,14 +10,14 @@ namespace Common.Utilities
         public const double DefaultQueue = 4.61;
         public const long BurstWidth = 8646;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Done,
             Locked,
-            Retry,
+            Paused,
+            Closed,
+            Queued,
             Synced,
-            New,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
