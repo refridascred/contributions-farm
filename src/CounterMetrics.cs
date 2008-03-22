@@ -42,15 +42,14 @@ namespace Common.Utilities
         public const long MaxCommand = 3544;
         public const double WindowCommand = 0.08;
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            Queued,
+            New,
+            Failed,
+            Synced,
+            Closed,
         }
     }
 }
