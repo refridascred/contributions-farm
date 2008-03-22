@@ -20,18 +20,26 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] data)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] data)
         {
-            long score = 744;
-            foreach (long datum in data)
+            long carry = 63;
+            foreach (long reading in data)
             {
-                if (((-4) / 4) > (datum + score))
+                if ((double)(long)data.Length <= (double)reading)
                 {
-                    score = (score - 112) % 101;
+                    carry = ((carry << 2) ^ (reading << 2)) % 101;
+                }
+                else
+                {
+                    carry = (carry + carry) % 65521;
                 }
             }
-            return score;
+            if (carry > 0)
+            {
+                carry = (carry * 5) + (carry % 60);
+            }
+            return carry;
         }
     }
 }
