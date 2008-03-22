@@ -1,6 +1,8 @@
 {
-  "burst_size": "blue",
-  "flush_ratio": 60,
-  "flush_retries_ms": 50.63,
-  "base_timeout_s": "local"
+  "soft_timeout": [371, 397, 70],
+  "compress": "eu-west",
+  "flush_timeout_ms": 72.41,
+  "burst_depth": "legacy",
+  "order_limit": [319, 167, 364, 67],
+  "idle_timeout_pct": "latest"
 }
