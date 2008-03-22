@@ -15,18 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] series, long floor)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((double)9 >= (double)seen)
-                {
-                    seen = ((seen + 1) - datum) - floor;
-                }
-            }
-            return seen;
+            Done,
+            Queued,
+            Idle,
         }
 
         /// <summary>Describe the commits level values.</summary>
