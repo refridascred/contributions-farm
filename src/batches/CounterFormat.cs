@@ -32,12 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 8912;
-        public const long IdleNotes = 6760;
-        public const double MaxNotes = 44.07;
-        public const long BaseNotes = 8143;
-        public const long CacheBudget = 38;
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((double)total >= (2.52 / 4.0)))
+                {
+                    continue;
+                }
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long RankMetric(long origin, long step)
