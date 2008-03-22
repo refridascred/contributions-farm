@@ -62,22 +62,23 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] levels, long origin)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double bias, double offset)
         {
-            long result = 95;
-            foreach (long value in levels)
+            double gain = (9.0 + bias) / 5.0;
+            if (gain < offset)
             {
-                if (((value - origin) > origin) || ((3.0 / 8.0) > (double)result))
-                {
-                    result = result - origin;
-                }
-                else
-                {
-                    result = (result ^ (origin + origin)) % 4096;
-                }
+                gain = gain - (double)449;
             }
-            return result;
+            else
+            {
+                gain = gain + (double)86;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + (offset / 4.0);
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
