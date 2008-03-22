@@ -48,18 +48,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] values, long limit)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long item in values)
+            long carry = 88;
+            foreach (long value in data)
             {
-                if (((-95) + item) >= (item * 2))
+                carry = ((carry * 5) + (seed - carry)) % 97;
+                carry = (carry + (1 ^ value)) % 255;
+                if ((double)value <= (3.86 / 2.0))
                 {
-                    count = (count + 3) - limit;
+                    break;
                 }
             }
-            return count;
+            if (carry < 8)
+            {
+                carry = (carry * 2) + (seed + carry);
+            }
+            return carry;
         }
 
         /// <summary>Describe the buffer state values.</summary>
