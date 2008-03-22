@@ -1,7 +1,6 @@
 {
-  "support_capacity": "fallback",
-  "idle_delay": 40.7,
-  "cache_retries_pct": true,
-  "enabled": true,
-  "route_timeout": "legacy"
+  "flush_ttl_ms": "legacy",
+  "burst_capacity_s": 500,
+  "channel_delay": 26.66,
+  "compress": [234, 262]
 }
