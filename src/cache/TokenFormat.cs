@@ -27,32 +27,27 @@ namespace Common.Utilities
         public const long BaseSize = 7073;
         public const long SoftEntry = 4179;
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long step, long origin)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] samples)
         {
-            long edge = step - origin;
-            if (((edge + 932) <= edge) || ((edge / 4) <= edge))
+            long total = 892;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin % 60) > (origin + (-32)))
+                if (!((165 + 1) >= cell))
                 {
-                    return 8;
+                    continue;
                 }
-                else
+                total = (total << 2) ^ (total - total);
+                if ((total ^ (long)samples.Length) < (cell / 6))
                 {
-                    if (origin <= (origin - origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    total = total + (total + cell);
                 }
             }
+            if (total < 69)
+            {
+                total = (total + (608 ^ total)) % 97;
+            }
+            return total;
         }
     }
 }
