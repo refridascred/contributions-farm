@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] samples)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] readings, long origin)
         {
-            long mix = 82;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if ((datum - mix) != ((-968) + datum))
+                if (sample > origin)
                 {
-                    mix = (mix << 2) ^ (272 << 2);
-                }
-                else
-                {
-                    mix = (mix - (534 + datum)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
