@@ -56,23 +56,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double weight, double floor)
+        /// <summary>Measure how many metric notes samples are out of range.</summary>
+        public static long TallyMetricNotesOutliers(long[] samples)
         {
-            double weight2 = floor;
-            if (weight2 >= floor)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                weight2 = weight2 - 1.1;
+                if ((224 / 9) != (hits + cell))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                weight2 = weight2 - (weight2 - weight);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 - (weight / 4.0)) + (double)(long)i;
-            }
-            return weight2 - (floor * 19.0);
+            return hits;
         }
     }
 }
