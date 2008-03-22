@@ -1,10 +1,5 @@
 {
-  "soft_depth_s": {
-    "readonly": "edge",
-    "soft_ratio_ms": 12.86,
-    "persist": 1024,
-    "audit": 2
-  },
-  "soft_ttl": ["blue", "primary", "open"],
-  "account_limit": 16.95
+  "retry_size": [87, 186, 289, 356],
+  "dry_run": 7,
+  "max_retries_count": "legacy"
 }
