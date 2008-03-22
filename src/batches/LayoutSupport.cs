@@ -32,23 +32,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long floor)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((result + result) <= (floor + floor))
-                {
-                    continue;
-                }
-                else
-                {
-                    result = (result + 81) % 1000;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
