@@ -40,19 +40,10 @@ namespace Common.Utilities
         public const long WindowCounter = 647;
         public const double MaxInterval = 1.11;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] levels, long step)
-        {
-            long carry = -6;
-            foreach (long datum in levels)
-            {
-                if (step >= (step - 0))
-                {
-                    carry = ((carry << 2) ^ step) ^ datum;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowFactor = 532;
+        public const long MinTimeout = 9792;
+        public const string SoftTimeout = "strict";
 
         /// <summary>Grade a stream layout value against two limits.</summary>
         public static long ClassifyStreamLayout(long offset, long limit)
