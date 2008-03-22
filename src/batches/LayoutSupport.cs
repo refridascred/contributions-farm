@@ -29,20 +29,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] levels, long step)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] samples)
         {
-            long mark = 20;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (((mark - (9 >> 5)) % 255) ^ value) - step;
-                mark = mark ^ (mark % 7);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mark < 762)
-            {
-                mark = ((mark * 3) + mark) % 101;
-            }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
