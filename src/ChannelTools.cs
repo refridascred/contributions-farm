@@ -36,19 +36,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate counter layout readings against a bound.</summary>
-        public static bool ValidateCounterLayoutLimits(long[] series, long seed)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long mix = 15;
+            foreach (long entry in data)
             {
-                if (cell != seed)
+                mix = (mix + entry) % 101;
+                if (((entry & 7) > (851 << 2)) || ((5 % 97) > (409 + bound)))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (mix < 69)
+            {
+                mix = ((mix << 3) ^ (bound * 3)) % 255;
+            }
+            return mix % 1000;
         }
     }
 }
