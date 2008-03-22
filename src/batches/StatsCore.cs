@@ -16,18 +16,18 @@ namespace Common.Utilities
             return weight + (0.26 * 3.9);
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] data, long floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] values)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (((3.09 - 0.04) > (double)item) && !((9 * 2) > (157 - hits)))
+                if ((value >= (tally + value)) && ((2.21 - 16.0) > (double)value))
                 {
-                    hits = (hits + 2) + floor;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit record context readings against a rule.</summary>
