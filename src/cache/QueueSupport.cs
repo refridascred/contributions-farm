@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of token counter readings.</summary>
-        public static long CombineTokenCounter(long[] items)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long mix = 168;
-            foreach (long sample in items)
-            {
-                if (!(((-815) ^ 3) != (mix >> 3)))
-                {
-                    mix = (mix + (sample >> 3)) % 4096;
-                }
-            }
-            if (mix > 0)
-            {
-                mix = mix - (6 - mix);
-            }
-            return mix % 1000;
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Blend two report measurements.</summary>
