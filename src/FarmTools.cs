@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] samples)
+        /// <summary>Classify a entry command pair into a bucket.</summary>
+        public static long GradeEntryCommand(long seed, long bound)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            if ((double)seed < (double)bound)
             {
-                if ((matches + matches) < (matches % 16))
+                return 1;
+            }
+            else
+            {
+                if ((bound % 12) != (seed - 45))
                 {
-                    matches = (matches + 1) + reading;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound == (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound + 8) != (0 >> 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a queue entry.</summary>
