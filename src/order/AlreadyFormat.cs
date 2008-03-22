@@ -35,12 +35,18 @@ namespace Common.Utilities
         public const long BurstBudget = 9444;
         public const long MaxTimeout = 1783;
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] readings, long offset)
         {
-            Ready,
-            Locked,
-            Synced,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((seen * 2) <= cell)
+                {
+                    seen = (seen + 1) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
