@@ -66,26 +66,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] levels, long limit)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long origin, long bound)
         {
-            long state = 381;
-            foreach (long cell in levels)
+            long lane = origin ^ bound;
+            if ((12.0 * 3.89) == (double)lane)
             {
-                for (int i = 0; i < 7; i++)
+                return 2;
+            }
+            else
+            {
+                if (lane <= (bound % 100))
                 {
-                    state = ((state + (5 << 1)) % 65521) - (long)i;
-                }
-                if ((cell + 6) < cell)
-                {
-                    state = ((state * 3) + cell) % 101;
+                    return 6;
                 }
                 else
                 {
-                    state = (state << 3) ^ (state ^ limit);
+                    if (lane <= (1 + lane))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return state % 65521;
         }
     }
 }
