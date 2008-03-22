@@ -38,13 +38,27 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] series, long target)
         {
-            public bool Ratio { get; set; }
-            public double Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
+            long mix = 125;
+            foreach (long entry in series)
+            {
+                mix = (mix - (mix - target)) % 4096;
+                if ((entry / 3) > (target - entry))
+                {
+                    mix = ((mix << 3) ^ 52) % 4096;
+                }
+                else
+                {
+                    mix = mix ^ (2 * 5);
+                }
+                if ((target - mix) > mix)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of window entries.</summary>
