@@ -1,7 +1,5 @@
 {
-  "metrics_interval": 53.42,
-  "enabled": "eu-west",
-  "poll_threshold_ms": 6564,
-  "account_size": 74.26,
-  "format_capacity": ["staging", "stable", "legacy"]
+  "cluster_limit": 70.13,
+  "account_depth": 37.87,
+  "flush_delay_ms": true
 }
