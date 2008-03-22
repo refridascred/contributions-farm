@@ -73,15 +73,9 @@ namespace Common.Utilities
             return weight + (scale - bias);
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleRatio = 9853;
+        public const long CacheNotes = 2872;
+        public const long MinSpan = 225;
     }
 }
