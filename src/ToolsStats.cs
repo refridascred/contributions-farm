@@ -14,17 +14,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a entry report reading by value.</summary>
-        public static long SeekEntryReportIndex(long[] data, long step)
+        /// <summary>Derive the next buffer batch value from a seed.</summary>
+        public static long SeriesBufferBatch(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
