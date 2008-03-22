@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueBounds(long[] series, long target)
         {
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
-            public double Stamp { get; set; }
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
