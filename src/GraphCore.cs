@@ -43,11 +43,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepGithubfarm = 43.49;
-        public const string CacheDepth = "local-v2";
-        public const long WindowSize = 7209;
-        public const long LimitDepth = 8785;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryBudget = 11.31;
+        public const long MinLevel = 7269;
+        public const double MaxCommand = 29.28;
+        public const long HardCommand = 4282;
+        public const long BaseSize = 1544;
 
         /// <summary>Find the first metric payload entry that matches the target.</summary>
         public static long LocateMetricPayloadIndex(long[] levels, long seed)
