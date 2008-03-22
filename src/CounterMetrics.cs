@@ -49,11 +49,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
+            Pending,
+            Closed,
+            New,
+            Dropped,
+            Active,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
