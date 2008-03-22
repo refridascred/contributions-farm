@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long floor, long target)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] samples)
         {
-            long slot = floor + target;
-            if ((double)slot != (7.1 + 0.1))
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((10 + floor) >= (slot % 2)) && ((12.0 - 8.24) != (double)floor))
+                if ((double)tally == (5.0 * 4.66))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)floor > (double)slot) || ((target - slot) < ((-226) >> 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = (tally + 2) - entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the notes level values.</summary>
