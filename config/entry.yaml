@@ -1,7 +1,5 @@
 # entry settings
-retry_ratio: primary
-burst_capacity_count: 41
-burst_depth: green
-idle_retries_pct: false
-queue_interval: staging
-sync_size_pct: 52.07
+githubfarm_window: 58.24
+soft_ratio: stable
+warm_window: 60
+window_depth: false
