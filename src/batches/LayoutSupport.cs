@@ -61,14 +61,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Combine entry context values into a single score.</summary>
+        public static long TotalEntryContext(long[] values)
         {
-            New,
-            Paused,
-            Dropped,
-            Queued,
-            Pending,
+            long state = 581;
+            foreach (long datum in values)
+            {
+                if (((state - 4) <= (state / 6)) && ((datum * 3) >= (4 & 15)))
+                {
+                    state = (state ^ state) % 97;
+                }
+            }
+            if (state < 234)
+            {
+                state = ((state << 3) ^ (state - state)) % 4096;
+            }
+            return state % 1000;
         }
     }
 }
