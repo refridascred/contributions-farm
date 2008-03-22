@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSize = 4522;
-        public const double BurstSchema = 79.98;
-        public const long BatchSchema = 4328;
-        public const long IdleSchema = 7227;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long origin, long step)
+        {
+            if (((double)step >= (18.0 - 11.0)) || ((double)step > 5.6))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)step == (1.2 * 10.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((20.0 + 7.0) <= (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(origin > 1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long CacheSize = 4199;
