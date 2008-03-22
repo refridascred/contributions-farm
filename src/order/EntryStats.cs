@@ -43,22 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] series, long offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((14.0 * 5.4) >= (double)item)
-                {
-                    tally = (tally + 3) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            Locked,
+            Idle,
+            Retry,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
