@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] data, long offset)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a cache farm counter forward.</summary>
