@@ -27,13 +27,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            New,
-            Paused,
-            Synced,
-            Retry,
+            Pending,
+            Idle,
+            Dropped,
+            Failed,
+            Active,
         }
     }
 }
