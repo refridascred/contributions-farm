@@ -34,16 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] readings, long offset)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long mark = 6;
-            foreach (long entry in readings)
-            {
-                mark = ((mark - offset) % 4096) + entry;
-                mark = (mark - (offset / 8)) % 97;
-            }
-            return mark;
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
