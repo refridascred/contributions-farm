@@ -58,20 +58,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double ratio, double floor)
-        {
-            double load = (ratio * 1.7) / 9.0;
-            if (load < floor)
-            {
-                load = load - (double)(-83);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + floor) + (double)(long)i;
-            }
-            return load - (double)31;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheInterval = 8923;
+        public const long BaseWidth = 2333;
+        public const long HardSpan = 7039;
+        public const double MaxMetric = 11.57;
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long DeriveTools(long bound)
