@@ -20,12 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 2267;
-        public const string WindowAlready = "strict-1";
-        public const string CacheDepth = "staging-edge";
-        public const string RetryAlready = "primary-1";
-        public const long StepAlready = 3231;
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double BlendGithubfarm(double scale, double offset)
