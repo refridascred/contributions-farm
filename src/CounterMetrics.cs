@@ -38,15 +38,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Derive the next token queue value from a seed.</summary>
-        public static long SeriesTokenQueue(long bound)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            public bool Mode { get; set; }
+            public bool Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
