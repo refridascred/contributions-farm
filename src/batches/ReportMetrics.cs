@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of route cache readings.</summary>
-        public static long CompareRouteCacheCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryChannel = 35.46;
+        public const string IdleChannel = "local-1";
+        public const string DefaultScore = "local-v2";
 
         /// <summary>Accumulate githubfarm commits samples.</summary>
         public static long ScoreGithubfarmCommits(long[] data)
