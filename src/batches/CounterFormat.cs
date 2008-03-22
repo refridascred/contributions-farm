@@ -47,39 +47,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long origin, long step)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] samples, long offset)
         {
-            long gap = origin + step;
-            if (step >= 8)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((gap - step) >= (gap + origin))
+                if (reading != offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((7.22 - 3.7) <= (double)gap)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin * 2) >= (3 + origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
