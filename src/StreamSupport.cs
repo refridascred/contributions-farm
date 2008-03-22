@@ -46,12 +46,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
-        {
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultScore = 5999;
+        public const long IdleReport = 786;
+        public const double DefaultReport = 25.34;
     }
 }
