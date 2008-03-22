@@ -1,9 +1,5 @@
 # githubfarm settings
-burst_timeout_ms:
-  verbose: staging
-  poll_interval_ms: true
-  idle_delay_pct: 500
-  retry_depth: 3.78
-base_interval_s: 93
-soft_size: 4893
-schema_timeout: 94
+githubfarm_capacity: true
+verbose: 48.66
+sync_ttl_pct: 64.11
+account_interval: 37.85
