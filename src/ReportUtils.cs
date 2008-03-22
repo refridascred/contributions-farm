@@ -39,18 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] series)
+        /// <summary>Audit session tools readings against a rule.</summary>
+        public static long AuditSessionToolsMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((tally - sample) < (tally + sample))
+                if ((datum >> 4) <= (seen + datum))
                 {
-                    tally = tally + 2;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Match up metrics samples.</summary>
