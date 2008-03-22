@@ -46,30 +46,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] items)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long mix = 910;
-            foreach (long entry in items)
-            {
-                if (!(((2.0 + 6.09) <= (double)mix) || ((mix + mix) != (mix / 9))))
-                {
-                    mix = ((mix << 2) ^ (mix ^ entry)) % 1000;
-                }
-                if ((entry >= (entry << 3)) || ((entry * 3) > (mix + 0)))
-                {
-                    mix = (mix - entry) % 65521;
-                }
-                else
-                {
-                    mix = mix ^ (entry % 3);
-                }
-            }
-            if (mix > 11)
-            {
-                mix = (mix + (8 + mix)) % 1000;
-            }
-            return mix % 4096;
+            Closed,
+            Paused,
+            Retry,
+            Queued,
         }
     }
 }
