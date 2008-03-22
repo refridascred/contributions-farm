@@ -26,15 +26,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long floor)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
