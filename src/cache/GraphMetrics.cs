@@ -60,15 +60,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next editor channel value from a seed.</summary>
-        public static long RollEditorChannel(long limit)
+        /// <summary>Adjust a tools metric reading.</summary>
+        public static double SmoothToolsMetric(double rate, double span)
         {
-            long carry = limit;
-            for (int i = 0; i < 21; i++)
+            double bias = rate;
+            if (bias >= bias)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                bias = bias - (span + 9.5);
             }
-            return carry;
+            else
+            {
+                bias = bias - rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (double)4) + (double)(long)i;
+            }
+            return bias + rate;
         }
     }
 }
