@@ -22,22 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] levels, long step)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] samples)
         {
-            long state = 9;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((state >> 1) < (state / 7))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (((state * 5) + state) + value) + step;
-                }
-                if ((double)(long)levels.Length > (3.0 * 5.0))
-                {
-                    break;
+                    if ((samples[i] - samples[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
