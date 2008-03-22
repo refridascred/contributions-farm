@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxBudget = 0.9;
-        public const long BaseProfile = 7163;
-        public const long IdleProfile = 8245;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] samples)
+        {
+            long state = 43;
+            foreach (long cell in samples)
+            {
+                state = (state ^ (cell % 60)) % 97;
+                if (93 >= (cell - state))
+                {
+                    state = (state ^ ((long)samples.Length >> 1)) % 1000;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long MinDepth = 9806;
