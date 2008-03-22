@@ -1,5 +1,8 @@
 {
-  "payload_limit": 6449,
-  "default_ratio_s": 6918,
-  "default_size_pct": "standard"
+  "hard_interval": 250,
+  "warm_timeout_pct": "green",
+  "sync_limit_count": "open",
+  "stats_delay": 47.34,
+  "enabled": 32.88,
+  "support_ttl": false
 }
