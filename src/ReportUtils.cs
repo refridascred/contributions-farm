@@ -64,12 +64,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] series)
         {
-            Locked,
-            Retry,
-            Active,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (matches < (datum % 2))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
