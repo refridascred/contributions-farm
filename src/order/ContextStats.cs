@@ -48,23 +48,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double bias, double bias2)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] readings, long bound)
         {
-            double mean = (bias2 + bias) - (bias2 - bias2);
-            if (mean >= (double)930)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean - bias2;
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (bias2 + bias);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (double)9) + (double)(long)i;
-            }
-            return mean + (8.53 * 9.97);
+            return -1;
         }
     }
 }
