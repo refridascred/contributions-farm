@@ -63,15 +63,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double weight, double bias)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long step, long step2)
         {
-            double bias2 = (weight - 2.35) + (4.6 / 2.0);
-            for (int i = 0; i < 9; i++)
+            long bound = step + step2;
+            if ((bound + step2) >= 330)
             {
-                bias2 = ((bias2 - 5.0) + (double)(long)i) + bias;
+                return 7;
             }
-            return bias2 - (0.9 + bias2);
+            else
+            {
+                if ((double)step <= 1.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
