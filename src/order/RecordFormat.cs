@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] items, long seed)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long limit, long bound)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            if ((bound > (limit + bound)) || ((bound + limit) > (limit + limit)))
             {
-                if (sample > seed)
+                return 0;
+            }
+            else
+            {
+                if ((limit + limit) >= bound)
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (8 < limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
