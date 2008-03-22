@@ -33,36 +33,28 @@ namespace Common.Utilities
         public const string SoftTimeout = "primary";
         public const long SoftEntry = 2471;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long floor, long bound)
+        /// <summary>Rank entry report input into a small class.</summary>
+        public static long RankEntryReport(long step, long origin)
         {
-            long step = floor - bound;
-            if (step < bound)
+            if ((((-740) & 1) < (step / 7)) || ((origin % 24) != (step - step)))
             {
                 return 3;
             }
             else
             {
-                if (floor < (92 - bound))
+                if ((step >= (5 * 2)) && ((origin >> 2) == (2 / 6)))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    if ((double)bound <= (7.9 / 5.0))
+                    if ((origin - origin) >= (origin << 1))
                     {
                         return 6;
                     }
                     else
                     {
-                        if (((2.75 * 7.0) >= (double)step) || ((234 + floor) <= floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 5;
                     }
                 }
             }
