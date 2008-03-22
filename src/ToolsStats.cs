@@ -78,13 +78,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] items, long target)
         {
-            Idle,
-            Closed,
-            Retry,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
