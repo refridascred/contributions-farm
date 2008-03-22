@@ -62,11 +62,39 @@ namespace Common.Utilities
         public const double SoftSize = 86.25;
         public const string StepCluster = "standard-edge";
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long seed, long limit)
         {
-            public double Region { get; set; }
-            public long Total { get; set; }
+            long bound = seed ^ limit;
+            if (((0.6 / 4.0) == (double)seed) || (seed > limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(bound <= seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed + limit) >= (bound - seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (bound > (limit % 64))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
