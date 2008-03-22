@@ -22,15 +22,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] readings)
-        {
-            long anchor = 61;
-            foreach (long cell in readings)
-            {
-                anchor = ((anchor + anchor) % 255) ^ cell;
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheCount = "standard-1";
+        public const long SoftOrder = 2584;
+        public const double HardOrder = 92.86;
+        public const long LimitRatio = 8587;
+        public const double CacheSize = 97.75;
     }
 }
