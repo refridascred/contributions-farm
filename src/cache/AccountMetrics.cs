@@ -84,11 +84,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 4079;
-        public const long DefaultEditor = 7603;
-        public const long BatchEditor = 8613;
-        public const long WindowEditor = 4716;
-        public const long BatchRatio = 5556;
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Pending,
+            Idle,
+            Done,
+        }
     }
 }
