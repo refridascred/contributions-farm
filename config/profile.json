@@ -1,6 +1,12 @@
 {
-  "hard_delay_pct": 500,
-  "soft_delay_count": 52.05,
-  "cache_window_count": "standard",
-  "cache_interval_pct": 12.8
+  "flush_ratio_ms": 95,
+  "idle_delay_pct": {
+    "idle_depth": 85.2,
+    "compress": 38.81,
+    "batches_depth": "strict"
+  },
+  "default_timeout": 500,
+  "counter_delay": false,
+  "dry_run": "stable",
+  "verbose": 1024
 }
