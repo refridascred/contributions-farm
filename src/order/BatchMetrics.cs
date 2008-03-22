@@ -34,12 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] samples)
         {
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
+            long sum = 9;
+            foreach (long reading in samples)
+            {
+                sum = (sum - (reading + 76)) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
