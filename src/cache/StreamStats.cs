@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] series, long floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] values, long target)
         {
-            long count = 0;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (floor < (sample % 5))
+                if (sample >= target)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
