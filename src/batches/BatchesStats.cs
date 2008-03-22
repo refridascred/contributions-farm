@@ -69,21 +69,13 @@ namespace Common.Utilities
             return bias - (span * 0.4);
         }
 
-        /// <summary>Match up tools queue samples.</summary>
-        public static long PairToolsQueueCount(long[] readings)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Pending,
+            Draft,
+            New,
+            Active,
         }
     }
 }
