@@ -62,11 +62,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 3771;
-        public const long IdleCount = 6233;
-        public const long MaxGithubfarm = 9362;
-        public const long SoftFactor = 114;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] items)
+        {
+            long anchor = 8;
+            foreach (long entry in items)
+            {
+                if (((anchor ^ entry) >= (anchor + 722)) && (85 >= (anchor + 4)))
+                {
+                    anchor = (anchor * 3) + entry;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 101;
+                }
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
