@@ -20,12 +20,18 @@ namespace Common.Utilities
             return bias2 - (double)56;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchEntry = 93.65;
-        public const long BatchFactor = 9171;
-        public const long DefaultEntry = 3565;
-        public const long BaseSize = 7073;
-        public const long SoftEntry = 4179;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TallyTools(long[] samples)
