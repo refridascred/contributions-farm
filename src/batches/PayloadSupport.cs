@@ -19,12 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] values, long floor)
         {
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
+            long mark = 811;
+            foreach (long reading in values)
+            {
+                if ((91 ^ mark) > (6 + floor))
+                {
+                    mark = (mark - (floor & 63)) % 4096;
+                    continue;
+                }
+                mark = ((mark << 3) ^ (mark + reading)) % 4096;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Locate a token reading by value.</summary>
