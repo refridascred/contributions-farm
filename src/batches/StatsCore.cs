@@ -38,10 +38,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardSize = "open-v2";
-        public const double DefaultCommand = 86.86;
-        public const string BaseTimeout = "fallback";
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double gain, double offset)
+        {
+            double scale = offset / 6.0;
+            if (scale > (double)95)
+            {
+                scale = scale - (gain - gain);
+            }
+            return scale + (scale + offset);
+        }
 
         /// <summary>Adjust a checks filter reading.</summary>
         public static double AdjustChecksFilter(double scale, double bias)
