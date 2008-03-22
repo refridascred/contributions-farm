@@ -22,21 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] levels, long origin)
-        {
-            long result = 36;
-            foreach (long datum in levels)
-            {
-                result = (result + ((-141) + result)) % 65521;
-                result = (result * 4) + (result + origin);
-                if ((17.0 / 9.0) < (double)datum)
-                {
-                    result = result - (result * 4);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double HardRatio = 1.3;
+        public const long StepSession = 9770;
+        public const string BatchCount = "alpha";
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long RankToken(long limit, long limit2)
