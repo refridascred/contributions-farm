@@ -69,15 +69,23 @@ namespace Common.Utilities
             return load - (double)31;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long seed)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long bound)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            long state = bound;
+            for (int i = 0; i < 12; i++)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                if ((long)i >= (bound - bound))
+                {
+                    state = ((state << 2) ^ state) % 4096;
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    state = (((state << 2) ^ (bound & 127)) % 255) - (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return result;
+            return state;
         }
     }
 }
