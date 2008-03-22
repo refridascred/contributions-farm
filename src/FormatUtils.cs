@@ -59,15 +59,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Retry,
-            Failed,
-            Ready,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardWidth = 4962;
+        public const long BaseBudget = 2232;
+        public const long LimitWidth = 7792;
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long StepSupport(long bound)
