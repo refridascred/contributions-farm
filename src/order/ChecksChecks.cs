@@ -17,11 +17,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double scale, double floor)
+        /// <summary>Grade a githubfarm filter value against two limits.</summary>
+        public static long ClassifyGithubfarmFilter(long offset, long offset2)
         {
-            double bias = floor - floor;
-            return (bias - 2.29) + scale;
+            if ((7.1 * 20.0) >= (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((430 + offset) > offset2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((-2) + offset) < (401 + offset2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)offset2 >= 1.62))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of cache entry readings.</summary>
