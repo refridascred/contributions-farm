@@ -74,32 +74,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long origin, long seed)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long edge = origin ^ seed;
-            if ((double)origin >= (6.4 * 6.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (edge > (33 * 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (3.0 > (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Locked,
+            Closed,
+            Draft,
+            Queued,
+            Synced,
         }
 
         /// <summary>Compare every pair of context readings.</summary>
