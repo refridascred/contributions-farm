@@ -25,19 +25,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double bias, double floor)
+        /// <summary>Check that every buffer metric entry stays within the limit.</summary>
+        public static bool VerifyBufferMetricRange(long[] samples, long target)
         {
-            double load = (double)(496 % 12);
-            if (load > (floor - load))
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                load = (load + 5.6) - bias;
+                if (datum <= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - 6.2;
+            return ready;
         }
 
         /// <summary>Project the next notes value.</summary>
