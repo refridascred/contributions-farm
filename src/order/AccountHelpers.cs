@@ -34,15 +34,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] readings, long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (sample > limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Define already limits and defaults.</summary>
