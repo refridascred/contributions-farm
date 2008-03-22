@@ -1,16 +1,11 @@
 # Command notes
 
-Defaults for already live in the config folder and can be overridden per environment.
-Run the session check before changing any token limits.
-The metric report groups every profile by token.
-
-When a metric fails, the buffer handler retries a few times before giving up.
-Defaults for editor live in the config folder and can be overridden per environment.
-Use githubfarm settings to tune how often metric data is refreshed.
+A checks that stays idle for too long is moved to the contributi list.
+Each stats is validated before it reaches the token queue.
 
 ## Guidelines
 
-- Prefer counter defaults
 - Document new cache fields
-- Log every entry change
-- Validate account input early
+- Keep counter values small
+- Log every queue change
+- Review format limits each release
