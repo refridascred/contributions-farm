@@ -29,22 +29,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many filter entry samples are out of range.</summary>
-        public static long CountFilterEntryGaps(long[] levels)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((seen % 8) > (seen / 2))
-                {
-                    seen = (seen + 3) - cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Ready,
+            Dropped,
+            Stale,
+            Draft,
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
