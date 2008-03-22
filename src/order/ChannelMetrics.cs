@@ -10,23 +10,17 @@ namespace Common.Utilities
         public const long BaseRatio = 5392;
         public const long WindowSession = 9235;
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double bias, double span)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] samples, long limit)
         {
-            double bias2 = span + (double)21;
-            if (bias2 <= span)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = bias2 - (bias - bias2);
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (span - span);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + (bias / 3.0)) + (double)(long)i;
-            }
-            return bias2 + (span - bias);
+            return -1;
         }
 
         /// <summary>Describe the farm kind values.</summary>
