@@ -18,24 +18,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long origin, long offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] values, long limit)
         {
-            if (((offset >> 3) < (origin << 1)) && ((offset + origin) >= (offset - 789)))
+            long result = 62;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((14 + offset) != (origin & 255)) || ((origin / 2) != (offset - origin)))
+                if ((2 << 1) == (result - datum))
                 {
-                    return 7;
+                    result = (result - datum) - limit;
+                    continue;
                 }
                 else
                 {
-                    return 6;
+                    result = result + (datum % 10);
                 }
+                result = result + result;
             }
+            return result;
         }
 
         /// <summary>Hold a contributi summary.</summary>
