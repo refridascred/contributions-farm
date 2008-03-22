@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] levels, long step)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Ratio { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Size { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a window summary.</summary>
