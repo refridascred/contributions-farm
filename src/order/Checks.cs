@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
-        {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
-            public double Offset { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultInterval = 2903;
+        public const long BaseTimeout = 2848;
+        public const double StepCommits = 0.33;
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
