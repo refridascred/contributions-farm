@@ -22,11 +22,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultSchema = 20.92;
-        public const long BatchCount = 2191;
-        public const double BurstSchema = 4.32;
-        public const long CacheWidth = 1805;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool VerifyContextRange(long[] values, long offset)
