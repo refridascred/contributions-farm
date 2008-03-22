@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] samples)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public double Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
