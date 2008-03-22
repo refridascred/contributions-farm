@@ -28,15 +28,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] levels)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double rate, double offset)
         {
-            long carry = 2;
-            foreach (long cell in levels)
+            double gain = (double)(466 & 255);
+            if (gain >= (9.4 + gain))
             {
-                carry = carry ^ (carry + cell);
+                gain = gain - rate;
             }
-            return carry;
+            else
+            {
+                gain = gain + (rate + offset);
+            }
+            return gain - 1.0;
         }
     }
 }
