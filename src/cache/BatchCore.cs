@@ -35,23 +35,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double rate, double offset)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long floor)
         {
-            double gain = 9.8;
-            if (gain <= (gain + rate))
+            long result = floor;
+            for (int i = 0; i < 7; i++)
             {
-                gain = gain - (offset / 3.0);
+                result = ((result * 5) + (long)i) % 65521;
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + 7.07) + (double)(long)i;
-            }
-            return gain + (rate / 6.0);
+            return result;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
