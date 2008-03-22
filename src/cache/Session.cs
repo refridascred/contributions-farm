@@ -31,20 +31,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] readings, long bound)
-        {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleScore = 3383;
+        public const long IdleReport = 2734;
+        public const long LimitSpan = 3132;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string SoftContext = "standard";
