@@ -1,5 +1,5 @@
 {
-  "poll_capacity": 1024,
-  "soft_ttl_pct": "primary",
-  "soft_size": "primary"
+  "base_size_s": 54.54,
+  "cache_limit": [88, 90],
+  "metrics_capacity": 36
 }
