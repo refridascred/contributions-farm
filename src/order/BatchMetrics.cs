@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            Closed,
-            New,
+            Pending,
             Idle,
-            Paused,
+            Queued,
         }
 
         /// <summary>Describe the buffer level values.</summary>
