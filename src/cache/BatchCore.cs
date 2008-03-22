@@ -32,15 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double gain, double offset)
+        /// <summary>Measure how many githubfarm tools samples are out of range.</summary>
+        public static long AuditGithubfarmToolsMatches(long[] levels)
         {
-            double mean = (1.97 * 20.0) / 2.0;
-            if (mean >= (double)67)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                mean = mean - (gain + offset);
+                if ((double)value < (2.0 + 7.03))
+                {
+                    seen = seen + 3;
+                }
             }
-            return mean - (mean / 5.0);
+            return seen;
         }
 
         /// <summary>Fold a list of report readings.</summary>
