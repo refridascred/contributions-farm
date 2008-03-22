@@ -36,18 +36,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] items, long origin)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long limit, long target)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            if (((limit % 3) <= target) && ((5 * 5) == (limit >> 2)))
             {
-                if (1 <= (tally - tally))
+                return 2;
+            }
+            else
+            {
+                if (((target % 5) == (limit + target)) && ((limit * 3) < ((-53) ^ 0)))
                 {
-                    tally = ((tally + 3) ^ sample) + origin;
+                    return 8;
+                }
+                else
+                {
+                    if ((target * 4) == (938 + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (9 < (limit + limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate notes samples.</summary>
