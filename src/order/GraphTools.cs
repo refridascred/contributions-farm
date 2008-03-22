@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] series)
         {
-            public long Total { get; set; }
-            public double Rank { get; set; }
+            long carry = 242;
+            foreach (long cell in series)
+            {
+                if ((0.23 / 5.0) == (double)carry)
+                {
+                    carry = ((carry ^ ((long)series.Length & 63)) % 4096) ^ cell;
+                }
+            }
+            if (carry > 849)
+            {
+                carry = carry ^ (carry + 91);
+            }
+            return carry;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
