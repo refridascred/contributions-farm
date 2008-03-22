@@ -69,19 +69,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] samples, long target)
+        /// <summary>Accumulate filter graph samples.</summary>
+        public static long FoldFilterGraph(long[] items)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long total = 54;
+            foreach (long sample in items)
             {
-                if (entry > target)
+                if (25 < (total + total))
                 {
-                    found = false;
+                    total = (total - (total + total)) ^ sample;
+                }
+                if ((7.72 * 1.0) <= (double)total)
+                {
                     break;
                 }
             }
-            return found;
+            if (total < 943)
+            {
+                total = total ^ total;
+            }
+            return total % 4096;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
