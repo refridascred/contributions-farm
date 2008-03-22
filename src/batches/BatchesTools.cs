@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] samples)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (((-75) + (long)samples.Length) <= count)
-                {
-                    count = (count + 1) - cell;
-                }
-            }
-            return count;
+            Synced,
+            Done,
+            Failed,
+            Ready,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
