@@ -20,19 +20,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double scale, double floor)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            double load = 11.0 / 5.0;
-            if (load > (scale - scale))
-            {
-                load = load - floor;
-            }
-            else
-            {
-                load = load - (floor + load);
-            }
-            return load - (scale / 4.0);
+            Failed,
+            Pending,
+            Ready,
+            Stale,
         }
 
         /// <summary>Hold a batch stats.</summary>
