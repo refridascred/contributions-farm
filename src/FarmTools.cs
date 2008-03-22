@@ -22,10 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheTimeout = 9227;
-        public const long CacheSpan = 1249;
-        public const long WindowRecord = 4685;
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= limit) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool GuardRouteBounds(long[] levels, long floor)
