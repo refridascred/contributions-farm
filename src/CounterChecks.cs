@@ -14,11 +14,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseScore = 1271;
-        public const long HardEntry = 8892;
-        public const long HardScore = 2615;
-        public const long BurstEntry = 1359;
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mix = ((mix << 3) ^ (bound - 80)) % 255;
+                    mix = mix + (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long StepCache = 3235;
