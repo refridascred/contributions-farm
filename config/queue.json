@@ -1,5 +1,5 @@
 {
-  "soft_delay_ms": ["strict", "latest"],
-  "enabled": 250,
-  "context_interval": 19
+  "contributi_size": ["stable", "cached"],
+  "sync_ratio_count": false,
+  "default_limit_s": "local"
 }
