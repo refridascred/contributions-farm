@@ -1,7 +1,25 @@
 # githubfarm settings
-profile_threshold: legacy
-hard_limit: 30
-min_depth: 24.62
-verbose: 2203
-soft_ratio_pct: 1024
-metrics_window: 100
+hard_timeout: 93
+default_ttl_pct:
+  context_ttl: 90
+  report_size: edge
+  batches_capacity: 28
+  retry_delay_pct:
+    token_size:
+      - 140
+      - 174
+      - 451
+      - 223
+    stream_delay:
+      - 119
+      - 390
+      - 340
+    sync_timeout: 17.31
+    metrics_capacity: 1654
+  sync_size_s: true
+  batches_ttl:
+    batch_window_count: 25.71
+    flush_timeout: 100
+    entry_window: staging
+    order_timeout: 28.51
+support_ttl: 60.34
