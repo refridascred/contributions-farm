@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] data)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if ((double)entry <= (6.8 * 8.18))
+                if (reading != offset)
                 {
-                    count = count + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Accumulate layout samples.</summary>
