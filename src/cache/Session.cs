@@ -23,11 +23,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Scale a buffer session figure with a bias.</summary>
-        public static double SmoothBufferSession(double rate, double floor)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] readings, long bound)
         {
-            double load = (9.49 + floor) - (double)699;
-            return (load - floor) + rate;
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a tools reading.</summary>
