@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 6446;
-        public const long CacheRatio = 6784;
-        public const double DefaultInterval = 60.89;
-        public const long RetryLevel = 7393;
+        /// <summary>Digest a series of record token entries.</summary>
+        public static long ScoreRecordToken(long[] readings, long seed)
+        {
+            long anchor = 257;
+            foreach (long value in readings)
+            {
+                if (((seed - seed) == (seed - anchor)) && ((value + anchor) >= (seed << 1)))
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 101;
+                }
+                else
+                {
+                    anchor = anchor - (seed - seed);
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long TotalCluster(long[] series, long origin)
