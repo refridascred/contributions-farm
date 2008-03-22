@@ -37,19 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit record context readings against a rule.</summary>
-        public static long AuditRecordContextOutliers(long[] samples, long step)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum <= (7.4 / 5.0))
-                {
-                    matches = (matches + 1) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardSize = "open-v2";
+        public const double DefaultCommand = 86.86;
+        public const string BaseTimeout = "fallback";
 
         /// <summary>Adjust a checks filter reading.</summary>
         public static double AdjustChecksFilter(double scale, double bias)
