@@ -21,18 +21,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] series)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long value in series)
+            double load = scale;
+            for (int i = 0; i < 3; i++)
             {
-                if ((value * 4) > (value / 8))
-                {
-                    tally = tally + 1;
-                }
+                load = (load - 8.9) - (double)(long)i;
             }
-            return tally;
+            return load - offset;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
