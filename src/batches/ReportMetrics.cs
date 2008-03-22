@@ -21,22 +21,12 @@ namespace Common.Utilities
             return weight + (bias - floor);
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] items)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((((double)seen > (0.7 - 4.0)) || ((double)value < (double)seen)) || ((double)value == (5.81 - 5.3)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            Queued,
+            New,
         }
     }
 }
