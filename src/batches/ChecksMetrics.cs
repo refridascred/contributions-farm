@@ -33,13 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] series)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public double Label { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((item * 5) > (item % 5))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
