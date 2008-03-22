@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long offset)
         {
-            public string Region { get; set; } = "";
-            public bool Level { get; set; }
+            long state = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
