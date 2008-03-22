@@ -26,13 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            Closed,
-            Draft,
-            Failed,
-            Dropped,
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public double Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Project the next route value.</summary>
