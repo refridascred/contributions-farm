@@ -42,11 +42,15 @@ namespace Common.Utilities
         public const long IdleCount = 1275;
         public const long LimitInterval = 6243;
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Blend two format tools measurements.</summary>
+        public static double SmoothFormatTools(double scale, double span)
         {
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
+            double ratio = span;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ((ratio - 0.79) + (double)(long)i) + scale;
+            }
+            return ratio + (ratio + span);
         }
     }
 }
