@@ -34,12 +34,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 8757;
-        public const double BatchSpan = 23.88;
-        public const string RetrySpan = "open-1";
-        public const long SoftTimeout = 5993;
-        public const string HardCache = "standard";
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
