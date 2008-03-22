@@ -1,5 +1,11 @@
 # entry settings
-min_timeout_s: primary
-dry_run: 100
-poll_ratio: true
-context_interval: stable
+hard_delay_count: true
+sync_delay_pct:
+  verbose: 5.25
+  metric_depth: 11
+  batch_ttl_count: local
+  batch_ratio: standard
+order_capacity: false
+token_size: edge
+burst_timeout: edge
+flush_delay_s: edge
