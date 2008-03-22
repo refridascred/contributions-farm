@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long WindowCount = 4942;
         public const long MaxCount = 2870;
 
-        /// <summary>Iterate the stats channel series from a seed.</summary>
-        public static long SeriesStatsChannel(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                if (9.3 >= (double)result)
-                {
-                    result = (result * 3) + (limit + (long)i);
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxBudget = 4619;
+        public const double IdleNotes = 98.67;
+        public const double MaxTimeout = 42.4;
+        public const string BaseFactor = "standard-1";
+        public const long DefaultNotes = 6424;
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long LocateSessionIndex(long[] values, long offset)
