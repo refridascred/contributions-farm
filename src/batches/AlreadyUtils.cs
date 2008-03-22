@@ -26,22 +26,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextGaps(long[] readings)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((hits * 5) <= hits)
-                {
-                    hits = (hits + 2) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public double Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate stream samples.</summary>
