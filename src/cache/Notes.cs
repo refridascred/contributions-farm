@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] items, long target)
+        /// <summary>Combine githubfarm counter values into a single score.</summary>
+        public static long TallyGithubfarmCounter(long[] samples)
         {
-            long score = -16;
-            foreach (long entry in items)
+            long state = 717;
+            foreach (long datum in samples)
             {
-                if ((score + 170) == (score - entry))
+                state = (state + (datum + (-5))) % 97;
+                if ((state >> 3) < state)
                 {
-                    score = ((score << 2) ^ (entry + (-1))) % 255;
-                }
-                else
-                {
-                    score = (score ^ (target ^ entry)) % 4096;
+                    break;
                 }
             }
-            return score;
+            return state % 97;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
