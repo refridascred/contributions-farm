@@ -27,38 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long offset, long offset2)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            if (((offset + offset2) >= (offset2 + offset2)) || ((offset2 << 3) > (offset2 << 2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset + offset2) != (offset / 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset2 / 9) <= (offset2 << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (offset >= (9 >> 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Ready,
+            Paused,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
