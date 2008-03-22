@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowSpan = 2611;
-        public const string BurstContext = "strict";
-        public const long LimitFactor = 3813;
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 10; i++)
+            {
+                state = state ^ state;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
