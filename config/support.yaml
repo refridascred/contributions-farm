@@ -1,5 +1,15 @@
 # support settings
-counter_interval: blue
-flush_size_count: 80.88
-commits_ttl: blue
-retry_capacity: staging
+base_ttl:
+  default_size_count:
+    - 336
+    - 149
+    - 243
+  metric_capacity: 5257
+  schema_threshold: true
+compress:
+  - blue
+  - staging
+  - strict
+base_capacity_ms: 4108
+checks_retries: false
+stats_window: 60
